@@ -1,0 +1,9 @@
+flask 
+transformers 
+torch 
+nltk 
+spacy 
+pandas 
+numpy 
+mysql-connector-python 
+gunicorn
