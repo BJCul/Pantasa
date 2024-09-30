@@ -1,0 +1,2 @@
+# Pantasa
+ **Pantasa** is a **Tagalog grammar correction system** that combines **rule-based** error detection using hybrid n-grams with a **deep learning-based** iterative error correction approach. The system identifies grammar mistakes in Tagalog sentences by comparing them against predefined grammar rules and then applies corrections using a fine-tuned deep learning model. Pantasa is designed to handle common grammar errors in Tagalog and iteratively refine sentences until they are grammatically correct.
