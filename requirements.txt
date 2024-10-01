@@ -2,8 +2,8 @@ flask
 transformers 
 torch 
 nltk 
-spacy 
+spacy
 pandas 
-numpy 
+numpy
 mysql-connector-python 
 gunicorn
