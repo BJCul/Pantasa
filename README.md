@@ -29,7 +29,7 @@ Welcome to the **Pantasa** project! This guide provides a detailed explanation o
 Start by cloning the Pantasa project repository to your local machine:
 
 ```bash
-git clone https://github.com/your-repository/pantasa.git
+git clone https://github.com/BJCul/Pantasa.git
 cd pantasa
 ```
 
