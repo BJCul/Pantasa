@@ -1,9 +1,14 @@
 flask 
 transformers 
-torch 
+torch
+pandas
+nlu
+sagemaker 
 nltk 
 spacy
 pandas 
 numpy
-mysql-connector-python 
+mysql-connector-python
+pyspark 
 gunicorn
+pyspark
