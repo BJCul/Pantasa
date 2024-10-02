@@ -8,7 +8,12 @@ nltk
 spacy
 pandas 
 numpy
-mysql-connector-python
 pyspark 
 gunicorn
 pyspark
+flask
+
+# For database
+mysql-connector-python
+sqlalchemy
+flask-migrate

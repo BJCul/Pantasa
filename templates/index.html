@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang ='en-US'>
+<head>
+    <meta charset = 'utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"PANTASA"</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+    <!--Header-->
+    <div class= "nav">
+        <input type = "checkbox" id = "check">
+        <label for = "check" class = "checkbtn">
+            <i class = "fas fa-bars"></i>
+        </label>
+        <input type = "checkbox" id = "check">
+        <label for = "check" class = "exitbtn">
+            <i class = "fas fa-times"></i>
+        </label> 
+        <label class = "logo"> PANTASA </label>
+        <ul>
+            <li><a href = "#Home" onclick = "showSection('Home')" translate = "no">HOME</a></li>
+            <li><a href = "#About" onclick = "showSection('About')" translate = "no"> About PANTASA </a></li>
+            <li><a href = "#GrammarChecker" onclick = "showSection('GrammarChecker')" translate = "no"> Try Now </a></li>
+            <!--<li><a href = "#HelpCenter" onclick = "showSection('HelpCenter')"> Help Center </a></li> OPTIONAL-->
+        </ul>
+    </div>
+
+    <!--Home-->
+    <section id = "Home">
+        <div class = "home-content">
+            <h1> Filipino Grammar Checker </h1>
+            <p> A Simple Filipino Grammar Checker for supplementary use! </p>
+                <div>
+                    <li><a href = "#GrammarChecker" ><button type = "button" class = "button" onclick = "showSection('GrammarChecker')"><span></span> Let's Get Started </button></a></li>
+                </div>
+        </div>
+    </section>
+
+    <!--About-->
+    <section id = "About" class = "hidden">
+        <div class = "about-content">
+            <div class = "about-text">
+                <h1> About PANTASA </h1>
+                <p> Pantasa is a Tagalog grammar correction system that combines rule-based error detection using hybrid n-grams with a deep learning-based iterative error correction approach. The system identifies grammar mistakes in Tagalog sentences by comparing them against predefined grammar rules and then applies corrections using a fine-tuned deep learning model. Pantasa is designed to handle common grammar errors in Tagalog and iteratively refine sentences until they are grammatically correct.
+                </p>
+                <p> This grammar checker web application was created by a group of BS Computer Science students from Polytechnic University of the Philippines as part 
+                    of fulfillment of their requirements for the program.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!--Grammar Checker-->
+    <section id = "GrammarChecker" class = "hidden">
+        <div class = "figcheck-content">
+            <div class = "figcheck-container">
+                <div class = "textArea-container"></div>
+                    <form id="grammarForm" onsubmit="return false;">
+                        <textarea id="grammarTextarea" name="text_input" placeholder="Type your text here..."></textarea><br>
+                    </form>
+                </div>
+                <div class = "full-side-container">
+                    <div id="result">
+                        <div id="loading" class="loading">
+                            <div class="spinner"></div>
+                            <p>Loading...</p>
+                        </div>
+                        <div id="predictionsContent"></div>
+                        <h3 id="suggestionsHeader" class="hidden">Suggestions:</h3>
+                        <div id="suggestionsContent"></div> 
+                    </div>                    
+                    <div class = "info-container">
+                        <h1> Getting to Know! </h2>
+                        <p> #1: Add your text inside the text box to check your grammar.</p> 
+                        <p> #2: A message will appear on the loading box .</p>
+                        <p> #3: If you're planning to input 2 or more sentences</p>
+                        <i> *Remember! All sentences should end with a period.*</i>
+                        <p> #4: A word/s will be highlighted for any incorrect spelling. You can click on it to see any suggestions! If you want to remove the suggestion box just click the box again.</p>
+                        <i> *Note: The suggestions listed can't be clicked, its just there to give suggestions.*</i><br>
+                        <i> Test for yourself by trying to input <br> "Ako ay may lobo."</i><br>
+                        <i> Then try <br> "Lumipad sa langit."</i> <br>
+                        <i> *Note: This webapp is for testing and research purposes ONLY. It is not a full-time webapp.*</i>
+                    </div>
+                </div>
+            </div>
+            <p> We appreciate your feedback!</p>
+        </div>
+    </section>
+
+    <div class = "Footer">
+        <div class = "footer-content">
+            <p> PANTASA </p>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='pantasa.js') }}"></script>
+</body>
+</html>
