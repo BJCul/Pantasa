@@ -1,0 +1,21 @@
+VB.* CC.* NN.*::Unguento ng halamang-singaw::300312
+VB.* DT.* NN.*::Gamutin ang halamang-singaw::300313
+DT.* DT.* VB.*::Ang mga nakarehistrong::300314
+VB.* CC.* NN.* PM.*::Unguento ng halamang-singaw sa::400596
+VB.* PR.* PR.* NN.* NN.*::mayroon kang isang kuko halamang-singaw::500392
+NN.* PM.* NN.* CC.* PR.*::halamang-singaw sa kanyang mga paa::500393
+VBH PRS_CCP PRI_CCP NNC NNC_CCP::mayroon kang isang kuko halamang-singaw::500394
+NNC_CCP PMS NNC CCT PRSP_CCP::halamang-singaw sa kanyang mga paa::500395
+VBH PRS_CCP PR.* NN.* NN.*::mayroon kang isang kuko halamang-singaw::500396
+NNC_CCP PM.* NN.* CC.* PR.*::halamang-singaw sa kanyang mga paa::500397
+RB.* RB.* VB.* DT.* DT.* NN.*::mapupuksa ang mga halamang-singaw sa kuko::600236
+NN.* PM.* NN.* CC.* NN.* CC.*::halamang-singaw sa pagitan ng mga daliri::600237
+NN.* PM.* NN.* CC.* DT.* NN.* CC.*::halamang-singaw sa mga kuko ng mga kamay::700155
+NN.* CC.* NN.* PM.* NN.* CC.* DT.*::paggamot ng halamang-singaw sa mga kamay kuko::700156
+JJ.* CC.* NN.* CC.* CC.* NN.* CC.*::bawal na gamot para sa paggamot ng::700157
+NNC_CCP PMS NNC CCT DTCP NNC CCB::halamang-singaw sa mga kuko ng mga kamay::700158
+NNC CCB NNC_CCP PMS NNC CCT DTCP::paggamot ng halamang-singaw sa mga kamay kuko::700159
+JJD CCP NNC CCT CCT NNC CCB::bawal na gamot para sa paggamot ng::700160
+NNC_CCP PM.* NN.* CC.* DT.* NN.* CC.*::halamang-singaw sa mga kuko ng mga kamay::700161
+NNC CCB NN.* PM.* NN.* CC.* DT.*::paggamot ng halamang-singaw sa mga kamay kuko::700162
+JJD CC.* NN.* CC.* CC.* NN.* CCB::bawal na gamot para sa paggamot ng::700163

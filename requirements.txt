@@ -11,7 +11,8 @@ numpy
 pyspark 
 gunicorn
 pyspark
-flask
+Flask
+TensorFLow
 mysql-connector-python
 sqlalchemy
 flask-migrate

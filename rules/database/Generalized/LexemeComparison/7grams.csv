@@ -1,0 +1,94 @@
+Pattern_ID,POS_N-Gram,Lexeme_N-Gram,MLM_Scores,Comparison_Replacement_Matrix,Final_Hybrid_N-Gram
+700001,NN.* CC.* VB.* CC.* DT.* NN.* CC.*,,,,NN.* CC.* VB.* CC.* DT.* NN.* CC.*
+700002,VB.* CC.* DT.* NN.* CC.* NN.* CC.*,,,,VB.* CC.* DT.* NN.* CC.* NN.* CC.*
+700003,CC.* CC.* PR.* LM RB.* RB.* PR.*,,,,CC.* CC.* PR.* LM RB.* RB.* PR.*
+700004,VB.* PR.* VB.* CC.* DT.* NN.* CC.*,,,,VB.* PR.* VB.* CC.* DT.* NN.* CC.*
+700005,PR.* VB.* CC.* DT.* NN.* CC.* NN.*,,,,PR.* VB.* CC.* DT.* NN.* CC.* NN.*
+700006,CC.* DT.* NN.* CC.* NN.* CC.* NN.*,,,,CC.* DT.* NN.* CC.* NN.* CC.* NN.*
+700007,DT.* NN.* CC.* NN.* CC.* NN.* CC.*,,,,DT.* NN.* CC.* NN.* CC.* NN.* CC.*
+700008,NN.* CC.* NN.* CC.* NN.* CC.* VB.*,,,,NN.* CC.* NN.* CC.* NN.* CC.* VB.*
+700009,CC.* NN.* CC.* NN.* CC.* VB.* NN.*_PM.*,,,,CC.* NN.* CC.* NN.* CC.* VB.* NN.*_PM.*
+700010,CC.* DT.* NN.* CC.* DT.* NN.* NN.*_PM.*,,,,CC.* DT.* NN.* CC.* DT.* NN.* NN.*_PM.*
+700011,CC.* NN.* RB.* RB.* VB.* DT.* DT.*,,,,CC.* NN.* RB.* RB.* VB.* DT.* DT.*
+700012,NN.* RB.* RB.* VB.* DT.* DT.* NN.*,,,,NN.* RB.* RB.* VB.* DT.* DT.* NN.*
+700013,RB.* RB.* VB.* DT.* DT.* NN.* PM.*,,,,RB.* RB.* VB.* DT.* DT.* NN.* PM.*
+700155,NN.* PM.* NN.* CC.* DT.* NN.* CC.*,halamang-singaw sa mga kuko ng mga kamay,89.60740022361279,* * * * * * kamay,NN.* PM.* NN.* CC.* DT.* NN.* kamay
+700015,PM.* NN.* CC.* DT.* NN.* CC.* DT.*,,,,PM.* NN.* CC.* DT.* NN.* CC.* DT.*
+700016,NN.* CC.* DT.* NN.* CC.* DT.* NN.*,,,,NN.* CC.* DT.* NN.* CC.* DT.* NN.*
+700017,VB.* PR.* PR.* NN.* NN.* PM.* NN.*,,,,VB.* PR.* PR.* NN.* NN.* PM.* NN.*
+700018,NN.* NN.* PM.* NN.* CC.* PR.* DT.*,,,,NN.* NN.* PM.* NN.* CC.* PR.* DT.*
+700019,NN.* PM.* NN.* CC.* PR.* DT.* NN.*,,,,NN.* PM.* NN.* CC.* PR.* DT.* NN.*
+700156,NN.* CC.* NN.* PM.* NN.* CC.* DT.*,paggamot ng halamang-singaw sa mga kamay kuko,80.11588931083679,* * halamang-singaw * * * *,NN.* CC.* halamang-singaw PM.* NN.* CC.* DT.*
+700021,CC.* NN.* PM.* NN.* CC.* DT.* NN.*,,,,CC.* NN.* PM.* NN.* CC.* DT.* NN.*
+700022,NN.* CC.* DT.* NN.* NN.* NN.* PM.*,,,,NN.* CC.* DT.* NN.* NN.* NN.* PM.*
+700023,CC.* DT.* NN.* NN.* NN.* PM.* NN.*,,,,CC.* DT.* NN.* NN.* NN.* PM.* NN.*
+700157,JJ.* CC.* NN.* CC.* CC.* NN.* CC.*,bawal na gamot para sa paggamot ng,82.97677747905254,* * * * * * *,JJ.* CC.* NN.* CC.* CC.* NN.* CC.*
+700025,CC.* NN.* CC.* NN.* PM.* NN.* CC.*,,,,CC.* NN.* CC.* NN.* PM.* NN.* CC.*
+700026,CC.* NN.* PM.* NN.* CC.* NN.* RB.*,,,,CC.* NN.* PM.* NN.* CC.* NN.* RB.*
+700027,NN.* PM.* NN.* CC.* NN.* RB.* RB.*,,,,NN.* PM.* NN.* CC.* NN.* RB.* RB.*
+700028,PM.* NN.* CC.* NN.* RB.* RB.* VB.*,,,,PM.* NN.* CC.* NN.* RB.* RB.* VB.*
+700029,VB.* CC.* DT.* NN.* CC.* VB.* DT.*,,,,VB.* CC.* DT.* NN.* CC.* VB.* DT.*
+700030,CC.* DT.* NN.* CC.* VB.* DT.* NN.*,,,,CC.* DT.* NN.* CC.* VB.* DT.* NN.*
+700031,CC.* VB.* DT.* JJ.* CC.* VB.* CC.*,,,,CC.* VB.* DT.* JJ.* CC.* VB.* CC.*
+700032,VB.* DT.* JJ.* CC.* VB.* CC.* NN.*_PM.*,,,,VB.* DT.* JJ.* CC.* VB.* CC.* NN.*_PM.*
+700033,VB.* PR.* DT.* NN.* CC.* VB.* CC.*,,,,VB.* PR.* DT.* NN.* CC.* VB.* CC.*
+700034,NN.* CD.* NN.* DT.* NN.* CC.* NN.*,,,,NN.* CD.* NN.* DT.* NN.* CC.* NN.*
+700035,CD.* NN.* DT.* NN.* CC.* NN.* NN.*,,,,CD.* NN.* DT.* NN.* CC.* NN.* NN.*
+700036,NN.* DT.* NN.* CC.* NN.* NN.* CD.*,,,,NN.* DT.* NN.* CC.* NN.* NN.* CD.*
+700037,DT.* NN.* CC.* NN.* NN.* CD.* NN.*,,,,DT.* NN.* CC.* NN.* NN.* CD.* NN.*
+700038,NN.* CC.* NN.* NN.* CD.* NN.* DT.*,,,,NN.* CC.* NN.* NN.* CD.* NN.* DT.*
+700039,CC.* NN.* NN.* CD.* NN.* DT.* NN.*,,,,CC.* NN.* NN.* CD.* NN.* DT.* NN.*
+700040,NN.* NN.* CD.* NN.* DT.* NN.* CC.*,,,,NN.* NN.* CD.* NN.* DT.* NN.* CC.*
+700041,VBS PRS_CCP VBAF CCB DTCP NNC CCB,,,,VBS PRS_CCP VBAF CCB DTCP NNC CCB
+700042,PRS_CCP VBAF CCB DTCP NNC CCB NNC,,,,PRS_CCP VBAF CCB DTCP NNC CCB NNC
+700043,VBAF CCB DTCP NNC CCB NNC CCT,,,,VBAF CCB DTCP NNC CCB NNC CCT
+700044,CCB DTCP NNC CCB NNC CCT NNC,,,,CCB DTCP NNC CCB NNC CCT NNC
+700045,DTCP NNC CCB NNC CCT NNC CCB,,,,DTCP NNC CCB NNC CCT NNC CCB
+700046,NNC CCB NNC CCT NNC CCB VBN_CCP,,,,NNC CCB NNC CCT NNC CCB VBN_CCP
+700047,CCB NNC CCT NNC CCB VBN_CCP NNC_PMP,,,,CCB NNC CCT NNC CCB VBN_CCP NNC_PMP
+700158,NNC_CCP PMS NNC CCT DTCP NNC CCB,halamang-singaw sa mga kuko ng mga kamay,89.60740022361279,* * * * * * kamay,NNC_CCP PMS NNC CCT DTCP NNC kamay
+700049,PMS NNC CCT DTCP NNC CCB DTCP,,,,PMS NNC CCT DTCP NNC CCB DTCP
+700050,NNC CCT DTCP NNC CCB DTCP NNC,,,,NNC CCT DTCP NNC CCB DTCP NNC
+700051,VBH PRS_CCP PRI_CCP NNC NNC_CCP PMS NNC,,,,VBH PRS_CCP PRI_CCP NNC NNC_CCP PMS NNC
+700052,NNC NNC_CCP PMS NNC CCT PRSP_CCP DTCP,,,,NNC NNC_CCP PMS NNC CCT PRSP_CCP DTCP
+700053,NNC_CCP PMS NNC CCT PRSP_CCP DTCP NNC,,,,NNC_CCP PMS NNC CCT PRSP_CCP DTCP NNC
+700159,NNC CCB NNC_CCP PMS NNC CCT DTCP,paggamot ng halamang-singaw sa mga kamay kuko,80.11588931083679,* * halamang-singaw * * * *,NNC CCB halamang-singaw PMS NNC CCT DTCP
+700055,CCB NNC_CCP PMS NNC CCT DTCP NNC,,,,CCB NNC_CCP PMS NNC CCT DTCP NNC
+700160,JJD CCP NNC CCT CCT NNC CCB,bawal na gamot para sa paggamot ng,82.97677747905254,* * * * * * *,JJD CCP NNC CCT CCT NNC CCB
+700057,CCB NNC_CCP PMS NNC CCT NNC RBK,,,,CCB NNC_CCP PMS NNC CCT NNC RBK
+700058,NNC_CCP PMS NNC CCT NNC RBK RBQ,,,,NNC_CCP PMS NNC CCT NNC RBK RBQ
+700059,CCB VBW DTC JJCS_JJD CCP VBAF CCP,,,,CCB VBW DTC JJCS_JJD CCP VBAF CCP
+700060,VBW DTC JJCS_JJD CCP VBAF CCP NNC_PMC,,,,VBW DTC JJCS_JJD CCP VBAF CCP NNC_PMC
+700061,NNPA CDB NNPA DTCP NNC CCB NNC,,,,NNPA CDB NNPA DTCP NNC CCB NNC
+700062,CDB NNPA DTCP NNC CCB NNC NNPA,,,,CDB NNPA DTCP NNC CCB NNC NNPA
+700063,NNPA DTCP NNC CCB NNC NNPA CDB,,,,NNPA DTCP NNC CCB NNC NNPA CDB
+700064,DTCP NNC CCB NNC NNPA CDB NNPA,,,,DTCP NNC CCB NNC NNPA CDB NNPA
+700065,NNC CCB NNC NNPA CDB NNPA DTCP,,,,NNC CCB NNC NNPA CDB NNPA DTCP
+700066,CCB NNC NNPA CDB NNPA DTCP NNC,,,,CCB NNC NNPA CDB NNPA DTCP NNC
+700067,NNC NNPA CDB NNPA DTCP NNC CCB,,,,NNC NNPA CDB NNPA DTCP NNC CCB
+700128,VBS PR.* VB.* CC.* DT.* NN.* CC.*,,,,VBS PR.* VB.* CC.* DT.* NN.* CC.*
+700129,PRS_CCP VB.* CC.* DT.* NN.* CC.* NN.*,,,,PRS_CCP VB.* CC.* DT.* NN.* CC.* NN.*
+700130,VBAF CC.* DT.* NN.* CC.* NN.* CC.*,,,,VBAF CC.* DT.* NN.* CC.* NN.* CC.*
+700131,CCB DT.* NN.* CC.* NN.* CC.* NN.*,,,,CCB DT.* NN.* CC.* NN.* CC.* NN.*
+700132,DTCP NN.* CC.* NN.* CC.* NN.* CC.*,,,,DTCP NN.* CC.* NN.* CC.* NN.* CC.*
+700133,NNC CCB NN.* CC.* NN.* CC.* VB.*,,,,NNC CCB NN.* CC.* NN.* CC.* VB.*
+700134,CCB NN.* CC.* NN.* CC.* VB.* NN.*_PM.*,,,,CCB NN.* CC.* NN.* CC.* VB.* NN.*_PM.*
+700161,NNC_CCP PM.* NN.* CC.* DT.* NN.* CC.*,halamang-singaw sa mga kuko ng mga kamay,89.60740022361279,* * * * * * kamay,NNC_CCP PM.* NN.* CC.* DT.* NN.* kamay
+700136,PMS NN.* CCT DT.* NN.* CC.* DT.*,,,,PMS NN.* CCT DT.* NN.* CC.* DT.*
+700137,NNC CCT DT.* NN.* CC.* DT.* NN.*,,,,NNC CCT DT.* NN.* CC.* DT.* NN.*
+700138,VBH PRS_CCP PR.* NN.* NN.* PM.* NN.*,,,,VBH PRS_CCP PR.* NN.* NN.* PM.* NN.*
+700139,NNC NNC_CCP PM.* NN.* CC.* PR.* DT.*,,,,NNC NNC_CCP PM.* NN.* CC.* PR.* DT.*
+700140,NNC_CCP PM.* NN.* CC.* PR.* DT.* NN.*,,,,NNC_CCP PM.* NN.* CC.* PR.* DT.* NN.*
+700162,NNC CCB NN.* PM.* NN.* CC.* DT.*,paggamot ng halamang-singaw sa mga kamay kuko,80.11588931083679,* * halamang-singaw * * * *,NNC CCB halamang-singaw PM.* NN.* CC.* DT.*
+700142,CCB NN.* PM.* NN.* CC.* DT.* NN.*,,,,CCB NN.* PM.* NN.* CC.* DT.* NN.*
+700163,JJD CC.* NN.* CC.* CC.* NN.* CCB,bawal na gamot para sa paggamot ng,82.97677747905254,* * * * * * *,JJD CC.* NN.* CC.* CC.* NN.* CCB
+700144,CCB NN.* PM.* NN.* CC.* NN.* RB.*,,,,CCB NN.* PM.* NN.* CC.* NN.* RB.*
+700145,NNC_CCP PM.* NN.* CC.* NN.* RB.* RB.*,,,,NNC_CCP PM.* NN.* CC.* NN.* RB.* RB.*
+700146,CCB VB.* DT.* JJCS_JJD CC.* VB.* CC.*,,,,CCB VB.* DT.* JJCS_JJD CC.* VB.* CC.*
+700147,VBW DT.* JJCS_JJD CC.* VB.* CC.* NN.*_PM.*,,,,VBW DT.* JJCS_JJD CC.* VB.* CC.* NN.*_PM.*
+700148,NNPA CDB NN.* DTCP NNC CC.* NN.*,,,,NNPA CDB NN.* DTCP NNC CC.* NN.*
+700149,CDB NN.* DTCP NNC CCB NN.* NN.*,,,,CDB NN.* DTCP NNC CCB NN.* NN.*
+700150,NNPA DTCP NN.* CCB NN.* NN.* CD.*,,,,NNPA DTCP NN.* CCB NN.* NN.* CD.*
+700151,DTCP NN.* CC.* NN.* NN.* CD.* NN.*,,,,DTCP NN.* CC.* NN.* NN.* CD.* NN.*
+700152,NNC CCB NN.* NN.* CD.* NN.* DTCP,,,,NNC CCB NN.* NN.* CD.* NN.* DTCP
+700153,CCB NN.* NN.* CDB NNPA DTCP NNC,,,,CCB NN.* NN.* CDB NNPA DTCP NNC
