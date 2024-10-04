@@ -54,12 +54,12 @@ def pos_tag(sentence):
 
     # Command to run the POS tagger
     command = [
-        'java', '-mx300m', '-cp', jar, 'edu.stanford.nlp.tagger.maxent.MaxentTagger',
+        'java', '-mx2g', '-cp', jar, 'edu.stanford.nlp.tagger.maxent.MaxentTagger',
         '-model', model, '-outputFormat', 'tsv'
     ]
 
     # Run the command using subprocess
-    result = subprocess.run(command, input=preprocessed_sentence, text=True, capture_output=True)
+    result = subprocess.run(command, input=preprocessed_sentence, text=True, capture_output=True, encoding='utf-8')
 
     if result.returncode != 0:
         print("Error:", result.stderr)

@@ -8,7 +8,7 @@ def tokenize(text):
     # Find all sentences in the text
     sentences = pattern.findall(text)
     
-    tagalog_sentences = tagalog_sentences.append(sentences)
+    tagalog_sentences = sentences
 
     return tagalog_sentences
 
