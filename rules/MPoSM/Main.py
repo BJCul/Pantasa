@@ -2,8 +2,10 @@ import os
 import sagemaker
 from sagemaker.huggingface import HuggingFace
 
-# Set AWS credentials securely through environment variables (avoid hardcoding in code)
-os.environ['AWS_DEFAULT_REGION'] = 'us-east-1'  # Ensure you are using a valid AWS region
+# Set AWS region and credentials as environment variables
+os.environ['AWS_ACCESS_KEY_ID'] = 'AKIATCKARXCFUKBIXCWE'
+os.environ['AWS_SECRET_ACCESS_KEY'] = 'nVPRxybdZ4Kkps9mZyOdrHCzsTalN38Be+eg5KST'
+os.environ['AWS_DEFAULT_REGION'] = 'us-east-1'  # Change to your desired AWS region
 
 # Define the IAM role and S3 bucket for SageMaker
 role = "arn:aws:iam::211125647499:role/MPoSMTrainer"
