@@ -124,7 +124,7 @@ if __name__ == "__main__":
     model_path = r'C:\Projects\Pantasa\rules\Libraries\FSPOST\filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'  # Adjust the path to the model file
 
     # Input sentence
-    sentence = "kakain kumakain nagkakainan kakainin"
+    sentence = "Tangina talaga ng mga taong ito, mga walang pakundangan"
     
     # Step 1: Preprocessing
     preprocessed_text = preprocess_text(sentence, jar_path, model_path)
