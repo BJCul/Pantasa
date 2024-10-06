@@ -1,6 +1,8 @@
 import nltk
 import re
 import numpy as np
+from morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_single_word  # Import Morphinas client
+
 
 # Ensure the necessary NLTK data packages are downloaded
 nltk.download('punkt')
@@ -11,8 +13,13 @@ def pos_tag(tokens):
     return [(token, 'POS') for token in tokens]
 
 def lemmatize(token, pos_tag):
-    # In practice, replace this with Morphinas or an appropriate Tagalog lemmatizer
-    return token
+    try:
+        # Use Morphinas to lemmatize the token
+        lemmatized_word = lemmatize_single_word(token, stemmer)
+        return lemmatized_word
+    except Exception as e:
+        print(f"Error during lemmatization with Morphinas: {e}")
+        return token  # Return the original token if lemmatization fails
 
 # Function to check if a word is valid (exists in the dictionary)
 def is_valid_word(word):
@@ -77,7 +84,7 @@ def weighted_levenshtein_distance(s1, s2, weights):
         dp[i][0] = i  # Deletion
     for j in range(len2 + 1):
         dp[0][j] = j  # Insertion
-    for i in range(1, len1 + 1):
+    for i in range(1, len1 + 1): 
         for j in range(1, len2 + 1):
             cost = get_substitution_cost(s1[i - 1][0], s2[j - 1][0], weights)
             dp[i][j] = min(
