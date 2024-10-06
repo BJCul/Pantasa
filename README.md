@@ -13,7 +13,7 @@ Welcome to the **Pantasa** project! This guide provides a detailed explanation o
 6. [Pull Request Guidelines](#pull-request-guidelines)
 7. [Testing Your Code](#testing-your-code)
 8. [Commit Message Guidelines](#commit-message-guidelines)
-9. [Activating the Gateway and Running the Lemmatizer](#activating-the-gateway-and-running-the-lemmatizer)
+9. [Activating the Gateway, Compiling, and Running Java](#activating-the-gateway-compiling-and-running-java)
 
 ---
 
@@ -62,31 +62,6 @@ Install the required Python libraries listed in `requirements.txt`:
 ```bash
 pip install -r requirements.txt
 ```
-
-#### Step 4: Activate the Gateway (for Morphinas Lemmatizer)
-
-Before you can run the Tagalog lemmatizer (Morphinas), you need to activate the **Py4J Gateway** to communicate with the Java-based lemmatizer.
-
-1. **Start the Java Gateway**:
-   Make sure the Java Gateway server is running before starting any Python scripts that use the lemmatizer.
-
-   You need to ensure that `morphinas.jar` and `py4j-0.10.9.7.jar` are available and properly set up.
-
-   Run this command in your terminal to start the Java Gateway:
-
-   ```bash
-   java -jar path/to/morphinas.jar
-   ```
-
-2. **Check the Gateway Connection**:
-   In your Python scripts, the gateway is initialized by:
-
-   ```python
-   from py4j.java_gateway import JavaGateway
-   gateway = JavaGateway()  # This establishes the connection
-   ```
-
-   This will allow your Python code to communicate with the Java-based Morphinas lemmatizer.
 
 ---
 
@@ -261,16 +236,34 @@ Please follow these commit message guidelines to keep the Git history clean and 
 
 ---
 
-### **Activating the Gateway and Running the Lemmatizer**
+### **Activating the Gateway, Compiling, and Running Java**
 
-To use the Morphinas lemmatizer, you'll need to activate the Java Gateway as explained earlier. Follow these steps:
+To use the Morphinas lemmatizer and the Java Gateway, you'll need to compile the Java code and ensure the gateway is running properly. Follow these steps:
 
-#### Step 1: Start the Java Gateway
+#### Step 1: Compile Java Classes
+
+If you're making changes to the Java code, you'll need to compile it before running the gateway. Ensure that both `morphinas.jar` and `py4j-0.10.9.7.jar` are available in your classpath.
+
+Compile the `LemmatizerGateway.java` using the following command:
+
 ```bash
-java -jar path/to/morphinas.jar
+javac -cp "morphinas.jar;py4j-0.10.9.7.jar" LemmatizerGateway.java
 ```
 
-#### Step 2: Initialize the Gateway in Python
+This will compile the Java file and generate a `.class` file for the Lemmatizer gateway.
+
+#### Step 2: Run the Java Gateway
+
+Once the Java code is compiled, you can start the gateway using this command:
+
+```bash
+java -cp "morphinas.jar;py4j-0.10.9.7.jar" LemmatizerGateway
+```
+
+This command runs the `LemmatizerGateway` and starts the Java Gateway, which will allow Python to interact with the Java-based Morphinas lemmatizer.
+
+#### Step 3: Activate the Gateway in Python
+
 In your Python script, import and activate the gateway as follows:
 
 ```python
@@ -278,7 +271,7 @@ from py4j.java_gateway import JavaGateway
 gateway = JavaGateway()  # This starts the connection to the Morphinas lemmatizer
 ```
 
-#### Step 3: Run the Lemmatizer
+#### Step 4: Run the Lemmatizer
 Once the gateway is active, you can use the lemmatizer functions, such as:
 
 ```python
