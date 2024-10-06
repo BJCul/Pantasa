@@ -1,17 +1,22 @@
-import pandas as pd
+import os
 from Modules.Tokenizer import tokenize
 from Modules.POSDTagger import pos_tag as pos_dtag
 from Modules.POSRTagger import pos_tag as pos_rtag
 from Modules.Lemmatizer import lemmatize_sentence 
-import os
-import sys
 
 # Set the JVM options to increase the heap size
 os.environ['JVM_OPTS'] = '-Xmx2g'
 
 def load_dataset(file_path):
-    df = pd.read_csv(file_path)
-    return df['text'].tolist()
+    """Load dataset from a text file instead of a CSV."""
+    dataset = []
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file:
+            # Each line is expected to have two parts: an ID and a sentence, separated by a tab
+            parts = line.strip().split('\t')
+            if len(parts) > 1:
+                dataset.append(parts[1])  # The second part is the sentence
+    return dataset
 
 def save_text_file(text_data, file_path):
     with open(file_path, 'a', encoding='utf-8') as f:
@@ -81,19 +86,15 @@ def preprocess_text(input_file, tokenized_file, output_file, batch_size=700):
 
     print(f"Preprocessed data saved to {output_file}")
 
-def main(input_csv, tokenized_txt, output_csv):
-    preprocess_text(input_csv, tokenized_txt, output_csv)
+def run_preprocessing():
+    # Define your file paths here
+    input_txt = "dataset.txt"           # Input file (the .txt file)
+    tokenized_txt = "tokenized_sentences.txt"  # File to save tokenized sentences
+    output_csv = "preprocessed.csv"     # File to save the preprocessed output
 
+    # Start the preprocessing
+    preprocess_text(input_txt, tokenized_txt, output_csv)
+
+# Automatically run when the script is executed
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: python Preprocessing.py <input_csv> <tokenized_txt> <output_csv>")
-        sys.exit(1)
-
-    input_csv = sys.argv[1]
-    tokenized_txt = sys.argv[2]
-    output_csv = sys.argv[3]
-
-    main(input_csv, tokenized_txt, output_csv)
-
-
-#enter this in cmd to run the program "python Preprocessing.py database\dataset.csv database\tokenized.txt database\preprocessed.csv"
+    run_preprocessing()
