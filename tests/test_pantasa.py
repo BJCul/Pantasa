@@ -1,7 +1,7 @@
 import nltk
 import re
 import numpy as np
-from ..morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_single_word  # Import Morphinas client
+from morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_single_word  # Import Morphinas client
 
 
 # Ensure the necessary NLTK data packages are downloaded

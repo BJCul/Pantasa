@@ -28,10 +28,11 @@ def lemmatize_multiple_words(words, gateway, lemmatizer):
 gateway, lemmatizer = initialize_stemmer()
 
 # Test: Lemmatize a single word
-lemma = lemmatize_single_word("kumain", lemmatizer)
+lemma = lemmatize_single_word("kabataan", lemmatizer)
 print(f"Lemmatized word: {lemma}")
 
 # Test: Lemmatize multiple words
-words = ["kumain", "humihikbi", "lumilingon", "tumatahol"]
+words = ["kumain", "nagulumihanan", "hihikbian", "umiinom"]
 lemmas = lemmatize_multiple_words(words, gateway, lemmatizer)
 print(f"Lemmatized words: {lemmas}")
+

@@ -45,21 +45,29 @@ def pos_tagging(tokens, jar_path, model_path):
 
     # Command to run the Stanford POS Tagger (FSPOST)
     command = [
-        'java', '-mx300m', '-cp', jar_path,
+        'java', '-mx1g',  # Increase memory allocation here
+        '-cp', jar_path,
         'edu.stanford.nlp.tagger.maxent.MaxentTagger',
         '-model', model_path,
         '-textFile', temp_file_path  # Pass the temp file as input
     ]
 
-    # Execute the command and capture the output
+    # Execute the command and capture the output and error
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     output, error = process.communicate()
+
+    # Check if the Java process returned an error
+    if process.returncode != 0:
+        print(f"Error in POS tagging process: {error.decode('utf-8')}")
+        return []
 
     # Process the raw output by splitting each word|tag pair
     tagged_output = output.decode('utf-8').strip().split()
     tagged_tokens = [tuple(tag.split('|')) for tag in tagged_output if '|' in tag]  # Correctly split by '|'
 
     return tagged_tokens
+
+
 
 # ----------------------- Preprocessing Function ---------------------------
 def preprocess_text(text_input, jar_path, model_path):
@@ -74,8 +82,9 @@ def preprocess_text(text_input, jar_path, model_path):
     Returns:
     - Preprocessed text as a string.
     """
+
     # Step 1: Sentence Tokenization
-    sentences = (text_input)
+    sentences = [text_input]  # Wrap text_input in a list if it's a single sentence
 
     preprocessed_sentences = []
 
@@ -84,12 +93,21 @@ def preprocess_text(text_input, jar_path, model_path):
         # Tokenize sentence into words
         tokens = tokenize_sentence(sentence)
         
+        print(f"Tokens: {tokens}")
+
         # Step 3: POS Tagging using FSPOST Tagger
         tagged_tokens = pos_tagging(tokens, jar_path, model_path)
         
+        print(f"Tagged Tokens: {tagged_tokens}")
+
         # Step 4: Lemmatization using Morphinas
         words = [word for word, pos in tagged_tokens]
-        lemmatized_words = lemmatize_multiple_words(words, stemmer)
+        
+        # Unpack the stemmer tuple into gateway and lemmatizer
+        gateway, lemmatizer = stemmer
+        
+        # Pass both the gateway and lemmatizer to the lemmatization function
+        lemmatized_words = lemmatize_multiple_words(words, gateway, lemmatizer)
 
         # Combine the lemmatized words back into a sentence
         lemmatized_sentence = ' '.join(lemmatized_words)
@@ -102,12 +120,13 @@ def preprocess_text(text_input, jar_path, model_path):
 # ----------------------- Main Workflow Example ---------------------------
 if __name__ == "__main__":
     # File paths for the FSPOST Tagger and Morphinas
-    jar_path = 'C:\Projects\Pantasa\rules\Libraries\FSPOST\stanford-postagger.jar'  # Adjust the path to the JAR file
-    model_path = 'C:\Projects\Pantasa\rules\Libraries\FSPOST\filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'  # Adjust the path to the model file
+    jar_path = r'C:\Projects\Pantasa\rules\Libraries\FSPOST\stanford-postagger.jar'  # Adjust the path to the JAR file
+    model_path = r'C:\Projects\Pantasa\rules\Libraries\FSPOST\filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'  # Adjust the path to the model file
 
     # Input sentence
-    sentence = "siya ay kumain nang mansanas"
+    sentence = "kakain kumakain nagkakainan kakainin"
     
     # Step 1: Preprocessing
     preprocessed_text = preprocess_text(sentence, jar_path, model_path)
     print(f"Preprocessed Text: {preprocessed_text}")
+
