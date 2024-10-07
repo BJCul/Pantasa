@@ -1,9 +1,11 @@
 # Rule-based grammar error detection
 
-def detect_errors(tokens):
-    errors = []
-    for token in tokens:
-        # Add grammar error detection logic
-        if token == "example_error":
-            errors.append((token, "Grammar error found"))
-    return errors
+def error_detection(tokens, rule_bank):
+    # Compare tokens with rule_bank
+    corrections = []
+    for i, token in enumerate(tokens):
+        word, pos_tag = token
+        if (word, pos_tag) not in rule_bank:
+            corrections.append((i, word))  # Record the index and word of the error
+    return corrections
+

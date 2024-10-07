@@ -15,3 +15,4 @@ sqlalchemy
 flask-migrate
 sqlalchemy
 boto3
+py4j
