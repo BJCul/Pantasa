@@ -26,7 +26,7 @@ def fine_tune_model(train_file_s3):
     huggingface_estimator = HuggingFace(
         entry_point='Training.py',  # The training script
         source_dir='rules/MPoSM',  # The directory containing the training script
-        instance_type='ml.m4.xlarge',
+        instance_type='ml.p3.2xlarge',
         instance_count=1,
         role=role,
         transformers_version='4.6',
