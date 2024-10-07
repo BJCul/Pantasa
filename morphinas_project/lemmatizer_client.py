@@ -24,15 +24,3 @@ def lemmatize_multiple_words(words, gateway, lemmatizer):
     lemmas = [lemmas_java_array[i] for i in range(len(lemmas_java_array))]
     return lemmas
 
-# Call initialize_stemmer at the start
-gateway, lemmatizer = initialize_stemmer()
-
-# Test: Lemmatize a single word
-lemma = lemmatize_single_word("kabataan", lemmatizer)
-print(f"Lemmatized word: {lemma}")
-
-# Test: Lemmatize multiple words
-words = ["kumain", "nagulumihanan", "hihikbian", "umiinom"]
-lemmas = lemmatize_multiple_words(words, gateway, lemmatizer)
-print(f"Lemmatized words: {lemmas}")
-

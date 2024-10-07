@@ -7,7 +7,9 @@ import os
 # Add the parent directory (Pantasa root) to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+# Import necessary functions and modules
 from morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_multiple_words
+from rule_checker import process_input_ngram
 
 # Initialize Morphinas Stemmer
 stemmer = initialize_stemmer()
@@ -20,7 +22,7 @@ def tokenize_sentence(sentence):
     token_pattern = re.compile(r'\w+|[^\w\s]')  # Tokenizes words and punctuation
     return token_pattern.findall(sentence)
 
-# ----------------------- FSPOST POS Tagging Function ---------------------------
+# ----------------------- FSPOST POS Tagging Function ----------------------
 def pos_tagging(tokens, jar_path, model_path):
     """
     Tags tokens using the FSPOST Tagger via subprocess.
@@ -59,7 +61,6 @@ def pos_tagging(tokens, jar_path, model_path):
 
     return tagged_tokens
 
-
 # ----------------------- Preprocessing Function ---------------------------
 def preprocess_text(text_input, jar_path, model_path):
     """
@@ -71,9 +72,8 @@ def preprocess_text(text_input, jar_path, model_path):
     - model_path: Path to the FSPOST Tagger model file.
 
     Returns:
-    - Preprocessed text as a string.
+    - Tokenized, Lemmatized, POS-tagged text as a tuple (tokens, lemmas, pos_tags).
     """
-
     sentences = [text_input]  # Wrap text_input in a list if it's a single sentence
     preprocessed_sentences = []
 
@@ -84,21 +84,58 @@ def preprocess_text(text_input, jar_path, model_path):
         tagged_tokens = pos_tagging(tokens, jar_path, model_path)
         print(f"Tagged Tokens: {tagged_tokens}")
 
+        if not tagged_tokens:
+            print("Error: Tagged tokens are empty, returning an empty list.")
+            return []  # Early return in case of tagging failure
+
         words = [word for word, pos in tagged_tokens]
         gateway, lemmatizer = stemmer
         lemmatized_words = lemmatize_multiple_words(words, gateway, lemmatizer)
+        print(f"Lemmatized Words: {lemmatized_words}")
 
-        lemmatized_sentence = ' '.join(lemmatized_words)
-        preprocessed_sentences.append(lemmatized_sentence)
+        # Check to ensure the correct tuple structure
+        preprocessed_sentences.append((tokens, lemmatized_words, tagged_tokens))
+        print(f"Preprocessed Sentence Structure: {preprocessed_sentences[-1]}")
+
+    return preprocessed_sentences
+
+# ----------------------- Integration with Rule Checking --------------------
+def run_rule_checker_on_preprocessed_text(preprocessed_output):
+    """
+    Processes the preprocessed text with the rule checker and generates correction suggestions.
     
-    return ' '.join(preprocessed_sentences)
+    Args:
+    - preprocessed_output: The output from preprocess_text function (tokens, lemmas, pos_tags).
+    """
+    for preprocessed_item in preprocessed_output:
+        if len(preprocessed_item) != 3:
+            print(f"Error: Expected 3 items in the tuple, but got {len(preprocessed_item)}.")
+            continue
 
-# ----------------------- Main Workflow Example ---------------------------
+        tokens, lemmas, pos_tags = preprocessed_item
+        print(f"Processing tokens: {tokens}, lemmas: {lemmas}, pos_tags: {pos_tags}")
+        
+        # Combine the POS tags into a single n-gram format (example: "NN VB DT")
+        ngram_input = ' '.join([f"{pos}" for word, pos in pos_tags])
+        print(f"Generated N-gram: {ngram_input}")
+        
+        # Pass the generated n-gram to the rule-checking module
+        corrections = process_input_ngram(ngram_input)
+
+        # Display the corrections and suggestions
+        print("Corrections:")
+        for correction in corrections:
+            print(f"Pattern ID: {correction['pattern_id']}, Distance: {correction['distance']}, Tags: {correction['correction_tags']}")
+
+# ----------------------- Main Workflow Example ----------------------------
 if __name__ == "__main__":
     jar_path = r'C:\Projects\Pantasa\rules\Libraries\FSPOST\stanford-postagger.jar'
     model_path = r'C:\Projects\Pantasa\rules\Libraries\FSPOST\filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
 
-    sentence = "Tangina talaga ng mga taong ito, mga walang pakundangan"
+    sentence = "Andaming mga kabataan ang lulong sa pinagbabawal na gamot."
     
+    # Step 1: Preprocess the text (Tokenize, POS tag, and Lemmatize)
     preprocessed_text = preprocess_text(sentence, jar_path, model_path)
-    print(f"Preprocessed Text: {preprocessed_text}")
+
+    # Step 2: Pass the preprocessed output to the rule checker
+    run_rule_checker_on_preprocessed_text(preprocessed_text)
