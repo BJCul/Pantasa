@@ -5,6 +5,17 @@ from Modules.POSDTagger import pos_tag as pos_dtag
 from Modules.POSRTagger import pos_tag as pos_rtag
 from Modules.Lemmatizer import lemmatize_sentence 
 
+import sys
+import os
+
+# Add the path to morphinas_project
+sys.path.append(r'C:\Projects\Pantasa\app')
+
+from morphinas_project.lemmatizer_client import initialize_stemmer
+
+# Initialize the Morphinas lemmatizer once to reuse across function calls
+gateway, lemmatizer = initialize_stemmer()
+
 # Set the JVM options to increase the heap size
 os.environ['JVM_OPTS'] = '-Xmx2g'
 

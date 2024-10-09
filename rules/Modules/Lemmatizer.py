@@ -9,7 +9,6 @@ from morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_mu
 # Initialize the Morphinas lemmatizer once to reuse across function calls
 gateway, lemmatizer = initialize_stemmer()
 
-
 def lemmatize_sentence(sentence):
     """
     Calls the Morphinas lemmatizer to lemmatize a sentence and returns the lemmatized string.

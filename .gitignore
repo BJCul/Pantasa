@@ -6,6 +6,12 @@ pantasa_venv/
 __pycache__/
 *.pyc
 pantasa_env/
+
+
+logs/
+*.log
+
 model/pos_model
 mlruns/
 get-pip.py
+

@@ -1,4 +1,4 @@
-from preprocessing_module import preprocess_text  # Import your preprocessing module
+from preprocess import preprocess_text  # Import your preprocessing module
 from rule_checker import process_input_ngram  # Import rule checking function
 
 # Step 1: Input the text
