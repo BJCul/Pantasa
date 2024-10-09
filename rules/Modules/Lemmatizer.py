@@ -2,7 +2,7 @@ import sys
 import os
 
 # Add the path to morphinas_project
-sys.path.append(r'C:\Projects\Pantasa\app')
+sys.path.append(r'C:/Users/Carlo Agas/Documents/GitHub/Pantasaa')
 
 from morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_multiple_words
 
@@ -37,6 +37,9 @@ def lemmatize_sentence(sentence):
     except Exception as e:
         print(f"Exception occurred during lemmatization: {e}")
         return sentence
+    
+print(lemmatize_sentence("Pagmamataas ang magiging dahilan ng iyong pagbagsak"))
+
 
 
 

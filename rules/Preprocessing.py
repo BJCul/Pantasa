@@ -23,39 +23,42 @@ def save_text_file(text_data, file_path):
         for line in text_data:
             f.write(line + "\n")
 
-def preprocess_text(input_file, tokenized_file, output_file, batch_size=700):
+def load_tokenized_sentences(tokenized_file):
+    """Load already tokenized sentences from the tokenized file."""
+    tokenized_sentences = set()
+    if os.path.exists(tokenized_file):
+        with open(tokenized_file, 'r', encoding='utf-8') as file:
+            for line in file:
+                tokenized_sentences.add(line.strip())
+    return tokenized_sentences
+
+def preprocess_text(input_file, tokenized_file, output_file, target_lines, batch_size=700):
     dataset = load_dataset(input_file)
-    tokenized_sentences = []
+    tokenized_sentences = load_tokenized_sentences(tokenized_file)
+    
+    new_tokenized_sentences = []
     general_pos_tagged_sentences = []
     detailed_pos_tagged_sentences = []
     lemmatized_sentences = []
+    lines_written = 0  # Track how many lines are written to the output
 
-    with open(tokenized_file, 'w', encoding='utf-8') as token_file:
+    with open(tokenized_file, 'a', encoding='utf-8') as token_file:
         for text in dataset:
             sentences = tokenize(text)
-            token_file.write("\n".join(sentences) + "\n")
-            tokenized_sentences.extend(sentences)
+            for sentence in sentences:
+                if sentence not in tokenized_sentences:
+                    new_tokenized_sentences.append(sentence)
+                    tokenized_sentences.add(sentence)
+                    token_file.write(sentence + "\n")
         print(f"Sentences tokenized to {tokenized_file}")
     
-    with open(input_file, "r+", encoding='utf-8') as f:
-        d = f.readlines()
-        f.seek(0)
-        for i in d:
-            if i != "\n":
-                f.write(i)
-        f.truncate()
-
-    seen_lines = set()
-    with open(tokenized_file, 'r+', encoding='utf-8') as file:
-        lines = file.readlines()
-        for line in lines:
-            if line not in seen_lines:  # If the line hasn't been seen before
-                file.write(line)
-                seen_lines.add(line)
-
     with open(output_file, 'a', encoding='utf-8') as output:
-        for i in range(0, len(tokenized_sentences), batch_size):
-            batch = tokenized_sentences[i:i + batch_size]
+        for i in range(0, len(new_tokenized_sentences), batch_size):
+            if lines_written >= target_lines:
+                print(f"Target of {target_lines} lines reached. Halting processing.")
+                break  # Stop processing when target lines are met
+            
+            batch = new_tokenized_sentences[i:i + batch_size]
 
             general_pos_tagged_batch = []
             detailed_pos_tagged_batch = []
@@ -73,13 +76,15 @@ def preprocess_text(input_file, tokenized_file, output_file, batch_size=700):
 
             # Append batch results to output file immediately
             for tok_sentence, gen_pos, det_pos, lemma in zip(batch, general_pos_tagged_batch, detailed_pos_tagged_batch, lemmatized_batch):
+                if lines_written >= target_lines:
+                    break  # Stop processing when target lines are met
                 # Add single quotes around sentences ending with a comma
                 if ',' in tok_sentence:
                     tok_sentence = f'"{tok_sentence}"'
                 output.write(f"{tok_sentence},{gen_pos},{det_pos},{lemma},\n")
+                lines_written += 1
 
             # Clear lists after each batch to avoid memory issues
-            tokenized_sentences.clear()
             general_pos_tagged_sentences.clear()
             detailed_pos_tagged_sentences.clear()
             lemmatized_sentences.clear()
@@ -91,9 +96,10 @@ def run_preprocessing():
     input_txt = "dataset.txt"           # Input file (the .txt file)
     tokenized_txt = "tokenized_sentences.txt"  # File to save tokenized sentences
     output_csv = "preprocessed.csv"     # File to save the preprocessed output
+    target_lines = 1000  # Set the target number of lines to process
 
     # Start the preprocessing
-    preprocess_text(input_txt, tokenized_txt, output_csv)
+    preprocess_text(input_txt, tokenized_txt, output_csv, target_lines)
 
 # Automatically run when the script is executed
 if __name__ == "__main__":
