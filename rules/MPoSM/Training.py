@@ -1,95 +1,171 @@
-from transformers import RobertaTokenizer, RobertaForMaskedLM, Trainer, TrainingArguments
-from datasets import load_dataset, Dataset
-from transformers import DataCollatorForLanguageModeling
-import sagemaker
-import random
+import logging
+import pandas as pd
 import torch
+from transformers import RobertaForMaskedLM, Trainer, TrainingArguments, RobertaTokenizerFast
+from datasets import load_dataset, Dataset
+from ast import literal_eval  # Import literal_eval for safe conversion of string lists
+from DataCollector import CustomDataCollatorForPOS  # Import your custom data collator
 
-# Custom Data Collator for Masking General or Detailed POS tags
-class CustomDataCollatorForPOS(DataCollatorForLanguageModeling):
-    def __init__(self, tokenizer, mlm=True, mlm_probability=0.15, mask_on="detailed"):
-        super().__init__(tokenizer, mlm, mlm_probability)
-        self.mask_on = mask_on
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-    def mask_tokens(self, inputs, labels):
-        if self.mask_on == "random":
-            self.mask_on = random.choice(["general", "detailed"])
+# Tokenization and saving to CSV per sentence
+def tokenize_and_save_to_csv(train_file, tokenizer, output_csv, vocab_size):
+    logging.info("Loading dataset...")
 
-        if self.mask_on == "general":
-            masked_inputs, masked_labels = self._mask_on_sequence(inputs['general'], labels['general'])
-        else:
-            masked_inputs, masked_labels = self._mask_on_sequence(inputs['detailed'], labels['detailed'])
+    # Load the CSV dataset
+    dataset = load_dataset('csv', data_files={'train': train_file}, split='train')
+    logging.info(f"Dataset loaded from {train_file}")
 
-        return masked_inputs, masked_labels
+    logging.info("Tokenizing the dataset per sentence...")
 
-    def _mask_on_sequence(self, input_sequence, label_sequence):
-        labels = input_sequence.clone()
-        probability_matrix = torch.full(labels.shape, self.mlm_probability)
-        special_tokens_mask = [
-            self.tokenizer.get_special_tokens_mask(val, already_has_special_tokens=True) for val in labels.tolist()
-        ]
-        probability_matrix.masked_fill_(torch.tensor(special_tokens_mask, dtype=torch.bool), value=0.0)
-        masked_indices = torch.bernoulli(probability_matrix).bool()
-        labels[~masked_indices] = -100
-        inputs = input_sequence.clone()
-        inputs[masked_indices] = self.tokenizer.convert_tokens_to_ids(self.tokenizer.mask_token)
-        return inputs, labels
+    tokenized_data = {
+        "input_ids": [],
+        "attention_mask": [],
+        "labels": []
+    }
 
-# Prepare the dataset and training script for SageMaker
-def prepare_dataset_and_trainer(train_file_s3, output_dir, mask_on):
-    # Load the tokenizer and model
-    tokenizer = RobertaTokenizer.from_pretrained('jcblaise/roberta-tagalog-base')
-    model = RobertaForMaskedLM.from_pretrained('jcblaise/roberta-tagalog-base')
+    # Tokenize each sentence individually
+    for example in dataset:
+        logging.info("Tokenizing POS sequences...")
 
-    # Load the dataset from S3
-    dataset = load_dataset('csv', data_files={'train': train_file_s3}, split='train')
+        # Split sentences into words for pre-tokenized input
+        general_tokens = example['general'].split()
+        detailed_tokens = example['detailed'].split()
 
-    # Tokenize the dataset
-    def tokenize_function(examples):
-        return tokenizer(examples['text'], truncation=True, padding=True)
+        # Tokenize general and detailed POS sequences with truncation and padding
+        tokenized_general = tokenizer(
+            general_tokens,
+            truncation=True,
+            padding='max_length',  # Ensure consistent padding
+            max_length=514,        # Set max_length to 514 to match Roberta's architecture
+            is_split_into_words=True,
+            return_tensors='pt'     # Return PyTorch tensors
+        )
+        tokenized_detailed = tokenizer(
+            detailed_tokens,
+            truncation=True,
+            padding='max_length',  # Ensure consistent padding
+            max_length=514,        # Set max_length to 514 to match Roberta's architecture
+            is_split_into_words=True,
+            return_tensors='pt'     # Return PyTorch tensors
+        )
+
+        # Check if token IDs are within the valid range of the model's vocabulary
+        for ids in tokenized_general['input_ids']:
+            if torch.any(ids >= vocab_size):
+                logging.error(f"Found out-of-range token ID: {ids}")
+                raise ValueError(f"Token ID out of range for model vocabulary: {ids.tolist()}")
+
+        # Convert tensors to lists to store in CSV-compatible format
+        tokenized_data["input_ids"].append(tokenized_general["input_ids"].tolist()[0])
+        tokenized_data["attention_mask"].append(tokenized_general["attention_mask"].tolist()[0])
+        tokenized_data["labels"].append(tokenized_detailed["input_ids"].tolist()[0])
+
+    logging.info("Saving tokenized data to CSV...")
+
+    # Convert tokenized data to DataFrame
+    df_tokenized = pd.DataFrame({
+        "input_ids": tokenized_data["input_ids"],
+        "attention_mask": tokenized_data["attention_mask"],
+        "labels": tokenized_data["labels"]
+    })
+
+    # Write tokenized data to CSV
+    df_tokenized.to_csv(output_csv, index=False)
+    logging.info(f"Tokenized data saved to {output_csv}")
+
+# Load tokenized data from CSV and convert to lists
+def load_tokenized_data_from_csv(csv_file):
+    logging.info(f"Loading tokenized data from {csv_file}")
     
-    tokenized_dataset = dataset.map(tokenize_function, batched=True)
+    # Load tokenized data from CSV
+    df_tokenized = pd.read_csv(csv_file)
 
-    # Custom Data Collator
+    # Convert string representations back to Python lists (leave as lists for now)
+    df_tokenized["input_ids"] = df_tokenized["input_ids"].apply(literal_eval)
+    df_tokenized["attention_mask"] = df_tokenized["attention_mask"].apply(literal_eval)
+    df_tokenized["labels"] = df_tokenized["labels"].apply(literal_eval)
+
+    # Convert DataFrame to HuggingFace Dataset (lists are acceptable here)
+    dataset = Dataset.from_pandas(df_tokenized)
+    return dataset
+
+# Convert lists back to tensors during training
+def convert_lists_to_tensors(dataset):
+    # Convert lists back to PyTorch tensors for model input
+    dataset = dataset.map(lambda x: {
+        'input_ids': torch.tensor(x['input_ids']),
+        'attention_mask': torch.tensor(x['attention_mask']),
+        'labels': torch.tensor(x['labels'])
+    }, batched=True)
+
+    return dataset
+
+# Main function for training
+def train_model_with_pos_tags(train_file, tokenizer, model, output_csv):
+    # Get model's vocabulary size
+    vocab_size = model.config.vocab_size
+    logging.info(f"Model's vocabulary size before resizing: {vocab_size}")
+
+    # Resize model token embeddings to match the tokenizer
+    logging.info("Resizing model embeddings to match tokenizer vocabulary size...")
+    model.resize_token_embeddings(len(tokenizer))
+
+    vocab_size = len(tokenizer)
+    logging.info(f"Model's vocabulary size after resizing: {vocab_size}")
+
+    # Tokenize and save to CSV first
+    tokenize_and_save_to_csv(train_file, tokenizer, output_csv, vocab_size)
+
+    # Load the tokenized dataset from CSV (loaded as lists)
+    tokenized_dataset = load_tokenized_data_from_csv(output_csv)
+    logging.info("Tokenized dataset loaded successfully.")
+
+    # Convert lists back to tensors
+    tokenized_dataset = convert_lists_to_tensors(tokenized_dataset)
+
+    # Set up the custom data collator for masked language modeling
+    logging.info("Setting up data collator for masked language modeling...")
     data_collator = CustomDataCollatorForPOS(
         tokenizer=tokenizer,
         mlm=True,
-        mlm_probability=0.15,
-        mask_on=mask_on  # Could be "general", "detailed", or "random"
+        mlm_probability=0.15
     )
 
     # Define training arguments
+    logging.info("Setting up training arguments...")
     training_args = TrainingArguments(
-        output_dir=output_dir,
-        overwrite_output_dir=True,
-        num_train_epochs=3,
-        per_device_train_batch_size=8,
-        save_steps=10_000,
-        save_total_limit=2,
+        output_dir="./results",
+        eval_strategy="epoch",  
         learning_rate=2e-5,
+        per_device_train_batch_size=8,
+        num_train_epochs=3,
+        weight_decay=0.01,
+        remove_unused_columns=False  # Prevent column removal
     )
 
     # Initialize Trainer
+    logging.info("Initializing Trainer...")
     trainer = Trainer(
         model=model,
         args=training_args,
         train_dataset=tokenized_dataset,
-        data_collator=data_collator,
+        data_collator=data_collator
     )
 
-    # Start training
+    # Train the model
+    logging.info("Starting model training...")
     trainer.train()
+    logging.info("Training completed successfully.")
 
-# Main function
-if __name__ == "__main__":
-    # Retrieve train file from S3
-    train_file_s3 = "s3://your-bucket-name/path-to-dataset/processed_tagalog_data.csv"
-    
-    # Define output directory for the model
-    output_dir = "/opt/ml/model"
-    
-    # Set mask_on to "random" for randomly switching between general and detailed
-    mask_on = "random"  # Could be "general", "detailed", or "random"
-    
-    # Prepare and train the model
-    prepare_dataset_and_trainer(train_file_s3, output_dir, mask_on)
+# Load the tokenizer
+logging.info("Loading the tokenizer...")
+pos_tokenizer = RobertaTokenizerFast.from_pretrained(
+    "jcblaise/roberta-tagalog-base",  # Use the same tokenizer as the model
+    truncation=True,
+    padding="max_length",
+    max_length=514,
+    add_prefix_space=True  # This ensures the tokenizer works with pretokenized inputs
+)
+logging.info("Tokenizer loaded successfully.")

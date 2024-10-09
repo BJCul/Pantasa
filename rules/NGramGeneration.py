@@ -96,6 +96,6 @@ def process_csv(input_file, output_file):
         writer.writerows(results)
 
 # Example usage
-input_csv = 'database/preprocessed.csv'
-output_csv = 'database/ngrams.csv'
+input_csv = f'database\cleaned_preprocessed.csv'
+output_csv = f'database\ngrams.csv'
 process_csv(input_csv, output_csv)

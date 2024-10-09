@@ -24,3 +24,4 @@ def lemmatize_multiple_words(words, gateway, lemmatizer):
     lemmas = [lemmas_java_array[i] for i in range(len(lemmas_java_array))]
     return lemmas
 
+
