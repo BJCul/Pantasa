@@ -19,3 +19,15 @@ JJD CCP NNC CCT CCT NNC CCB::bawal na gamot para sa paggamot ng::700160
 NNC_CCP PM.* NN.* CC.* DT.* NN.* CC.*::halamang-singaw sa mga kuko ng mga kamay::700161
 NNC CCB NN.* PM.* NN.* CC.* DT.*::paggamot ng halamang-singaw sa mga kamay kuko::700162
 JJD CC.* NN.* CC.* CC.* NN.* CCB::bawal na gamot para sa paggamot ng::700163
+JJ.* NN.*_PM.*::pangkalusugang pangkaisipan.::200778
+JJ.* NN.*::pinakamalaking tanghalan::200779
+NN.* JJ.*_PM.*::kakayahang nukleyar::200780
+NN.* JJ.*_PM.*::teknolohiyang pangkapaligiran::200781
+VB.* PR.*_PM.*::mayroong iba't-ibang::200782
+RB.* VB.*::kasalukuyang pinag-aaralan::200783
+JJD_CCP NNC_PMP::pangkalusugang pangkaisipan.::200784
+JJCS_JJD_CCP NNC::pinakamalaking tanghalan::200785
+NNC_CCP JJD_PMC::kakayahang nukleyar::200786
+NNC_CCP JJD_PMC::teknolohiyang pangkapaligiran::200787
+RBW_CCP VBTR_VBRF::kasalukuyang pinag-aaralan::200788
+RBW_CCP VB.*::kasalukuyang pinag-aaralan::200789
