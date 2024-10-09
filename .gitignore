@@ -6,3 +6,4 @@ __pycache__/
 pantasa_env/
 model/pos_model
 mlruns/
+get-pip.py
