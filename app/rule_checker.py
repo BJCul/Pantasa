@@ -85,35 +85,62 @@ def generate_correction_tags(input_ngram, pattern_ngram):
     
     return tags
 
-# Step 4: Process a sample input n-gram and compare it to the rule pattern bank
-def process_input_ngram(input_ngram):
+# Improve matching logic to ignore minor variations
+def is_valid_match(input_ngram, pattern_ngram):
+    """
+    Checks if the input n-gram is a valid match for the pattern n-gram,
+    ignoring small variations like tense or pluralization that don't need correction.
+    """
+    input_tokens = input_ngram.split()
+    pattern_tokens = pattern_ngram.split()
+    
+    if len(input_tokens) != len(pattern_tokens):
+        return False
+
+    # Example logic: Ignore substitutions where both tokens are verbs, or both are nouns
+    for input_token, pattern_token in zip(input_tokens, pattern_tokens):
+        if input_token != pattern_token:
+            if input_token.startswith('VB') and pattern_token.startswith('VB'):
+                continue  # Ignore differences between verb forms
+            if input_token.startswith('NN') and pattern_token.startswith('NN'):
+                continue  # Ignore differences between noun forms
+            return False  # Significant mismatch found
+
+    return True  # No significant mismatches found
+
+# Modify process_input_ngram to skip suggestions for minor variations
+def process_input_ngram(input_ngram, threshold=3.0):
     corrections = []
     min_distance = float('inf')
+    best_match = None
+    best_pattern_id = None
 
     for pattern_id, pattern_data in rule_pattern_bank.items():
-        # Compare input n-gram with each pattern n-gram from the rule pattern bank
         pattern_ngram = pattern_data.get('hybrid_ngram')
         if pattern_ngram:
-            distance = weighted_levenshtein(input_ngram, pattern_ngram)
-            print(f"Distance: {distance}\nRule pattern: {pattern_ngram}")
+            # Check for exact or valid match before computing distance
+            if is_valid_match(input_ngram, pattern_ngram):
+                print("Valid match found. No corrections needed.")
+                return []  # No corrections needed for valid matches
 
+            # Compute Levenshtein distance if no valid match is found
+            distance = weighted_levenshtein(input_ngram, pattern_ngram)
             if distance < min_distance:
-                    min_distance = distance
-                    best_match = pattern_ngram
-            
-    correction_tags = generate_correction_tags(input_ngram, best_match)
-    corrections.append({
-        'pattern_id': pattern_id,
-        'distance': distance,
-        'correction_tags': correction_tags
-    })
-                
+                min_distance = distance
+                best_match = pattern_ngram
+                best_pattern_id = pattern_id
+
+    # Only suggest corrections if the distance is below the threshold
+    if best_match and min_distance <= threshold:
+        correction_tags = generate_correction_tags(input_ngram, best_match)
+        corrections.append({
+            'pattern_id': best_pattern_id,
+            'distance': min_distance,
+            'correction_tags': correction_tags
+        })
+    else:
+        print("No corrections needed. Sentence seems valid.")
+
     return corrections
 
-# Step 5: Test the system with a sample input n-gram
-input_ngram = "NN.* VB.* DT.* DT.* CC.*"
-corrections = process_input_ngram(input_ngram)
 
-# Display the corrections
-for correction in corrections:
-    print(f"Pattern ID: {correction['pattern_id']}, Distance: {correction['distance']}, Tags: {correction['correction_tags']}")
