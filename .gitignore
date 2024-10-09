@@ -5,3 +5,7 @@ pantasa_env/
 pantasa_venv/
 __pycache__/
 *.pyc
+pantasa_env/
+model/pos_model
+mlruns/
+get-pip.py

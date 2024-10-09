@@ -1,67 +1,44 @@
-import os
-import sagemaker
-from sagemaker.huggingface import HuggingFace
+import logging
+from transformers import RobertaTokenizerFast, RobertaForMaskedLM
+from Training import train_model_with_pos_tags  # Import your training function
 
-# Set AWS region and credentials as environment variables
-os.environ['AWS_ACCESS_KEY_ID'] = 'AKIATCKARXCFUKBIXCWE'
-os.environ['AWS_SECRET_ACCESS_KEY'] = 'nVPRxybdZ4Kkps9mZyOdrHCzsTalN38Be+eg5KST'
-os.environ['AWS_DEFAULT_REGION'] = 'us-east-1'  # Change to your desired AWS region
-
-# Define the IAM role and S3 bucket for SageMaker
-role = "arn:aws:iam::211125647499:role/MPoSMTrainer"
-bucket = "pantasa-mposm"
-
-# Upload the processed dataset to S3
-def upload_to_s3(filename):
-    # Use the explicitly defined bucket instead of default_bucket()
-    s3 = sagemaker.Session().resource('s3')
-    bucket_obj = s3.Bucket(bucket)
-    
-    # Upload the file
-    bucket_obj.upload_file(Filename=filename, Key=f'tagalog-pos/{filename}')
-    return f"s3://{bucket}/tagalog-pos/{filename}"
-
-# Define the Hugging Face estimator for training
-def fine_tune_model(train_file_s3):
-    huggingface_estimator = HuggingFace(
-        entry_point='Training.py',  # The training script
-        source_dir='.',  # The directory containing the training script
-        instance_type='ml.p3.2xlarge',
-        instance_count=1,
-        role=role,
-        transformers_version='4.6',
-        pytorch_version='1.7',
-        py_version='py36',
-        hyperparameters={
-            'model_name_or_path': 'jcblaise/roberta-tagalog-base',
-            'do_train': True,
-            'train_file': train_file_s3,
-            'output_dir': '/opt/ml/model',
-            'learning_rate': 2e-5,
-            'num_train_epochs': 3,
-            'per_device_train_batch_size': 8
-        }
-    )
-
-    # Start the training job
-    huggingface_estimator.fit()
-
-# Main function to execute the training process
-def main():
-    # Upload the processed CSV to S3
-    try:
-        train_file_s3 = upload_to_s3("processed_tagalog_data.csv")
-        print(f"Successfully uploaded file to {train_file_s3}")
-    except Exception as e:
-        print(f"Failed to upload file to S3: {str(e)}")
-        return
-
-    # Fine-tune the model
-    try:
-        fine_tune_model(train_file_s3)
-        print("Training job started successfully.")
-    except Exception as e:
-        print(f"Failed to start the training job: {str(e)}")
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 if __name__ == "__main__":
-    main()
+    logging.info("Starting the process...")
+
+    # Load custom tokenizer (with the POS tag vocabulary added)
+    logging.info("Loading the custom tokenizer...")
+    pos_tokenizer = RobertaTokenizerFast.from_pretrained(
+        "/content/Pantasa/model/pos_tokenizer",  # Path to your custom tokenizer with POS tags
+        truncation=True,
+        padding="max_length",
+        max_length=1000,
+        add_prefix_space=True  # Ensures the tokenizer works with pretokenized inputs
+    )
+    logging.info("Tokenizer loaded successfully.")
+
+    # Load the model
+    logging.info("Loading the pre-trained model...")
+    model = RobertaForMaskedLM.from_pretrained("jcblaise/roberta-tagalog-base")  # Load the base model
+    logging.info("Model loaded successfully.")
+
+    # Resize the model's token embeddings to match the tokenizer's vocabulary size
+    logging.info("Resizing model token embeddings to match tokenizer vocabulary...")
+    model.resize_token_embeddings(len(pos_tokenizer))  # Resize embeddings based on tokenizer's vocab size
+
+    logging.info("Model loaded and resized successfully with custom tokens.")
+
+    # Path to the CSV input file
+    csv_input = "rules/MPoSM/pos_tags_output.csv"
+
+    # Path to the output CSV where tokenized data will be saved
+    output_csv = "rules/MPoSM/tokenized_output.csv"
+
+    logging.info("Starting training with file: %s", csv_input)
+
+    # Call to the training function, passing the output CSV path
+    train_model_with_pos_tags(csv_input, pos_tokenizer, model, output_csv)
+
+    logging.info("Training completed.")
