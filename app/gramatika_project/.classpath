@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+   <classpathentry kind="src" path="src"/>
+   <classpathentry kind="lib" path="C:/Projects/Pantasa/app/gramatika_project/NGramPatternGrammar.jar"/>
+   <classpathentry kind="lib" path="C:/Projects/Pantasa/app/gramatika_project/py4j-0.10.9.7.jar"/>
+   <classpathentry kind="output" path="bin"/>
+</classpath>

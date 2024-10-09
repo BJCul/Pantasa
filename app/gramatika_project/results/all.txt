@@ -1,0 +1,99 @@
+Full: kinuha ni Rachelle ang batuta 
+VBOF DTP NNP DTC NNC
+kuha ni rachelle ang batuta 5
+N-gram = 4
+...............................
+
+Orig N-gram:kinuha ni Rachelle ang
+ED: 0.8 Freq: 2
+Replace "Linnaeus" in "Rachelle". Edit Distance: 0.8
+Sugg: kinuha ni Linnaeus ang
+...............................
+
+...............................
+
+Orig N-gram:ni Rachelle ang batuta
+ED: 0.0 Freq: 0
+N-gram is correct
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 2
+Insert "Grumman" in before "ang". Edit Distance:1.0
+Sugg: ni Rachelle NNP ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+Orig N-gram:ni Rachelle ang batuta
+ED: 1.0 Freq: 1
+Delete "ni". Edit Distance:1.0
+Sugg: Rachelle ang batuta
+...............................
+
