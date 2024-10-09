@@ -29,30 +29,33 @@ def levenshtein_distance(word1, word2):
 
     return dp[len1][len2]
 
-# Spell Checker function
-def spell_checker(input_word, dictionary, max_distance=2):
-    suggestions = []
-    for word in dictionary:
-        distance = levenshtein_distance(input_word, word)
-        if distance <= max_distance:
-            suggestions.append((word, distance))
-
-    suggestions.sort(key=lambda x: x[1])
-    return suggestions
-
 # Load the dictionary from the CSV file
-dictionary = load_dictionary("data/raw/dictionary.csv")
+dictionary_file = load_dictionary("data/raw/dictionary.csv")
 
-# Input word to check
-input_word = "byan"
+# Spell Checker function to check each word in a sentence
+def spell_check_sentence(sentence, dictionary=dictionary_file, max_distance=2):
+    words = sentence.split()  # Split sentence into words
+    corrected_sentence = []
+    
+    for word in words:
+        # Check if the word is already in the dictionary
+        if word in dictionary:
+            corrected_sentence.append(word)  # The word is correct
+        else:
+            # If no exact match, compute Levenshtein distance
+            suggestions = []
+            for dict_word in dictionary:
+                distance = levenshtein_distance(word, dict_word)
+                if distance <= max_distance:
+                    suggestions.append((dict_word, distance))
+            
+            suggestions.sort(key=lambda x: x[1])
+            
+            # If suggestions exist, mark the word as misspelled
+            if suggestions:
+                corrected_sentence.append(f"<<{word}>>")
+            else:
+                corrected_sentence.append(f"<<{word}>>")  # No suggestions, mark as misspelled anyway
 
-# Get corrections
-corrections = spell_checker(input_word, dictionary)
+    return ' '.join(corrected_sentence)
 
-# Display suggestions
-if corrections:
-    print("Did you mean:")
-    for suggestion, dist in corrections:
-        print(f"{suggestion} (distance: {dist})")
-else:
-    print("No suggestions found")

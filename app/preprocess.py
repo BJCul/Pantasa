@@ -6,7 +6,7 @@ import sys
 import os
 import logging
 from utils import log_message
-
+from spell_checker import spell_check_sentence
 # Import necessary functions from the Morphinas lemmatizer
 from morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_multiple_words
 
@@ -15,16 +15,46 @@ stemmer = initialize_stemmer()
 
 logger = logging.getLogger(__name__)
 
+import re
+
 def tokenize_sentence(sentence):
     """
     Tokenizes a sentence into words and punctuation using regex.
+    Words inside << >> are tokenized as-is, including any punctuation.
     """
+    # Define pattern to detect words wrapped in << >>
+    wrapped_pattern = re.compile(r'<<[^<>]+>>')
+    
+    # Find all words wrapped in << >>
+    wrapped_tokens = wrapped_pattern.findall(sentence)
+    
+    # Remove wrapped tokens from the sentence temporarily to avoid splitting them
+    for wrapped in wrapped_tokens:
+        sentence = sentence.replace(wrapped, '__WRAPPED__')
+    
+    # Tokenize the rest of the sentence (normal tokenization)
     token_pattern = re.compile(r'\w+|[^\w\s]')
-    return token_pattern.findall(sentence)
+    tokens = token_pattern.findall(sentence)
+    
+    # Reinsert the wrapped tokens back into the tokenized sentence
+    final_tokens = []
+    for token in tokens:
+        if token == '__WRAPPED__':
+            final_tokens.append(wrapped_tokens.pop(0))  # Put the wrapped token back
+        else:
+            final_tokens.append(token)
+    
+    return final_tokens
+
+
+import subprocess
+import tempfile
+import os
 
 def pos_tagging(tokens, jar_path, model_path):
     """
     Tags tokens using the FSPOST Tagger via subprocess.
+    Words inside << >> are tagged with '?'.
 
     Args:
     - tokens: List of tokens to tag.
@@ -34,36 +64,54 @@ def pos_tagging(tokens, jar_path, model_path):
     Returns:
     - List of (token, pos_tag) tuples.
     """
-    sentence = ' '.join(tokens)
-    try:
-        with tempfile.NamedTemporaryFile(mode='w+', delete=False) as temp_file:
-            temp_file.write(sentence)
-            temp_file_path = temp_file.name
+    # Prepare tokens for tagging
+    java_tokens = []
+    tagged_tokens = []
+    
+    for token in tokens:
+        if token.startswith("<<") and token.endswith(">>"):
+            # Word is inside << >>, assign "?" tag directly
+            clean_token = token[2:-2]  # Remove the enclosing << >>
+            tagged_tokens.append((clean_token, "?"))
+        else:
+            java_tokens.append(token)  # Send to Java POS tagger for normal tagging
 
-        command = [
-            'java', '-mx1g',
-            '-cp', jar_path,
-            'edu.stanford.nlp.tagger.maxent.MaxentTagger',
-            '-model', model_path,
-            '-textFile', temp_file_path
-        ]
+    if java_tokens:
+        # Only call the Java POS tagger if there are tokens to tag
+        sentence = ' '.join(java_tokens)
+        try:
+            with tempfile.NamedTemporaryFile(mode='w+', delete=False) as temp_file:
+                temp_file.write(sentence)
+                temp_file_path = temp_file.name
 
-        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        output, error = process.communicate()
+            command = [
+                'java', '-mx1g',
+                '-cp', jar_path,
+                'edu.stanford.nlp.tagger.maxent.MaxentTagger',
+                '-model', model_path,
+                '-textFile', temp_file_path
+            ]
 
-        os.unlink(temp_file_path)  # Delete the temporary file
+            process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            output, error = process.communicate()
 
-        if process.returncode != 0:
-            raise Exception(f"POS tagging process failed: {error.decode('utf-8')}")
+            os.unlink(temp_file_path)  # Delete the temporary file
 
-        tagged_output = output.decode('utf-8').strip().split()
-        tagged_tokens = [tuple(tag.split('|')) for tag in tagged_output if '|' in tag]
+            if process.returncode != 0:
+                raise Exception(f"POS tagging process failed: {error.decode('utf-8')}")
 
-        return tagged_tokens
+            tagged_output = output.decode('utf-8').strip().split()
+            java_tagged_tokens = [tuple(tag.split('|')) for tag in tagged_output if '|' in tag]
 
-    except Exception as e:
-        print(f"Error during POS tagging: {e}")
-        return []
+            # Append the tagged tokens from Java POS tagger
+            tagged_tokens.extend(java_tagged_tokens)
+
+        except Exception as e:
+            print(f"Error during POS tagging: {e}")
+            return []
+
+    return tagged_tokens
+
 
 def preprocess_text(text_input, jar_path, model_path):
     """
@@ -77,7 +125,8 @@ def preprocess_text(text_input, jar_path, model_path):
     Returns:
     - List of tuples containing (tokens, lemmas, pos_tags).
     """
-    tokens = tokenize_sentence(text_input)
+    checked_sentence = spell_check_sentence(text_input)
+    tokens = tokenize_sentence(checked_sentence)
     tagged_tokens = pos_tagging(tokens, jar_path, model_path)
 
     if not tagged_tokens:
@@ -95,10 +144,10 @@ def preprocess_text(text_input, jar_path, model_path):
 
 # Example usage
 if __name__ == "__main__":
-    jar_path = r'C:\Projects\Pantasa\rules\Libraries\FSPOST\stanford-postagger.jar'
-    model_path = r'C:\Projects\Pantasa\rules\Libraries\FSPOST\filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
+    jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
+    model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
 
-    sentence = "kumain ang bata ng mansanas"
+    sentence = "kumaiin ang bata ng mansanas"
 
     preprocessed_text = preprocess_text(sentence, jar_path, model_path)
     print(preprocessed_text)
