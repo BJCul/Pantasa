@@ -4,3 +4,6 @@ env/
 __pycache__/
 *.pyc
 pantasa_env/
+
+logs/
+*.log
