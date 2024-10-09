@@ -1,7 +1,6 @@
 flask 
 transformers 
 torch
-pandas
 nlu
 sagemaker 
 nltk 
@@ -10,11 +9,10 @@ pandas
 numpy
 pyspark 
 gunicorn
-pyspark
-Flask
-TensorFLow
+tensorFLow
 mysql-connector-python
 sqlalchemy
 flask-migrate
 sqlalchemy
 boto3
+py4j
