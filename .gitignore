@@ -1,6 +1,8 @@
 .venv/
 venv/
 env/
+pantasa_env/
+pantasa_venv/
 __pycache__/
 *.pyc
 pantasa_env/
