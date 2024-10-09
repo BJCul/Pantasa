@@ -8,9 +8,9 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from Modules.preprocessing.Tokenizer import tokenize
-from Modules.preprocessing.POSDTagger import pos_tag as pos_dtag
-from Modules.preprocessing.POSRTagger import pos_tag as pos_rtag
+from rules.Modules.preprocessing.Tokenizer import tokenize
+from rules.Modules.preprocessing.POSDTagger import pos_tag as pos_dtag
+from rules.Modules.preprocessing.POSRTagger import pos_tag as pos_rtag
 
 def load_dataset(file_path, batch_size=5000, max_lines=None):
     """
