@@ -1,4 +1,5 @@
 import os
+from itertools import islice
 from Modules.Tokenizer import tokenize
 from Modules.POSDTagger import pos_tag as pos_dtag
 from Modules.POSRTagger import pos_tag as pos_rtag
@@ -7,16 +8,19 @@ from Modules.Lemmatizer import lemmatize_sentence
 # Set the JVM options to increase the heap size
 os.environ['JVM_OPTS'] = '-Xmx2g'
 
-def load_dataset(file_path):
-    """Load dataset from a text file instead of a CSV."""
-    dataset = []
+def load_dataset_in_batches(file_path, batch_size, skip_lines=2500):
+    """Load the dataset in batches of lines from a text file, skipping the first 'skip_lines' lines."""
     with open(file_path, 'r', encoding='utf-8') as file:
-        for line in file:
-            # Each line is expected to have two parts: an ID and a sentence, separated by a tab
-            parts = line.strip().split('\t')
-            if len(parts) > 1:
-                dataset.append(parts[1])  # The second part is the sentence
-    return dataset
+        # Skip the first 2500 lines
+        for _ in range(skip_lines):
+            next(file, None)
+        
+        # Load the remaining lines in batches
+        while True:
+            lines = list(islice(file, batch_size))
+            if not lines:
+                break
+            yield [line.strip().split('\t')[1] for line in lines if len(line.strip().split('\t')) > 1]
 
 def save_text_file(text_data, file_path):
     with open(file_path, 'a', encoding='utf-8') as f:
@@ -24,44 +28,27 @@ def save_text_file(text_data, file_path):
             f.write(line + "\n")
 
 def preprocess_text(input_file, tokenized_file, output_file, batch_size=700):
-    dataset = load_dataset(input_file)
-    tokenized_sentences = []
-    general_pos_tagged_sentences = []
-    detailed_pos_tagged_sentences = []
-    lemmatized_sentences = []
+    with open(tokenized_file, 'w', encoding='utf-8') as token_file, open(output_file, 'a', encoding='utf-8') as output:
+        # Process the input file in batches
+        for dataset in load_dataset_in_batches(input_file, batch_size):
+            tokenized_sentences = []
+            general_pos_tagged_sentences = []
+            detailed_pos_tagged_sentences = []
+            lemmatized_sentences = []
 
-    with open(tokenized_file, 'w', encoding='utf-8') as token_file:
-        for text in dataset:
-            sentences = tokenize(text)
-            token_file.write("\n".join(sentences) + "\n")
-            tokenized_sentences.extend(sentences)
-        print(f"Sentences tokenized to {tokenized_file}")
-    
-    with open(input_file, "r+", encoding='utf-8') as f:
-        d = f.readlines()
-        f.seek(0)
-        for i in d:
-            if i != "\n":
-                f.write(i)
-        f.truncate()
+            # Tokenize sentences and write them to the tokenized file
+            for text in dataset:
+                sentences = tokenize(text)
+                token_file.write("\n".join(sentences) + "\n")
+                tokenized_sentences.extend(sentences)
+            print(f"Processed {len(tokenized_sentences)} sentences and saved to {tokenized_file}")
 
-    seen_lines = set()
-    with open(tokenized_file, 'r+', encoding='utf-8') as file:
-        lines = file.readlines()
-        for line in lines:
-            if line not in seen_lines:  # If the line hasn't been seen before
-                file.write(line)
-                seen_lines.add(line)
-
-    with open(output_file, 'a', encoding='utf-8') as output:
-        for i in range(0, len(tokenized_sentences), batch_size):
-            batch = tokenized_sentences[i:i + batch_size]
-
+            # POS tagging and lemmatization
             general_pos_tagged_batch = []
             detailed_pos_tagged_batch = []
             lemmatized_batch = []
 
-            for sentence in batch:
+            for sentence in tokenized_sentences:
                 if sentence:
                     general_pos_tagged_batch.append(pos_rtag(sentence))
                     detailed_pos_tagged_batch.append(pos_dtag(sentence))
@@ -71,26 +58,25 @@ def preprocess_text(input_file, tokenized_file, output_file, batch_size=700):
                     detailed_pos_tagged_batch.append('')
                     lemmatized_batch.append('')
 
-            # Append batch results to output file immediately
-            for tok_sentence, gen_pos, det_pos, lemma in zip(batch, general_pos_tagged_batch, detailed_pos_tagged_batch, lemmatized_batch):
-                # Add single quotes around sentences ending with a comma
+            # Append batch results to the output file
+            for tok_sentence, gen_pos, det_pos, lemma in zip(tokenized_sentences, general_pos_tagged_batch, detailed_pos_tagged_batch, lemmatized_batch):
                 if ',' in tok_sentence:
                     tok_sentence = f'"{tok_sentence}"'
                 output.write(f"{tok_sentence},{gen_pos},{det_pos},{lemma},\n")
 
-            # Clear lists after each batch to avoid memory issues
+            # Clear the lists after each batch to avoid memory issues
             tokenized_sentences.clear()
-            general_pos_tagged_sentences.clear()
-            detailed_pos_tagged_sentences.clear()
-            lemmatized_sentences.clear()
+            general_pos_tagged_batch.clear()
+            detailed_pos_tagged_batch.clear()
+            lemmatized_batch.clear()
 
     print(f"Preprocessed data saved to {output_file}")
 
 def run_preprocessing():
     # Define your file paths here
-    input_txt = "dataset.txt"           # Input file (the .txt file)
-    tokenized_txt = "tokenized_sentences.txt"  # File to save tokenized sentences
-    output_csv = "preprocessed.csv"     # File to save the preprocessed output
+    input_txt = "dataset/ALT-Parallel-Corpus-20191206/data_fil.txt"  # Input file (the .txt file)
+    tokenized_txt = "rules\database\tokenized_sentences.txt"                        # File to save tokenized sentences
+    output_csv = "rules\database\preprocessed.csv"                                  # File to save the preprocessed output
 
     # Start the preprocessing
     preprocess_text(input_txt, tokenized_txt, output_csv)
