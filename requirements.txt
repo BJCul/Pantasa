@@ -2,8 +2,7 @@ flask
 transformers 
 torch
 pandas
-nlu
-sagemaker 
+nl
 nltk 
 spacy
 pandas 
@@ -17,4 +16,4 @@ mysql-connector-python
 sqlalchemy
 flask-migrate
 sqlalchemy
-boto3
+datasets
