@@ -9,7 +9,7 @@ from DataCollector import CustomDataCollatorForPOS  # Import your custom data co
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Tokenization and saving to CSV
+# Tokenization and saving to CSV per sentence
 def tokenize_and_save_to_csv(train_file, tokenizer, output_csv, vocab_size):
     logging.info("Loading dataset...")
 
@@ -17,7 +17,7 @@ def tokenize_and_save_to_csv(train_file, tokenizer, output_csv, vocab_size):
     dataset = load_dataset('csv', data_files={'train': train_file}, split='train')
     logging.info(f"Dataset loaded from {train_file}")
 
-    logging.info("Tokenizing the dataset...")
+    logging.info("Tokenizing the dataset per sentence...")
 
     tokenized_data = {
         "input_ids": [],
@@ -25,22 +25,26 @@ def tokenize_and_save_to_csv(train_file, tokenizer, output_csv, vocab_size):
         "labels": []
     }
 
-    # Tokenization function
-    def tokenize_pos_sequences(examples):
+    # Tokenize each sentence individually
+    for example in dataset:
         logging.info("Tokenizing POS sequences...")
+
+        # Split sentences into words for pre-tokenized input
+        general_tokens = example['general'].split()
+        detailed_tokens = example['detailed'].split()
 
         # Tokenize general and detailed POS sequences with truncation and padding
         tokenized_general = tokenizer(
-            examples['general'], 
-            truncation=True, 
+            general_tokens,
+            truncation=True,
             padding='max_length',  # Ensure consistent padding
             max_length=514,        # Set max_length to 514 to match Roberta's architecture
             is_split_into_words=True,
             return_tensors='pt'     # Return PyTorch tensors
         )
         tokenized_detailed = tokenizer(
-            examples['detailed'], 
-            truncation=True, 
+            detailed_tokens,
+            truncation=True,
             padding='max_length',  # Ensure consistent padding
             max_length=514,        # Set max_length to 514 to match Roberta's architecture
             is_split_into_words=True,
@@ -54,12 +58,9 @@ def tokenize_and_save_to_csv(train_file, tokenizer, output_csv, vocab_size):
                 raise ValueError(f"Token ID out of range for model vocabulary: {ids.tolist()}")
 
         # Convert tensors to lists to store in CSV-compatible format
-        tokenized_data["input_ids"].extend(tokenized_general["input_ids"].tolist())
-        tokenized_data["attention_mask"].extend(tokenized_general["attention_mask"].tolist())
-        tokenized_data["labels"].extend(tokenized_detailed["input_ids"].tolist())
-
-    # Tokenize the dataset
-    dataset.map(tokenize_pos_sequences, batched=True)
+        tokenized_data["input_ids"].append(tokenized_general["input_ids"].tolist()[0])
+        tokenized_data["attention_mask"].append(tokenized_general["attention_mask"].tolist()[0])
+        tokenized_data["labels"].append(tokenized_detailed["input_ids"].tolist()[0])
 
     logging.info("Saving tokenized data to CSV...")
 
