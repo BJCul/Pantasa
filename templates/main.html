@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles_main.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&italic&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Artifika&display=swap" rel="stylesheet">
+    <title>Pantasa - Advance Tagalog Error Checker</title>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='assets/logo_image.png') }}" alt="Logo Image" class="logo-image">
+                <a href="{{ url_for('index') }}" class="logo">PANTASA</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a href="{{ url_for('contact') }}">Contacts</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="container">
+            <div class="input-section">
+                <div class="input-container">
+                    <textarea id="inputText" rows="10" placeholder="Ilagay ang pangungusap dito"></textarea>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="output-container">
+                    <textarea id="outputText" rows="10" placeholder="Nawastong pangungusap" readonly></textarea>
+                </div>
+            </div>
+            <button class="cta-button" onclick="processText()">I-TASA</button> 
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Sharp Mugs. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function processText() {
+            const inputText = document.getElementById('inputText').value;
+            document.getElementById('outputText').value = inputText;
+        }
+    </script>
+</body>
+</html>
