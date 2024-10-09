@@ -2272,3 +2272,1161 @@ o272
 e
 
 2024-10-09 18:24:05 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: r
+u
+String
+rj
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !ycjava.lang.String
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+c
+sjava.lang.String
+i5
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yto4
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o4
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o4
+i0
+skumain
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o4
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o4
+i1
+sang
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o4
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o4
+i2
+sbata
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o4
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o4
+i3
+sng
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o4
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o4
+i4
+smansanas
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: c
+t
+lemmatizeMultiple
+ro4
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yto5
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o5
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o5
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o5
+i0
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yskain
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o5
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o5
+i1
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !ysang
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o5
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o5
+i2
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !ysbata
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o5
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o5
+i3
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !ysng
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o5
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o5
+i4
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !ysmansanas
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: m
+d
+o5
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:05:27 - utils - INFO - Lemmatized Words: ['kain', 'ang', 'bata', 'ng', 'mansanas']
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Command to send: m
+d
+o4
+e
+
+2024-10-10 04:05:27 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: r
+u
+String
+rj
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !ycjava.lang.String
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+c
+sjava.lang.String
+i5
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yto6
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o6
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o6
+i0
+skumaiin
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o6
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o6
+i1
+sang
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o6
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o6
+i2
+sbata
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o6
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o6
+i3
+sng
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o6
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o6
+i4
+smansanas
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: c
+t
+lemmatizeMultiple
+ro6
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yto7
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o7
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o7
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o7
+i0
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yskumaiin
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o7
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o7
+i1
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !ysang
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o7
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o7
+i2
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !ysbata
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o7
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o7
+i3
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !ysng
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o7
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o7
+i4
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !ysmansanas
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: m
+d
+o7
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:06:09 - utils - INFO - Lemmatized Words: ['kumaiin', 'ang', 'bata', 'ng', 'mansanas']
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Command to send: m
+d
+o6
+e
+
+2024-10-10 04:06:09 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: r
+u
+String
+rj
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !ycjava.lang.String
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+c
+sjava.lang.String
+i5
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yto8
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o8
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o8
+i0
+skumaiiin
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o8
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o8
+i1
+sang
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o8
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o8
+i2
+sbata
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o8
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o8
+i3
+sng
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o8
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o8
+i4
+smansanas
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: c
+t
+lemmatizeMultiple
+ro8
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yto9
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o9
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o9
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o9
+i0
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yskumaiiin
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o9
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o9
+i1
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !ysang
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o9
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o9
+i2
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !ysbata
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o9
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o9
+i3
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !ysng
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o9
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o9
+i4
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !ysmansanas
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: m
+d
+o9
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:06:38 - utils - INFO - Lemmatized Words: ['kumaiiin', 'ang', 'bata', 'ng', 'mansanas']
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Command to send: m
+d
+o8
+e
+
+2024-10-10 04:06:38 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: r
+u
+String
+rj
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !ycjava.lang.String
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+c
+sjava.lang.String
+i5
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yto10
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o10
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o10
+i0
+skumain
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o10
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o10
+i1
+sang
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o10
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o10
+i2
+sbata
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o10
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o10
+i3
+sng
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o10
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o10
+i4
+smansanas
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: c
+t
+lemmatizeMultiple
+ro10
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yto11
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o11
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o11
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o11
+i0
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yskain
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o11
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o11
+i1
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !ysang
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o11
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o11
+i2
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !ysbata
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o11
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o11
+i3
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !ysng
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o11
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o11
+i4
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !ysmansanas
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: m
+d
+o11
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:02 - utils - INFO - Lemmatized Words: ['kain', 'ang', 'bata', 'ng', 'mansanas']
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Command to send: m
+d
+o10
+e
+
+2024-10-10 04:09:02 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: r
+u
+String
+rj
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !ycjava.lang.String
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+c
+sjava.lang.String
+i9
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yto12
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o12
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o12
+i0
+s<
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o12
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o12
+i1
+s<
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o12
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o12
+i2
+skumaiin
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o12
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o12
+i3
+s>
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o12
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o12
+i4
+s>
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o12
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o12
+i5
+sang
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o12
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o12
+i6
+sbata
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o12
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o12
+i7
+sng
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o12
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o12
+i8
+smansanas
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: c
+t
+lemmatizeMultiple
+ro12
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yto13
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o13
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o13
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o13
+i0
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !ys<
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o13
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o13
+i1
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !ys<
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o13
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o13
+i2
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yskumaiin
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o13
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o13
+i3
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !ys>
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o13
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o13
+i4
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !ys>
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o13
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o13
+i5
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !ysang
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o13
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o13
+i6
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !ysbata
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o13
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o13
+i7
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !ysng
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o13
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yi9
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o13
+i8
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !ysmansanas
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: m
+d
+o13
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:09:49 - utils - INFO - Lemmatized Words: ['<', '<', 'kumaiin', '>', '>', 'ang', 'bata', 'ng', 'mansanas']
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Command to send: m
+d
+o12
+e
+
+2024-10-10 04:09:49 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: r
+u
+String
+rj
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !ycjava.lang.String
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+c
+sjava.lang.String
+i5
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yto14
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o14
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o14
+i0
+skumaiin
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o14
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o14
+i1
+sang
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o14
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o14
+i2
+sbata
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o14
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o14
+i3
+sng
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o14
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+s
+o14
+i4
+smansanas
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: c
+t
+lemmatizeMultiple
+ro14
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yto15
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o15
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o15
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o15
+i0
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yskumaiin
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o15
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o15
+i1
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !ysang
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o15
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o15
+i2
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !ysbata
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o15
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o15
+i3
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !ysng
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+e
+o15
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yi5
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: a
+g
+o15
+i4
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !ysmansanas
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: m
+d
+o15
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yv
+2024-10-10 04:12:15 - utils - INFO - Lemmatized Words: ['kumaiin', 'ang', 'bata', 'ng', 'mansanas']
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Command to send: m
+d
+o14
+e
+
+2024-10-10 04:12:15 - py4j.java_gateway - DEBUG - Answer received: !yv
