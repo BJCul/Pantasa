@@ -59,3 +59,18 @@ def spell_check_sentence(sentence, dictionary=dictionary_file, max_distance=2):
 
     return ' '.join(corrected_sentence)
 
+if __name__ == "__main__":
+    # Load the dictionary
+    dictionary = load_dictionary("data/raw/dictionary.csv")
+
+    # Test the spell checker with a sample sentence
+    test_sentence_1 = "ang mga bata ay masaya"
+    test_sentence_2 = "kumakain ang mga bata ng mansana"
+
+    print("Original:", test_sentence_1)
+    print("Corrected:", spell_check_sentence(test_sentence_1, dictionary))
+
+    print("Original:", test_sentence_2)
+    print("Corrected:", spell_check_sentence(test_sentence_2, dictionary))
+
+    
