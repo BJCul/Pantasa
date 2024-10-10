@@ -8,7 +8,7 @@ def preprocess_sentence(sentence):
 
 def pos_tag(sentence):
     # Set the path to the Stanford POS Tagger directory
-    stanford_pos_tagger_dir = "Libraries/FSPOST"
+    stanford_pos_tagger_dir = "rules/Libraries/FSPOST"
 
     # Set the paths to the model and jar files
     model = stanford_pos_tagger_dir + '/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'

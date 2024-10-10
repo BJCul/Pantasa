@@ -51,7 +51,10 @@ import subprocess
 import tempfile
 import os
 
-def pos_tagging(tokens, jar_path, model_path):
+jar = 'rules/Libraries/FSPOST/stanford-postagger.jar'
+model = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
+
+def pos_tagging(tokens, jar_path=jar, model_path=model):
     """
     Tags tokens using the FSPOST Tagger via subprocess.
     Words inside << >> are tagged with '?'.
@@ -113,7 +116,7 @@ def pos_tagging(tokens, jar_path, model_path):
     return tagged_tokens
 
 
-def preprocess_text(text_input, jar_path, model_path):
+def preprocess_text(text_input):
     """
     Preprocesses the input text by tokenizing, POS tagging, and lemmatizing.
 
@@ -127,7 +130,7 @@ def preprocess_text(text_input, jar_path, model_path):
     """
     checked_sentence = spell_check_sentence(text_input)
     tokens = tokenize_sentence(checked_sentence)
-    tagged_tokens = pos_tagging(tokens, jar_path, model_path)
+    tagged_tokens = pos_tagging(tokens)
 
     if not tagged_tokens:
         log_message("Error: Tagged tokens are empty.")
@@ -144,10 +147,9 @@ def preprocess_text(text_input, jar_path, model_path):
 
 # Example usage
 if __name__ == "__main__":
-    jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
-    model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
+    
 
     sentence = "kumaiin ang bata ng mansanas"
 
-    preprocessed_text = preprocess_text(sentence, jar_path, model_path)
+    preprocessed_text = preprocess_text(sentence)
     print(preprocessed_text)

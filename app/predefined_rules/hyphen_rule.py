@@ -1,6 +1,13 @@
 #main function is correct_hyphenation(text)
 
 import re
+import pandas as pd
+
+def load_dictionary(csv_path):
+    df = pd.read_csv(csv_path)
+    # Assuming the words are in the first column and filtering out non-string values
+    words = df.iloc[:, 0].dropna().astype(str).tolist()
+    return words
 
 # Load the dictionary from the CSV file
 dictionary_file = load_dictionary("data/raw/dictionary.csv")
@@ -66,8 +73,7 @@ def separate_prefix_from_word(word):
                 # Insert hyphen between prefix and the proper noun (remain_word)
                 return f"{prefix}-{remaining_word}", 2
             else:
-                return word, 0
-    return word, 0
+                return f"{prefix}{remaining_word}", 0
 
 def correct_hyphenation(text, dictionary=dictionary_file):
     words = text.split()  # Split the text into words
@@ -109,7 +115,7 @@ def correct_hyphenation(text, dictionary=dictionary_file):
                 corrected_words.append(word)
 
         # Handle hyphenation of a prefix from the word
-        elif any(word.startswith(prefix) for prefix in prefixes):
+        elif any(word.startswith(prefix) for prefix in prefixes) and word not in dictionary:
             separated_word, case = separate_prefix_from_word(word)
             if separated_word != word:
                 if case == 1:  # Prefix hyphenated from a proper noun
