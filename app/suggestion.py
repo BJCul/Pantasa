@@ -1,85 +1,93 @@
-import re
-from difflib import get_close_matches
-from utils import load_hybrid_ngram_patterns
-from preprocess import preprocess_text
-from error_detection import match_pos_to_hybrid_ngram, compare_pos_sequences, generate_substitution_suggestion
-
-# Load Hybrid N-Grams from CSV
-hybrid_ngram_patterns = load_hybrid_ngram_patterns('data/processed/hngrams.csv')
-
-# Function to compare input sentence's POS tags to hybrid n-grams and detect errors
-def detect_errors_with_pantasa(input_sentence, jar_path, model_path, hybrid_ngram_patterns):
-    # Step 1: Preprocess the input sentence (tokenization, POS tagging, and lemmatization)
-    preprocessed_output = preprocess_text(input_sentence, jar_path, model_path)
-    if not preprocessed_output:
-        return False, "Error during preprocessing"
-    
-    tokens, lemmas, pos_tag_list = preprocessed_output[0]  # Unpack the preprocessed output
-    print(f"POS Tag Sequence: {pos_tag_list}")
-    
-    # Step 2: Match POS tags with stored hybrid n-grams
-    matching_patterns = compare_with_hybrid_ngrams(pos_tag_list, hybrid_ngram_patterns)
-    
-    if not matching_patterns:
-        # No exact match, use Levenshtein distance or closest match suggestions
-        suggestions = generate_suggestions(pos_tag_list, hybrid_ngram_patterns)
-        return True, f"Error detected: No matching hybrid n-gram pattern found.\nSuggestions: {suggestions}"
-    
-    return False, "No error detected: Sentence is grammatically correct."
-
-# Matching POS Tags with Hybrid N-Grams
-def compare_with_hybrid_ngrams(input_pos_tags, hybrid_ngram_patterns):
+class SuggestionType:
     """
-    Compare the POS tags of the input sentence with the hybrid n-gram patterns.
-    
-    Args:
-    - input_pos_tags: List of POS tags from the input sentence (as tuples).
-    - hybrid_ngram_patterns: List of hybrid n-gram patterns.
-
-    Returns:
-    - List of matching pattern IDs.
+    Enum-like class to define the types of grammar suggestions.
+    This will help differentiate between types of corrections (e.g., substitution, deletion, insertion, merging, unmerging).
     """
-    matching_patterns = []
-    
-    for hybrid_ngram in hybrid_ngram_patterns:
-        if match_pos_to_hybrid_ngram(input_pos_tags, hybrid_ngram['ngram_pattern']):
-            matching_patterns.append(hybrid_ngram['pattern_id'])
-    
-    return matching_patterns
+    SUBSTITUTION = "SUBSTITUTION"
+    INSERTION = "INSERTION"
+    DELETION = "DELETION"
+    MERGING = "MERGING"
+    UNMERGING = "UNMERGING"
 
 
-# Generate suggestions based on closest matching hybrid n-grams
-def generate_suggestions(input_pos_tags, hybrid_ngram_patterns):
-    closest_matches = []
-    suggestions = []
-    
-    # Find the closest hybrid n-grams by comparing POS tags
-    for hybrid_ngram in hybrid_ngram_patterns:
-        hybrid_ngram_tags = hybrid_ngram['ngram_pattern']
-        
-        # Use Levenshtein distance or close matches to find similar POS tag sequences
-        similarity = compare_pos_sequences(input_pos_tags, hybrid_ngram_tags)
-        
-        if similarity < 2:  # Threshold for closeness (you can adjust it)
-            closest_matches.append((hybrid_ngram['pattern_id'], hybrid_ngram_tags, similarity))
-    
-    # Generate substitution or insertion suggestions based on closest matches
-    if closest_matches:
-        for match in closest_matches:
-            pattern_id, ngram_tags, distance = match
-            suggestion = generate_substitution_suggestion(input_pos_tags, ngram_tags)
-            suggestions.append(f"Pattern ID {pattern_id}: Suggest {suggestion}")
-    
-    return suggestions
+class SuggestionToken:
+    """
+    A token within a suggestion representing the word or POS tag that needs correction.
+    Each token contains details such as the word, its index in the sentence, the associated cost, and the suggestion type.
+    """
+    def __init__(self, word, index, cost, pos=None, sugg_type=None):
+        self.word = word
+        self.index = index  # Position of the word in the sentence
+        self.cost = cost  # Edit distance cost for this token
+        self.pos = pos  # POS tag associated with the word (if applicable)
+        self.sugg_type = sugg_type  # Type of suggestion (e.g., substitution, insertion, deletion, merging)
 
-# Example Execution of Error Detection for Pantasa
+    def __repr__(self):
+        return f"SuggestionToken(word='{self.word}', index={self.index}, cost={self.cost}, pos='{self.pos}', sugg_type='{self.sugg_type}')"
+
+
+class Suggestion:
+    """
+    A class that represents a full grammar correction suggestion, including the tokens involved in the suggestion and the total edit distance.
+    Suggestions also have a frequency counter that tracks how often a similar suggestion has been made.
+    """
+    def __init__(self, suggestion_tokens, edit_distance):
+        self.suggestion_tokens = suggestion_tokens  # List of SuggestionTokens
+        self.edit_distance = edit_distance  # Total edit distance for this suggestion
+        self.frequency = 1  # Frequency counter for similar suggestions
+
+    def increment_frequency(self):
+        """Increments the frequency count for this suggestion."""
+        self.frequency += 1
+
+    def get_suggestions(self):
+        """Returns the list of SuggestionTokens."""
+        return self.suggestion_tokens
+
+    def get_edit_distance(self):
+        """Returns the total edit distance of the suggestion."""
+        return self.edit_distance
+
+    def get_suggestion_string(self):
+        """
+        Returns a string representation of the suggestion, showing the corrected words and their types.
+        Example: "Replace word 'bata' with 'bato' (Substitution)"
+        """
+        suggestion_strs = []
+        for token in self.suggestion_tokens:
+            if token.sugg_type == SuggestionType.DELETION:
+                suggestion_strs.append(
+                    f"Delete '{token.word}' at index {token.index} (Cost: {token.cost})"
+                )
+            elif token.sugg_type == SuggestionType.MERGING:
+                suggestion_strs.append(
+                    f"Merge '{token.word}' at index {token.index} (Cost: {token.cost})"
+                )
+            else:
+                suggestion_strs.append(
+                    f"{token.sugg_type.capitalize()} '{token.word}' at index {token.index} (Cost: {token.cost})"
+                )
+        return ", ".join(suggestion_strs)
+
+    def __repr__(self):
+        return f"Suggestion(edit_distance={self.edit_distance}, frequency={self.frequency}, suggestions={self.suggestion_tokens})"
+
+
+# Example usage
 if __name__ == "__main__":
-    jar_path = r'C:\Projects\Pantasa\rules\Libraries\FSPOST\stanford-postagger.jar'
-    model_path = r'C:\Projects\Pantasa\rules\Libraries\FSPOST\filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
+    # Example tokens for a suggestion (Substitution)
+    token1 = SuggestionToken(word="bato", index=2, cost=0.6, pos="NN", sugg_type=SuggestionType.SUBSTITUTION)
+    token2 = SuggestionToken(word="malaki", index=3, cost=0.8, pos="JJ", sugg_type=SuggestionType.SUBSTITUTION)
 
-    # Input sentence for detection
-    input_sentence = "bakit ganito? ano na?"
-    
-    # Run error detection
-    has_error, message = detect_errors_with_pantasa(input_sentence, jar_path, model_path, hybrid_ngram_patterns)
-    print(message)
+    # Example token for Deletion
+    token3 = SuggestionToken(word="mga", index=1, cost=1.0, pos="DT", sugg_type=SuggestionType.DELETION)
+
+    # Example token for Merging
+    token4 = SuggestionToken(word="pinalaki", index=4, cost=0.7, sugg_type=SuggestionType.MERGING)
+
+    # Create a suggestion with substitution, deletion, and merging
+    suggestion = Suggestion([token1, token2, token3, token4], edit_distance=2.5)
+
+    # Output the suggestion details
+    print(suggestion.get_suggestion_string())
+    print(suggestion)
