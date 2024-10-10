@@ -1,4 +1,4 @@
-#main function is rd_interchage(text)
+#main function is rd_interchange(text)
 import re
 
 affix_list = {
@@ -117,20 +117,11 @@ def correct_d_to_r_prefix(text):
 
 
 # Combined function to handle all the rules
-def rd_interchage(text):
+def rd_interchange(text):
     # First, apply the din/rin, daw/raw correction
     text = correct_din_rin_daw_raw(text)
     # Then, apply the d-to-r prefix rule
     text = correct_d_to_r_prefix(text)
     return text
 
-# Test cases
-test_text_1 = "Pinadating"
-
-# Apply the rule
-corrected_text_1 = rd_interchage(test_text_1)
-
-
-# Print results
-print("\nCorrected Text 1:", corrected_text_1)
 

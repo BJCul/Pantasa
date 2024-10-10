@@ -1,4 +1,21 @@
-import re
+import pandas as pd
+import sys
+import os
+from hyphen_rule import correct_hyphenation
+from rd_rule import rd_interchange
+
+# Add the 'app' directory to the Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
+# Import the necessary modules
+
+from rules.Modules.POSDTagger import pos_tag
+
+def load_dictionary(csv_path):
+    df = pd.read_csv(csv_path)
+    # Assuming the words are in the first column and filtering out non-string values
+    words = df.iloc[:, 0].dropna().astype(str).tolist()
+    return words
 
 def handle_nang_ng(text, pos_tags):
     vowels = 'aeiou'  # Define vowels
@@ -93,3 +110,14 @@ def merge_affixes(text, dictionary=dictionary_file):
             i += 1
     return ' '.join(corrected_words)
 
+def apply_predefined_rules(text):
+    pos = pos_tag(text)
+    rd_correction = rd_interchange(text)
+    mas_correction = separate_mas(rd_correction)
+    prefix_merged = merge_affixes(mas_correction)
+    nang_handled = handle_nang_ng(prefix_merged,pos)
+    rule_corrected = correct_hyphenation(nang_handled)
+
+    return rule_corrected
+
+    

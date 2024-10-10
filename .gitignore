@@ -15,3 +15,7 @@ model/pos_model
 mlruns/
 get-pip.py
 
+logs/pantasa.log
+*.log
+logs/pantasa.log
+/logs
