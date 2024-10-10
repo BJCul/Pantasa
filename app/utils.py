@@ -2,9 +2,24 @@
 
 import csv
 
-NGRAM_SIZE_UPPER = 5  # Maximum n-gram size for rule-based matching
-NGRAM_MAX_RULE_SIZE = 7  # Maximum n-gram size for predefined rule-based patterns
-NGRAM_SIZE_LOWER = 2  # Minimum n-gram size
+# Edit Distance Constants
+EDIT_DISTANCE_THRESHOLD = 1
+EDIT_DISTANCE_RULE_BASED = 0.51
+EDIT_DISTANCE_WRONG_WORD_FORM = 0.7
+EDIT_DISTANCE_SPELLING_ERROR = 0.75
+EDIT_DISTANCE_SPELLING_ERROR_2 = 0.78
+EDIT_DISTANCE_INCORRECTLY_MERGED = 0.6
+EDIT_DISTANCE_INCORRECTLY_UNMERGED = 0.6
+EDIT_DISTANCE_WRONG_WORD_SAME_POS = 0.8
+EDIT_DISTANCE_WRONG_WORD_DIFFERENT_POS = 0.95
+EDIT_DISTANCE_MISSING_WORD = 1.0
+EDIT_DISTANCE_UNNECESSARY_WORD = 1.0
+
+# N-Gram Constants
+NGRAM_SIZE_UPPER = 5
+NGRAM_MAX_RULE_SIZE = 7
+NGRAM_SIZE_LOWER = 2
+
 
 def read_file(file_path):
     with open(file_path, 'r') as file:
@@ -120,6 +135,29 @@ def log_message(level, message):
     elif level == "critical":
         logger.critical(message)
 
+def weighted_levenshtein(word1, word2):
+    """Compute the weighted Levenshtein distance between two words."""
+    len1, len2 = len(word1), len(word2)
+    
+    dp = [[0] * (len2 + 1) for _ in range(len1 + 1)]
+
+    # Initialize base cases
+    for i in range(len1 + 1):
+        dp[i][0] = i
+    for j in range(len2 + 1):
+        dp[0][j] = j
+
+    # Calculate the Levenshtein distance with weights
+    for i in range(1, len1 + 1):
+        for j in range(1, len2 + 1):
+            cost = 0.8 if word1[i - 1] != word2[j - 1] else 0  # Example substitution weight
+            dp[i][j] = min(
+                dp[i - 1][j] + 1.0,  # Deletion cost
+                dp[i][j - 1] + 1.0,  # Insertion cost
+                dp[i - 1][j - 1] + cost  # Substitution cost
+            )
+
+    return dp[len1][len2]
 
 # Example usage
 if __name__ == "__main__":
