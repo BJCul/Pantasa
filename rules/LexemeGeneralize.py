@@ -134,7 +134,7 @@ def generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file,
         save_lexeme_comparison_dictionary(lexeme_comparison_dict_file, seen_lexeme_comparisons)
         pos_comparison_results = []  # Reset after saving
 
-for n in range(2, 8):
+for n in range(4):
     ngram_list_file = 'database/ngrams.csv'
     pos_patterns_file = f'database/Generalized/POSTComparison/{n}grams.csv'
     id_array_file = f'database/POS/{n}grams.csv'
