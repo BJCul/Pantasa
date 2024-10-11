@@ -142,7 +142,7 @@ def compute_word_score(word, sentence, model, tokenizer):
 
 def generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file, output_file, lexeme_comparison_dict_file, model, tokenizer, batch_size=1000, threshold=80.0):
     print("Loading ngram list...")
-    ngram_list = load_csv_in_batches(ngram_list_file, batch_size)
+    ngram_list_batches = load_csv_in_batches(ngram_list_file, batch_size)
     print("Loading POS patterns...")
     pos_patterns = load_csv_in_batches(pos_patterns_file, batch_size)
     print("Loading ID array data...")
@@ -155,8 +155,23 @@ def generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file,
         for id_array_entry in id_array_batch:
             pattern_id = id_array_entry['Pattern_ID']
             for instance_id in convert_id_array(id_array_entry.get('ID_Array', '')):
-                instance = next((ngram for ngram in ngram_list if ngram['N-Gram_ID'] == instance_id.zfill(6)), None)
-                if not instance:
+                instance_found = False  # Flag to indicate if we found the instance
+                
+                for ngram_batch in ngram_list_batches:
+                    for ngram in ngram_batch:
+                        # Ensure both are strings and N-Gram_ID is zero-padded to 6 digits
+                        ngram_id_str = str(ngram['N-Gram_ID']).zfill(6)
+                        instance_id_str = instance_id.zfill(6)
+                        
+                        print(f"Comparing instance_id '{instance_id_str}' with ngram['N-Gram_ID']: '{ngram_id_str}'")
+                        if ngram_id_str == instance_id_str:
+                            instance = ngram
+                            instance_found = True
+                            break  # Exit the loop once we find the instance
+                # Exit the loop once we find the instance
+                
+                if not instance_found:
+                    print(f"No instance found for ID {instance_id}.")
                     continue
 
                 lemma_ngram_sentence = instance.get('Lemma_N-Gram', '')
@@ -184,13 +199,14 @@ def generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file,
         save_lexeme_comparison_dictionary(lexeme_comparison_dict_file, seen_lexeme_comparisons)
         pos_comparison_results = []  # Reset after saving
 
+
 # Example usage for batch processing
-for n in range(2, 8):
-    ngram_list_file = 'database/ngrams.csv'
-    pos_patterns_file = f'database/Generalized/POSTComparison/{n}grams.csv'
-    id_array_file = f'database/POS/{n}grams.csv'
-    output_file = f'database/Generalized/LexemeComparison/{n}grams.csv'
-    comparison_dict_file = 'database/LexComparisonDictionary.txt'
+for n in range(4,5):
+    ngram_list_file = 'rules/database/ngrams.csv'
+    pos_patterns_file = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
+    id_array_file = f'rules/database/POS/{n}grams.csv'
+    output_file = f'rules/database/Generalized/LexemeComparison/{n}grams.csv'
+    comparison_dict_file = 'rules/database/LexComparisonDictionary.txt'
 
     print(f"Starting generalization for {n}-grams in batches...")
     generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file, output_file, comparison_dict_file, roberta_model, roberta_tokenizer, batch_size)
