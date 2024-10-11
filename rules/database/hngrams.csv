@@ -1,5 +1,5 @@
-Pattern_ID,Final_Hybrid_N-Gram
-200001,DT.* JJ.*
+Pattern_ID,Final_Hybrid_N-Gram, Frequence, Rough_POS, Detailed_POS, Word
+200001,DT.* JJ.*, 
 200002,JJ.* NN.*
 200003,DTC JJCS_JJD_CCP
 200004,JJCS_JJD_CCP NNC
@@ -20,7 +20,7 @@ Pattern_ID,Final_Hybrid_N-Gram
 200015,JJCS_JJD_CCP NNC
 200016,JJD_CCP NNC_PMP
 200017,JJ.* NNC_PMC
-200018,JJ.* NNC_PMP
+200018,JJ.* NNC_PMP, , JJ.* .*,  .* NNC_PMP, .* .*
 300001,PR.* VB.* CC.*
 300002,VB.* CC.* NN.*_PM.*
 300003,NN.* CC.* PR.*
@@ -1200,7 +1200,7 @@ Pattern_ID,Final_Hybrid_N-Gram
 700100,NN.* kung paano VB.* ang mga halamang-singaw
 700101,NN.* RB.* ang mga halamang-singaw sa NN.*
 700013,RB.* RB.* VB.* DT.* DT.* NN.* PM.*
-700102,"RB.* ang mga halamang-singaw sa NN.* forum,"
+700102,"RB.* ang mga halamang-singaw ss NN.* forum,"
 700103,RB.* ang mga halamang-singaw sa NN.* PM.*
 700014,NN.* PM.* NN.* CC.* DT.* NN.* CC.*
 700104,NN.* sa mga CC.* ng mga CC.*
