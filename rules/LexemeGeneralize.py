@@ -58,39 +58,89 @@ def convert_id_array(id_array_str):
         return []  # Return an empty list or handle it accordingly
     return id_array_str.strip("[]'").replace("'", "").split(', ')
 
-def subword_penalty_score(score, word, tokenizer):
+def subtoken_boost_penalty_score(score, word, tokenizer):
+    # Tokenize the word and check how many subtokens it splits into
     tokenized_word = tokenizer(word, return_tensors="pt")['input_ids'][0]
-    num_tokens = len(tokenized_word)
-    penalized_score = score / num_tokens
-    return penalized_score
+    num_tokens = len(tokenized_word)  # Number of subtokens
+
+    if num_tokens == 1:
+        # Boost score if the word has only 1 subtoken (simpler word)
+        boosted_score = score * 1.2 
+    else:
+        # Penalize score if the word has more than 1 subtoken (complex word)
+        boosted_score = score / num_tokens  # Penalize by dividing by the number of subtokens
+
+    return boosted_score
+
 
 def compute_mlm_score(sentence, model, tokenizer):
     tokens = tokenizer(sentence, return_tensors="pt")
-    input_ids = tokens['input_ids'][0]
+    input_ids = tokens['input_ids'][0]  # Get the input IDs
     scores = []
     
-    for i in range(1, input_ids.size(0) - 1):
+    for i in range(1, input_ids.size(0) - 1):  # Skip [CLS] and [SEP] tokens
         masked_input_ids = input_ids.clone()
-        masked_input_ids[i] = tokenizer.mask_token_id
+        masked_input_ids[i] = tokenizer.mask_token_id  # Mask the current token
 
         with torch.no_grad():
-            outputs = model(masked_input_ids.unsqueeze(0))
+            outputs = model(masked_input_ids.unsqueeze(0))  # Add batch dimension
 
         logits = outputs.logits[0, i]
         probs = torch.softmax(logits, dim=-1)
 
         original_token_id = input_ids[i]
-        score = probs[original_token_id].item()
-
-        word = tokenizer.decode([original_token_id]).strip()
-        penalized_score = subword_penalty_score(score, word, tokenizer)
+        score = probs[original_token_id].item()  # Probability of the original word when masked
         
-        scores.append(penalized_score)
+        # Get the word corresponding to the token ID
+        word = tokenizer.decode([original_token_id]).strip()
 
-    average_score = sum(scores) / len(scores) * 100
+        # Apply subtoken boost/penalty based on the number of subtokens
+        adjusted_score = subtoken_boost_penalty_score(score, word, tokenizer)
+        
+        scores.append(adjusted_score)
+
+    average_score = sum(scores) / len(scores) * 100  # Convert to percentage
     return average_score, scores
 
-def generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file, output_file, lexeme_comparison_dict_file, model, tokenizer, batch_size=batch_size, threshold=80.0):
+def compute_word_score(word, sentence, model, tokenizer):
+    # Split the sentence into words
+    words = sentence.split()
+
+    # Check if the word is in the sentence
+    if word not in words:
+        raise ValueError(f"The word '{word}' is not found in the sentence.")
+
+    # Find the index of the word in the sentence
+    index = words.index(word)
+
+    # Create a sub-sentence up to the current word
+    sub_sentence = ' '.join(words[:index + 1])
+    
+    # Tokenize the sub-sentence and mask the word at the current index
+    tokens = tokenizer(sub_sentence, return_tensors="pt")
+    masked_input_ids = tokens['input_ids'].clone()
+
+    # Find the token ID corresponding to the word at the current index
+    word_token_index = tokens['input_ids'][0].size(0) - 2  # Get second-to-last token (ignores [SEP] and [CLS])
+    masked_input_ids[0, word_token_index] = tokenizer.mask_token_id  # Mask the indexed word
+
+    # Get model output for masked sub-sentence
+    with torch.no_grad():
+        outputs = model(masked_input_ids)
+    
+    # Extract the logits for the masked word and calculate its probability
+    logits = outputs.logits
+    word_token_id = tokens['input_ids'][0, word_token_index]  # The original token ID of the indexed word
+    probs = torch.softmax(logits[0, word_token_index], dim=-1)
+    score = probs[word_token_id].item()  # Probability of the original word when masked
+    
+    # Apply subtoken boost/penalty
+    adjusted_score = subtoken_boost_penalty_score(score, word, tokenizer)
+    
+    return adjusted_score * 100  # Return as a percentage
+
+
+def generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file, output_file, lexeme_comparison_dict_file, model, tokenizer, batch_size=1000, threshold=80.0):
     print("Loading ngram list...")
     ngram_list = load_csv_in_batches(ngram_list_file, batch_size)
     print("Loading POS patterns...")
@@ -134,6 +184,7 @@ def generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file,
         save_lexeme_comparison_dictionary(lexeme_comparison_dict_file, seen_lexeme_comparisons)
         pos_comparison_results = []  # Reset after saving
 
+# Example usage for batch processing
 for n in range(2, 8):
     ngram_list_file = 'database/ngrams.csv'
     pos_patterns_file = f'database/Generalized/POSTComparison/{n}grams.csv'
@@ -141,6 +192,6 @@ for n in range(2, 8):
     output_file = f'database/Generalized/LexemeComparison/{n}grams.csv'
     comparison_dict_file = 'database/LexComparisonDictionary.txt'
 
-    print(f"Starting generalization for {n}-grams...")
-    generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file, output_file, comparison_dict_file, roberta_model, roberta_tokenizer)
+    print(f"Starting generalization for {n}-grams in batches...")
+    generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file, output_file, comparison_dict_file, roberta_model, roberta_tokenizer, batch_size
     print(f"Finished generalization for {n}-grams.")
