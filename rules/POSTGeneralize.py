@@ -316,7 +316,7 @@ def process_pos_patterns(pos_patterns_file, generated_ngrams_file, pattern_file,
         for new_pattern in new_patterns:
             writer.writerow(new_pattern)
 
-for n in range(2, 8):
+for n in range(6, 8):
     ngram_csv = 'database/ngrams.csv'
     pattern_csv = f'database/POS/{n}grams.csv'
     output_csv = f'database/Generalized/POSTComparison/{n}grams.csv'
