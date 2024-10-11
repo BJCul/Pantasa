@@ -79,7 +79,7 @@ def search_pattern_conversion_based_on_tag_type(pattern):
         else:
             rough_pos_pattern.append(r'.*')  # Replace rough POS with wildcard
             detailed_pos_pattern.append(r'.*')  # Replace detailed POS with wildcard
-            word_pattern.append(re.escape(part))  # Keep word (escape for regex)
+            word_pattern.append(part) 
     
     # Join each pattern list to form a regex search pattern
     rough_pos_search_pattern = " ".join(rough_pos_pattern)
@@ -88,7 +88,7 @@ def search_pattern_conversion_based_on_tag_type(pattern):
 
     logging.debug(f"Rough POS pattern: {rough_pos_search_pattern}")
     logging.debug(f"Detailed POS pattern: {detailed_pos_search_pattern}")
-    logging.debug(f"Word pattern: {word_search_pattern}")
+    logging.debug(f"Word pattern: //{word_search_pattern}//")
     
     return rough_pos_search_pattern, detailed_pos_search_pattern, word_search_pattern
 
@@ -111,13 +111,18 @@ def instance_collector(pattern, ngrams_df, pattern_ngram_size):
     detailed_pos_matches = rough_pos_matches[rough_pos_matches['DetailedPOS_N-Gram'].str.contains(detailed_pos_search_pattern, regex=True)]
     logging.debug(f"Detailed POS tag matches: {len(detailed_pos_matches)}")
     
-    # Step 5: Apply word-based filtering on the detailed POS matches
-    final_matches = detailed_pos_matches[detailed_pos_matches['N-Gram'].str.contains(word_search_pattern, regex=True)]
+    
+    # Step 5: Apply word-based filtering using re.search
+    def word_match_search(row, word_search_pattern):
+        match = re.search(word_search_pattern, row['N-Gram'], re.IGNORECASE)
+        logging.debug(f"Testing regex on N-Gram: {row['N-Gram']} | Match: {match}")
+        return bool(match)
+
+    final_matches = detailed_pos_matches[detailed_pos_matches.apply(lambda row: word_match_search(row, word_search_pattern), axis=1)]
     logging.debug(f"Word matches: {len(final_matches)}")
     
+    
     return final_matches
-
-# The rest of the code remains the same for loading the data, extracting patterns, and running the filtering process.
 
 
 # Example usage
