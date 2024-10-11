@@ -70,11 +70,11 @@ def process_sentence_with_dynamic_ngrams(tokens):
 
     # Determine appropriate N-gram sizes based on sentence length
     for ngram_size in range(NGRAM_SIZE_LOWER, min(NGRAM_SIZE_UPPER + 1, sentence_length + 1)):
-        ngram_collections[f'{ngram_size}-gram'] = generate_ngrams(tokens, ngram_size)
+        ngram_collections[ngram_size] = generate_ngrams(tokens, ngram_size)
 
     # Handling larger N-gram sizes for predefined rules
     if sentence_length >= NGRAM_MAX_RULE_SIZE:
-        ngram_collections[f'{NGRAM_MAX_RULE_SIZE}-gram'] = generate_ngrams(tokens, NGRAM_MAX_RULE_SIZE)
+        ngram_collections[ngram_size]= generate_ngrams(tokens, NGRAM_MAX_RULE_SIZE)
 
     return ngram_collections
 
@@ -162,5 +162,5 @@ def weighted_levenshtein(word1, word2):
 # Example usage
 if __name__ == "__main__":
     file_path = 'data/processed/hngrams.csv'
-    hybrid_ngrams = load_hybrid_ngram_patterns(file_path)
+    hybrid_ngrams = load_hybrid_ngram_patterns(file_path)    
     print(hybrid_ngrams)

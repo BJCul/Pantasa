@@ -104,19 +104,23 @@ def pos_tagging(tokens, jar_path=jar, model_path=model):
     return tagged_tokens
 
 
-def preprocess_text(text_input):
-
+def preprocess_text(text_input, jar_path, model_path):
     """
     Preprocesses the input text by tokenizing, POS tagging, lemmatizing, and checking spelling.
+    Args:
+    - text_input: The input sentence to preprocess.
+    - jar_path: Path to the FSPOST Tagger jar file.
+    - model_path: Path to the FSPOST Tagger model file.
     """
     # Step 1: Spell check the sentence
     checked_sentence = spell_check_sentence(text_input)
 
+    print (f"talaga? {text_input}")
     # Step 2: Tokenize the sentence
     tokens = tokenize_sentence(checked_sentence)
 
-    tagged_tokens = pos_tagging(tokens)
-
+    # Step 3: POS tagging using the provided jar and model paths
+    tagged_tokens = pos_tagging(tokens, jar_path=jar_path, model_path=model_path)
 
     if not tagged_tokens:
         log_message("error", "Tagged tokens are empty.")
@@ -137,11 +141,12 @@ def preprocess_text(text_input):
 
     return [preprocessed_output]
 
+
 # Example usage
 if __name__ == "__main__":
     
 
-    sentence = "kumain ang bata ng mansanas na asda dasfa"
+    sentence = "kumain ang bata ng mansana na asda dasfa"
 
-    preprocessed_text = preprocess_text(sentence)
+    preprocessed_text = preprocess_text(sentence, jar_path=jar, model_path=model)
     print(preprocessed_text)

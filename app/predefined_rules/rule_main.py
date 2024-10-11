@@ -1,8 +1,11 @@
 import pandas as pd
 import sys
 import os
-from hyphen_rule import correct_hyphenation
-from rd_rule import rd_interchange
+from predefined_rules.hyphen_rule import correct_hyphenation
+from predefined_rules.rd_rule import rd_interchange
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Add the 'app' directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
@@ -112,12 +115,23 @@ def merge_affixes(text, dictionary=dictionary_file):
 
 def apply_predefined_rules(text):
     pos = pos_tag(text)
+    
+    logger.info(f"Applying predefined rules to text: {text}")
+
     rd_correction = rd_interchange(text)
     mas_correction = separate_mas(rd_correction)
     prefix_merged = merge_affixes(mas_correction)
     nang_handled = handle_nang_ng(prefix_merged,pos)
     rule_corrected = correct_hyphenation(nang_handled)
 
+    logger.info(f"Final rule-corrected sentence: {rule_corrected}")
+
+
     return rule_corrected
 
-    
+
+if __name__ == "__main__":
+    text = "pinang tiklop maki pagusp"
+    corrected_sentence = apply_predefined_rules(text)
+
+    print(corrected_sentence)
