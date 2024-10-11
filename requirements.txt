@@ -3,7 +3,7 @@ transformers
 torch
 pandas
 nl
-
+lingua-language-detector     
 nltk 
 spacy
 pandas 

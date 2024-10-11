@@ -194,4 +194,5 @@ for n in range(2, 8):
 
     print(f"Starting generalization for {n}-grams in batches...")
     generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file, output_file, comparison_dict_file, roberta_model, roberta_tokenizer, batch_size)
-    print(f"Finished generalization for {n}-grams.")
+    print(f"Starting generalization for {n}-grams in batches...")
+    
