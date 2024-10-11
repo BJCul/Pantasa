@@ -193,5 +193,6 @@ for n in range(2, 8):
     comparison_dict_file = 'database/LexComparisonDictionary.txt'
 
     print(f"Starting generalization for {n}-grams in batches...")
-    generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file, output_file, comparison_dict_file, roberta_model, roberta_tokenizer, batch_size
-    print(f"Finished generalization for {n}-grams.")
+    generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file, output_file, comparison_dict_file, roberta_model, roberta_tokenizer, batch_size)
+    print(f"Starting generalization for {n}-grams in batches...")
+    
