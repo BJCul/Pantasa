@@ -1,8 +1,5 @@
 from flask import Flask, render_template, request, jsonify
 import logging
-from preprocess import preprocess_text, lemmatize_text
-from error_detection import detect_grammar_errors
-from error_correction import correct_grammar_errors
 
 # Set up the tokenizer and model during Flask app initialization
 tokenizer, model = set_up()

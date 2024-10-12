@@ -4,6 +4,7 @@ import os
 from predefined_rules.hyphen_rule import correct_hyphenation
 from predefined_rules.rd_rule import rd_interchange
 import logging
+from preprocess import pos_tagging
 
 logger = logging.getLogger(__name__)
 
@@ -26,42 +27,36 @@ def handle_nang_ng(text, pos_tags):
     corrected_words = []
     
     for i, word in enumerate(words):
+        # Use the POS tag and lemma to guide the correction
         if word == "nang":
-            # Handle "nang" as a synonym for "noong" (RBW)
-            if pos_tags[i] == 'RBW':  
+            if pos_tags[i] == 'RBW':  # "nang" as a synonym for "noong" (adverb)
                 corrected_words.append("noong")
-            
-            # Handle "nang" as a conjunction (CCB, CCT)
-            elif pos_tags[i] in ['CCB', 'CCT']:
-                corrected_words.append(word)  # Keep "nang" as conjunction
-            
-            # Handle "nang" as a ligature (CCP)
-            elif pos_tags[i] == 'CCP' and i > 0:
+            elif pos_tags[i] in ['CCB', 'CCT']:  # Conjunction usage of "nang"
+                corrected_words.append(word)
+            elif pos_tags[i] == 'CCP' and i > 0:  # Ligature usage (connecting adverbs)
                 prev_pos = pos_tags[i - 1]
-                if prev_pos in ['RB', 'VB', 'JJ']:  # Connecting adverb of manner/intensity to verb/adjective
+                if prev_pos in ['RB', 'VB', 'JJ']:  # Correct context for ligature
                     corrected_words.append(word)
                 else:
                     corrected_words.append("nang")
-        
         elif word == "ng":
-            # Handle "ng" as a ligature (CCP or CCB)
             if pos_tags[i] in ['CCP', 'CCB']:
-                corrected_words.append(word)  # Keep "ng"
+                corrected_words.append(word)
             else:
                 corrected_words.append(word)
-        
-        elif word == "na" and i > 0:  # If the current word is "na" and it's not the first word
+        elif word == "na" and i > 0:  # Handle "na" as a ligature
             prev_word = words[i - 1]
-            if prev_word[-1].lower() in vowels:  # Check if the previous word ends with a vowel
+            if prev_word[-1].lower() in vowels:
                 corrected_word = prev_word + "ng"
-                corrected_words[-1] = corrected_word  # Update the last word in corrected_words
-            elif prev_word[-1].lower() == 'n':  # Check if the previous word ends with 'n'
+                corrected_words[-1] = corrected_word  # Update the previous word
+            elif prev_word[-1].lower() == 'n':
                 corrected_word = prev_word + "g"
-                corrected_words[-1] = corrected_word  # Update the last word in corrected_words
+                corrected_words[-1] = corrected_word
         else:
-            corrected_words.append(word)  # Append the word if no correction is made
-    
+            corrected_words.append(word)  # No correction needed
+
     return ' '.join(corrected_words)
+
 
 # Load the dictionary from the CSV file
 dictionary_file = load_dictionary("data/raw/dictionary.csv")
@@ -131,7 +126,7 @@ def apply_predefined_rules(text):
 
 
 if __name__ == "__main__":
-    text = "pinang tiklop maki pagusp"
+    text = "pinang tiklop maski pagusp"
     corrected_sentence = apply_predefined_rules(text)
 
-    print(corrected_sentence)
+    print(f"ff{corrected_sentence}")

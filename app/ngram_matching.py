@@ -91,7 +91,7 @@ def ngram_matching(input_sentence, jar_path, model_path, hybrid_ngram_patterns):
         return []
 
     print(f"f{preprocessed_output}")
-    tokens, lemmas, pos_tags = preprocessed_output[0]
+    tokens, lemmas, pos_tags, checked_sentence = preprocessed_output[0]
     
     # Step 2: Extract dynamically sized N-grams from the tokens
     ngram_collections = process_sentence_with_dynamic_ngrams(tokens)
@@ -114,7 +114,7 @@ def ngram_matching(input_sentence, jar_path, model_path, hybrid_ngram_patterns):
             if matched_patterns:
                 matches.extend(matched_patterns)
 
-    return matches
+    return matches, ngram_collections, preprocessed_output
 
 # Example usage
 if __name__ == "__main__":

@@ -33,9 +33,9 @@ def spell_check_sentence(sentence, dictionary=dictionary_file, max_distance=2):
             
             # If suggestions exist, mark the word as misspelled
             if suggestions:
-                corrected_sentence.append(f"<<{word}>>")
+                corrected_sentence.append(f"{suggestions[0][0]}")
             else:
-                corrected_sentence.append(f"<<{word}>>")  # No suggestions, mark as misspelled anyway
+                corrected_sentence.append(f"{word}")  # No suggestions, mark as misspelled anyway
 
     return ' '.join(corrected_sentence)
 
@@ -44,7 +44,7 @@ if __name__ == "__main__":
     dictionary = load_dictionary("data/raw/dictionary.csv")
 
     # Test the spell checker with a sample sentence
-    test_sentence_1 = "ang mga bata ay masaya"
+    test_sentence_1 = "ang mga bata ay mastaya"
     test_sentence_2 = "kumakain ang mga bata ng mansana"
 
     print("Original:", test_sentence_1)

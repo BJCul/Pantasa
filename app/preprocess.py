@@ -50,22 +50,19 @@ jar = 'rules/Libraries/FSPOST/stanford-postagger.jar'
 model = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
 
 def pos_tagging(tokens, jar_path=jar, model_path=model):
-
     """
     Tags tokens using the FSPOST Tagger via subprocess.
-    Words inside << >> are tagged with '?'.
     """
     # Prepare tokens for tagging
     java_tokens = []
     tagged_tokens = []
 
     for token in tokens:
-        if token.startswith("<<") and token.endswith(">>"):
-            # Word is inside << >>, assign "?" tag directly
-            clean_token = token[2:-2]  # Remove the enclosing << >>
-            tagged_tokens.append((clean_token, "?"))
-        else:
-            java_tokens.append(token)  # Send to Java POS tagger for normal tagging
+        # Check if the token is a tuple (e.g., (word, pos_tag)) and extract the word
+        if isinstance(token, tuple):
+            token = token[0]  # Extract the first element, which is the actual word
+
+        java_tokens.append(token)  # Send to Java POS tagger for normal tagging
 
     if java_tokens:
         # Only call the Java POS tagger if there are tokens to tag
@@ -115,7 +112,6 @@ def preprocess_text(text_input, jar_path, model_path):
     # Step 1: Spell check the sentence
     checked_sentence = spell_check_sentence(text_input)
 
-    print (f"talaga? {text_input}")
     # Step 2: Tokenize the sentence
     tokens = tokenize_sentence(checked_sentence)
 
@@ -134,7 +130,7 @@ def preprocess_text(text_input, jar_path, model_path):
     log_message("info", f"Lemmatized Words: {lemmatized_words}")
 
     # Step 5: Prepare the preprocessed output
-    preprocessed_output = (tokens, lemmatized_words, tagged_tokens)
+    preprocessed_output = (tokens, lemmatized_words, tagged_tokens, checked_sentence)
     
     # Log the final preprocessed output for better traceability
     log_message("info", f"Preprocessed Output: {preprocessed_output}")
