@@ -1,6 +1,6 @@
 import re
-from utils import load_hybrid_ngram_patterns, process_sentence_with_dynamic_ngrams, extract_ngrams
-from preprocess import preprocess_text
+from app.utils import load_hybrid_ngram_patterns, process_sentence_with_dynamic_ngrams, extract_ngrams
+from app.preprocess import preprocess_text
 import logging
 
 logger = logging.getLogger(__name__)
@@ -91,7 +91,7 @@ def ngram_matching(input_sentence, jar_path, model_path, hybrid_ngram_patterns):
         return []
 
     print(f"f{preprocessed_output}")
-    tokens, lemmas, pos_tags, checked_sentence = preprocessed_output[0]
+    tokens, lemmas, pos_tags, checked_sentence, misspelled_words = preprocessed_output[0]
     
     # Step 2: Extract dynamically sized N-grams from the tokens
     ngram_collections = process_sentence_with_dynamic_ngrams(tokens)

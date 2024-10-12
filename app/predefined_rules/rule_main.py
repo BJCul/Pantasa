@@ -1,10 +1,10 @@
 import pandas as pd
 import sys
 import os
-from predefined_rules.hyphen_rule import correct_hyphenation
-from predefined_rules.rd_rule import rd_interchange
+from app.predefined_rules.hyphen_rule import correct_hyphenation
+from app.predefined_rules.rd_rule import rd_interchange
 import logging
-from preprocess import pos_tagging
+from app.preprocess import pos_tagging
 
 logger = logging.getLogger(__name__)
 
@@ -21,40 +21,71 @@ def load_dictionary(csv_path):
     words = df.iloc[:, 0].dropna().astype(str).tolist()
     return words
 
+# Hierarchical POS Tag Dictionary
+hierarchical_pos_tags = {
+    "NN.*": ["NNC", "NNP", "NNPA", "NNCA"],
+    "PR.*": ["PRS", "PRP", "PRSP", "PRO", "PRQ", "PRQP", "PRL", "PRC", "PRF", "PRI"],
+    "DT.*": ["DTC", "DTCP", "DTP", "DTPP"],
+    "CC.*": ["CCT", "CCR", "CCB", "CCA", "CCP", "CCU"],
+    "LM": [],
+    "TS": [],
+    "VB.*": ["VBW", "VBS", "VBH", "VBN", "VBTS", "VBTR", "VBTF", "VBTP", "VBAF", "VBOF", "VBOB", "VBOL", "VBOI", "VBRF"],
+    "JJ.*": ["JJD", "JJC", "JJCC", "JJCS", "JJCN", "JJN"],
+    "RB.*": ["RBD", "RBN", "RBK", "RBP", "RBB", "RBR", "RBQ", "RBT", "RBF", "RBW", "RBM", "RBL", "RBI", "RBJ", "RBS"],
+    "CD.*": ["CDB"],
+    "FW": [],
+    "PM.*": ["PMP", "PME", "PMQ", "PMC", "PMSC", "PMS"]
+}
+
 def handle_nang_ng(text, pos_tags):
     vowels = 'aeiou'  # Define vowels
     words = text.split()
     corrected_words = []
     
     for i, word in enumerate(words):
-        # Use the POS tag and lemma to guide the correction
-        if word == "nang":
-            if pos_tags[i] == 'RBW':  # "nang" as a synonym for "noong" (adverb)
-                corrected_words.append("noong")
-            elif pos_tags[i] in ['CCB', 'CCT']:  # Conjunction usage of "nang"
-                corrected_words.append(word)
-            elif pos_tags[i] == 'CCP' and i > 0:  # Ligature usage (connecting adverbs)
-                prev_pos = pos_tags[i - 1]
-                if prev_pos in ['RB', 'VB', 'JJ']:  # Correct context for ligature
-                    corrected_words.append(word)
-                else:
+        if word == "ng":
+            # Handle "nang" as a synonym for "noong" (RBW)
+            if pos_tags[i] == 'RBW':  
+                corrected_words.append("nang")
+            
+            # Handle "nang" as a conjunction (CCB, CCT)
+            elif pos_tags[i] in ['CCB', 'CCT']:
+                corrected_words.append("nang")  # Keep "nang" as conjunction
+            
+            # Handle "nang" as a ligature (CCP)
+            elif pos_tags[i] == 'CCP' and i > 0:
+                prev_post = pos_tags[i - 1] if i - 1 > 0 else None
+                post_pos = pos_tags[i + 1] if i + 1 < len(pos_tags) else None
+                pos_ex = f"{prev_post} {pos_tags[i]} {post_pos}"
+                # Get the POS tags for RB.* and VB.* from the dictionary
+                adverb_pos = hierarchical_pos_tags['RB.*'] + hierarchical_pos_tags['VB.*']
+                pos_ex_list = pos_ex.split()
+                if  any(pos in adverb_pos for pos in pos_ex_list):# Connecting adverb of manner/intensity to verb/adjective
                     corrected_words.append("nang")
-        elif word == "ng":
-            if pos_tags[i] in ['CCP', 'CCB']:
-                corrected_words.append(word)
+                elif any(pos in hierarchical_pos_tags['JJ.*'] for pos in pos_ex_list):
+                    if any(pos in hierarchical_pos_tags['NN.*'] for pos in pos_ex_list):
+                        corrected_words.append(word)
+                    else:
+                       corrected_words.append("nang") 
+            
+
+        elif word == "nang": #Check if it a coordinating, onjunction
+            if pos_tags[i] == 'CCB' and i > 0:
+                corrected_words.append("ng")
             else:
                 corrected_words.append(word)
-        elif word == "na" and i > 0:  # Handle "na" as a ligature
+        
+        elif word == "na" and i > 0:  # If the current word is "na" and it's not the first word
             prev_word = words[i - 1]
-            if prev_word[-1].lower() in vowels:
+            if prev_word[-1].lower() in vowels:  # Check if the previous word ends with a vowel
                 corrected_word = prev_word + "ng"
-                corrected_words[-1] = corrected_word  # Update the previous word
-            elif prev_word[-1].lower() == 'n':
+                corrected_words[-1] = corrected_word  # Update the last word in corrected_words
+            elif prev_word[-1].lower() == 'n':  # Check if the previous word ends with 'n'
                 corrected_word = prev_word + "g"
-                corrected_words[-1] = corrected_word
+                corrected_words[-1] = corrected_word  # Update the last word in corrected_words
         else:
-            corrected_words.append(word)  # No correction needed
-
+            corrected_words.append(word)  # Append the word if no correction is made
+    
     return ' '.join(corrected_words)
 
 

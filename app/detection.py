@@ -1,5 +1,5 @@
 import logging
-from utils import log_message
+from app.utils import log_message
 
 logger = logging.getLogger(__name__)
 

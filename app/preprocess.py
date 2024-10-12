@@ -3,9 +3,9 @@ import tempfile
 import subprocess
 import os
 import logging
-from utils import log_message
-from spell_checker import spell_check_sentence
-from morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_multiple_words
+from app.utils import log_message
+from app.spell_checker import spell_check_sentence
+from app.morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_multiple_words
 
 # Initialize the Morphinas Stemmer
 stemmer = initialize_stemmer()
@@ -110,7 +110,7 @@ def preprocess_text(text_input, jar_path, model_path):
     - model_path: Path to the FSPOST Tagger model file.
     """
     # Step 1: Spell check the sentence
-    checked_sentence = spell_check_sentence(text_input)
+    mispelled_words, checked_sentence = spell_check_sentence(text_input)
 
     # Step 2: Tokenize the sentence
     tokens = tokenize_sentence(checked_sentence)
@@ -130,7 +130,7 @@ def preprocess_text(text_input, jar_path, model_path):
     log_message("info", f"Lemmatized Words: {lemmatized_words}")
 
     # Step 5: Prepare the preprocessed output
-    preprocessed_output = (tokens, lemmatized_words, tagged_tokens, checked_sentence)
+    preprocessed_output = (tokens, lemmatized_words, tagged_tokens, checked_sentence, mispelled_words)
     
     # Log the final preprocessed output for better traceability
     log_message("info", f"Preprocessed Output: {preprocessed_output}")

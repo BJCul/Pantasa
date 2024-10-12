@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Select the checkbox and the 'Try Now' link
     const checkBox = document.getElementById('check');
     const tryNowLink = document.querySelector('.nav ul li a[href="#GrammarChecker"]');
 
     // Add click event listener to the 'Try Now' link
-    tryNowLink.addEventListener('click', function(event) {
+    tryNowLink.addEventListener('click', function (event) {
         if (checkBox.checked) {
             checkBox.checked = false; // Uncheck the checkbox to hide the menu
         }
@@ -31,21 +31,11 @@ function showSection(sectionId) {
     targetSection.classList.remove('hidden');
 }
 
-
 let timeout = null;
 
 document.getElementById('grammarTextarea').addEventListener('input', function () {
     clearTimeout(timeout);
     const textInput = this.value;
-
-    // Check if the first letter is capitalized
-    const isFirstLetterCapitalized = textInput.charAt(0) === textInput.charAt(0).toUpperCase();
-
-    if (!isFirstLetterCapitalized && textInput.length > 0) {
-        // Notify the user or take action if the first letter is not capitalized
-        alert('Please start your sentence with a capitalized letter.');
-        return; // Stop execution if the condition is not met
-    }
 
     // Hide previous predictions and suggestions
     const predictionsContent = document.getElementById('predictionsContent');
@@ -106,11 +96,15 @@ document.getElementById('grammarTextarea').addEventListener('input', function ()
                 }
             }
 
-            // Add click event listeners for highlighted errors (if any)
+            // Add mouseenter and mouseleave event listeners for highlighted errors (if any)
             document.querySelectorAll('.error').forEach(element => {
-                element.addEventListener('click', function () {
+                element.addEventListener('mouseenter', function () {
                     const suggestions = this.getAttribute('data-suggestions').split(',<br>');
                     showSuggestions(suggestions, this);
+                });
+
+                element.addEventListener('mouseleave', function () {
+                    hideSuggestions();
                 });
             });
 
@@ -129,21 +123,30 @@ document.getElementById('grammarTextarea').addEventListener('input', function ()
     }, 1000);
 });
 
-
-// Function to show suggestions in a text box
+// Function to show suggestions in a suggestion box
 function showSuggestions(suggestions, errorElement) {
+    // Remove any existing suggestion box
+    hideSuggestions();
+
+    // Create a new suggestion box
     const suggestionBox = document.createElement('div');
     suggestionBox.className = 'suggestion-box';
     suggestionBox.innerHTML = `<strong>Suggestions:</strong><br>${suggestions.join('<br>')}`;
 
-    // Position the suggestion box near the clicked error element
+    // Position the suggestion box near the highlighted word
     const rect = errorElement.getBoundingClientRect();
     suggestionBox.style.position = 'absolute';
     suggestionBox.style.left = `${rect.left}px`;
-    suggestionBox.style.top = `${rect.bottom}px`;
+    suggestionBox.style.top = `${rect.bottom + window.scrollY}px`; // Adjust for scrolling
 
+    // Add the suggestion box to the body
     document.body.appendChild(suggestionBox);
-    suggestionBox.addEventListener('click', () => {
-        document.body.removeChild(suggestionBox);
-    });
+}
+
+// Function to hide the suggestion box
+function hideSuggestions() {
+    const existingSuggestionBox = document.querySelector('.suggestion-box');
+    if (existingSuggestionBox) {
+        existingSuggestionBox.remove();
+    }
 }
