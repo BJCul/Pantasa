@@ -12,22 +12,14 @@ roberta_tokenizer = AutoTokenizer.from_pretrained(tagalog_roberta_model)
 print("Loading model...")
 roberta_model = AutoModelForMaskedLM.from_pretrained(tagalog_roberta_model)
 print("Model and tokenizer loaded successfully.")
-batch_size=2
 
-def load_csv_in_batches(file_path, batch_size):
-    """
-    Load CSV file in batches to handle large datasets.
-    """
+def load_csv(file_path):
+    print(f"Loading data from {file_path}...")
     with open(file_path, 'r', encoding='utf-8') as file:
         reader = csv.DictReader(file)
-        batch = []
-        for index, row in enumerate(reader):
-            batch.append(row)
-            if (index + 1) % batch_size == 0:
-                yield batch
-                batch = []
-        if batch:
-            yield batch
+        data = [row for row in reader]
+    print(f"Data loaded from {file_path}. Number of rows: {len(data)}")
+    return data
 
 def load_lexeme_comparison_dictionary(file_path):
     comparisons = {}
@@ -58,19 +50,21 @@ def convert_id_array(id_array_str):
         return []  # Return an empty list or handle it accordingly
     return id_array_str.strip("[]'").replace("'", "").split(', ')
 
-def subtoken_boost_penalty_score(score, word, tokenizer):
-    # Tokenize the word and check how many subtokens it splits into
+def load_and_convert_csv(file_path):
+    data = load_csv(file_path)
+    for entry in data:
+        print(f"Processing entry: {entry}")
+        entry['ID_Array'] = convert_id_array(entry.get('ID_Array', ''))
+    return data
+
+def subword_penalty_score(score, word, tokenizer):
+    # Tokenize the word and count how many subword tokens it splits into
     tokenized_word = tokenizer(word, return_tensors="pt")['input_ids'][0]
-    num_tokens = len(tokenized_word)  # Number of subtokens
+    num_tokens = len(tokenized_word)  # Count number of subwords
 
-    if num_tokens == 1:
-        # Boost score if the word has only 1 subtoken (simpler word)
-        boosted_score = score * 1.2 
-    else:
-        # Penalize score if the word has more than 1 subtoken (complex word)
-        boosted_score = score / num_tokens  # Penalize by dividing by the number of subtokens
-
-    return boosted_score
+    # Penalize the score based on the number of subword tokens
+    penalized_score = score / num_tokens  # Fewer tokens = higher score
+    return penalized_score
 
 
 def compute_mlm_score(sentence, model, tokenizer):
@@ -94,13 +88,14 @@ def compute_mlm_score(sentence, model, tokenizer):
         # Get the word corresponding to the token ID
         word = tokenizer.decode([original_token_id]).strip()
 
-        # Apply subtoken boost/penalty based on the number of subtokens
-        adjusted_score = subtoken_boost_penalty_score(score, word, tokenizer)
+        # Apply subword complexity penalty
+        penalized_score = subword_penalty_score(score, word, tokenizer)
         
-        scores.append(adjusted_score)
+        scores.append(penalized_score)
 
     average_score = sum(scores) / len(scores) * 100  # Convert to percentage
     return average_score, scores
+
 
 def compute_word_score(word, sentence, model, tokenizer):
     # Split the sentence into words
@@ -134,81 +129,182 @@ def compute_word_score(word, sentence, model, tokenizer):
     probs = torch.softmax(logits[0, word_token_index], dim=-1)
     score = probs[word_token_id].item()  # Probability of the original word when masked
     
-    # Apply subtoken boost/penalty
-    adjusted_score = subtoken_boost_penalty_score(score, word, tokenizer)
+    # Apply subword complexity penalty
+    penalized_score = subword_penalty_score(score, word, tokenizer)
     
-    return adjusted_score * 100  # Return as a percentage
+    return penalized_score * 100  # Return as a percentage
 
+def load_existing_results(output_file):
+    if not os.path.exists(output_file):
+        return set()
 
-def generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file, output_file, lexeme_comparison_dict_file, model, tokenizer, batch_size=1000, threshold=80.0):
-    print("Loading ngram list...")
-    ngram_list_batches = load_csv_in_batches(ngram_list_file, batch_size)
+    with open(output_file, 'r', encoding='utf-8') as file:
+        reader = csv.DictReader(file)
+        existing_ngrams = {row['Final_Hybrid_N-Gram'] for row in reader}
+    return existing_ngrams
+
+def get_latest_pattern_id(file_path):
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            reader = csv.DictReader(file)
+            pattern_ids = [int(row['Pattern_ID']) for row in reader if row['Pattern_ID'].isdigit()]
+            return max(pattern_ids, default=0)
+    except FileNotFoundError:
+        return 0
+
+def generate_pattern_id(counter):
+    return f"{counter:06d}"
+
+def find_row_containing_string(data, column_name, search_string):
+    for row in data:
+        if search_string in row[column_name]:
+            return row  # Return the first matching row
+    return None  # Return None if no match is found
+
+def generalize_patterns(ngram_list_file, pos_patterns_file, id_array_file, output_file, lexeme_comparison_dict_file, model, tokenizer,  threshold=80.0):
     print("Loading POS patterns...")
-    pos_patterns = load_csv_in_batches(pos_patterns_file, batch_size)
-    print("Loading ID array data...")
-    id_array_batches = load_csv_in_batches(id_array_file, batch_size)
-    
+    pos_patterns = load_csv(pos_patterns_file)  # Load full file
+
+    print("Loading ID arrays")
+    id_array = load_csv(id_array_file)
+
+    print("Loading ngram list file")
+    ngram_list = load_csv(ngram_list_file)
+
+    # Load lexeme comparison dictionary and track existing Pattern_IDs
     seen_lexeme_comparisons = load_lexeme_comparison_dictionary(lexeme_comparison_dict_file)
+    
+    # Get the latest pattern ID from both input and output files
+    latest_pattern_id_input = get_latest_pattern_id(pos_patterns_file)
+    latest_pattern_id_output = get_latest_pattern_id(output_file)
+    latest_pattern_id = max(latest_pattern_id_input, latest_pattern_id_output)
+    
+    # Initialize pattern counter from the latest ID
+    pattern_counter = latest_pattern_id + 1
     pos_comparison_results = []
 
-    for id_array_batch in id_array_batches:
-        for id_array_entry in id_array_batch:
-            pattern_id = id_array_entry['Pattern_ID']
-            for instance_id in convert_id_array(id_array_entry.get('ID_Array', '')):
-                instance_found = False  # Flag to indicate if we found the instance
-                
-                for ngram_batch in ngram_list_batches:
-                    for ngram in ngram_batch:
-                        # Ensure both are strings and N-Gram_ID is zero-padded to 6 digits
-                        ngram_id_str = str(ngram['N-Gram_ID']).zfill(6)
-                        instance_id_str = instance_id.zfill(6)
-                        
-                        print(f"Comparing instance_id '{instance_id_str}' with ngram['N-Gram_ID']: '{ngram_id_str}'")
-                        if ngram_id_str == instance_id_str:
-                            instance = ngram
-                            instance_found = True
-                            break  # Exit the loop once we find the instance
-                # Exit the loop once we find the instance
-                
-                if not instance_found:
-                    print(f"No instance found for ID {instance_id}.")
-                    continue
+    with open(output_file, 'w', newline='', encoding='utf-8') as file:
+        fieldnames = ['Pattern_ID', 'POS_N-Gram', 'Lexeme_N-Gram', 'MLM_Scores', 'Comparison_Replacement_Matrix', 'Final_Hybrid_N-Gram']
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer.writeheader()
 
-                lemma_ngram_sentence = instance.get('Lemma_N-Gram', '')
-                if (pattern_id, lemma_ngram_sentence) not in seen_lexeme_comparisons:
-                    score, _ = compute_mlm_score(lemma_ngram_sentence, model, tokenizer)
-                    if score >= threshold:
-                        pos_comparison_results.append({
-                            'Pattern_ID': pattern_id,
-                            'POS_N-Gram': instance.get('POS_N-Gram', ''),
-                            'Lexeme_N-Gram': lemma_ngram_sentence,
-                            'MLM_Scores': score,
-                            'Comparison_Replacement_Matrix': '',  # Implement as needed
-                            'Final_Hybrid_N-Gram': lemma_ngram_sentence  # Simplified
-                        })
-                        seen_lexeme_comparisons[(pattern_id, lemma_ngram_sentence)] = pattern_id
+        # Step 1: Write the hybrid n-grams to the output CSV before comparison
+        print("Writing initial hybrid n-grams to the CSV file...")
+        process_count = 0
+        for pos_pattern in pos_patterns:
+            process_count += 1
+            pattern_id = pos_pattern['Pattern_ID']
+            pattern = pos_pattern['POS_N-Gram']
 
-        # Save results and dictionary after processing each batch
-        with open(output_file, 'a', newline='', encoding='utf-8') as file:
-            fieldnames = ['Pattern_ID', 'POS_N-Gram', 'Lexeme_N-Gram', 'MLM_Scores', 'Comparison_Replacement_Matrix', 'Final_Hybrid_N-Gram']
-            writer = csv.DictWriter(file, fieldnames=fieldnames)
-            if os.stat(output_file).st_size == 0:
-                writer.writeheader()
+            # Write the POS n-grams to the output CSV before comparison
+            print(f"Listing POS n-gram for Pattern: {pattern_id}")
+            writer.writerow({
+                'Pattern_ID': pattern_id,
+                'POS_N-Gram': pattern,
+                'Lexeme_N-Gram': '',
+                'MLM_Scores': '',
+                'Comparison_Replacement_Matrix': '',
+                'Final_Hybrid_N-Gram': pattern_id
+            })
+
+            # Step 2: Perform the comparison and update the file
+            print(f"Comparing for Pattern: {pattern_id}")
+            id_array_row = find_row_containing_string(id_array, 'Pattern_ID', pattern_id)
+            if id_array_row is None:
+                print(f"No matching row found for Pattern_ID: {pattern_id}")
+                continue
+
+            id_array_value = id_array_row.get("ID_Array")
+            id_array_total_comparison = len(id_array_value) * 2
+            id_array_tally_comparison = 0
+
+            for instance_id in convert_id_array(id_array_value):
+                found = False
+                for ngram in ngram_list:
+                    if ngram['N-Gram_ID'] == instance_id.zfill(6):
+                        found = True
+                        ngram_sentence = ngram.get('N-Gram', '')
+                        comparison_key = (pattern_id, ngram_sentence)
+                        if comparison_key not in seen_lexeme_comparisons:
+                            score, _ = compute_mlm_score(ngram_sentence, model, tokenizer)
+                            if score >= threshold:
+                                hybrid_ngram, comparison_matrix = process_ngram(ngram_sentence, pattern)
+
+                                if comparison_matrix is not None:      
+                                    # Increment pattern counter and generate new pattern ID
+                                    pattern_counter += 1
+                                    new_pattern_id = generate_pattern_id(pattern_counter)
+                                    
+                                    print(f"Compared for instance successful: {instance_id}")
+                                    pos_comparison_results.append({
+                                        'Pattern_ID': new_pattern_id,  # Use new pattern ID here
+                                        'POS_N-Gram': pattern,
+                                        'Lexeme_N-Gram': ngram_sentence,
+                                        'MLM_Scores': score,
+                                        'Comparison_Replacement_Matrix': comparison_matrix,
+                                        'Final_Hybrid_N-Gram': hybrid_ngram
+                                    })
+                                    seen_lexeme_comparisons[comparison_key] = f'1{new_pattern_id}' 
+
+                                else:
+                                    seen_lexeme_comparisons[comparison_key] = f'2{instance_id}' 
+                                
+                            else:
+                                seen_lexeme_comparisons[comparison_key] = f'3{instance_id}'  
+                        id_array_tally_comparison += 1 
+
+                        lemma_ngram_sentence = ngram.get('Lemma_N-Gram', '')
+                        comparison_key = (pattern_id, lemma_ngram_sentence)
+                        if comparison_key not in seen_lexeme_comparisons:
+                            score, _ = compute_mlm_score(lemma_ngram_sentence, model, tokenizer)
+                            if score >= threshold:
+                                hybrid_ngram, comparison_matrix = process_ngram(ngram_sentence, pattern)
+                                
+                                if comparison_matrix is not None:      
+                                    # Increment pattern counter and generate new pattern ID
+                                    pattern_counter += 1
+                                    new_pattern_id = generate_pattern_id(pattern_counter)
+                                    
+                                    
+                                    print(f"Compared for instance successful: {instance_id}")
+                                    pos_comparison_results.append({
+                                        'Pattern_ID': new_pattern_id,  # Use new pattern ID here
+                                        'POS_N-Gram': pattern,
+                                        'Lexeme_N-Gram': ngram_sentence,
+                                        'MLM_Scores': score,
+                                        'Comparison_Replacement_Matrix': comparison_matrix,
+                                        'Final_Hybrid_N-Gram': hybrid_ngram
+                                    })
+                                    seen_lexeme_comparisons[comparison_key] = f'1{new_pattern_id}' 
+
+                                else:
+                                    seen_lexeme_comparisons[comparison_key] = f'2{instance_id}' 
+                                
+                            else:
+                                seen_lexeme_comparisons[comparison_key] = f'3{instance_id}'  
+                        id_array_tally_comparison += 1
+
+                if id_array_tally_comparison % 10 == 0:
+                    print(f"Total comparisons: {id_array_tally_comparison}/{id_array_total_comparison}")
+
+                if not found:
+                    print(f"No instance found for ID: {instance_id}")
+            
+
             writer.writerows(pos_comparison_results)
+            pos_comparison_results = []  # Reset after saving
 
+        # Save the lexeme comparison dictionary after the entire process
         save_lexeme_comparison_dictionary(lexeme_comparison_dict_file, seen_lexeme_comparisons)
-        pos_comparison_results = []  # Reset after saving
 
-
-# Example usage for batch processing
-for n in range(4,5):
+for n in range(4, 5):
     ngram_list_file = 'rules/database/ngrams.csv'
     pos_patterns_file = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
     id_array_file = f'rules/database/POS/{n}grams.csv'
     output_file = f'rules/database/Generalized/LexemeComparison/{n}grams.csv'
     comparison_dict_file = 'rules/database/LexComparisonDictionary.txt'
+    batch_size=2
 
-    print(f"Starting generalization for {n}-grams in batches...")
-    generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file, output_file, comparison_dict_file, roberta_model, roberta_tokenizer, batch_size)
-    print(f"Starting generalization for {n}-grams in batches...")
-    
+    print(f"Starting generalization for {n}-grams...")
+    generalize_patterns(ngram_list_file, pos_patterns_file, id_array_file, output_file, comparison_dict_file, roberta_model, roberta_tokenizer)
+    print(f"Finished generalization for {n}-grams.")
