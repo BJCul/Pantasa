@@ -1,14 +1,23 @@
+# app/error_detection.py
+
 import re
-from utils import load_hybrid_ngram_patterns, process_sentence_with_dynamic_ngrams, extract_ngrams
+from utils import load_hybrid_ngram_patterns
 from preprocess import preprocess_text
 
-def match_pos_to_hybrid_ngram(input_pos_tags, hybrid_ngram, flexibility=True):
+def match_pos_to_hybrid_ngram(input_pos_tags, hybrid_ngram, flexibility=False):
     """
-    Checks if the input POS tag sequence matches the hybrid n-gram pattern with flexibility.
+    Checks if the input POS tag sequence matches the hybrid n-gram pattern.
+
+    Args:
+    - input_pos_tags: List of POS tags from the input sentence.
+    - hybrid_ngram: List of POS tag patterns from the hybrid n-gram.
+
+    Returns:
+    - True if the input POS tag sequence matches the hybrid n-gram pattern, otherwise False.
     """
     if len(input_pos_tags) != len(hybrid_ngram):
         if flexibility and abs(len(input_pos_tags) - len(hybrid_ngram)) <= 1:
-            pass  # Minor length difference tolerated
+            print("Warning: Minor length difference tolerated.")
         else:
             return False  # Length mismatch
 
@@ -20,10 +29,12 @@ def match_pos_to_hybrid_ngram(input_pos_tags, hybrid_ngram, flexibility=True):
             input_parts = input_pos_tag.split("_")
             
             if len(input_parts) < 2:
+                print(f"Mismatch at position {i}: Expected underscore in tag but not found.")
                 return False  # No match if the input lacks expected parts
 
             # Match both parts of the pattern with flexibility if enabled
             if not re.match(parts[0], input_parts[0]) or not re.match(parts[1], input_parts[1]):
+                print(f"Mismatch at position {i}: {parts} does not match {input_parts}")
                 return False
         else:
             # Match general POS tags (e.g., VB.* matches VB, VBAF, VBTS)
@@ -32,55 +43,26 @@ def match_pos_to_hybrid_ngram(input_pos_tags, hybrid_ngram, flexibility=True):
                 if flexibility:
                     # Allow for small differences (e.g., NN vs NNS)
                     if input_pos_tag.startswith(general_pattern):
+                        print(f"Flexibility allowed: {input_pos_tag} loosely matches {general_pattern}")
                         continue
                     else:
+                        print(f"Mismatch at position {i}: {input_pos_tag} does not match {pattern}")
                         return False
                 else:
+                    print(f"Mismatch at position {i}: {input_pos_tag} does not match {pattern}")
                     return False
 
     return True
 
 
 def compare_with_hybrid_ngrams(input_pos_tags, hybrid_ngram_patterns):
-    """
-    Compare the input sentence's POS tags against hybrid n-gram patterns using dynamically sized N-grams.
-
-    Args:
-    - input_pos_tags: List of POS tags from the input sentence.
-    - hybrid_ngram_patterns: List of hybrid n-gram patterns.
-
-    Returns:
-    - List of matching pattern IDs.
-    """
     matching_patterns = []
-    sentence_tokens = [tag[1] for tag in input_pos_tags]  # Extract POS tags
 
-    # Use dynamic N-gram size generation for matching
-    ngrams = extract_ngrams(sentence_tokens)
-
-    total_comparisons = 0  # To count total comparisons made
-
-    print(f"Total n-grams from input sentence: {len(ngrams)}")  # Log total n-grams generated
-
-    # Iterate through each n-gram generated from the input sentence
-    for ngram_index, ngram in enumerate(ngrams):
-        print(f"Processing n-gram {ngram_index + 1}/{len(ngrams)}: {ngram}")
-
-        # Iterate through each hybrid n-gram pattern
-        for hybrid_index, hybrid_ngram in enumerate(hybrid_ngram_patterns):
-            print(f"Comparing n-gram {ngram} with hybrid n-gram {hybrid_index + 1}/{len(hybrid_ngram_patterns)}")
-
-            total_comparisons += 1  # Increment the comparison counter
-
-            # Perform the comparison between the current n-gram and hybrid n-gram
-            if match_pos_to_hybrid_ngram(ngram, hybrid_ngram['ngram_pattern']):
-                print(f"Match found: {ngram} matches {hybrid_ngram['ngram_pattern']}")
-                matching_patterns.append(hybrid_ngram['pattern_id'])
-
-    print(f"Total comparisons made: {total_comparisons}")
+    for hybrid_ngram in hybrid_ngram_patterns:
+        if match_pos_to_hybrid_ngram(input_pos_tags, hybrid_ngram['ngram_pattern']):
+            matching_patterns.append(hybrid_ngram['pattern_id'])
 
     return matching_patterns
-
 
 def compare_pos_sequences(input_pos_tags, hybrid_ngram_tags):
     mismatches = 0
@@ -96,7 +78,6 @@ def compare_pos_sequences(input_pos_tags, hybrid_ngram_tags):
     mismatches += abs(len(input_pos_tags) - len(hybrid_ngram_tags))
     return mismatches
 
-
 def generate_substitution_suggestion(input_pos_tags, hybrid_ngram_tags):
     suggestions = []
     for i in range(len(hybrid_ngram_tags)):
@@ -109,7 +90,6 @@ def generate_substitution_suggestion(input_pos_tags, hybrid_ngram_tags):
             suggestions.append(f"replace {input_pos_tag} with {hybrid_ngram_tags[i]}")
 
     return ", ".join(suggestions)
-
 
 def generate_suggestions(input_pos_tags, hybrid_ngram_patterns):
     closest_matches = []
@@ -126,59 +106,37 @@ def generate_suggestions(input_pos_tags, hybrid_ngram_patterns):
         for match in closest_matches:
             pattern_id, ngram_tags, distance = match
             suggestion = generate_substitution_suggestion(input_pos_tags, ngram_tags)
-            
-            # Show the comparison between input n-gram and hybrid n-gram
-            input_ngram_str = " ".join([tag[1] for tag in input_pos_tags])
-            hybrid_ngram_str = " ".join(ngram_tags)
             suggestions.append(f"Pattern ID {pattern_id}: Suggest {suggestion}")
-            suggestions.append(f"Comparing input n-gram: {input_ngram_str} with hybrid n-gram: {hybrid_ngram_str}")
     else:
         suggestions.append("No suggestions available.")
 
     return suggestions
 
-
 def detect_errors_with_pantasa(input_sentence, jar_path, model_path, hybrid_ngram_patterns):
-    # Step 1: Preprocess the sentence (tokenize, POS tag, and lemmatize)
-    preprocessed_output = preprocess_text(input_sentence, jar_path, model_path)
+    preprocessed_output = preprocess_text(input_sentence)
     if not preprocessed_output:
         return True, "Error during preprocessing."
 
     tokens, lemmas, pos_tags = preprocessed_output[0]
-    
-    # Step 2: Extract dynamically sized N-grams from the tokens
-    ngram_collections = process_sentence_with_dynamic_ngrams(tokens)
-    
-    # Use the original POS tags to generate the pos_tag_list for each n-gram
-    for ngram_size, ngrams in ngram_collections.items():
-        for ngram in ngrams:
-            # Match tokens in n-gram with their POS tags from the original pos_tags list
-            pos_tag_list = []
-            for token in ngram:
-                for original_token, pos_tag in pos_tags:
-                    if original_token == token:
-                        pos_tag_list.append((original_token, pos_tag))
-                        break
+    pos_tag_list = pos_tags
 
-            # Now compare the pos_tag_list with hybrid n-gram patterns
-            matching_patterns = compare_with_hybrid_ngrams(pos_tag_list, hybrid_ngram_patterns)
-            
-            if matching_patterns:
-                return False, f"No error detected with {ngram_size}: {ngram}"
+    matching_patterns = compare_with_hybrid_ngrams(pos_tag_list, hybrid_ngram_patterns)
 
-    suggestions = generate_suggestions(pos_tag_list, hybrid_ngram_patterns)
-    return True, f"Error detected: No matching hybrid n-gram pattern found.\nSuggestions:\n" + "\n".join(suggestions)
+    if not matching_patterns:
+        suggestions = generate_suggestions(pos_tag_list, hybrid_ngram_patterns)
+        print(pos_tag_list)
+        return True, f"Error detected: No matching hybrid n-gram pattern found.\nSuggestions:\n" + "\n".join(suggestions)
 
+    return False, "No error detected: Sentence is grammatically correct."
 
 # Example usage
 if __name__ == "__main__":
-
     hybrid_ngram_patterns = load_hybrid_ngram_patterns('data/processed/hngrams.csv')
 
     jar_path = r'C:\Projects\Pantasa\rules\Libraries\FSPOST\stanford-postagger.jar'
     model_path = r'C:\Projects\Pantasa\rules\Libraries\FSPOST\filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
 
-    input_sentence = "kumain ang mga bata ng mansanas"
+    input_sentence = "Isang pamilya tayo"
 
     has_error, message = detect_errors_with_pantasa(input_sentence, jar_path, model_path, hybrid_ngram_patterns)
     print(message)

@@ -78,7 +78,7 @@ if __name__ == "__main__":
     model_path = r'C:\Projects\Pantasa\rules\Libraries\FSPOST\filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
 
     # Input sentence for detection
-    input_sentence = "bakit ganito? ano na?"
+    input_sentence = "ang pagwawasto ng mga texto"
     
     # Run error detection
     has_error, message = detect_errors_with_pantasa(input_sentence, jar_path, model_path, hybrid_ngram_patterns)

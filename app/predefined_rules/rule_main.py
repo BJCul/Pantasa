@@ -120,4 +120,14 @@ def apply_predefined_rules(text):
 
     return rule_corrected
 
+# Example sentence to test
+sample_sentence = "kumain ng mabilis"
+
+# Apply predefined rules
+corrected_sentence = apply_predefined_rules(sample_sentence)
+
+# Print the corrected sentence
+print("Original sentence:", sample_sentence)
+print("Corrected sentence:", corrected_sentence)
+
     

@@ -85,7 +85,7 @@ def compare_with_hybrid_ngrams(input_pos_tags, hybrid_ngram_patterns):
 
 def ngram_matching(input_sentence, jar_path, model_path, hybrid_ngram_patterns):
     # Step 1: Preprocess the sentence (tokenize, POS tag, and lemmatize)
-    preprocessed_output = preprocess_text(input_sentence, jar_path, model_path)
+    preprocessed_output = preprocess_text(input_sentence)
     if not preprocessed_output:
         logger.error("Error during preprocessing.")
         return False
