@@ -110,7 +110,7 @@ document.getElementById('grammarTextarea').addEventListener('input', function ()
 
         } catch (error) {
             console.error('Error:', error);
-            predictionsContent.innerHTML = 'Error retrieving data. Maybe you forgot a period?.';
+            predictionsContent.innerHTML = 'Error retrieving data.';
         } finally {
             // Change loading text to "Complete"
             loadingElement.querySelector('p').textContent = 'Complete';
