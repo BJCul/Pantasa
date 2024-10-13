@@ -7,9 +7,25 @@ from rd_rule import rd_interchange
 # Add the 'app' directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-# Import the necessary modules
+# Import the necessary 
 
 from rules.Modules.POSDTagger import pos_tag
+
+# Hierarchical POS Tag Dictionary
+hierarchical_pos_tags = {
+    "NN.*": ["NNC", "NNP", "NNPA", "NNCA"],
+    "PR.*": ["PRS", "PRP", "PRSP", "PRO", "PRQ", "PRQP", "PRL", "PRC", "PRF", "PRI"],
+    "DT.*": ["DTC", "DTCP", "DTP", "DTPP"],
+    "CC.*": ["CCT", "CCR", "CCB", "CCA", "CCP", "CCU"],
+    "LM": [],
+    "TS": [],
+    "VB.*": ["VBW", "VBS", "VBH", "VBN", "VBTS", "VBTR", "VBTF", "VBTP", "VBAF", "VBOF", "VBOB", "VBOL", "VBOI", "VBRF"],
+    "JJ.*": ["JJD", "JJC", "JJCC", "JJCS", "JJCN", "JJN"],
+    "RB.*": ["RBD", "RBN", "RBK", "RBP", "RBB", "RBR", "RBQ", "RBT", "RBF", "RBW", "RBM", "RBL", "RBI", "RBJ", "RBS"],
+    "CD.*": ["CDB"],
+    "FW": [],
+    "PM.*": ["PMP", "PME", "PMQ", "PMC", "PMSC", "PMS"]
+}
 
 def load_dictionary(csv_path):
     df = pd.read_csv(csv_path)
@@ -23,42 +39,71 @@ def handle_nang_ng(text, pos_tags):
     corrected_words = []
     
     for i, word in enumerate(words):
-        if word == "nang":
+        if word == "ng":
             # Handle "nang" as a synonym for "noong" (RBW)
             if pos_tags[i] == 'RBW':  
-                corrected_words.append("noong")
+                corrected_words.append("nang")
+                print("'ng' corrected to 'nang' (RBW synonym for 'noong')")
+
             
             # Handle "nang" as a conjunction (CCB, CCT)
             elif pos_tags[i] in ['CCB', 'CCT']:
-                corrected_words.append(word)  # Keep "nang" as conjunction
+                corrected_words.append("nang")  # Keep "nang" as conjunction
+                print("'ng' corrected to 'nang' (conjunction CCB or CCT)")
             
             # Handle "nang" as a ligature (CCP)
             elif pos_tags[i] == 'CCP' and i > 0:
-                prev_pos = pos_tags[i - 1]
-                if prev_pos in ['RB', 'VB', 'JJ']:  # Connecting adverb of manner/intensity to verb/adjective
-                    corrected_words.append(word)
-                else:
+                prev_post = pos_tags[i - 1] if i - 1 > 0 else None
+                post_pos = pos_tags[i + 1] if i + 1 < len(pos_tags) else None
+                pos_ex = f"{prev_post} {pos_tags[i]} {post_pos}"
+                print("Checking ligature context: previous POS: {prev_post}, current POS: {pos_tags[i]}, next POS: {post_pos}")
+
+                # Get the POS tags for RB.* and VB.* from the dictionary
+                adverb_pos = hierarchical_pos_tags['RB.*'] + hierarchical_pos_tags['VB.*']
+                pos_ex_list = pos_ex.split()
+
+                if  any(pos in adverb_pos for pos in pos_ex_list):# Connecting adverb of manner/intensity to verb/adjective
                     corrected_words.append("nang")
-        
-        elif word == "ng":
-            # Handle "ng" as a ligature (CCP or CCB)
-            if pos_tags[i] in ['CCP', 'CCB']:
-                corrected_words.append(word)  # Keep "ng"
+                    print("Ligature 'ng' corrected to 'nang' (connecting adverb of manner/intensity)")
+                    
+                elif any(pos in hierarchical_pos_tags['JJ.*'] for pos in pos_ex_list):
+                    if any(pos in hierarchical_pos_tags['NN.*'] for pos in pos_ex_list):
+                        corrected_words.append(word)
+                        print("Ligature 'ng' kept as 'ng' (adjective-noun structure)")
+                    else:
+                       corrected_words.append("nang") 
+                       print("Ligature 'ng' corrected to 'nang' (adjective context without noun)")
+            
+
+        elif word == "nang": #Check if it a coordinating, onjunction
+            if pos_tags[i] == 'CCB' and i > 0:
+                corrected_words.append("ng")
+                print("'nang' corrected to 'ng' (coordinating conjunction CCB)")
             else:
                 corrected_words.append(word)
+                print("'nang' kept unchanged")
         
         elif word == "na" and i > 0:  # If the current word is "na" and it's not the first word
             prev_word = words[i - 1]
+            print(f"Checking if 'na' should be merged with the previous word: {prev_word}")
+            
             if prev_word[-1].lower() in vowels:  # Check if the previous word ends with a vowel
                 corrected_word = prev_word + "ng"
                 corrected_words[-1] = corrected_word  # Update the last word in corrected_words
+                print(f"Word ending with vowel: Merged 'na' to form '{corrected_word}'")
+
             elif prev_word[-1].lower() == 'n':  # Check if the previous word ends with 'n'
                 corrected_word = prev_word + "g"
                 corrected_words[-1] = corrected_word  # Update the last word in corrected_words
+                print(f"Word ending with 'n': Merged 'na' to form '{corrected_word}'")
+
         else:
             corrected_words.append(word)  # Append the word if no correction is made
+            print(f"No correction needed for '{word}'")
     
-    return ' '.join(corrected_words)
+    corrected_text = ' '.join(corrected_words)
+    print(f"\nFinal corrected text: {corrected_text}")
+    return corrected_text
 
 # Load the dictionary from the CSV file
 dictionary_file = load_dictionary("data/raw/dictionary.csv")
@@ -119,5 +164,11 @@ def apply_predefined_rules(text):
     rule_corrected = correct_hyphenation(nang_handled)
 
     return rule_corrected
+
+test = "tumakbo ng mabilis"
+pos = pos_tag(test).split()  # Split the string into a list
+print(test)
+print(pos)
+print(handle_nang_ng(test, pos))
 
     

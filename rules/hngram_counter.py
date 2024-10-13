@@ -99,29 +99,29 @@ def instance_collector(pattern, ngrams_df, pattern_ngram_size):
     
     # Step 1: Filter by n-gram size
     size_filtered_df = filter_by_ngram_size(pattern, ngrams_df, pattern_ngram_size)
-    logging.debug(f"Size-filtered n-grams: {len(size_filtered_df)}")
 
     # Step 2: Get the three search patterns (rough POS, detailed POS, and words)
     rough_pos_search_pattern, detailed_pos_search_pattern, word_search_pattern = search_pattern_conversion_based_on_tag_type(pattern)
     
     # Step 3: Apply rough POS filtering
     rough_pos_matches = size_filtered_df[size_filtered_df['RoughPOS_N-Gram'].str.contains(rough_pos_search_pattern, regex=True)]
-    logging.debug(f"Rough POS tag matches: {len(rough_pos_matches)}")
     
     # Step 4: Apply detailed POS filtering on the rough POS matches
     detailed_pos_matches = rough_pos_matches[rough_pos_matches['DetailedPOS_N-Gram'].str.contains(detailed_pos_search_pattern, regex=True)]
-    logging.debug(f"Detailed POS tag matches: {len(detailed_pos_matches)}")
     
-
+    """
     # Step 5: Apply word-based filtering using re.search
     def word_match_search(row, word_search_pattern):
         match = re.search(word_search_pattern, row['N-Gram'], re.IGNORECASE)
         return bool(match)
+    
 
     final_matches = detailed_pos_matches[detailed_pos_matches.apply(lambda row: word_match_search(row, word_search_pattern), axis=1)]
     logging.debug(f"Word matches: {len(final_matches)}")
+
+    """
     
-    return final_matches
+    return detailed_pos_matches
 
 
 # Function to update hngrams_df with batch results and save to CSV
@@ -136,18 +136,30 @@ def update_hngrams_csv(hngrams_df, batch_df):
         
         # Update the corresponding row in the main hngrams_df DataFrame
         hngrams_df.loc[hngrams_df['Pattern_ID'] == pattern_id, 'Frequency'] = frequency
-        hngrams_df.loc[hngrams_df['Pattern_ID'] == pattern_id, 'Rough POS'] = rough_pos_pattern
+        hngrams_df.loc[hngrams_df['Pattern_ID'] == pattern_id, 'Rough_POS'] = rough_pos_pattern
     
     # Save the updated hngrams_df to the CSV file after processing each batch
     hngrams_df.to_csv('rules/database/hngrams.csv', index=False)
     logging.debug(f"hngrams.csv saved after processing batch.")
 
 # Function to process hngrams_df in batches
-def process_in_batches(hngrams_df, ngrams_df, batch_size=100):
+def process_in_batches(hngrams_df, ngrams_df, batch_size=100, start_pattern_id=None):
     total_rows = len(hngrams_df)
     
-    # Iterate through the DataFrame in batches
-    for start in range(0, total_rows, batch_size):
+    # Find the starting index based on the provided start_pattern_id
+    if start_pattern_id is not None:
+        start_index = hngrams_df.index[hngrams_df['Pattern_ID'] == start_pattern_id].tolist()
+        if start_index:
+            start_index = start_index[0]
+            logging.info(f"Starting from pattern ID {start_pattern_id} at row {start_index}")
+        else:
+            logging.warning(f"Pattern ID {start_pattern_id} not found. Starting from the beginning.")
+            start_index = 0
+    else:
+        start_index = 0  # Start from the beginning if no start_pattern_id is provided
+
+    # Iterate through the DataFrame in batches, starting from the calculated start_index
+    for start in range(start_index, total_rows, batch_size):
         end = min(start + batch_size, total_rows)
         logging.info(f"Processing batch from row {start} to {end}")
         
@@ -171,7 +183,7 @@ def process_in_batches(hngrams_df, ngrams_df, batch_size=100):
             
             # Update the batch DataFrame with frequency and rough POS pattern
             batch_df.loc[index, 'Frequency'] = total_matched_ngrams
-            batch_df.loc[index, 'Rough POS'] = rough_pos_pattern
+            batch_df.loc[index, 'Rough_POS'] = rough_pos_pattern
 
         # Update the main hngrams_df with the processed batch and save results to CSV
         update_hngrams_csv(hngrams_df, batch_df)
@@ -184,6 +196,6 @@ hngrams_df = pd.read_csv('rules/database/hngrams.csv')
 ngrams_df = pd.read_csv('rules/database/ngrams.csv')
 
 # Process the hngrams.csv in batches of 100 rows (adjust the batch size as needed)
-process_in_batches(hngrams_df, ngrams_df, batch_size=100)
+process_in_batches(hngrams_df, ngrams_df, batch_size=100, start_pattern_id=540754)
 
 logging.info("All batches processed and hngrams.csv updated.")
