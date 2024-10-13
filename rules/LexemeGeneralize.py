@@ -161,6 +161,41 @@ def find_row_containing_string(data, column_name, search_string):
             return row  # Return the first matching row
     return None  # Return None if no match is found
 
+
+def process_ngram(ngram_sentence, rough_pos, model=roberta_model, tokenizer=roberta_tokenizer, threshold=80.0):
+    
+    # Compute MLM score for the full sequence
+    sequence_mlm_score, _ = compute_mlm_score(ngram_sentence, model, tokenizer)
+    
+    if sequence_mlm_score >= threshold:
+        print(f"Sequence MLM score {sequence_mlm_score} meets the threshold {threshold}. Computing individual word scores...")
+        
+        # Initialize comparison matrix and new pattern
+        comparison_matrix = ['*'] * len(ngram_sentence.split())
+        new_pattern = rough_pos.split()
+        words = ngram_sentence.split()
+        rough_pos_tokens = rough_pos.split()
+
+        # Check for length mismatch between words and POS tokens
+        if len(words) != len(rough_pos_tokens):
+            print("Length mismatch between words and POS tokens for n-gram. Skipping...")
+            return None, None
+
+        # Process each word in the sentence
+        for i, (pos_tag, word) in enumerate(zip(rough_pos_tokens, words)):
+            word_score = compute_word_score(word, ngram_sentence, model, tokenizer)
+            print(f"Word '{word}' average score: {word_score}")
+            
+            if word_score >= threshold:
+                new_pattern[i] = word
+                comparison_matrix[i] = word
+            else:
+                new_pattern[i] = pos_tag  # Restore the original POS tag if word doesn't meet threshold
+
+        final_hybrid_ngram = ' '.join(new_pattern)
+
+        return final_hybrid_ngram, comparison_matrix, sequence_mlm_score
+
 def generalize_patterns(ngram_list_file, pos_patterns_file, id_array_file, output_file, lexeme_comparison_dict_file, model, tokenizer,  threshold=80.0):
     print("Loading POS patterns...")
     pos_patterns = load_csv(pos_patterns_file)  # Load full file
@@ -297,7 +332,7 @@ def generalize_patterns(ngram_list_file, pos_patterns_file, id_array_file, outpu
         # Save the lexeme comparison dictionary after the entire process
         save_lexeme_comparison_dictionary(lexeme_comparison_dict_file, seen_lexeme_comparisons)
 
-for n in range(4, 5):
+for n in range(6, 7):
     ngram_list_file = 'rules/database/ngrams.csv'
     pos_patterns_file = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
     id_array_file = f'rules/database/POS/{n}grams.csv'
