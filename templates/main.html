@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles_main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&italic&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Artifika&display=swap" rel="stylesheet">
     <title>Pantasa - Advance Tagalog Error Checker</title>
@@ -43,11 +43,7 @@
         <p>© 2024 Sharp Mugs. All Rights Reserved.</p>
     </footer>
 
-    <script>
-        function processText() {
-            const inputText = document.getElementById('inputText').value;
-            document.getElementById('outputText').value = inputText;
-        }
-    </script>
+    <!-- Link the external JS file -->
+    <script src="{{ url_for('static', filename='pantasa.js') }}"></script>
 </body>
 </html>

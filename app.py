@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
@@ -21,6 +21,27 @@ def contact():
 @app.route('/main')
 def main():
     return render_template('main.html')
+
+# Route for handling grammar checking (POST request from JavaScript)
+@app.route('/get_text', methods=['POST'])
+def get_text():
+    data = request.get_json()  # Receive the input text from the request
+    text_input = data.get('text_input', '')
+
+    # Example processing: Here you can add grammar checking logic
+    if text_input:
+        # Return a dummy response for now
+        response = {
+            "highlighted_text": f"Received: {text_input}",
+            "grammar_predictions": [0]  # Example response for grammatical correctness
+        }
+    else:
+        response = {
+            "highlighted_text": "No input provided.",
+            "grammar_predictions": []
+        }
+
+    return jsonify(response)  # Send JSON response back to the client
 
 if __name__ == '__main__':
     app.run(debug=True)
