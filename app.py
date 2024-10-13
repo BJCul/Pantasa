@@ -1,12 +1,10 @@
 from flask import Flask, render_template, request, jsonify
+from app.pantasa import pantasa
+from app.utils import load_hybrid_ngram_patterns
 import logging
-from preprocess import preprocess_text, lemmatize_text
-from error_detection import detect_grammar_errors
-from error_correction import correct_grammar_errors
+import os
 
-# Set up the tokenizer and model during Flask app initialization
-tokenizer, model = set_up()
-
+# Specify the correct paths for templates and static folders
 app = Flask(__name__)
 
 # Initialize logging
@@ -21,37 +19,35 @@ def get_text():
         text_input = data.get('text_input', '')
 
         if text_input:
-            # Step 1: Preprocess the input (tokenize, lemmatize, etc.)
-            preprocessed_text = preprocess_text(text_input)
+            jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
+            model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
+            hybrid_ngram_patterns = load_hybrid_ngram_patterns('data/processed/hngrams.csv')
             
-            # Step 2: Detect grammar errors using the hybrid n-gram rules and POS tags
-            grammar_errors = detect_grammar_errors(preprocessed_text)
+            # Call the Pantasa function to process the sentence and get the suggestions and misspelled words
+            suggestions, misspelled_words, rule_corrected_text = pantasa(text_input, jar_path, model_path, hybrid_ngram_patterns)
+            
+            highlighted_text = text_input
+            for word, suggestion in misspelled_words:
+                # Ensure that 'suggestion' is treated as a list of full words, not letters
+                highlighted_text = highlighted_text.replace(
+                    word, f'<span class="error" data-suggestions="{"".join(suggestion)}">{word}</span>'
+                )
 
-            # Step 3: Correct the grammar errors using the model and rules
-            corrected_text = correct_grammar_errors(grammar_errors, model, tokenizer)
-
-            # Step 4: Return the grammar-checking result
-            result = {
-                "input": text_input,
-                "preprocessed": preprocessed_text,
-                "grammar_errors": grammar_errors,
-                "corrected_text": corrected_text
-            }
-
-            # Log the input and result
-            logging.info(f"Received Input: {text_input}")
-            logging.info(f"Grammar Errors: {grammar_errors}")
-            logging.info(f"Corrected Text: {corrected_text}")
-
+                            
             # Return the grammar-checking result as JSON
+            result = {
+                "input_text": text_input,
+                "highlighted_text": highlighted_text,
+                "corrected_text": rule_corrected_text,
+                "suggestions": suggestions,
+                "misspelled_words": misspelled_words
+            }
             return jsonify(result)
         else:
             return jsonify({"error": "No text_input provided"}), 400
     except Exception as e:
         logging.error(f"Error processing request: {str(e)}")
         return jsonify({"error": "Invalid request"}), 400
-
-
 
 # Route to serve the main HTML file
 @app.route('/')

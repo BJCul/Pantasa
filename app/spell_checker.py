@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from app.utils import weighted_levenshtein
 
 # Load dictionary from CSV
 def load_dictionary(csv_path):
@@ -8,63 +9,49 @@ def load_dictionary(csv_path):
     words = df.iloc[:, 0].dropna().astype(str).tolist()
     return words
 
-# Function to calculate Levenshtein distance
-def levenshtein_distance(word1, word2):
-    len1, len2 = len(word1), len(word2)
-    dp = np.zeros((len1 + 1, len2 + 1), dtype=int)
-
-    for i in range(len1 + 1):
-        dp[i][0] = i
-    for j in range(len2 + 1):
-        dp[0][j] = j
-
-    for i in range(1, len1 + 1):
-        for j in range(1, len2 + 1):
-            if word1[i - 1] == word2[j - 1]:
-                dp[i][j] = dp[i - 1][j - 1]
-            else:
-                dp[i][j] = min(dp[i - 1][j] + 1,  # Deletion
-                               dp[i][j - 1] + 1,  # Insertion
-                               dp[i - 1][j - 1] + 1)  # Substitution
-
-    return dp[len1][len2]
-
 # Load the dictionary from the CSV file
 dictionary_file = load_dictionary("data/raw/dictionary.csv")
 
 # Spell Checker function to check each word in a sentence
 def spell_check_sentence(sentence, dictionary=dictionary_file, max_distance=2):
     words = sentence.split()  # Split sentence into words
-    corrected_sentence = []
+    misspelled_words = []  # List to store misspelled words and suggestions
+    corrected_sentence = []  # List to store the corrected sentence
     
     for word in words:
         # Check if the word is already in the dictionary
         if word in dictionary:
-            corrected_sentence.append(word)  # The word is correct
+            corrected_sentence.append(word)  # The word is correct, add it to the corrected sentence
         else:
             # If no exact match, compute Levenshtein distance
             suggestions = []
             for dict_word in dictionary:
-                distance = levenshtein_distance(word, dict_word)
+                distance = weighted_levenshtein(word, dict_word)
                 if distance <= max_distance:
                     suggestions.append((dict_word, distance))
             
             suggestions.sort(key=lambda x: x[1])
             
-            # If suggestions exist, mark the word as misspelled
+            # If suggestions exist, store the misspelled word and suggested correction
             if suggestions:
-                corrected_sentence.append(f"<<{word}>>")
+                corrected_word = suggestions[0][0]
+                corrected_sentence.append(corrected_word)
+                misspelled_words.append((word, corrected_word))  # Store the misspelled word and the best suggestion
             else:
-                corrected_sentence.append(f"<<{word}>>")  # No suggestions, mark as misspelled anyway
-
-    return ' '.join(corrected_sentence)
+                corrected_sentence.append(word)  # No suggestions, keep the word as is
+                misspelled_words.append((word, None))  # Store the misspelled word with no suggestion
+    
+    # Join the corrected sentence list into a string
+    corrected_sentence_str = ' '.join(corrected_sentence)
+    
+    return misspelled_words, corrected_sentence_str
 
 if __name__ == "__main__":
     # Load the dictionary
     dictionary = load_dictionary("data/raw/dictionary.csv")
 
     # Test the spell checker with a sample sentence
-    test_sentence_1 = "ang mga bata ay masaya"
+    test_sentence_1 = "ang mga bata ay mastaya"
     test_sentence_2 = "kumakain ang mga bata ng mansana"
 
     print("Original:", test_sentence_1)

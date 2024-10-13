@@ -1,14 +1,17 @@
 import pandas as pd
 import sys
 import os
-from hyphen_rule import correct_hyphenation
-from rd_rule import rd_interchange
+from app.predefined_rules.hyphen_rule import correct_hyphenation
+from app.predefined_rules.rd_rule import rd_interchange
+import logging
+from app.preprocess import pos_tagging
+
+logger = logging.getLogger(__name__)
 
 # Add the 'app' directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 # Import the necessary 
-
 from rules.Modules.POSDTagger import pos_tag
 
 # Hierarchical POS Tag Dictionary
@@ -44,7 +47,6 @@ def handle_nang_ng(text, pos_tags):
             if pos_tags[i] == 'RBW':  
                 corrected_words.append("nang")
                 print("'ng' corrected to 'nang' (RBW synonym for 'noong')")
-
             
             # Handle "nang" as a conjunction (CCB, CCT)
             elif pos_tags[i] in ['CCB', 'CCT']:
@@ -56,13 +58,14 @@ def handle_nang_ng(text, pos_tags):
                 prev_post = pos_tags[i - 1] if i - 1 > 0 else None
                 post_pos = pos_tags[i + 1] if i + 1 < len(pos_tags) else None
                 pos_ex = f"{prev_post} {pos_tags[i]} {post_pos}"
-                print("Checking ligature context: previous POS: {prev_post}, current POS: {pos_tags[i]}, next POS: {post_pos}")
+
+                print(f"Checking ligature context: previous POS: {prev_post}, current POS: {pos_tags[i]}, next POS: {post_pos}")
 
                 # Get the POS tags for RB.* and VB.* from the dictionary
                 adverb_pos = hierarchical_pos_tags['RB.*'] + hierarchical_pos_tags['VB.*']
                 pos_ex_list = pos_ex.split()
 
-                if  any(pos in adverb_pos for pos in pos_ex_list):# Connecting adverb of manner/intensity to verb/adjective
+                if any(pos in adverb_pos for pos in pos_ex_list):  # Connecting adverb of manner/intensity to verb/adjective
                     corrected_words.append("nang")
                     print("Ligature 'ng' corrected to 'nang' (connecting adverb of manner/intensity)")
                     
@@ -71,11 +74,10 @@ def handle_nang_ng(text, pos_tags):
                         corrected_words.append(word)
                         print("Ligature 'ng' kept as 'ng' (adjective-noun structure)")
                     else:
-                       corrected_words.append("nang") 
-                       print("Ligature 'ng' corrected to 'nang' (adjective context without noun)")
-            
+                        corrected_words.append("nang") 
+                        print("Ligature 'ng' corrected to 'nang' (adjective context without noun)")
 
-        elif word == "nang": #Check if it a coordinating, onjunction
+        elif word == "nang":  # Check if it is a coordinating conjunction
             if pos_tags[i] == 'CCB' and i > 0:
                 corrected_words.append("ng")
                 print("'nang' corrected to 'ng' (coordinating conjunction CCB)")
@@ -129,7 +131,6 @@ affix_list = {
 # Combine all prefixes for easy access
 prefixes = affix_list["common_prefixes"] + affix_list["long_prefixes"] + affix_list["prefix_assimilation"] + affix_list["compound_prefix"]
 
-
 def merge_affixes(text, dictionary=dictionary_file):
     words = text.split()
     corrected_words = []
@@ -139,7 +140,7 @@ def merge_affixes(text, dictionary=dictionary_file):
         merged = False
 
         # Check if the word is an affix
-        if word.lower() in (prefixes):
+        if word.lower() in prefixes:
             # Ensure there is a next word to merge with
             if i + 1 < len(words):
                 next_word = words[i + 1]
@@ -157,18 +158,28 @@ def merge_affixes(text, dictionary=dictionary_file):
 
 def apply_predefined_rules(text):
     pos = pos_tag(text)
+    
+    logger.info(f"Applying predefined rules to text: {text}")
+
     rd_correction = rd_interchange(text)
     mas_correction = separate_mas(rd_correction)
     prefix_merged = merge_affixes(mas_correction)
-    nang_handled = handle_nang_ng(prefix_merged,pos)
+    nang_handled = handle_nang_ng(prefix_merged, pos)
     rule_corrected = correct_hyphenation(nang_handled)
+
+    logger.info(f"Final rule-corrected sentence: {rule_corrected}")
 
     return rule_corrected
 
-test = "tumakbo ng mabilis"
-pos = pos_tag(test).split()  # Split the string into a list
-print(test)
-print(pos)
-print(handle_nang_ng(test, pos))
+if __name__ == "__main__":
+    text = "pinang tiklop maski pagusp"
+    corrected_sentence = apply_predefined_rules(text)
 
-    
+    print(f"Corrected sentence: {corrected_sentence}")
+
+    # Test case
+    test = "tumakbo ng mabilis"
+    pos = pos_tag(test).split()  # Split the string into a list
+    print(test)
+    print(pos)
+    print(handle_nang_ng(test, pos))

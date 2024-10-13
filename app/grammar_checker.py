@@ -1,9 +1,17 @@
 from preprocess import preprocess_text
-from ngram_matching import compare_with_hybrid_ngrams, weighted_levenshtein
 from services.substitution_service import SubstitutionService
 from services.insertion_unmerging_service import InsertionAndUnmergingService
 from services.deletion_merging_service import DeletionAndMergingService
-from utils import load_hybrid_ngram_patterns, process_sentence_with_dynamic_ngrams
+from utils import load_hybrid_ngram_patterns, process_sentence_with_dynamic_ngrams, weighted_levenshtein
+import sys
+import os
+
+# Get the directory of the current file and the parent directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
+
+# Add the parent directory to sys.path
+sys.path.append(parent_dir)
 
 class pantasa:
     def __init__(self, is_verbose=False, is_generate_text_file=False, ngram_size_to_get=5):
@@ -12,17 +20,18 @@ class pantasa:
         self.ngram_size_to_get = ngram_size_to_get
         self.hybrid_ngram_patterns = load_hybrid_ngram_patterns('data/processed/hngrams.csv')
 
-    def get_grammar_suggestions(self, sentence):
+    def get_grammar_suggestions(self, input_sentence, jar_path, model_path):
         """
         Returns grammar suggestions for the given input sentence by performing grammar checks.
         """
-        preprocessed_output = preprocess_text(sentence)
+        preprocessed_output = preprocess_text(input_sentence, jar_path, model_path)
         if not preprocessed_output:
             print("Error during preprocessing.")
             return []
 
         tokens, lemmas, pos_tags = preprocessed_output[0]
         input_data = Input(tokens, lemmas, pos_tags)
+        print(input_data)
 
         suggestions = self.check_grammar_with_input(input_data)
         return [sugg.get_suggestions() for sugg in suggestions]
@@ -90,12 +99,15 @@ class Input:
         self.lemmas = lemmas
         self.pos = pos
 
-
 # Example Usage
 if __name__ == "__main__":
+
+    jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
+    model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
+
     grammar_checker = pantasa(is_verbose=True, is_generate_text_file=False)
-    sentence = "kumain ang mga bata ng mansanas"
-    suggestions = grammar_checker.get_grammar_suggestions(sentence)
+    input_sentence = "kumain ang mga bata ng mansanas"
+    suggestions = grammar_checker.get_grammar_suggestions(input_sentence, jar_path, model_path)
     
     for sugg in suggestions:
         print(sugg)

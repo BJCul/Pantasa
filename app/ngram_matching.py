@@ -1,6 +1,6 @@
 import re
-from utils import load_hybrid_ngram_patterns, process_sentence_with_dynamic_ngrams, extract_ngrams
-from preprocess import preprocess_text
+from app.utils import load_hybrid_ngram_patterns, process_sentence_with_dynamic_ngrams, extract_ngrams
+from app.preprocess import preprocess_text
 import logging
 
 logger = logging.getLogger(__name__)
@@ -52,10 +52,10 @@ def compare_with_hybrid_ngrams(input_pos_tags, hybrid_ngram_patterns):
     - hybrid_ngram_patterns: List of hybrid n-gram patterns.
 
     Returns:
-    - True if a match is found, False otherwise.
+    - A list of matched n-grams and their corresponding pattern IDs.
     """
     sentence_tokens = [tag[1] for tag in input_pos_tags]  # Extract POS tags
-    match_found = False  # Flag to indicate if any match is found
+    matched_patterns = []  # To store matched n-grams and their patterns
 
     # Use dynamic N-gram size generation for matching
     ngrams = extract_ngrams(sentence_tokens)
@@ -75,27 +75,28 @@ def compare_with_hybrid_ngrams(input_pos_tags, hybrid_ngram_patterns):
             # Perform the comparison between the current n-gram and hybrid n-gram
             if match_pos_to_hybrid_ngram(ngram, hybrid_ngram['ngram_pattern']):
                 logger.info(f"Match found: Input n-gram {ngram} matches hybrid n-gram {hybrid_ngram['ngram_pattern']} (Pattern ID: {hybrid_ngram['pattern_id']})")
-                match_found = True
+                matched_patterns.append({'ngram': ngram, 'pattern_id': hybrid_ngram['pattern_id']})
             else:
                 logger.debug(f"No match: Input n-gram {ngram} does not match hybrid n-gram {hybrid_ngram['ngram_pattern']}")
 
     logger.info(f"Total comparisons made: {total_comparisons}")
     
-    return match_found
+    return matched_patterns
 
 def ngram_matching(input_sentence, jar_path, model_path, hybrid_ngram_patterns):
     # Step 1: Preprocess the sentence (tokenize, POS tag, and lemmatize)
     preprocessed_output = preprocess_text(input_sentence, jar_path, model_path)
     if not preprocessed_output:
         logger.error("Error during preprocessing.")
-        return False
+        return []
 
-    tokens, lemmas, pos_tags = preprocessed_output[0]
+    print(f"f{preprocessed_output}")
+    tokens, lemmas, pos_tags, checked_sentence, misspelled_words = preprocessed_output[0]
     
     # Step 2: Extract dynamically sized N-grams from the tokens
     ngram_collections = process_sentence_with_dynamic_ngrams(tokens)
     
-    match_found = False  # Flag to track if any match is found
+    matches = []  # To store all matching patterns
 
     # Use the original POS tags to generate the pos_tag_list for each n-gram
     for ngram_size, ngrams in ngram_collections.items():
@@ -109,10 +110,11 @@ def ngram_matching(input_sentence, jar_path, model_path, hybrid_ngram_patterns):
                         break
 
             # Now compare the pos_tag_list with hybrid n-gram patterns
-            if compare_with_hybrid_ngrams(pos_tag_list, hybrid_ngram_patterns):
-                match_found = True
+            matched_patterns = compare_with_hybrid_ngrams(pos_tag_list, hybrid_ngram_patterns)
+            if matched_patterns:
+                matches.extend(matched_patterns)
 
-    return match_found
+    return matches, ngram_collections, preprocessed_output
 
 # Example usage
 if __name__ == "__main__":
@@ -122,11 +124,13 @@ if __name__ == "__main__":
     jar_path = r'C:\Projects\Pantasa\rules\Libraries\FSPOST\stanford-postagger.jar'
     model_path = r'C:\Projects\Pantasa\rules\Libraries\FSPOST\filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
 
-    input_sentence = "kumain ang mga bata ng mansanas"
+    input_sentence = "kumain ang mga bata ng mansana"
 
-    match_found = ngram_matching(input_sentence, jar_path, model_path, hybrid_ngram_patterns)
+    matched_ngrams = ngram_matching(input_sentence, jar_path, model_path, hybrid_ngram_patterns)
 
-    if match_found:
-        print("At least one n-gram matched with a hybrid n-gram pattern.")
+    if matched_ngrams:
+        print("Matched n-grams and their patterns:")
+        for match in matched_ngrams:
+            print(match)
     else:
         print("No n-gram matched with any hybrid n-gram pattern.")

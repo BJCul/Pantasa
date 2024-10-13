@@ -1,4 +1,4 @@
-from grammar_checking_thread import GrammarCheckingServiceThread
+from services.grammar_checking_thread import GrammarCheckingServiceThread
 from services.candidate_ngram_service import CandidateNGramService
 import time
 from suggestion import Suggestion, SuggestionToken, SuggestionType

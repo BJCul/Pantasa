@@ -1,6 +1,7 @@
 # app/utils.py
 
 import csv
+import numpy as np
 
 # Edit Distance Constants
 EDIT_DISTANCE_THRESHOLD = 1
@@ -70,11 +71,11 @@ def process_sentence_with_dynamic_ngrams(tokens):
 
     # Determine appropriate N-gram sizes based on sentence length
     for ngram_size in range(NGRAM_SIZE_LOWER, min(NGRAM_SIZE_UPPER + 1, sentence_length + 1)):
-        ngram_collections[f'{ngram_size}-gram'] = generate_ngrams(tokens, ngram_size)
+        ngram_collections[ngram_size] = generate_ngrams(tokens, ngram_size)
 
     # Handling larger N-gram sizes for predefined rules
     if sentence_length >= NGRAM_MAX_RULE_SIZE:
-        ngram_collections[f'{NGRAM_MAX_RULE_SIZE}-gram'] = generate_ngrams(tokens, NGRAM_MAX_RULE_SIZE)
+        ngram_collections[ngram_size]= generate_ngrams(tokens, NGRAM_MAX_RULE_SIZE)
 
     return ngram_collections
 
@@ -135,32 +136,29 @@ def log_message(level, message):
     elif level == "critical":
         logger.critical(message)
 
+# Function to calculate Levenshtein distance
 def weighted_levenshtein(word1, word2):
-    """Compute the weighted Levenshtein distance between two words."""
     len1, len2 = len(word1), len(word2)
-    
-    dp = [[0] * (len2 + 1) for _ in range(len1 + 1)]
+    dp = np.zeros((len1 + 1, len2 + 1), dtype=int)
 
-    # Initialize base cases
     for i in range(len1 + 1):
         dp[i][0] = i
     for j in range(len2 + 1):
         dp[0][j] = j
 
-    # Calculate the Levenshtein distance with weights
     for i in range(1, len1 + 1):
         for j in range(1, len2 + 1):
-            cost = 0.8 if word1[i - 1] != word2[j - 1] else 0  # Example substitution weight
-            dp[i][j] = min(
-                dp[i - 1][j] + 1.0,  # Deletion cost
-                dp[i][j - 1] + 1.0,  # Insertion cost
-                dp[i - 1][j - 1] + cost  # Substitution cost
-            )
+            if word1[i - 1] == word2[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1]
+            else:
+                dp[i][j] = min(dp[i - 1][j] + 1,  # Deletion
+                               dp[i][j - 1] + 1,  # Insertion
+                               dp[i - 1][j - 1] + 1)  # Substitution
 
     return dp[len1][len2]
 
 # Example usage
 if __name__ == "__main__":
     file_path = 'data/processed/hngrams.csv'
-    hybrid_ngrams = load_hybrid_ngram_patterns(file_path)
+    hybrid_ngrams = load_hybrid_ngram_patterns(file_path)    
     print(hybrid_ngrams)
