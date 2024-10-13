@@ -12,14 +12,22 @@ roberta_tokenizer = AutoTokenizer.from_pretrained(tagalog_roberta_model)
 print("Loading model...")
 roberta_model = AutoModelForMaskedLM.from_pretrained(tagalog_roberta_model)
 print("Model and tokenizer loaded successfully.")
+batch_size=2
 
-def load_csv(file_path):
-    print(f"Loading data from {file_path}...")
+def load_csv_in_batches(file_path, batch_size):
+    """
+    Load CSV file in batches to handle large datasets.
+    """
     with open(file_path, 'r', encoding='utf-8') as file:
         reader = csv.DictReader(file)
-        data = [row for row in reader]
-    print(f"Data loaded from {file_path}. Number of rows: {len(data)}")
-    return data
+        batch = []
+        for index, row in enumerate(reader):
+            batch.append(row)
+            if (index + 1) % batch_size == 0:
+                yield batch
+                batch = []
+        if batch:
+            yield batch
 
 def load_lexeme_comparison_dictionary(file_path):
     comparisons = {}
@@ -50,12 +58,20 @@ def convert_id_array(id_array_str):
         return []  # Return an empty list or handle it accordingly
     return id_array_str.strip("[]'").replace("'", "").split(', ')
 
-def load_and_convert_csv(file_path):
-    data = load_csv(file_path)
-    for entry in data:
-        print(f"Processing entry: {entry}")
-        entry['ID_Array'] = convert_id_array(entry.get('ID_Array', ''))
-    return data
+def subtoken_boost_penalty_score(score, word, tokenizer):
+    # Tokenize the word and check how many subtokens it splits into
+    tokenized_word = tokenizer(word, return_tensors="pt")['input_ids'][0]
+    num_tokens = len(tokenized_word)  # Number of subtokens
+
+    if num_tokens == 1:
+        # Boost score if the word has only 1 subtoken (simpler word)
+        boosted_score = score * 1.2 
+    else:
+        # Penalize score if the word has more than 1 subtoken (complex word)
+        boosted_score = score / num_tokens  # Penalize by dividing by the number of subtokens
+
+    return boosted_score
+
 
 def compute_mlm_score(sentence, model, tokenizer):
     tokens = tokenizer(sentence, return_tensors="pt")
@@ -75,7 +91,13 @@ def compute_mlm_score(sentence, model, tokenizer):
         original_token_id = input_ids[i]
         score = probs[original_token_id].item()  # Probability of the original word when masked
         
-        scores.append(score)
+        # Get the word corresponding to the token ID
+        word = tokenizer.decode([original_token_id]).strip()
+
+        # Apply subtoken boost/penalty based on the number of subtokens
+        adjusted_score = subtoken_boost_penalty_score(score, word, tokenizer)
+        
+        scores.append(adjusted_score)
 
     average_score = sum(scores) / len(scores) * 100  # Convert to percentage
     return average_score, scores
@@ -111,159 +133,82 @@ def compute_word_score(word, sentence, model, tokenizer):
     word_token_id = tokens['input_ids'][0, word_token_index]  # The original token ID of the indexed word
     probs = torch.softmax(logits[0, word_token_index], dim=-1)
     score = probs[word_token_id].item()  # Probability of the original word when masked
+    
+    # Apply subtoken boost/penalty
+    adjusted_score = subtoken_boost_penalty_score(score, word, tokenizer)
+    
+    return adjusted_score * 100  # Return as a percentage
 
-    return score * 100  # Return as a percentage
 
-def load_existing_results(output_file):
-    if not os.path.exists(output_file):
-        return set()
-
-    with open(output_file, 'r', encoding='utf-8') as file:
-        reader = csv.DictReader(file)
-        existing_ngrams = {row['Final_Hybrid_N-Gram'] for row in reader}
-    return existing_ngrams
-
-def get_latest_pattern_id(file_path):
-    try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            reader = csv.DictReader(file)
-            pattern_ids = [int(row['Pattern_ID']) for row in reader if row['Pattern_ID'].isdigit()]
-            return max(pattern_ids, default=0)
-    except FileNotFoundError:
-        return 0
-
-def generate_pattern_id(counter):
-    return f"{counter:06d}"
-
-def generalize_patterns(ngram_list_file, pos_patterns_file, id_array_file, output_file, lexeme_comparison_dict_file, model, tokenizer, threshold=80.0):
+def generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file, output_file, lexeme_comparison_dict_file, model, tokenizer, batch_size=1000, threshold=80.0):
     print("Loading ngram list...")
-    ngram_list = load_csv(ngram_list_file)
+    ngram_list_batches = load_csv_in_batches(ngram_list_file, batch_size)
     print("Loading POS patterns...")
-    pos_patterns = load_csv(pos_patterns_file)
+    pos_patterns = load_csv_in_batches(pos_patterns_file, batch_size)
     print("Loading ID array data...")
-    id_array_data = load_and_convert_csv(id_array_file)
+    id_array_batches = load_csv_in_batches(id_array_file, batch_size)
     
     seen_lexeme_comparisons = load_lexeme_comparison_dictionary(lexeme_comparison_dict_file)
+    pos_comparison_results = []
 
-    latest_pattern_id_input = get_latest_pattern_id(pos_patterns_file)
-    latest_pattern_id_output = get_latest_pattern_id(output_file)
-    latest_pattern_id = max(latest_pattern_id_input, latest_pattern_id_output)
-    pattern_counter = latest_pattern_id + 1
+    for id_array_batch in id_array_batches:
+        for id_array_entry in id_array_batch:
+            pattern_id = id_array_entry['Pattern_ID']
+            for instance_id in convert_id_array(id_array_entry.get('ID_Array', '')):
+                instance_found = False  # Flag to indicate if we found the instance
+                
+                for ngram_batch in ngram_list_batches:
+                    for ngram in ngram_batch:
+                        # Ensure both are strings and N-Gram_ID is zero-padded to 6 digits
+                        ngram_id_str = str(ngram['N-Gram_ID']).zfill(6)
+                        instance_id_str = instance_id.zfill(6)
+                        
+                        print(f"Comparing instance_id '{instance_id_str}' with ngram['N-Gram_ID']: '{ngram_id_str}'")
+                        if ngram_id_str == instance_id_str:
+                            instance = ngram
+                            instance_found = True
+                            break  # Exit the loop once we find the instance
+                # Exit the loop once we find the instance
+                
+                if not instance_found:
+                    print(f"No instance found for ID {instance_id}.")
+                    continue
 
-    existing_hybrid_ngrams = load_existing_results(output_file)
-
-    try:
-        with open(output_file, 'r', encoding='utf-8') as file:
-            reader = csv.DictReader(file)
-            pos_comparison_results = [row for row in reader]
-    except FileNotFoundError:
-        pos_comparison_results = []  # If file doesn't exist, initialize with an empty list
-
-    pos_patterns_dict = {entry['Pattern_ID']: entry['POS_N-Gram'] for entry in pos_patterns}
-
-    for id_array_index, id_array_entry in enumerate(id_array_data):
-        print(f"Processing ID array entry {id_array_index + 1}/{len(id_array_data)}...")
-        pattern_id = id_array_entry['Pattern_ID']
-        rough_pos = pos_patterns_dict.get(pattern_id, None)
-        if not rough_pos:
-            print(f"No POS pattern found for Pattern_ID {pattern_id}. Skipping...")
-            continue
-
-        # Initialize a flag to track if we have successful comparisons
-        successful_comparisons = False
-
-        for instance_index, instance_id in enumerate(id_array_entry['ID_Array']):
-            instance_id = instance_id.zfill(6)
-            print(f"Processing instance {instance_index + 1}/{len(id_array_entry['ID_Array'])} for pattern ID {pattern_id}...")
-
-            instance = next((ngram for ngram in ngram_list if ngram['N-Gram_ID'] == instance_id), None)
-            if not instance:
-                print(f"No instance found for ID {instance_id}.")
-                continue
-
-            lemma_ngram_sentence = instance.get('Lemma_N-Gram')  # Use `.get()` to avoid KeyError
-            if not lemma_ngram_sentence:
-                print(f"No lemma ngram sentence found for instance ID {instance_id}. Skipping...")
-                continue
-
-            comparison_key = (rough_pos, lemma_ngram_sentence)
-            if comparison_key not in seen_lexeme_comparisons:
-                print(f"Computing MLM score for lemma ngram sentence: {lemma_ngram_sentence}...")
-                initial_mlm_score = compute_mlm_score(lemma_ngram_sentence, model, tokenizer)
-                sequence_mlm_score = initial_mlm_score[0]
-                print(f"Sequence MLM score: {sequence_mlm_score}")
-
-                if sequence_mlm_score >= threshold:
-                    successful_comparisons = True  # Flagging that a successful comparison was made
-                    print(f"Sequence MLM score {sequence_mlm_score} meets the threshold {threshold}. Computing individual word scores...")
-                    comparison_matrix = ['*'] * len(lemma_ngram_sentence.split())
-                    new_pattern = rough_pos.split()
-                    words = lemma_ngram_sentence.split()
-                    rough_pos_tokens = rough_pos.split()
-
-                    if len(words) != len(rough_pos_tokens):
-                        print(f"Length mismatch between words and POS tokens for instance ID {instance_id}. Skipping...")
-                        continue
-
-                    for i, (pos_tag, word) in enumerate(zip(rough_pos_tokens, words)):
-                        word_score = compute_word_score(word, lemma_ngram_sentence, model, tokenizer)
-                        print(f"Word '{word}' average score: {word_score}")
-                        if word_score >= threshold:
-                            new_pattern[i] = word
-                            comparison_matrix[i] = word
-                        else:
-                            new_pattern[i] = pos_tag  # Restore the original POS tag if the word does not meet the score
-
-                    final_hybrid_ngram = ' '.join(new_pattern)
-
-                    if final_hybrid_ngram not in existing_hybrid_ngrams:
-                        existing_hybrid_ngrams.add(final_hybrid_ngram)
-                        pattern_counter += 1
-                        new_pattern_id = generate_pattern_id(pattern_counter)
+                lemma_ngram_sentence = instance.get('Lemma_N-Gram', '')
+                if (pattern_id, lemma_ngram_sentence) not in seen_lexeme_comparisons:
+                    score, _ = compute_mlm_score(lemma_ngram_sentence, model, tokenizer)
+                    if score >= threshold:
                         pos_comparison_results.append({
-                            'Pattern_ID': new_pattern_id,
-                            'POS_N-Gram': rough_pos,
+                            'Pattern_ID': pattern_id,
+                            'POS_N-Gram': instance.get('POS_N-Gram', ''),
                             'Lexeme_N-Gram': lemma_ngram_sentence,
-                            'MLM_Scores': sequence_mlm_score,
-                            'Comparison_Replacement_Matrix': ' '.join(comparison_matrix),
-                            'Final_Hybrid_N-Gram': final_hybrid_ngram
+                            'MLM_Scores': score,
+                            'Comparison_Replacement_Matrix': '',  # Implement as needed
+                            'Final_Hybrid_N-Gram': lemma_ngram_sentence  # Simplified
                         })
-                        seen_lexeme_comparisons[comparison_key] = new_pattern_id  # Update the comparison dictionary
-                    else:
-                        print(f"Hybrid ngram '{final_hybrid_ngram}' already exists. Skipping...")
-                else:
-                    print(f"Sequence MLM score {sequence_mlm_score} does not meet the threshold {threshold}. Skipping...")
-            else:
-                print(f"Comparison already done for rough POS - {rough_pos} and lexeme N-Gram - {lemma_ngram_sentence}")
+                        seen_lexeme_comparisons[(pattern_id, lemma_ngram_sentence)] = pattern_id
 
-        # If no successful comparison was made, still append the POS pattern without any final hybrid n-gram
-        if not successful_comparisons:
-            pos_comparison_results.append({
-                'Pattern_ID': pattern_id,
-                'POS_N-Gram': rough_pos,
-                'Lexeme_N-Gram': '',  # No lexeme comparison succeeded
-                'MLM_Scores': '',
-                'Comparison_Replacement_Matrix': '',
-                'Final_Hybrid_N-Gram': rough_pos  # Keep the original POS pattern
-            })
+        # Save results and dictionary after processing each batch
+        with open(output_file, 'a', newline='', encoding='utf-8') as file:
+            fieldnames = ['Pattern_ID', 'POS_N-Gram', 'Lexeme_N-Gram', 'MLM_Scores', 'Comparison_Replacement_Matrix', 'Final_Hybrid_N-Gram']
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            if os.stat(output_file).st_size == 0:
+                writer.writeheader()
+            writer.writerows(pos_comparison_results)
 
-    save_lexeme_comparison_dictionary(lexeme_comparison_dict_file, seen_lexeme_comparisons)
+        save_lexeme_comparison_dictionary(lexeme_comparison_dict_file, seen_lexeme_comparisons)
+        pos_comparison_results = []  # Reset after saving
 
-    with open(output_file, 'w', newline='', encoding='utf-8') as file:
-        fieldnames = ['Pattern_ID', 'POS_N-Gram', 'Lexeme_N-Gram', 'MLM_Scores', 'Comparison_Replacement_Matrix', 'Final_Hybrid_N-Gram']
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(pos_comparison_results)
 
-    print(f"Results saved to {output_file}")
+# Example usage for batch processing
+for n in range(4,5):
+    ngram_list_file = 'rules/database/ngrams.csv'
+    pos_patterns_file = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
+    id_array_file = f'rules/database/POS/{n}grams.csv'
+    output_file = f'rules/database/Generalized/LexemeComparison/{n}grams.csv'
+    comparison_dict_file = 'rules/database/LexComparisonDictionary.txt'
 
-for n in range(2, 8):
-    ngram_list_file = 'database/ngrams.csv'
-    pos_patterns_file = f'database/Generalized/POSTComparison/{n}grams.csv'
-    id_array_file = f'database/POS/{n}grams.csv'
-    output_file = f'database/Generalized/LexemeComparison/{n}grams.csv'
-    comparison_dict_file = 'database/LexComparisonDictionary.txt'
-
-    print(f"Starting generalization for {n}-grams...")
-    generalize_patterns(ngram_list_file, pos_patterns_file, id_array_file, output_file, comparison_dict_file, roberta_model, roberta_tokenizer)
-    print(f"Finished generalization for {n}-grams.")
+    print(f"Starting generalization for {n}-grams in batches...")
+    generalize_patterns_batch(ngram_list_file, pos_patterns_file, id_array_file, output_file, comparison_dict_file, roberta_model, roberta_tokenizer, batch_size)
+    print(f"Starting generalization for {n}-grams in batches...")
+    
