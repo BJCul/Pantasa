@@ -1,5 +1,5 @@
 from app.detection import handle_errors
-from app.predefined_rules.rule_main import apply_predefined_rules
+from app.predefined_rules.rule_main import apply_predefined_rules, handle_nang_ng
 from app.ngram_matching import ngram_matching
 from app.suggestion import generate_suggestions
 

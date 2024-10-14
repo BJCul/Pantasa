@@ -1,113 +1,169 @@
-from preprocess import preprocess_text
-from services.substitution_service import SubstitutionService
-from services.insertion_unmerging_service import InsertionAndUnmergingService
-from services.deletion_merging_service import DeletionAndMergingService
-from utils import load_hybrid_ngram_patterns, process_sentence_with_dynamic_ngrams, weighted_levenshtein
-import sys
-import os
+""# Modified pantasa checker function
 
-# Get the directory of the current file and the parent directory
-current_dir = os.path.dirname(os.path.abspath(__file__))
-parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
-
-# Add the parent directory to sys.path
-sys.path.append(parent_dir)
-
-class pantasa:
-    def __init__(self, is_verbose=False, is_generate_text_file=False, ngram_size_to_get=5):
-        self.is_verbose = is_verbose
-        self.is_generate_text_file = is_generate_text_file
-        self.ngram_size_to_get = ngram_size_to_get
-        self.hybrid_ngram_patterns = load_hybrid_ngram_patterns('data/processed/hngrams.csv')
-
-    def get_grammar_suggestions(self, input_sentence, jar_path, model_path):
-        """
-        Returns grammar suggestions for the given input sentence by performing grammar checks.
-        """
-        preprocessed_output = preprocess_text(input_sentence, jar_path, model_path)
-        if not preprocessed_output:
-            print("Error during preprocessing.")
-            return []
-
-        tokens, lemmas, pos_tags = preprocessed_output[0]
-        input_data = Input(tokens, lemmas, pos_tags)
-        print(input_data)
-
-        suggestions = self.check_grammar_with_input(input_data)
-        return [sugg.get_suggestions() for sugg in suggestions]
-
-    def check_grammar_with_input(self, input_data):
-        """
-        Processes grammar checking based on preprocessed input data (tokens, lemmas, POS tags).
-        """
-        top_suggestions = []
-
-        # Iterate over n-gram sizes in reverse order (from largest n-gram to smallest)
-        for ngram_size in range(self.ngram_size_to_get, 1, -1):
-            suggestions = self.get_ngram_suggestions(ngram_size, input_data)
-            top_suggestions.extend(suggestions)
-            
-            if len(suggestions) > 0:
-                break
-
-        return top_suggestions
-
-    def get_ngram_suggestions(self, ngram_size, input_data):
-        """
-        Generate grammar suggestions based on n-grams.
-        """
-        ngram_suggestions = []
-        ngram_collections = process_sentence_with_dynamic_ngrams(input_data.words)
-
-        # Process n-grams of the given size
-        for ngram in ngram_collections.get(f'{ngram_size}-gram', []):
-            w_arr = ngram
-            p_arr = input_data.pos[:ngram_size]
-            l_arr = input_data.lemmas[:ngram_size]
-
-            # Substitution Service
-            sub_service = SubstitutionService()
-            sub_service.set_input_values(w_arr, l_arr, p_arr, ngram_size)
-            sub_service.run()
-            suggestions = sub_service.get_suggestions()
-
-            # Insertion and Unmerging Service
-            if ngram_size < self.ngram_size_to_get:
-                ins_unm_service = InsertionAndUnmergingService()
-                ins_unm_service.set_input_values(w_arr, l_arr, p_arr, ngram_size)
-                ins_unm_service.run()
-                suggestions.extend(ins_unm_service.get_suggestions())
-
-            # Deletion and Merging Service
-            if ngram_size > 1:
-                del_mer_service = DeletionAndMergingService()
-                del_mer_service.set_input_values(w_arr, l_arr, p_arr, ngram_size)
-                del_mer_service.run()
-                suggestions.extend(del_mer_service.get_suggestions())
-
-            ngram_suggestions.extend(suggestions)
-
-        return ngram_suggestions
+import re
+from app.utils import log_message
 
 
-class Input:
+def pantasa_checker(input_sentence, jar_path, model_path, rule_bank, pos_tag_dict):
+    # Step 1: Preprocess the input text
+    log_message("info", "Starting preprocessing")
+    tokens = tokenize_sentence(input_sentence)
+    pos_tags = pos_tagging(tokens, jar_path=jar_path, model_path=model_path)
+    if not pos_tags:
+        log_message("error", "POS tagging failed during preprocessing")
+        return [], [], []
+
+    # Step 2: Check if words exist in the dictionary and tag those that don't
+    log_message("info", "Checking words against the dictionary")
+    words = [word for word, _ in pos_tags]
+    incorrect_words = check_words_in_dictionary(words)
+    log_message("info", f"Incorrect words: {incorrect_words}")
+
+    # Step 3: Apply pre-defined rules before any modification
+    log_message("info", "Applying pre-defined rules (pre)")
+    pre_rules_corrected_text = apply_predefined_rules_pre(input_sentence)
+    log_message("info", f"Text after pre-defined rules (pre): {pre_rules_corrected_text}")
+
+    # Step 4: Check the dictionary again for any remaining incorrect words
+    log_message("info", "Re-checking words against the dictionary after pre-defined rules (pre)")
+    tokens = tokenize_sentence(pre_rules_corrected_text)
+    pos_tags = pos_tagging(tokens, jar_path=jar_path, model_path=model_path)
+    words = [word for word, _ in pos_tags]
+    incorrect_words = check_words_in_dictionary(words)
+    log_message("info", f"Incorrect words after pre-defined rules (pre): {incorrect_words}")
+
+    # Step 5: Spell check the words tagged as incorrect
+    log_message("info", "Spell checking incorrect words")
+    spell_checked_text = spell_check_incorrect_words(pre_rules_corrected_text, incorrect_words)
+    log_message("info", f"Text after spell checking: {spell_checked_text}")
+
+    # Step 6: Apply pre-defined rules after modifications
+    log_message("info", "Applying pre-defined rules (post)")
+    post_rules_corrected_text = apply_predefined_rules_post(spell_checked_text)
+    log_message("info", f"Text after pre-defined rules (post): {post_rules_corrected_text}")
+
+    # Step 7: Retokenize and re-tag the text after modifications
+    log_message("info", "Retokenizing and re-tagging after modifications")
+    tokens = tokenize_sentence(post_rules_corrected_text)
+    pos_tags = pos_tagging(tokens, jar_path=jar_path, model_path=model_path)
+    if not pos_tags:
+        log_message("error", "POS tagging failed after modifications")
+        return [], [], []
+    words = [word for word, _ in pos_tags]
+
+    # Step 8: Generate suggestions using n-gram matching
+    log_message("info", "Generating suggestions")
+    token_suggestions = generate_suggestions(pos_tags)
+
+    # Step 9: Apply POS corrections
+    log_message("info", "Applying POS corrections")
+    corrected_sentence, word_suggestions = apply_pos_corrections(token_suggestions, pos_tags, pos_tag_dict)
+    log_message("info", f"Final corrected sentence: {corrected_sentence}")
+
+    # Return the corrected sentence and any suggestions
+    return corrected_sentence, incorrect_words, word_suggestions
+
+
+def check_words_in_dictionary(words):
     """
-    Class for holding input data - words, lemmas, and POS tags.
+    Check if words exist in the dictionary.
+    Args:
+    - words: List of words to check.
+    Returns:
+    - List of incorrect words.
     """
-    def __init__(self, words, lemmas, pos):
-        self.words = words
-        self.lemmas = lemmas
-        self.pos = pos
+    incorrect_words = []
+    # Load your dictionary here; for example purposes, we'll use a simple set
+    dictionary = load_dictionary()
+    for word in words:
+        if word.lower() not in dictionary:
+            incorrect_words.append(word)
+    return incorrect_words
 
-# Example Usage
-if __name__ == "__main__":
+def spell_check_incorrect_words(text, incorrect_words):
+    """
+    Spell check only the words tagged as incorrect.
+    Args:
+    - text: Original text.
+    - incorrect_words: List of incorrect words.
+    Returns:
+    - Text after spell checking.
+    """
+    # Implement spell checking logic here
+    # For example, replace incorrect words in text with corrected versions
+    corrected_text = text
+    for word in incorrect_words:
+        # Get suggestions from your spell checker
+        suggestions = get_spell_checker_suggestions(word)
+        if suggestions:
+            # Replace the word with the first suggestion
+            corrected_word = suggestions[0]
+            corrected_text = corrected_text.replace(word, corrected_word)
+            log_message("info", f"Replaced '{word}' with '{corrected_word}'")
+        else:
+            log_message("warning", f"No suggestions found for '{word}'")
+    return corrected_text
 
-    jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
-    model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
+def apply_predefined_rules_pre(text):
+    """
+    Apply predefined rules that should be applied before any modifications.
+    Args:
+    - text: Input text.
+    Returns:
+    - Text after applying pre-defined rules.
+    """
+    # Implement your pre-defined rules here
+    # Example: Unmerge words like 'masmaganda' to 'mas maganda'
+    corrected_text = text
+    # Example rule: Unmerge 'masmaganda' to 'mas maganda'
+    corrected_text = re.sub(r'\bmasmaganda\b', 'mas maganda', corrected_text)
+    # Add more rules as needed
+    return corrected_text
 
-    grammar_checker = pantasa(is_verbose=True, is_generate_text_file=False)
-    input_sentence = "kumain ang mga bata ng mansanas"
-    suggestions = grammar_checker.get_grammar_suggestions(input_sentence, jar_path, model_path)
-    
-    for sugg in suggestions:
-        print(sugg)
+def apply_predefined_rules_post(text):
+    """
+    Apply predefined rules that should be applied after modifications.
+    Args:
+    - text: Input text.
+    Returns:
+    - Text after applying post-defined rules.
+    """
+    # Implement your post-defined rules here
+    # Example: Correct specific grammatical structures
+    corrected_text = text
+    # Add your rules here
+    return corrected_text
+
+def load_dictionary():
+    """
+    Load the dictionary words into a set for efficient lookup.
+    Returns:
+    - A set containing all dictionary words.
+    """
+    # Load your dictionary file here
+    # For example purposes, we'll use a hardcoded set
+    dictionary = {'mas', 'maganda', 'ka', 'kumain', 'ng', 'mansanas', 'magandang'}
+    return dictionary
+
+
+def get_spell_checker_suggestions(word):
+    """
+    Get spell checker suggestions for a word.
+    Args:
+    - word: The word to get suggestions for.
+    Returns:
+    - A list of suggested corrections.
+    """
+    # Implement your spell checker logic here
+    # For example, return a list of words
+    suggestions = []
+    # Assuming you have a function spell_check_word(word) that returns suggestions
+    suggestions = spell_check_word(word)
+    return suggestions
+
+def spell_check_word (word):
+    """
+    Load the spell checker
+    """
+
+    pass

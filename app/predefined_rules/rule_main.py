@@ -114,8 +114,8 @@ def separate_mas(text, dictionary=dictionary_file):
     words = text.split()
     for i, word in enumerate(words):
         if word.lower().startswith("mas"):
-            remaining = word[3:]
-            if remaining.lower() in dictionary:
+            if word not in dictionary:
+                remaining = word[3:]
                 words[i] = "mas " + remaining
     return ' '.join(words)
 
@@ -131,45 +131,68 @@ affix_list = {
 # Combine all prefixes for easy access
 prefixes = affix_list["common_prefixes"] + affix_list["long_prefixes"] + affix_list["prefix_assimilation"] + affix_list["compound_prefix"]
 
-def merge_affixes(text, dictionary=dictionary_file):
+merge_affix_pos = hierarchical_pos_tags['VB.*'] + hierarchical_pos_tags['NN.*'] + hierarchical_pos_tags['JJ.*']
+
+def merge_affixes(text, pos_tags, dictionary=dictionary_file):
     words = text.split()
     corrected_words = []
     i = 0
+
     while i < len(words):
         word = words[i]
         merged = False
-
+        
         # Check if the word is an affix
         if word.lower() in prefixes:
             # Ensure there is a next word to merge with
             if i + 1 < len(words):
                 next_word = words[i + 1]
-                # Merge affix with the next word
-                combined_word = word + next_word
-                # Check if combined word exists in the dictionary
-                if combined_word.lower() in dictionary:
-                    corrected_words.append(combined_word)
-                    i += 2  # Skip the next word as it's already merged
-                    merged = True
+                next_word_pos = pos_tags[i + 1]  # Get the POS tag of the next word
+                
+                # Only merge if the next word's POS tag is in mergee_affix_pos list
+                if next_word_pos in merge_affix_pos:
+                    # Merge affix with the next word
+                    combined_word = word + next_word
+                    # Check if the combined word exists in the dictionary
+                    if combined_word.lower() in dictionary:
+                        corrected_words.append(combined_word)
+                        i += 2  # Skip the next word as it's already merged
+                        merged = True
+        
         if not merged:
             corrected_words.append(word)
             i += 1
+    
     return ' '.join(corrected_words)
+
+# def apply_predefined_rules_pre(text):
+#     pos = pos_tag(text)
+#     rd_correction = rd_interchange(text)
+#     rule_corrected = handle_nang_ng(rd_correction,pos)
+
+#     return rule_corrected
+
+# def apply_predefined_rules_post(text):
+#     pos = pos_tag(text)
+
+#     mas_correction = separate_mas(text)
+#     prefix_merged = merge_affixes(mas_correction, pos)
+#     rule_corrected = correct_hyphenation(prefix_merged)
+
+#     return rule_corrected
 
 def apply_predefined_rules(text):
     pos = pos_tag(text)
-    
-    logger.info(f"Applying predefined rules to text: {text}")
 
-    rd_correction = rd_interchange(text)
-    mas_correction = separate_mas(rd_correction)
-    prefix_merged = merge_affixes(mas_correction)
+    mas_correction = separate_mas(text, pos)
+    prefix_merged = merge_affixes(mas_correction, pos)
     nang_handled = handle_nang_ng(prefix_merged, pos)
     rule_corrected = correct_hyphenation(nang_handled)
 
     logger.info(f"Final rule-corrected sentence: {rule_corrected}")
 
     return rule_corrected
+
 
 if __name__ == "__main__":
     text = "pinang tiklop maski pagusp"
