@@ -24,12 +24,16 @@ body {
     background:  linear-gradient(#fefaf6, #eadbc8);
     background-size: cover;
     background-position: center;
+    background-image: url('assets/bg.png'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
 }
 
 .nav {
     width: 100%;
     height: 80px;
-    background: #102c57;
+    background: #800000;
     position: fixed;
     top: 0;
     z-index: 1000;
@@ -54,13 +58,42 @@ section .home-content{
 }
 
 /*Navigation Bar*/
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.logo-image {
+    width: 40px; 
+    height: auto;
+}
+
+.logo {
+    position: absolute;
+    left: 30px;
+    width: 300px;
+    font-size: x-large;
+}
+
+@font-face {
+    font-family: 'Roxborough CF';
+    src: url('fonts/Roxborough CF.ttf') format('woff2');
+    font-weight: normal; 
+    font-style: normal; 
+}
+
 label.logo {
+    float: left;
+    width: 30px;
+    font-family: 'Roxborough CF';
     color: #fefaf6;
     font-size: 30px;
     line-height: 80px;
-    padding: 20px;
     font-weight: bold;
 }
+
 
 .nav ul {
     float: right;
@@ -146,7 +179,7 @@ label.logo {
         position: fixed;
         width: 100%;
         height: 100%;
-        background: #102c57;
+        background: #800000;
         top: 0px;
         left: -100%;
         padding-top: 80px;
@@ -218,19 +251,26 @@ label.logo {
     position: relative;
     top: -5%;
     text-align: center;
-    color: black;
     padding-top: 20px;
 }
 
 .home-content h1 {
-    font-size: 70px;
-    margin-top: 80px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 75px;
+    margin-bottom: 10px;
+    font-weight: 700px;
+    color: #ffffff;
+    text-shadow: 2px 2px 50px rgba(0, 0, 0, 0.3);
 }
 
 .home-content p {
+    font-family: 'Montserrat';
     font-size: 30px;
-    margin-top: 20px;
-    text-align: center;
+    margin-top: 200px;
+    margin-bottom: 20px;
+    font-style: italic;
+    font-weight: lighter;
+    color: #ffffff;
 }
 
 @media (max-width: 858px) {
@@ -266,9 +306,9 @@ label.logo {
     border-radius: 25px;
     font-weight: bold;
     font-size: 30px;
-    border: 2px solid #102c57;
+    border: 2px solid #800000;
     background: white;
-    color: #102c57;
+    color: #800000;
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -276,7 +316,7 @@ label.logo {
 }
 
 .button span {
-    background: #102c57;
+    background: #800000;
     height: 100%;
     width: 0;
     border-radius: 25px;
@@ -293,7 +333,7 @@ label.logo {
 
 .button:hover {
     color: white;
-    background: #102c57;
+    background: #800000;
 }
 
 @media (max-width: 700px) {
@@ -314,9 +354,9 @@ label.logo {
         border-radius: 25px;
         font-weight: bold;
         font-size: 20px;
-        border: 2px solid #102c57;
+        border: 2px solid #800000;
         background: white;
-        color: #102c57;
+        color: #800000;
         cursor: pointer;
         position: relative;
         overflow: hidden;
@@ -324,7 +364,7 @@ label.logo {
     }
 
     #Home .button span {
-        background: #102c57;
+        background: #800000;
         height: 100%;
         width: 0;
         border-radius: 25px;
@@ -341,7 +381,7 @@ label.logo {
     
     #Home .button:hover {
         color: white;
-        background: #102c57;
+        background: #800000;
     }
 }
 
@@ -389,7 +429,7 @@ label.logo {
     padding: 15vh;
 }
 
-.figcheck-content {
+.pantasa-content {
     width: 100%;
     height: auto;
     margin: auto;
@@ -408,7 +448,7 @@ label.logo {
     color: blue;
 }
 
-.figcheck-container {
+.pantasa-container {
     position: flex;
     width: 1600px;
     align-items: center;
@@ -483,7 +523,7 @@ label.logo {
 }
 
 .error {
-    background-color: rgb(255, 145, 0);
+    background-color: rgb(192, 149, 56);
     cursor: pointer;
 }
 
@@ -533,13 +573,13 @@ label.logo {
 
 /* Media queries */
 @media (max-width: 1800px) {
-    .figcheck-container {
+    .pantasa-container {
         width: 1200px;
     }
 }
 
 @media (max-width: 1500px) {
-    .figcheck-container {
+    .pantasa-container {
         width: 800px;
     }
 
@@ -559,7 +599,7 @@ label.logo {
         font-size: 0.875rem;
     }
 
-    .figcheck-container {
+    .pantasa-container {
         width: 600px;
     }
 
@@ -589,7 +629,7 @@ label.logo {
         margin-bottom: 0;
     }
 
-    .figcheck-content {
+    .pantasa-content {
         flex-direction: column;
     }
 
@@ -611,7 +651,7 @@ label.logo {
         border-left: solid 1px #ccc;
     }
 
-    .figcheck-container {
+    .pantasa-container {
         width: auto;
     }
 
@@ -662,7 +702,7 @@ label.logo {
         font-size: 0.625rem;
     }
 
-    .figcheck-content p {
+    .pantasa-content p {
         font-size: 1.25rem;
     }
 
@@ -753,7 +793,7 @@ label.logo {
 .Footer {
     width: 100%;
     height: 10%;
-    background: #102c57;
+    background: #800000;
     color: #fefaf6;
     padding: 10px;
     text-align: center;
