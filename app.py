@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from app.pantasa import pantasa
+from app.pantasa_checker import pantasa_checker
 from app.utils import load_hybrid_ngram_patterns
 import logging
 import os
@@ -24,11 +24,10 @@ def get_text():
             hybrid_ngram_patterns = load_hybrid_ngram_patterns('data/processed/hngrams.csv')
             
             # Call the Pantasa function to process the sentence and get the suggestions and misspelled words
-            suggestions, misspelled_words, rule_corrected_text = pantasa(text_input, jar_path, model_path, hybrid_ngram_patterns)
+            suggestions, misspelled_words, rule_corrected_text = pantasa_checker(text_input, jar_path, model_path, hybrid_ngram_patterns)
             
             highlighted_text = text_input
             for word, suggestion in misspelled_words:
-                # Ensure that 'suggestion' is treated as a list of full words, not letters
                 highlighted_text = highlighted_text.replace(
                     word, f'<span class="error" data-suggestions="{"".join(suggestion)}">{word}</span>'
                 )

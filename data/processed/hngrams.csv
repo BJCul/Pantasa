@@ -807,7 +807,7 @@ Pattern_ID,Final_Hybrid_N-Gram
 500150,CD.* NN.* DT.* NN.* CC.*
 500286,CD.* NN.* DT.* NN.* CC.*
 500151,NN.* DT.* NN.* CC.* NN.*
-500287,NN.* (24) NN.* CC.* (1.
+500287,NN.* (24) NN.* CC.*
 500152,NN.* CC.* NN.* NN.* CD.*
 500288,NN.* (5) mga halimbawa ng
 500153,CC.* NN.* NN.* CD.* NN.*
@@ -877,7 +877,7 @@ Pattern_ID,Final_Hybrid_N-Gram
 500211,CDB NNPA DTCP NNC CCB
 500295,CDB NNPA DTCP NNC CCB
 500212,NNPA DTCP NNC CCB NNC
-500296,NNPA (24) NNC CCB (1.
+500296,NNPA (24) NNC CCB
 500213,DTCP NNC CCB NNC NNPA
 500214,NNC CCB NNC NNPA CDB
 500297,NNC (5) mga halimbawa ng
@@ -939,7 +939,7 @@ Pattern_ID,Final_Hybrid_N-Gram
 500266,CD.* NN.* DTCP NNC CCB
 500302,CD.* NN.* DTCP NNC CCB
 500267,NN.* DT.* NNC CCB NNC
-500303,NN.* (24) NNC CCB (1.
+500303,NN.* (24) NNC CCB 
 500268,DT.* NN.* CCB NNC NNPA
 500269,NN.* CC.* NNC NNPA CDB
 500270,CC.* NN.* NN.* CDB NNPA
@@ -1247,7 +1247,7 @@ Pattern_ID,Final_Hybrid_N-Gram
 700125,NN.* mga halimbawa ng NN.* CC.* mga
 700126,NN.* ng NN.* (5) mga CC.* ng
 700127,NN.* (5) mga halimbawa ng CC.* (8)
-700128,NN.* (1) NN.* (24) NN.* CC.* (1.
+700128,NN.* (1) NN.* (24) NN.* CC.* 
 700035,CD.* NN.* DT.* NN.* CC.* NN.* NN.*
 700129,CD.* halimbawa ng NN.* (5) NN.* halimbawa
 700130,CD.* NN.* (5) mga halimbawa NN.* NN.*
@@ -1306,7 +1306,7 @@ Pattern_ID,Final_Hybrid_N-Gram
 700157,NNPA mga halimbawa ng NNC CCB mga
 700158,NNPA ng NNPA (5) mga CCB ng
 700159,NNPA (5) mga halimbawa ng CCB (8)
-700160,NNPA (1) NNPA (24) NNC CCB (1.
+700160,NNPA (1) NNPA (24) NNC CCB
 700062,CDB NNPA DTCP NNC CCB NNC NNPA
 700161,CDB halimbawa ng NNC (5) NNC halimbawa
 700162,CDB NNPA (5) mga halimbawa NNC NNPA
@@ -1362,7 +1362,7 @@ Pattern_ID,Final_Hybrid_N-Gram
 700088,NN.* CD.* NNPA DTCP NNC CC.* NN.*
 700187,NN.* mga halimbawa ng NNC CC.* mga
 700188,NN.* ng NNPA (5) mga CC.* ng
-700189,NN.* (1) NNPA (24) NNC CC.* (1.
+700189,NN.* (1) NNPA (24) NNC CC.* 
 700089,CD.* NN.* DTCP NNC CCB NN.* NN.*
 700190,CD.* halimbawa ng NNC (5) NN.* halimbawa
 700090,NN.* DT.* NNC CCB NNC NN.* CD.*
