@@ -73,7 +73,7 @@ def apply_suffix(verb_root):
     # Open the file and search for the keyword
     row = None  # Initialize row
     print(f"DEBUG: Searching in f7xdict_core-1.0.txt for {verb_root}")
-    with open('data/raw/phoneme/F7Xdict/f7xdict_core-1.0.txt', 'r', encoding='utf-8') as file:
+    with open('data/raw/phoneme/F7Xdict-main/f7xdict_core-1.0.txt', 'r', encoding='utf-8') as file:
         for line_num, line in enumerate(file, start=1):
             if verb_root in line:
                 row = line.strip()  # Remove newline characters
@@ -81,7 +81,7 @@ def apply_suffix(verb_root):
     
     if row is None:
         print(f"DEBUG: Searching in f7xdict_noncore-1.0.txt for {verb_root}")
-        with open('data/raw/phoneme/F7Xdict/f7xdict_noncore-1.0.txt', 'r', encoding='utf-8') as file:
+        with open('data/raw/phoneme/F7Xdict-main/f7xdict_noncore-1.0.txt', 'r', encoding='utf-8') as file:
             for line_num, line in enumerate(file, start=1):
                 if verb_root in line:
                     row = line.strip()  # Remove newline characters
@@ -293,9 +293,25 @@ def conjugate_tagalog_verb(verb_root, pos_tag):
 
 # Test case structure
 test_cases = [
-    {"verb_root": "basa", "pos_tag": "VBTF", "expected": "babasa", "description": "Repeated First Syllable in Future Tense (VBTF)"},
-    {"verb_root": "prito", "pos_tag": "VBTR_VBOF", "expected": "priniprito", "description": "Verb Root with a Pair of Consonants (VBTR_VBOF)"},
+    # General Use Cases
+    {"verb_root": "kain", "pos_tag": "VBAF", "expected": "kumain", "description": "Simple Actor Focus (VBAF)"},
+    {"verb_root": "tapon", "pos_tag": "VBTS_VBOF", "expected": "tinapon", "description": "Object Focus with Past Tense (VBTS_VBOF)"},
+    {"verb_root": "dala", "pos_tag": "VBTF_VBOB", "expected": "idadala", "description": "Benefactive Focus with Future Tense (VBTF_VBOB)"},
+    {"verb_root": "bigay", "pos_tag": "VBTR_VBOL", "expected": "binibigyan", "description": "Locative Focus with Present Tense (VBTR_VBOL)"},
 
+    # Special Cases
+    {"verb_root": "linis", "pos_tag": "VBTP", "expected": "kalilinis", "description": "Recently Completed (VBTP)"},
+    {"verb_root": "tapon", "pos_tag": "VBOI", "expected": "ipantapon", "description": "Instrumental Focus with Nasal Consonant (VBOI)"},
+    {"verb_root": "alis", "pos_tag": "VBTS_VBAF", "expected": "nag-alis", "description": "Verbs Starting with Vowels (VBTS_VBAF)"},
+    {"verb_root": "tanim", "pos_tag": "VBTR_VBOL_CCP", "expected": "tinatanimang", "description": "Ligature Rule (CCP with Locative Focus)"},
+    {"verb_root": "bili", "pos_tag": "VBTS_VBOF", "expected": "binili", "description": "Glottal Stop Handling (VBOF with Stress on Last Syllable)"},
+
+    # Edge Cases
+    {"verb_root": "tatak", "pos_tag": "VBAF", "expected": "tumatak", "description": "Short Verb Root (VBAF)"},
+    {"verb_root": "basa", "pos_tag": "VBTF", "expected": "babasa", "description": "Repeated First Syllable in Future Tense (VBTF)"},
+    {"verb_root": "lakad", "pos_tag": "VBTS_VBRF", "expected": "ipinanlakad", "description": "Object Focus with Nasal Consonant (VBTS_VBRF)"},
+    {"verb_root": "prito", "pos_tag": "VBTR_VBOF", "expected": "priniprito", "description": "Verb Root with a Pair of Consonants (VBTR_VBOF)"},
+    {"verb_root": "ayos", "pos_tag": "VBOI_CCP", "expected": "ipang-ayos na", "description": "Handling of Complex Ligature (VBOI_CCP)"},
 ]
 
 # Test Runner Function
