@@ -103,16 +103,19 @@ def correct_hyphenation(text, dictionary=dictionary_file):
 
         # Handle hyphenation after "de" and "di" (like "dimahal" or "dekalidad")
         elif word.startswith("de") or word.startswith("di"):
-            root_word = word[2:]  # Remove the "de" or "di" prefix
-            if root_word.lower() in dictionary:
-                # If the root word is valid, add the hyphen
-                corrected_word = f"{word[:2]}-{word[2:]}"
-                print(f" - Prefix '{word[:2]}' detected, adding hyphen: {corrected_word}")
-                corrected_words.append(corrected_word)
+            if word in dictionary:
+                break
             else:
-                # If root word is not in dictionary, no changes
-                print(f" - Word '{word}' not found in dictionary, no changes.")
-                corrected_words.append(word)
+                root_word = word[2:]  # Remove the "de" or "di" prefix
+                if root_word.lower() in dictionary:
+                    # If the root word is valid, add the hyphen
+                    corrected_word = f"{word[:2]}-{word[2:]}"
+                    print(f" - Prefix '{word[:2]}' detected, adding hyphen: {corrected_word}")
+                    corrected_words.append(corrected_word)
+                else:
+                    # If root word is not in dictionary, no changes
+                    print(f" - Word '{word}' not found in dictionary, no changes.")
+                    corrected_words.append(word)
 
         # Handle hyphenation of a prefix from the word
         elif any(word.startswith(prefix) for prefix in prefixes) and word not in dictionary:
