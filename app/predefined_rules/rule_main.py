@@ -98,7 +98,10 @@ def handle_nang_ng(text, pos_tags):
                 corrected_word = prev_word + "g"
                 corrected_words[-1] = corrected_word  # Update the last word in corrected_words
                 print(f"Word ending with 'n': Merged 'na' to form '{corrected_word}'")
-
+            
+            else:
+                corrected_words.append(word)  # Append the word if no correction is made
+                print(f"Word ending with consonant: 'na' retained '{prev_word} {word}'")
         else:
             corrected_words.append(word)  # Append the word if no correction is made
             print(f"No correction needed for '{word}'")
