@@ -15,7 +15,7 @@ dictionary_file = load_dictionary("data/raw/dictionary.csv")
 
 # Define the weighted Levenshtein function using RapidFuzz with 1-1-2 weights
 def weighted_levenshtein(word1, word2):
-    return Levenshtein.distance(word1, word2, weights=(1, 1, 2))
+    return Levenshtein.distance(word1, word2, weights=(1, 1, 3))
 
 # Spell Checker function to check each word in a sentence
 def spell_check_sentence(sentence, dictionary=dictionary_file, max_distance=2):
