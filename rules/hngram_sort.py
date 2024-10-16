@@ -78,6 +78,6 @@ only_rough_pos_df = hngrams_df[hngrams_df['POS_Type'] == 'Only Rough POS']
 mixed_pos_df = hngrams_df[hngrams_df['POS_Type'] == 'Mixed POS']
 
 # Export the categorized n-grams to CSV files
-only_detailed_pos_df.to_csv('/content/Pantasa/rules/database/detailed_hngram.csv', index=False)
-only_rough_pos_df.to_csv('/content/Pantasa/rules/database/rough_hngram.csv', index=False)
-mixed_pos_df.to_csv('/content/Pantasa/rules/database/mixed_hngram.csv', index=False)
+only_detailed_pos_df.to_csv('rules/database/detailed_hngram.csv', index=False)
+only_rough_pos_df.to_csv('rules/database/rough_hngram.csv', index=False)
+mixed_pos_df.to_csv('rules/database/mixed_hngram.csv', index=False)
