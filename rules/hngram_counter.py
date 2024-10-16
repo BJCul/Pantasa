@@ -35,7 +35,10 @@ def tag_type(tag):
     # Check if the tag is a rough POS tag
     if tag in hierarchical_pos_tags:
         return "rough POS tag"
-    
+    else:
+        return "detailed POS tag"
+
+    """
     # Check if the tag is a combined detailed POS tag (i.e., "PMS_NNC_CCP")
     if "_" in tag:
         components = tag.split("_")
@@ -49,6 +52,7 @@ def tag_type(tag):
     
     # If the tag is neither a rough POS nor a detailed POS tag, it's considered a word
     return "word"
+    """
 
 
 # Function to return 3 patterns based on rough POS tags, detailed POS tags, and words
@@ -60,7 +64,7 @@ def search_pattern_conversion_based_on_tag_type(pattern):
     # Separate patterns for rough POS, detailed POS, and words
     rough_pos_pattern = []
     detailed_pos_pattern = []
-    word_pattern = []
+    #word_pattern = []
 
     for part in pattern_parts:
         tag_category = tag_type(part)
@@ -69,29 +73,32 @@ def search_pattern_conversion_based_on_tag_type(pattern):
         if tag_category == "rough POS tag":
             rough_pos_pattern.append(part)  # Keep rough POS tag
             detailed_pos_pattern.append(r'.*')  # Replace detailed POS with wildcard
-            word_pattern.append(r'.*')  # Replace words with wildcard
+            #word_pattern.append(r'.*')  # Replace words with wildcard
         # Detailed POS Pattern
         elif tag_category == "detailed POS tag":
             rough_pos_pattern.append(r'.*')  # Replace rough POS with wildcard
             detailed_pos_pattern.append(part)  # Keep detailed POS tag
-            word_pattern.append(r'.*')  # Replace words with wildcard
+            #word_pattern.append(r'.*')  # Replace words with wildcard
         
+        """
         # Word Pattern
         else:
             rough_pos_pattern.append(r'.*')  # Replace rough POS with wildcard
             detailed_pos_pattern.append(r'.*')  # Replace detailed POS with wildcard
             word_pattern.append(part) 
+        
+        """
     
     # Join each pattern list to form a regex search pattern
     rough_pos_search_pattern = " ".join(rough_pos_pattern)
     detailed_pos_search_pattern = " ".join(detailed_pos_pattern)
-    word_search_pattern = " ".join(word_pattern)
+    #word_search_pattern = " ".join(word_pattern)
 
     logging.debug(f"Rough POS pattern: {rough_pos_search_pattern}")
     logging.debug(f"Detailed POS pattern: {detailed_pos_search_pattern}")
-    logging.debug(f"Word pattern: {word_search_pattern}")
+    #logging.debug(f"Word pattern: {word_search_pattern}")
     
-    return rough_pos_search_pattern, detailed_pos_search_pattern, word_search_pattern
+    return rough_pos_search_pattern, detailed_pos_search_pattern #, word_search_pattern
 
 # Function to apply rough POS, detailed POS, and word-based filtering
 def instance_collector(pattern, ngrams_df, pattern_ngram_size):
@@ -101,7 +108,7 @@ def instance_collector(pattern, ngrams_df, pattern_ngram_size):
     size_filtered_df = filter_by_ngram_size(pattern, ngrams_df, pattern_ngram_size)
 
     # Step 2: Get the three search patterns (rough POS, detailed POS, and words)
-    rough_pos_search_pattern, detailed_pos_search_pattern, word_search_pattern = search_pattern_conversion_based_on_tag_type(pattern)
+    rough_pos_search_pattern, detailed_pos_search_pattern = search_pattern_conversion_based_on_tag_type(pattern)
     
     # Step 3: Apply rough POS filtering
     rough_pos_matches = size_filtered_df[size_filtered_df['RoughPOS_N-Gram'].str.contains(rough_pos_search_pattern, regex=True)]
@@ -179,11 +186,15 @@ def process_in_batches(hngrams_df, ngrams_df, batch_size=100, start_pattern_id=N
             logging.info(f'Total matched n-grams for Pattern ID {pattern_id}: {total_matched_ngrams}')
             
             # Get the rough POS pattern for storage
-            rough_pos_pattern, _, _ = search_pattern_conversion_based_on_tag_type(pattern)
+            rough_pos_pattern, detailed_pos_pattern = search_pattern_conversion_based_on_tag_type(pattern)
+
+            
             
             # Update the batch DataFrame with frequency and rough POS pattern
             batch_df.loc[index, 'Frequency'] = total_matched_ngrams
             batch_df.loc[index, 'Rough_POS'] = rough_pos_pattern
+            batch_df.loc[index, 'Detailed_POS'] = detailed_pos_pattern
+
 
         # Update the main hngrams_df with the processed batch and save results to CSV
         update_hngrams_csv(hngrams_df, batch_df)
