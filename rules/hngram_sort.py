@@ -18,15 +18,27 @@ hierarchical_pos_tags = {
 
 # Function to determine if a tag is a rough POS tag, detailed POS tag, or a word
 def tag_type(tag):
+
+    # Ignore LM, FW, and TS if they are part of an underscore-separated tag
+    exceptions = ["LM", "FW", "TS"]
+    
+    # Check for exceptions like LM, FW, TS
+    if tag in ["LM", "FW", "TS"]:
+        return "both POS tag"  # This tag is both rough and detailed
+    
     # Check if the tag is a combined rough POS tag (i.e., "NN.*_VB.*")
     if "_" in tag:
         components = tag.split("_")
-        # Check if all components are rough POS tags
-        if all(component in hierarchical_pos_tags for component in components):
-            return "rough POS tag"
+
+        # Filter out the exceptions
+        filtered_components = [component for component in components if component not in exceptions]
+        
         # Check if all components are detailed POS tags
-        elif all(any(component in detailed_tags for detailed_tags in hierarchical_pos_tags.values()) for component in components):
+        if all(any(component in detailed_tags for detailed_tags in hierarchical_pos_tags.values()) for component in components):
             return "detailed POS tag"
+        # Check if all components are rough POS tags
+        elif all(component in hierarchical_pos_tags for component in components):
+            return "rough POS tag"
     
     # Check if the tag is a rough POS tag
     if tag in hierarchical_pos_tags:
@@ -56,6 +68,10 @@ def classify_ngram_pos(pattern):
         elif tag_category == "detailed POS tag":
             rough_pos_pattern.append(r'.*')  # Replace rough POS with wildcard
             detailed_pos_pattern.append(part)  # Keep detailed POS tag
+        # Detailed POS Pattern
+        elif tag_category == "both POS tag":
+            rough_pos_pattern.append(r'.*')  # Replace rough POS with wildcard
+            detailed_pos_pattern.append(r'.*')  # Replace detailed POS with wildcard
     
     # If Rough POS is filled only with ".*", it's considered Only Detailed POS
     if all(tag == '.*' for tag in rough_pos_pattern):
