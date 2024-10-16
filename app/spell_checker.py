@@ -1,9 +1,12 @@
 import pandas as pd
 import numpy as np
+import Levenshtein
 from app.utils import weighted_levenshtein
 
 # Load dictionary from CSV
 def load_dictionary(csv_path):
+
+    csv_path = "data/raw/dictionary.csv"
     df = pd.read_csv(csv_path)
     # Assuming the words are in the first column and filtering out non-string values
     words = df.iloc[:, 0].dropna().astype(str).tolist()
@@ -46,16 +49,63 @@ def spell_check_sentence(sentence, dictionary=dictionary_file, max_distance=2):
     
     return misspelled_words, corrected_sentence_str
 
+def spell_check_word(word):
+    """
+    Check if the word is spelled correctly and provide a correction if not.
+    Args:
+    - word: The word to check.
+    Returns:
+    - A tuple (misspelled_word, corrected_word). If the word is correct, corrected_word will be None.
+    """
+    dictionary = load_dictionary("data/raw/dictionary.csv")
+    word_lower = word.lower()
+    
+    if word_lower in dictionary:
+        # Word is spelled correctly
+        return word, None
+    else:
+        # Word is misspelled; find the closest match
+        suggestions = get_closest_words(word_lower, dictionary)
+        if suggestions:
+            corrected_word = suggestions[0][0]  # Get the best suggestion
+            return word, corrected_word
+        else:
+            # No suggestions found
+            return word, None
+
+def get_closest_words(word, dictionary, num_suggestions=1):
+    """
+    Find the closest words in the dictionary to the input word using Levenshtein distance.
+    Args:
+    - word: The misspelled word.
+    - dictionary: A set of correct words.
+    - num_suggestions: The number of suggestions to return.
+    Returns:
+    - A list of tuples (word, distance).
+    """
+    word_distances = []
+    for dict_word in dictionary:
+        distance = Levenshtein(word, dict_word)
+        word_distances.append((dict_word, distance))
+    
+    # Sort the words by distance
+    word_distances.sort(key=lambda x: x[1])
+    
+    # Return the top suggestions
+    return word_distances[:num_suggestions]
+
+
+
 if __name__ == "__main__":
     # Load the dictionary
     dictionary = load_dictionary("data/raw/dictionary.csv")
 
     # Test the spell checker with a sample sentence
-    test_sentence_1 = "ang mga bata ay mastaya"
+    test_sentence_1 = "ang mga bat"
     test_sentence_2 = "kumakain ang mga bata ng mansana"
 
     print("Original:", test_sentence_1)
-    print("Corrected:", spell_check_sentence(test_sentence_1, dictionary))
+    print("Corrected:", spell_check_word(test_sentence_1))
 
     print("Original:", test_sentence_2)
     print("Corrected:", spell_check_sentence(test_sentence_2, dictionary))

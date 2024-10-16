@@ -158,8 +158,8 @@ def get_spell_checker_suggestions(word):
     # For example, return a list of words
     suggestions = []
     # Assuming you have a function spell_check_word(word) that returns suggestions
-    suggestions = spell_check_word(word)
-    return suggestions
+    misspelled_word, corrected_word = spell_check_word(word)
+    return misspelled_word, corrected_word
 
 def spell_check_word (word):
     """

@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from app.pantasa_checker import pantasa_checker
+from app.spell_checker import load_dictionary
 from app.utils import load_hybrid_ngram_patterns
 import logging
 import os
@@ -19,27 +20,20 @@ def get_text():
         text_input = data.get('text_input', '')
 
         if text_input:
+            input_text = "magtanim ay hndi bro"
             jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
             model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
-            hybrid_ngram_patterns = load_hybrid_ngram_patterns('data/processed/hngrams.csv')
+            rule_path = 'data/processed/hngrams.csv'
+            directory_path = 'data/raw/dictionary.csv'
+            pos_path = 'data/processed/'
             
             # Call the Pantasa function to process the sentence and get the suggestions and misspelled words
-            suggestions, misspelled_words, rule_corrected_text = pantasa_checker(text_input, jar_path, model_path, hybrid_ngram_patterns)
+            corrected_sentence = pantasa_checker(text_input, jar_path, model_path, rule_path, directory_path, pos_path)
             
-            highlighted_text = text_input
-            for word, suggestion in misspelled_words:
-                highlighted_text = highlighted_text.replace(
-                    word, f'<span class="error" data-suggestions="{"".join(suggestion)}">{word}</span>'
-                )
-
-                            
             # Return the grammar-checking result as JSON
             result = {
                 "input_text": text_input,
-                "highlighted_text": highlighted_text,
-                "corrected_text": rule_corrected_text,
-                "suggestions": suggestions,
-                "misspelled_words": misspelled_words
+                "corrected_text": corrected_sentence,
             }
             return jsonify(result)
         else:
