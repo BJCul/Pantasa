@@ -114,11 +114,13 @@ def update_hngrams_csv(hngrams_df, batch_df):
     for index, row in batch_df.iterrows():
         pattern_id = row['Pattern_ID']
         frequency = row['Frequency']
-        rough_pos_pattern = row['Rough POS']
+        rough_pos_pattern = row['Rough_POS']
+        detailed_pos_pattern = row['Detailed_POS']
         
         # Update the corresponding row in the main hngrams_df DataFrame
         hngrams_df.loc[hngrams_df['Pattern_ID'] == pattern_id, 'Frequency'] = frequency
         hngrams_df.loc[hngrams_df['Pattern_ID'] == pattern_id, 'Rough_POS'] = rough_pos_pattern
+        hngrams_df.loc[hngrams_df['Pattern_ID'] == pattern_id, 'Detailed_POS'] = detailed_pos_pattern
     
     # Save the updated hngrams_df to the CSV file after processing each batch
     hngrams_df.to_csv('rules/database/hngrams.csv', index=False)
@@ -163,13 +165,10 @@ def process_in_batches(hngrams_df, ngrams_df, batch_size=100, start_pattern_id=N
             # Get the rough POS pattern for storage
             rough_pos_pattern, detailed_pos_pattern = search_pattern_conversion_based_on_tag_type(pattern)
 
-            
-            
             # Update the batch DataFrame with frequency and rough POS pattern
             batch_df.loc[index, 'Frequency'] = total_matched_ngrams
             batch_df.loc[index, 'Rough_POS'] = rough_pos_pattern
             batch_df.loc[index, 'Detailed_POS'] = detailed_pos_pattern
-
 
         # Update the main hngrams_df with the processed batch and save results to CSV
         update_hngrams_csv(hngrams_df, batch_df)
