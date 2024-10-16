@@ -125,7 +125,7 @@ def preprocess_text(text_input, jar_path, model_path):
     log_message("info", f"Lemmatized Words: {lemmatized_words}")
 
     # Step 5: Prepare the preprocessed output
-    preprocessed_output = (tokens, lemmatized_words, tagged_tokens, checked_sentence, mispelled_words)
+    preprocessed_output = (tokens, lemmatized_words, merged_tokens, checked_sentence, mispelled_words)
     
     # Log the final preprocessed output for better traceability
     log_message("info", f"Preprocessed Output: {preprocessed_output}")
@@ -521,12 +521,14 @@ def check_words_in_dictionary(words, directory_path):
     # Check each word against the dictionary
     for word in words:
         if word.lower() not in dictionary:
-            if word.endswith("ng"):
-                wordng = word[:-2]
-                if wordng.lower() not in dictionary:
+            if not word.istitle():
+                if word.endswith("ng"):
+                    wordng = word[:-2]
+                    if wordng.lower() not in dictionary:
+                        incorrect_words.append(word)
+                else:
                     incorrect_words.append(word)
-            else:
-                incorrect_words.append(word)
+
     
     has_incorrect_word = len(incorrect_words) > 0
     logger.debug(f"Incorrect Words: {incorrect_words}")
@@ -540,7 +542,7 @@ def spell_check_word(word, directory_path):
     dictionary = load_dictionary(directory_path)
     word_lower = word.lower()
     
-    if word_lower in dictionary:
+    if word_lower in dictionary or word.istitle():
         # Word is spelled correctly
         return word, None
     else:
