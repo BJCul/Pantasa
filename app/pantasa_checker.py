@@ -66,7 +66,7 @@ def pos_tagging(tokens, jar_path=jar, model_path=model):
                 temp_file_path = temp_file.name
 
             command = [
-                'java', '-mx1sg',
+                'java', '-mx300m',
                 '-cp', jar_path,
                 'edu.stanford.nlp.tagger.maxent.MaxentTagger',
                 '-model', model_path,
