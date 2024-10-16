@@ -165,21 +165,21 @@ def merge_affixes(text, pos_tags, dictionary=dictionary_file):
     
     return ' '.join(corrected_words)
 
-# def apply_predefined_rules_pre(text):
-#     pos = pos_tag(text)
-#     rd_correction = rd_interchange(text)
-#     rule_corrected = handle_nang_ng(rd_correction,pos)
+def apply_predefined_rules_pre(text):
+    pos = pos_tag(text)
+    rd_correction = rd_interchange(text)
+    rule_corrected = handle_nang_ng(rd_correction,pos)
 
-#     return rule_corrected
+    return rule_corrected
 
-# def apply_predefined_rules_post(text):
-#     pos = pos_tag(text)
+def apply_predefined_rules_post(text):
+    pos = pos_tag(text)
 
-#     mas_correction = separate_mas(text)
-#     prefix_merged = merge_affixes(mas_correction, pos)
-#     rule_corrected = correct_hyphenation(prefix_merged)
+    mas_correction = separate_mas(text)
+    prefix_merged = merge_affixes(mas_correction, pos)
+    rule_corrected = correct_hyphenation(prefix_merged)
 
-#     return rule_corrected
+    return rule_corrected
 
 def apply_predefined_rules(text):
     pos = pos_tag(text)
@@ -196,7 +196,7 @@ def apply_predefined_rules(text):
 
 if __name__ == "__main__":
     text = "pinang tiklop maski pagusp"
-    corrected_sentence = apply_predefined_rules(text)
+    corrected_sentence = apply_predefined_rules_pre(text)
 
     print(f"Corrected sentence: {corrected_sentence}")
 

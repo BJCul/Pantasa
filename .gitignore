@@ -17,3 +17,4 @@ logs/pantasa.log
 /.vscode
 /rules/database/Generalized/LexemeComparison
 *.log
+logs/pantasa.log
