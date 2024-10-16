@@ -3,35 +3,39 @@
 <head>
     <meta charset = 'utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>"PANTASA"</title>
+    <title>"Pantasa - Advance Tagalog Error Checker"</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 <body>
     <!--Header-->
     <div class= "nav">
+        
         <input type = "checkbox" id = "check">
         <label for = "check" class = "checkbtn">
             <i class = "fas fa-bars"></i>
         </label>
 
-        </label> 
+        <input type = "checkbox" id = "check">
+        <label for = "check" class = "exitbtn">
+            <i class = "fas fa-times"></i>
+        </label>
+        <img src="{{ url_for('static', filename='assets/logo_image.png') }}" alt="Logo" class="logo-image">
         <label class = "logo"> PANTASA </label>
         <ul>
             <li><a href = "#Home" onclick = "showSection('Home')" translate = "no">HOME</a></li>
             <li><a href = "#About" onclick = "showSection('About')" translate = "no"> About PANTASA </a></li>
             <li><a href = "#GrammarChecker" onclick = "showSection('GrammarChecker')" translate = "no"> Try Now </a></li>
-            <!--<li><a href = "#HelpCenter" onclick = "showSection('HelpCenter')"> Help Center </a></li> OPTIONAL-->
         </ul>
     </div>
 
     <!--Home-->
     <section id = "Home">
         <div class = "home-content">
-            <h1> Filipino Grammar Checker </h1>
-            <p> A Simple Filipino Grammar Checker for supplementary use! </p>
+            <h1> PANTASA: Advance Tagalog Error Checker </h1>
+            <p> Your Tagalog grammar buddy. </p>
                 <div>
-                    <li><a href = "#GrammarChecker" ><button type = "button" class = "button" onclick = "showSection('GrammarChecker')"><span></span> Let's Get Started </button></a></li>
+                    <li><a href = "#GrammarChecker" ><button type = "button" class = "button" onclick = "showSection('GrammarChecker')"><span></span> Try it now </button></a></li>
                 </div>
         </div>
     </section>
@@ -52,8 +56,8 @@
     
     <!--Grammar Checker-->
     <section id = "GrammarChecker" class = "hidden">
-        <div class = "figcheck-content">
-            <div class = "figcheck-container">
+        <div class = "pantasa-content">
+            <div class = "pantasa-container">
                 <div class = "textArea-container"></div>
                     <form id="grammarForm" onsubmit="return false;">
                         <textarea id="grammarTextarea" name="text_input" placeholder="Type your text here..."></textarea><br>
@@ -86,7 +90,7 @@
 
     <div class = "Footer">
         <div class = "footer-content">
-            <p> PANTASA </p>
+            <p> © 2024 Sharp Mugs. All Rights Reserved. </p>
         </div>
     </div>
     
