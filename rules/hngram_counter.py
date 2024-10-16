@@ -178,8 +178,8 @@ logging.info("All batches processed and hngrams.csv updated.")
 
 
 # Load the CSV files containing the patterns and n-grams
-hngrams_df = pd.read_csv('rules/database/hngrams.csv')
-ngrams_df = pd.read_csv('rules/database/ngrams.csv')
+hngrams_df = pd.read_csv('/content/Pantasa/rules/database/hngrams.csv')
+ngrams_df = pd.read_csv('/content/Pantasa/rules/database/ngrams.csv')
 
 # Process the hngrams.csv in batches of 100 rows (adjust the batch size as needed)
 process_in_batches(hngrams_df, ngrams_df, batch_size=100, start_pattern_id=540754)
