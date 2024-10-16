@@ -18,11 +18,24 @@ hierarchical_pos_tags = {
 
 # Function to determine if a tag is a rough POS tag, detailed POS tag, or a word
 def tag_type(tag):
+    # Check if the tag is a combined rough POS tag (i.e., "NN.*_VB.*")
+    if "_" in tag:
+        components = tag.split("_")
+        # Check if all components are rough POS tags
+        if all(component in hierarchical_pos_tags for component in components):
+            return "rough POS tag"
+        # Check if all components are detailed POS tags
+        elif all(any(component in detailed_tags for detailed_tags in hierarchical_pos_tags.values()) for component in components):
+            return "detailed POS tag"
+    
     # Check if the tag is a rough POS tag
     if tag in hierarchical_pos_tags:
         return "rough POS tag"
-    else:
-        return "detailed POS tag"
+    
+    # Check if the tag is a detailed POS tag (found in the values of the dictionary)
+    for rough_tag, detailed_tags in hierarchical_pos_tags.items():
+        if tag in detailed_tags:
+            return "detailed POS tag"
     
 # Function to return 3 patterns based on rough POS tags, detailed POS tags, and words
 def classify_ngram_pos(pattern):
