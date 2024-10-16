@@ -473,7 +473,7 @@ label.logo {
     width: 200px;
 }
 
-#predictionsContent, #suggestionsContent {
+#correctionsContent, #suggestionsContent {
     align-items: center;
     width: 100%;
     height: 10%;
@@ -619,7 +619,7 @@ label.logo {
         font-size: 1rem;
     }
 
-    #predictionsContent, #suggestionsContent { 
+    #correctionsContent, #suggestionsContent { 
         font-size: 1rem;
     }
 
@@ -670,7 +670,7 @@ label.logo {
         font-size: 1rem;
     }
 
-    #predictionsContent, #suggestionsContent { 
+    #correctionsContent, #suggestionsContent { 
         font-size: 1rem;
     }
 
@@ -696,7 +696,7 @@ label.logo {
         font-size: 1.25rem;
     }
 
-    #predictionsContent, #suggestionsContent { 
+    #correctionsContent, #suggestionsContent { 
         font-size: 1.25rem;
     }
 
@@ -725,7 +725,7 @@ label.logo {
         font-size: 1rem;
     }
 
-    #predictionsContent, #suggestionsContent { 
+    #correctionsContent, #suggestionsContent { 
         font-size: 1rem;
     }
 

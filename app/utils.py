@@ -2,6 +2,7 @@
 
 import csv
 import numpy as np
+import pandas as pd
 
 # Edit Distance Constants
 EDIT_DISTANCE_THRESHOLD = 1
@@ -47,7 +48,7 @@ def load_hybrid_ngram_patterns(file_path):
     with open(file_path, mode='r') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            ngram_pattern = row['Final_Hybrid_N-Gram'].split()
+            ngram_pattern = row['Hybrid_N-Gram'].split()
             hybrid_ngrams.append({
                 'pattern_id': row['Pattern_ID'],
                 'ngram_pattern': ngram_pattern
@@ -157,8 +158,34 @@ def weighted_levenshtein(word1, word2):
 
     return dp[len1][len2]
 
+def damerau_levenshtein_distance(word1, word2):
+    len1, len2 = len(word1), len(word2)
+    dp = np.zeros((len1 + 1, len2 + 1), dtype=int)
+
+    # Initialize the base cases (empty strings)
+    for i in range(len1 + 1):
+        dp[i][0] = i
+    for j in range(len2 + 1):
+        dp[0][j] = j
+
+    # Fill the dp table
+    for i in range(1, len1 + 1):
+        for j in range(1, len2 + 1):
+            if word1[i - 1] == word2[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1]  # No operation needed
+            else:
+                dp[i][j] = min(dp[i - 1][j] + 1,     # Deletion
+                               dp[i][j - 1] + 1,     # Insertion
+                               dp[i - 1][j - 1] + 1) # Substitution
+
+            # Check for transposition
+            if i > 1 and j > 1 and word1[i - 1] == word2[j - 2] and word1[i - 2] == word2[j - 1]:
+                dp[i][j] = min(dp[i][j], dp[i - 2][j - 2] + 1)  # Transposition
+
+    return dp[len1][len2]
+
 # Example usage
 if __name__ == "__main__":
-    file_path = 'data/processed/hngrams.csv'
-    hybrid_ngrams = load_hybrid_ngram_patterns(file_path)    
+    csv_file_path = 'data/processed/hngrams.csv'
+    hybrid_ngrams = load_hybrid_ngram_patterns(csv_file_path)    
     print(hybrid_ngrams)
