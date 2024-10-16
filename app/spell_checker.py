@@ -1,12 +1,10 @@
 import pandas as pd
 import numpy as np
-import Levenshtein
-from app.utils import weighted_levenshtein
+from rapidfuzz.distance import Levenshtein  # Use RapidFuzz's Levenshtein
+from app.utils import weighted_levenshtein  # Assuming you have custom utilities here
 
 # Load dictionary from CSV
 def load_dictionary(csv_path):
-
-    csv_path = "data/raw/dictionary.csv"
     df = pd.read_csv(csv_path)
     # Assuming the words are in the first column and filtering out non-string values
     words = df.iloc[:, 0].dropna().astype(str).tolist()
@@ -14,6 +12,10 @@ def load_dictionary(csv_path):
 
 # Load the dictionary from the CSV file
 dictionary_file = load_dictionary("data/raw/dictionary.csv")
+
+# Define the weighted Levenshtein function using RapidFuzz with 1-1-2 weights
+def weighted_levenshtein(word1, word2):
+    return Levenshtein.distance(word1, word2, weights=(1, 1, 2))
 
 # Spell Checker function to check each word in a sentence
 def spell_check_sentence(sentence, dictionary=dictionary_file, max_distance=2):
@@ -85,7 +87,7 @@ def get_closest_words(word, dictionary, num_suggestions=1):
     """
     word_distances = []
     for dict_word in dictionary:
-        distance = Levenshtein(word, dict_word)
+        distance = weighted_levenshtein(word, dict_word)
         word_distances.append((dict_word, distance))
     
     # Sort the words by distance
@@ -93,8 +95,6 @@ def get_closest_words(word, dictionary, num_suggestions=1):
     
     # Return the top suggestions
     return word_distances[:num_suggestions]
-
-
 
 if __name__ == "__main__":
     # Load the dictionary
@@ -109,5 +109,3 @@ if __name__ == "__main__":
 
     print("Original:", test_sentence_2)
     print("Corrected:", spell_check_sentence(test_sentence_2, dictionary))
-
-    
