@@ -23,7 +23,7 @@ def get_text():
             input_text = "magtanim ay hndi bro"
             jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
             model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
-            rule_path = 'data/processed/hngrams.csv'
+            rule_path = 'data/processed/ngrams.csv'
             directory_path = 'data/raw/dictionary.csv'
             pos_path = 'data/processed/'
             

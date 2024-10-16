@@ -136,16 +136,15 @@ def rule_pattern_bank(rule_path):
     file_path = rule_path  # Update with actual path
     hybrid_ngrams_df = pd.read_csv(file_path)
 
-    # Create a dictionary to store the Rule Pattern Bank (Hybrid N-Grams + Predefined Rules)
     rule_pattern_bank = {}
 
-    # Store the hybrid n-grams from the CSV file into the rule pattern bank
     for index, row in hybrid_ngrams_df.iterrows():
-        pattern_id = row['Pattern_ID']
-        hybrid_ngram = row['Hybrid_N-Gram']
+        pattern_id = row['N-Gram_ID']
+        hybrid_ngram = row['DetailedPOS_N-Gram']
         rule_pattern_bank[pattern_id] = {'hybrid_ngram': hybrid_ngram}
     
     return rule_pattern_bank
+
 
 # Step 2: Define the weighted Levenshtein distance function
 def edit_weighted_levenshtein(input_ngram, pattern_ngram):
@@ -418,7 +417,22 @@ def get_closest_words_by_pos(input_word, words_list, num_suggestions=3):
 
 
 # Step 6: Correction phase - apply the suggestions to correct the input sentence
+from collections import Counter
+
 def apply_pos_corrections(token_suggestions, pos_tags, pos_path, insertion_suggestions):
+    """
+    Applies corrections to the input sentence based on token suggestions and insertion suggestions.
+
+    Args:
+    - token_suggestions: List of dictionaries containing suggestions for each token.
+    - pos_tags: List of (word, POS) tuples representing the original sentence.
+    - pos_path: Path to the POS tag dictionaries.
+    - insertion_suggestions: Dictionary mapping positions to lists of POS tags to insert.
+
+    Returns:
+    - corrected_sentence: The corrected sentence as a string.
+    - word_suggestions: Dictionary mapping original words to their suggested replacements.
+    """
     final_sentence = []
     word_suggestions = {}  # To keep track of suggestions for each word
     pos_tag_dict = {}  # Cache for loaded POS tag dictionaries
@@ -489,10 +503,10 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path, insertion_sugge
                     suggestions_list = get_closest_words_by_pos(input_word, word_list, num_suggestions=3)
 
                     if suggestions_list:
-                        # For now, pick the best suggestion (smallest distance)
+                        # Pick the best suggestion (smallest distance)
                         replacement_word = suggestions_list[0][0]
                         final_sentence.append(replacement_word)
-                        
+
                         # Store suggestions for the word
                         word_suggestions[input_word] = [word for word, dist in suggestions_list]
                     else:
@@ -504,12 +518,15 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path, insertion_sugge
                 else:
                     # Handle any other suggestion types
                     final_sentence.append(pos_tags[idx][0])
+
         idx += 1  # Move to the next position
 
     corrected_sentence = " ".join(final_sentence)
     print(f"CORRECTED SENTENCE: {corrected_sentence}")
     print(f"FINAL SENTENCE: {final_sentence}")
     return corrected_sentence, word_suggestions
+
+
 
 def check_words_in_dictionary(words, directory_path):
     """
