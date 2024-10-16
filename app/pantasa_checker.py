@@ -5,7 +5,6 @@ import tempfile
 import subprocess
 import os
 import logging
-from app.verb_substitution import conjugate_tagalog_verb
 from app.grammar_checker import spell_check_incorrect_words
 from app.utils import log_message
 from app.spell_checker import load_dictionary, spell_check_sentence
@@ -125,7 +124,7 @@ def preprocess_text(text_input, jar_path, model_path):
     log_message("info", f"Lemmatized Words: {lemmatized_words}")
 
     # Step 5: Prepare the preprocessed output
-    preprocessed_output = (tokens, lemmatized_words, merged_tokens, checked_sentence, mispelled_words)
+    preprocessed_output = (tokens, lemmatized_words, tagged_tokens, checked_sentence, mispelled_words)
     
     # Log the final preprocessed output for better traceability
     log_message("info", f"Preprocessed Output: {preprocessed_output}")
@@ -200,17 +199,13 @@ def generate_correction_tags(input_ngram, pattern_ngram):
     tags = []
     
     for i, (input_token, pattern_token) in enumerate(zip(input_tokens, pattern_tokens)):
-        distance = edit_weighted_levenshtein(input_token, pattern_token)
-        
-        # If the distance is 0, the tokens are the same, so we keep them
-        if distance == 0:
+        if input_token == pattern_token:
             tags.append(f'KEEP_{input_token}_{pattern_token}')
-        # Check for transpositions
-        elif i > 0 and i < len(input_tokens) - 1 and input_tokens[i] == pattern_tokens[i - 1] and input_tokens[i - 1] == pattern_tokens[i]:
-            tags.append(f'TRANSPOSE_{input_tokens[i-1]}_{input_tokens[i]}')
-        # General substitution for other cases
-        elif distance > 0:
-            tags.append(f'SUBSTITUTE_{input_token}_{pattern_token}')
+        if input_token != pattern_token:
+            if len(input_token) >= 2 and len(pattern_token) >= 2 and input_token.startswith(pattern_token[:2]): # For substitution errors (same POS group)
+                tags.append(f'KEEP_{input_token}_{pattern_token}')
+            else:  # General substitution (different POS group)
+                tags.append(f'SUBSTITUTE_{input_token}_{pattern_token}')
     
     # Handle if there are extra tokens in the input or pattern
     if len(input_tokens) > len(pattern_tokens):
@@ -417,9 +412,6 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
     word_suggestions = {}  # To keep track of suggestions for each word
     pos_tag_dict = {}  # Cache for loaded POS tag dictionaries
 
-     # Regular expression for checking verb POS tags
-    verb_regex = re.compile(r'^VB.*')
-
     # Iterate through the token_suggestions and apply the corrections
     for idx, token_info in enumerate(token_suggestions):
         suggestions = token_info["suggestions"]
@@ -467,40 +459,32 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
             print(f"INPUT POS: {input_pos}")
             print(f"TARGET POS: {target_pos}")
 
-            if verb_regex.match(input_pos) and verb_regex.match(target_pos):
-                # Apply verb conjugation if both are verbs
-                conjugated_word = conjugate_tagalog_verb(replacement_word, target_pos)
-                final_sentence.append(conjugated_word)   
+            # Load the dictionary for the target POS tag if not already loaded
+            if target_pos not in pos_tag_dict:
+                word_list = load_pos_tag_dictionary(target_pos, pos_path)
+                pos_tag_dict[target_pos] = word_list
             else:
-                # Load the dictionary for the target POS tag if not already loaded
-                if target_pos not in pos_tag_dict:
-                    word_list = load_pos_tag_dictionary(target_pos, pos_path)
-                    pos_tag_dict[target_pos] = word_list
-                else:
-                    word_list = pos_tag_dict[target_pos]
+                word_list = pos_tag_dict[target_pos]
 
-                # Get closest words by POS
-                suggestions_list = get_closest_words_by_pos(input_word, word_list, num_suggestions=3)
+            # Get closest words by POS
+            suggestions_list = get_closest_words_by_pos(input_word, word_list, num_suggestions=3)
 
-                if suggestions_list:
-                    # For now, pick the best suggestion (smallest distance)
-                    replacement_word = suggestions_list[0][0]
-                    final_sentence.append(replacement_word)
-                    
-                    # Store suggestions for the word
-                    word_suggestions[input_word] = [word for word, dist in suggestions_list]
-                else:
-                    # If no suggestions found, keep the original word
-                    final_sentence.append(input_word)
+            if suggestions_list:
+                # For now, pick the best suggestion (smallest distance)
+                replacement_word = suggestions_list[0][0]
+                final_sentence.append(replacement_word)
+                
+                # Store suggestions for the word
+                word_suggestions[input_word] = [word for word, dist in suggestions_list]
+            else:
+                # If no suggestions found, keep the original word
+                final_sentence.append(input_word)
         elif suggestion_type == "DELETE":
             continue  # Skip the token
         elif suggestion_type == "INSERT":
             # Handle insertion if necessary
             pass
-        elif suggestion_type == "TRANSPOSE":
-            word1 = suggestion_parts[1]
-            word2 = suggestion_parts[2]
-            final_sentence.append(f'{word2} {word1}')
+        else:
             # Handle any other suggestion types
             final_sentence.append(pos_tags[idx][0])
     
@@ -521,14 +505,7 @@ def check_words_in_dictionary(words, directory_path):
     # Check each word against the dictionary
     for word in words:
         if word.lower() not in dictionary:
-            if not word.istitle():
-                if word.endswith("ng"):
-                    wordng = word[:-2]
-                    if wordng.lower() not in dictionary:
-                        incorrect_words.append(word)
-                else:
-                    incorrect_words.append(word)
-
+            incorrect_words.append(word)
     
     has_incorrect_word = len(incorrect_words) > 0
     logger.debug(f"Incorrect Words: {incorrect_words}")
@@ -542,7 +519,7 @@ def spell_check_word(word, directory_path):
     dictionary = load_dictionary(directory_path)
     word_lower = word.lower()
     
-    if word_lower in dictionary or word.istitle():
+    if word_lower in dictionary:
         # Word is spelled correctly
         return word, None
     else:
