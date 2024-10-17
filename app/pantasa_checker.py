@@ -66,7 +66,7 @@ def pos_tagging(tokens, jar_path=jar, model_path=model):
                 temp_file_path = temp_file.name
 
             command = [
-                'java', '-mx1sg',
+                'java', '-mx300m',
                 '-cp', jar_path,
                 'edu.stanford.nlp.tagger.maxent.MaxentTagger',
                 '-model', model_path,
@@ -625,7 +625,7 @@ def pantasa_checker(input_sentence, jar_path, model_path, rule_path, directory_p
 
     log_message("info", f"Final Corrected Sentence: {corrected_sentence}")
     # Return the corrected sentence and any suggestions
-    return corrected_sentence
+    return corrected_sentence, incorrect_words
 
 if __name__ == "__main__":
     input_text = "magtanim ay hindi biro"

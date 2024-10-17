@@ -32,7 +32,7 @@
     <!--Home-->
     <section id = "Home">
         <div class = "home-content">
-            <h1> PANTASA: Advance Tagalog Error Checker </h1>
+            <h1> PANTASA: Advance Tagalog Grammar Error Checker </h1>
             <p> Your Tagalog grammar buddy. </p>
                 <div>
                     <li><a href = "#GrammarChecker" ><button type = "button" class = "button" onclick = "showSection('GrammarChecker')"><span></span> Try it now </button></a></li>
@@ -55,38 +55,39 @@
     </section>
     
     <!--Grammar Checker-->
-    <section id = "GrammarChecker" class = "hidden">
-        <div class = "pantasa-content">
-            <div class = "pantasa-container">
-                <div class = "textArea-container"></div>
-                    <form id="grammarForm" onsubmit="return false;">
-                        <textarea id="grammarTextarea" name="text_input" placeholder="Type your text here..."></textarea><br>
-                    </form>
-                </div>
-                <div class = "full-side-container">
-                    <div id="result">
-                        <div id="loading" class="loading">
-                            <div class="spinner"></div>
-                            <p>Loading...</p>
+    <section id="GrammarChecker" class="hidden">
+        <div class="pantasa-content">
+            <div class="pantasa-container">
+                <div class="split-panel">
+                    <!-- Left Panel: Text Area and Suggestions -->
+                    <div class="left-panel">
+                        <div class="textArea-container">
+                            <form id="grammarForm" onsubmit="return false;">
+                                <div id="grammarTextarea" contenteditable="true" data-placeholder="Type your text here..." style="width: 100%; height: 350px; margin-bottom: 0; padding: 10px; font-size: 28px; border: none; outline: none; box-sizing: border-box;"></div>
+                            </form>
                         </div>
-                        <div id="correctionsContent"></div>
-                        <h3 id="suggestionsHeader" class="hidden">Suggestions:</h3>
-                        <div id="suggestionsContent"></div> 
-                    </div>                    
-                    <div class = "info-container">
-                        <h1> Getting to Know! </h1>
-                        <p> #1: Add your text inside the text box to check your grammar.</p> 
-                        <p> #2: A message will appear on the loading box .</p>
-                        <p> #3: A word/s will be highlighted for any incorrect spelling. You can move your mouse to see any suggestions!</p>
-                        <i> *Note: The suggestions listed can't be clicked, its just there to give suggestions.*</i><br>
+                        <div id="suggestionsContent">
+                            <h3>Suggestions:</h3>
+                            <ul id="suggestionsList"></ul>
+                        </div>
+                    </div>
 
-                        <i> *Note: This webapp is for testing and research purposes ONLY. It is not a full-time webapp.*</i>
+                    <!-- Right Panel: Corrected Sentence -->
+                    <div class="right-panel">
+                        <h3>Corrected Sentence:</h3>
+                        <div id="result">
+                            <p id="correctedText"></p>
+                            <div id="loading" class="loading hidden">
+                                <div class="spinner"></div>
+                                <p>Loading...</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <p> We appreciate your feedback!</p>
         </div>
     </section>
+    
 
     <div class = "Footer">
         <div class = "footer-content">

@@ -1,13 +1,58 @@
 document.addEventListener('DOMContentLoaded', function () {
     const checkBox = document.getElementById('check');
     const tryNowLink = document.querySelector('.nav ul li a[href="#GrammarChecker"]');
+    const characterLimit = 150;  // Set your character limit here
+
+    // Character count display element
+    const characterCount = document.createElement('p');
+    characterCount.style.color = 'gray';
+    characterCount.textContent = `0 / ${characterLimit}`;
+
+    const grammarTextarea = document.getElementById('grammarTextarea');
+    grammarTextarea.parentNode.appendChild(characterCount);  // Add the character counter below the text area
+
+    grammarTextarea.addEventListener('input', function () {
+        const textInput = grammarTextarea.innerText.trim();
+        const textLength = textInput.length;
+
+        // Update live character count
+        characterCount.textContent = `${textLength} / ${characterLimit}`;
+
+        // Change color if the character limit is reached
+        if (textLength >= characterLimit) {
+            characterCount.style.color = 'red';  // Make the count red
+            grammarTextarea.innerText = textInput.substring(0, characterLimit);
+        } else {
+            characterCount.style.color = 'gray';  // Keep the count gray when below the limit
+        }
+
+    });
 
     tryNowLink.addEventListener('click', function (event) {
         if (checkBox.checked) {
             checkBox.checked = false;
         }
     });
+
+    // Highlighted text click handler
+    document.addEventListener('click', function (event) {
+        if (event.target.classList.contains('highlight')) {
+            const suggestionsList = document.getElementById('suggestionsList');
+            const suggestionItem = document.createElement('li');
+            suggestionItem.textContent = 'Clicked';
+            suggestionsList.innerHTML = '';  // Clear previous suggestions
+            suggestionsList.appendChild(suggestionItem);
+        }
+    });
 });
+
+function showLoadingSpinner() {
+    document.getElementById('loading').classList.remove('hidden');
+}
+
+function hideLoadingSpinner() {
+    document.getElementById('loading').classList.add('hidden');
+}
 
 // Function to hide the menu after a link is clicked
 document.querySelectorAll('.nav ul li a').forEach(link => {
@@ -31,12 +76,17 @@ let timeout = null;
 
 document.getElementById('grammarTextarea').addEventListener('input', function () {
     clearTimeout(timeout);
-    const textInput = this.value;
+    const grammarTextarea = document.getElementById('grammarTextarea');
+    const textInput = grammarTextarea.innerText;  // Get the raw text input from the div
+
+    // Toggle the empty class if no content
+    if (textInput === '') {
+        grammarTextarea.classList.add('empty');
+    } else {
+        grammarTextarea.classList.remove('empty');
+    }
 
     // Clear previous corrections
-    const correctedTextElement = document.getElementById('correctedText');
-    correctedTextElement.innerHTML = '';
-
     timeout = setTimeout(async () => {
         try {
             const response = await fetch('/get_text', {
@@ -53,16 +103,34 @@ document.getElementById('grammarTextarea').addEventListener('input', function ()
 
             const data = await response.json();
 
-            // Display the corrected sentence
-            if (data.corrected_text) {
-                correctedTextElement.innerHTML = `<strong>Corrected Sentence:</strong><br>${data.corrected_text}`;
+            if (data.corrected_text && data.incorrect_words) {
+                let highlightedText = textInput;  // Keep the original input
+
+                // Highlight incorrect words
+                data.incorrect_words.forEach(word => {
+                    const regex = new RegExp(`\\b${word}\\b`, 'gi');
+                    highlightedText = highlightedText.replace(regex, `<span class="highlight">${word}</span>`);
+                });
+
+                // Display highlighted text in the textarea
+                grammarTextarea.innerHTML = highlightedText;
+
+                // Display corrected sentence
+                document.getElementById('correctedText').textContent = data.corrected_text;
+
+                hideLoadingSpinner();
+
             } else {
-                correctedTextElement.innerHTML = 'No corrections made.';
+                // If no corrections, keep the original input
+                grammarTextarea.innerHTML = textInput;
+                document.getElementById('correctedText').textContent = "No corrections needed.";
+                hideLoadingSpinner();
             }
 
         } catch (error) {
             console.error('Error:', error);
-            correctedTextElement.innerHTML = 'Error retrieving data.';
+            grammarTextarea.innerText = 'Error retrieving data.';
+            hideLoadingSpinner();
         }
     }, 1000);
 });
