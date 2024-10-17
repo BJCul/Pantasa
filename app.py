@@ -4,6 +4,7 @@ from app.spell_checker import load_dictionary
 from app.utils import load_hybrid_ngram_patterns
 import logging
 import os
+from threading import Lock
 
 # Specify the correct paths for templates and static folders
 app = Flask(__name__)
@@ -11,11 +12,16 @@ app = Flask(__name__)
 # Initialize logging
 logging.basicConfig(level=logging.INFO)
 
+# Lock and global variable to track logging activity
+logging_lock = Lock()
+is_logging = False
+
 # Route to handle grammar checking POST request
 @app.route('/get_text', methods=['POST'])
 def get_text():
     try:
         # Get JSON data from the POST request
+        global is_logging
         data = request.get_json()
         text_input = data.get('text_input', '')
 
@@ -25,6 +31,10 @@ def get_text():
             rule_path = 'data/processed/detailed_hngram.csv'
             directory_path = 'data/raw/dictionary.csv'
             pos_path = 'data/processed/'
+
+            # Track when processing starts
+            with logging_lock:
+                is_logging = True
             
             # Call the Pantasa function to process the sentence and get the suggestions and misspelled words
             corrected_sentence, incorrect_words = pantasa_checker(text_input, jar_path, model_path, rule_path, directory_path, pos_path)
@@ -37,6 +47,11 @@ def get_text():
                 "corrected_text": corrected_sentence,
                 "incorrect_words": incorrect_words
             }
+
+            # Track when processing ends
+            with logging_lock:
+                is_logging = False
+
             return jsonify(result)
         else:
             return jsonify({"error": "No text_input provided"}), 400
@@ -48,6 +63,13 @@ def get_text():
 @app.route('/')
 def index():
     return render_template('index.html')
+
+# Route to check logging status
+@app.route('/status', methods=['GET'])
+def check_status():
+    global is_logging
+    with logging_lock:
+        return jsonify({'logging': is_logging})
 
 # Handle CORS preflight OPTIONS request
 @app.after_request

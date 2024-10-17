@@ -1,32 +1,6 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const checkBox = document.getElementById('check');
+document.addEventListener('DOMContentLoaded', function () { //for clickable highlighted corrections
+    const checkBox = document.getElementById('check'); 
     const tryNowLink = document.querySelector('.nav ul li a[href="#GrammarChecker"]');
-    const characterLimit = 150;  // Set your character limit here
-
-    // Character count display element
-    const characterCount = document.createElement('p');
-    characterCount.style.color = 'gray';
-    characterCount.textContent = `0 / ${characterLimit}`;
-
-    const grammarTextarea = document.getElementById('grammarTextarea');
-    grammarTextarea.parentNode.appendChild(characterCount);  // Add the character counter below the text area
-
-    grammarTextarea.addEventListener('input', function () {
-        const textInput = grammarTextarea.innerText.trim();
-        const textLength = textInput.length;
-
-        // Update live character count
-        characterCount.textContent = `${textLength} / ${characterLimit}`;
-
-        // Change color if the character limit is reached
-        if (textLength >= characterLimit) {
-            characterCount.style.color = 'red';  // Make the count red
-            grammarTextarea.innerText = textInput.substring(0, characterLimit);
-        } else {
-            characterCount.style.color = 'gray';  // Keep the count gray when below the limit
-        }
-
-    });
 
     tryNowLink.addEventListener('click', function (event) {
         if (checkBox.checked) {
@@ -46,13 +20,69 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-function showLoadingSpinner() {
-    document.getElementById('loading').classList.remove('hidden');
+
+document.getElementById('grammarTextarea').addEventListener('input', function (event) { //for character limit
+
+    const textarea = document.getElementById('grammarTextarea');
+    const charCount = document.getElementById('charCount');
+    const maxLength = 150;
+    let currentLength = textarea.textContent.length;
+
+    // Prevent further input if character limit is reached
+    if (currentLength > maxLength) {
+        // Prevent the additional input beyond the limit
+        event.preventDefault();
+        textarea.textContent = textarea.textContent.substring(0, maxLength); // Trim excess characters
+        currentLength = maxLength;
+    }
+
+    const remainingChars = maxLength - currentLength;
+    charCount.textContent = `${currentLength}/${maxLength}`;
+
+    // Change color based on remaining characters
+    if (remainingChars <= 25) {
+        charCount.style.color = '#B9291C';  // Red when limit is reached
+    } else if (remainingChars <= 50) {
+        charCount.style.color = '#DB7F15';  // Orange when few characters left
+    } else if (remainingChars <= 75) {
+        charCount.style.color = '#EEBA2B';  // Yellow
+    } else {
+        charCount.style.color = '#7c7573';  // Default color
+    }
+});
+
+document.getElementById('grammarTextarea').addEventListener('keydown', function (event) {
+    const textarea = document.getElementById('grammarTextarea');
+    const maxLength = 150;
+    
+    // Prevent typing if character limit is reached
+    if (textarea.textContent.length >= maxLength && event.key !== "Backspace" && event.key !== "Delete") {
+        event.preventDefault();  // Prevent further input
+    }
+});
+
+
+
+function checkFlaskStatus() {
+    fetch('/status')
+        .then(response => response.json())
+        .then(data => {
+            const isLogging = data.logging;
+            const spinner = document.getElementById('loading');
+
+            if (isLogging) {
+                spinner.style.display = 'block'; // Show the spinner when Flask is logging
+            } else {
+                spinner.style.display = 'none';  // Hide the spinner when Flask is idle
+            }
+        })
+        .catch(error => {
+            console.error('Error checking Flask status:', error);
+        });
 }
 
-function hideLoadingSpinner() {
-    document.getElementById('loading').classList.add('hidden');
-}
+// Set an interval to check the status every 2 seconds
+setInterval(checkFlaskStatus, 4000);
 
 // Function to hide the menu after a link is clicked
 document.querySelectorAll('.nav ul li a').forEach(link => {
@@ -74,17 +104,11 @@ function showSection(sectionId) {
 
 let timeout = null;
 
+
 document.getElementById('grammarTextarea').addEventListener('input', function () {
     clearTimeout(timeout);
     const grammarTextarea = document.getElementById('grammarTextarea');
-    const textInput = grammarTextarea.innerText;  // Get the raw text input from the div
-
-    // Toggle the empty class if no content
-    if (textInput === '') {
-        grammarTextarea.classList.add('empty');
-    } else {
-        grammarTextarea.classList.remove('empty');
-    }
+    const textInput = grammarTextarea.innerHTML;  // Get input text
 
     // Clear previous corrections
     timeout = setTimeout(async () => {
@@ -97,14 +121,15 @@ document.getElementById('grammarTextarea').addEventListener('input', function ()
                 body: JSON.stringify({ text_input: textInput })
             });
 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+            if (response.status >= 400 && response.status < 600) {
+                throw new Error('Server returned an error');
             }
 
             const data = await response.json();
+            console.log('Response data:', data);  // Debugging
 
             if (data.corrected_text && data.incorrect_words) {
-                let highlightedText = textInput;  // Keep the original input
+                let highlightedText = textInput;
 
                 // Highlight incorrect words
                 data.incorrect_words.forEach(word => {
@@ -114,23 +139,59 @@ document.getElementById('grammarTextarea').addEventListener('input', function ()
 
                 // Display highlighted text in the textarea
                 grammarTextarea.innerHTML = highlightedText;
-
-                // Display corrected sentence
                 document.getElementById('correctedText').textContent = data.corrected_text;
 
-                hideLoadingSpinner();
-
             } else {
-                // If no corrections, keep the original input
                 grammarTextarea.innerHTML = textInput;
                 document.getElementById('correctedText').textContent = "No corrections needed.";
-                hideLoadingSpinner();
             }
 
         } catch (error) {
-            console.error('Error:', error);
-            grammarTextarea.innerText = 'Error retrieving data.';
-            hideLoadingSpinner();
+            console.error('Error retrieving data:', error);  // Log the actual error
+            document.getElementById('correctedText').textContent = 'Error retrieving data.';
+        } finally {
+            hideLoadingSpinner();  // Always hide spinner
         }
-    }, 1000);
+    }, 1000);  // Adjust delay if needed
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Select all sections to be observed
+    const sections = document.querySelectorAll('section');
+
+    // Function to handle the visibility changes
+    function handleIntersect(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                console.log('Visible section:', entry.target.id);  // Logs the visible section
+                // You can apply logic here to change the navigation bar or other elements
+                updateNavbar(entry.target.id); // Example: Update navbar based on the section ID
+            }
+        });
+    }
+
+    // Create an IntersectionObserver with a callback
+    const observer = new IntersectionObserver(handleIntersect, {
+        threshold: 0.5  // 50% of the section must be visible to trigger
+    });
+
+    // Observe each section
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // Example function to update navbar or style based on section
+    function updateNavbar(sectionId) {
+        const navbar = document.querySelector('.nav');
+
+        if (sectionId === 'Home') {
+            navbar.classList.add('white');
+            navbar.classList.remove('black');
+        } else {
+            navbar.classList.add('black');
+            navbar.classList.remove('white');
+        }
+    }
 });
