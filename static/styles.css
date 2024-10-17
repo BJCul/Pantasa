@@ -6,24 +6,42 @@
     box-sizing: border-box;
 }
 
+:root{
+    --pwhite: #FAF9F6;
+    --pmaroon: #650000;
+    --plyellow: #F6E2A5;
+    --pbblack: #5B2B12;
+    --bgcolor: #E5E0DF;
+    --pyellow: #EEBA2B;
+    --pbrown: #764B36;
+    --pgray:#7c7573;
+}
+
 html {
     scroll-behavior: smooth;
 }
+
+#charCount {
+    color: #7c7573;
+    transition: color 0.3s; /* Smooth transition between colors */
+}
+
 
 #skiptranslate {
     visibility: none;
 }
 
 body {
-    font-family: sans-serif;
-    background-color: #E2DEDE;
+    font-family: 'Montserrat';
+    color:  var(--pbblack);
+    background-color: var(--bgcolor);
 }
 /*-----Home-----*/
 #Home {
 
     width: 100%;
     height: 100vh;
-    background:  linear-gradient(#fefaf6, #eadbc8);
+    background:  linear-gradient(var(--pwhite), var(--bgcolor));
     background-size: cover;
     background-position: center;
     background-image: url('assets/bg.png'); 
@@ -34,15 +52,49 @@ body {
 .nav {
     width: 100%;
     height: 80px;
-    background: #800000;
     position: fixed;
     top: 0;
     z-index: 1000;
-    color: #fefaf6;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for color change */
+}
+
+/* Horizontal Line Below Navigation */
+.nav::after {
+    content: '';
+    display: block;
+    width: 90%; /* Adjust width to 80-90% */
+    height: 1px;
+    background-color: currentColor; /* Color can change based on the page */
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    left: 5%; /* Center the line */
+}
+
+/* White text for the homepage */
+.nav.white {
+    color: var(--pwhite);  /* White text on home page */
+}
+
+/* Black text for other pages */
+.nav.black {
+    color: var(--pbblack); /* Black text on other pages */
+}
+
+/* Navbar with white text */
+.nav.white a {
+    color: inherit;  /* Inherit white color from the .nav.white class */
+    text-decoration: none;  /* No underline */
+}
+
+/* Navbar with black text */
+.nav.black a {
+    color: inherit;  /* Inherit black color from the .nav.black class */
+    text-decoration: none;  /* No underline */
 }
 
 /*Section Style*/
@@ -61,6 +113,7 @@ section .home-content{
 /*Navigation Bar*/
 
 .logo-container {
+    margin-left: 50px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -85,14 +138,25 @@ section .home-content{
     font-style: normal; 
 }
 
-label.logo {
+@font-face {
+    font-family: 'Sorts Mill Goudy';
+    src: url('fonts/SortsMillGoudy-Regular.ttf') format('woff2');
+    font-weight: normal; 
+    font-style: normal; 
+}
+
+a:label.logo {
     float: left;
     width: 30px;
     font-family: 'Roxborough CF';
-    color: #fefaf6;
+    color: currentColor;
     font-size: 30px;
     line-height: 80px;
     font-weight: bold;
+}
+
+.header {
+    font-family: 'Roxborough CF';
 }
 
 
@@ -112,11 +176,10 @@ label.logo {
 }
 
 .nav ul li a {
-    color: #fefaf6;
+    color: currentColor;
     font-size: 20px;
     padding: 10px 20px;
-    text-transform: uppercase;
-    font-weight: bold;
+    text-transform: capitalize;
     display: block;
     text-decoration: none;
 }
@@ -125,7 +188,7 @@ label.logo {
     content: '';
     height: 3px;
     width: 0;
-    background: #eadbc8;
+    background: currentColor;
     position: absolute;
     left: 0;
     bottom: 30px;
@@ -138,7 +201,7 @@ label.logo {
 
 .checkbtn {
     font-size: 30px;
-    color: white;
+    color: currentColor;
     position: fixed;
     right: 30px;
     cursor: pointer;
@@ -147,7 +210,7 @@ label.logo {
 
 .exitbtn {
     font-size: 30px;
-    color: white;
+    color: currentColor;
     position: fixed;
     right: 30px;
     cursor: pointer;
@@ -176,11 +239,19 @@ label.logo {
         z-index: 100;
     }
 
+    .nav.white ul{
+        background-color: rgba(69, 67, 66, 0.80);
+    }
+    
+    /* Black text for other pages */
+    .nav.black ul{
+        background-color: rgba( 229, 224, 223, 0.80);
+    }
+
     .nav ul {
         position: fixed;
         width: 100%;
         height: 100%;
-        background: #800000;
         top: 0px;
         left: -100%;
         padding-top: 80px;
@@ -209,7 +280,6 @@ label.logo {
     }
     
     .exitbtn:hover {
-        border: 1px solid white;
         padding: 5px 10px;
     }
 
@@ -260,8 +330,8 @@ label.logo {
     font-size: 75px;
     margin-bottom: 10px;
     font-weight: 700px;
-    color: #ffffff;
-    text-shadow: 2px 2px 50px rgba(0, 0, 0, 0.3);
+    color: var(--pwhite);
+    text-shadow: 8px 9px 12.3px rgba(0, 0, 0, 0.8);
 }
 
 .home-content p {
@@ -271,7 +341,7 @@ label.logo {
     margin-bottom: 20px;
     font-style: italic;
     font-weight: lighter;
-    color: #ffffff;
+    color: var(--pwhite);
 }
 
 @media (max-width: 858px) {
@@ -283,7 +353,7 @@ label.logo {
 .logo {
     width: 45px;
     height: auto;
-    margin-left: 30px;
+    margin-left: 80px;
 }
 
 .figchecklogo-container {
@@ -304,12 +374,13 @@ label.logo {
     text-align: center;
     margin: 20px 20px;
     margin-top: 45px;
-    border-radius: 25px;
+    border-radius: 10px;
     font-weight: bold;
     font-size: 30px;
-    border: 2px solid #800000;
-    background: white;
-    color: #800000;
+    border: none;
+    outline: none;
+    background: var(--pwhite);
+    color: var(--pmaroon);
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -317,7 +388,7 @@ label.logo {
 }
 
 .button span {
-    background: #800000;
+    background: var(--pmaroon);
     height: 100%;
     width: 0;
     border-radius: 25px;
@@ -333,8 +404,8 @@ label.logo {
 }
 
 .button:hover {
-    color: white;
-    background: #800000;
+    color: var(--pwhite);
+    background: var(--pmaroon);
 }
 
 @media (max-width: 700px) {
@@ -355,9 +426,8 @@ label.logo {
         border-radius: 25px;
         font-weight: bold;
         font-size: 20px;
-        border: 2px solid #800000;
-        background: white;
-        color: #800000;
+        background-color: var(--pwhite);
+        color: var(--pmaroon);
         cursor: pointer;
         position: relative;
         overflow: hidden;
@@ -365,7 +435,7 @@ label.logo {
     }
 
     #Home .button span {
-        background: #800000;
+        background: var(--pmaroon);
         height: 100%;
         width: 0;
         border-radius: 25px;
@@ -381,8 +451,8 @@ label.logo {
     }
     
     #Home .button:hover {
-        color: white;
-        background: #800000;
+        color: var(--pwhite);
+        background: var(--pmaroon);
     }
 }
 
@@ -390,7 +460,7 @@ label.logo {
 #About {
     width: 100%;
     height: 100vh;
-    background:  white;
+    background-color: var(--bgcolor);
     background-size: cover;
     background-position: center;
 }
@@ -403,8 +473,8 @@ label.logo {
     top: 25vh;
     left: 0%;
     padding-top: 20px;
-    background-color: rgba(255, 255, 255, 0.8); 
-    border-radius: 30px;
+    background-color: var(--pwhite); 
+    border-radius: 10px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -452,6 +522,7 @@ label.logo {
 .pantasa-container {
     display: flex;
     overflow: hidden;
+    border-radius: 10px;
     outline: none;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -465,7 +536,8 @@ label.logo {
     justify-content: flex-start;
     margin-left: 0;
     box-sizing: border-box;
-    border: 1px solid #800000;
+    border: none;
+    outline: none;
     border-left: none;
     border-bottom: none;
     padding-right: 40px;
@@ -479,7 +551,6 @@ label.logo {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 20px; /* Add space between corrected sentence and spinner */
 }
 
 .loading p {
@@ -487,8 +558,8 @@ label.logo {
 }
 
 .spinner {
-    border: 8px solid #f3f3f3; /* Light grey */
-    border-top: 8px solid #3498db; /* Blue */
+    border: 8px solid var(--bgcolor);
+    border-top: 8px solid var(--pyellow);
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -501,7 +572,7 @@ label.logo {
 }
 
 .error {
-    background-color: rgb(192, 149, 56);
+    background-color: var(--plyellow);
     cursor: pointer;
 }
 
@@ -514,10 +585,10 @@ label.logo {
     border-spacing: 10px;
     border: none;
     outline: none;
-    border: 1px solid #800000;
     box-sizing: border-box;
     resize: none;
     margin-bottom: 20px;
+    font-family: 'Sorts Mill Goudy';
 }
 
 
@@ -540,28 +611,28 @@ label.logo {
 }
 
 .highlight {
-    background-color: yellow;
+    color: var(--pyellow);
     font-weight: bold;
     cursor: pointer;
 }
 
 #error {
-    color: yellow;
+    color: var(--pyellow);
     cursor: pointer;
 }
 
 #suggestionsList {
     list-style-type: none;
     padding-left: 0;
-   /* border: 1px solid #800000;*/
     min-height: 100px;
     padding: 10px;
     box-sizing: border-box;
+    font-family: 'Sorts Mill Goudy';
 }
 
 #suggestionsList li {
     cursor: pointer;
-    color: brown;
+    color: var(--pbrown);
 }
 
 #suggestionsList li:hover {
@@ -571,16 +642,19 @@ label.logo {
 #correctedText {
     flex: 1;
     padding-left: 20px;
-    /*border-left: 1px solid #800000;*/
     font-style: italic;
-    color: grey;
+    color: var(--pgray);
+    font-family: 'Sorts Mill Goudy';
 }
 
 
 /* Media queries */
-@media (max-width: 1800px) {
+@media (max-width: 1920px) {
     .pantasa-container {
         width: 1200px;
+    }
+    .about-content {
+        padding-bottom: 60px;
     }
 }
 
@@ -601,6 +675,13 @@ label.logo {
 }
 
 @media (max-width: 1000px) {
+    .logo-container{
+        margin-left: 20px;
+    }
+
+    .logo{
+        margin-left: 50px;
+    }
     #grammarTextarea {
         font-size: 0.875rem;
     }
@@ -608,10 +689,28 @@ label.logo {
     .pantasa-container {
         width: 600px;
     }
-
 }
 
+@media (max-width: 952px) {
+    .logo-container{
+        margin-left: 20px;
+    }
+
+    .logo{
+        margin-left: 35px;
+    }
+}
+
+
 @media (max-width: 858px) {
+    .logo-container{
+        margin-left: 20px;
+    }
+
+    .logo{
+        margin-left: 30px;
+    }
+
     #grammarTextarea::data-placeholder {
         opacity: 25;
     }
@@ -639,9 +738,6 @@ label.logo {
         flex-direction: column;
     }
 
-    #result {
-        border-left: solid 1px #800000;
-    }
 
     .info-container {
         height: auto;
@@ -677,6 +773,14 @@ label.logo {
 }
 
 @media (max-width: 750px) {
+    .logo-container{
+        margin-left: 20px;
+    }
+
+    .logo{
+        margin-left: 30px;
+    }
+
     .about-content {
         font-size: 0.625rem; 
     }
@@ -715,6 +819,13 @@ label.logo {
 }
 
 @media (max-width: 600px) {
+    .logo-container{
+        margin-left: 20px;
+    }
+
+    .logo{
+        margin-left: 30px;
+    }
     .loading p {
         font-size: 1.25rem;
     }
@@ -744,6 +855,13 @@ label.logo {
 }
 
 @media (max-width: 480px) {
+    .logo-container{
+        margin-left: 20px;
+    }
+
+    .logo{
+        margin-left: 30px;
+    }
     .loading p {
         font-size: 1rem;
     }
@@ -776,8 +894,8 @@ label.logo {
 .Footer {
     width: 100%;
     height: 10%;
-    background: #800000;
-    color: #fefaf6;
+    background: var(--pmaroon);
+    color: var(--pwhite);
     padding: 10px;
     text-align: center;
     z-index: 100;
@@ -797,7 +915,7 @@ label.logo {
 
 .left-panel, .right-panel {
     flex: 1;
-    background-color: white;
+    background-color: var(--pwhite);
     padding: 20px;
     box-sizing: border-box;
 }
@@ -822,13 +940,11 @@ label.logo {
 
 .right-panel #result {
     padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #800000;
 }
 
 #grammarTextarea:empty:before {
     content: attr(data-placeholder);
-    color: grey;
+    color: var(--pgray);
     pointer-events: none;
     display: block;
 }
