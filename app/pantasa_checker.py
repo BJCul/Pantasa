@@ -134,7 +134,7 @@ def preprocess_text(text_input, jar_path, model_path):
 
 # Load and create the rule pattern bank
 def rule_pattern_bank():
-    file_path = 'data/processed/hngrams.csv'  # Update with actual path
+    file_path = 'rules/database/detailed_hngram.csv'  # Update with actual path
     hybrid_ngrams_df = pd.read_csv(file_path)
 
     # Create a dictionary to store the Rule Pattern Bank (Hybrid N-Grams + Predefined Rules)
@@ -200,17 +200,12 @@ def generate_correction_tags(input_ngram, pattern_ngram):
     tags = []
     
     for i, (input_token, pattern_token) in enumerate(zip(input_tokens, pattern_tokens)):
-        distance = edit_weighted_levenshtein(input_token, pattern_token)
-        
-        # If the distance is 0, the tokens are the same, so we keep them
-        if distance == 0:
-            tags.append(f'KEEP_{input_token}_{pattern_token}')
-        # Check for transpositions
-        elif i > 0 and i < len(input_tokens) - 1 and input_tokens[i] == pattern_tokens[i - 1] and input_tokens[i - 1] == pattern_tokens[i]:
-            tags.append(f'TRANSPOSE_{input_tokens[i-1]}_{input_tokens[i]}')
-        # General substitution for other cases
-        elif distance > 0:
-            tags.append(f'SUBSTITUTE_{input_token}_{pattern_token}')
+        if input_token == pattern_token:
+            if input_token != pattern_token:
+                if len(input_token) >= 2 and len(pattern_token) >= 2 and input_token.startswith(pattern_token[:2]): # For substitution errors (same POS group)
+                    tags.append(f'KEEP_{input_token}_{pattern_token}')
+                else:  # General substitution (different POS group)
+                    tags.append(f'SUBSTITUTE_{input_token}_{pattern_token}')
     
     # Handle if there are extra tokens in the input or pattern
     if len(input_tokens) > len(pattern_tokens):
@@ -417,9 +412,6 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
     word_suggestions = {}  # To keep track of suggestions for each word
     pos_tag_dict = {}  # Cache for loaded POS tag dictionaries
 
-     # Regular expression for checking verb POS tags
-    verb_regex = re.compile(r'^VB.*')
-
     # Iterate through the token_suggestions and apply the corrections
     for idx, token_info in enumerate(token_suggestions):
         suggestions = token_info["suggestions"]
@@ -467,7 +459,7 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
             print(f"INPUT POS: {input_pos}")
             print(f"TARGET POS: {target_pos}")
 
-            if verb_regex.match(input_pos) and verb_regex.match(target_pos):
+            if verb_regex.match(input_pos) and verb_regex.match(target_pos) and target_pos not in verb_regex_excep:
                 # Apply verb conjugation if both are verbs
                 conjugated_word = conjugate_tagalog_verb(replacement_word, target_pos)
                 final_sentence.append(conjugated_word)   
@@ -497,15 +489,11 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
         elif suggestion_type == "INSERT":
             # Handle insertion if necessary
             pass
-        elif suggestion_type == "TRANSPOSE":
-            word1 = suggestion_parts[1]
-            word2 = suggestion_parts[2]
-            final_sentence.append(f'{word2} {word1}')
+        else:
             # Handle any other suggestion types
             final_sentence.append(pos_tags[idx][0])
     
-    corrected_sentence = " ".join(final_sentence)
-    return corrected_sentence
+    return " ".join(final_sentence)
 
 def check_words_in_dictionary(words, directory_path):
     """
