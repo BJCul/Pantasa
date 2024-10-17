@@ -125,7 +125,7 @@ def preprocess_text(text_input, jar_path, model_path):
     log_message("info", f"Lemmatized Words: {lemmatized_words}")
 
     # Step 5: Prepare the preprocessed output
-    preprocessed_output = (tokens, lemmatized_words, merged_tokens, checked_sentence, mispelled_words)
+    preprocessed_output = (tokens, lemmatized_words, tagged_tokens, checked_sentence, mispelled_words)
     
     # Log the final preprocessed output for better traceability
     log_message("info", f"Preprocessed Output: {preprocessed_output}")
@@ -406,7 +406,6 @@ def get_closest_words_by_pos(input_word, words_list, num_suggestions=3):
     return suggestions
 
 
-# Step 6: Correction phase - apply the suggestions to correct the input sentence
 def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
     final_sentence = []
     word_suggestions = {}  # To keep track of suggestions for each word
@@ -509,14 +508,7 @@ def check_words_in_dictionary(words, directory_path):
     # Check each word against the dictionary
     for word in words:
         if word.lower() not in dictionary:
-            if not word.istitle():
-                if word.endswith("ng"):
-                    wordng = word[:-2]
-                    if wordng.lower() not in dictionary:
-                        incorrect_words.append(word)
-                else:
-                    incorrect_words.append(word)
-
+            incorrect_words.append(word)
     
     has_incorrect_word = len(incorrect_words) > 0
     logger.debug(f"Incorrect Words: {incorrect_words}")
@@ -530,7 +522,7 @@ def spell_check_word(word, directory_path):
     dictionary = load_dictionary(directory_path)
     word_lower = word.lower()
     
-    if word_lower in dictionary or word.istitle():
+    if word_lower in dictionary:
         # Word is spelled correctly
         return word, None
     else:
@@ -587,9 +579,9 @@ def pantasa_checker(input_sentence, jar_path, model_path, rule_path, directory_p
     words = [word for word, _ in pos_tags]
     incorrect_words, has_incorrect_words  = check_words_in_dictionary(words, directory_path)
     if has_incorrect_words:
-        log_message("info", f"The sentence has incorrect words")
+        log_message("info", "The sentence has incorrect words")
     else:
-        log_message("info", f"The sentence doesn't have incorrect words")
+        log_message("info", "The sentence doesn't have incorrect words")
 
     # Step 3: Apply pre-defined rules before any modification
     log_message("info", "Applying pre-defined rules (pre)")
@@ -646,4 +638,6 @@ if __name__ == "__main__":
     rule_bank = rule_pattern_bank()         
 
     corrected_sentence= pantasa_checker(input_text, jar_path, model_path, rule_bank)
+
+    
     
