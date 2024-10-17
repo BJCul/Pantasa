@@ -134,15 +134,13 @@ def preprocess_text(text_input, jar_path, model_path):
 # Load and create the rule pattern bank
 def rule_pattern_bank(rule_path):
     hybrid_ngrams_df = pd.read_csv(rule_path)
-    max_frequency = hybrid_ngrams_df['Frequency'].max()
 
     rule_pattern_bank = {}
 
     for index, row in hybrid_ngrams_df.iterrows():
         pattern_id = row['Pattern_ID']
         hybrid_ngram = row['Hybrid_N-Gram']
-        frequency = row.get('Frequency', 1) / max_frequency  # Normalize frequency
-        rule_pattern_bank[pattern_id] = {'hybrid_ngram': hybrid_ngram, 'frequency': frequency}
+        rule_pattern_bank[pattern_id] = {'hybrid_ngram': hybrid_ngram}
 
     return rule_pattern_bank
 
@@ -166,7 +164,7 @@ def edit_weighted_levenshtein(input_ngram, pattern_ngram):
 
     # Define weights for substitution, insertion, and deletion
     substitution_weight = 0.8
-    insertion_weight = 0.9
+    insertion_weight = 1.0
     deletion_weight = 1.0
 
     # Compute the distances
@@ -229,55 +227,53 @@ def generate_ngrams(input_tokens, n_min=3, n_max=7):
 # Step 3: Function to generate correction token tags based on the Levenshtein distance
 def generate_suggestions(pos_tags, rule_path):
     input_tokens = [pos_tag for word, pos_tag in pos_tags]
-    
+
     # Generate token-level correction tracker
-    token_suggestions = [{"token": token, "suggestions": [], "distances": [], "frequencies": []} for token in input_tokens]
-    
+    token_suggestions = [{"token": token, "suggestions": [], "distances": []} for token in input_tokens]
+
+
     # Initialize insertion suggestions dictionary
-    insertion_suggestions = {i: [] for i in range(len(input_tokens) + 1)}  # One extra position for insertions at the end
-    
-    # Generate 3-gram to 7-gram sequences from the input sentence
+    insertion_suggestions = {i: [] for i in range(len(input_tokens) + 1)}
+
+    # Generate n-grams
     input_ngrams_with_index = generate_ngrams(input_tokens)
-    
-    # Load the rule bank once outside the loop
+
+    # Load the rule bank
     rule_bank = rule_pattern_bank(rule_path)
-    
-    # Iterate over each n-gram and compare it to the rule pattern bank
+
+    # Iterate over each n-gram
     for input_ngram, start_idx in input_ngrams_with_index:
         min_distance = float('inf')
-        best_match = None
-        best_frequency = 0  # Initialize the frequency of the best match
+        best_matches = []
 
         for pattern_id, pattern_data in rule_bank.items():
-            # Compare input n-gram with each pattern n-gram from the rule pattern bank
             pattern_ngram = pattern_data.get('hybrid_ngram')
-            pattern_frequency = pattern_data.get('frequency', 1)  # Get frequency from the rule bank
-            
+
             if pattern_ngram:
                 distance = edit_weighted_levenshtein(input_ngram, pattern_ngram)
-                # Rank based on both distance and frequency
-                if distance < min_distance or (distance == min_distance and pattern_frequency > best_frequency):
+
+                if distance < min_distance:
                     min_distance = distance
-                    best_match = pattern_ngram
-                    best_frequency = pattern_frequency
-        
-        if best_match:
+                    best_matches = [(pattern_ngram, distance)]
+                elif distance == min_distance:
+                    best_matches.append((pattern_ngram, distance))
+
+        # Collect suggestions from all best matches
+        for best_match, distance in best_matches:
             correction_tags = generate_correction_tags(input_ngram, best_match)
             print(f"CORRECTION TAGS {correction_tags}")
-            
-            # Populate the token-level correction tracker
+
             input_ngram_tokens = input_ngram.split()
             for i, tag in enumerate(correction_tags):
                 if tag.startswith("INSERT"):
                     insert_token = tag.split("_")[1]
-                    position = start_idx + i  # Position where the insertion should occur
+                    position = start_idx + i
                     insertion_suggestions[position].append(insert_token)
                 else:
-                    if start_idx + i < len(token_suggestions):  # Correctly map to original token index
+                    if start_idx + i < len(token_suggestions):
                         token_suggestions[start_idx + i]["suggestions"].append(tag)
-                        token_suggestions[start_idx + i]["distances"].append(min_distance)
-                        token_suggestions[start_idx + i]["frequencies"].append(best_frequency)
-    
+                        token_suggestions[start_idx + i]["distances"].append(distance)
+
     return token_suggestions, insertion_suggestions
 
 
@@ -355,7 +351,7 @@ def weighted_levenshtein_word(word1, word2):
         distance_matrix[0][j] = j
     
     # Define weights
-    substitution_weight = 0.8
+    substitution_weight = 1.0
     insertion_weight = 1.0
     deletion_weight = 1.0
     
@@ -444,32 +440,57 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path, insertion_sugge
     word_suggestions = {}
     pos_tag_dict = {}
     idx = 0
+    max_distance = 1.0  # Set the maximum acceptable edit distance
 
     while idx <= len(token_suggestions):
         # Handle insertions at the current position
         if idx in insertion_suggestions and insertion_suggestions[idx]:
             insert_counter = Counter(insertion_suggestions[idx])
-            most_common_insertion, _ = insert_counter.most_common(1)[0]
-            final_sentence.append(most_common_insertion)
-        
+            most_common_insertion_pos, _ = insert_counter.most_common(1)[0]
+
+            # Map the POS tag to an actual word using your POS tag dictionary
+            if most_common_insertion_pos not in pos_tag_dict:
+                word_list = load_pos_tag_dictionary(most_common_insertion_pos, pos_path)
+                pos_tag_dict[most_common_insertion_pos] = word_list
+            else:
+                word_list = pos_tag_dict[most_common_insertion_pos]
+
+            # Choose a word to insert
+            if word_list:
+                inserted_word = word_list[0]
+            else:
+                inserted_word = most_common_insertion_pos
+
+            final_sentence.append(inserted_word)
+
         if idx < len(token_suggestions):
             token_info = token_suggestions[idx]
             suggestions = token_info["suggestions"]
             distances = token_info["distances"]
-            frequencies = token_info["frequencies"]
-            
+
             if not suggestions:
+                # No suggestions; keep the original word
                 word = pos_tags[idx][0]
                 final_sentence.append(word)
             else:
-                # Compute scores combining distance and frequency
-                # Lower score is better
-                scores = [
-                    distances[i] - (frequencies[i] * 0.1)  # Adjust the weight of frequency as needed
-                    for i in range(len(suggestions))
-                ]
-                best_index = scores.index(min(scores))
-                best_suggestion = suggestions[best_index]
+                # Combine suggestions and distances into tuples, then filter out duplicates
+                suggestions_with_distances = list(zip(suggestions, distances))
+
+                # Use Counter to group similar suggestions and count their frequencies
+                suggestion_counter = Counter(suggestions_with_distances)
+
+                # Create a list of unique suggestions sorted by frequency and distance
+                unique_suggestions = []
+                for suggestion, count in suggestion_counter.items():
+                    suggestion_text, suggestion_distance = suggestion
+                    unique_suggestions.append((suggestion_text, suggestion_distance, count))
+
+                # Sort by frequency (highest first) and by distance (smallest first)
+                unique_suggestions.sort(key=lambda x: (-x[2], x[1]))  # Sort by count then by distance
+
+                # Process the best suggestion
+                best_suggestion, best_distance, _ = unique_suggestions[0]
+
                 suggestion_parts = best_suggestion.split("_")
                 suggestion_type = suggestion_parts[0]
 
@@ -479,35 +500,44 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path, insertion_sugge
                 elif suggestion_type == "SUBSTITUTE":
                     input_word = pos_tags[idx][0]
                     target_pos = suggestion_parts[2]
-                    # Load POS tag dictionary
+
+                    # Load the dictionary for the target POS tag if not already loaded
                     if target_pos not in pos_tag_dict:
                         word_list = load_pos_tag_dictionary(target_pos, pos_path)
                         pos_tag_dict[target_pos] = word_list
                     else:
                         word_list = pos_tag_dict[target_pos]
-                    
-                    # Get closest words
+
+                    # Get closest words by POS
                     suggestions_list = get_closest_words_by_pos(input_word, word_list, num_suggestions=3)
-                    
+
                     if suggestions_list:
-                        replacement_word = suggestions_list[0][0]
-                        final_sentence.append(replacement_word)
-                        word_suggestions[input_word] = [word for word, _ in suggestions_list]
+                        # Apply a distance threshold for word substitution
+                        word_max_distance = 2  # Adjust as needed
+                        filtered_word_suggestions = [s for s in suggestions_list if s[1] <= word_max_distance]
+
+                        if filtered_word_suggestions:
+                            replacement_word = filtered_word_suggestions[0][0]
+                            final_sentence.append(replacement_word)
+                            word_suggestions[input_word] = [word for word, _ in filtered_word_suggestions]
+                        else:
+                            # Keep the original word if no suitable replacement
+                            final_sentence.append(input_word)
                     else:
+                        # If no suggestions found, keep the original word
                         final_sentence.append(input_word)
                 elif suggestion_type == "DELETE":
-                    idx += 1
-                    continue
+                    idx += 1  # Move to the next token (skip current token)
+                    continue  # Skip adding the current token
                 else:
+                    # Handle any other suggestion types
                     final_sentence.append(pos_tags[idx][0])
-        idx += 1
+
+        idx += 1  # Move to the next position
 
     corrected_sentence = " ".join(final_sentence)
     print(f"CORRECTED SENTENCE: {corrected_sentence}")
-    print(f"FINAL SENTENCE: {final_sentence}")
     return corrected_sentence, word_suggestions
-
-
 
 def check_words_in_dictionary(words, directory_path):
     """

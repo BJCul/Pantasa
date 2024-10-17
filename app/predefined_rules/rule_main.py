@@ -43,47 +43,46 @@ def handle_nang_ng(text, pos_tags):
     
     for i, word in enumerate(words):
         if word == "ng":
-            # Handle "nang" as a synonym for "noong" (RBW)
-            if pos_tags[i] == 'RBW':  
+            # Handle "ng" as a ligature connecting verbs to adverbs
+            if i > 0 and pos_tags[i - 1].startswith('VB') and pos_tags[i + 1].startswith('RB'):
+                corrected_words.append("ng")
+                print("'ng' kept as ligature (connecting verb and adverb)")
+            
+            # Handle "ng" as other use cases, such as between nouns and adjectives
+            elif i > 0 and pos_tags[i + 1].startswith('JJ'):
+                corrected_words.append("ng")
+                print("'ng' kept as ligature (connecting noun and adjective)")
+            
+            # Other cases where "ng" can be corrected to "nang" based on POS
+            else:
                 corrected_words.append("nang")
-                print("'ng' corrected to 'nang' (RBW synonym for 'noong')")
-            
-            # Handle "nang" as a conjunction (CCB, CCT)
-            elif pos_tags[i] in ['CCB', 'CCT']:
-                corrected_words.append("nang")  # Keep "nang" as conjunction
-                print("'ng' corrected to 'nang' (conjunction CCB or CCT)")
-            
-            # Handle "nang" as a ligature (CCP)
-            elif pos_tags[i] == 'CCP' and i > 0:
-                prev_post = pos_tags[i - 1] if i - 1 > 0 else None
-                post_pos = pos_tags[i + 1] if i + 1 < len(pos_tags) else None
-                pos_ex = f"{prev_post} {pos_tags[i]} {post_pos}"
+                print("'ng' corrected to 'nang' (other use cases)")
 
-                print(f"Checking ligature context: previous POS: {prev_post}, current POS: {pos_tags[i]}, next POS: {post_pos}")
-
-                # Get the POS tags for RB.* and VB.* from the dictionary
-                adverb_pos = hierarchical_pos_tags['RB.*'] + hierarchical_pos_tags['VB.*']
-                pos_ex_list = pos_ex.split()
-
-                if any(pos in adverb_pos for pos in pos_ex_list):  # Connecting adverb of manner/intensity to verb/adjective
-                    corrected_words.append("nang")
-                    print("Ligature 'ng' corrected to 'nang' (connecting adverb of manner/intensity)")
-                    
-                elif any(pos in hierarchical_pos_tags['JJ.*'] for pos in pos_ex_list):
-                    if any(pos in hierarchical_pos_tags['NN.*'] for pos in pos_ex_list):
-                        corrected_words.append(word)
-                        print("Ligature 'ng' kept as 'ng' (adjective-noun structure)")
-                    else:
-                        corrected_words.append("nang") 
-                        print("Ligature 'ng' corrected to 'nang' (adjective context without noun)")
-
-        elif word == "nang":  # Check if it is a coordinating conjunction
+        elif word == "nang":
+            # Case 1: "nang" as a coordinating conjunction
             if pos_tags[i] == 'CCB' and i > 0:
                 corrected_words.append("ng")
                 print("'nang' corrected to 'ng' (coordinating conjunction CCB)")
+            
+            # Case 2: Ligature use (connecting an adjective or a verb to a noun/adjective/adverb)
+            elif i > 0 and pos_tags[i - 1] in ['JJ', 'VB']:  # Check if the previous word is an adjective (JJ) or a verb (VB)
+                corrected_words.append("ng")
+                print("'nang' corrected to 'ng' (ligature for adjective/verb)")
+            
+            # Case 3: Check if "nang" is followed by an adjective (often requires ligature)
+            elif i < len(pos_tags) - 1 and pos_tags[i + 1].startswith('JJ'):
+                corrected_words.append("ng")
+                print("'nang' corrected to 'ng' (followed by adjective JJ)")
+            
+            # Case 4: Check if "nang" is tagged as adverb (RBW) but acts as a ligature
+            elif pos_tags[i] == 'RBW' and i > 0 and pos_tags[i - 1] in ['NNC', 'NNP']:
+                corrected_words.append("ng")
+                print("'nang' corrected to 'ng' (acting as ligature with noun)")
+            
+            # Case 5: Other valid use cases (e.g., adverbial phrases)
             else:
                 corrected_words.append(word)
-                print("'nang' kept unchanged")
+                print("'nang' kept unchanged (other use cases)")
         
         elif word == "na" and i > 0:  # If the current word is "na" and it's not the first word
             prev_word = words[i - 1]
@@ -99,9 +98,6 @@ def handle_nang_ng(text, pos_tags):
                 corrected_words[-1] = corrected_word  # Update the last word in corrected_words
                 print(f"Word ending with 'n': Merged 'na' to form '{corrected_word}'")
             
-            else:
-                corrected_words.append(word)  # Append the word if no correction is made
-                print(f"Word ending with consonant: 'na' retained '{prev_word} {word}'")
         else:
             corrected_words.append(word)  # Append the word if no correction is made
             print(f"No correction needed for '{word}'")
@@ -123,7 +119,7 @@ def separate_mas(text, dictionary=dictionary_file):
     return ' '.join(words)
 
 affix_list = {
-    "common_prefixes": ["pinang", "nag", "na", "mag", "ma", "i", "i-", "ika-", "isa-", "ipag", "ipang", "ipa", "pag", "pa", "um", "in", "ka", "ni", "pinaka", "pinag", "pina"],
+    "common_prefixes": ["pinaka","pinang", "nag", "na", "mag", "ma", "i", "i-", "ika-", "isa-", "ipag", "ipang", "ipa", "pag", "pa", "um", "in", "ka", "ni", "pinaka", "pinag", "pina"],
     "prefix_assimilation": ["pang", "pam", "pan", "mang", "mam", "man", "sang", "sam", "san", "sing", "sim", "sin"],
     "common_infixes": ["um", "in"],
     "common_suffixes": ["nan", "han", "hin", "an", "in", "ng"],
@@ -171,15 +167,16 @@ def merge_affixes(text, pos_tags, dictionary=dictionary_file):
 def apply_predefined_rules_pre(text):
     pos = pos_tag(text)
     rd_correction = rd_interchange(text)
-    rule_corrected = handle_nang_ng(rd_correction,pos)
+    mas_correction = separate_mas(rd_correction)
+    rule_corrected = handle_nang_ng(mas_correction,pos)
 
     return rule_corrected
 
 def apply_predefined_rules_post(text):
     pos = pos_tag(text)
 
-    mas_correction = separate_mas(text)
-    prefix_merged = merge_affixes(mas_correction, pos)
+    
+    prefix_merged = merge_affixes(text, pos)
     rule_corrected = correct_hyphenation(prefix_merged)
 
     return rule_corrected

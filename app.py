@@ -20,7 +20,6 @@ def get_text():
         text_input = data.get('text_input', '')
 
         if text_input:
-            input_text = "magtanim ay hndi bro"
             jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
             model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
             rule_path = 'data/processed/detailed_hngram.csv'
