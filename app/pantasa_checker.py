@@ -5,6 +5,7 @@ import tempfile
 import subprocess
 import os
 import logging
+from app.verb_substitution import conjugate_tagalog_verb
 from app.grammar_checker import spell_check_incorrect_words
 from app.utils import log_message
 from app.spell_checker import load_dictionary, spell_check_sentence
@@ -133,7 +134,7 @@ def preprocess_text(text_input, jar_path, model_path):
 
 # Load and create the rule pattern bank
 def rule_pattern_bank():
-    file_path = 'data/processed/hngrams.csv'  # Update with actual path
+    file_path = 'rules/database/detailed_hngram.csv'  # Update with actual path
     hybrid_ngrams_df = pd.read_csv(file_path)
 
     # Create a dictionary to store the Rule Pattern Bank (Hybrid N-Grams + Predefined Rules)
@@ -200,12 +201,11 @@ def generate_correction_tags(input_ngram, pattern_ngram):
     
     for i, (input_token, pattern_token) in enumerate(zip(input_tokens, pattern_tokens)):
         if input_token == pattern_token:
-            tags.append(f'KEEP_{input_token}_{pattern_token}')
-        if input_token != pattern_token:
-            if len(input_token) >= 2 and len(pattern_token) >= 2 and input_token.startswith(pattern_token[:2]): # For substitution errors (same POS group)
-                tags.append(f'KEEP_{input_token}_{pattern_token}')
-            else:  # General substitution (different POS group)
-                tags.append(f'SUBSTITUTE_{input_token}_{pattern_token}')
+            if input_token != pattern_token:
+                if len(input_token) >= 2 and len(pattern_token) >= 2 and input_token.startswith(pattern_token[:2]): # For substitution errors (same POS group)
+                    tags.append(f'KEEP_{input_token}_{pattern_token}')
+                else:  # General substitution (different POS group)
+                    tags.append(f'SUBSTITUTE_{input_token}_{pattern_token}')
     
     # Handle if there are extra tokens in the input or pattern
     if len(input_tokens) > len(pattern_tokens):
@@ -406,7 +406,6 @@ def get_closest_words_by_pos(input_word, words_list, num_suggestions=3):
     return suggestions
 
 
-# Step 6: Correction phase - apply the suggestions to correct the input sentence
 def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
     final_sentence = []
     word_suggestions = {}  # To keep track of suggestions for each word
@@ -459,26 +458,31 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
             print(f"INPUT POS: {input_pos}")
             print(f"TARGET POS: {target_pos}")
 
-            # Load the dictionary for the target POS tag if not already loaded
-            if target_pos not in pos_tag_dict:
-                word_list = load_pos_tag_dictionary(target_pos, pos_path)
-                pos_tag_dict[target_pos] = word_list
+            if verb_regex.match(input_pos) and verb_regex.match(target_pos) and target_pos not in verb_regex_excep:
+                # Apply verb conjugation if both are verbs
+                conjugated_word = conjugate_tagalog_verb(replacement_word, target_pos)
+                final_sentence.append(conjugated_word)   
             else:
-                word_list = pos_tag_dict[target_pos]
+                # Load the dictionary for the target POS tag if not already loaded
+                if target_pos not in pos_tag_dict:
+                    word_list = load_pos_tag_dictionary(target_pos, pos_path)
+                    pos_tag_dict[target_pos] = word_list
+                else:
+                    word_list = pos_tag_dict[target_pos]
 
-            # Get closest words by POS
-            suggestions_list = get_closest_words_by_pos(input_word, word_list, num_suggestions=3)
+                # Get closest words by POS
+                suggestions_list = get_closest_words_by_pos(input_word, word_list, num_suggestions=3)
 
-            if suggestions_list:
-                # For now, pick the best suggestion (smallest distance)
-                replacement_word = suggestions_list[0][0]
-                final_sentence.append(replacement_word)
-                
-                # Store suggestions for the word
-                word_suggestions[input_word] = [word for word, dist in suggestions_list]
-            else:
-                # If no suggestions found, keep the original word
-                final_sentence.append(input_word)
+                if suggestions_list:
+                    # For now, pick the best suggestion (smallest distance)
+                    replacement_word = suggestions_list[0][0]
+                    final_sentence.append(replacement_word)
+                    
+                    # Store suggestions for the word
+                    word_suggestions[input_word] = [word for word, dist in suggestions_list]
+                else:
+                    # If no suggestions found, keep the original word
+                    final_sentence.append(input_word)
         elif suggestion_type == "DELETE":
             continue  # Skip the token
         elif suggestion_type == "INSERT":
@@ -488,8 +492,7 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
             # Handle any other suggestion types
             final_sentence.append(pos_tags[idx][0])
     
-    corrected_sentence = " ".join(final_sentence)
-    return corrected_sentence
+    return " ".join(final_sentence)
 
 def check_words_in_dictionary(words, directory_path):
     """
@@ -576,9 +579,9 @@ def pantasa_checker(input_sentence, jar_path, model_path, rule_path, directory_p
     words = [word for word, _ in pos_tags]
     incorrect_words, has_incorrect_words  = check_words_in_dictionary(words, directory_path)
     if has_incorrect_words:
-        log_message("info", f"The sentence has incorrect words")
+        log_message("info", "The sentence has incorrect words")
     else:
-        log_message("info", f"The sentence doesn't have incorrect words")
+        log_message("info", "The sentence doesn't have incorrect words")
 
     # Step 3: Apply pre-defined rules before any modification
     log_message("info", "Applying pre-defined rules (pre)")
@@ -635,4 +638,6 @@ if __name__ == "__main__":
     rule_bank = rule_pattern_bank()         
 
     corrected_sentence= pantasa_checker(input_text, jar_path, model_path, rule_bank)
+
+    
     
