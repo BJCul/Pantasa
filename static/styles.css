@@ -15,8 +15,8 @@ html {
 }
 
 body {
-    font-family: sans-serif;
-    background-color: #E2DEDE;
+    font-family: 'Montserrat';
+    background-color: #E5E0DF;
 }
 /*-----Home-----*/
 #Home {
@@ -34,7 +34,7 @@ body {
 .nav {
     width: 100%;
     height: 80px;
-    background: #800000;
+    background: #650000;
     position: fixed;
     top: 0;
     z-index: 1000;
@@ -61,6 +61,7 @@ section .home-content{
 /*Navigation Bar*/
 
 .logo-container {
+    margin-left: 50px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -85,6 +86,13 @@ section .home-content{
     font-style: normal; 
 }
 
+@font-face {
+    font-family: 'Sorts Mill Goudy';
+    src: url('fonts/SortsMillGoudy-Regular.ttf') format('woff2');
+    font-weight: normal; 
+    font-style: normal; 
+}
+
 label.logo {
     float: left;
     width: 30px;
@@ -93,6 +101,10 @@ label.logo {
     font-size: 30px;
     line-height: 80px;
     font-weight: bold;
+}
+
+.header {
+    font-family: 'Roxborough CF';
 }
 
 
@@ -180,7 +192,7 @@ label.logo {
         position: fixed;
         width: 100%;
         height: 100%;
-        background: #800000;
+        background: #650000;
         top: 0px;
         left: -100%;
         padding-top: 80px;
@@ -261,7 +273,7 @@ label.logo {
     margin-bottom: 10px;
     font-weight: 700px;
     color: #ffffff;
-    text-shadow: 2px 2px 50px rgba(0, 0, 0, 0.3);
+    text-shadow: 8px 9px 12.3px rgba(0, 0, 0, 0.8);
 }
 
 .home-content p {
@@ -283,7 +295,7 @@ label.logo {
 .logo {
     width: 45px;
     height: auto;
-    margin-left: 30px;
+    margin-left: 80px;
 }
 
 .figchecklogo-container {
@@ -304,12 +316,13 @@ label.logo {
     text-align: center;
     margin: 20px 20px;
     margin-top: 45px;
-    border-radius: 25px;
+    border-radius: 10px;
     font-weight: bold;
     font-size: 30px;
-    border: 2px solid #800000;
+    border: none;
+    outline: none;
     background: white;
-    color: #800000;
+    color: #650000;
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -317,7 +330,7 @@ label.logo {
 }
 
 .button span {
-    background: #800000;
+    background: #650000;
     height: 100%;
     width: 0;
     border-radius: 25px;
@@ -334,7 +347,7 @@ label.logo {
 
 .button:hover {
     color: white;
-    background: #800000;
+    background: #650000;
 }
 
 @media (max-width: 700px) {
@@ -355,9 +368,9 @@ label.logo {
         border-radius: 25px;
         font-weight: bold;
         font-size: 20px;
-        border: 2px solid #800000;
+        border: 2px solid #650000;
         background: white;
-        color: #800000;
+        color: #650000;
         cursor: pointer;
         position: relative;
         overflow: hidden;
@@ -365,7 +378,7 @@ label.logo {
     }
 
     #Home .button span {
-        background: #800000;
+        background: #650000;
         height: 100%;
         width: 0;
         border-radius: 25px;
@@ -382,7 +395,7 @@ label.logo {
     
     #Home .button:hover {
         color: white;
-        background: #800000;
+        background: #650000;
     }
 }
 
@@ -390,7 +403,7 @@ label.logo {
 #About {
     width: 100%;
     height: 100vh;
-    background:  white;
+    background-color: #E5E0DF;
     background-size: cover;
     background-position: center;
 }
@@ -404,7 +417,7 @@ label.logo {
     left: 0%;
     padding-top: 20px;
     background-color: rgba(255, 255, 255, 0.8); 
-    border-radius: 30px;
+    border-radius: 10px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -452,6 +465,7 @@ label.logo {
 .pantasa-container {
     display: flex;
     overflow: hidden;
+    border-radius: 10px;
     outline: none;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -465,7 +479,8 @@ label.logo {
     justify-content: flex-start;
     margin-left: 0;
     box-sizing: border-box;
-    border: 1px solid #800000;
+    border: none;
+    outline: none;
     border-left: none;
     border-bottom: none;
     padding-right: 40px;
@@ -514,10 +529,11 @@ label.logo {
     border-spacing: 10px;
     border: none;
     outline: none;
-    border: 1px solid #800000;
+    border: 1px solid #650000;
     box-sizing: border-box;
     resize: none;
     margin-bottom: 20px;
+    font-family: 'Sorts Mill Goudy';
 }
 
 
@@ -553,10 +569,11 @@ label.logo {
 #suggestionsList {
     list-style-type: none;
     padding-left: 0;
-   /* border: 1px solid #800000;*/
+   /* border: 1px solid #650000;*/
     min-height: 100px;
     padding: 10px;
     box-sizing: border-box;
+    font-family: 'Sorts Mill Goudy';
 }
 
 #suggestionsList li {
@@ -571,16 +588,20 @@ label.logo {
 #correctedText {
     flex: 1;
     padding-left: 20px;
-    /*border-left: 1px solid #800000;*/
+    /*border-left: 1px solid #650000;*/
     font-style: italic;
     color: grey;
+    font-family: 'Sorts Mill Goudy';
 }
 
 
 /* Media queries */
-@media (max-width: 1800px) {
+@media (max-width: 1920px) {
     .pantasa-container {
         width: 1200px;
+    }
+    .about-content {
+        padding-bottom: 60px;
     }
 }
 
@@ -601,6 +622,13 @@ label.logo {
 }
 
 @media (max-width: 1000px) {
+    .logo-container{
+        margin-left: 20px;
+    }
+
+    .logo{
+        margin-left: 50px;
+    }
     #grammarTextarea {
         font-size: 0.875rem;
     }
@@ -608,10 +636,28 @@ label.logo {
     .pantasa-container {
         width: 600px;
     }
-
 }
 
+@media (max-width: 952px) {
+    .logo-container{
+        margin-left: 20px;
+    }
+
+    .logo{
+        margin-left: 30px;
+    }
+}
+
+
 @media (max-width: 858px) {
+    .logo-container{
+        margin-left: 20px;
+    }
+
+    .logo{
+        margin-left: 30px;
+    }
+
     #grammarTextarea::data-placeholder {
         opacity: 25;
     }
@@ -639,9 +685,6 @@ label.logo {
         flex-direction: column;
     }
 
-    #result {
-        border-left: solid 1px #800000;
-    }
 
     .info-container {
         height: auto;
@@ -677,6 +720,14 @@ label.logo {
 }
 
 @media (max-width: 750px) {
+    .logo-container{
+        margin-left: 20px;
+    }
+
+    .logo{
+        margin-left: 30px;
+    }
+
     .about-content {
         font-size: 0.625rem; 
     }
@@ -715,6 +766,13 @@ label.logo {
 }
 
 @media (max-width: 600px) {
+    .logo-container{
+        margin-left: 20px;
+    }
+
+    .logo{
+        margin-left: 30px;
+    }
     .loading p {
         font-size: 1.25rem;
     }
@@ -744,6 +802,13 @@ label.logo {
 }
 
 @media (max-width: 480px) {
+    .logo-container{
+        margin-left: 20px;
+    }
+
+    .logo{
+        margin-left: 30px;
+    }
     .loading p {
         font-size: 1rem;
     }
@@ -776,7 +841,7 @@ label.logo {
 .Footer {
     width: 100%;
     height: 10%;
-    background: #800000;
+    background: #650000;
     color: #fefaf6;
     padding: 10px;
     text-align: center;
@@ -822,8 +887,6 @@ label.logo {
 
 .right-panel #result {
     padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #800000;
 }
 
 #grammarTextarea:empty:before {
