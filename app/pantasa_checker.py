@@ -132,8 +132,8 @@ def preprocess_text(text_input, jar_path, model_path):
     return [preprocessed_output]
 
 # Load and create the rule pattern bank
-def rule_pattern_bank():
-    file_path = 'data/processed/hngrams.csv'  # Update with actual path
+def rule_pattern_bank(rule_path):
+    file_path = rule_path  # Update with actual path
     hybrid_ngrams_df = pd.read_csv(file_path)
 
     # Create a dictionary to store the Rule Pattern Bank (Hybrid N-Grams + Predefined Rules)
@@ -229,7 +229,7 @@ def generate_ngrams(input_tokens, n_min=3, n_max=7):
     return ngrams
 
 # Step 5: Suggestion phase - generate suggestions for corrections without applying them
-def generate_suggestions(pos_tags):
+def generate_suggestions(pos_tags, rule_path):
 
     input_tokens = [pos_tag for word, pos_tag in pos_tags]
     
@@ -242,7 +242,7 @@ def generate_suggestions(pos_tags):
     # Iterate over each n-gram and compare it to the rule pattern bank
     for input_ngram, start_idx in input_ngrams_with_index:
         min_distance = float('inf')
-        rule_bank = rule_pattern_bank()
+        rule_bank = rule_pattern_bank(rule_path)
         best_match = None
 
         for pattern_id, pattern_data in rule_bank.items():
@@ -616,7 +616,7 @@ def pantasa_checker(input_sentence, jar_path, model_path, rule_path, directory_p
     words = [word for word, _ in pos_tags]
     # Step 8: Generate suggestions using n-gram matching
     log_message("info", "Generating suggestions")
-    token_suggestions = generate_suggestions(pos_tags)
+    token_suggestions = generate_suggestions(pos_tags, rule_path)
     log_message("info", f"Token Suggestions: {token_suggestions}")
 
     # Step 9: Apply POS corrections
