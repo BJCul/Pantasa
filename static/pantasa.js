@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function () { //for clickable high
     });
 });
 
+
 document.getElementById('grammarTextarea').addEventListener('input', function (event) { //for character limit
 
     const textarea = document.getElementById('grammarTextarea');
@@ -103,17 +104,11 @@ function showSection(sectionId) {
 
 let timeout = null;
 
+
 document.getElementById('grammarTextarea').addEventListener('input', function () {
     clearTimeout(timeout);
     const grammarTextarea = document.getElementById('grammarTextarea');
-    const textInput = grammarTextarea.innerHTML;  // Use textContent instead of innerText for contenteditable div
-
-    // Toggle the empty class if no content
-    if (textInput === '') {
-        grammarTextarea.classList.add('empty');
-    } else {
-        grammarTextarea.classList.remove('empty');
-    }
+    const textInput = grammarTextarea.innerHTML;  // Get input text
 
     // Clear previous corrections
     timeout = setTimeout(async () => {
@@ -126,14 +121,15 @@ document.getElementById('grammarTextarea').addEventListener('input', function ()
                 body: JSON.stringify({ text_input: textInput })
             });
 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+            if (response.status >= 400 && response.status < 600) {
+                throw new Error('Server returned an error');
             }
 
             const data = await response.json();
+            console.log('Response data:', data);  // Debugging
 
             if (data.corrected_text && data.incorrect_words) {
-                let highlightedText = textInput;  // Keep the original input
+                let highlightedText = textInput;
 
                 // Highlight incorrect words
                 data.incorrect_words.forEach(word => {
@@ -143,52 +139,22 @@ document.getElementById('grammarTextarea').addEventListener('input', function ()
 
                 // Display highlighted text in the textarea
                 grammarTextarea.innerHTML = highlightedText;
-
-                // Display corrected sentence
                 document.getElementById('correctedText').textContent = data.corrected_text;
 
-                hideLoadingSpinner();
             } else {
-                // If no corrections, keep the original input
                 grammarTextarea.innerHTML = textInput;
                 document.getElementById('correctedText').textContent = "No corrections needed.";
-                hideLoadingSpinner();
             }
 
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Error retrieving data:', error);  // Log the actual error
             document.getElementById('correctedText').textContent = 'Error retrieving data.';
-            hideLoadingSpinner();
+        } finally {
+            hideLoadingSpinner();  // Always hide spinner
         }
-    }, 10000);
+    }, 1000);  // Adjust delay if needed
 });
 
-
-// Function to check if Flask is logging
-function checkFlaskStatus() {
-    fetch('/status')
-        .then(response => response.json())
-        .then(data => {
-            const isLogging = data.logging;
-            const spinner = document.getElementById('loading');
-
-            if (isLogging) {
-                // Show the spinner when Flask is logging
-                spinner.style.display = 'block';
-                correctedText.style.display = 'none';
-            } else {
-                // Hide the spinner when Flask is not logging
-                spinner.style.display = 'none';
-                correctedText.style.display = 'block';
-            }
-        })
-        .catch(error => {
-            console.error('Error checking Flask status:', error);
-        });
-}
-
-// Set an interval to check the status every 21seconds
-setInterval(checkFlaskStatus, 1000);
 
 
 document.addEventListener('DOMContentLoaded', function () {
