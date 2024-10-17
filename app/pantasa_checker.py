@@ -410,54 +410,41 @@ def get_closest_words_by_pos(input_word, words_list, num_suggestions=3):
 def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
     final_sentence = []
     word_suggestions = {}  # To keep track of suggestions for each word
-    pos_tag_dict = {}  # Cache for loaded POS tag dictionaries
+    pos_tag_dict = {}      # Cache for loaded POS tag dictionaries
+    idx = 0                # Index for iterating through pos_tags and token_suggestions
 
-    # Iterate through the token_suggestions and apply the corrections
-    for idx, token_info in enumerate(token_suggestions):
+    while idx < len(token_suggestions):
+        token_info = token_suggestions[idx]
         suggestions = token_info["suggestions"]
         distances = token_info["distances"]
-        
+
         if not suggestions:
             # No suggestions; keep the original word
             word = pos_tags[idx][0]
             final_sentence.append(word)
-            continue  # Move to the next token
+            idx += 1
+            continue
 
         # Count the frequency of each exact suggestion
         suggestion_count = Counter(suggestions)
         print(f"COUNTER {suggestion_count}")
-    
-        # Find the most frequent suggestion
-        most_frequent_suggestion = suggestion_count.most_common(1)[0][0]
-        # Filter suggestions matching the most frequent suggestion
-        filtered_indices = [i for i, s in enumerate(suggestions) if s == most_frequent_suggestion]
 
-        # Pick the suggestion with the lowest distance if there's a tie
-        if len(filtered_indices) > 1:
-            filtered_distances = [distances[i] for i in filtered_indices]
-            best_filtered_index = filtered_distances.index(min(filtered_distances))
-            best_index = filtered_indices[best_filtered_index]
+        # Separate 'INSERT' suggestions from others
+        insert_suggestions = [s for s in suggestions if s.startswith('INSERT')]
+        other_suggestions = [s for s in suggestions if not s.startswith('INSERT')]
+        other_distances = [distances[i] for i, s in enumerate(suggestions) if not s.startswith('INSERT')]
 
-        else:
-            best_index = filtered_indices[0]
-                
-        best_suggestion = suggestions[best_index]
-        suggestion_parts = best_suggestion.split("_")
-        suggestion_type = suggestion_parts[0]
+        # Handle 'INSERT' suggestions
+        if insert_suggestions:
+            # Find the most frequent 'INSERT' suggestion
+            insert_counts = Counter(insert_suggestions)
+            most_common_insert = insert_counts.most_common(1)[0][0]
+            insert_indices = [i for i, s in enumerate(suggestions) if s == most_common_insert]
+            insert_distance = min([distances[i] for i in insert_indices])
 
-        if suggestion_type == "KEEP":
-            # Append the original word
-            word = pos_tags[idx][0]
-            final_sentence.append(word)
-        elif suggestion_type == "SUBSTITUTE":
-            # Extract input word and target POS tag
-            input_word = pos_tags[idx][0]
-            input_pos = suggestion_parts[1]
-            target_pos = suggestion_parts[2]
-
-            print(f"INPUT WORD: {input_word}")
-            print(f"INPUT POS: {input_pos}")
-            print(f"TARGET POS: {target_pos}")
+            # Extract the target POS tag
+            _, target_pos = most_common_insert.split("_")
+            print(f"INSERT TARGET POS: {target_pos}")
 
             # Load the dictionary for the target POS tag if not already loaded
             if target_pos not in pos_tag_dict:
@@ -466,30 +453,83 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
             else:
                 word_list = pos_tag_dict[target_pos]
 
-            # Get closest words by POS
-            suggestions_list = get_closest_words_by_pos(input_word, word_list, num_suggestions=3)
-
-            if suggestions_list:
-                # For now, pick the best suggestion (smallest distance)
-                replacement_word = suggestions_list[0][0]
-                final_sentence.append(replacement_word)
-                
-                # Store suggestions for the word
-                word_suggestions[input_word] = [word for word, dist in suggestions_list]
+            if word_list:
+                # For simplicity, pick the most frequent word (assuming word_list is sorted by frequency)
+                inserted_word = word_list[0]
+                final_sentence.append(inserted_word)
+                print(f"Inserted word: {inserted_word}")
             else:
-                # If no suggestions found, keep the original word
-                final_sentence.append(input_word)
-        elif suggestion_type == "DELETE":
-            continue  # Skip the token
-        elif suggestion_type == "INSERT":
-            # Handle insertion if necessary
-            pass
+                print(f"No words found for POS tag '{target_pos}' to insert.")
+
+        # Now handle other suggestions ('KEEP', 'SUBSTITUTE', 'DELETE')
+        if other_suggestions:
+            # Count the frequency of the other suggestions
+            other_suggestion_count = Counter(other_suggestions)
+            most_common_other = other_suggestion_count.most_common(1)[0][0]
+            other_indices = [i for i, s in enumerate(other_suggestions) if s == most_common_other]
+
+            # Pick the suggestion with the lowest distance if there's a tie
+            if len(other_indices) > 1:
+                filtered_distances = [other_distances[i] for i in other_indices]
+                best_index = other_indices[filtered_distances.index(min(filtered_distances))]
+            else:
+                best_index = other_indices[0]
+
+            best_suggestion = other_suggestions[best_index]
+            suggestion_parts = best_suggestion.split("_")
+            suggestion_type = suggestion_parts[0]
+
+            if suggestion_type == "KEEP":
+                # Append the original word
+                word = pos_tags[idx][0]
+                final_sentence.append(word)
+                idx += 1
+            elif suggestion_type == "SUBSTITUTE":
+                # Extract input word and target POS tag
+                input_word = pos_tags[idx][0]
+                target_pos = suggestion_parts[2]
+
+                print(f"INPUT WORD: {input_word}")
+                print(f"TARGET POS: {target_pos}")
+
+                # Load the dictionary for the target POS tag if not already loaded
+                if target_pos not in pos_tag_dict:
+                    word_list = load_pos_tag_dictionary(target_pos, pos_path)
+                    pos_tag_dict[target_pos] = word_list
+                else:
+                    word_list = pos_tag_dict[target_pos]
+
+                # Get closest words by POS
+                suggestions_list = get_closest_words_by_pos(input_word, word_list, num_suggestions=3)
+
+                if suggestions_list:
+                    # Pick the best suggestion (smallest distance)
+                    replacement_word = suggestions_list[0][0]
+                    final_sentence.append(replacement_word)
+                    print(f"Replaced '{input_word}' with '{replacement_word}'")
+                    
+                    # Store suggestions for the word
+                    word_suggestions[input_word] = [word for word, dist in suggestions_list]
+                else:
+                    # If no suggestions found, keep the original word
+                    final_sentence.append(input_word)
+                idx += 1
+            elif suggestion_type == "DELETE":
+                # Skip the token
+                print(f"Deleted word: {pos_tags[idx][0]}")
+                idx += 1
+            else:
+                # Handle any other suggestion types
+                word = pos_tags[idx][0]
+                final_sentence.append(word)
+                idx += 1
         else:
-            # Handle any other suggestion types
-            final_sentence.append(pos_tags[idx][0])
-    
+            # If there are no other suggestions, move to the next token
+            idx += 1
+
     corrected_sentence = " ".join(final_sentence)
     return corrected_sentence
+
 
 def check_words_in_dictionary(words, directory_path):
     """
