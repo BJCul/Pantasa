@@ -1,24 +1,73 @@
-document.addEventListener('DOMContentLoaded', function () { //for clickable highlighted corrections
-    const checkBox = document.getElementById('check'); 
+document.addEventListener('DOMContentLoaded', function () {
+    // Select the checkbox and the 'Try Now' link
+    const checkBox = document.getElementById('check');
     const tryNowLink = document.querySelector('.nav ul li a[href="#GrammarChecker"]');
 
+    // Add click event listener to the 'Try Now' link
     tryNowLink.addEventListener('click', function (event) {
         if (checkBox.checked) {
-            checkBox.checked = false;
-        }
-    });
-
-    // Highlighted text click handler
-    document.addEventListener('click', function (event) {
-        if (event.target.classList.contains('highlight')) {
-            const suggestionsList = document.getElementById('suggestionsList');
-            const suggestionItem = document.createElement('li');
-            suggestionItem.textContent = 'Clicked';
-            suggestionsList.innerHTML = '';  // Clear previous suggestions
-            suggestionsList.appendChild(suggestionItem);
+            checkBox.checked = false; // Uncheck the checkbox to hide the menu
         }
     });
 });
+
+// Function to hide the menu after a link is clicked
+document.querySelectorAll('.nav ul li a').forEach(link => {
+    link.addEventListener('click', function () {
+        document.getElementById('check').checked = false; // Uncheck the checkbox to hide the menu
+        document.querySelector('.home-content').style.display = 'block'; // Show the home-content again
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Select all sections to be observed
+    const sections = document.querySelectorAll('section');
+
+    // Function to handle the visibility changes
+    function handleIntersect(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                console.log('Visible section:', entry.target.id);  // Logs the visible section
+                // You can apply logic here to change the navigation bar or other elements
+                updateNavbar(entry.target.id); // Example: Update navbar based on the section ID
+            }
+        });
+    }
+
+    // Create an IntersectionObserver with a callback
+    const observer = new IntersectionObserver(handleIntersect, {
+        threshold: 0.5  // 50% of the section must be visible to trigger
+    });
+
+    // Observe each section
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+
+    // Example function to update navbar or style based on section
+    function updateNavbar(sectionId) {
+        const navbar = document.querySelector('.nav');
+
+        if (sectionId === 'Home') {
+            navbar.classList.add('white');
+            navbar.classList.remove('black');
+        } else {
+            navbar.classList.add('black');
+            navbar.classList.remove('white');
+        }
+    }
+});
+
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        section.classList.add('hidden');
+    });
+
+    const targetSection = document.getElementById(sectionId);
+    targetSection.classList.remove('hidden');
+}
 
 
 document.getElementById('grammarTextarea').addEventListener('input', function (event) { //for character limit
@@ -63,52 +112,32 @@ document.getElementById('grammarTextarea').addEventListener('keydown', function 
 
 
 
-function checkFlaskStatus() {
-    fetch('/status')
-        .then(response => response.json())
-        .then(data => {
-            const isLogging = data.logging;
-            const spinner = document.getElementById('loading');
-
-            if (isLogging) {
-                spinner.style.display = 'block'; // Show the spinner when Flask is logging
-            } else {
-                spinner.style.display = 'none';  // Hide the spinner when Flask is idle
-            }
-        })
-        .catch(error => {
-            console.error('Error checking Flask status:', error);
-        });
-}
-
-// Set an interval to check the status every 2 seconds
-setInterval(checkFlaskStatus, 4000);
-
-// Function to hide the menu after a link is clicked
-document.querySelectorAll('.nav ul li a').forEach(link => {
-    link.addEventListener('click', function () {
-        document.getElementById('check').checked = false;
-        document.querySelector('.home-content').style.display = 'block';
-    });
-});
-
-function showSection(sectionId) {
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        section.classList.add('hidden');
-    });
-
-    const targetSection = document.getElementById(sectionId);
-    targetSection.classList.remove('hidden');
-}
-
 let timeout = null;
-
 
 document.getElementById('grammarTextarea').addEventListener('input', function () {
     clearTimeout(timeout);
     const grammarTextarea = document.getElementById('grammarTextarea');
     const textInput = grammarTextarea.innerHTML;  // Get input text
+
+    // Hide previous predictions and suggestions
+    const predictionsContent = document.getElementById('predictionsContent');
+    const suggestionsContent = document.getElementById('suggestionsContent');
+    const suggestionsHeader = document.getElementById('suggestionsHeader');
+    
+    predictionsContent.innerHTML = '';
+    suggestionsContent.innerHTML = '';
+    suggestionsHeader.classList.add('hidden'); // Hide suggestions header initially
+    
+    // Show loading icon and set text to "Loading..."
+    const loadingElement = document.getElementById('loading');
+    if (loadingElement) {
+        predictionsContent.style.display= 'none';
+        loadingElement.style.display = 'block';
+        loadingElement.querySelector('p').textContent = 'grammar checking is processing...';
+    }    
+
+    // Log the input text before sending it
+    console.log("Input Text:", textInput);
 
     // Clear previous corrections
     timeout = setTimeout(async () => {
@@ -121,77 +150,88 @@ document.getElementById('grammarTextarea').addEventListener('input', function ()
                 body: JSON.stringify({ text_input: textInput })
             });
 
-            if (response.status >= 400 && response.status < 600) {
-                throw new Error('Server returned an error');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
 
             const data = await response.json();
             console.log('Response data:', data);  // Debugging
 
-            if (data.corrected_text && data.incorrect_words) {
-                let highlightedText = textInput;
+            // Check if there are any spelling errors
+            const hasSpellingErrors = data.highlighted_text && data.highlighted_text.includes('error');
 
-                // Highlight incorrect words
-                data.incorrect_words.forEach(word => {
-                    const regex = new RegExp(`\\b${word}\\b`, 'gi');
-                    highlightedText = highlightedText.replace(regex, `<span class="highlight">${word}</span>`);
+            if (hasSpellingErrors) {
+                // Display only spell suggestions if there are errors
+                predictionsContent.innerHTML = data.highlighted_text || 'No errors detected.'; 
+            } else {
+                // Display grammatical predictions if no spelling errors
+                if (data.grammar_predictions && data.grammar_predictions.length) {
+                    data.grammar_predictions.forEach((predictionArray) => {
+                        const prediction = Array.isArray(predictionArray) ? predictionArray[0] : predictionArray;
+                        const predictionText = prediction == 0
+                            ? `Grammatically correct.<br>`
+                            : `Grammatical error detected.<br>`;
+                        predictionsContent.innerHTML += predictionText;
+                    });
+                } else {
+                    predictionsContent.innerHTML = 'No grammatical errors detected';
+                }
+            }
+
+            // Add mouseenter and mouseleave event listeners for highlighted errors (if any)
+            document.querySelectorAll('.error').forEach(element => {
+                element.addEventListener('mouseenter', function () {
+                    const suggestions = this.getAttribute('data-suggestions').split(',<br>');
+                    showSuggestions(suggestions, this);
                 });
 
-                // Display highlighted text in the textarea
-                grammarTextarea.innerHTML = highlightedText;
-                document.getElementById('correctedText').textContent = data.corrected_text;
+                element.addEventListener('mouseleave', function () {
+                    hideSuggestions();
+                });
+            });
 
-            } else {
-                grammarTextarea.innerHTML = textInput;
-                document.getElementById('correctedText').textContent = "No corrections needed.";
-            }
 
         } catch (error) {
             console.error('Error retrieving data:', error);  // Log the actual error
             document.getElementById('correctedText').textContent = 'Error retrieving data.';
         } finally {
-            hideLoadingSpinner();  // Always hide spinner
+            // Change loading text to "Complete"
+            loadingElement.querySelector('p').textContent = 'Complete';
+
+            // Hide loading icon after a short delay
+            setTimeout(() => {
+                predictionsContent.style.display= 'block';
+                loadingElement.style.display = 'none';
+            }, 500);
         }
     }, 1000);  // Adjust delay if needed
 });
 
+// Function to show suggestions in a suggestion box
+function showSuggestions(suggestions, errorElement) {
+    // Remove any existing suggestion box
+    hideSuggestions();
 
+    // Create a new suggestion box
+    const suggestionBox = document.createElement('div');
+    suggestionBox.className = 'suggestion-box';
+    suggestionBox.innerHTML = `<strong>Suggestions:</strong><br>${suggestions.join('<br>')}`;
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Select all sections to be observed
-    const sections = document.querySelectorAll('section');
+    // Position the suggestion box near the highlighted word
+    const rect = errorElement.getBoundingClientRect();
+    suggestionBox.style.position = 'absolute';
+    suggestionBox.style.left = `${rect.left}px`;
+    suggestionBox.style.top = `${rect.bottom + window.scrollY}px`; // Adjust for scrolling
 
-    // Function to handle the visibility changes
-    function handleIntersect(entries, observer) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                console.log('Visible section:', entry.target.id);  // Logs the visible section
-                // You can apply logic here to change the navigation bar or other elements
-                updateNavbar(entry.target.id); // Example: Update navbar based on the section ID
-            }
-        });
+    // Add the suggestion box to the body
+    document.body.appendChild(suggestionBox);
+}
+
+// Function to hide the suggestion box
+function hideSuggestions() {
+    const existingSuggestionBox = document.querySelector('.suggestion-box');
+    if (existingSuggestionBox) {
+        existingSuggestionBox.remove();
     }
+}
 
-    // Create an IntersectionObserver with a callback
-    const observer = new IntersectionObserver(handleIntersect, {
-        threshold: 0.5  // 50% of the section must be visible to trigger
-    });
-
-    // Observe each section
-    sections.forEach(section => {
-        observer.observe(section);
-    });
-
-    // Example function to update navbar or style based on section
-    function updateNavbar(sectionId) {
-        const navbar = document.querySelector('.nav');
-
-        if (sectionId === 'Home') {
-            navbar.classList.add('white');
-            navbar.classList.remove('black');
-        } else {
-            navbar.classList.add('black');
-            navbar.classList.remove('white');
-        }
-    }
-});

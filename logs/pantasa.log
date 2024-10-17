@@ -1,0 +1,568 @@
+2024-10-18 02:50:08 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2024-10-18 02:50:08 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-10-18 02:50:08 - werkzeug - INFO -  * Restarting with stat
+2024-10-18 02:50:10 - werkzeug - WARNING -  * Debugger is active!
+2024-10-18 02:50:10 - werkzeug - INFO -  * Debugger PIN: 629-448-213
+2024-10-18 02:50:10 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:50:10] "GET / HTTP/1.1" 200 -
+2024-10-18 02:50:10 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:50:10] "GET /static/pantasa.js HTTP/1.1" 200 -
+2024-10-18 02:50:10 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:50:10] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-10-18 02:50:10 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:50:10] "GET /static/styles.css HTTP/1.1" 200 -
+2024-10-18 02:50:10 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:50:10] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-10-18 02:50:10 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:50:10] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-10-18 02:50:14 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:50:14] "GET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1" 200 -
+2024-10-18 02:50:28 - app.utils - INFO - Starting preprocessing
+2024-10-18 02:50:28 - app.pantasa_checker - DEBUG - Tokens: ['Nangyare']
+2024-10-18 02:50:29 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nangyare', 'VBTS')]
+2024-10-18 02:50:29 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 02:50:29 - app.pantasa_checker - DEBUG - Incorrect Words: ['Nangyare']
+2024-10-18 02:50:29 - app.utils - INFO - The sentence has incorrect words
+2024-10-18 02:50:29 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 02:50:30 - app.utils - INFO - Text after pre-defined rules (pre): Nangyare
+2024-10-18 02:50:30 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 02:50:30 - app.pantasa_checker - DEBUG - Incorrect Words: ['Nangyare']
+2024-10-18 02:50:30 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['Nangyare']
+2024-10-18 02:50:30 - app.utils - INFO - The sentence has incorrect words. Incorrect word: ['Nangyare']
+2024-10-18 02:50:30 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 02:50:37 - app.utils - INFO - Replaced 'Nangyare' with 'nangyari'
+2024-10-18 02:50:37 - app.utils - INFO - Text after spell checking: nangyari
+2024-10-18 02:50:37 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 02:50:38 - app.utils - INFO - Text after pre-defined rules (post): nangyari
+2024-10-18 02:50:38 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 02:50:38 - app.pantasa_checker - DEBUG - Tokens: ['nangyari']
+2024-10-18 02:50:38 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('nangyari', 'VBTS')]
+2024-10-18 02:50:38 - app.utils - INFO - Generating suggestions
+2024-10-18 02:50:38 - app.utils - INFO - Token Suggestions: [{'token': 'VBTS', 'suggestions': [], 'distances': []}]
+2024-10-18 02:50:38 - app.utils - INFO - Applying POS corrections
+2024-10-18 02:50:38 - app.utils - INFO - Final Corrected Sentence: nangyari
+2024-10-18 02:50:38 - root - INFO - Detected Incorrect Words: ['Nangyare']
+2024-10-18 02:50:38 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:50:38] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 02:51:14 - app.utils - INFO - Starting preprocessing
+2024-10-18 02:51:14 - app.pantasa_checker - DEBUG - Tokens: ['nahulo']
+2024-10-18 02:51:15 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('nahulo', 'VBTS')]
+2024-10-18 02:51:15 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 02:51:15 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:51:15 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:51:15 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 02:51:16 - app.utils - INFO - Starting preprocessing
+2024-10-18 02:51:16 - app.pantasa_checker - DEBUG - Tokens: ['nahulag']
+2024-10-18 02:51:16 - app.utils - INFO - Text after pre-defined rules (pre): nahulo
+2024-10-18 02:51:16 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 02:51:16 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:51:16 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 02:51:16 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:51:16 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 02:51:16 - app.utils - INFO - Text after spell checking: nahulo
+2024-10-18 02:51:16 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 02:51:17 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('nahulag', 'VBTS')]
+2024-10-18 02:51:17 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 02:51:17 - app.pantasa_checker - DEBUG - Incorrect Words: ['nahulag']
+2024-10-18 02:51:17 - app.utils - INFO - The sentence has incorrect words
+2024-10-18 02:51:17 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 02:51:17 - app.utils - INFO - Text after pre-defined rules (post): nahulo
+2024-10-18 02:51:17 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 02:51:17 - app.pantasa_checker - DEBUG - Tokens: ['nahulo']
+2024-10-18 02:51:18 - app.utils - INFO - Text after pre-defined rules (pre): nahulag
+2024-10-18 02:51:18 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 02:51:18 - app.pantasa_checker - DEBUG - Incorrect Words: ['nahulag']
+2024-10-18 02:51:18 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nahulag']
+2024-10-18 02:51:18 - app.utils - INFO - The sentence has incorrect words. Incorrect word: ['nahulag']
+2024-10-18 02:51:18 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 02:51:18 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('nahulo', 'VBTS')]
+2024-10-18 02:51:18 - app.utils - INFO - Generating suggestions
+2024-10-18 02:51:18 - app.utils - INFO - Token Suggestions: [{'token': 'VBTS', 'suggestions': [], 'distances': []}]
+2024-10-18 02:51:18 - app.utils - INFO - Applying POS corrections
+2024-10-18 02:51:18 - app.utils - INFO - Final Corrected Sentence: nahulo
+2024-10-18 02:51:18 - root - INFO - Detected Incorrect Words: []
+2024-10-18 02:51:18 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:51:18] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 02:51:22 - app.utils - INFO - Replaced 'nahulag' with 'nabulag'
+2024-10-18 02:51:22 - app.utils - INFO - Text after spell checking: nabulag
+2024-10-18 02:51:22 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 02:51:23 - app.utils - INFO - Text after pre-defined rules (post): nabulag
+2024-10-18 02:51:23 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 02:51:23 - app.pantasa_checker - DEBUG - Tokens: ['nabulag']
+2024-10-18 02:51:24 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('nabulag', 'VBTS')]
+2024-10-18 02:51:24 - app.utils - INFO - Generating suggestions
+2024-10-18 02:51:24 - app.utils - INFO - Token Suggestions: [{'token': 'VBTS', 'suggestions': [], 'distances': []}]
+2024-10-18 02:51:24 - app.utils - INFO - Applying POS corrections
+2024-10-18 02:51:24 - app.utils - INFO - Final Corrected Sentence: nabulag
+2024-10-18 02:51:24 - root - INFO - Detected Incorrect Words: ['nahulag']
+2024-10-18 02:51:24 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:51:24] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 02:51:35 - app.utils - INFO - Starting preprocessing
+2024-10-18 02:51:35 - app.pantasa_checker - DEBUG - Tokens: ['nahuhulo']
+2024-10-18 02:51:36 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('nahuhulo', 'VBTS')]
+2024-10-18 02:51:36 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 02:51:36 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:51:36 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:51:36 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 02:51:36 - app.utils - INFO - Starting preprocessing
+2024-10-18 02:51:36 - app.pantasa_checker - DEBUG - Tokens: ['nahuhulok']
+2024-10-18 02:51:37 - app.utils - INFO - Text after pre-defined rules (pre): nahuhulo
+2024-10-18 02:51:37 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 02:51:37 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('nahuhulok', 'VBTR')]
+2024-10-18 02:51:37 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 02:51:37 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:51:37 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 02:51:37 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:51:37 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 02:51:37 - app.utils - INFO - Text after spell checking: nahuhulo
+2024-10-18 02:51:37 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 02:51:37 - app.pantasa_checker - DEBUG - Incorrect Words: ['nahuhulok']
+2024-10-18 02:51:37 - app.utils - INFO - The sentence has incorrect words
+2024-10-18 02:51:37 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 02:51:38 - app.utils - INFO - Text after pre-defined rules (post): nahuhulo
+2024-10-18 02:51:38 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 02:51:38 - app.pantasa_checker - DEBUG - Tokens: ['nahuhulo']
+2024-10-18 02:51:38 - app.utils - INFO - Text after pre-defined rules (pre): nahuhulok
+2024-10-18 02:51:38 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 02:51:38 - app.pantasa_checker - DEBUG - Incorrect Words: ['nahuhulok']
+2024-10-18 02:51:38 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nahuhulok']
+2024-10-18 02:51:38 - app.utils - INFO - The sentence has incorrect words. Incorrect word: ['nahuhulok']
+2024-10-18 02:51:38 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 02:51:39 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('nahuhulo', 'VBTS')]
+2024-10-18 02:51:39 - app.utils - INFO - Generating suggestions
+2024-10-18 02:51:39 - app.utils - INFO - Token Suggestions: [{'token': 'VBTS', 'suggestions': [], 'distances': []}]
+2024-10-18 02:51:39 - app.utils - INFO - Applying POS corrections
+2024-10-18 02:51:39 - app.utils - INFO - Final Corrected Sentence: nahuhulo
+2024-10-18 02:51:39 - root - INFO - Detected Incorrect Words: []
+2024-10-18 02:51:39 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:51:39] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 02:51:44 - app.utils - INFO - Replaced 'nahuhulok' with 'nahuhulog'
+2024-10-18 02:51:44 - app.utils - INFO - Text after spell checking: nahuhulog
+2024-10-18 02:51:44 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 02:51:45 - app.utils - INFO - Text after pre-defined rules (post): nahuhulog
+2024-10-18 02:51:45 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 02:51:45 - app.pantasa_checker - DEBUG - Tokens: ['nahuhulog']
+2024-10-18 02:51:46 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('nahuhulog', 'VBTR')]
+2024-10-18 02:51:46 - app.utils - INFO - Generating suggestions
+2024-10-18 02:51:46 - app.utils - INFO - Token Suggestions: [{'token': 'VBTR', 'suggestions': [], 'distances': []}]
+2024-10-18 02:51:46 - app.utils - INFO - Applying POS corrections
+2024-10-18 02:51:46 - app.utils - INFO - Final Corrected Sentence: nahuhulog
+2024-10-18 02:51:46 - root - INFO - Detected Incorrect Words: ['nahuhulok']
+2024-10-18 02:51:46 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:51:46] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 02:51:48 - app.utils - INFO - Starting preprocessing
+2024-10-18 02:51:48 - app.pantasa_checker - DEBUG - Tokens: ['nahulok']
+2024-10-18 02:51:48 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('nahulok', 'VBTS')]
+2024-10-18 02:51:48 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 02:51:49 - app.pantasa_checker - DEBUG - Incorrect Words: ['nahulok']
+2024-10-18 02:51:49 - app.utils - INFO - The sentence has incorrect words
+2024-10-18 02:51:49 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 02:51:49 - app.utils - INFO - Text after pre-defined rules (pre): nahulok
+2024-10-18 02:51:49 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 02:51:50 - app.pantasa_checker - DEBUG - Incorrect Words: ['nahulok']
+2024-10-18 02:51:50 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nahulok']
+2024-10-18 02:51:50 - app.utils - INFO - The sentence has incorrect words. Incorrect word: ['nahulok']
+2024-10-18 02:51:50 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 02:51:55 - app.utils - INFO - Replaced 'nahulok' with 'nabulok'
+2024-10-18 02:51:55 - app.utils - INFO - Text after spell checking: nabulok
+2024-10-18 02:51:55 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 02:51:56 - app.utils - INFO - Text after pre-defined rules (post): nabulok
+2024-10-18 02:51:56 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 02:51:56 - app.pantasa_checker - DEBUG - Tokens: ['nabulok']
+2024-10-18 02:51:57 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('nabulok', 'VBTS')]
+2024-10-18 02:51:57 - app.utils - INFO - Generating suggestions
+2024-10-18 02:51:57 - app.utils - INFO - Token Suggestions: [{'token': 'VBTS', 'suggestions': [], 'distances': []}]
+2024-10-18 02:51:57 - app.utils - INFO - Applying POS corrections
+2024-10-18 02:51:57 - app.utils - INFO - Final Corrected Sentence: nabulok
+2024-10-18 02:51:57 - root - INFO - Detected Incorrect Words: ['nahulok']
+2024-10-18 02:51:57 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:51:57] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 02:52:09 - app.utils - INFO - Starting preprocessing
+2024-10-18 02:52:09 - app.pantasa_checker - DEBUG - Tokens: ['Nahulo']
+2024-10-18 02:52:10 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulo', 'VBTS')]
+2024-10-18 02:52:10 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 02:52:10 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:52:10 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:52:10 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 02:52:11 - app.utils - INFO - Text after pre-defined rules (pre): Nahulo
+2024-10-18 02:52:11 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 02:52:11 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:52:11 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 02:52:11 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:52:11 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 02:52:11 - app.utils - INFO - Text after spell checking: Nahulo
+2024-10-18 02:52:11 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 02:52:11 - app.utils - INFO - Starting preprocessing
+2024-10-18 02:52:11 - app.pantasa_checker - DEBUG - Tokens: ['Nahulpog', '&', 'nbsp', ';']
+2024-10-18 02:52:12 - app.utils - INFO - Text after pre-defined rules (post): Nahulo
+2024-10-18 02:52:12 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 02:52:12 - app.pantasa_checker - DEBUG - Tokens: ['Nahulo']
+2024-10-18 02:52:12 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulpog', 'VBTS'), ('&', 'PMS'), ('nbsp', 'FW'), (';', 'PMSC')]
+2024-10-18 02:52:12 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 02:52:12 - app.pantasa_checker - DEBUG - Incorrect Words: ['Nahulpog', '&', 'nbsp', ';']
+2024-10-18 02:52:12 - app.utils - INFO - The sentence has incorrect words
+2024-10-18 02:52:12 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 02:52:13 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulo', 'VBTS')]
+2024-10-18 02:52:13 - app.utils - INFO - Generating suggestions
+2024-10-18 02:52:13 - app.utils - INFO - Token Suggestions: [{'token': 'VBTS', 'suggestions': [], 'distances': []}]
+2024-10-18 02:52:13 - app.utils - INFO - Applying POS corrections
+2024-10-18 02:52:13 - app.utils - INFO - Final Corrected Sentence: Nahulo
+2024-10-18 02:52:13 - root - INFO - Detected Incorrect Words: []
+2024-10-18 02:52:13 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:52:13] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 02:52:14 - app.utils - INFO - Text after pre-defined rules (pre): Nahulpog&nbsp;
+2024-10-18 02:52:14 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 02:52:14 - app.pantasa_checker - DEBUG - Incorrect Words: ['Nahulpog', 'nbsp']
+2024-10-18 02:52:14 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['Nahulpog', 'nbsp']
+2024-10-18 02:52:14 - app.utils - INFO - The sentence has incorrect words. Incorrect word: ['Nahulpog', 'nbsp']
+2024-10-18 02:52:14 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 02:52:16 - app.utils - INFO - Starting preprocessing
+2024-10-18 02:52:16 - app.pantasa_checker - DEBUG - Tokens: ['Nahulog', 'ang', '&', 'nbsp', ';']
+2024-10-18 02:52:17 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulog', 'VBTS'), ('ang', 'DTC'), ('&', 'PMS'), ('nbsp', 'FW'), (';', 'PMSC')]
+2024-10-18 02:52:17 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 02:52:18 - app.pantasa_checker - DEBUG - Incorrect Words: ['&', 'nbsp', ';']
+2024-10-18 02:52:18 - app.utils - INFO - The sentence has incorrect words
+2024-10-18 02:52:18 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 02:52:19 - app.utils - INFO - Text after pre-defined rules (pre): Nahulog ang&nbsp;
+2024-10-18 02:52:19 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 02:52:19 - app.utils - INFO - Starting preprocessing
+2024-10-18 02:52:19 - app.pantasa_checker - DEBUG - Tokens: ['Nahulog', 'ang', 'bata']
+2024-10-18 02:52:19 - app.pantasa_checker - DEBUG - Incorrect Words: ['nbsp']
+2024-10-18 02:52:19 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nbsp']
+2024-10-18 02:52:19 - app.utils - INFO - The sentence has incorrect words. Incorrect word: ['nbsp']
+2024-10-18 02:52:19 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 02:52:20 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulog', 'VBTS'), ('ang', 'DTC'), ('bata', 'NNC')]
+2024-10-18 02:52:20 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 02:52:22 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:52:22 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:52:22 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 02:52:22 - app.utils - INFO - Starting preprocessing
+2024-10-18 02:52:22 - app.pantasa_checker - DEBUG - Tokens: ['Nahulog', 'amg', 'bata']
+2024-10-18 02:52:23 - app.utils - INFO - Replaced 'Nahulpog' with 'nahulog'
+2024-10-18 02:52:23 - app.utils - INFO - Text after pre-defined rules (pre): Nahulog ang bata
+2024-10-18 02:52:23 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 02:52:23 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulog', 'VBTS'), ('amg', 'FW'), ('bata', 'NNC')]
+2024-10-18 02:52:23 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 02:52:24 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:52:24 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 02:52:24 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:52:24 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 02:52:24 - app.utils - INFO - Text after spell checking: Nahulog ang bata
+2024-10-18 02:52:24 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:52:24 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 02:52:24 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:52:24 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 02:52:26 - app.utils - INFO - Text after pre-defined rules (post): Nahulog ang bata
+2024-10-18 02:52:26 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 02:52:26 - app.pantasa_checker - DEBUG - Tokens: ['Nahulog', 'ang', 'bata']
+2024-10-18 02:52:26 - app.utils - INFO - Text after pre-defined rules (pre): Nahulog amg bata
+2024-10-18 02:52:26 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 02:52:27 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:52:27 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 02:52:27 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:52:27 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 02:52:27 - app.utils - INFO - Text after spell checking: Nahulog amg bata
+2024-10-18 02:52:27 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 02:52:27 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulog', 'VBTS'), ('ang', 'DTC'), ('bata', 'NNC')]
+2024-10-18 02:52:27 - app.utils - INFO - Generating suggestions
+2024-10-18 02:52:27 - app.utils - INFO - Replaced 'nbsp' with 'nasa'
+2024-10-18 02:52:27 - app.utils - INFO - Text after spell checking: Nahulog ang&nasa;
+2024-10-18 02:52:27 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 02:52:28 - app.utils - INFO - Text after pre-defined rules (post): Nahulog amg bata
+2024-10-18 02:52:28 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 02:52:28 - app.pantasa_checker - DEBUG - Tokens: ['Nahulog', 'amg', 'bata']
+2024-10-18 02:52:29 - app.utils - INFO - Text after pre-defined rules (post): Nahulog ang&nasa;
+2024-10-18 02:52:29 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 02:52:29 - app.pantasa_checker - DEBUG - Tokens: ['Nahulog', 'ang', '&', 'nasa', ';']
+2024-10-18 02:52:30 - app.utils - INFO - Replaced 'nbsp' with 'nasa'
+2024-10-18 02:52:30 - app.utils - INFO - Text after spell checking: nahulog&nasa;
+2024-10-18 02:52:30 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 02:52:30 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulog', 'VBTS'), ('amg', 'FW'), ('bata', 'NNC')]
+2024-10-18 02:52:30 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulog', 'VBTS'), ('ang', 'DTC'), ('&', 'PMS'), ('nasa', 'RBL'), (';', 'PMSC')]
+2024-10-18 02:52:30 - app.utils - INFO - Generating suggestions
+2024-10-18 02:52:30 - app.utils - INFO - Generating suggestions
+2024-10-18 02:52:31 - app.utils - INFO - Text after pre-defined rules (post): nahulog&nasa;
+2024-10-18 02:52:31 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 02:52:31 - app.pantasa_checker - DEBUG - Tokens: ['nahulog', '&', 'nasa', ';']
+2024-10-18 02:52:32 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('nahulog', 'VBTS'), ('&', 'PMS'), ('nasa', 'RBL'), (';', 'PMSC')]
+2024-10-18 02:52:32 - app.utils - INFO - Generating suggestions
+2024-10-18 02:52:57 - app.utils - INFO - Token Suggestions: [{'token': 'VBTS', 'suggestions': ['KEEP_VBTS_VB.*'], 'distances': [0]}, {'token': 'DTC', 'suggestions': ['KEEP_DTC_DT.*'], 'distances': [0]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NN.*'], 'distances': [0]}]
+2024-10-18 02:52:57 - app.utils - INFO - Applying POS corrections
+2024-10-18 02:52:57 - app.utils - INFO - Final Corrected Sentence: Nahulog ang bata
+2024-10-18 02:52:57 - root - INFO - Detected Incorrect Words: []
+2024-10-18 02:52:57 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:52:57] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 02:53:00 - app.utils - INFO - Token Suggestions: [{'token': 'VBTS', 'suggestions': ['KEEP_VBTS_VB.*'], 'distances': [0]}, {'token': 'FW', 'suggestions': ['KEEP_FW_FW'], 'distances': [0]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NN.*'], 'distances': [0]}]
+2024-10-18 02:53:00 - app.utils - INFO - Applying POS corrections
+2024-10-18 02:53:00 - app.utils - INFO - Final Corrected Sentence: Nahulog amg bata
+2024-10-18 02:53:00 - root - INFO - Detected Incorrect Words: []
+2024-10-18 02:53:00 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:53:00] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 02:53:14 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:53:14] "GET / HTTP/1.1" 200 -
+2024-10-18 02:53:14 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:53:14] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-10-18 02:53:14 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:53:14] "GET /static/pantasa.js HTTP/1.1" 200 -
+2024-10-18 02:53:14 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:53:14] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-10-18 02:53:15 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:53:15] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-10-18 02:53:15 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:53:15] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-10-18 02:53:16 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:53:16] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-10-18 02:53:21 - app.utils - INFO - Starting preprocessing
+2024-10-18 02:53:21 - app.pantasa_checker - DEBUG - Tokens: ['Nahulog', 'ang', 'bata']
+2024-10-18 02:53:22 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulog', 'VBTS'), ('ang', 'DTC'), ('bata', 'NNC')]
+2024-10-18 02:53:22 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 02:53:23 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:53:23 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:53:23 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 02:53:25 - app.utils - INFO - Text after pre-defined rules (pre): Nahulog ang bata
+2024-10-18 02:53:25 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 02:53:26 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:53:26 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 02:53:26 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:53:26 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 02:53:26 - app.utils - INFO - Text after spell checking: Nahulog ang bata
+2024-10-18 02:53:26 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 02:53:27 - app.utils - INFO - Text after pre-defined rules (post): Nahulog ang bata
+2024-10-18 02:53:27 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 02:53:28 - app.pantasa_checker - DEBUG - Tokens: ['Nahulog', 'ang', 'bata']
+2024-10-18 02:53:29 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulog', 'VBTS'), ('ang', 'DTC'), ('bata', 'NNC')]
+2024-10-18 02:53:29 - app.utils - INFO - Generating suggestions
+2024-10-18 02:53:42 - app.utils - INFO - Token Suggestions: [{'token': 'VBTS', 'suggestions': ['KEEP_VBTS_VB.*', 'KEEP_VBTS_VB.*'], 'distances': [0, 0.8]}, {'token': 'PMS', 'suggestions': ['KEEP_PMS_PM.*', 'SUBSTITUTE_PMS_JJ.*', 'SUBSTITUTE_PMS_CC.*'], 'distances': [0, 0.8, 0.8]}, {'token': 'RBL', 'suggestions': ['KEEP_RBL_RB.*', 'KEEP_RBL_RB.*', 'KEEP_RBL_RB.*'], 'distances': [0, 0.8, 0.8]}, {'token': 'PMSC', 'suggestions': ['KEEP_PMSC_PM.*', 'KEEP_PMSC_PM.*'], 'distances': [0.8, 0.8]}]
+2024-10-18 02:53:42 - app.utils - INFO - Applying POS corrections
+2024-10-18 02:53:43 - app.utils - INFO - Final Corrected Sentence: nahulog & nasa ;
+2024-10-18 02:53:43 - root - INFO - Detected Incorrect Words: ['Nahulpog', '&', 'nbsp', ';']
+2024-10-18 02:53:43 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:53:43] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 02:53:49 - werkzeug - INFO -  * Detected change in 'c:\\Users\\Carlo Agas\\Documents\\GitHub\\Pantasaa\\app.py', reloading
+2024-10-18 02:53:49 - werkzeug - INFO -  * Restarting with stat
+2024-10-18 02:53:51 - werkzeug - WARNING -  * Debugger is active!
+2024-10-18 02:53:51 - werkzeug - INFO -  * Debugger PIN: 629-448-213
+2024-10-18 02:55:45 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:55:45] "GET / HTTP/1.1" 200 -
+2024-10-18 02:55:45 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:55:45] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-10-18 02:55:45 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:55:45] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-10-18 02:55:45 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:55:45] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-10-18 02:55:45 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:55:45] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-10-18 02:55:45 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:55:45] "GET /static/pantasa.js HTTP/1.1" 200 -
+2024-10-18 02:55:47 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:55:47] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-10-18 02:55:53 - app.utils - INFO - Starting preprocessing
+2024-10-18 02:55:53 - app.pantasa_checker - DEBUG - Tokens: ['Nahulog', 'ang', 'bata']
+2024-10-18 02:55:54 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulog', 'VBTS'), ('ang', 'DTC'), ('bata', 'NNC')]
+2024-10-18 02:55:54 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 02:55:54 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:55:54 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:55:54 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 02:55:55 - app.utils - INFO - Text after pre-defined rules (pre): Nahulog ang bata
+2024-10-18 02:55:55 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 02:55:55 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:55:55 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 02:55:55 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:55:55 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 02:55:55 - app.utils - INFO - Text after spell checking: Nahulog ang bata
+2024-10-18 02:55:55 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 02:55:56 - app.utils - INFO - Text after pre-defined rules (post): Nahulog ang bata
+2024-10-18 02:55:56 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 02:55:56 - app.pantasa_checker - DEBUG - Tokens: ['Nahulog', 'ang', 'bata']
+2024-10-18 02:55:57 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulog', 'VBTS'), ('ang', 'DTC'), ('bata', 'NNC')]
+2024-10-18 02:55:57 - app.utils - INFO - Generating suggestions
+2024-10-18 02:55:58 - app.utils - INFO - Starting preprocessing
+2024-10-18 02:55:58 - app.pantasa_checker - DEBUG - Tokens: ['Nahulog', 'ang', 'bapa']
+2024-10-18 02:55:59 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulog', 'VBTS'), ('ang', 'DTC'), ('bapa', 'NNC')]
+2024-10-18 02:55:59 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 02:56:00 - app.pantasa_checker - DEBUG - Incorrect Words: ['bapa']
+2024-10-18 02:56:00 - app.utils - INFO - The sentence has incorrect words
+2024-10-18 02:56:00 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 02:56:01 - app.utils - INFO - Text after pre-defined rules (pre): Nahulog ang bapa
+2024-10-18 02:56:01 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 02:56:02 - app.pantasa_checker - DEBUG - Incorrect Words: ['bapa']
+2024-10-18 02:56:02 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['bapa']
+2024-10-18 02:56:02 - app.utils - INFO - The sentence has incorrect words. Incorrect word: ['bapa']
+2024-10-18 02:56:02 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 02:56:08 - app.utils - INFO - Replaced 'bapa' with 'aapa'
+2024-10-18 02:56:08 - app.utils - INFO - Text after spell checking: Nahulog ang aapa
+2024-10-18 02:56:08 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 02:56:09 - app.utils - INFO - Token Suggestions: [{'token': 'VBTS', 'suggestions': ['KEEP_VBTS_VB.*'], 'distances': [0]}, {'token': 'DTC', 'suggestions': ['KEEP_DTC_DT.*'], 'distances': [0]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NN.*'], 'distances': [0]}]
+2024-10-18 02:56:09 - app.utils - INFO - Applying POS corrections
+2024-10-18 02:56:09 - app.utils - INFO - Final Corrected Sentence: Nahulog ang bata
+2024-10-18 02:56:09 - root - INFO - Detected Incorrect Words: []
+2024-10-18 02:56:09 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:56:09] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 02:56:09 - app.utils - INFO - Text after pre-defined rules (post): Nahulog ang aapa
+2024-10-18 02:56:09 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 02:56:09 - app.pantasa_checker - DEBUG - Tokens: ['Nahulog', 'ang', 'aapa']
+2024-10-18 02:56:10 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulog', 'VBTS'), ('ang', 'DTC'), ('aapa', 'NNC')]
+2024-10-18 02:56:10 - app.utils - INFO - Generating suggestions
+2024-10-18 02:56:17 - app.utils - INFO - Token Suggestions: [{'token': 'VBTS', 'suggestions': ['KEEP_VBTS_VB.*'], 'distances': [0]}, {'token': 'DTC', 'suggestions': ['KEEP_DTC_DT.*'], 'distances': [0]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NN.*'], 'distances': [0]}]
+2024-10-18 02:56:17 - app.utils - INFO - Applying POS corrections
+2024-10-18 02:56:17 - app.utils - INFO - Final Corrected Sentence: Nahulog ang aapa
+2024-10-18 02:56:17 - root - INFO - Detected Incorrect Words: ['bapa']
+2024-10-18 02:56:17 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:56:17] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 02:56:54 - app.utils - INFO - Starting preprocessing
+2024-10-18 02:56:54 - app.pantasa_checker - DEBUG - Tokens: ['Nahulog', 'ang', 'bata']
+2024-10-18 02:56:55 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulog', 'VBTS'), ('ang', 'DTC'), ('bata', 'NNC')]
+2024-10-18 02:56:55 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 02:56:55 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:56:55 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:56:55 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 02:56:56 - app.utils - INFO - Text after pre-defined rules (pre): Nahulog ang bata
+2024-10-18 02:56:56 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 02:56:56 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 02:56:56 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 02:56:56 - app.utils - INFO - The sentence doesn't have incorrect words
+2024-10-18 02:56:56 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 02:56:56 - app.utils - INFO - Text after spell checking: Nahulog ang bata
+2024-10-18 02:56:56 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 02:56:57 - app.utils - INFO - Text after pre-defined rules (post): Nahulog ang bata
+2024-10-18 02:56:57 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 02:56:57 - app.pantasa_checker - DEBUG - Tokens: ['Nahulog', 'ang', 'bata']
+2024-10-18 02:56:58 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nahulog', 'VBTS'), ('ang', 'DTC'), ('bata', 'NNC')]
+2024-10-18 02:56:58 - app.utils - INFO - Generating suggestions
+2024-10-18 02:57:06 - app.utils - INFO - Token Suggestions: [{'token': 'VBTS', 'suggestions': ['KEEP_VBTS_VB.*'], 'distances': [0]}, {'token': 'DTC', 'suggestions': ['KEEP_DTC_DT.*'], 'distances': [0]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NN.*'], 'distances': [0]}]
+2024-10-18 02:57:06 - app.utils - INFO - Applying POS corrections
+2024-10-18 02:57:06 - app.utils - INFO - Final Corrected Sentence: Nahulog ang bata
+2024-10-18 02:57:06 - root - INFO - Detected Incorrect Words: []
+2024-10-18 02:57:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 02:57:06] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 03:09:25 - app.utils - INFO - Starting preprocessing
+2024-10-18 03:09:25 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyayar']
+2024-10-18 03:09:26 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Anong', 'PRQ_CCP'), ('nangyayar', 'VBTS')]
+2024-10-18 03:09:26 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 03:09:26 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyayar']
+2024-10-18 03:09:26 - app.utils - INFO - The sentence has incorrect words
+2024-10-18 03:09:26 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 03:09:26 - app.utils - INFO - Starting preprocessing
+2024-10-18 03:09:26 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyayaro']
+2024-10-18 03:09:27 - app.utils - INFO - Text after pre-defined rules (pre): Anong nangyayar
+2024-10-18 03:09:27 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 03:09:27 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyayar']
+2024-10-18 03:09:27 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nangyayar']
+2024-10-18 03:09:27 - app.utils - INFO - The sentence has incorrect words. Incorrect word: ['nangyayar']
+2024-10-18 03:09:27 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 03:09:27 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Anong', 'PRQ_CCP'), ('nangyayaro', 'VBTR')]
+2024-10-18 03:09:27 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 03:09:27 - app.utils - INFO - Starting preprocessing
+2024-10-18 03:09:27 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyayar']
+2024-10-18 03:09:28 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyayaro']
+2024-10-18 03:09:28 - app.utils - INFO - The sentence has incorrect words
+2024-10-18 03:09:28 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 03:09:29 - app.utils - INFO - Starting preprocessing
+2024-10-18 03:09:29 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Anong', 'PRQ_CCP'), ('nangyayar', 'VBTS')]
+2024-10-18 03:09:29 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyayaru']
+2024-10-18 03:09:29 - app.utils - INFO - Text after pre-defined rules (pre): Anong nangyayaro
+2024-10-18 03:09:29 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 03:09:29 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 03:09:30 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyayaro']
+2024-10-18 03:09:30 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nangyayaro']
+2024-10-18 03:09:30 - app.utils - INFO - The sentence has incorrect words. Incorrect word: ['nangyayaro']
+2024-10-18 03:09:30 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 03:09:30 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyayar']
+2024-10-18 03:09:30 - app.utils - INFO - The sentence has incorrect words
+2024-10-18 03:09:30 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 03:09:30 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Anong', 'PRQ_CCP'), ('nangyayaru', 'VBTR')]
+2024-10-18 03:09:30 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 03:09:31 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyayaru']
+2024-10-18 03:09:31 - app.utils - INFO - The sentence has incorrect words
+2024-10-18 03:09:31 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 03:09:31 - app.utils - INFO - Text after pre-defined rules (pre): Anong nangyayar
+2024-10-18 03:09:31 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 03:09:32 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyayar']
+2024-10-18 03:09:32 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nangyayar']
+2024-10-18 03:09:32 - app.utils - INFO - The sentence has incorrect words. Incorrect word: ['nangyayar']
+2024-10-18 03:09:32 - app.utils - INFO - Text after pre-defined rules (pre): Anong nangyayaru
+2024-10-18 03:09:32 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 03:09:32 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 03:09:34 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyayaru']
+2024-10-18 03:09:34 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nangyayaru']
+2024-10-18 03:09:34 - app.utils - INFO - The sentence has incorrect words. Incorrect word: ['nangyayaru']
+2024-10-18 03:09:34 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 03:09:41 - app.utils - INFO - Replaced 'nangyayar' with 'nangyaya'
+2024-10-18 03:09:41 - app.utils - INFO - Text after spell checking: Anong nangyaya
+2024-10-18 03:09:41 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 03:09:43 - app.utils - INFO - Text after pre-defined rules (post): Anong nangyaya
+2024-10-18 03:09:43 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 03:09:43 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyaya']
+2024-10-18 03:09:45 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Anong', 'PRQ_CCP'), ('nangyaya', 'VBTS')]
+2024-10-18 03:09:45 - app.utils - INFO - Generating suggestions
+2024-10-18 03:09:45 - app.utils - INFO - Token Suggestions: [{'token': 'PRQ_CCP', 'suggestions': [], 'distances': []}, {'token': 'VBTS', 'suggestions': [], 'distances': []}]
+2024-10-18 03:09:45 - app.utils - INFO - Applying POS corrections
+2024-10-18 03:09:46 - app.utils - INFO - Final Corrected Sentence: Anong nangyaya
+2024-10-18 03:09:46 - root - INFO - Detected Incorrect Words: ['nangyayar']
+2024-10-18 03:09:46 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 03:09:46] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 03:09:51 - app.utils - INFO - Replaced 'nangyayaro' with 'nangyayari'
+2024-10-18 03:09:51 - app.utils - INFO - Text after spell checking: Anong nangyayari
+2024-10-18 03:09:51 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 03:09:53 - app.utils - INFO - Replaced 'nangyayar' with 'nangyaya'
+2024-10-18 03:09:53 - app.utils - INFO - Text after spell checking: Anong nangyaya
+2024-10-18 03:09:53 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 03:09:53 - app.utils - INFO - Text after pre-defined rules (post): Anong nangyayari
+2024-10-18 03:09:53 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 03:09:53 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyayari']
+2024-10-18 03:09:54 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Anong', 'PRQ_CCP'), ('nangyayari', 'VBTR')]
+2024-10-18 03:09:54 - app.utils - INFO - Replaced 'nangyayaru' with 'nangyayari'
+2024-10-18 03:09:54 - app.utils - INFO - Text after pre-defined rules (post): Anong nangyaya
+2024-10-18 03:09:54 - app.utils - INFO - Text after spell checking: Anong nangyayari
+2024-10-18 03:09:54 - app.utils - INFO - Generating suggestions
+2024-10-18 03:09:54 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 03:09:54 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 03:09:54 - app.utils - INFO - Token Suggestions: [{'token': 'PRQ_CCP', 'suggestions': [], 'distances': []}, {'token': 'VBTR', 'suggestions': [], 'distances': []}]
+2024-10-18 03:09:54 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyaya']
+2024-10-18 03:09:54 - app.utils - INFO - Applying POS corrections
+2024-10-18 03:09:54 - app.utils - INFO - Final Corrected Sentence: Anong nangyayari
+2024-10-18 03:09:54 - root - INFO - Detected Incorrect Words: ['nangyayaro']
+2024-10-18 03:09:54 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 03:09:54] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 03:09:55 - app.utils - INFO - Text after pre-defined rules (post): Anong nangyayari
+2024-10-18 03:09:55 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 03:09:55 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyayari']
+2024-10-18 03:09:55 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Anong', 'PRQ_CCP'), ('nangyaya', 'VBTS')]
+2024-10-18 03:09:55 - app.utils - INFO - Generating suggestions
+2024-10-18 03:09:55 - app.utils - INFO - Token Suggestions: [{'token': 'PRQ_CCP', 'suggestions': [], 'distances': []}, {'token': 'VBTS', 'suggestions': [], 'distances': []}]
+2024-10-18 03:09:55 - app.utils - INFO - Applying POS corrections
+2024-10-18 03:09:55 - app.utils - INFO - Final Corrected Sentence: Anong nangyaya
+2024-10-18 03:09:55 - root - INFO - Detected Incorrect Words: ['nangyayar']
+2024-10-18 03:09:55 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 03:09:55] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 03:09:56 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Anong', 'PRQ_CCP'), ('nangyayari', 'VBTR')]
+2024-10-18 03:09:56 - app.utils - INFO - Generating suggestions
+2024-10-18 03:09:56 - app.utils - INFO - Token Suggestions: [{'token': 'PRQ_CCP', 'suggestions': [], 'distances': []}, {'token': 'VBTR', 'suggestions': [], 'distances': []}]
+2024-10-18 03:09:56 - app.utils - INFO - Applying POS corrections
+2024-10-18 03:09:56 - app.utils - INFO - Final Corrected Sentence: Anong nangyayari
+2024-10-18 03:09:56 - root - INFO - Detected Incorrect Words: ['nangyayaru']
+2024-10-18 03:09:56 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 03:09:56] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 03:16:00 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 03:16:00] "[31m[1mPOST /get_text HTTP/1.1[0m" 400 -
+2024-10-18 03:16:03 - app.utils - INFO - Starting preprocessing
+2024-10-18 03:16:03 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyayaru']
+2024-10-18 03:16:03 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Anong', 'PRQ_CCP'), ('nangyayaru', 'VBTR')]
+2024-10-18 03:16:03 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 03:16:04 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyayaru']
+2024-10-18 03:16:04 - app.utils - INFO - The sentence has incorrect words
+2024-10-18 03:16:04 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 03:16:04 - app.utils - INFO - Text after pre-defined rules (pre): Anong nangyayaru
+2024-10-18 03:16:04 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 03:16:05 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyayaru']
+2024-10-18 03:16:05 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nangyayaru']
+2024-10-18 03:16:05 - app.utils - INFO - The sentence has incorrect words. Incorrect word: ['nangyayaru']
+2024-10-18 03:16:05 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 03:16:12 - app.utils - INFO - Replaced 'nangyayaru' with 'nangyayari'
+2024-10-18 03:16:12 - app.utils - INFO - Text after spell checking: Anong nangyayari
+2024-10-18 03:16:12 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 03:16:13 - app.utils - INFO - Text after pre-defined rules (post): Anong nangyayari
+2024-10-18 03:16:13 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 03:16:13 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyayari']
+2024-10-18 03:16:13 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Anong', 'PRQ_CCP'), ('nangyayari', 'VBTR')]
+2024-10-18 03:16:13 - app.utils - INFO - Generating suggestions
+2024-10-18 03:16:13 - app.utils - INFO - Token Suggestions: [{'token': 'PRQ_CCP', 'suggestions': [], 'distances': []}, {'token': 'VBTR', 'suggestions': [], 'distances': []}]
+2024-10-18 03:16:13 - app.utils - INFO - Applying POS corrections
+2024-10-18 03:16:13 - app.utils - INFO - Final Corrected Sentence: Anong nangyayari
+2024-10-18 03:16:13 - root - INFO - Detected Incorrect Words: ['nangyayaru']
+2024-10-18 03:16:13 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 03:16:13] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 03:23:23 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 03:23:23] "GET / HTTP/1.1" 200 -
+2024-10-18 03:23:23 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 03:23:23] "GET /static/styles.css HTTP/1.1" 200 -
+2024-10-18 03:23:23 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 03:23:23] "GET /static/pantasa.js HTTP/1.1" 200 -
+2024-10-18 03:23:23 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 03:23:23] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-10-18 03:23:23 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 03:23:23] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-10-18 03:23:23 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 03:23:23] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-10-18 03:23:25 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 03:23:25] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-10-18 03:23:29 - app.utils - INFO - Starting preprocessing
+2024-10-18 03:23:29 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyaru']
+2024-10-18 03:23:30 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Anong', 'PRQ_CCP'), ('nangyaru', 'VBTS')]
+2024-10-18 03:23:30 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 03:23:30 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyaru']
+2024-10-18 03:23:30 - app.utils - INFO - The sentence has incorrect words
+2024-10-18 03:23:30 - app.utils - INFO - Applying pre-defined rules (pre)
+2024-10-18 03:23:31 - app.utils - INFO - Text after pre-defined rules (pre): Anong nangyaru
+2024-10-18 03:23:31 - app.utils - INFO - Re-checking words against the dictionary after pre-defined rules (pre)
+2024-10-18 03:23:31 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyaru']
+2024-10-18 03:23:31 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nangyaru']
+2024-10-18 03:23:31 - app.utils - INFO - The sentence has incorrect words. Incorrect word: ['nangyaru']
+2024-10-18 03:23:31 - app.utils - INFO - Spell checking incorrect words
+2024-10-18 03:23:38 - app.utils - INFO - Replaced 'nangyaru' with 'nangyari'
+2024-10-18 03:23:38 - app.utils - INFO - Text after spell checking: Anong nangyari
+2024-10-18 03:23:38 - app.utils - INFO - Applying pre-defined rules (post)
+2024-10-18 03:23:39 - app.utils - INFO - Text after pre-defined rules (post): Anong nangyari
+2024-10-18 03:23:39 - app.utils - INFO - Retokenizing and re-tagging after modifications
+2024-10-18 03:23:39 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyari']
+2024-10-18 03:23:39 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Anong', 'PRQ_CCP'), ('nangyari', 'VBTS')]
+2024-10-18 03:23:39 - app.utils - INFO - Generating suggestions
+2024-10-18 03:23:39 - app.utils - INFO - Token Suggestions: [{'token': 'PRQ_CCP', 'suggestions': [], 'distances': []}, {'token': 'VBTS', 'suggestions': [], 'distances': []}]
+2024-10-18 03:23:39 - app.utils - INFO - Applying POS corrections
+2024-10-18 03:23:39 - app.utils - INFO - Final Corrected Sentence: Anong nangyari
+2024-10-18 03:23:39 - root - INFO - Detected Incorrect Words: ['nangyaru']
+2024-10-18 03:23:39 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 03:23:39] "POST /get_text HTTP/1.1" 200 -

@@ -71,10 +71,6 @@
                                 <p id="charCount">0/150</p>
                             </form>
                         </div>
-                        <div id="suggestionsContent">
-                            <h3>Suggestions:</h3>
-                            <ul id="suggestionsList"></ul>
-                        </div>
                     </div>
                     
 
@@ -82,10 +78,12 @@
                     <div class="right-panel">
                         <h3>Corrected Sentence:</h3>
                         <div id="result">
-                            <p id="correctedText" class="correctedText" style="display:block;"></p>
+                            <div id="predictionsContent"></div>
+                            <h3 id="suggestionsHeader" class="hidden">Suggestions:</h3>
+                            <div id="suggestionsContent"></div> 
                             <div id="loading" class="loading" style="display:none;">
                                 <div class="spinner"></div>
-                                <p>Loading...</p>
+                                <p>grammar checking is processing...</p>
                             </div>
                         </div>
                     </div>

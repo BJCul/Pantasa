@@ -515,10 +515,6 @@ a:label.logo {
     margin-top: 20px;
 }
 
-#GrammarChecker > p a{
-    color: blue;
-}
-
 .pantasa-container {
     display: flex;
     overflow: hidden;
@@ -547,10 +543,14 @@ a:label.logo {
 }
 
 .loading {
-    display: flex;
+    display: block;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.hidden {
+    display: none;
 }
 
 .loading p {
@@ -570,6 +570,36 @@ a:label.logo {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+#result {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.suggestion-box {
+    position: absolute;
+    background-color: var(--bgcolor);
+    border: none;
+    outline: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    z-index: 1000;
+    width: 200px;
+}
+
+#predictionsContent, #suggestionsContent {
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    font-style: italic;
+    color: var(--pgray);
+    font-family: 'Sorts Mill Goudy';
+}
+
 
 .error {
     background-color: var(--plyellow);
@@ -592,62 +622,6 @@ a:label.logo {
 }
 
 
-#result {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-}
-
-#result p {
-    text-align: center;
-    margin-top: 10px;
-    font-size: 18px;
-    color: #555;
-}
-
-#highlightedText {
-    flex: 1;
-    margin-right: 10px;
-}
-
-.highlight {
-    color: var(--pyellow);
-    font-weight: bold;
-    cursor: pointer;
-}
-
-#error {
-    color: var(--pyellow);
-    cursor: pointer;
-}
-
-#suggestionsList {
-    list-style-type: none;
-    padding-left: 0;
-    min-height: 100px;
-    padding: 10px;
-    box-sizing: border-box;
-    font-family: 'Sorts Mill Goudy';
-}
-
-#suggestionsList li {
-    cursor: pointer;
-    color: var(--pbrown);
-}
-
-#suggestionsList li:hover {
-    text-decoration: underline;
-}
-
-#correctedText {
-    flex: 1;
-    padding-left: 20px;
-    font-style: italic;
-    color: var(--pgray);
-    font-family: 'Sorts Mill Goudy';
-}
-
-
 /* Media queries */
 @media (max-width: 1920px) {
     .pantasa-container {
@@ -663,15 +637,6 @@ a:label.logo {
         width: 800px;
     }
 
-    .info-container h1 {
-        font-size: 1.5rem;
-        margin-top: 14px;
-    }
-
-    .info-container p {
-        font-size: 0.875rem;
-        margin-top: 10px;
-    }
 }
 
 @media (max-width: 1000px) {
@@ -729,19 +694,12 @@ a:label.logo {
         flex-direction: column;
     }
 
-    .textArea-container {
+    .left-panel {
         order: 1; 
     }
-
-    .full-side-container {
+    .right-panel {
         order: 2;
         flex-direction: column;
-    }
-
-
-    .info-container {
-        height: auto;
-        border-left: solid 1px #ccc;
     }
 
     .pantasa-container {
@@ -797,24 +755,8 @@ a:label.logo {
         font-size: 1rem;
     }
 
-    #correctionsContent, #suggestionsContent { 
+    #predictionsContent, #suggestionsContent { 
         font-size: 1rem;
-    }
-
-    .info-container h1 {
-        text-align: left;
-        margin-top: 15px;
-        font-size: 1rem;
-    }
-    
-    .info-container p {
-        text-align: left;
-        margin-top: 15px;
-        font-size: 0.625rem;
-    }
-
-    .info-container i {
-        font-size: 0.3rem; 
     }
 }
 
@@ -830,27 +772,8 @@ a:label.logo {
         font-size: 1.25rem;
     }
 
-    #correctionsContent, #suggestionsContent { 
+    #predictionsContent, #suggestionsContent { 
         font-size: 1.25rem;
-    }
-
-    .info-container h1 {
-        font-size: 1.25rem; 
-        margin-top: 12px; 
-    }
-
-    .info-container h2 {
-        font-size: 1rem;
-        margin-top: 10px; 
-    }
-
-    .info-container p {
-        font-size: 0.75rem; 
-        margin-top: 8px; 
-    }
-
-    .info-container i {
-        font-size: 0.5rem;
     }
 }
 
@@ -862,31 +785,13 @@ a:label.logo {
     .logo{
         margin-left: 30px;
     }
+
     .loading p {
         font-size: 1rem;
     }
 
-    #correctionsContent, #suggestionsContent { 
+    #predictionsContent, #suggestionsContent { 
         font-size: 1rem;
-    }
-
-    .info-container h1 {
-        font-size: 1rem; 
-        margin-top: 10px; 
-    }
-
-    .info-container h2 {
-        font-size: 0.875rem; 
-        margin-top: 8px; 
-    }
-
-    .info-container p {
-        font-size: 0.625rem; 
-        margin-top: 6px; 
-    }
-
-    .info-container i {
-        font-size: 0.4rem; 
     }
 }
 
@@ -924,18 +829,9 @@ a:label.logo {
     border-right: 1px solid #b6b5b5; /* Vertical line separator */
 }
 
-.textArea-container {
+.left-panel {
     display: flex;
     flex-direction: column;
-}
-
-#suggestionsContent {
-    flex-grow: 0; /* Suggestions should not grow, but maintain space */
-    flex-shrink: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    box-sizing: border-box;
-    height: auto;
 }
 
 .right-panel #result {
