@@ -665,7 +665,7 @@ def pantasa_checker(input_sentence, jar_path, model_path, rule_path, directory_p
 
     log_message("info", f"Final Corrected Sentence: {corrected_sentence}")
     # Return the corrected sentence and any suggestions
-    return corrected_sentence
+    return corrected_sentence, incorrect_words
 
 if __name__ == "__main__":
     input_text = "magtanim ay hindi biro"
