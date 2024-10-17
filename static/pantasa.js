@@ -106,7 +106,7 @@ let timeout = null;
 document.getElementById('grammarTextarea').addEventListener('input', function () {
     clearTimeout(timeout);
     const grammarTextarea = document.getElementById('grammarTextarea');
-    const textInput = grammarTextarea.textContent;  // Use textContent instead of innerText for contenteditable div
+    const textInput = grammarTextarea.innerHTML;  // Use textContent instead of innerText for contenteditable div
 
     // Toggle the empty class if no content
     if (textInput === '') {
