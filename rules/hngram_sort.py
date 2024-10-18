@@ -21,7 +21,7 @@ def tag_type(tag):
 
     # Ignore LM, FW, and TS if they are part of an underscore-separated tag
     exceptions = ["LM", "FW", "TS"]
-
+    
     # Check for exceptions like LM, FW, TS
     if tag in ["LM", "FW", "TS"]:
         return "both POS tag"  # This tag is both rough and detailed
@@ -34,10 +34,10 @@ def tag_type(tag):
         filtered_components = [component for component in components if component not in exceptions]
         
         # Check if all components are detailed POS tags
-        if all(any(component in detailed_tags for detailed_tags in hierarchical_pos_tags.values()) for component in filtered_components):
+        if all(any(component in detailed_tags for detailed_tags in hierarchical_pos_tags.values()) for component in components):
             return "detailed POS tag"
         # Check if all components are rough POS tags
-        elif all(component in hierarchical_pos_tags for component in filtered_components):
+        elif all(component in hierarchical_pos_tags for component in components):
             return "rough POS tag"
     
     # Check if the tag is a rough POS tag

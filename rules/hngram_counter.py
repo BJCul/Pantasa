@@ -30,29 +30,16 @@ hierarchical_pos_tags = {
     "PM.*": ["PMP", "PME", "PMQ", "PMC", "PMSC", "PMS"]
 }
 
-# Function to determine if a tag is a rough POS tag, detailed POS tag, or a word
 def tag_type(tag):
-
-    # Ignore LM, FW, and TS if they are part of an underscore-separated tag
-    exceptions = ["LM", "FW", "TS"]
-    
-    # Check for exceptions like LM, FW, TS
-    if tag in ["LM", "FW", "TS"]:
-        return "both POS tag"  # This tag is both rough and detailed
-    
     # Check if the tag is a combined rough POS tag (i.e., "NN.*_VB.*")
     if "_" in tag:
         components = tag.split("_")
-
-        # Filter out the exceptions
-        filtered_components = [component for component in components if component not in exceptions]
-        
-        # Check if all components are detailed POS tags
-        if all(any(component in detailed_tags for detailed_tags in hierarchical_pos_tags.values()) for component in filtered_components):
-            return "detailed POS tag"
         # Check if all components are rough POS tags
-        elif all(component in hierarchical_pos_tags for component in filtered_components):
+        if all(component in hierarchical_pos_tags for component in components):
             return "rough POS tag"
+        # Check if all components are detailed POS tags
+        elif all(any(component in detailed_tags for detailed_tags in hierarchical_pos_tags.values()) for component in components):
+            return "detailed POS tag"
     
     # Check if the tag is a rough POS tag
     if tag in hierarchical_pos_tags:
@@ -63,13 +50,19 @@ def tag_type(tag):
         if tag in detailed_tags:
             return "detailed POS tag"
     
+    
+
+
 # Function to return 3 patterns based on rough POS tags, detailed POS tags, and words
-def classify_ngram_pos(pattern):
+def search_pattern_conversion_based_on_tag_type(pattern):
+    logging.debug(f"Original pattern: {pattern}")
+    
     pattern_parts = pattern.split()
     
     # Separate patterns for rough POS, detailed POS, and words
     rough_pos_pattern = []
     detailed_pos_pattern = []
+
 
     for part in pattern_parts:
         tag_category = tag_type(part)
@@ -78,15 +71,13 @@ def classify_ngram_pos(pattern):
         if tag_category == "rough POS tag":
             rough_pos_pattern.append(part)  # Keep rough POS tag
             detailed_pos_pattern.append(r'.*')  # Replace detailed POS with wildcard
+
         # Detailed POS Pattern
         elif tag_category == "detailed POS tag":
             rough_pos_pattern.append(r'.*')  # Replace rough POS with wildcard
             detailed_pos_pattern.append(part)  # Keep detailed POS tag
-        # Detailed POS Pattern
-        elif tag_category == "both POS tag":
-            rough_pos_pattern.append(r'.*')  # Replace rough POS with wildcard
-            detailed_pos_pattern.append(r'.*')  # Replace detailed POS with wildcard
 
+    
     # Join each pattern list to form a regex search pattern
     rough_pos_search_pattern = " ".join(rough_pos_pattern)
     detailed_pos_search_pattern = " ".join(detailed_pos_pattern)
@@ -104,7 +95,7 @@ def instance_collector(pattern, ngrams_df, pattern_ngram_size):
     size_filtered_df = filter_by_ngram_size(pattern, ngrams_df, pattern_ngram_size)
 
     # Step 2: Get the three search patterns (rough POS, detailed POS, and words)
-    rough_pos_search_pattern, detailed_pos_search_pattern = classify_ngram_pos(pattern)
+    rough_pos_search_pattern, detailed_pos_search_pattern = search_pattern_conversion_based_on_tag_type(pattern)
     
     # Step 3: Apply rough POS filtering
     rough_pos_matches = size_filtered_df[size_filtered_df['RoughPOS_N-Gram'].str.contains(rough_pos_search_pattern, regex=True)]
@@ -172,7 +163,7 @@ def process_in_batches(hngrams_df, ngrams_df, batch_size=100, start_pattern_id=N
             logging.info(f'Total matched n-grams for Pattern ID {pattern_id}: {total_matched_ngrams}')
             
             # Get the rough POS pattern for storage
-            rough_pos_pattern, detailed_pos_pattern = classify_ngram_pos(pattern)
+            rough_pos_pattern, detailed_pos_pattern = search_pattern_conversion_based_on_tag_type(pattern)
 
             # Update the batch DataFrame with frequency and rough POS pattern
             batch_df.loc[index, 'Frequency'] = total_matched_ngrams
@@ -186,8 +177,8 @@ logging.info("All batches processed and hngrams.csv updated.")
 
 
 # Load the CSV files containing the patterns and n-grams
-hngrams_df = pd.read_csv('rules/database/hngrams.csv')
-ngrams_df = pd.read_csv('rules/database/ngrams.csv')
+hngrams_df = pd.read_csv('/content/Pantasa/rules/database/hngrams.csv')
+ngrams_df = pd.read_csv('/content/Pantasa/rules/database/ngrams.csv')
 
 # Process the hngrams.csv in batches of 100 rows (adjust the batch size as needed)
 process_in_batches(hngrams_df, ngrams_df, batch_size=100, start_pattern_id=200001)
