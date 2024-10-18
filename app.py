@@ -37,15 +37,17 @@ def get_text():
                 is_logging = True
             
             # Call the Pantasa function to process the sentence and get the suggestions and misspelled words
-            corrected_sentence, incorrect_words = pantasa_checker(text_input, jar_path, model_path, rule_path, directory_path, pos_path)
-            logging.info(f"Detected Incorrect Words: {incorrect_words}")
+            corrected_sentence, spelling_suggestions, incorrect_words = pantasa_checker(text_input, jar_path, model_path, rule_path, directory_path, pos_path)
+            logging.info(f"Detected Incorrect Words: {spelling_suggestions}")
+            logging.info(f"Suggestion for Incorrect Words: {incorrect_words}")
 
 
             # Return the grammar-checking result as JSON
             result = {
                 "input_text": text_input,
                 "corrected_text": corrected_sentence,
-                "incorrect_words": incorrect_words
+                "incorrect_words": incorrect_words,
+                "spelling_suggestions": spelling_suggestions,
             }
 
             # Track when processing ends
