@@ -140,7 +140,7 @@ def rule_pattern_bank(rule_path):
 
     # Store the hybrid n-grams from the CSV file into the rule pattern bank
     for index, row in hybrid_ngrams_df.iterrows():
-        hybrid_ngram = row['DetailedPOS_N-Gram']
+        hybrid_ngram = row['Hybrid_N-Gram']
         pattern_frequency =row['Frequency']
         
         # Add the hybrid_ngram and its frequency to the dictionary
@@ -171,8 +171,8 @@ def edit_weighted_levenshtein(input_ngram, pattern_ngram):
 
     # Define weights for substitution, insertion, and deletion
     substitution_weight = 1.0
-    insertion_weight = 0.5 
-    deletion_weight = 0.8
+    insertion_weight = 5.0 
+    deletion_weight = 1.0
 
     # Compute the distances
     for i in range(1, len_input + 1):
@@ -348,9 +348,6 @@ def load_pos_tag_dictionary(pos_tag, pos_path):
     Returns:
     - words (list): List of words from the corresponding POS tag CSV files.
     """
-    
-    # Print all files in the directory for debugging purposes
-    print(f"Available files in {pos_path}: {os.listdir(pos_path)}")
     
     # 1. If the tag is an exact match (e.g., VBAF), load the corresponding file
     csv_file_name = f"{pos_tag}_words.csv"
