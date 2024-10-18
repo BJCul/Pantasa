@@ -132,8 +132,9 @@ def preprocess_text(text_input, jar_path, model_path):
     return [preprocessed_output]
 
 # Load and create the rule pattern bank
-def rule_pattern_bank(rule_path):
-    hybrid_ngrams_df = pd.read_csv(rule_path)
+def rule_pattern_bank():
+    file_path = 'data/processed/hngrams.csv'  # Update with actual path
+    hybrid_ngrams_df = pd.read_csv(file_path)
 
     # Create a dictionary to store the Rule Pattern Bank (Hybrid N-Grams + Predefined Rules)
     rule_pattern_bank = {}
@@ -171,8 +172,8 @@ def edit_weighted_levenshtein(input_ngram, pattern_ngram):
 
     # Define weights for substitution, insertion, and deletion
     substitution_weight = 1.0
-    insertion_weight = 0.5 
-    deletion_weight = 0.8
+    insertion_weight = 5.0 
+    deletion_weight = 1.0
 
     # Compute the distances
     for i in range(1, len_input + 1):
@@ -264,7 +265,7 @@ def generate_ngrams(input_tokens):
     return ngrams
 
 # Step 5: Suggestion phase - generate suggestions for corrections without applying them
-def generate_suggestions(pos_tags, rule_path):
+def generate_suggestions(pos_tags):
 
     input_tokens = [pos_tag for word, pos_tag in pos_tags]
     
@@ -280,7 +281,7 @@ def generate_suggestions(pos_tags, rule_path):
     # Iterate over each n-gram and compare it to the rule pattern bank
     for input_ngram, start_idx in input_ngrams_with_index:
         min_distance = float('inf')
-        rule_bank = rule_pattern_bank(rule_path)
+        rule_bank = rule_pattern_bank()
         best_match = None
         highest_frequency = 0
 
@@ -348,9 +349,6 @@ def load_pos_tag_dictionary(pos_tag, pos_path):
     Returns:
     - words (list): List of words from the corresponding POS tag CSV files.
     """
-    
-    # Print all files in the directory for debugging purposes
-    print(f"Available files in {pos_path}: {os.listdir(pos_path)}")
     
     # 1. If the tag is an exact match (e.g., VBAF), load the corresponding file
     csv_file_name = f"{pos_tag}_words.csv"
@@ -474,8 +472,6 @@ def get_closest_words_by_pos(input_word, words_list, num_suggestions=1):
     suggestions = word_distances[:min(len(word_distances), num_suggestions)]
 
     return suggestions
-
-
 
 
 # Step 6: Correction phase - apply the suggestions to correct the input sentence
