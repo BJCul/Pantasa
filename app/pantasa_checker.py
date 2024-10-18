@@ -408,8 +408,8 @@ def weighted_levenshtein_word(word1, word2):
     
     # Define weights
     substitution_weight = 1.0
-    insertion_weight = 1.0
-    deletion_weight = 1.0
+    insertion_weight = 0.8
+    deletion_weight = 1.2
     
     # Compute distances
     for i in range(1, len_word1 + 1):
