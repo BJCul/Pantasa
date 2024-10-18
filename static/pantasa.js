@@ -166,9 +166,8 @@ function checkFlaskStatus() {
             console.error('Error checking Flask status:', error);
         });
 }
-
 // Set an interval to check the status every 2 seconds
-setInterval(checkFlaskStatus, 4000);
+setInterval(checkFlaskStatus, 2000);
 
 // Function to hide the menu after a link is clicked
 document.querySelectorAll('.nav ul li a').forEach(link => {
