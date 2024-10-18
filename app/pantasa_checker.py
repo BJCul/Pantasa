@@ -1,6 +1,6 @@
 import pandas as pd
 import re
-from collections import Counter
+from collections import Counter, defaultdict
 import tempfile
 import subprocess
 import os
@@ -133,18 +133,23 @@ def preprocess_text(text_input, jar_path, model_path):
 
 # Load and create the rule pattern bank
 def rule_pattern_bank(rule_path):
-    file_path = rule_path  # Update with actual path
-    hybrid_ngrams_df = pd.read_csv(file_path)
+    hybrid_ngrams_df = pd.read_csv(rule_path)
 
     # Create a dictionary to store the Rule Pattern Bank (Hybrid N-Grams + Predefined Rules)
     rule_pattern_bank = {}
 
     # Store the hybrid n-grams from the CSV file into the rule pattern bank
     for index, row in hybrid_ngrams_df.iterrows():
-        pattern_id = row['Pattern_ID']
-        hybrid_ngram = row['Hybrid_N-Gram']
-        rule_pattern_bank[pattern_id] = {'hybrid_ngram': hybrid_ngram}
-    
+        hybrid_ngram = row['DetailedPOS_N-Gram']
+        pattern_frequency =row['Frequency']
+        
+        # Add the hybrid_ngram and its frequency to the dictionary
+        if hybrid_ngram and pattern_frequency:
+            rule_pattern_bank[index] = {
+                'hybrid_ngram': hybrid_ngram,
+                'frequency': pattern_frequency
+            }
+
     return rule_pattern_bank
 
 # Step 2: Define the weighted Levenshtein distance function
@@ -165,9 +170,9 @@ def edit_weighted_levenshtein(input_ngram, pattern_ngram):
         distance_matrix[0][j] = j
 
     # Define weights for substitution, insertion, and deletion
-    substitution_weight = 9.0
-    insertion_weight = 1.0
-    deletion_weight = 1.0
+    substitution_weight = 1.0
+    insertion_weight = 0.5 
+    deletion_weight = 0.8
 
     # Compute the distances
     for i in range(1, len_input + 1):
@@ -198,30 +203,60 @@ def generate_correction_tags(input_ngram, pattern_ngram):
     
     tags = []
     
-    for i, (input_token, pattern_token) in enumerate(zip(input_tokens, pattern_tokens)):
+    input_idx = 0
+    pattern_idx = 0
+    
+    while input_idx < len(input_tokens) and pattern_idx < len(pattern_tokens):
+        input_token = input_tokens[input_idx]
+        pattern_token = pattern_tokens[pattern_idx]
         if input_token == pattern_token:
             tags.append(f'KEEP_{input_token}_{pattern_token}')
-        if input_token != pattern_token:
-            if len(input_token) >= 2 and len(pattern_token) >= 2 and input_token.startswith(pattern_token[:2]): # For substitution errors (same POS group)
-                tags.append(f'KEEP_{input_token}_{pattern_token}')
-            else:  # General substitution (different POS group)
+            input_idx += 1
+            pattern_idx += 1
+        else:
+            # Check for insertion or deletion by looking ahead
+            if input_idx < len(input_tokens) - 1 and pattern_token == input_tokens[input_idx + 1]:
+                tags.append(f'DELETE_{input_token}')
+                input_idx += 1
+            elif pattern_idx < len(pattern_tokens) - 1 and input_token == pattern_tokens[pattern_idx + 1]:
+                tags.append(f'INSERT_{pattern_token}')
+                pattern_idx += 1
+            else:
                 tags.append(f'SUBSTITUTE_{input_token}_{pattern_token}')
+                input_idx += 1
+                pattern_idx += 1
     
-    # Handle if there are extra tokens in the input or pattern
-    if len(input_tokens) > len(pattern_tokens):
-        extra_tokens = input_tokens[len(pattern_tokens):]
-        for token in extra_tokens:
-            tags.append(f'DELETE_{token}')
-    elif len(pattern_tokens) > len(input_tokens):
-        extra_tokens = pattern_tokens[len(input_tokens):]
-        for token in extra_tokens:
-            tags.append(f'INSERT_{token}')
+    # Handle extra tokens in input or pattern (deletion or insertion)
+    while input_idx < len(input_tokens):
+        tags.append(f'DELETE_{input_tokens[input_idx]}')
+        input_idx += 1
+    
+    while pattern_idx < len(pattern_tokens):
+        tags.append(f'INSERT_{pattern_tokens[pattern_idx]}')
+        pattern_idx += 1
     
     return tags
 
 # Step 4: Function to generate n-grams of different lengths (from 3 to 7) from the input sentence
-def generate_ngrams(input_tokens, n_min=3, n_max=7):
+def generate_ngrams(input_tokens):
     ngrams = []
+    length = len(input_tokens)
+
+    # Determine minimum n-gram size based on input length
+    if length < 5:
+        n_min = 3
+    elif length < 6:
+        n_min = 4
+    elif length < 7:
+        n_min = 5
+    elif length > 7:
+        n_min = 6
+    else:
+        n_min = 5
+    
+    n_max = min(7, length)  # Set the maximum n-gram size but ensure it's capped by the input length
+    
+    # Generate n-grams within the dynamic range
     for n in range(n_min, n_max + 1):
         for i in range(len(input_tokens) - n + 1):
             ngram = input_tokens[i:i+n]
@@ -236,6 +271,9 @@ def generate_suggestions(pos_tags, rule_path):
     # Generate token-level correction tracker
     token_suggestions = [{"token": token, "suggestions": [], "distances": []} for token in input_tokens]
     
+    # Track potential inserts (insertion suggestions for each index)
+    insert_suggestions = defaultdict(list)
+    
     # Generate 3-gram to 7-gram sequences from the input sentence
     input_ngrams_with_index = generate_ngrams(input_tokens)
     
@@ -244,15 +282,19 @@ def generate_suggestions(pos_tags, rule_path):
         min_distance = float('inf')
         rule_bank = rule_pattern_bank(rule_path)
         best_match = None
+        highest_frequency = 0
 
         for pattern_id, pattern_data in rule_bank.items():
             # Compare input n-gram with each pattern n-gram from the rule pattern bank
             pattern_ngram = pattern_data.get('hybrid_ngram')
+            frequency = pattern_data.get('frequency')  # Correct key for frequency
+
             if pattern_ngram:
                 distance = edit_weighted_levenshtein(input_ngram, pattern_ngram)
-                if distance < min_distance:
+                if distance < min_distance or (distance == min_distance and frequency > highest_frequency):
                     min_distance = distance
                     best_match = pattern_ngram
+                    highest_frequency = frequency  # Update to use the more frequent pattern
             
         if best_match:
             correction_tags = generate_correction_tags(input_ngram, best_match)
@@ -260,11 +302,39 @@ def generate_suggestions(pos_tags, rule_path):
             
             # Populate the token-level correction tracker
             input_ngram_tokens = input_ngram.split()
+            token_shift = 0
             for i, tag in enumerate(correction_tags):
-                if start_idx + i < len(token_suggestions):  # Correctly map to original token index
-                    token_suggestions[start_idx + i]["suggestions"].append(tag)
-                    token_suggestions[start_idx + i]["distances"].append(min_distance)
+                token_idx = start_idx + i + token_shift
+
+                if tag.startswith("INSERT"):
+                    # Track the insert suggestion
+                    inserted_token = tag.split("_")[1]
+                    insert_suggestions[token_idx].append(inserted_token)
+                    token_shift = -1
+
+                else:
+                    # Ensure token_suggestions don't skip after insertion
+                    if token_idx < len(token_suggestions):
+                        token_suggestions[token_idx]["suggestions"].append(tag)
+                        token_suggestions[token_idx]["distances"].append(min_distance)
     
+    # Step 6: Handle inserts based on the majority rule
+    for token_idx, inserts in insert_suggestions.items():
+        # Count occurrences of each insertion suggestion
+        insert_counter = Counter(inserts)
+        most_common_insert, insert_count = insert_counter.most_common(1)[0]
+
+        if len(inserts) > 1:
+            num_corrections = len(insert_counter)
+            threshold = num_corrections / 2
+            
+            # Only insert the token if the majority of patterns suggest it
+            if insert_count > threshold:
+                token_suggestions.insert(token_idx, {"token": most_common_insert, "suggestions": [f'INSERT_{most_common_insert}'], "distances": [0.8]})
+        else:
+            # Skip insertions if there's only one suggestion
+            continue
+        
     return token_suggestions
 
 def load_pos_tag_dictionary(pos_tag, pos_path):
@@ -376,7 +446,7 @@ def get_closest_words(word, dictionary, num_suggestions=5):
     # Return the top suggestions
     return word_distances[:num_suggestions]
 
-def get_closest_words_by_pos(input_word, words_list, num_suggestions=3):
+def get_closest_words_by_pos(input_word, words_list, num_suggestions=1):
     """
     Get the closest words to the input word from a list of words.
 
@@ -412,9 +482,10 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
     word_suggestions = {}  # To keep track of suggestions for each word
     pos_tag_dict = {}      # Cache for loaded POS tag dictionaries
     idx = 0                # Index for iterating through pos_tags and token_suggestions
-
-    while idx < len(token_suggestions):
-        token_info = token_suggestions[idx]
+    inserted_tokens = set()
+    
+    # Iterate through the token_suggestions and apply the corrections
+    for token_info in token_suggestions:
         suggestions = token_info["suggestions"]
         distances = token_info["distances"]
 
@@ -429,61 +500,21 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
         suggestion_count = Counter(suggestions)
         print(f"COUNTER {suggestion_count}")
 
-        # Separate 'INSERT' suggestions from others
-        insert_suggestions = [s for s in suggestions if s.startswith('INSERT')]
-        other_suggestions = [s for s in suggestions if not s.startswith('INSERT')]
-        other_distances = [distances[i] for i, s in enumerate(suggestions) if not s.startswith('INSERT')]
+        if suggestion_count:
+            # Step 2: Find the most frequent exact suggestion(s)
+            most_frequent_suggestion = suggestion_count.most_common(1)[0][0]  # Get the most frequent exact suggestion
+            
+            # Apply the suggestion based on its type (KEEP, SUBSTITUTE, etc.)
+            suggestion_parts = most_frequent_suggestion.split("_")
 
-        # Handle 'INSERT' suggestions
-        if insert_suggestions:
-            # Find the most frequent 'INSERT' suggestion
-            insert_counts = Counter(insert_suggestions)
-            most_common_insert = insert_counts.most_common(1)[0][0]
-            insert_indices = [i for i, s in enumerate(suggestions) if s == most_common_insert]
-            insert_distance = min([distances[i] for i in insert_indices])
-
-            # Extract the target POS tag
-            _, target_pos = most_common_insert.split("_")
-            print(f"INSERT TARGET POS: {target_pos}")
-
-            # Load the dictionary for the target POS tag if not already loaded
-            if target_pos not in pos_tag_dict:
-                word_list = load_pos_tag_dictionary(target_pos, pos_path)
-                pos_tag_dict[target_pos] = word_list
-            else:
-                word_list = pos_tag_dict[target_pos]
-
-            if word_list:
-                # For simplicity, pick the most frequent word (assuming word_list is sorted by frequency)
-                inserted_word = word_list[0]
-                final_sentence.append(inserted_word)
-                print(f"Inserted word: {inserted_word}")
-            else:
-                print(f"No words found for POS tag '{target_pos}' to insert.")
-
-        # Now handle other suggestions ('KEEP', 'SUBSTITUTE', 'DELETE')
-        if other_suggestions:
-            # Count the frequency of the other suggestions
-            other_suggestion_count = Counter(other_suggestions)
-            most_common_other = other_suggestion_count.most_common(1)[0][0]
-            other_indices = [i for i, s in enumerate(other_suggestions) if s == most_common_other]
-
-            # Pick the suggestion with the lowest distance if there's a tie
-            if len(other_indices) > 1:
-                filtered_distances = [other_distances[i] for i in other_indices]
-                best_index = other_indices[filtered_distances.index(min(filtered_distances))]
-            else:
-                best_index = other_indices[0]
-
-            best_suggestion = other_suggestions[best_index]
-            suggestion_parts = best_suggestion.split("_")
-            suggestion_type = suggestion_parts[0]
+            suggestion_type = suggestion_parts[0]  # Get the type (e.g., KEEP, SUBSTITUTE, etc.)
 
             if suggestion_type == "KEEP":
                 # Append the original word
                 word = pos_tags[idx][0]
                 final_sentence.append(word)
-                idx += 1
+                idx += 1  # Increment idx to move to the next word
+
             elif suggestion_type == "SUBSTITUTE":
                 # Extract input word and target POS tag
                 input_word = pos_tags[idx][0]
@@ -500,7 +531,7 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
                     word_list = pos_tag_dict[target_pos]
 
                 # Get closest words by POS
-                suggestions_list = get_closest_words_by_pos(input_word, word_list, num_suggestions=3)
+                suggestions_list = get_closest_words_by_pos(input_word, word_list, num_suggestions=1)
 
                 if suggestions_list:
                     # Pick the best suggestion (smallest distance)
@@ -513,22 +544,50 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
                 else:
                     # If no suggestions found, keep the original word
                     final_sentence.append(input_word)
-                idx += 1
+
+                idx += 1  # Increment idx to move to the next word
+
             elif suggestion_type == "DELETE":
-                # Skip the token
-                print(f"Deleted word: {pos_tags[idx][0]}")
-                idx += 1
+                # Skip the word (do not append it)
+                idx += 1  # Move to the next word
+            
+            elif suggestion_type == "INSERT":
+                target_pos = suggestion_parts[1]  # Extract the target POS tag for insertion
+
+                # Load the dictionary for the target POS tag if not already loaded
+                if target_pos not in pos_tag_dict:
+                    word_list = load_pos_tag_dictionary(target_pos, pos_path)
+                    pos_tag_dict[target_pos] = word_list
+                else:
+                    word_list = pos_tag_dict[target_pos]
+
+                # Choose the most frequent word from the POS tag dictionary for insertion
+                if word_list:
+                    inserted_token = word_list[0]  # Assuming the list is sorted by frequency
+                else:
+                    inserted_token = "[UNK]"  # Fallback if no words are found
+
+                # Only insert if not already inserted at this position
+                if inserted_token not in inserted_tokens:
+                    final_sentence.append(inserted_token)
+                    inserted_tokens.add(inserted_token)  # Track the insertion to avoid duplication
+                else:
+                    continue  # Skip if already inserted
+
             else:
-                # Handle any other suggestion types
+                # Handle any other suggestion types (fallback)
                 word = pos_tags[idx][0]
                 final_sentence.append(word)
-                idx += 1
+                idx += 1  # Increment idx to move to the next word
         else:
-            # If there are no other suggestions, move to the next token
+            # Default case: Append the word if no valid suggestions
+            word = pos_tags[idx][0]
+            final_sentence.append(word)
             idx += 1
 
     corrected_sentence = " ".join(final_sentence)
     return corrected_sentence
+
 
 
 def check_words_in_dictionary(words, directory_path):
@@ -607,89 +666,76 @@ def spell_check_incorrect_words(text, incorrect_words, directory_path, num_sugge
 
 def pantasa_checker(input_sentence, jar_path, model_path, rule_path, directory_path, pos_path):
     """
-    Steps: 
-    1. /Preprocess: Tokenize and POS Tag 
-    2. Dictionary Check: Case-insensitive matching, lemmatization for dic matching
-    3. PRE rule: contextualized rules, rule prioritization
-    4. Re-check dic: conditional re-check, consistent tokenization 
-    5. Spell check: context-aware spell chcking
-    6. POST rule: Selective application
-    7. Re-tokenize and Re-POS tag: minimized retagging
-    8. Generate suggestions: Optimize n-gram generation, advance similarity metrics
-    9. Apply pos correction: contet word selection, meaning preservation 
-    10. OUTPUT
+    Step 1: Check for misspelled words using dictionary
+    Step 2: Apply pre-defined rules for possible word corrections
+    Step 3: Re-check dictionary after pre-rules
+    Step 4: If still misspelled words, suggest spell corrections
+    Step 5: Else, proceed with grammar checking
     """
-        
-    # Step 1: Preprocess the input text
-    log_message("info", "Starting preprocessing")
-    tokens = tokenize_sentence(input_sentence)
-    pos_tags = pos_tagging(tokens, jar_path, model_path)
-    if not pos_tags:
-        log_message("error", "POS tagging failed during preprocessing")
-        return [], [], {}
-
-    # Step 2: Check if words exist in the dictionary and tag those that don't
+    
+    # Step 1: Check if words exist in the dictionary
     log_message("info", "Checking words against the dictionary")
-    words = [word for word, _ in pos_tags]
+    tokens = tokenize_sentence(input_sentence)
+    words = [word for word in tokens]
     incorrect_words, has_incorrect_words  = check_words_in_dictionary(words, directory_path)
-    if has_incorrect_words:
-        log_message("info", f"The sentence has incorrect words")
-    else:
-        log_message("info", f"The sentence doesn't have incorrect words")
-
-    # Step 3: Apply pre-defined rules before any modification
-    log_message("info", "Applying pre-defined rules (pre)")
-    pre_rules_corrected_text = apply_predefined_rules_pre(input_sentence)
-    log_message("info", f"Text after pre-defined rules (pre): {pre_rules_corrected_text}")
-
-    # Step 4: Check the dictionary again for any remaining incorrect words
-    log_message("info", "Re-checking words against the dictionary after pre-defined rules (pre)")
     
-    pre_words = re.findall(r'\w+', pre_rules_corrected_text)
-    incorrect_words_after_pre, has_incorrect_words = check_words_in_dictionary(pre_words, directory_path)
-    log_message("info", f"Incorrect words after pre-defined rules (pre): {incorrect_words_after_pre}")
     if has_incorrect_words:
-        log_message("info", f"The sentence has incorrect words. Incorrect word: {incorrect_words_after_pre}")
+        # There are misspelled words, proceed with spell checking pipeline
+
+        # Step 2: Apply pre-defined rules before any modification
+        log_message("info", "Applying pre-defined rules (pre) to resolve misspelled words")
+        pre_rules_corrected_text = apply_predefined_rules_pre(input_sentence)
+        log_message("info", f"Text after pre-defined rules (pre): {pre_rules_corrected_text}")
+
+        # Step 3: Re-check the dictionary after applying pre-rules
+        pre_words = re.findall(r'\w+', pre_rules_corrected_text)
+        incorrect_words_after_pre, has_incorrect_words = check_words_in_dictionary(pre_words, directory_path)
+        log_message("info", f"Incorrect words after pre-defined rules (pre): {incorrect_words_after_pre}")
+        
+        if has_incorrect_words:
+            # Step 4: Spell check the words tagged as incorrect
+            log_message("info", "Spell checking remaining incorrect words")
+            spell_checked_text, spell_suggestions, final_incorrect_words = spell_check_incorrect_words(
+                pre_rules_corrected_text, incorrect_words_after_pre, directory_path
+            )
+            log_message("info", f"Text after spell checking: {spell_checked_text}")
+            # Output misspelled words and suggestions
+            return spell_checked_text, spell_suggestions, final_incorrect_words
+        else:
+            # If pre-rules resolved all misspelled words, return with no further spell checking needed
+            log_message("info", "Pre-rules resolved all misspelled words")
+            return pre_rules_corrected_text, {}, []
+
     else:
-        log_message("info", "The sentence doesn't have incorrect words")
+        # Proceed with grammar checking (no misspelled words found)
+        log_message("info", "No misspelled words found, proceeding with grammar checking")
 
-    # Step 5: Spell check the words tagged as incorrect
-    log_message("info", "Spell checking incorrect words")
-    spell_checked_text, incorrect_words, spell_suggestions = spell_check_incorrect_words(pre_rules_corrected_text, incorrect_words_after_pre, directory_path)
-    log_message("info", f"Text after spell checking: {spell_checked_text}")
+        # Step 6: Apply post-defined rules after POS tagging
+        log_message("info", "Applying post-defined rules (post)")
+        post_rules_corrected_text = apply_predefined_rules_post(input_sentence)
+        log_message("info", f"Text after post-defined rules (post): {post_rules_corrected_text}")
 
-    # Step 6: Apply pre-defined rules after modifications
-    log_message("info", "Applying pre-defined rules (post)")
-    post_rules_corrected_text = apply_predefined_rules_post(spell_checked_text)
-    log_message("info", f"Text after pre-defined rules (post): {post_rules_corrected_text}")
+        # Step 7: Re-tokenize and re-POS tag after post rules
+        log_message("info", "Retokenizing and re-POS tagging after post modifications")
+        tokens = tokenize_sentence(post_rules_corrected_text)
+        pos_tags = pos_tagging(tokens, jar_path, model_path)
+        if not pos_tags:
+            log_message("error", "POS tagging failed after modifications")
+            return [], [], []
 
-    # Step 7: Retokenize and re-tag the text after modifications
-    log_message("info", "Retokenizing and re-tagging after modifications")
-    tokens = tokenize_sentence(post_rules_corrected_text)
-    pos_tags = pos_tagging(tokens, jar_path=jar_path, model_path=model_path)
-    if not pos_tags:
-        log_message("error", "POS tagging failed after modifications")
-        return [], [], []
-    words = [word for word, _ in pos_tags]
-    # Step 8: Generate suggestions using n-gram matching
-    log_message("info", "Generating suggestions")
-    token_suggestions = generate_suggestions(pos_tags, rule_path)
-    log_message("info", f"Token Suggestions: {token_suggestions}")
+        # Step 8: Generate suggestions using n-gram matching
+        log_message("info", "Generating suggestions using n-gram matching")
+        token_suggestions = generate_suggestions(pos_tags, rule_path)
+        log_message("info", f"Token Suggestions: {token_suggestions}")
 
-    # Step 9: Apply POS corrections
-    log_message("info", "Applying POS corrections")
-    corrected_sentence = apply_pos_corrections(token_suggestions, pos_tags, pos_path)
+        # Step 9: Apply POS corrections
+        log_message("info", "Applying POS corrections")
+        corrected_sentence = apply_pos_corrections(token_suggestions, pos_tags, pos_path)
 
-    log_message("info", f"Final Corrected Sentence: {corrected_sentence}")
-    # Return the corrected sentence and any suggestions
-    return corrected_sentence, spell_suggestions, incorrect_words
+        log_message("info", f"Final Corrected Sentence: {corrected_sentence}")
+        # Return the corrected sentence and token suggestions
+        return corrected_sentence, token_suggestions, []
 
-if __name__ == "__main__":
-    input_text = "magtanim ay hindi biro"
-    jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
-    model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
-    
-    rule_bank = rule_pattern_bank()         
 
-    corrected_sentence= pantasa_checker(input_text, jar_path, model_path, rule_bank)
+
     
