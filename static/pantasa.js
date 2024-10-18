@@ -48,25 +48,66 @@ document.addEventListener('DOMContentLoaded', function () {
             selectedWordElement.classList.remove('highlight');  // Remove highlight after correction
         }
 
-        // Update the corrected sentence
-        updateCorrectedSentence(incorrectWord, newWord);
+        // Trigger the grammar check again
+        triggerGrammarCheck();
     }
 
-    // Function to update the corrected sentence in the right panel when a suggestion is clicked
-    function updateCorrectedSentence(incorrectWord, newWord) {
-        // Get the current corrected sentence
-        let correctedSentence = window.correctedSentence || "";
+    function triggerGrammarCheck() {
+        clearTimeout(timeout);
+        const grammarTextarea = document.getElementById('grammarTextarea');
+        const textInput = grammarTextarea.innerHTML;  // Get input text
 
-        // Replace the incorrect word with the selected suggestion in the corrected sentence
-        const regex = new RegExp(`\\b${incorrectWord}\\b`, 'gi');
-        correctedSentence = correctedSentence.replace(regex, newWord);
+        // Clear previous corrections
+        timeout = setTimeout(async () => {
+            try {
+                const response = await fetch('/get_text', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ text_input: textInput })
+                });
 
-        // Update the corrected sentence in the right panel
-        document.getElementById('correctedText').textContent = correctedSentence;
+                if (response.status >= 400 && response.status < 600) {
+                    throw new Error('Server returned an error');
+                }
 
-        // Store the updated corrected sentence globally
-        window.correctedSentence = correctedSentence;
+                const data = await response.json();
+                console.log('Response data:', data);  // Debugging
+
+                if (data.corrected_text && data.incorrect_words) {
+                    let highlightedText = textInput;
+
+                    // Highlight incorrect words
+                    data.incorrect_words.forEach(word => {
+                        const regex = new RegExp(`\\b${word}\\b`, 'gi');
+                        highlightedText = highlightedText.replace(regex, `<span class="highlight">${word}</span>`);
+                    });
+
+                    // Store spelling suggestions in the global object
+                    window.spellingSuggestions = data.spelling_suggestions;
+
+                    // Display highlighted text in the textarea
+                    grammarTextarea.innerHTML = highlightedText;
+                    document.getElementById('correctedText').textContent = data.corrected_text;
+
+                    // Store corrected sentence globally
+                    window.correctedSentence = data.corrected_text;
+
+                } else {
+                    grammarTextarea.innerHTML = textInput;
+                    document.getElementById('correctedText').textContent = "No corrections needed.";
+                }
+
+            } catch (error) {
+                console.error('Error retrieving data:', error);
+                document.getElementById('correctedText').textContent = 'Error retrieving data.';
+            } finally {
+                hideLoadingSpinner();  // Always hide spinner
+            }
+        }, 1000);  // Adjust delay if needed
     }
+
 });
 
 document.getElementById('grammarTextarea').addEventListener('input', function (event) {
