@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function () { //for clickable highlighted corrections
-    const checkBox = document.getElementById('check'); 
+document.addEventListener('DOMContentLoaded', function () {
+    const checkBox = document.getElementById('check');
     const tryNowLink = document.querySelector('.nav ul li a[href="#GrammarChecker"]');
 
     tryNowLink.addEventListener('click', function (event) {
@@ -8,21 +8,68 @@ document.addEventListener('DOMContentLoaded', function () { //for clickable high
         }
     });
 
+    let selectedWordElement = null;
+
     // Highlighted text click handler
     document.addEventListener('click', function (event) {
         if (event.target.classList.contains('highlight')) {
+            selectedWordElement = event.target;  // Store the clicked word element
+            const clickedWord = event.target.textContent;  // Get the clicked word
             const suggestionsList = document.getElementById('suggestionsList');
-            const suggestionItem = document.createElement('li');
-            suggestionItem.textContent = 'Clicked';
-            suggestionsList.innerHTML = '';  // Clear previous suggestions
-            suggestionsList.appendChild(suggestionItem);
+
+            // Clear previous suggestions
+            suggestionsList.innerHTML = '';
+
+            // Fetch the spelling suggestions for the clicked word
+            const suggestions = window.spellingSuggestions[clickedWord] || ['No suggestions available'];
+
+            // Display each suggestion as a list item
+            suggestions.forEach(suggestion => {
+                const suggestionItem = document.createElement('li');
+                suggestionItem.textContent = suggestion;
+
+                // Add click listener for each suggestion
+                suggestionItem.addEventListener('click', function () {
+                    replaceHighlightedWord(clickedWord, suggestion);
+                });
+
+                suggestionsList.appendChild(suggestionItem);
+            });
         }
     });
+
+    // Function to replace the highlighted word with the clicked suggestion
+    function replaceHighlightedWord(incorrectWord, newWord) {
+        const grammarTextarea = document.getElementById('grammarTextarea');
+
+        // Replace the incorrect word with the new word in the grammarTextarea
+        if (selectedWordElement) {
+            selectedWordElement.textContent = newWord;  // Update the displayed word
+            selectedWordElement.classList.remove('highlight');  // Remove highlight after correction
+        }
+
+        // Update the corrected sentence
+        updateCorrectedSentence(incorrectWord, newWord);
+    }
+
+    // Function to update the corrected sentence in the right panel when a suggestion is clicked
+    function updateCorrectedSentence(incorrectWord, newWord) {
+        // Get the current corrected sentence
+        let correctedSentence = window.correctedSentence || "";
+
+        // Replace the incorrect word with the selected suggestion in the corrected sentence
+        const regex = new RegExp(`\\b${incorrectWord}\\b`, 'gi');
+        correctedSentence = correctedSentence.replace(regex, newWord);
+
+        // Update the corrected sentence in the right panel
+        document.getElementById('correctedText').textContent = correctedSentence;
+
+        // Store the updated corrected sentence globally
+        window.correctedSentence = correctedSentence;
+    }
 });
 
-
-document.getElementById('grammarTextarea').addEventListener('input', function (event) { //for character limit
-
+document.getElementById('grammarTextarea').addEventListener('input', function (event) {
     const textarea = document.getElementById('grammarTextarea');
     const charCount = document.getElementById('charCount');
     const maxLength = 150;
@@ -30,7 +77,6 @@ document.getElementById('grammarTextarea').addEventListener('input', function (e
 
     // Prevent further input if character limit is reached
     if (currentLength > maxLength) {
-        // Prevent the additional input beyond the limit
         event.preventDefault();
         textarea.textContent = textarea.textContent.substring(0, maxLength); // Trim excess characters
         currentLength = maxLength;
@@ -54,14 +100,12 @@ document.getElementById('grammarTextarea').addEventListener('input', function (e
 document.getElementById('grammarTextarea').addEventListener('keydown', function (event) {
     const textarea = document.getElementById('grammarTextarea');
     const maxLength = 150;
-    
+
     // Prevent typing if character limit is reached
     if (textarea.textContent.length >= maxLength && event.key !== "Backspace" && event.key !== "Delete") {
-        event.preventDefault();  // Prevent further input
+        event.preventDefault();
     }
 });
-
-
 
 function checkFlaskStatus() {
     fetch('/status')
@@ -104,7 +148,6 @@ function showSection(sectionId) {
 
 let timeout = null;
 
-
 document.getElementById('grammarTextarea').addEventListener('input', function () {
     clearTimeout(timeout);
     const grammarTextarea = document.getElementById('grammarTextarea');
@@ -137,9 +180,15 @@ document.getElementById('grammarTextarea').addEventListener('input', function ()
                     highlightedText = highlightedText.replace(regex, `<span class="highlight">${word}</span>`);
                 });
 
+                // Store spelling suggestions in the global object
+                window.spellingSuggestions = data.spelling_suggestions;
+
                 // Display highlighted text in the textarea
                 grammarTextarea.innerHTML = highlightedText;
                 document.getElementById('correctedText').textContent = data.corrected_text;
+
+                // Store corrected sentence globally
+                window.correctedSentence = data.corrected_text;
 
             } else {
                 grammarTextarea.innerHTML = textInput;
@@ -147,15 +196,13 @@ document.getElementById('grammarTextarea').addEventListener('input', function ()
             }
 
         } catch (error) {
-            console.error('Error retrieving data:', error);  // Log the actual error
+            console.error('Error retrieving data:', error);
             document.getElementById('correctedText').textContent = 'Error retrieving data.';
         } finally {
             hideLoadingSpinner();  // Always hide spinner
         }
     }, 1000);  // Adjust delay if needed
 });
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
     // Select all sections to be observed
@@ -166,8 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 console.log('Visible section:', entry.target.id);  // Logs the visible section
-                // You can apply logic here to change the navigation bar or other elements
-                updateNavbar(entry.target.id); // Example: Update navbar based on the section ID
+                updateNavbar(entry.target.id);  // Example: Update navbar based on the section ID
             }
         });
     }
