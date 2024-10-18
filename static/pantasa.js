@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    
+
     // Function to replace the highlighted word with the clicked suggestion
     function replaceHighlightedWord(incorrectWord, newWord) {
         const grammarTextarea = document.getElementById('grammarTextarea');
@@ -89,8 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     // Display highlighted text in the textarea
                     grammarTextarea.innerHTML = highlightedText;
-                    document.getElementById('correctedText').textContent = data.corrected_text;
-
+                    document.getElementById('correctedText').textContent = data.corrected_text.replace(/<[^>]+>/g, "");
                     // Store corrected sentence globally
                     window.correctedSentence = data.corrected_text;
 
@@ -226,7 +227,8 @@ document.getElementById('grammarTextarea').addEventListener('input', function ()
 
                 // Display highlighted text in the textarea
                 grammarTextarea.innerHTML = highlightedText;
-                document.getElementById('correctedText').textContent = data.corrected_text;
+                document.getElementById('correctedText').innerHTML = data.corrected_text;
+
 
                 // Store corrected sentence globally
                 window.correctedSentence = data.corrected_text;
