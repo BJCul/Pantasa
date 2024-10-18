@@ -20,19 +20,23 @@
         <label for = "check" class = "exitbtn">
             <i class = "fas fa-times"></i>
         </label>
-        <img src="{{ url_for('static', filename='assets/logo_image.png') }}" alt="Logo" class="logo-image">
-        <label class = "logo"> PANTASA </label>
+        <a href = "#Home" onclick = "showSection('Home')" translate = "no" class = "header">
+        <div class=logo-container>
+            <img src="{{ url_for('static', filename='assets/logo_image.png') }}" alt="Logo" class="logo-image">
+            <label class = "logo"> PANTASA </label>
+        </div>
+        </a>
         <ul>
-            <li><a href = "#Home" onclick = "showSection('Home')" translate = "no">HOME</a></li>
-            <li><a href = "#About" onclick = "showSection('About')" translate = "no"> About PANTASA </a></li>
-            <li><a href = "#GrammarChecker" onclick = "showSection('GrammarChecker')" translate = "no"> Try Now </a></li>
+            <li><a href = "#Home" onclick = "showSection('Home')" translate = "no" class = "header">HOME</a></li>
+            <li><a href = "#About" onclick = "showSection('About')" translate = "no" class = "header"> About PANTASA </a></li>
+            <li><a href = "#GrammarChecker" onclick = "showSection('GrammarChecker')" translate = "no" class = "header"> Try Now </a></li>
         </ul>
     </div>
 
     <!--Home-->
     <section id = "Home">
         <div class = "home-content">
-            <h1> PANTASA: Advance Tagalog Error Checker </h1>
+            <h1 class="welcome-text"> PANTASA: Advance Tagalog Grammar Error Checker </h1>
             <p> Your Tagalog grammar buddy. </p>
                 <div>
                     <li><a href = "#GrammarChecker" ><button type = "button" class = "button" onclick = "showSection('GrammarChecker')"><span></span> Try it now </button></a></li>
@@ -55,39 +59,41 @@
     </section>
     
     <!--Grammar Checker-->
-    <section id = "GrammarChecker" class = "hidden">
-        <div class = "pantasa-content">
-            <div class = "pantasa-container">
-                <div class = "textArea-container"></div>
-                    <form id="grammarForm" onsubmit="return false;">
-                        <textarea id="grammarTextarea" name="text_input" placeholder="Type your text here..."></textarea><br>
-                    </form>
-                </div>
-                <div class = "full-side-container">
-                    <div id="result">
-                        <div id="loading" class="loading">
-                            <div class="spinner"></div>
-                            <p>Loading...</p>
+    <section id="GrammarChecker" class="hidden">
+        <div class="pantasa-content">
+            <div class="pantasa-container">
+                <div class="split-panel">
+                    <!-- Left Panel: Text Area and Suggestions -->
+                    <div class="left-panel">
+                        <div class="textArea-container">
+                            <form id="grammarForm" onsubmit="return false;">
+                                <div id="grammarTextarea" contenteditable="true"  maxlength="150" oninput="updateCharacterCount()" data-placeholder="Type your text here..." style="width: 100%; height: 350px; margin-bottom: 0; padding: 10px; font-size: 28px; border: none; outline: none; box-sizing: border-box;"></div>
+                                <p id="charCount">0/150</p>
+                            </form>
                         </div>
-                        <div id="correctionsContent"></div>
-                        <h3 id="suggestionsHeader" class="hidden">Suggestions:</h3>
-                        <div id="suggestionsContent"></div>
-                        <div id="correctedText"></div> 
-                    </div>                    
-                    <div class = "info-container">
-                        <h1> Getting to Know! </h1>
-                        <p> #1: Add your text inside the text box to check your grammar.</p> 
-                        <p> #2: A message will appear on the loading box .</p>
-                        <p> #3: A word/s will be highlighted for any incorrect spelling. You can move your mouse to see any suggestions!</p>
-                        <i> *Note: The suggestions listed can't be clicked, its just there to give suggestions.*</i><br>
+                        <div id="suggestionsContent">
+                            <h3>Suggestions:</h3>
+                            <ul id="suggestionsList"></ul>
+                        </div>
+                    </div>
+                    
 
-                        <i> *Note: This webapp is for testing and research purposes ONLY. It is not a full-time webapp.*</i>
+                    <!-- Right Panel: Corrected Sentence -->
+                    <div class="right-panel">
+                        <h3>Corrected Sentence:</h3>
+                        <div id="result">
+                            <p id="correctedText" class="correctedText" style="display:block;"></p>
+                            <div id="loading" class="loading" style="display:none;">
+                                <div class="spinner"></div>
+                                <p>Loading...</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <p> We appreciate your feedback!</p>
         </div>
     </section>
+    
 
     <div class = "Footer">
         <div class = "footer-content">
