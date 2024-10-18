@@ -38,8 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    
-
     // Function to replace the highlighted word with the clicked suggestion
     function replaceHighlightedWord(incorrectWord, newWord) {
         const grammarTextarea = document.getElementById('grammarTextarea');
@@ -82,8 +80,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     // Highlight incorrect words
                     data.incorrect_words.forEach(word => {
-                        const regex = new RegExp(\\b${word}\\b, 'gi');
-                        highlightedText = highlightedText.replace(regex, <span class="highlight">${word}</span>);
+                        const regex = new RegExp(`\\b${word}\\b`, 'gi');
+                        highlightedText = highlightedText.replace(regex, `<span class="highlight">${word}</span>`);
                     });
 
                     // Store spelling suggestions in the global object
@@ -125,7 +123,7 @@ document.getElementById('grammarTextarea').addEventListener('input', function (e
     }
 
     const remainingChars = maxLength - currentLength;
-    charCount.textContent = ${currentLength}/${maxLength};
+    charCount.textContent = '${currentLength}/${maxLength}';
 
     // Change color based on remaining characters
     if (remainingChars <= 25) {
@@ -218,7 +216,7 @@ document.getElementById('grammarTextarea').addEventListener('input', function ()
 
                 // Highlight incorrect words
                 data.incorrect_words.forEach(word => {
-                    const regex = new RegExp(\\b${word}\\b, 'gi');
+                    const regex = new RegExp('\\b${word}\\b', 'gi');
                     highlightedText = highlightedText.replace(regex, <span class="highlight">${word}</span>);
                 });
 
