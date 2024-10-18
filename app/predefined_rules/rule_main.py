@@ -112,8 +112,9 @@ def separate_mas(text, dictionary=dictionary_file):
     words = text.split()
     for i, word in enumerate(words):
         if word.lower().startswith("mas"):
-            if word not in dictionary:
-                remaining = word[3:]
+            remaining = word[3:]
+            # Only unmerge if the word is not in the dictionary and the remaining part is a valid word
+            if word not in dictionary and remaining in dictionary:
                 words[i] = "mas " + remaining
     return ' '.join(words)
 

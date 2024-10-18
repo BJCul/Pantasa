@@ -170,8 +170,8 @@ def edit_weighted_levenshtein(input_ngram, pattern_ngram):
         distance_matrix[0][j] = j
 
     # Define weights for substitution, insertion, and deletion
-    substitution_weight = 1.0
-    insertion_weight = 5.0 
+    substitution_weight = 7.0
+    insertion_weight = 8.0 
     deletion_weight = 1.0
 
     # Compute the distances
