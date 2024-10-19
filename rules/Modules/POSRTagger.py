@@ -79,20 +79,20 @@ def pos_tag(sentence):
             if re.search(r'^[.!?,;:—"\'\s]+', word):
                 if pos_tags:
                     # Combine the previous tag with punctuation before the word
-                    pos_tags[-1] += f"_{general_tag}"
+                    pos_tags[-1] += f" {general_tag}"
                 else:
                     # Handle cases where the first tag has punctuation before the word
-                    pos_tags.append(f"{general_tag}_")
+                    pos_tags.append(f"{general_tag} ")
                 previous_tag = general_tag
                 continue
 
             if re.search(r'[.!?,;:—"\'\s]+$', word):
                 if pos_tags:
                     # Combine the previous tag with punctuation after the word
-                    pos_tags[-1] += f"_{general_tag}"
+                    pos_tags[-1] += f" {general_tag}"
                 else:
                     # Handle cases where the first tag has punctuation after the word
-                    pos_tags.append(f"{general_tag}_")
+                    pos_tags.append(f"{general_tag} ")
                 previous_tag = general_tag
             else:
                 if previous_tag:
