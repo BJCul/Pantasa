@@ -15,7 +15,7 @@ from rules.Modules.POSDTagger import pos_tag
 # Define the mapping for the verb affixes based on the POS tag table you provided
 affix_table = {
     "VBW": {  # Neutral/Infinitive
-        "prefix": "mag-", "suffix": "-in"
+        "prefix": "ma-", "suffix": "-in"
     },
     "VBTS": {  # Time Past (Perfective)
         "VBAF": "nag-", "VBOF": "in-", "VBOB": "i-", "VBOL": "pag-", "VBOI": "ipina-", "VBOB": "in-", "VBRF": "pina-"
@@ -220,10 +220,10 @@ def conjugate_tagalog_verb(verb_root, pos_tag):
             verb_root = verb_root[:2] + verb_root
 
     # Handle nasal consonant (Instrumental/Referential focus)
-    if "VBOI" in pos_tags or "VBRF" in pos_tags:
+    if "VBOI" in pos_tags or "VBRF" in pos_tags or "VBW" in pos_tags:
         if verb_root[0] in ["d", "l", "t"]:
             verb_root = "n" + verb_root
-        elif verb_root[0] in ["b", "p"]:
+        elif verb_root[0] in ["b", "p", "m"]:
             verb_root = "m" + verb_root
         elif verb_root[0] in vowels:
             verb_root = "ng-" + verb_root

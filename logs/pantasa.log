@@ -1,0 +1,438 @@
+2024-10-18 15:38:32 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2024-10-18 15:38:32 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-10-18 15:38:32 - werkzeug - INFO -  * Restarting with stat
+2024-10-18 15:38:34 - werkzeug - WARNING -  * Debugger is active!
+2024-10-18 15:38:34 - werkzeug - INFO -  * Debugger PIN: 629-448-213
+2024-10-18 15:38:34 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:38:34] "GET / HTTP/1.1" 200 -
+2024-10-18 15:38:35 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:38:35] "GET /static/pantasa.js HTTP/1.1" 200 -
+2024-10-18 15:38:35 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:38:35] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-10-18 15:38:35 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:38:35] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-10-18 15:38:35 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:38:35] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-10-18 15:38:35 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:38:35] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-10-18 15:38:37 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:38:37] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-10-18 15:38:39 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:38:39] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:38:43 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:38:43] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:38:44 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:38:44 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyare']
+2024-10-18 15:38:44 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyare']
+2024-10-18 15:38:44 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:38:45 - app.utils - INFO - Text after pre-defined rules (pre): Anong nangyare
+2024-10-18 15:38:45 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyare']
+2024-10-18 15:38:45 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nangyare']
+2024-10-18 15:38:45 - app.utils - INFO - Spell checking remaining incorrect words
+2024-10-18 15:38:47 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:38:47] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:38:51 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:38:51] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:38:55 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:38:55] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:38:56 - app.utils - INFO - Suggestions for 'nangyare': ['nangyari', 'nagngyari', 'nangyasri', 'mangyari', 'nangyaya']
+2024-10-18 15:38:56 - app.utils - INFO - Replaced 'nangyare' with 'nangyasri'
+2024-10-18 15:38:56 - app.utils - INFO - Text after spell checking: Anong nangyasri
+2024-10-18 15:38:56 - root - INFO - Detected Incorrect Words: {'nangyare': ['nangyari', 'nagngyari', 'nangyasri', 'mangyari', 'nangyaya']}
+2024-10-18 15:38:56 - root - INFO - Suggestion for Incorrect Words: ['nangyare']
+2024-10-18 15:38:56 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:38:56] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:38:59 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:38:59] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:39:03 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:03] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:39:03 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:39:03 - app.pantasa_checker - DEBUG - Tokens: ['Anong', '<', 'span', 'class', '=', '"', '"', '>', 'nangyari', '<', '/', 'span', '>']
+2024-10-18 15:39:03 - app.pantasa_checker - DEBUG - Incorrect Words: ['<', '=', '"', '"', '>', '<', '/', '>']
+2024-10-18 15:39:03 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:39:04 - app.utils - INFO - Text after pre-defined rules (pre): Anong <span class="">nangyari</span>
+2024-10-18 15:39:04 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 15:39:04 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 15:39:04 - app.utils - INFO - Pre-rules resolved all misspelled words
+2024-10-18 15:39:04 - root - INFO - Detected Incorrect Words: {}
+2024-10-18 15:39:04 - root - INFO - Suggestion for Incorrect Words: []
+2024-10-18 15:39:04 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:04] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:39:07 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:07] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:39:11 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:11] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:39:15 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:15] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:39:19 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:19] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:39:23 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:23] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:39:27 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:27] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:39:31 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:31] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:39:35 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:35] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:39:39 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:39] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:39:43 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:43] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:39:47 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:47] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:39:51 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:51] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:39:55 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:55] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:39:59 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:39:59] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:40:03 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:40:03] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:40:07 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:40:07] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:40:24 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:40:24] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:40:27 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:40:27] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:40:31 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:40:31] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:40:35 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:40:35] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:40:39 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:40:39] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:40:43 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:40:43] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:40:47 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:40:47] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:40:51 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:40:51] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:40:55 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:40:55] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:40:59 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:40:59] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:03 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:03] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:07 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:07] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:11 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:11] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:15 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:15] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:19 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:19] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:19 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:41:19 - app.pantasa_checker - DEBUG - Tokens: ['Bakit', 'nahul']
+2024-10-18 15:41:19 - app.pantasa_checker - DEBUG - Incorrect Words: ['nahul']
+2024-10-18 15:41:19 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:41:20 - app.utils - INFO - Text after pre-defined rules (pre): Bakit nahul
+2024-10-18 15:41:20 - app.pantasa_checker - DEBUG - Incorrect Words: ['nahul']
+2024-10-18 15:41:20 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nahul']
+2024-10-18 15:41:20 - app.utils - INFO - Spell checking remaining incorrect words
+2024-10-18 15:41:21 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:41:21 - app.pantasa_checker - DEBUG - Tokens: ['Bakit', 'nahulogg']
+2024-10-18 15:41:22 - app.pantasa_checker - DEBUG - Incorrect Words: ['nahulogg']
+2024-10-18 15:41:22 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:41:23 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:23] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:23 - app.utils - INFO - Text after pre-defined rules (pre): Bakit nahulogg
+2024-10-18 15:41:24 - app.pantasa_checker - DEBUG - Incorrect Words: ['nahulogg']
+2024-10-18 15:41:24 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nahulogg']
+2024-10-18 15:41:24 - app.utils - INFO - Spell checking remaining incorrect words
+2024-10-18 15:41:24 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:41:24 - app.pantasa_checker - DEBUG - Tokens: ['Bakit', 'nahulg']
+2024-10-18 15:41:25 - app.pantasa_checker - DEBUG - Incorrect Words: ['nahulg']
+2024-10-18 15:41:25 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:41:26 - app.utils - INFO - Text after pre-defined rules (pre): Bakit nahulg
+2024-10-18 15:41:27 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:27] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:27 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:27] "[31m[1mPOST /get_text HTTP/1.1[0m" 400 -
+2024-10-18 15:41:28 - app.pantasa_checker - DEBUG - Incorrect Words: ['nahulg']
+2024-10-18 15:41:28 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nahulg']
+2024-10-18 15:41:28 - app.utils - INFO - Spell checking remaining incorrect words
+2024-10-18 15:41:30 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:41:30 - app.pantasa_checker - DEBUG - Tokens: ['Bakit', 'nahulg']
+2024-10-18 15:41:31 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:31] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:31 - app.utils - INFO - Suggestions for 'nahul': ['nahuli', 'nahulo', 'nahui', 'nahulog', 'nahumal']
+2024-10-18 15:41:31 - app.pantasa_checker - DEBUG - Incorrect Words: ['nahulg']
+2024-10-18 15:41:31 - app.utils - INFO - Replaced 'nahul' with 'nahui'
+2024-10-18 15:41:31 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:41:31 - app.utils - INFO - Text after spell checking: Bakit nahui
+2024-10-18 15:41:31 - root - INFO - Detected Incorrect Words: {'nahul': ['nahuli', 'nahulo', 'nahui', 'nahulog', 'nahumal']}
+2024-10-18 15:41:31 - root - INFO - Suggestion for Incorrect Words: ['nahul']
+2024-10-18 15:41:31 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:31] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:41:33 - app.utils - INFO - Text after pre-defined rules (pre): Bakit nahulg
+2024-10-18 15:41:34 - app.pantasa_checker - DEBUG - Incorrect Words: ['nahulg']
+2024-10-18 15:41:34 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nahulg']
+2024-10-18 15:41:34 - app.utils - INFO - Spell checking remaining incorrect words
+2024-10-18 15:41:35 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:35] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:39 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:39] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:43 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:41:43 - app.pantasa_checker - DEBUG - Tokens: ['Bakit', '<', 'span', 'class', '=', '"', '"', '>', 'nahulog', '<', '/', 'span', '>']
+2024-10-18 15:41:43 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:43] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:45 - app.pantasa_checker - DEBUG - Incorrect Words: ['<', '=', '"', '"', '>', '<', '/', '>']
+2024-10-18 15:41:45 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:41:47 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:47] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:47 - app.utils - INFO - Text after pre-defined rules (pre): Bakit <span class="">nahulog</span>
+2024-10-18 15:41:48 - app.utils - INFO - Suggestions for 'nahulogg': ['nahulong', 'nahulog', 'mahulong', 'naghulog', 'nagulong']
+2024-10-18 15:41:48 - app.utils - INFO - Replaced 'nahulogg' with 'mahulong'
+2024-10-18 15:41:48 - app.utils - INFO - Text after spell checking: Bakit mahulong
+2024-10-18 15:41:48 - root - INFO - Detected Incorrect Words: {'nahulogg': ['nahulong', 'nahulog', 'mahulong', 'naghulog', 'nagulong']}
+2024-10-18 15:41:48 - root - INFO - Suggestion for Incorrect Words: ['nahulogg']
+2024-10-18 15:41:49 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:49] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:41:49 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 15:41:49 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 15:41:49 - app.utils - INFO - Pre-rules resolved all misspelled words
+2024-10-18 15:41:49 - root - INFO - Detected Incorrect Words: {}
+2024-10-18 15:41:49 - root - INFO - Suggestion for Incorrect Words: []
+2024-10-18 15:41:49 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:49] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:41:49 - app.utils - INFO - Suggestions for 'nahulg': ['nahulog', 'nahuli', 'nahulo', 'naghulog', 'nahuling']
+2024-10-18 15:41:49 - app.utils - INFO - Replaced 'nahulg' with 'nahulo'
+2024-10-18 15:41:49 - app.utils - INFO - Text after spell checking: Bakit nahulo
+2024-10-18 15:41:49 - root - INFO - Detected Incorrect Words: {'nahulg': ['nahulog', 'nahuli', 'nahulo', 'naghulog', 'nahuling']}
+2024-10-18 15:41:49 - root - INFO - Suggestion for Incorrect Words: ['nahulg']
+2024-10-18 15:41:49 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:49] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:41:51 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:51] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:52 - app.utils - INFO - Suggestions for 'nahulg': ['nahulog', 'nahuli', 'nahulo', 'naghulog', 'nahuling']
+2024-10-18 15:41:52 - app.utils - INFO - Replaced 'nahulg' with 'nahulo'
+2024-10-18 15:41:52 - app.utils - INFO - Text after spell checking: Bakit nahulo
+2024-10-18 15:41:52 - root - INFO - Detected Incorrect Words: {'nahulg': ['nahulog', 'nahuli', 'nahulo', 'naghulog', 'nahuling']}
+2024-10-18 15:41:52 - root - INFO - Suggestion for Incorrect Words: ['nahulg']
+2024-10-18 15:41:52 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:52] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:41:55 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:55] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:56 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:41:56 - app.pantasa_checker - DEBUG - Tokens: ['Bakit', '<', 'span', 'class', '=', '"', '"', '>', 'naghulog', '<', '/', 'span', '>']
+2024-10-18 15:41:56 - app.pantasa_checker - DEBUG - Incorrect Words: ['<', '=', '"', '"', '>', '<', '/', '>']
+2024-10-18 15:41:56 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:41:57 - app.utils - INFO - Text after pre-defined rules (pre): Bakit <span class="">naghulog</span>
+2024-10-18 15:41:57 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 15:41:57 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 15:41:57 - app.utils - INFO - Pre-rules resolved all misspelled words
+2024-10-18 15:41:57 - root - INFO - Detected Incorrect Words: {}
+2024-10-18 15:41:57 - root - INFO - Suggestion for Incorrect Words: []
+2024-10-18 15:41:57 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:57] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:41:59 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:41:59] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:41:59 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:41:59 - app.pantasa_checker - DEBUG - Tokens: ['Bakit', '<', 'span', 'class', '=', '"', '"', '>', 'naghulog', '<', '/', 'span', '>']
+2024-10-18 15:42:00 - app.pantasa_checker - DEBUG - Incorrect Words: ['<', '=', '"', '"', '>', '<', '/', '>']
+2024-10-18 15:42:00 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:42:00 - app.utils - INFO - Text after pre-defined rules (pre): Bakit <span class="">naghulog</span>
+2024-10-18 15:42:01 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 15:42:01 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 15:42:01 - app.utils - INFO - Pre-rules resolved all misspelled words
+2024-10-18 15:42:01 - root - INFO - Detected Incorrect Words: {}
+2024-10-18 15:42:01 - root - INFO - Suggestion for Incorrect Words: []
+2024-10-18 15:42:01 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:01] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:42:03 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:03] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:42:03 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:42:03 - app.pantasa_checker - DEBUG - Tokens: ['Bakit', '<', 'span', 'class', '=', '"', '"', '>', 'nahulog', '<', '/', 'span', '>']
+2024-10-18 15:42:03 - app.pantasa_checker - DEBUG - Incorrect Words: ['<', '=', '"', '"', '>', '<', '/', '>']
+2024-10-18 15:42:03 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:42:04 - app.utils - INFO - Text after pre-defined rules (pre): Bakit <span class="">nahulog</span>
+2024-10-18 15:42:04 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 15:42:04 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 15:42:04 - app.utils - INFO - Pre-rules resolved all misspelled words
+2024-10-18 15:42:04 - root - INFO - Detected Incorrect Words: {}
+2024-10-18 15:42:04 - root - INFO - Suggestion for Incorrect Words: []
+2024-10-18 15:42:04 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:04] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:42:07 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:07] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:42:11 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:11] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:42:15 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:15] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:42:20 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:20] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:42:23 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:23] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:42:27 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:27] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:42:31 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:31] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:42:35 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:35] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:42:39 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:39] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:42:43 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:43] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:42:47 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:47] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:42:51 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:51] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:42:55 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:55] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:42:59 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:42:59] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:43:03 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:43:03] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:43:48 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:43:48] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:43:50 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:43:50] "GET / HTTP/1.1" 200 -
+2024-10-18 15:43:50 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:43:50] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-10-18 15:43:50 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:43:50] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-10-18 15:43:50 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:43:50] "GET /static/pantasa.js HTTP/1.1" 200 -
+2024-10-18 15:43:50 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:43:50] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-10-18 15:43:50 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:43:50] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-10-18 15:43:52 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:43:52] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-10-18 15:43:54 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:43:54] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:43:57 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:43:57 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyare']
+2024-10-18 15:43:57 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyare']
+2024-10-18 15:43:57 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:43:58 - app.utils - INFO - Text after pre-defined rules (pre): Anong nangyare
+2024-10-18 15:43:58 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyare']
+2024-10-18 15:43:58 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nangyare']
+2024-10-18 15:43:58 - app.utils - INFO - Spell checking remaining incorrect words
+2024-10-18 15:43:58 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:43:58] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:44:02 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:02] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:44:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:06] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:44:08 - app.utils - INFO - Suggestions for 'nangyare': ['nangyari', 'nagngyari', 'nangyasri', 'mangyari', 'nangyaya']
+2024-10-18 15:44:08 - app.utils - INFO - Replaced 'nangyare' with 'nangyasri'
+2024-10-18 15:44:08 - app.utils - INFO - Text after spell checking: Anong nangyasri
+2024-10-18 15:44:08 - root - INFO - Detected Incorrect Words: {'nangyare': ['nangyari', 'nagngyari', 'nangyasri', 'mangyari', 'nangyaya']}
+2024-10-18 15:44:08 - root - INFO - Suggestion for Incorrect Words: ['nangyare']
+2024-10-18 15:44:08 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:08] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:44:10 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:10] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:44:14 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:14] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:44:15 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:44:15 - app.pantasa_checker - DEBUG - Tokens: ['Anong', '<', 'span', 'class', '=', '"', '"', '>', 'nangyari', '<', '/', 'span', '>']
+2024-10-18 15:44:15 - app.pantasa_checker - DEBUG - Incorrect Words: ['<', '=', '"', '"', '>', '<', '/', '>']
+2024-10-18 15:44:15 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:44:16 - app.utils - INFO - Text after pre-defined rules (pre): Anong <span class="">nangyari</span>
+2024-10-18 15:44:16 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 15:44:16 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 15:44:16 - app.utils - INFO - Pre-rules resolved all misspelled words
+2024-10-18 15:44:16 - root - INFO - Detected Incorrect Words: {}
+2024-10-18 15:44:16 - root - INFO - Suggestion for Incorrect Words: []
+2024-10-18 15:44:16 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:16] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:44:18 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:18] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:44:22 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:22] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:44:26 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:26] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:44:30 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:30] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:44:34 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:34] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:44:38 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:38] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:44:42 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:42] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:44:46 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:46] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:44:50 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:50] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:44:54 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:54] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:44:58 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:44:58] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:45:02 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:45:02] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:45:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:45:06] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:45:10 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:45:10] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:45:14 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:45:14] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:45:18 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:45:18] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:45:22 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:45:22] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:45:26 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:45:26] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:45:30 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:45:30] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:45:34 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:45:34] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:45:38 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:45:38] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:45:42 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:45:42] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:45:46 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:45:46] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:45:50 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:45:50] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:45:54 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:45:54] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:45:58 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:45:58] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:46:04 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:46:04] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:46:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:46:06] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:46:10 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:46:10] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:46:14 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:46:14] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:46:18 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:46:18] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:46:22 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:46:22] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:46:26 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:46:26] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:46:30 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:46:30] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:46:34 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:46:34] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:46:38 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:46:38] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:46:42 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:46:42] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:46:46 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:46:46] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:46:50 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:46:50] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:46:54 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:46:54] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:46:58 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:46:58] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:47:02 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:47:02] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:47:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:47:06] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:47:52 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:47:52] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:47:54 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:47:54] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:47:58 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:47:58] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:48:02 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:02] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:48:02 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:48:02 - app.pantasa_checker - DEBUG - Tokens: ['Bakit', 'sya', 'nalaglag']
+2024-10-18 15:48:02 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 15:48:02 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-10-18 15:48:02 - app.utils - INFO - Applying post-defined rules (post)
+2024-10-18 15:48:03 - app.utils - INFO - Text after post-defined rules (post): Bakit sya nalaglag
+2024-10-18 15:48:03 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-10-18 15:48:03 - app.pantasa_checker - DEBUG - Tokens: ['Bakit', 'sya', 'nalaglag']
+2024-10-18 15:48:04 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Bakit', 'PRQ'), ('sya', 'PRS'), ('nalaglag', 'VBTS')]
+2024-10-18 15:48:04 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-10-18 15:48:04 - root - ERROR - Error processing request: generate_suggestions() takes 1 positional argument but 2 were given
+2024-10-18 15:48:04 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:04] "[31m[1mPOST /get_text HTTP/1.1[0m" 400 -
+2024-10-18 15:48:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:06] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:48:10 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:10] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:48:14 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:14] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:48:18 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:18] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:48:22 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:22] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:48:26 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:26] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:48:30 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:30] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:48:34 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:34] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:48:38 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:38] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:48:42 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:42] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:48:46 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:46] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:48:50 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:50] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:48:54 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:54] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:48:58 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:48:58] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:49:02 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:49:02] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:49:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:49:06] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:49:10 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:49:10] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:49:14 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:49:14] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:49:18 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:49:18] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:50:04 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:50:04] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:51:04 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:04] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:51:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:06] "GET / HTTP/1.1" 200 -
+2024-10-18 15:51:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:06] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-10-18 15:51:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:06] "GET /static/pantasa.js HTTP/1.1" 200 -
+2024-10-18 15:51:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:06] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-10-18 15:51:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:06] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-10-18 15:51:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:06] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-10-18 15:51:08 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:08] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-10-18 15:51:10 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:10] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:51:14 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:14] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:51:15 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:51:15 - app.pantasa_checker - DEBUG - Tokens: ['Kahit', 'ano', 'man', 'ang', 'mangyare']
+2024-10-18 15:51:16 - app.pantasa_checker - DEBUG - Incorrect Words: ['mangyare']
+2024-10-18 15:51:16 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:51:16 - app.utils - INFO - Text after pre-defined rules (pre): Kahit ano man ang mangyare
+2024-10-18 15:51:17 - app.pantasa_checker - DEBUG - Incorrect Words: ['mangyare']
+2024-10-18 15:51:17 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['mangyare']
+2024-10-18 15:51:17 - app.utils - INFO - Spell checking remaining incorrect words
+2024-10-18 15:51:18 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:18] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:51:22 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:22] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:51:26 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:26] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:51:27 - app.utils - INFO - Suggestions for 'mangyare': ['mangyari', 'nangyari', 'magpare', 'magyari', 'mangyan']
+2024-10-18 15:51:27 - app.utils - INFO - Replaced 'mangyare' with 'magpare'
+2024-10-18 15:51:27 - app.utils - INFO - Text after spell checking: Kahit ano man ang magpare
+2024-10-18 15:51:27 - root - INFO - Detected Incorrect Words: {'mangyare': ['mangyari', 'nangyari', 'magpare', 'magyari', 'mangyan']}
+2024-10-18 15:51:27 - root - INFO - Suggestion for Incorrect Words: ['mangyare']
+2024-10-18 15:51:27 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:27] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:51:30 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:30] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:51:34 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:34] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:51:38 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:38] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:51:40 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:51:40 - app.pantasa_checker - DEBUG - Tokens: ['Kahit', 'ano', 'man', 'ang', '<', 'span', 'class', '=', '"', '"', '>', 'mangyari', '<', '/', 'span', '>']
+2024-10-18 15:51:41 - app.pantasa_checker - DEBUG - Incorrect Words: ['<', '=', '"', '"', '>', '<', '/', '>']
+2024-10-18 15:51:41 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:51:42 - app.utils - INFO - Text after pre-defined rules (pre): Kahit ano man ang <span class="">mangyari</span>
+2024-10-18 15:51:42 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 15:51:42 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 15:51:42 - app.utils - INFO - Pre-rules resolved all misspelled words
+2024-10-18 15:51:42 - root - INFO - Detected Incorrect Words: {}
+2024-10-18 15:51:42 - root - INFO - Suggestion for Incorrect Words: []
+2024-10-18 15:51:42 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:42] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:51:42 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:42] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:51:46 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:46] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:51:50 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:50] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:51:54 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:54] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:51:58 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:51:58] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:52:02 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:52:02] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:52:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:52:06] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:52:10 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:52:10] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:52:14 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:52:14] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:52:18 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:52:18] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:52:22 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:52:22] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:52:26 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:52:26] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:52:30 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:52:30] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:52:34 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:52:34] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:52:38 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:52:38] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:52:42 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:52:42] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:52:46 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:52:46] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:52:50 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:52:50] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:52:54 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:52:54] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:52:58 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:52:58] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:02 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:02] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:06] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:10 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:10] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:14 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:14] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:18 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:18] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:22 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:22] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:26 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:26] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:28 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:53:28 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyare']
+2024-10-18 15:53:28 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyare']
+2024-10-18 15:53:28 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:53:29 - app.utils - INFO - Text after pre-defined rules (pre): Anong nangyare
+2024-10-18 15:53:29 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyare']
+2024-10-18 15:53:29 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nangyare']
+2024-10-18 15:53:29 - app.utils - INFO - Spell checking remaining incorrect words
+2024-10-18 15:53:30 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:30] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:34 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:34] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:38 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:38] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:39 - app.utils - INFO - Suggestions for 'nangyare': ['nangyari', 'nagngyari', 'nangyasri', 'mangyari', 'nangyaya']
+2024-10-18 15:53:39 - app.utils - INFO - Replaced 'nangyare' with 'nangyasri'
+2024-10-18 15:53:39 - app.utils - INFO - Text after spell checking: Anong nangyasri
+2024-10-18 15:53:39 - root - INFO - Detected Incorrect Words: {'nangyare': ['nangyari', 'nagngyari', 'nangyasri', 'mangyari', 'nangyaya']}
+2024-10-18 15:53:39 - root - INFO - Suggestion for Incorrect Words: ['nangyare']
+2024-10-18 15:53:39 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:39] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:53:42 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:42] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:46 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:46] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:50 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:50] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:54 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:54] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:58 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:53:58] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:53:59 - app.utils - INFO - Checking words against the dictionary
+2024-10-18 15:53:59 - app.pantasa_checker - DEBUG - Tokens: ['Anong', '<', 'span', 'class', '=', '"', '"', '>', 'nangyari', '<', '/', 'span', '>']
+2024-10-18 15:53:59 - app.pantasa_checker - DEBUG - Incorrect Words: ['<', '=', '"', '"', '>', '<', '/', '>']
+2024-10-18 15:53:59 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-18 15:54:00 - app.utils - INFO - Text after pre-defined rules (pre): Anong <span class="">nangyari</span>
+2024-10-18 15:54:00 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-18 15:54:00 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-18 15:54:00 - app.utils - INFO - Pre-rules resolved all misspelled words
+2024-10-18 15:54:00 - root - INFO - Detected Incorrect Words: {}
+2024-10-18 15:54:00 - root - INFO - Suggestion for Incorrect Words: []
+2024-10-18 15:54:00 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:00] "POST /get_text HTTP/1.1" 200 -
+2024-10-18 15:54:02 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:02] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:54:06 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:06] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:54:10 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:10] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:54:14 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:14] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:54:18 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:18] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:54:22 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:22] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:54:26 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:26] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:54:30 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:30] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:54:34 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:34] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:54:38 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:38] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:54:42 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:42] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:54:46 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:46] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:54:50 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:50] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:54:54 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:54] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:54:58 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:58] "GET /status HTTP/1.1" 200 -
+2024-10-18 15:55:04 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:55:04] "GET /status HTTP/1.1" 200 -

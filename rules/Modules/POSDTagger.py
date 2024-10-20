@@ -47,10 +47,10 @@ def pos_tag(sentence):
                 
                 if pos_tags:
                     # Combine the previous tag with punctuation before the word
-                    pos_tags[-1] += f"_{tag}"
+                    pos_tags[-1] += f" {tag}"
                 else:
                     # Handle cases where the first tag has punctuation before the word
-                    pos_tags.append(f"{tag}_")
+                    pos_tags.append(f"{tag} ")
                 previous_word = base_word
                 continue
 
@@ -60,10 +60,10 @@ def pos_tag(sentence):
                 
                 if pos_tags:
                     # Combine the previous tag with punctuation after the word
-                    pos_tags[-1] += f"_{tag}"
+                    pos_tags[-1] += f" {tag}"
                 else:
                     # Handle cases where the first tag has punctuation after the word
-                    pos_tags.append(f"{tag}_")
+                    pos_tags.append(f"{tag} ")
                 previous_word = base_word
             else:
                 if previous_word:
