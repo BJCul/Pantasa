@@ -1,32 +1,63 @@
 import csv
 from collections import defaultdict
 import re
+import pandas as pd
 
-# Define the regular expression for tokenizing word sequences including punctuation
-regex = r"[^.!?,;:—\s][^.!?,;:—]*[.!?,;:—]?['\"]?(?=\s|$)"
+# Define punctuation POS tags
+punctuation_pos_tags = {
+    ".": "PMP",
+    "!": "PME",
+    "?": "PMQ",
+    ",": "PMC",
+    ";": "PMSC",
+    ":": "PMSC",
+    "@": "PMS", "/": "PMS", "+": "PMS", "*": "PMS", 
+    "(": "PMS", ")": "PMS", "\"": "PMS", "'": "PMS", 
+    "~": "PMS", "&": "PMS", "%": "PMS", "$": "PMS", 
+    "#": "PMS", "=": "PMS", "-": "PMS"
+}
 
+# Function to tokenize with punctuation handling
+def tokenize_with_punctuation(sequence):
+    """Tokenize a sequence, treating punctuation marks as separate tokens."""
+    regex = r"\w+|[.!?,;:—]"
+    return re.findall(regex, sequence)
+
+# Function to align POS tags with tokens
+def align_pos_tags_with_tokens(tokens, pos_tags):
+    """Align the POS tags with each token including punctuations."""
+    aligned_pos_tags = []
+    pos_index = 0
+
+    for token in tokens:
+        if token in punctuation_pos_tags:
+            aligned_pos_tags.append(punctuation_pos_tags[token])
+        else:
+            if pos_index < len(pos_tags):
+                aligned_pos_tags.append(pos_tags[pos_index])
+                pos_index += 1
+            else:
+                aligned_pos_tags.append("UNK")  # Use UNK for any unexpected length issues
+
+    return aligned_pos_tags
+
+# Function to generate n-grams
 def custom_ngrams(sequence, n):
     """Generate n-grams from a sequence."""
     return [tuple(sequence[i:i+n]) for i in range(len(sequence)-n+1)]
 
-
-def generate_ngrams(word_sequence, rough_pos_sequence, detailed_pos_sequence, lemma_sequence, ngram_range=(2, 7), add_newline=False, start_id=0):
+# Main n-gram generation function
+def generate_ngrams_full_range(word_sequence, rough_pos_sequence, detailed_pos_sequence, lemma_sequence, ngram_range=(2, 7), add_newline=False, start_id=0):
     ngram_sequences = defaultdict(list)
     
-    # Use the regex to find words including punctuation
-    words = word_sequence.split()
-    rough_pos_tags = rough_pos_sequence.split()
-    detailed_pos_tags = detailed_pos_sequence.split()
-    lemmas = lemma_sequence.split()
-    
-    # Debugging: print lengths of sequences
-    print(f"Words length: {len(words)}")
-    print(f"Rough POS length: {len(rough_pos_tags)}")
-    print(f"Detailed POS length: {len(detailed_pos_tags)}")
-    print(f"Lemmas length: {len(lemmas)} \n")
+    # Tokenize the word sequence to include punctuation as separate tokens
+    words = tokenize_with_punctuation(word_sequence)
+    rough_pos_tags = align_pos_tags_with_tokens(words, rough_pos_sequence.split())
+    detailed_pos_tags = align_pos_tags_with_tokens(words, detailed_pos_sequence.split())
+    lemmas = tokenize_with_punctuation(lemma_sequence)
     
     # Ensure the lengths match
-    if len(rough_pos_tags) != len(detailed_pos_tags) or len(words) != len(lemmas):
+    if len(rough_pos_tags) != len(words) or len(detailed_pos_tags) != len(words) or len(lemmas) != len(words):
         raise ValueError("Sequences lengths do not match")
 
     current_id = start_id
@@ -38,26 +69,23 @@ def generate_ngrams(word_sequence, rough_pos_sequence, detailed_pos_sequence, le
         lemma_n_grams = custom_ngrams(lemmas, n)
         
         for word_gram, rough_pos_gram, detailed_pos_gram, lemma_gram in zip(word_n_grams, rough_pos_n_grams, detailed_pos_n_grams, lemma_n_grams):
-            # Split combined detailed POS tags and add to unique detailed tags set
-            unique_detailed_tags = set(tag for detailed_tag in detailed_pos_gram for tag in detailed_tag.split('_'))
+            ngram_str = ' '.join(word_gram)
+            lemma_str = ' '.join(lemma_gram)
+            rough_pos_str = ' '.join(rough_pos_gram)
+            detailed_pos_str = ' '.join(detailed_pos_gram)
+            if add_newline:
+                ngram_str += '\n'
+                lemma_str += '\n'
+                rough_pos_str += '\n'
+                detailed_pos_str += '\n'
             
-            if len(unique_detailed_tags) >= 4:
-                ngram_str = ' '.join(word_gram)
-                lemma_str = ' '.join(lemma_gram)
-                rough_pos_str = ' '.join(rough_pos_gram)
-                detailed_pos_str = ' '.join(detailed_pos_gram)
-                if add_newline:
-                    ngram_str += '\n'
-                    lemma_str += '\n'
-                    rough_pos_str += '\n'
-                    detailed_pos_str += '\n'
-                
-                ngram_id = f"{current_id:06d}"
-                ngram_sequences[n].append((ngram_id, n, rough_pos_str, detailed_pos_str, ngram_str, lemma_str))
-                current_id += 1
+            ngram_id = f"{current_id:06d}"
+            ngram_sequences[n].append((ngram_id, n, rough_pos_str, detailed_pos_str, ngram_str, lemma_str))
+            current_id += 1
     
     return ngram_sequences, current_id
 
+# Process the entire CSV file
 def process_csv(input_file, output_file):
     results = []
     start_id = 0
@@ -66,13 +94,15 @@ def process_csv(input_file, output_file):
         reader = csv.DictReader(csv_file)
         
         for row in reader:
-            sentence = row['Sentences']
-            rough_pos = row['General_POS_Tagged']
-            detailed_pos = row['Detailed_POS_Tagged']
-            lemmatized = row['Lemmatized']
-            
             try:
-                ngram_data, start_id = generate_ngrams(sentence, rough_pos, detailed_pos, lemmatized, start_id=start_id)
+                # Extract relevant columns
+                sentence = row['Sentence']
+                rough_pos = row['Rough_POS']
+                detailed_pos = row['Detailed_PO']
+                lemmatized = row['Lemmatized']
+
+                # Generate n-grams with full range
+                ngram_data, start_id = generate_ngrams_full_range(sentence, rough_pos, detailed_pos, lemmatized, ngram_range=(2, 7), start_id=start_id)
                 
                 for ngram_size, ngrams_list in ngram_data.items():
                     for ngram_tuple in ngrams_list:
@@ -87,6 +117,8 @@ def process_csv(input_file, output_file):
                         })
             except ValueError as e:
                 print(f"Skipping line due to error: {e}")
+            except KeyError as e:
+                print(f"Skipping line due to missing column: {e}")
     
     # Write results to output CSV
     with open(output_file, 'w', newline='', encoding='utf-8') as out_file:
@@ -96,6 +128,6 @@ def process_csv(input_file, output_file):
         writer.writerows(results)
 
 # Example usage
-input_csv = f'database/cleaned_preprocessed.csv'
-output_csv = f'database/ngrams.csv'
+input_csv = 'rules/database/preprocessed.csv'  # Replace with your input CSV path
+output_csv = 'rules/database/ngram.csv'  # Replace with your desired output CSV path
 process_csv(input_csv, output_csv)
