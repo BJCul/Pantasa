@@ -16,4 +16,4 @@ def update_detailed_pos(input_output_csv):
     df.to_csv(input_output_csv, index=False)
     print(f"Updated CSV with detailed POS tags saved to {input_output_csv}")
 
-update_detailed_pos('content/Pantasa/rules/database/preprocessed.csv')
+update_detailed_pos('/content/Pantasa/rules/database/preprocessed.csv')
