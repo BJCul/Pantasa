@@ -1,5 +1,7 @@
 import csv
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor
+from tqdm import tqdm
 
 def generate_pattern_id(ngram_size, counter):
     return f"{ngram_size}{counter:05d}"
@@ -19,7 +21,23 @@ def get_max_pattern_id(output_file):
         print(f"Error reading max pattern ID: {e}")
     return max_pattern_id
 
-def process_clustered_ngrams(input_file, output_file, ngram_size):
+def process_ngram_row(row):
+    """Process a single row to extract n-gram details based on size."""
+    try:
+        ngram_id = row['N-Gram_ID']
+        rough_pos = row['RoughPOS_N-Gram']
+        detailed_pos = row['DetailedPOS_N-Gram']
+        
+        return {
+            'ngram_id': ngram_id,
+            'rough_pos': rough_pos,
+            'detailed_pos': detailed_pos
+        }
+    except KeyError as e:
+        print(f"Skipping line due to missing column: {e}")
+        return None
+
+def process_clustered_ngrams(input_file, output_file, ngram_size, max_workers=8):
     rough_pos_patterns = defaultdict(list)
     detailed_pos_patterns = defaultdict(list)
     max_pattern_id = get_max_pattern_id(output_file)
@@ -28,16 +46,25 @@ def process_clustered_ngrams(input_file, output_file, ngram_size):
     try:
         with open(input_file, 'r', encoding='utf-8') as csv_file:
             reader = csv.DictReader(csv_file)
-            
-            for row in reader:
-                ngram_id = row['N-Gram_ID']
-                rough_pos = row['RoughPOS_N-Gram']
-                detailed_pos = row['DetailedPOS_N-Gram']
-                
-                if rough_pos:
-                    rough_pos_patterns[rough_pos].append(ngram_id)
-                if detailed_pos:
-                    detailed_pos_patterns[detailed_pos].append(ngram_id)
+            rows = list(reader)
+
+        # Use ThreadPoolExecutor for parallel processing
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            with tqdm(total=len(rows), desc="Processing N-Grams") as pbar:
+                futures = [executor.submit(process_ngram_row, row) for row in rows]
+
+                for future in futures:
+                    result = future.result()
+                    if result:
+                        rough_pos = result['rough_pos']
+                        detailed_pos = result['detailed_pos']
+                        ngram_id = result['ngram_id']
+                        if rough_pos:
+                            rough_pos_patterns[rough_pos].append(ngram_id)
+                        if detailed_pos:
+                            detailed_pos_patterns[detailed_pos].append(ngram_id)
+                    pbar.update(1)
+
     except FileNotFoundError:
         print(f"File not found: {input_file}")
         return
