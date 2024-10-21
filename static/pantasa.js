@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function triggerGrammarCheck() {
         clearTimeout(timeout);
         const grammarTextarea = document.getElementById('grammarTextarea');
-        const textInput = grammarTextarea.innerHTML;  // Get input text
+        const textInput = grammarTextarea.textContent.trim();  // Get input text
 
         // Clear previous corrections
         timeout = setTimeout(async () => {
@@ -195,7 +195,7 @@ let timeout = null;
 document.getElementById('grammarTextarea').addEventListener('input', function () {
     clearTimeout(timeout);
     const grammarTextarea = document.getElementById('grammarTextarea');
-    const textInput = grammarTextarea.innerHTML;  // Get input text
+    const textInput = grammarTextarea.textContent.trim();  // Get input text
 
     // Clear previous corrections
     timeout = setTimeout(async () => {
