@@ -436,3 +436,121 @@
 2024-10-18 15:54:54 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:54] "GET /status HTTP/1.1" 200 -
 2024-10-18 15:54:58 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:54:58] "GET /status HTTP/1.1" 200 -
 2024-10-18 15:55:04 - werkzeug - INFO - 127.0.0.1 - - [18/Oct/2024 15:55:04] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:31:44 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8000
+2024-10-21 21:31:44 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-10-21 21:31:45 - werkzeug - INFO -  * Restarting with stat
+2024-10-21 21:31:46 - werkzeug - WARNING -  * Debugger is active!
+2024-10-21 21:31:46 - werkzeug - INFO -  * Debugger PIN: 629-448-213
+2024-10-21 21:31:50 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:31:50] "GET / HTTP/1.1" 200 -
+2024-10-21 21:31:51 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:31:51] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-10-21 21:31:51 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:31:51] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-10-21 21:31:51 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:31:51] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-10-21 21:31:51 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:31:51] "[36mGET /static/assets/pantasa.png HTTP/1.1[0m" 304 -
+2024-10-21 21:31:51 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:31:51] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-10-21 21:31:51 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:31:51] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-10-21 21:31:53 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:31:53] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:31:55 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:31:55] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:31:57 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:31:57] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:31:59 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:31:59] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:01 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:01] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:03 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:03] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:05 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:05] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:07 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:07] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:09 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:09] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:11 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:11] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:13 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:13] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:15 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:15] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:16 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:16] "GET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1" 200 -
+2024-10-21 21:32:17 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:17] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:19 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:19] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:21 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:21] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:23 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:23] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:25 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:25] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:27 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:27] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:29 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:29] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:31 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:31] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:33 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:33] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:35 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:35] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:37 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:37] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:39 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:39] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:41 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:41] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:43 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:43] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:45 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:45] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:47 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:47] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:49 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:49] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:51 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:51] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:53 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:53] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:55 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:55] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:57 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:57] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:32:59 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:32:59] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:01 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:01] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:03 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:03] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:05 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:05] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:07 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:07] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:09 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:09] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:11 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:11] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:12 - app.utils - INFO - Checking words against the dictionary
+2024-10-21 21:33:12 - app.pantasa_checker - DEBUG - Tokens: ['Anong', 'nangyare']
+2024-10-21 21:33:13 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyare']
+2024-10-21 21:33:13 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-21 21:33:13 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:13] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:14 - app.utils - INFO - Text after pre-defined rules (pre): Anong nangyare
+2024-10-21 21:33:14 - app.pantasa_checker - DEBUG - Incorrect Words: ['nangyare']
+2024-10-21 21:33:14 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['nangyare']
+2024-10-21 21:33:14 - app.utils - INFO - Spell checking remaining incorrect words
+2024-10-21 21:33:15 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:15] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:17 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:17] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:19 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:19] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:21 - app.utils - INFO - Suggestions for 'nangyare': ['nangyari', 'nagngyari', 'nangyasri', 'mangyari', 'nangyaya']
+2024-10-21 21:33:21 - app.utils - INFO - Replaced 'nangyare' with 'nangyasri'
+2024-10-21 21:33:21 - app.utils - INFO - Text after spell checking: Anong nangyasri
+2024-10-21 21:33:21 - root - INFO - Detected Incorrect Words: {'nangyare': ['nangyari', 'nagngyari', 'nangyasri', 'mangyari', 'nangyaya']}
+2024-10-21 21:33:21 - root - INFO - Suggestion for Incorrect Words: ['nangyare']
+2024-10-21 21:33:21 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:21] "POST /get_text HTTP/1.1" 200 -
+2024-10-21 21:33:21 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:21] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:23 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:23] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:25 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:25] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:27 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:27] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:29 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:29] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:31 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:31] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:33 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:33] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:35 - app.utils - INFO - Checking words against the dictionary
+2024-10-21 21:33:35 - app.pantasa_checker - DEBUG - Tokens: ['Anong', '<', 'span', 'class', '=', '"', '"', '>', 'nangyari', '<', '/', 'span', '>']
+2024-10-21 21:33:35 - app.pantasa_checker - DEBUG - Incorrect Words: ['<', '=', '"', '"', '>', '<', '/', '>']
+2024-10-21 21:33:35 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-10-21 21:33:35 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:35] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:36 - app.utils - INFO - Text after pre-defined rules (pre): Anong <span class="">nangyari</span>
+2024-10-21 21:33:36 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-10-21 21:33:36 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-10-21 21:33:36 - app.utils - INFO - Pre-rules resolved all misspelled words
+2024-10-21 21:33:36 - root - INFO - Detected Incorrect Words: {}
+2024-10-21 21:33:36 - root - INFO - Suggestion for Incorrect Words: []
+2024-10-21 21:33:36 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:36] "POST /get_text HTTP/1.1" 200 -
+2024-10-21 21:33:37 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:37] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:39 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:39] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:41 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:41] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:43 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:43] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:45 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:45] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:47 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:47] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:49 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:49] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:51 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:51] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:53 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:53] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:55 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:55] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:57 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:57] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:33:59 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:33:59] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:34:01 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:34:01] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:34:03 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:34:03] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:34:05 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:34:05] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:34:07 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:34:07] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:34:09 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:34:09] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:34:11 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:34:11] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:34:13 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:34:13] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:34:15 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:34:15] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:34:17 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:34:17] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:34:19 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:34:19] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:34:21 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:34:21] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:34:23 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:34:23] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:34:25 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:34:25] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:34:27 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:34:27] "GET /status HTTP/1.1" 200 -
+2024-10-21 21:34:29 - werkzeug - INFO - 127.0.0.1 - - [21/Oct/2024 21:34:29] "GET /status HTTP/1.1" 200 -

@@ -25,5 +25,3 @@ def regenerate_detailed_pos(input_output_csv, max_workers=7):
     df.to_csv(input_output_csv, index=False)
     print(f"Regenerated CSV with detailed POS tags saved to {input_output_csv}")
 
-# Example usage
-regenerate_detailed_pos('rules/database/preprocessed.csv')

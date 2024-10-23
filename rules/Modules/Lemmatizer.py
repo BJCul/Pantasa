@@ -2,7 +2,7 @@ import sys
 import os
 
 # Add the path to morphinas_project
-sys.path.append(r'C:\Users\Rae\Documents\GitHub\Pantasa\app')
+sys.path.append(r'C:\Users\Carlo Agas\Documents\GitHub\Pantasaa\morphinas_project')
 
 from morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_multiple_words
 

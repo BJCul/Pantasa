@@ -60,5 +60,5 @@ def cluster_ngrams_by_size(input_file, output_folder='database/GramSize', max_wo
     print(f"N-grams clustered and saved to {output_folder}")
 
 # Example usage
-input_csv = 'database/ngrams.csv'  # Replace with your input CSV path
+input_csv = 'rules/database/ngram.csv'  # Replace with your input CSV path
 cluster_ngrams_by_size(input_csv)

@@ -159,6 +159,6 @@ def process_clustered_ngrams(input_file, output_file, ngram_size, max_workers=8)
 
 # Example usage
 for n in range(2, 8):
-    input_csv = f'database/GramSize/{n}grams.csv'
-    output_csv = f'database/POS/{n}grams.csv'
+    input_csv = f'rules/database/GramSize/{n}grams.csv'
+    output_csv = f'rules/database/POS/{n}grams.csv'
     process_clustered_ngrams(input_csv, output_csv, n)

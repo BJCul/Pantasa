@@ -320,7 +320,7 @@ a:label.logo {
 .home-content {
     width: 100%;
     position: relative;
-    top: -5%;
+    top: -10%;
     text-align: center;
 }
 
@@ -374,7 +374,7 @@ a:label.logo {
     padding: 27px 0px;
     text-align: center;
     margin: 20px 20px;
-    margin-top: 45px;
+    margin-top: 25px;
     border-radius: 10px;
     font-weight: bold;
     font-size: 30px;
