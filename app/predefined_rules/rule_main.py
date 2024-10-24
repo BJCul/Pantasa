@@ -55,8 +55,7 @@ def handle_nang_ng(text, pos_tags):
             
             # Other cases where "ng" can be corrected to "nang" based on POS
             else:
-                corrected_words.append("nang")
-                print("'ng' corrected to 'nang' (other use cases)")
+                corrected_words.append(word)
 
         elif word == "nang":
             # Case 1: "nang" as a coordinating conjunction

@@ -1,101 +1,78 @@
+import os
+import pandas as pd
 import csv
-from collections import defaultdict
-import re
+from concurrent.futures import ThreadPoolExecutor
+from tqdm import tqdm
 
-# Define the regular expression for tokenizing word sequences including punctuation
-regex = r"[^.!?,;:—\s][^.!?,;:—]*[.!?,;:—]?['\"]?(?=\s|$)"
+def get_latest_id(output_file):
+    """Get the latest ID from the output file to continue ID generation."""
+    if os.path.exists(output_file):
+        try:
+            df = pd.read_csv(output_file)
+            if not df.empty:
+                # Get the maximum N-Gram_ID from the file
+                latest_id = df['N-Gram_ID'].max()
+                return latest_id + 1  # Start with the next ID
+        except Exception as e:
+            print(f"Error reading {output_file}: {e}")
+    return 0  # Start from 0 if file does not exist or is empty
 
-def custom_ngrams(sequence, n):
-    """Generate n-grams from a sequence."""
-    return [tuple(sequence[i:i+n]) for i in range(len(sequence)-n+1)]
+def process_row(row, start_id):
+    """Process a single row and return the n-gram details and updated ID."""
+    # Example processing logic, replace with actual row processing
+    n_grams = [
+        {'N-Gram_ID': start_id + i, 
+         'N-Gram_Size': len(row['N-Gram'].split()), 
+         'RoughPOS_N-Gram': row['RoughPOS'], 
+         'DetailedPOS_N-Gram': row['DetailedPOS'], 
+         'N-Gram': row['N-Gram'], 
+         'Lemma_N-Gram': row['Lemma']}
+        for i in range(1)  # Assuming each row results in a single n-gram; adjust as needed
+    ]
+    return n_grams, start_id + len(n_grams)
 
-
-def generate_ngrams(word_sequence, rough_pos_sequence, detailed_pos_sequence, lemma_sequence, ngram_range=(2, 7), add_newline=False, start_id=0):
-    ngram_sequences = defaultdict(list)
-    
-    # Use the regex to find words including punctuation
-    words = word_sequence.split()
-    rough_pos_tags = rough_pos_sequence.split()
-    detailed_pos_tags = detailed_pos_sequence.split()
-    lemmas = lemma_sequence.split()
-    
-    # Debugging: print lengths of sequences
-    print(f"Words length: {len(words)}")
-    print(f"Rough POS length: {len(rough_pos_tags)}")
-    print(f"Detailed POS length: {len(detailed_pos_tags)}")
-    print(f"Lemmas length: {len(lemmas)} \n")
-    
-    # Ensure the lengths match
-    if len(rough_pos_tags) != len(detailed_pos_tags) or len(words) != len(lemmas):
-        raise ValueError("Sequences lengths do not match")
-
-    current_id = start_id
-    
-    for n in range(ngram_range[0], ngram_range[1] + 1):
-        word_n_grams = custom_ngrams(words, n)
-        rough_pos_n_grams = custom_ngrams(rough_pos_tags, n)
-        detailed_pos_n_grams = custom_ngrams(detailed_pos_tags, n)
-        lemma_n_grams = custom_ngrams(lemmas, n)
-        
-        for word_gram, rough_pos_gram, detailed_pos_gram, lemma_gram in zip(word_n_grams, rough_pos_n_grams, detailed_pos_n_grams, lemma_n_grams):
-            # Split combined detailed POS tags and add to unique detailed tags set
-            unique_detailed_tags = set(tag for detailed_tag in detailed_pos_gram for tag in detailed_tag.split('_'))
-            
-            if len(unique_detailed_tags) >= 4:
-                ngram_str = ' '.join(word_gram)
-                lemma_str = ' '.join(lemma_gram)
-                rough_pos_str = ' '.join(rough_pos_gram)
-                detailed_pos_str = ' '.join(detailed_pos_gram)
-                if add_newline:
-                    ngram_str += '\n'
-                    lemma_str += '\n'
-                    rough_pos_str += '\n'
-                    detailed_pos_str += '\n'
-                
-                ngram_id = f"{current_id:06d}"
-                ngram_sequences[n].append((ngram_id, n, rough_pos_str, detailed_pos_str, ngram_str, lemma_str))
-                current_id += 1
-    
-    return ngram_sequences, current_id
-
-def process_csv(input_file, output_file):
+def process_csv(input_file, output_file, start_row=0):
     results = []
-    start_id = 0
+    # Get the starting ID from the output file to avoid resetting
+    start_id = get_latest_id(output_file)
 
-    with open(input_file, 'r', encoding='utf-8') as csv_file:
-        reader = csv.DictReader(csv_file)
-        
-        for row in reader:
-            sentence = row['Sentences']
-            rough_pos = row['General_POS_Tagged']
-            detailed_pos = row['Detailed_POS_Tagged']
-            lemmatized = row['Lemmatized']
-            
-            try:
-                ngram_data, start_id = generate_ngrams(sentence, rough_pos, detailed_pos, lemmatized, start_id=start_id)
-                
-                for ngram_size, ngrams_list in ngram_data.items():
-                    for ngram_tuple in ngrams_list:
-                        ngram_id, ngram_size, rough_pos_str, detailed_pos_str, ngram_str, lemma_str = ngram_tuple
-                        results.append({
-                            'N-Gram_ID': ngram_id,
-                            'N-Gram_Size': ngram_size,
-                            'RoughPOS_N-Gram': rough_pos_str,
-                            'DetailedPOS_N-Gram': detailed_pos_str,
-                            'N-Gram': ngram_str,
-                            'Lemma_N-Gram': lemma_str
-                        })
-            except ValueError as e:
-                print(f"Skipping line due to error: {e}")
-    
+    # Dynamically get the maximum number of CPU cores available
+    max_workers = os.cpu_count()
+
+    # Load CSV data into a DataFrame
+    df = pd.read_csv(input_file)
+
+    # Use ThreadPoolExecutor for parallel processing
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # Wrap the executor with tqdm to show progress
+        with tqdm(total=len(df) - start_row, desc="Processing Rows") as pbar:
+            futures = []
+
+            # Iterate from the starting row
+            for i, row in df.iterrows():
+                if i < start_row:
+                    continue  # Skip rows before the start_row index
+
+                # Submit tasks to the executor for rows starting from the specified index
+                futures.append(executor.submit(process_row, row, start_id))
+
+                # Retrieve the results and update the start_id for each row
+                for future in futures:
+                    result, start_id = future.result()
+                    results.extend(result)
+                    pbar.update(1)
+
     # Write results to output CSV
-    with open(output_file, 'w', newline='', encoding='utf-8') as out_file:
+    with open(output_file, 'a', newline='', encoding='utf-8') as out_file:  # Appending to output file
         fieldnames = ['N-Gram_ID', 'N-Gram_Size', 'RoughPOS_N-Gram', 'DetailedPOS_N-Gram', 'N-Gram', 'Lemma_N-Gram']
         writer = csv.DictWriter(out_file, fieldnames=fieldnames)
-        writer.writeheader()
+        if os.stat(output_file).st_size == 0:  # If the file is empty, write the header
+            writer.writeheader()
         writer.writerows(results)
 
+    print(f"Processed data saved to {output_file}")
+
 # Example usage
-input_csv = f'database/cleaned_preprocessed.csv'
-output_csv = f'database/ngrams.csv'
-process_csv(input_csv, output_csv)
+input_csv = 'rules/database/preprocessed.csv'  # Replace with your input CSV path
+output_csv = 'rules/database/ngram.csv'  # Replace with your desired output CSV path
+process_csv(input_csv, output_csv, start_row=0)  # Start processing from row 0
