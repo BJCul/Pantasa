@@ -2,9 +2,9 @@ import sys
 import os
 
 # Add the path to morphinas_project
-sys.path.append(r'C:\Users\Carlo Agas\Documents\GitHub\Pantasaa\morphinas_project')
+sys.path.append('C:/Users/Carlo Agas/Documents/GitHub/Pantasaa/morphinas_project')
 
-from morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_multiple_words
+from lemmatizer_client import initialize_stemmer, lemmatize_multiple_words
 
 # Initialize the Morphinas lemmatizer once to reuse across function calls
 gateway, lemmatizer = initialize_stemmer()
@@ -36,9 +36,5 @@ def lemmatize_sentence(sentence):
     except Exception as e:
         print(f"Exception occurred during lemmatization: {e}")
         return sentence
-    
-print(lemmatize_sentence("Pagmamataas ang magiging dahilan ng iyong pagbagsak"))
-
-
 
 

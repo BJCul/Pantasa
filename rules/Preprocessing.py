@@ -2,16 +2,15 @@ import os
 from concurrent.futures import ThreadPoolExecutor
 from tqdm import tqdm  # Import tqdm for progress tracking
 from Modules.Tokenizer import tokenize
-from Modules.POSDTagger import pos_tag as pos_dtag
-from Modules.POSRTagger import pos_tag as pos_rtag
+from Modules.POSRTagger import pos_tag  # Use the pos_tag function from POSRTagger for both Rough and Detailed POS
 from Modules.Lemmatizer import lemmatize_sentence
 
 import sys
 
 # Add the path to morphinas_project
-sys.path.append('C:/Users/Carlo Agas/Documents/GitHub/Pantasaa')
+sys.path.append('C:/Users/Carlo Agas/Documents/GitHub/Pantasaa/morphinas_project')
 
-from morphinas_project.lemmatizer_client import initialize_stemmer
+from lemmatizer_client import initialize_stemmer
 
 # Initialize the Morphinas lemmatizer once to reuse across function calls
 gateway, lemmatizer = initialize_stemmer()
@@ -54,27 +53,16 @@ def load_processed_sentences(output_file):
                     processed_sentences.add(parts[0].strip('"'))
     return processed_sentences
 
-def process_batch(batch):
-    """Process a batch of sentences for general POS tagging, detailed POS tagging, and lemmatization."""
-    general_pos_tagged_batch = []
-    detailed_pos_tagged_batch = []
-    lemmatized_batch = []
+def process_sentence(sentence):
+    """Process a single sentence for general POS tagging, detailed POS tagging, and lemmatization."""
+    detailed_pos, general_pos = pos_tag(sentence)  # pos_tag returns both detailed and rough tags
+    lemmatized_sentence = lemmatize_sentence(sentence)
+    return general_pos, detailed_pos, lemmatized_sentence
 
-    for sentence in batch:
-        if sentence:
-            general_pos_tagged_batch.append(pos_rtag(sentence))
-            detailed_pos_tagged_batch.append(pos_dtag(sentence))
-            lemmatized_batch.append(lemmatize_sentence(sentence))
-        else:
-            general_pos_tagged_batch.append('')
-            detailed_pos_tagged_batch.append('')
-            lemmatized_batch.append('')
-
-    return general_pos_tagged_batch, detailed_pos_tagged_batch, lemmatized_batch
-
-def preprocess_text(input_file, tokenized_file, output_file, batch_size=700):
+def preprocess_text(input_file, tokenized_file, output_file):
     # Dynamically get the maximum number of CPU cores available
     max_workers = os.cpu_count()
+    print(f"Number of cores being used: {max_workers}")
 
     dataset = load_dataset(input_file)
     tokenized_sentences = load_tokenized_sentences(tokenized_file)
@@ -84,38 +72,45 @@ def preprocess_text(input_file, tokenized_file, output_file, batch_size=700):
 
     with open(tokenized_file, 'a', encoding='utf-8') as token_file:
         for sentence in dataset:
-            if sentence not in tokenized_sentences and sentence not in processed_sentences:
-                new_tokenized_sentences.append(sentence)
-                tokenized_sentences.add(sentence)
-                token_file.write(sentence + "\n")
+            # Tokenize the sentence before processing it further
+            tokenized_sentence_parts = tokenize(sentence)
+
+            for tokenized_sentence in tokenized_sentence_parts:
+                if tokenized_sentence not in tokenized_sentences and tokenized_sentence not in processed_sentences:
+                    new_tokenized_sentences.append(tokenized_sentence)
+                    tokenized_sentences.add(tokenized_sentence)
+                    token_file.write(tokenized_sentence + "\n")
+
         print(f"Sentences tokenized to {tokenized_file}")
 
+    # Use tqdm on the actual sentences processed
     with open(output_file, 'a', encoding='utf-8') as output:
-        for i in range(0, len(new_tokenized_sentences), batch_size):
-            batch = new_tokenized_sentences[i:i + batch_size]
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            # Use tqdm to show progress for each sentence in new_tokenized_sentences
+            for sentence, result in zip(new_tokenized_sentences, tqdm(executor.map(process_sentence, new_tokenized_sentences), total=len(new_tokenized_sentences), desc="Processing Sentences")):
+                general_pos, detailed_pos, lemma = result
 
-            with ThreadPoolExecutor(max_workers=max_workers) as executor:
-                # Parallel processing for POS tagging and lemmatization
-                results = list(tqdm(executor.map(process_batch, [batch]), total=1, desc="Processing Batch"))
-                for general_pos, detailed_pos, lemma in results:
-                    # Append batch results to output file immediately
-                    for tok_sentence, gen_pos, det_pos, lemma in zip(batch, general_pos, detailed_pos, lemma):
-                        # Add single quotes around sentences ending with a comma
-                        if ',' in tok_sentence:
-                            tok_sentence = f'"{tok_sentence}"'
-                        output.write(f"{tok_sentence},{gen_pos},{det_pos},{lemma},\n")
+                # Wrap lemmatized sentence in quotes if it contains a comma
+                if ',' in lemma:
+                    lemma = f'"{lemma}"'
+                
+                # Wrap tokenized sentence in quotes if it contains a comma
+                if ',' in sentence:
+                    sentence = f'"{sentence}"'
+                
+                output.write(f"{sentence},{general_pos},{detailed_pos},{lemma},\n")
 
     print(f"Preprocessed data saved to {output_file}")
 
 def run_preprocessing():
     # Define your file paths here
-    input_txt = "database/ngram_feed.txt"           # Input file (the .txt file)
-    tokenized_txt = "database/tokenized_sentences.txt"  # File to save tokenized sentences
-    output_csv = "database/preprocessed.csv"     # File to save the preprocessed output
+    input_txt = "rules/dataset/ALT-Parallel-Corpus-20191206/data_fil.txt"           # Input file (the .txt file)
+    tokenized_txt = "rules/database/tokenized_sentences.txt"  # File to save tokenized sentences
+    output_csv = "rules/database/preprocessed.csv"     # File to save the preprocessed output
 
     # Start the preprocessing
     preprocess_text(input_txt, tokenized_txt, output_csv)
 
 # Automatically run when the script is executed
-if _name_ == "_main_":
+if __name__ == "__main__":
     run_preprocessing()
