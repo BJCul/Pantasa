@@ -104,9 +104,9 @@ def preprocess_text(input_file, tokenized_file, output_file):
 
 def run_preprocessing():
     # Define your file paths here
-    input_txt = "rules/dataset/ALT-Parallel-Corpus-20191206/data_fil.txt"           # Input file (the .txt file)
-    tokenized_txt = "rules/database/tokenized_sentences.txt"  # File to save tokenized sentences
-    output_csv = "rules/database/preprocessed.csv"     # File to save the preprocessed output
+    input_txt = "/content/Pantasa/rules/dataset/ALT-Parallel-Corpus-20191206/data_fil.txt"           # Input file (the .txt file)
+    tokenized_txt = "/content/Pantasa/rules/database/tokenized_sentences.txt"  # File to save tokenized sentences
+    output_csv = "/content/Pantasa/rules/database/preprocessed.csv"     # File to save the preprocessed output
 
     # Start the preprocessing
     preprocess_text(input_txt, tokenized_txt, output_csv)
