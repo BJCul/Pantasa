@@ -4,10 +4,11 @@ import torch
 
 
 # Define the models
-tagalog_roberta_model = "jcblaise/roberta-tagalog-base"
-roberta_tokenizer = AutoTokenizer.from_pretrained(tagalog_roberta_model)
+tagalog_roberta_model = "model/final_model"
+tagalog_roberta_tokenizer = "model/final_tokenizer"
+roberta_tokenizer = AutoTokenizer.from_pretrained(tagalog_roberta_tokenizer)
 roberta_model = AutoModelForMaskedLM.from_pretrained(tagalog_roberta_model)
-comparison_dict_file = "database/PostComparisonDictionary.txt"
+comparison_dict_file = "rules/database/PostComparisonDictionary.txt"
 
 def load_csv(file_path):
     try:
@@ -317,10 +318,11 @@ def process_pos_patterns(pos_patterns_file, generated_ngrams_file, pattern_file,
             writer.writerow(new_pattern)
 
 for n in range(6, 8):
-    ngram_csv = 'database/ngrams.csv'
-    pattern_csv = f'database/POS/{n}grams.csv'
-    output_csv = f'database/Generalized/POSTComparison/{n}grams.csv'
+    ngram_csv = 'rules/database/ngrams.csv'
+    pattern_csv = f'rules/database/POS/{n}grams.csv'
+    output_csv = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
 
     print(f"Processing n-gram size: {n}")  # Debug statement
 
     process_pos_patterns(pattern_csv, ngram_csv, pattern_csv, output_csv, roberta_model, roberta_tokenizer)
+
