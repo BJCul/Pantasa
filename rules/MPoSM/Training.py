@@ -16,15 +16,21 @@ logging.basicConfig(
     ]
 )
 
-# Tokenization and saving to CSV per sentence
-def tokenize_and_save_to_csv(train_file, tokenizer, output_csv, vocab_size):
+# Tokenization and saving to CSV per sentence with start_row option
+def tokenize_and_save_to_csv(train_file, tokenizer, output_csv, vocab_size, start_row=0):
     logging.info("Loading dataset...")
 
     # Load the CSV dataset
     dataset = load_dataset('csv', data_files={'train': train_file}, split='train')
     logging.info(f"Dataset loaded from {train_file}")
 
-    logging.info("Tokenizing the dataset per sentence...")
+    # Subset the dataset starting from the specified row
+    if start_row >= len(dataset):
+        logging.error(f"Start row {start_row} is out of range. The dataset only contains {len(dataset)} rows.")
+        return
+    dataset = dataset.select(range(start_row, len(dataset)))
+
+    logging.info(f"Starting tokenization from row {start_row}...")
 
     tokenized_data = {
         "input_ids": [],
@@ -33,8 +39,8 @@ def tokenize_and_save_to_csv(train_file, tokenizer, output_csv, vocab_size):
     }
 
     # Tokenize each sentence individually
-    for example in dataset:
-        logging.info("Tokenizing POS sequences...")
+    for i, example in enumerate(dataset):
+        logging.info(f"Tokenizing row {start_row + i}...")
 
         # Ensure general and detailed POS tags are lists of tokens
         general_tokens = example['General POS'].split() if isinstance(example['General POS'], str) else example['General POS']
@@ -101,7 +107,7 @@ def convert_lists_to_tensors(dataset):
     }, batched=True)
     return dataset
 
-def train_model_with_pos_tags(train_file, tokenizer, model, output_csv, resume_from_checkpoint=None):
+def train_model_with_pos_tags(train_file, tokenizer, model, output_csv, resume_from_checkpoint=None, start_row=0):
     vocab_size = model.config.vocab_size
     logging.info(f"Model's vocabulary size before resizing: {vocab_size}")
 
@@ -112,8 +118,8 @@ def train_model_with_pos_tags(train_file, tokenizer, model, output_csv, resume_f
     vocab_size = len(tokenizer)
     logging.info(f"Model's vocabulary size after resizing: {vocab_size}")
 
-    # Tokenize and save to CSV first
-    tokenize_and_save_to_csv(train_file, tokenizer, output_csv, vocab_size)
+    # Tokenize and save to CSV first, starting from the specified row
+    tokenize_and_save_to_csv(train_file, tokenizer, output_csv, vocab_size, start_row)
 
     # Load the tokenized dataset from CSV
     dataset = load_tokenized_data_from_csv(output_csv)
@@ -126,7 +132,7 @@ def train_model_with_pos_tags(train_file, tokenizer, model, output_csv, resume_f
 
     # Convert lists back to tensors
     train_dataset = convert_lists_to_tensors(train_dataset)
-    eval_dataset = convert_lists_to_tensors(eval_dataset)  # Ensure eval_dataset is converted as well
+    eval_dataset = convert_lists_to_tensors(eval_dataset)
 
     # Set up the custom data collator for MLM
     logging.info("Setting up data collator for masked language modeling...")
@@ -141,16 +147,18 @@ def train_model_with_pos_tags(train_file, tokenizer, model, output_csv, resume_f
     training_args = TrainingArguments(
         output_dir="./results",
         logging_dir="./results/logs",
-        evaluation_strategy="epoch",
-        save_strategy="steps",
-        save_steps=100,
-        logging_steps=50,
-        learning_rate=2e-5,
-        per_device_train_batch_size=8,
-        num_train_epochs=3,
-        weight_decay=0.01,
-        remove_unused_columns=False,
-        save_total_limit=3
+        evaluation_strategy="epoch",            # Evaluate once per epoch to save resources
+        save_strategy="epoch",                  # Save checkpoints only once per epoch
+        logging_steps=100,                      # Log every 100 steps to reduce logging frequency
+        learning_rate=3e-5,                     # Slightly higher learning rate since batch size is small
+        per_device_train_batch_size=4,          # Small batch size to fit within 16 GB RAM
+        num_train_epochs=3,                     # Moderate number of epochs; increase if model complexity allows
+        weight_decay=0.01,                      # Lower weight decay to avoid excessive regularization
+        lr_scheduler_type="linear",             # Linear scheduler with decay; simpler and less memory-intensive
+        fp16=False,                             # Avoid mixed-precision training on CPU
+        gradient_accumulation_steps=2,          # Accumulate gradients to simulate a batch size of 8
+        max_grad_norm=1.0,                      # Standard gradient clipping
+        save_total_limit=1                      # Only save the most recent checkpoint to save disk space
     )
 
     # Initialize Trainer with eval_dataset
@@ -158,7 +166,7 @@ def train_model_with_pos_tags(train_file, tokenizer, model, output_csv, resume_f
         model=model,
         args=training_args,
         train_dataset=train_dataset,
-        eval_dataset=eval_dataset,  # Provide eval_dataset for evaluation
+        eval_dataset=eval_dataset,
         data_collator=data_collator
     )
 
@@ -171,5 +179,4 @@ def train_model_with_pos_tags(train_file, tokenizer, model, output_csv, resume_f
     model.save_pretrained("./results/final_model")
     tokenizer.save_pretrained("./results/final_tokenizer")
     logging.info("Model and tokenizer saved to ./results.")
-
 

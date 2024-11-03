@@ -1,5 +1,5 @@
 {
-  "_name_or_path": "jcblaise/roberta-tagalog-base",
+  "_name_or_path": "model/final_model",
   "architectures": [
     "RobertaForMaskedLM"
   ],

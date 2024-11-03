@@ -25,7 +25,7 @@ def process_ngram_row(row):
         print(f"Skipping line due to missing column: {e}")
         return None
 
-def cluster_ngrams_by_size(input_file, output_folder='database/GramSize', max_workers=8):
+def cluster_ngrams_by_size(input_file, output_folder='rules/database/GramSize', max_workers=8):
     clustered_ngrams = defaultdict(list)
 
     # Create output folder if it doesn't exist

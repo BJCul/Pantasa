@@ -13,7 +13,7 @@ if __name__ == "__main__":
     # Load custom tokenizer (with the POS tag vocabulary added)
     logging.info("Loading the custom tokenizer...")
     pos_tokenizer = RobertaTokenizerFast.from_pretrained(
-        "model/pos_tokenizer",  # Path to your custom tokenizer with POS tags
+        "model/final_tokenizer",  # Path to your custom tokenizer with POS tags
         truncation=True,
         padding="max_length",
         max_length=1000,
@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
     # Load the pre-trained model
     logging.info("Loading the pre-trained model...")
-    model = RobertaForMaskedLM.from_pretrained("jcblaise/roberta-tagalog-base")
+    model = RobertaForMaskedLM.from_pretrained("model/final_model")
     logging.info("Model loaded successfully.")
 
     # Resize the model's token embeddings to match the tokenizer's vocabulary size
@@ -53,7 +53,10 @@ if __name__ == "__main__":
             resume_from_checkpoint = os.path.join(checkpoint_dir, latest_checkpoint)
             logging.info(f"Resuming from checkpoint: {resume_from_checkpoint}")
 
-    # Call to the training function, passing the output CSV path and checkpoint
-    train_model_with_pos_tags(csv_input, pos_tokenizer, model, output_csv, resume_from_checkpoint)
+    # Specify the row from which to start tokenizing and training
+    start_row = 11261  # Change this value as needed to start from a specific row
+
+    # Call to the training function, passing the output CSV path, checkpoint, and start_row
+    train_model_with_pos_tags(csv_input, pos_tokenizer, model, output_csv, resume_from_checkpoint, start_row)
 
     logging.info("Training completed.")

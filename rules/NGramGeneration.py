@@ -128,7 +128,7 @@ def process_row(row):
             })
     return results
 
-def process_csv(input_file, output_file):
+def process_csv(input_file, output_file, start_row=0):
     global start_id
     start_id = get_latest_id(output_file)  # Initialize with the last ID in output
 
@@ -138,9 +138,12 @@ def process_csv(input_file, output_file):
     with open(input_file, 'r', encoding='utf-8') as csv_file:
         reader = list(csv.DictReader(csv_file))
 
+        # Skip to the specified start_row
+        rows_to_process = reader[start_row:]
+        
         # Progress bar for processing rows with parallel execution
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
-            futures = {executor.submit(process_row, row): row for row in reader}
+            futures = {executor.submit(process_row, row): row for row in rows_to_process}
             with tqdm(total=len(futures), desc="Processing Rows") as pbar:
                 for future in as_completed(futures):
                     try:
@@ -163,4 +166,5 @@ def process_csv(input_file, output_file):
 # Example usage
 input_csv = 'rules/database/preprocessed.csv'
 output_csv = 'rules/database/ngram.csv'
-process_csv(input_csv, output_csv)
+start_row = 14684  # Start processing from the start row
+process_csv(input_csv, output_csv, start_row)
