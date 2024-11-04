@@ -5,7 +5,6 @@ import tempfile
 import subprocess
 import os
 import logging
-from app.grammar_checker import spell_check_incorrect_words
 from app.utils import log_message
 from app.spell_checker import load_dictionary, spell_check_sentence
 from app.morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_multiple_words
@@ -132,9 +131,8 @@ def preprocess_text(text_input, jar_path, model_path):
     return [preprocessed_output]
 
 # Load and create the rule pattern bank
-def rule_pattern_bank():
-    file_path = 'data/processed/hngrams.csv'  # Update with actual path
-    hybrid_ngrams_df = pd.read_csv(file_path)
+def rule_pattern_bank(rule_path):
+    hybrid_ngrams_df = pd.read_csv(rule_path)
 
     # Create a dictionary to store the Rule Pattern Bank (Hybrid N-Grams + Predefined Rules)
     rule_pattern_bank = {}
@@ -171,9 +169,9 @@ def edit_weighted_levenshtein(input_ngram, pattern_ngram):
         distance_matrix[0][j] = j
 
     # Define weights for substitution, insertion, and deletion
-    substitution_weight = 1.0
-    insertion_weight = 5.0 
-    deletion_weight = 1.0
+    substitution_weight = 7.0
+    insertion_weight = 8.0 
+    deletion_weight = 1.2
 
     # Compute the distances
     for i in range(1, len_input + 1):
@@ -244,11 +242,11 @@ def generate_ngrams(input_tokens):
     length = len(input_tokens)
 
     # Determine minimum n-gram size based on input length
-    if length < 5:
+    if length < 4:
         n_min = 3
-    elif length < 6:
+    elif length < 5:
         n_min = 4
-    elif length < 7:
+    elif length < 6:
         n_min = 5
     elif length > 7:
         n_min = 6
@@ -265,7 +263,7 @@ def generate_ngrams(input_tokens):
     return ngrams
 
 # Step 5: Suggestion phase - generate suggestions for corrections without applying them
-def generate_suggestions(pos_tags):
+def generate_suggestions(pos_tags, rule_path):
 
     input_tokens = [pos_tag for word, pos_tag in pos_tags]
     
@@ -281,7 +279,7 @@ def generate_suggestions(pos_tags):
     # Iterate over each n-gram and compare it to the rule pattern bank
     for input_ngram, start_idx in input_ngrams_with_index:
         min_distance = float('inf')
-        rule_bank = rule_pattern_bank()
+        rule_bank = rule_pattern_bank(rule_path)
         best_match = None
         highest_frequency = 0
 
@@ -481,7 +479,7 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
     pos_tag_dict = {}      # Cache for loaded POS tag dictionaries
     idx = 0                # Index for iterating through pos_tags and token_suggestions
     inserted_tokens = set()
-    
+
     # Iterate through the token_suggestions and apply the corrections
     for token_info in token_suggestions:
         suggestions = token_info["suggestions"]
@@ -501,11 +499,14 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
         if suggestion_count:
             # Step 2: Find the most frequent exact suggestion(s)
             most_frequent_suggestion = suggestion_count.most_common(1)[0][0]  # Get the most frequent exact suggestion
-            
-            # Apply the suggestion based on its type (KEEP, SUBSTITUTE, etc.)
-            suggestion_parts = most_frequent_suggestion.split("_")
 
-            suggestion_type = suggestion_parts[0]  # Get the type (e.g., KEEP, SUBSTITUTE, etc.)
+            # Extract suggestion type, current POS, and target POS correctly
+            suggestion_parts = most_frequent_suggestion.split("_")
+            suggestion_type = suggestion_parts[0]
+            current_pos = "_".join(suggestion_parts[1:-1])  # Join all parts except the last one as current POS
+            target_pos = suggestion_parts[-1]  # Last part is the target POS
+
+            print(f"SUGGESTION TYPE: {suggestion_type}, CURRENT POS: {current_pos}, TARGET POS: {target_pos}")
 
             if suggestion_type == "KEEP":
                 # Append the original word
@@ -516,10 +517,6 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
             elif suggestion_type == "SUBSTITUTE":
                 # Extract input word and target POS tag
                 input_word = pos_tags[idx][0]
-                target_pos = suggestion_parts[2]
-
-                print(f"INPUT WORD: {input_word}")
-                print(f"TARGET POS: {target_pos}")
 
                 # Load the dictionary for the target POS tag if not already loaded
                 if target_pos not in pos_tag_dict:
@@ -535,8 +532,8 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
                     # Pick the best suggestion (smallest distance)
                     replacement_word = suggestions_list[0][0]
                     final_sentence.append(replacement_word)
-                    print(f"Replaced '{input_word}' with '{replacement_word}'")
-                    
+                    print(f"Replaced '{input_word}' with '{replacement_word}' for target POS '{target_pos}'")
+
                     # Store suggestions for the word
                     word_suggestions[input_word] = [word for word, dist in suggestions_list]
                 else:
@@ -548,9 +545,9 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
             elif suggestion_type == "DELETE":
                 # Skip the word (do not append it)
                 idx += 1  # Move to the next word
-            
+
             elif suggestion_type == "INSERT":
-                target_pos = suggestion_parts[1]  # Extract the target POS tag for insertion
+                target_pos = target_pos  # The extracted target POS tag for insertion
 
                 # Load the dictionary for the target POS tag if not already loaded
                 if target_pos not in pos_tag_dict:
@@ -585,7 +582,6 @@ def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
 
     corrected_sentence = " ".join(final_sentence)
     return corrected_sentence
-
 
 
 def check_words_in_dictionary(words, directory_path):

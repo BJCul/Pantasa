@@ -1,10 +1,7 @@
 import sys
 import os
 
-# Add the path to morphinas_project
-sys.path.append('C:/Users/Carlo Agas/Documents/GitHub/Pantasaa/morphinas_project')
-
-from lemmatizer_client import initialize_stemmer, lemmatize_multiple_words
+from app.morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_multiple_words
 
 # Initialize the Morphinas lemmatizer once to reuse across function calls
 gateway, lemmatizer = initialize_stemmer()

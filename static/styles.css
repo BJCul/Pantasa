@@ -547,6 +547,23 @@ a:label.logo {
 
 }
 
+.button-submit{
+    width: 100px;
+    padding: 10px 0px;
+    text-align: center;
+    margin-top: 15px;
+    border-radius: 25px;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    color: var(--pwhite);
+    background: var(--pmaroon);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    justify-content: end;
+}
+
 .loading {
     display: flex;
     flex-direction: column;

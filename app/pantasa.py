@@ -3,7 +3,7 @@ import re
 from collections import defaultdict, Counter
 
 # Step 1: Load and create the rule pattern bank
-file_path = 'adetailed_hngram.csv'  # Update with actual path
+file_path = 'data/processed/hngrams.csv'  # Update with actual path
 hybrid_ngrams_df = pd.read_csv(file_path)
 
 # Create a dictionary to store the Rule Pattern Bank (Hybrid N-Grams + Predefined Rules)
@@ -129,8 +129,8 @@ def generate_ngrams(input_tokens):
     return ngrams
 
 # Step 5: Suggestion phase - generate suggestions for corrections without applying them
-def generate_suggestions(input_sentence):
-    input_tokens = input_sentence.strip().split()
+def generate_suggestions(input_pos):
+    input_tokens = input_pos.strip().split()
     
     # Generate token-level correction tracker
     token_suggestions = [{"token": token, "suggestions": [], "distances": []} for token in input_tokens]
@@ -263,3 +263,10 @@ def apply_corrections(token_suggestions):
             final_sentence.append(token_info["token"])
 
     return " ".join(final_sentence)
+
+
+input_pos = 'LM VBTS CCB DTCP'
+
+corrected = generate_suggestions(input_pos)
+
+print(corrected)
