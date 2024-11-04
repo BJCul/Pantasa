@@ -55,8 +55,7 @@ def handle_nang_ng(text, pos_tags):
             
             # Other cases where "ng" can be corrected to "nang" based on POS
             else:
-                corrected_words.append("nang")
-                print("'ng' corrected to 'nang' (other use cases)")
+                corrected_words.append(word)
 
         elif word == "nang":
             # Case 1: "nang" as a coordinating conjunction
@@ -87,7 +86,7 @@ def handle_nang_ng(text, pos_tags):
         elif word == "na" and i > 0:  # If the current word is "na" and it's not the first word
             prev_word = words[i - 1]
             print(f"Checking if 'na' should be merged with the previous word: {prev_word}")
-            
+
             if prev_word[-1].lower() in vowels:  # Check if the previous word ends with a vowel
                 corrected_word = prev_word + "ng"
                 corrected_words[-1] = corrected_word  # Update the last word in corrected_words
@@ -97,6 +96,11 @@ def handle_nang_ng(text, pos_tags):
                 corrected_word = prev_word + "g"
                 corrected_words[-1] = corrected_word  # Update the last word in corrected_words
                 print(f"Word ending with 'n': Merged 'na' to form '{corrected_word}'")
+
+            else:
+                corrected_words.append("na")  # Keep 'na' as it is
+                print("'na' kept as is, no merging.")
+
             
         else:
             corrected_words.append(word)  # Append the word if no correction is made
@@ -113,8 +117,9 @@ def separate_mas(text, dictionary=dictionary_file):
     words = text.split()
     for i, word in enumerate(words):
         if word.lower().startswith("mas"):
-            if word not in dictionary:
-                remaining = word[3:]
+            remaining = word[3:]
+            # Only unmerge if the word is not in the dictionary and the remaining part is a valid word
+            if word not in dictionary and remaining in dictionary:
                 words[i] = "mas " + remaining
     return ' '.join(words)
 
