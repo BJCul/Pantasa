@@ -1,0 +1,658 @@
+2024-11-04 13:55:57 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 13:55:57] "GET / HTTP/1.1" 200 -
+2024-11-04 13:55:57 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 13:55:57] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-11-04 13:55:57 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 13:55:57] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 13:55:57 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 13:55:57] "GET /static/pantasa.js HTTP/1.1" 200 -
+2024-11-04 13:55:57 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 13:55:57] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 13:55:57 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 13:55:57] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 13:55:59 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 13:55:59] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 13:56:03 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 13:56:03 - app.pantasa_checker - DEBUG - Tokens: ['ms', 'bata']
+2024-11-04 13:56:03 - app.pantasa_checker - DEBUG - Incorrect Words: ['ms']
+2024-11-04 13:56:03 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 13:56:04 - app.utils - INFO - Text after pre-defined rules (pre): ms bata
+2024-11-04 13:56:04 - app.pantasa_checker - DEBUG - Incorrect Words: ['ms']
+2024-11-04 13:56:04 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['ms']
+2024-11-04 13:56:04 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 13:56:05 - app.utils - INFO - Suggestions for 'ms': ['as', 'cms', 'is', 'kms', 'm']
+2024-11-04 13:56:05 - app.utils - INFO - Replaced 'ms' with 'is'
+2024-11-04 13:56:05 - app.utils - INFO - Text after spell checking: is bata
+2024-11-04 13:56:05 - root - INFO - Detected Incorrect Words: {'ms': ['as', 'cms', 'is', 'kms', 'm']}
+2024-11-04 13:56:05 - root - INFO - Suggestion for Incorrect Words: ['ms']
+2024-11-04 13:56:05 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 13:56:05] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:03:59 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:03:59] "GET / HTTP/1.1" 200 -
+2024-11-04 14:03:59 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:03:59] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-11-04 14:03:59 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:03:59] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:03:59 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:03:59] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:03:59 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:03:59] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:03:59 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:03:59] "GET /static/pantasa.js HTTP/1.1" 200 -
+2024-11-04 14:04:01 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:04:01] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:04:08 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:04:08 - app.pantasa_checker - DEBUG - Tokens: ['ms', 'bata']
+2024-11-04 14:04:08 - app.pantasa_checker - DEBUG - Incorrect Words: ['ms']
+2024-11-04 14:04:08 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:04:09 - app.utils - INFO - Text after pre-defined rules (pre): ms bata
+2024-11-04 14:04:09 - app.pantasa_checker - DEBUG - Incorrect Words: ['ms']
+2024-11-04 14:04:09 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['ms']
+2024-11-04 14:04:09 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:04:10 - app.utils - INFO - Suggestions for 'ms': ['as', 'cms', 'is', 'kms', 'm']
+2024-11-04 14:04:10 - app.utils - INFO - Replaced 'ms' with 'is'
+2024-11-04 14:04:10 - app.utils - INFO - Text after spell checking: is bata
+2024-11-04 14:04:10 - root - INFO - Detected Incorrect Words: {'ms': ['as', 'cms', 'is', 'kms', 'm']}
+2024-11-04 14:04:10 - root - INFO - Suggestion for Incorrect Words: ['ms']
+2024-11-04 14:04:10 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:04:10] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:04:15 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:04:15 - app.pantasa_checker - DEBUG - Tokens: ['as', 'bata']
+2024-11-04 14:04:15 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-11-04 14:04:15 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-11-04 14:04:15 - app.utils - INFO - Applying post-defined rules (post)
+2024-11-04 14:04:15 - app.utils - INFO - Text after post-defined rules (post): as bata
+2024-11-04 14:04:15 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-11-04 14:04:15 - app.pantasa_checker - DEBUG - Tokens: ['as', 'bata']
+2024-11-04 14:04:16 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('as', 'NNCA'), ('bata', 'NNC')]
+2024-11-04 14:04:16 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-11-04 14:04:16 - app.utils - INFO - Token Suggestions: [{'token': 'NNCA', 'suggestions': [], 'distances': []}, {'token': 'NNC', 'suggestions': [], 'distances': []}]
+2024-11-04 14:04:16 - app.utils - INFO - Applying POS corrections
+2024-11-04 14:04:16 - app.utils - INFO - Final Corrected Sentence: as bata
+2024-11-04 14:04:16 - root - INFO - Detected Incorrect Words: [{'token': 'NNCA', 'suggestions': [], 'distances': []}, {'token': 'NNC', 'suggestions': [], 'distances': []}]
+2024-11-04 14:04:16 - root - INFO - Suggestion for Incorrect Words: []
+2024-11-04 14:04:16 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:04:16] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:04:23 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:04:23 - app.pantasa_checker - DEBUG - Tokens: ['as', 'bata']
+2024-11-04 14:04:23 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-11-04 14:04:23 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-11-04 14:04:23 - app.utils - INFO - Applying post-defined rules (post)
+2024-11-04 14:04:24 - app.utils - INFO - Text after post-defined rules (post): as bata
+2024-11-04 14:04:24 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-11-04 14:04:24 - app.pantasa_checker - DEBUG - Tokens: ['as', 'bata']
+2024-11-04 14:04:24 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('as', 'NNCA'), ('bata', 'NNC')]
+2024-11-04 14:04:24 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-11-04 14:04:24 - app.utils - INFO - Token Suggestions: [{'token': 'NNCA', 'suggestions': [], 'distances': []}, {'token': 'NNC', 'suggestions': [], 'distances': []}]
+2024-11-04 14:04:24 - app.utils - INFO - Applying POS corrections
+2024-11-04 14:04:24 - app.utils - INFO - Final Corrected Sentence: as bata
+2024-11-04 14:04:24 - root - INFO - Detected Incorrect Words: [{'token': 'NNCA', 'suggestions': [], 'distances': []}, {'token': 'NNC', 'suggestions': [], 'distances': []}]
+2024-11-04 14:04:24 - root - INFO - Suggestion for Incorrect Words: []
+2024-11-04 14:04:24 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:04:24] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:04:54 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:04:54 - app.pantasa_checker - DEBUG - Tokens: ['as', 'bata']
+2024-11-04 14:04:54 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-11-04 14:04:54 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-11-04 14:04:54 - app.utils - INFO - Applying post-defined rules (post)
+2024-11-04 14:04:55 - app.utils - INFO - Text after post-defined rules (post): as bata
+2024-11-04 14:04:55 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-11-04 14:04:55 - app.pantasa_checker - DEBUG - Tokens: ['as', 'bata']
+2024-11-04 14:04:55 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('as', 'NNCA'), ('bata', 'NNC')]
+2024-11-04 14:04:55 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-11-04 14:04:55 - app.utils - INFO - Token Suggestions: [{'token': 'NNCA', 'suggestions': [], 'distances': []}, {'token': 'NNC', 'suggestions': [], 'distances': []}]
+2024-11-04 14:04:55 - app.utils - INFO - Applying POS corrections
+2024-11-04 14:04:55 - app.utils - INFO - Final Corrected Sentence: as bata
+2024-11-04 14:04:55 - root - INFO - Detected Incorrect Words: [{'token': 'NNCA', 'suggestions': [], 'distances': []}, {'token': 'NNC', 'suggestions': [], 'distances': []}]
+2024-11-04 14:04:55 - root - INFO - Suggestion for Incorrect Words: []
+2024-11-04 14:04:55 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:04:55] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:05:01 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:05:01 - app.pantasa_checker - DEBUG - Tokens: ['ms', 'bta']
+2024-11-04 14:05:01 - app.pantasa_checker - DEBUG - Incorrect Words: ['ms', 'bta']
+2024-11-04 14:05:01 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:05:01 - app.utils - INFO - Text after pre-defined rules (pre): ms bta
+2024-11-04 14:05:01 - app.pantasa_checker - DEBUG - Incorrect Words: ['ms', 'bta']
+2024-11-04 14:05:01 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['ms', 'bta']
+2024-11-04 14:05:01 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:05:03 - app.utils - INFO - Suggestions for 'ms': ['as', 'cms', 'is', 'kms', 'm']
+2024-11-04 14:05:03 - app.utils - INFO - Replaced 'ms' with 'is'
+2024-11-04 14:05:05 - app.utils - INFO - Suggestions for 'bta': ['ata', 'ba', 'bata', 'beta', 'bia']
+2024-11-04 14:05:05 - app.utils - INFO - Replaced 'bta' with 'bata'
+2024-11-04 14:05:05 - app.utils - INFO - Text after spell checking: is bata
+2024-11-04 14:05:05 - root - INFO - Detected Incorrect Words: {'ms': ['as', 'cms', 'is', 'kms', 'm'], 'bta': ['ata', 'ba', 'bata', 'beta', 'bia']}
+2024-11-04 14:05:05 - root - INFO - Suggestion for Incorrect Words: ['ms', 'bta']
+2024-11-04 14:05:05 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:05:05] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:05:09 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:05:09 - app.pantasa_checker - DEBUG - Tokens: ['cms', 'bta']
+2024-11-04 14:05:09 - app.pantasa_checker - DEBUG - Incorrect Words: ['bta']
+2024-11-04 14:05:09 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:05:10 - app.utils - INFO - Text after pre-defined rules (pre): cms bta
+2024-11-04 14:05:10 - app.pantasa_checker - DEBUG - Incorrect Words: ['bta']
+2024-11-04 14:05:10 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['bta']
+2024-11-04 14:05:10 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:05:12 - app.utils - INFO - Suggestions for 'bta': ['ata', 'ba', 'bata', 'beta', 'bia']
+2024-11-04 14:05:12 - app.utils - INFO - Replaced 'bta' with 'bata'
+2024-11-04 14:05:12 - app.utils - INFO - Text after spell checking: cms bata
+2024-11-04 14:05:12 - root - INFO - Detected Incorrect Words: {'bta': ['ata', 'ba', 'bata', 'beta', 'bia']}
+2024-11-04 14:05:12 - root - INFO - Suggestion for Incorrect Words: ['bta']
+2024-11-04 14:05:12 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:05:12] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:05:16 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:05:16 - app.pantasa_checker - DEBUG - Tokens: ['cms', 'beta']
+2024-11-04 14:05:16 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-11-04 14:05:16 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-11-04 14:05:16 - app.utils - INFO - Applying post-defined rules (post)
+2024-11-04 14:05:17 - app.utils - INFO - Text after post-defined rules (post): cms beta
+2024-11-04 14:05:17 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-11-04 14:05:17 - app.pantasa_checker - DEBUG - Tokens: ['cms', 'beta']
+2024-11-04 14:05:17 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('cms', 'FW'), ('beta', 'FW')]
+2024-11-04 14:05:17 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-11-04 14:05:17 - app.utils - INFO - Token Suggestions: [{'token': 'FW', 'suggestions': [], 'distances': []}, {'token': 'FW', 'suggestions': [], 'distances': []}]
+2024-11-04 14:05:17 - app.utils - INFO - Applying POS corrections
+2024-11-04 14:05:17 - app.utils - INFO - Final Corrected Sentence: cms beta
+2024-11-04 14:05:17 - root - INFO - Detected Incorrect Words: [{'token': 'FW', 'suggestions': [], 'distances': []}, {'token': 'FW', 'suggestions': [], 'distances': []}]
+2024-11-04 14:05:17 - root - INFO - Suggestion for Incorrect Words: []
+2024-11-04 14:05:17 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:05:17] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:05:34 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:05:34 - app.pantasa_checker - DEBUG - Tokens: ['mss', 'bta']
+2024-11-04 14:05:34 - app.pantasa_checker - DEBUG - Incorrect Words: ['mss', 'bta']
+2024-11-04 14:05:34 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:05:34 - app.utils - INFO - Text after pre-defined rules (pre): mss bta
+2024-11-04 14:05:34 - app.pantasa_checker - DEBUG - Incorrect Words: ['mss', 'bta']
+2024-11-04 14:05:34 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['mss', 'bta']
+2024-11-04 14:05:34 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:05:36 - app.utils - INFO - Suggestions for 'mss': ['ass', 'mas', 'mass', 'mess', 'miss']
+2024-11-04 14:05:36 - app.utils - INFO - Replaced 'mss' with 'mass'
+2024-11-04 14:05:39 - app.utils - INFO - Suggestions for 'bta': ['ata', 'ba', 'bata', 'beta', 'bia']
+2024-11-04 14:05:39 - app.utils - INFO - Replaced 'bta' with 'bata'
+2024-11-04 14:05:39 - app.utils - INFO - Text after spell checking: mass bata
+2024-11-04 14:05:39 - root - INFO - Detected Incorrect Words: {'mss': ['ass', 'mas', 'mass', 'mess', 'miss'], 'bta': ['ata', 'ba', 'bata', 'beta', 'bia']}
+2024-11-04 14:05:39 - root - INFO - Suggestion for Incorrect Words: ['mss', 'bta']
+2024-11-04 14:05:39 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:05:39] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:05:44 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:05:44 - app.pantasa_checker - DEBUG - Tokens: ['mas', 'bta']
+2024-11-04 14:05:44 - app.pantasa_checker - DEBUG - Incorrect Words: ['bta']
+2024-11-04 14:05:44 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:05:44 - app.utils - INFO - Text after pre-defined rules (pre): mas bta
+2024-11-04 14:05:44 - app.pantasa_checker - DEBUG - Incorrect Words: ['bta']
+2024-11-04 14:05:44 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['bta']
+2024-11-04 14:05:44 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:05:46 - app.utils - INFO - Suggestions for 'bta': ['ata', 'ba', 'bata', 'beta', 'bia']
+2024-11-04 14:05:46 - app.utils - INFO - Replaced 'bta' with 'bata'
+2024-11-04 14:05:46 - app.utils - INFO - Text after spell checking: mas bata
+2024-11-04 14:05:46 - root - INFO - Detected Incorrect Words: {'bta': ['ata', 'ba', 'bata', 'beta', 'bia']}
+2024-11-04 14:05:46 - root - INFO - Suggestion for Incorrect Words: ['bta']
+2024-11-04 14:05:46 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:05:46] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:05:51 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:05:51 - app.pantasa_checker - DEBUG - Tokens: ['mas', 'bata']
+2024-11-04 14:05:51 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-11-04 14:05:51 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-11-04 14:05:51 - app.utils - INFO - Applying post-defined rules (post)
+2024-11-04 14:05:51 - app.utils - INFO - Text after post-defined rules (post): mas bata
+2024-11-04 14:05:51 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-11-04 14:05:51 - app.pantasa_checker - DEBUG - Tokens: ['mas', 'bata']
+2024-11-04 14:05:52 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('mas', 'JJCC'), ('bata', 'JJD')]
+2024-11-04 14:05:52 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-11-04 14:05:52 - app.utils - INFO - Token Suggestions: [{'token': 'JJCC', 'suggestions': [], 'distances': []}, {'token': 'JJD', 'suggestions': [], 'distances': []}]
+2024-11-04 14:05:52 - app.utils - INFO - Applying POS corrections
+2024-11-04 14:05:52 - app.utils - INFO - Final Corrected Sentence: mas bata
+2024-11-04 14:05:52 - root - INFO - Detected Incorrect Words: [{'token': 'JJCC', 'suggestions': [], 'distances': []}, {'token': 'JJD', 'suggestions': [], 'distances': []}]
+2024-11-04 14:05:52 - root - INFO - Suggestion for Incorrect Words: []
+2024-11-04 14:05:52 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:05:52] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:06:00 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:06:00 - app.pantasa_checker - DEBUG - Tokens: ['mas', 'bata']
+2024-11-04 14:06:00 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-11-04 14:06:00 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-11-04 14:06:00 - app.utils - INFO - Applying post-defined rules (post)
+2024-11-04 14:06:01 - app.utils - INFO - Text after post-defined rules (post): mas bata
+2024-11-04 14:06:01 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-11-04 14:06:01 - app.pantasa_checker - DEBUG - Tokens: ['mas', 'bata']
+2024-11-04 14:06:01 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('mas', 'JJCC'), ('bata', 'JJD')]
+2024-11-04 14:06:01 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-11-04 14:06:01 - app.utils - INFO - Token Suggestions: [{'token': 'JJCC', 'suggestions': [], 'distances': []}, {'token': 'JJD', 'suggestions': [], 'distances': []}]
+2024-11-04 14:06:01 - app.utils - INFO - Applying POS corrections
+2024-11-04 14:06:01 - app.utils - INFO - Final Corrected Sentence: mas bata
+2024-11-04 14:06:01 - root - INFO - Detected Incorrect Words: [{'token': 'JJCC', 'suggestions': [], 'distances': []}, {'token': 'JJD', 'suggestions': [], 'distances': []}]
+2024-11-04 14:06:01 - root - INFO - Suggestion for Incorrect Words: []
+2024-11-04 14:06:01 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:06:01] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:07:10 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:07:10 - app.pantasa_checker - DEBUG - Tokens: ['ms', 'bata']
+2024-11-04 14:07:10 - app.pantasa_checker - DEBUG - Incorrect Words: ['ms']
+2024-11-04 14:07:10 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:07:10 - app.utils - INFO - Text after pre-defined rules (pre): ms bata
+2024-11-04 14:07:10 - app.pantasa_checker - DEBUG - Incorrect Words: ['ms']
+2024-11-04 14:07:10 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['ms']
+2024-11-04 14:07:10 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:07:12 - app.utils - INFO - Suggestions for 'ms': ['as', 'cms', 'is', 'kms', 'm']
+2024-11-04 14:07:12 - app.utils - INFO - Replaced 'ms' with 'is'
+2024-11-04 14:07:12 - app.utils - INFO - Text after spell checking: is bata
+2024-11-04 14:07:12 - root - INFO - Detected Incorrect Words: {'ms': ['as', 'cms', 'is', 'kms', 'm']}
+2024-11-04 14:07:12 - root - INFO - Suggestion for Incorrect Words: ['ms']
+2024-11-04 14:07:12 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:07:12] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:07:19 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:07:19 - app.pantasa_checker - DEBUG - Tokens: ['mss', 'bata']
+2024-11-04 14:07:19 - app.pantasa_checker - DEBUG - Incorrect Words: ['mss']
+2024-11-04 14:07:19 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:07:19 - app.utils - INFO - Text after pre-defined rules (pre): mss bata
+2024-11-04 14:07:19 - app.pantasa_checker - DEBUG - Incorrect Words: ['mss']
+2024-11-04 14:07:19 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['mss']
+2024-11-04 14:07:19 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:07:22 - app.utils - INFO - Suggestions for 'mss': ['ass', 'mas', 'mass', 'mess', 'miss']
+2024-11-04 14:07:22 - app.utils - INFO - Replaced 'mss' with 'mass'
+2024-11-04 14:07:22 - app.utils - INFO - Text after spell checking: mass bata
+2024-11-04 14:07:22 - root - INFO - Detected Incorrect Words: {'mss': ['ass', 'mas', 'mass', 'mess', 'miss']}
+2024-11-04 14:07:22 - root - INFO - Suggestion for Incorrect Words: ['mss']
+2024-11-04 14:07:22 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:07:22] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:07:26 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:07:26 - app.pantasa_checker - DEBUG - Tokens: ['mas', 'bata']
+2024-11-04 14:07:26 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-11-04 14:07:26 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-11-04 14:07:26 - app.utils - INFO - Applying post-defined rules (post)
+2024-11-04 14:07:27 - app.utils - INFO - Text after post-defined rules (post): mas bata
+2024-11-04 14:07:27 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-11-04 14:07:27 - app.pantasa_checker - DEBUG - Tokens: ['mas', 'bata']
+2024-11-04 14:07:27 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('mas', 'JJCC'), ('bata', 'JJD')]
+2024-11-04 14:07:27 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-11-04 14:07:27 - app.utils - INFO - Token Suggestions: [{'token': 'JJCC', 'suggestions': [], 'distances': []}, {'token': 'JJD', 'suggestions': [], 'distances': []}]
+2024-11-04 14:07:27 - app.utils - INFO - Applying POS corrections
+2024-11-04 14:07:27 - app.utils - INFO - Final Corrected Sentence: mas bata
+2024-11-04 14:07:27 - root - INFO - Detected Incorrect Words: [{'token': 'JJCC', 'suggestions': [], 'distances': []}, {'token': 'JJD', 'suggestions': [], 'distances': []}]
+2024-11-04 14:07:27 - root - INFO - Suggestion for Incorrect Words: []
+2024-11-04 14:07:27 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:07:27] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:30:01 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:30:01] "GET / HTTP/1.1" 200 -
+2024-11-04 14:30:01 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:30:01] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-11-04 14:30:01 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:30:01] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:30:01 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:30:01] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:30:01 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:30:01] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:30:01 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:30:01] "GET /static/pantasa.js HTTP/1.1" 200 -
+2024-11-04 14:30:02 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:30:02] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:30:07 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:30:07 - app.pantasa_checker - DEBUG - Tokens: ['ms', 'bata']
+2024-11-04 14:30:07 - app.pantasa_checker - DEBUG - Incorrect Words: ['ms']
+2024-11-04 14:30:07 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:30:08 - app.utils - INFO - Text after pre-defined rules (pre): ms bata
+2024-11-04 14:30:08 - app.pantasa_checker - DEBUG - Incorrect Words: ['ms']
+2024-11-04 14:30:08 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['ms']
+2024-11-04 14:30:08 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:30:09 - app.utils - INFO - Suggestions for 'ms': ['as', 'cms', 'is', 'kms', 'm']
+2024-11-04 14:30:09 - app.utils - INFO - Replaced 'ms' with 'is'
+2024-11-04 14:30:09 - app.utils - INFO - Text after spell checking: is bata
+2024-11-04 14:30:09 - root - INFO - Detected Incorrect Words: {'ms': ['as', 'cms', 'is', 'kms', 'm']}
+2024-11-04 14:30:09 - root - INFO - Suggestion for Incorrect Words: ['ms']
+2024-11-04 14:30:09 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:30:09] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:30:14 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:30:14 - app.pantasa_checker - DEBUG - Tokens: ['kms', 'bata']
+2024-11-04 14:30:14 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-11-04 14:30:14 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-11-04 14:30:14 - app.utils - INFO - Applying post-defined rules (post)
+2024-11-04 14:30:14 - app.utils - INFO - Text after post-defined rules (post): kms bata
+2024-11-04 14:30:14 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-11-04 14:30:14 - app.pantasa_checker - DEBUG - Tokens: ['kms', 'bata']
+2024-11-04 14:30:15 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('kms', 'FW'), ('bata', 'NNC')]
+2024-11-04 14:30:15 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-11-04 14:30:15 - app.utils - INFO - Token Suggestions: [{'token': 'FW', 'suggestions': [], 'distances': []}, {'token': 'NNC', 'suggestions': [], 'distances': []}]
+2024-11-04 14:30:15 - app.utils - INFO - Applying POS corrections
+2024-11-04 14:30:15 - app.utils - INFO - Final Corrected Sentence: kms bata
+2024-11-04 14:30:15 - root - INFO - Detected Incorrect Words: [{'token': 'FW', 'suggestions': [], 'distances': []}, {'token': 'NNC', 'suggestions': [], 'distances': []}]
+2024-11-04 14:30:15 - root - INFO - Suggestion for Incorrect Words: []
+2024-11-04 14:30:15 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:30:15] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:30:26 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:30:26 - app.pantasa_checker - DEBUG - Tokens: ['sda', 'bata', 'sda']
+2024-11-04 14:30:26 - app.pantasa_checker - DEBUG - Incorrect Words: ['sda', 'sda']
+2024-11-04 14:30:26 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:30:27 - app.utils - INFO - Text after pre-defined rules (pre): sda bata sda
+2024-11-04 14:30:27 - app.pantasa_checker - DEBUG - Incorrect Words: ['sda', 'sda']
+2024-11-04 14:30:27 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['sda', 'sda']
+2024-11-04 14:30:27 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:30:29 - app.utils - INFO - Suggestions for 'sda': ['ada', 'da', 'fda', 'isda', 'oda']
+2024-11-04 14:30:29 - app.utils - INFO - Replaced 'sda' with 'fda'
+2024-11-04 14:30:31 - app.utils - INFO - Suggestions for 'sda': ['ada', 'da', 'fda', 'isda', 'oda']
+2024-11-04 14:30:31 - app.utils - INFO - Replaced 'sda' with 'fda'
+2024-11-04 14:30:31 - app.utils - INFO - Text after spell checking: fda bata fda
+2024-11-04 14:30:31 - root - INFO - Detected Incorrect Words: {'sda': ['ada', 'da', 'fda', 'isda', 'oda']}
+2024-11-04 14:30:31 - root - INFO - Suggestion for Incorrect Words: ['sda', 'sda']
+2024-11-04 14:30:31 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:30:31] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:30:37 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:30:37 - app.pantasa_checker - DEBUG - Tokens: ['isda', 'bata', 'sda']
+2024-11-04 14:30:37 - app.pantasa_checker - DEBUG - Incorrect Words: ['sda']
+2024-11-04 14:30:37 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:30:38 - app.utils - INFO - Text after pre-defined rules (pre): isda bata sda
+2024-11-04 14:30:38 - app.pantasa_checker - DEBUG - Incorrect Words: ['sda']
+2024-11-04 14:30:38 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['sda']
+2024-11-04 14:30:38 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:30:40 - app.utils - INFO - Suggestions for 'sda': ['ada', 'da', 'fda', 'isda', 'oda']
+2024-11-04 14:30:40 - app.utils - INFO - Replaced 'sda' with 'fda'
+2024-11-04 14:30:40 - app.utils - INFO - Text after spell checking: isda bata fda
+2024-11-04 14:30:40 - root - INFO - Detected Incorrect Words: {'sda': ['ada', 'da', 'fda', 'isda', 'oda']}
+2024-11-04 14:30:40 - root - INFO - Suggestion for Incorrect Words: ['sda']
+2024-11-04 14:30:40 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:30:40] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:30:45 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:30:45 - app.pantasa_checker - DEBUG - Tokens: ['isda', 'bata', 'isda']
+2024-11-04 14:30:45 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-11-04 14:30:45 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-11-04 14:30:45 - app.utils - INFO - Applying post-defined rules (post)
+2024-11-04 14:30:45 - app.utils - INFO - Text after post-defined rules (post): isda bata isda
+2024-11-04 14:30:45 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-11-04 14:30:45 - app.pantasa_checker - DEBUG - Tokens: ['isda', 'bata', 'isda']
+2024-11-04 14:30:46 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('isda', 'NNC'), ('bata', 'NNC'), ('isda', 'NNC')]
+2024-11-04 14:30:46 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-11-04 14:30:49 - app.utils - INFO - Token Suggestions: [{'token': 'NNC', 'suggestions': ['SUBSTITUTE_NNC_CCT'], 'distances': [3.2]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC'], 'distances': [3.2]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC'], 'distances': [3.2]}]
+2024-11-04 14:30:49 - app.utils - INFO - Applying POS corrections
+2024-11-04 14:30:49 - app.utils - INFO - Final Corrected Sentence: sa bata isda
+2024-11-04 14:30:49 - root - INFO - Detected Incorrect Words: [{'token': 'NNC', 'suggestions': ['SUBSTITUTE_NNC_CCT'], 'distances': [3.2]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC'], 'distances': [3.2]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC'], 'distances': [3.2]}]
+2024-11-04 14:30:49 - root - INFO - Suggestion for Incorrect Words: []
+2024-11-04 14:30:49 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:30:49] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:31:14 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:31:14 - app.pantasa_checker - DEBUG - Tokens: ['asf', 'bata', 'asf']
+2024-11-04 14:31:15 - app.pantasa_checker - DEBUG - Incorrect Words: ['asf', 'asf']
+2024-11-04 14:31:15 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:31:15 - app.utils - INFO - Text after pre-defined rules (pre): asf bata asf
+2024-11-04 14:31:15 - app.pantasa_checker - DEBUG - Incorrect Words: ['asf', 'asf']
+2024-11-04 14:31:15 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['asf', 'asf']
+2024-11-04 14:31:15 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:31:17 - app.utils - INFO - Suggestions for 'asf': ['abf', 'anf', 'as', 'asa', 'ash']
+2024-11-04 14:31:17 - app.utils - INFO - Replaced 'asf' with 'as'
+2024-11-04 14:31:20 - app.utils - INFO - Suggestions for 'asf': ['abf', 'anf', 'as', 'asa', 'ash']
+2024-11-04 14:31:20 - app.utils - INFO - Replaced 'asf' with 'as'
+2024-11-04 14:31:20 - app.utils - INFO - Text after spell checking: as bata as
+2024-11-04 14:31:20 - root - INFO - Detected Incorrect Words: {'asf': ['abf', 'anf', 'as', 'asa', 'ash']}
+2024-11-04 14:31:20 - root - INFO - Suggestion for Incorrect Words: ['asf', 'asf']
+2024-11-04 14:31:20 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:31:20] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:31:47 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:31:47 - app.pantasa_checker - DEBUG - Tokens: ['adf', 'bata', 'adf']
+2024-11-04 14:31:47 - app.pantasa_checker - DEBUG - Incorrect Words: ['adf', 'adf']
+2024-11-04 14:31:47 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:31:48 - app.utils - INFO - Text after pre-defined rules (pre): adf bata adf
+2024-11-04 14:31:48 - app.pantasa_checker - DEBUG - Incorrect Words: ['adf', 'adf']
+2024-11-04 14:31:48 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['adf', 'adf']
+2024-11-04 14:31:48 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:31:50 - app.utils - INFO - Suggestions for 'adf': ['abf', 'ad', 'ada', 'add', 'ads']
+2024-11-04 14:31:50 - app.utils - INFO - Replaced 'adf' with 'ada'
+2024-11-04 14:31:52 - app.utils - INFO - Suggestions for 'adf': ['abf', 'ad', 'ada', 'add', 'ads']
+2024-11-04 14:31:52 - app.utils - INFO - Replaced 'adf' with 'ada'
+2024-11-04 14:31:52 - app.utils - INFO - Text after spell checking: ada bata ada
+2024-11-04 14:31:52 - root - INFO - Detected Incorrect Words: {'adf': ['abf', 'ad', 'ada', 'add', 'ads']}
+2024-11-04 14:31:52 - root - INFO - Suggestion for Incorrect Words: ['adf', 'adf']
+2024-11-04 14:31:52 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:31:52] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:32:03 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:32:03 - app.pantasa_checker - DEBUG - Tokens: ['sdf', 'bata', 'sdf']
+2024-11-04 14:32:03 - app.pantasa_checker - DEBUG - Incorrect Words: ['sdf', 'sdf']
+2024-11-04 14:32:03 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:32:04 - app.utils - INFO - Text after pre-defined rules (pre): sdf bata sdf
+2024-11-04 14:32:04 - app.pantasa_checker - DEBUG - Incorrect Words: ['sdf', 'sdf']
+2024-11-04 14:32:04 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['sdf', 'sdf']
+2024-11-04 14:32:04 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:32:06 - app.utils - INFO - Suggestions for 'sdf': ['abf', 'ad', 'ada', 'add', 'ads']
+2024-11-04 14:32:06 - app.utils - INFO - Replaced 'sdf' with 'ada'
+2024-11-04 14:32:08 - app.utils - INFO - Suggestions for 'sdf': ['abf', 'ad', 'ada', 'add', 'ads']
+2024-11-04 14:32:08 - app.utils - INFO - Replaced 'sdf' with 'ada'
+2024-11-04 14:32:08 - app.utils - INFO - Text after spell checking: ada bata ada
+2024-11-04 14:32:08 - root - INFO - Detected Incorrect Words: {'sdf': ['abf', 'ad', 'ada', 'add', 'ads']}
+2024-11-04 14:32:08 - root - INFO - Suggestion for Incorrect Words: ['sdf', 'sdf']
+2024-11-04 14:32:08 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:32:08] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:32:20 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:32:20 - app.pantasa_checker - DEBUG - Tokens: ['sda', 'bata', 'sda']
+2024-11-04 14:32:20 - app.pantasa_checker - DEBUG - Incorrect Words: ['sda', 'sda']
+2024-11-04 14:32:20 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:32:21 - app.utils - INFO - Text after pre-defined rules (pre): sda bata sda
+2024-11-04 14:32:21 - app.pantasa_checker - DEBUG - Incorrect Words: ['sda', 'sda']
+2024-11-04 14:32:21 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['sda', 'sda']
+2024-11-04 14:32:21 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:32:23 - app.utils - INFO - Suggestions for 'sda': ['ada', 'da', 'fda', 'isda', 'oda']
+2024-11-04 14:32:23 - app.utils - INFO - Replaced 'sda' with 'fda'
+2024-11-04 14:32:25 - app.utils - INFO - Suggestions for 'sda': ['ada', 'da', 'fda', 'isda', 'oda']
+2024-11-04 14:32:25 - app.utils - INFO - Replaced 'sda' with 'fda'
+2024-11-04 14:32:25 - app.utils - INFO - Text after spell checking: fda bata fda
+2024-11-04 14:32:25 - root - INFO - Detected Incorrect Words: {'sda': ['ada', 'da', 'fda', 'isda', 'oda']}
+2024-11-04 14:32:25 - root - INFO - Suggestion for Incorrect Words: ['sda', 'sda']
+2024-11-04 14:32:25 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:32:25] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:32:33 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:32:33 - app.pantasa_checker - DEBUG - Tokens: ['isda', 'bata', 'sda']
+2024-11-04 14:32:33 - app.pantasa_checker - DEBUG - Incorrect Words: ['sda']
+2024-11-04 14:32:33 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:32:34 - app.utils - INFO - Text after pre-defined rules (pre): isda bata sda
+2024-11-04 14:32:34 - app.pantasa_checker - DEBUG - Incorrect Words: ['sda']
+2024-11-04 14:32:34 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['sda']
+2024-11-04 14:32:34 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:32:36 - app.utils - INFO - Suggestions for 'sda': ['ada', 'da', 'fda', 'isda', 'oda']
+2024-11-04 14:32:36 - app.utils - INFO - Replaced 'sda' with 'fda'
+2024-11-04 14:32:36 - app.utils - INFO - Text after spell checking: isda bata fda
+2024-11-04 14:32:36 - root - INFO - Detected Incorrect Words: {'sda': ['ada', 'da', 'fda', 'isda', 'oda']}
+2024-11-04 14:32:36 - root - INFO - Suggestion for Incorrect Words: ['sda']
+2024-11-04 14:32:36 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:32:36] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:32:39 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:32:39 - app.pantasa_checker - DEBUG - Tokens: ['isda', 'bata', 'isda']
+2024-11-04 14:32:39 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-11-04 14:32:39 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-11-04 14:32:39 - app.utils - INFO - Applying post-defined rules (post)
+2024-11-04 14:32:39 - app.utils - INFO - Text after post-defined rules (post): isda bata isda
+2024-11-04 14:32:39 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-11-04 14:32:39 - app.pantasa_checker - DEBUG - Tokens: ['isda', 'bata', 'isda']
+2024-11-04 14:32:40 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('isda', 'NNC'), ('bata', 'NNC'), ('isda', 'NNC')]
+2024-11-04 14:32:40 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-11-04 14:32:43 - app.utils - INFO - Token Suggestions: [{'token': 'NNC', 'suggestions': ['SUBSTITUTE_NNC_CCT'], 'distances': [3.2]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC'], 'distances': [3.2]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC'], 'distances': [3.2]}]
+2024-11-04 14:32:43 - app.utils - INFO - Applying POS corrections
+2024-11-04 14:32:43 - app.utils - INFO - Final Corrected Sentence: sa bata isda
+2024-11-04 14:32:43 - root - INFO - Detected Incorrect Words: [{'token': 'NNC', 'suggestions': ['SUBSTITUTE_NNC_CCT'], 'distances': [3.2]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC'], 'distances': [3.2]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC'], 'distances': [3.2]}]
+2024-11-04 14:32:43 - root - INFO - Suggestion for Incorrect Words: []
+2024-11-04 14:32:43 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:32:43] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:37:34 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:37:34] "GET / HTTP/1.1" 200 -
+2024-11-04 14:37:34 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:37:34] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:37:34 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:37:34] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 14:37:34 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:37:34] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 14:37:34 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:37:34] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:37:34 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:37:34] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:37:37 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:37:37] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:37:53 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:37:53] "GET / HTTP/1.1" 200 -
+2024-11-04 14:37:53 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:37:53] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:37:53 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:37:53] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 14:37:53 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:37:53] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 14:37:53 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:37:53] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:37:53 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:37:53] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:37:55 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:37:55] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:38:36 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:38:36] "GET / HTTP/1.1" 200 -
+2024-11-04 14:38:36 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:38:36] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:38:36 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:38:36] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 14:38:36 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:38:36] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 14:38:36 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:38:36] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:38:36 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:38:36] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:38:37 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:38:37] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:38:49 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:38:49] "GET / HTTP/1.1" 200 -
+2024-11-04 14:38:49 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:38:49] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:38:49 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:38:49] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 14:38:49 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:38:49] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 14:38:49 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:38:49] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:38:49 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:38:49] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:38:51 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:38:51] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:39:10 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:39:10] "GET / HTTP/1.1" 200 -
+2024-11-04 14:39:10 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:39:10] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:39:10 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:39:10] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 14:39:10 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:39:10] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 14:39:10 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:39:10] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:39:10 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:39:10] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:39:11 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:39:11] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:39:38 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:39:38 - app.pantasa_checker - DEBUG - Tokens: ['s']
+2024-11-04 14:39:38 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-11-04 14:39:38 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-11-04 14:39:38 - app.utils - INFO - Applying post-defined rules (post)
+2024-11-04 14:39:38 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:39:38 - app.pantasa_checker - DEBUG - Tokens: ['s']
+2024-11-04 14:39:38 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-11-04 14:39:38 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-11-04 14:39:38 - app.utils - INFO - Applying post-defined rules (post)
+2024-11-04 14:39:39 - app.utils - INFO - Text after post-defined rules (post): s
+2024-11-04 14:39:39 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-11-04 14:39:39 - app.pantasa_checker - DEBUG - Tokens: ['s']
+2024-11-04 14:39:39 - app.utils - INFO - Text after post-defined rules (post): s
+2024-11-04 14:39:39 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-11-04 14:39:39 - app.pantasa_checker - DEBUG - Tokens: ['s']
+2024-11-04 14:39:39 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('s', 'NNCA')]
+2024-11-04 14:39:39 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-11-04 14:39:39 - app.utils - INFO - Token Suggestions: [{'token': 'NNCA', 'suggestions': [], 'distances': []}]
+2024-11-04 14:39:39 - app.utils - INFO - Applying POS corrections
+2024-11-04 14:39:39 - app.utils - INFO - Final Corrected Sentence: s
+2024-11-04 14:39:39 - root - INFO - Detected Incorrect Words: [{'token': 'NNCA', 'suggestions': [], 'distances': []}]
+2024-11-04 14:39:39 - root - INFO - Suggestion for Incorrect Words: []
+2024-11-04 14:39:39 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:39:39] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:39:39 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('s', 'NNCA')]
+2024-11-04 14:39:39 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-11-04 14:39:39 - app.utils - INFO - Token Suggestions: [{'token': 'NNCA', 'suggestions': [], 'distances': []}]
+2024-11-04 14:39:39 - app.utils - INFO - Applying POS corrections
+2024-11-04 14:39:39 - app.utils - INFO - Final Corrected Sentence: s
+2024-11-04 14:39:39 - root - INFO - Detected Incorrect Words: [{'token': 'NNCA', 'suggestions': [], 'distances': []}]
+2024-11-04 14:39:39 - root - INFO - Suggestion for Incorrect Words: []
+2024-11-04 14:39:39 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:39:39] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:39:44 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:39:44 - app.pantasa_checker - DEBUG - Tokens: ['sda']
+2024-11-04 14:39:44 - app.pantasa_checker - DEBUG - Incorrect Words: ['sda']
+2024-11-04 14:39:44 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:39:45 - app.utils - INFO - Text after pre-defined rules (pre): sda
+2024-11-04 14:39:45 - app.pantasa_checker - DEBUG - Incorrect Words: ['sda']
+2024-11-04 14:39:45 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['sda']
+2024-11-04 14:39:45 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:39:46 - app.utils - INFO - Suggestions for 'sda': ['ada', 'da', 'fda', 'isda', 'oda']
+2024-11-04 14:39:46 - app.utils - INFO - Replaced 'sda' with 'fda'
+2024-11-04 14:39:46 - app.utils - INFO - Text after spell checking: fda
+2024-11-04 14:39:46 - root - INFO - Detected Incorrect Words: {'sda': ['ada', 'da', 'fda', 'isda', 'oda']}
+2024-11-04 14:39:46 - root - INFO - Suggestion for Incorrect Words: ['sda']
+2024-11-04 14:39:46 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:39:46] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:39:51 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:39:51 - app.pantasa_checker - DEBUG - Tokens: ['fda']
+2024-11-04 14:39:51 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-11-04 14:39:51 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-11-04 14:39:51 - app.utils - INFO - Applying post-defined rules (post)
+2024-11-04 14:39:51 - app.utils - INFO - Text after post-defined rules (post): fda
+2024-11-04 14:39:51 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-11-04 14:39:51 - app.pantasa_checker - DEBUG - Tokens: ['fda']
+2024-11-04 14:39:52 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('fda', 'NNC')]
+2024-11-04 14:39:52 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-11-04 14:39:52 - app.utils - INFO - Token Suggestions: [{'token': 'NNC', 'suggestions': [], 'distances': []}]
+2024-11-04 14:39:52 - app.utils - INFO - Applying POS corrections
+2024-11-04 14:39:52 - app.utils - INFO - Final Corrected Sentence: fda
+2024-11-04 14:39:52 - root - INFO - Detected Incorrect Words: [{'token': 'NNC', 'suggestions': [], 'distances': []}]
+2024-11-04 14:39:52 - root - INFO - Suggestion for Incorrect Words: []
+2024-11-04 14:39:52 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:39:52] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:40:17 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:40:17] "GET / HTTP/1.1" 200 -
+2024-11-04 14:40:17 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:40:17] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 14:40:17 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:40:17] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:40:17 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:40:17] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 14:40:17 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:40:17] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:40:17 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:40:17] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:40:19 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:40:19] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:40:58 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:40:58] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-11-04 14:44:44 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:44:44] "GET / HTTP/1.1" 200 -
+2024-11-04 14:44:44 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:44:44] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:44:44 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:44:44] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 14:44:44 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:44:44] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 14:44:44 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:44:44] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:44:44 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:44:44] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:44:45 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:44:45] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:47:49 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:47:49] "GET / HTTP/1.1" 200 -
+2024-11-04 14:47:49 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:47:49] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 14:47:49 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:47:49] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:47:49 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:47:49] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 14:47:49 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:47:49] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:47:49 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:47:49] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:47:50 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:47:50] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:47:56 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:47:56 - app.pantasa_checker - DEBUG - Tokens: ['sds']
+2024-11-04 14:47:56 - app.pantasa_checker - DEBUG - Incorrect Words: ['sds']
+2024-11-04 14:47:56 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:47:56 - app.utils - INFO - Text after pre-defined rules (pre): sds
+2024-11-04 14:47:56 - app.pantasa_checker - DEBUG - Incorrect Words: ['sds']
+2024-11-04 14:47:56 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['sds']
+2024-11-04 14:47:56 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:47:58 - app.utils - INFO - Suggestions for 'sds': ['ads', 'sas', 'ses', 'ss', 'sss']
+2024-11-04 14:47:58 - app.utils - INFO - Replaced 'sds' with 'ses'
+2024-11-04 14:47:58 - app.utils - INFO - Text after spell checking: ses
+2024-11-04 14:47:58 - root - INFO - Detected Incorrect Words: {'sds': ['ads', 'sas', 'ses', 'ss', 'sss']}
+2024-11-04 14:47:58 - root - INFO - Suggestion for Incorrect Words: ['sds']
+2024-11-04 14:47:58 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:47:58] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:49:34 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:49:34] "GET / HTTP/1.1" 200 -
+2024-11-04 14:49:34 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:49:34] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:49:34 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:49:34] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 14:49:34 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:49:34] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 14:49:34 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:49:34] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:49:34 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:49:34] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:49:35 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:49:35] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:50:29 - app.utils - INFO - Checking words against the dictionary
+2024-11-04 14:50:29 - app.pantasa_checker - DEBUG - Tokens: ['sd']
+2024-11-04 14:50:29 - app.pantasa_checker - DEBUG - Incorrect Words: ['sd']
+2024-11-04 14:50:29 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-11-04 14:50:30 - app.utils - INFO - Text after pre-defined rules (pre): sd
+2024-11-04 14:50:30 - app.pantasa_checker - DEBUG - Incorrect Words: ['sd']
+2024-11-04 14:50:30 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['sd']
+2024-11-04 14:50:30 - app.utils - INFO - Spell checking remaining incorrect words
+2024-11-04 14:50:31 - app.utils - INFO - Suggestions for 'sd': ['ad', 'd', 'ed', 'id', 's']
+2024-11-04 14:50:31 - app.utils - INFO - Replaced 'sd' with 'ed'
+2024-11-04 14:50:31 - app.utils - INFO - Text after spell checking: ed
+2024-11-04 14:50:31 - root - INFO - Detected Incorrect Words: {'sd': ['ad', 'd', 'ed', 'id', 's']}
+2024-11-04 14:50:31 - root - INFO - Suggestion for Incorrect Words: ['sd']
+2024-11-04 14:50:31 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:50:31] "POST /get_text HTTP/1.1" 200 -
+2024-11-04 14:51:24 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:51:24] "GET / HTTP/1.1" 200 -
+2024-11-04 14:51:24 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:51:24] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 14:51:24 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:51:24] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:51:24 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:51:24] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 14:51:24 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:51:24] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:51:24 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:51:24] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:51:25 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:51:25] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:52:59 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:52:59] "GET / HTTP/1.1" 200 -
+2024-11-04 14:52:59 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:52:59] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:52:59 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:52:59] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 14:52:59 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:52:59] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 14:52:59 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:52:59] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:52:59 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:52:59] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:53:00 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:53:00] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:53:17 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:53:17] "GET / HTTP/1.1" 200 -
+2024-11-04 14:53:17 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:53:17] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:53:17 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:53:17] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 14:53:17 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:53:17] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 14:53:17 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:53:17] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:53:17 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:53:17] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:53:18 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:53:18] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:58:21 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:58:21] "GET / HTTP/1.1" 200 -
+2024-11-04 14:58:21 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:58:21] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 14:58:21 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:58:21] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:58:21 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:58:21] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 14:58:21 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:58:21] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:58:21 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:58:21] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:58:23 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:58:23] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:58:45 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:58:45] "GET / HTTP/1.1" 200 -
+2024-11-04 14:58:45 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:58:45] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:58:45 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:58:45] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 14:58:45 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:58:45] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 14:58:45 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:58:45] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:58:45 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:58:45] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:58:47 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:58:47] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:59:04 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:59:04] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-11-04 14:59:43 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:59:43] "GET / HTTP/1.1" 200 -
+2024-11-04 14:59:43 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:59:43] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 14:59:43 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:59:43] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 14:59:43 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:59:43] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 14:59:43 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:59:43] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 14:59:43 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:59:43] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 14:59:45 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 14:59:45] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 15:02:52 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:02:52] "GET / HTTP/1.1" 200 -
+2024-11-04 15:02:52 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:02:52] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 15:02:52 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:02:52] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 15:02:52 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:02:52] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 15:02:52 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:02:52] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 15:02:52 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:02:52] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 15:02:53 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:02:53] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 15:03:25 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:03:25] "GET / HTTP/1.1" 200 -
+2024-11-04 15:03:25 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:03:25] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 15:03:25 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:03:25] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 15:03:25 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:03:25] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 15:03:25 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:03:25] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 15:03:25 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:03:25] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 15:03:27 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:03:27] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 15:04:46 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:04:46] "GET / HTTP/1.1" 200 -
+2024-11-04 15:04:46 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:04:46] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 15:04:46 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:04:46] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 15:04:46 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:04:46] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 15:04:46 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:04:46] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 15:04:46 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:04:46] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 15:04:47 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:04:47] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 15:05:03 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:05:03] "GET / HTTP/1.1" 200 -
+2024-11-04 15:05:03 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:05:03] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 15:05:03 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:05:03] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 15:05:03 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:05:03] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 15:05:03 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:05:03] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 15:05:03 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:05:03] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 15:05:05 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:05:05] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 15:07:19 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:07:19] "GET / HTTP/1.1" 200 -
+2024-11-04 15:07:19 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:07:19] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 15:07:19 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:07:19] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 15:07:19 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:07:19] "GET /static/styles.css HTTP/1.1" 200 -
+2024-11-04 15:07:19 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:07:19] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 15:07:19 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:07:19] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 15:07:21 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:07:21] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
+2024-11-04 15:09:04 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:09:04] "GET / HTTP/1.1" 200 -
+2024-11-04 15:09:04 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:09:04] "[36mGET /static/styles.css HTTP/1.1[0m" 304 -
+2024-11-04 15:09:04 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:09:04] "[36mGET /static/assets/logo_image.png HTTP/1.1[0m" 304 -
+2024-11-04 15:09:04 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:09:04] "[36mGET /static/pantasa.js HTTP/1.1[0m" 304 -
+2024-11-04 15:09:04 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:09:04] "[36mGET /static/assets/bg.png HTTP/1.1[0m" 304 -
+2024-11-04 15:09:04 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:09:04] "[36mGET /static/fonts/Roxborough%20CF.ttf HTTP/1.1[0m" 304 -
+2024-11-04 15:09:05 - werkzeug - INFO - 127.0.0.1 - - [04/Nov/2024 15:09:05] "[36mGET /static/fonts/SortsMillGoudy-Regular.ttf HTTP/1.1[0m" 304 -
