@@ -1,11 +1,11 @@
 import logging
-from transformers import RobertaTokenizerFast, RobertaForMaskedLM
+from transformers import AutoTokenizer, RobertaForMaskedLM
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Initialize a tokenizer from a pre-trained model
-pos_tokenizer = RobertaTokenizerFast.from_pretrained("jcblaise/roberta-tagalog-base")
+pos_tokenizer = AutoTokenizer.from_pretrained('jcblaise/roberta-tagalog-base', add_prefix_space=True)
 logging.info("Initializing Roberta Tokenizer...")
 
 # Initialize the model
@@ -30,7 +30,7 @@ pos_tokenizer.add_tokens(pos_tag_vocab)
 
 # Save tokenizer for later use
 logging.info("Saving tokenizer...")
-pos_tokenizer.save_pretrained("./pos_tokenizer")
+pos_tokenizer.save_pretrained("model/pos_tokenizer")
 logging.info("Tokenizer saved successfully.")
 
 # Load pre-trained model
@@ -43,7 +43,7 @@ model.resize_token_embeddings(len(pos_tokenizer))
 
 # Save the resized model
 logging.info("Saving the resized model...")
-model.save_pretrained("./pos_model")
+model.save_pretrained("model/pos_model")
 logging.info("Resized model saved successfully.")
 
 print(len(pos_tokenizer))

@@ -1,16 +1,17 @@
 import os
+import re
+from concurrent.futures import ThreadPoolExecutor
+from tqdm import tqdm  # Import tqdm for progress tracking
 from Modules.Tokenizer import tokenize
-from Modules.POSDTagger import pos_tag as pos_dtag
-from Modules.POSRTagger import pos_tag as pos_rtag
-from Modules.Lemmatizer import lemmatize_sentence 
+from Modules.POSRTagger import pos_tag  # Use the pos_tag function from POSRTagger for both Rough and Detailed POS
+from Modules.Lemmatizer import lemmatize_sentence
 
 import sys
-import os
 
 # Add the path to morphinas_project
-sys.path.append(r'C:\Projects\Pantasa\app')
+sys.path.append('C:/Users/Carlo Agas/Documents/GitHub/Pantasaa/morphinas_project')
 
-from morphinas_project.lemmatizer_client import initialize_stemmer
+from lemmatizer_client import initialize_stemmer
 
 # Initialize the Morphinas lemmatizer once to reuse across function calls
 gateway, lemmatizer = initialize_stemmer()
@@ -19,14 +20,13 @@ gateway, lemmatizer = initialize_stemmer()
 os.environ['JVM_OPTS'] = '-Xmx2g'
 
 def load_dataset(file_path):
-    """Load dataset from a text file instead of a CSV."""
+    """Load dataset from a text file, assuming each line contains a single sentence."""
     dataset = []
     with open(file_path, 'r', encoding='utf-8') as file:
         for line in file:
-            # Each line is expected to have two parts: an ID and a sentence, separated by a tab
-            parts = line.strip().split('\t')
-            if len(parts) > 1:
-                dataset.append(parts[1])  # The second part is the sentence
+            sentence = line.strip()
+            if sentence:
+                dataset.append(sentence)
     return dataset
 
 def save_text_file(text_data, file_path):
@@ -43,74 +43,93 @@ def load_tokenized_sentences(tokenized_file):
                 tokenized_sentences.add(line.strip())
     return tokenized_sentences
 
-def preprocess_text(input_file, tokenized_file, output_file, target_lines, batch_size=700):
+def load_processed_sentences(output_file):
+    """Load already processed sentences from the output file."""
+    processed_sentences = set()
+    if os.path.exists(output_file):
+        with open(output_file, 'r', encoding='utf-8') as file:
+            for line in file:
+                parts = line.split(',')  # Assuming the sentence is the first element in each line
+                if parts:
+                    # Apply undo_escape_and_wrap to clean up the loaded sentence
+                    processed_sentences.add(undo_escape_and_wrap(parts[0]))
+    return processed_sentences
+
+def escape_unwrapped_quotes(sentence):
+    """Escape double quotes if they are not at the start and end of the sentence."""
+    if '"' in sentence and not (sentence.startswith('"') and sentence.endswith('"')):
+        sentence = sentence.replace('"', '""')
+    return sentence
+
+def wrap_sentence_with_commas(sentence):
+    """Wrap sentence with double quotes if it contains a comma and isn't already wrapped."""
+    if ',' in sentence and not (sentence.startswith('"') and sentence.endswith('"')):
+        sentence = f'"{sentence}"'
+    return sentence
+
+def redo_escape_and_wrap(sentence):
+    """Reapply double quotes and wrapping rules if conditions are met, avoiding redundant escapes."""
+    sentence = escape_unwrapped_quotes(sentence)
+    return wrap_sentence_with_commas(sentence)
+
+def undo_escape_and_wrap(sentence):
+    """Revert double quotes and wrapping for processing."""
+    if sentence.startswith('"') and sentence.endswith('"'):
+        sentence = sentence[1:-1]
+    return sentence.replace('""', '"')
+
+def process_sentence(sentence):
+    """Process a single sentence for general POS tagging, detailed POS tagging, and lemmatization."""
+    detailed_pos, general_pos = pos_tag(sentence)  # pos_tag returns both detailed and rough tags
+    lemmatized_sentence = lemmatize_sentence(sentence)
+    return general_pos, detailed_pos, lemmatized_sentence
+
+def preprocess_text(input_file, tokenized_file, output_file):
+    # Dynamically get the maximum number of CPU cores available
+    max_workers = os.cpu_count()
+    print(f"Number of cores being used: {max_workers}")
+
     dataset = load_dataset(input_file)
     tokenized_sentences = load_tokenized_sentences(tokenized_file)
-    
+    processed_sentences = load_processed_sentences(output_file)
+
     new_tokenized_sentences = []
-    general_pos_tagged_sentences = []
-    detailed_pos_tagged_sentences = []
-    lemmatized_sentences = []
-    lines_written = 0  # Track how many lines are written to the output
 
     with open(tokenized_file, 'a', encoding='utf-8') as token_file:
-        for text in dataset:
-            sentences = tokenize(text)
-            for sentence in sentences:
-                if sentence not in tokenized_sentences:
-                    new_tokenized_sentences.append(sentence)
-                    tokenized_sentences.add(sentence)
-                    token_file.write(sentence + "\n")
+        for sentence in dataset:
+            # Tokenize the sentence before processing it further
+            tokenized_sentence_parts = tokenize(sentence)
+
+            for tokenized_sentence in tokenized_sentence_parts:
+                if tokenized_sentence not in tokenized_sentences and tokenized_sentence not in processed_sentences:
+                    new_tokenized_sentences.append(tokenized_sentence)
+                    tokenized_sentences.add(tokenized_sentence)
+                    token_file.write(tokenized_sentence + "\n")
+
         print(f"Sentences tokenized to {tokenized_file}")
-    
+
+    # Use tqdm on the actual sentences processed
     with open(output_file, 'a', encoding='utf-8') as output:
-        for i in range(0, len(new_tokenized_sentences), batch_size):
-            if lines_written >= target_lines:
-                print(f"Target of {target_lines} lines reached. Halting processing.")
-                break  # Stop processing when target lines are met
-            
-            batch = new_tokenized_sentences[i:i + batch_size]
-
-            general_pos_tagged_batch = []
-            detailed_pos_tagged_batch = []
-            lemmatized_batch = []
-
-            for sentence in batch:
-                if sentence:
-                    general_pos_tagged_batch.append(pos_rtag(sentence))
-                    detailed_pos_tagged_batch.append(pos_dtag(sentence))
-                    lemmatized_batch.append(lemmatize_sentence(sentence))
-                else:
-                    general_pos_tagged_batch.append('')
-                    detailed_pos_tagged_batch.append('')
-                    lemmatized_batch.append('')
-
-            # Append batch results to output file immediately
-            for tok_sentence, gen_pos, det_pos, lemma in zip(batch, general_pos_tagged_batch, detailed_pos_tagged_batch, lemmatized_batch):
-                if lines_written >= target_lines:
-                    break  # Stop processing when target lines are met
-                # Add single quotes around sentences ending with a comma
-                if ',' in tok_sentence:
-                    tok_sentence = f'"{tok_sentence}"'
-                output.write(f"{tok_sentence},{gen_pos},{det_pos},{lemma},\n")
-                lines_written += 1
-
-            # Clear lists after each batch to avoid memory issues
-            general_pos_tagged_sentences.clear()
-            detailed_pos_tagged_sentences.clear()
-            lemmatized_sentences.clear()
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            # Use tqdm to show progress for each sentence in new_tokenized_sentences
+            for sentence, result in zip(new_tokenized_sentences, tqdm(executor.map(process_sentence, new_tokenized_sentences), total=len(new_tokenized_sentences), desc="Processing Sentences")):
+                general_pos, detailed_pos, lemma = result
+                
+                # Apply escape and wrapping rules using redo_escape_and_wrap
+                sentence = redo_escape_and_wrap(sentence)
+                
+                output.write(f"{sentence},{general_pos},{detailed_pos},{lemma},\n")
 
     print(f"Preprocessed data saved to {output_file}")
 
 def run_preprocessing():
     # Define your file paths here
-    input_txt = "dataset/ALT-Parallel-Corpus-20191206/data_fil.txt"           # Input file (the .txt file)
-    tokenized_txt = "database/tokenized_sentences.txt"  # File to save tokenized sentences
-    output_csv = "database/preprocessed.csv"     # File to save the preprocessed output
-    target_lines = 30000  # Set the target number of lines to process
+    input_txt = "data/raw/casual_tagalog/carlo_personal_essays.txt"           # Input file (the .txt file)
+    tokenized_txt = "rules/database/tokenized_sentences.txt"  # File to save tokenized sentences
+    output_csv = "rules/database/preprocessed.csv"     # File to save the preprocessed output
 
     # Start the preprocessing
-    preprocess_text(input_txt, tokenized_txt, output_csv, target_lines)
+    preprocess_text(input_txt, tokenized_txt, output_csv)
 
 # Automatically run when the script is executed
 if __name__ == "__main__":

@@ -2,13 +2,10 @@ flask
 transformers 
 torch
 pandas
-nl
-lingua-language-detector     
-nltk 
-spacy
+nl  
+nltk
 pandas 
 numpy
-pyspark 
 gunicorn
 tensorFLow
 mysql-connector-python

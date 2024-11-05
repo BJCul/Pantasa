@@ -60,8 +60,87 @@ function triggerGrammarCheck() {
     });
 }
 
+<<<<<<< HEAD
+        // Function to replace the highlighted word with the clicked suggestion
+    function replaceHighlightedWord(incorrectWord, newWord) {
+        const grammarTextarea = document.getElementById('grammarTextarea');
+
+        // Replace the incorrect word with the new word in the grammarTextarea
+        if (selectedWordElement) {
+            selectedWordElement.textContent = newWord;  // Update the displayed word
+            selectedWordElement.classList.remove('highlight');  // Remove highlight after correction
+        }
+
+        // Clear the suggestions list after a suggestion is clicked
+        const suggestionsList = document.getElementById('suggestionsList');
+        suggestionsList.innerHTML = '';  // Clear the suggestions
+
+        // Trigger the grammar check again
+        triggerGrammarCheck();
+    }
+
+    function triggerGrammarCheck() {
+        clearTimeout(timeout);
+        const grammarTextarea = document.getElementById('grammarTextarea');
+        const textInput = grammarTextarea.innerHTML;  // Get input text
+
+        // Clear previous corrections
+        timeout = setTimeout(async () => {
+            try {
+                const response = await fetch('/get_text', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ text_input: textInput })
+                });
+
+                if (response.status >= 400 && response.status < 600) {
+                    throw new Error('Server returned an error');
+                }
+
+                const data = await response.json();
+                console.log('Response data:', data);  // Debugging
+
+                if (data.corrected_text && data.incorrect_words) {
+                    let highlightedText = textInput;
+
+                    // Highlight incorrect words
+                    data.incorrect_words.forEach(word => {
+                        const regex = new RegExp(`\\b${word}\\b`, 'gi');
+                        highlightedText = highlightedText.replace(regex, `<span class="highlight">${word}</span>`);
+                    });
+
+                    // Store spelling suggestions in the global object
+                    window.spellingSuggestions = data.spelling_suggestions;
+
+                    // Display highlighted text in the textarea
+                    grammarTextarea.innerHTML = highlightedText;
+                    document.getElementById('correctedText').textContent = data.corrected_text.replace(/<[^>]+>/g, "");
+                    // Store corrected sentence globally
+                    window.correctedSentence = data.corrected_text;
+
+                } else {
+                    grammarTextarea.innerHTML = textInput;
+                    document.getElementById('correctedText').textContent = "No corrections needed.";
+                }
+
+            } catch (error) {
+                console.error('Error retrieving data:', error);
+                document.getElementById('correctedText').textContent = 'Error retrieving data.';
+            } finally {
+                hideLoadingSpinner();  // Always hide spinner
+            }
+        }, 1000);  // Adjust delay if needed
+    }
+
+});
+
+document.getElementById('grammarTextarea').addEventListener('input', function (event) {
+=======
 // Define the updateCharacterCount function in the global scope
 function updateCharacterCount() {
+>>>>>>> main
     const textarea = document.getElementById('grammarTextarea');
     const charCount = document.getElementById('charCount');
     const maxLength = 150;
@@ -119,6 +198,94 @@ document.addEventListener('click', function (event) {
 });
 
 
+<<<<<<< HEAD
+            if (isLogging) {
+                spinner.style.display = 'block'; // Show the spinner when Flask is logging
+            } else {
+                spinner.style.display = 'none';  // Hide the spinner when Flask is idle
+            }
+        })
+        .catch(error => {
+            console.error('Error checking Flask status:', error);
+        });
+}
+// Set an interval to check the status every 2 seconds
+setInterval(checkFlaskStatus, 2000);
+
+// Function to hide the menu after a link is clicked
+document.querySelectorAll('.nav ul li a').forEach(link => {
+    link.addEventListener('click', function () {
+        document.getElementById('check').checked = false;
+        document.querySelector('.home-content').style.display = 'block';
+    });
+});
+
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        section.classList.add('hidden');
+    });
+
+    const targetSection = document.getElementById(sectionId);
+    targetSection.classList.remove('hidden');
+}
+
+let timeout = null;
+
+document.getElementById('grammarTextarea').addEventListener('input', function () {
+    clearTimeout(timeout);
+    const grammarTextarea = document.getElementById('grammarTextarea');
+    const textInput = grammarTextarea.innerHTML;  // Get input text
+
+    // Clear previous corrections
+    timeout = setTimeout(async () => {
+        try {
+            const response = await fetch('/get_text', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text_input: textInput })
+            });
+
+            if (response.status >= 400 && response.status < 600) {
+                throw new Error('Server returned an error');
+            }
+
+            const data = await response.json();
+            console.log('Response data:', data);  // Debugging
+
+            if (data.corrected_text && data.incorrect_words) {
+                let highlightedText = textInput;
+
+                // Highlight incorrect words
+                data.incorrect_words.forEach(word => {
+                    const regex = new RegExp(`\\b${word}\\b`, 'gi');
+                    highlightedText = highlightedText.replace(regex, `<span class="highlight">${word}</span>`);
+                });
+
+                // Store spelling suggestions in the global object
+                window.spellingSuggestions = data.spelling_suggestions;
+
+                // Display highlighted text in the textarea
+                grammarTextarea.innerHTML = highlightedText;
+                document.getElementById('correctedText').innerHTML = data.corrected_text;
+
+
+                // Store corrected sentence globally
+                window.correctedSentence = data.corrected_text;
+
+            } else {
+                grammarTextarea.innerHTML = textInput;
+                document.getElementById('correctedText').textContent = "No corrections needed.";
+            }
+
+        } catch (error) {
+            console.error('Error retrieving data:', error);
+            document.getElementById('correctedText').textContent = 'Error retrieving data.';
+        } finally {
+            hideLoadingSpinner();  // Always hide spinner
+=======
     // Function to replace the highlighted word with the clicked suggestion
     function replaceHighlightedWord(incorrectWord, newWord) {
         console.log('Replacing word:', incorrectWord, 'with:', newWord);  // Debugging log
@@ -126,6 +293,7 @@ document.addEventListener('click', function (event) {
         if (selectedWordElement) {
             selectedWordElement.textContent = newWord;  // Update the displayed word
             selectedWordElement.classList.remove('highlight');  // Remove highlight after correction
+>>>>>>> main
         }
 
         // Clear the suggestions list after a suggestion is clicked

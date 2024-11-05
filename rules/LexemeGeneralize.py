@@ -57,82 +57,87 @@ def load_and_convert_csv(file_path):
         entry['ID_Array'] = convert_id_array(entry.get('ID_Array', ''))
     return data
 
-def subword_penalty_score(score, word, tokenizer):
-    # Tokenize the word and count how many subword tokens it splits into
-    tokenized_word = tokenizer(word, return_tensors="pt")['input_ids'][0]
-    num_tokens = len(tokenized_word)  # Count number of subwords
+def get_subword_embeddings(word, model, tokenizer):
+    tokens = tokenizer(word, return_tensors="pt")
+    with torch.no_grad():
+        outputs = model(**tokens, output_hidden_states=True)
+    subword_embeddings = outputs.hidden_states[-1][0][1:-1]  # Ignore CLS and SEP tokens
+    return subword_embeddings
 
-    # Penalize the score based on the number of subword tokens
-    penalized_score = score / num_tokens  # Fewer tokens = higher score
-    return penalized_score
+def compute_complexity_score(word, model, tokenizer):
+    # Get the whole word embedding (if it's a single token)
+    tokens = tokenizer(word, return_tensors="pt")
+    with torch.no_grad():
+        outputs = model(**tokens, output_hidden_states=True)
+    whole_word_embedding = torch.mean(outputs.hidden_states[-1][0][1:-1], dim=0)
 
+    # Get the averaged subword embeddings
+    subword_embeddings = get_subword_embeddings(word, model, tokenizer)
+    avg_subword_embedding = torch.mean(subword_embeddings, dim=0)
+
+    # Calculate cosine similarity between whole word and average subword embeddings
+    similarity = cosine_similarity(whole_word_embedding, avg_subword_embedding, dim=0).item()
+
+    # Apply a bias to favor simpler words with higher similarity
+    boost_factor = 1.2 if similarity > 0.8 else 1.0
+    complexity_score = similarity * boost_factor
+    return complexity_score
 
 def compute_mlm_score(sentence, model, tokenizer):
     tokens = tokenizer(sentence, return_tensors="pt")
-    input_ids = tokens['input_ids'][0]  # Get the input IDs
+    input_ids = tokens['input_ids'][0]
     scores = []
-    
+
     for i in range(1, input_ids.size(0) - 1):  # Skip [CLS] and [SEP] tokens
         masked_input_ids = input_ids.clone()
-        masked_input_ids[i] = tokenizer.mask_token_id  # Mask the current token
+        masked_input_ids[i] = tokenizer.mask_token_id
 
         with torch.no_grad():
-            outputs = model(masked_input_ids.unsqueeze(0))  # Add batch dimension
+            outputs = model(masked_input_ids.unsqueeze(0))
 
         logits = outputs.logits[0, i]
         probs = torch.softmax(logits, dim=-1)
 
         original_token_id = input_ids[i]
         score = probs[original_token_id].item()  # Probability of the original word when masked
-        
-        # Get the word corresponding to the token ID
-        word = tokenizer.decode([original_token_id]).strip()
 
-        # Apply subword complexity penalty
-        penalized_score = subword_penalty_score(score, word, tokenizer)
+        word = tokenizer.decode([original_token_id]).strip()
+        
+        # Apply the complexity score instead of a simple subword penalty
+        complexity_score = compute_complexity_score(word, model, tokenizer)
+        penalized_score = score * complexity_score
         
         scores.append(penalized_score)
 
     average_score = sum(scores) / len(scores) * 100  # Convert to percentage
     return average_score, scores
 
-
 def compute_word_score(word, sentence, model, tokenizer):
-    # Split the sentence into words
     words = sentence.split()
-
-    # Check if the word is in the sentence
     if word not in words:
         raise ValueError(f"The word '{word}' is not found in the sentence.")
 
-    # Find the index of the word in the sentence
     index = words.index(word)
-
-    # Create a sub-sentence up to the current word
     sub_sentence = ' '.join(words[:index + 1])
-    
-    # Tokenize the sub-sentence and mask the word at the current index
+
     tokens = tokenizer(sub_sentence, return_tensors="pt")
     masked_input_ids = tokens['input_ids'].clone()
+    word_token_index = tokens['input_ids'][0].size(0) - 2
+    masked_input_ids[0, word_token_index] = tokenizer.mask_token_id
 
-    # Find the token ID corresponding to the word at the current index
-    word_token_index = tokens['input_ids'][0].size(0) - 2  # Get second-to-last token (ignores [SEP] and [CLS])
-    masked_input_ids[0, word_token_index] = tokenizer.mask_token_id  # Mask the indexed word
-
-    # Get model output for masked sub-sentence
     with torch.no_grad():
         outputs = model(masked_input_ids)
-    
-    # Extract the logits for the masked word and calculate its probability
+
     logits = outputs.logits
-    word_token_id = tokens['input_ids'][0, word_token_index]  # The original token ID of the indexed word
+    word_token_id = tokens['input_ids'][0, word_token_index]
     probs = torch.softmax(logits[0, word_token_index], dim=-1)
-    score = probs[word_token_id].item()  # Probability of the original word when masked
-    
-    # Apply subword complexity penalty
-    penalized_score = subword_penalty_score(score, word, tokenizer)
-    
-    return penalized_score * 100  # Return as a percentage
+    score = probs[word_token_id].item()
+
+    # Apply the complexity score
+    complexity_score = compute_complexity_score(word, model, tokenizer)
+    penalized_score = score * complexity_score
+
+    return penalized_score * 100
 
 def load_existing_results(output_file):
     if not os.path.exists(output_file):
@@ -332,7 +337,7 @@ def generalize_patterns(ngram_list_file, pos_patterns_file, id_array_file, outpu
         # Save the lexeme comparison dictionary after the entire process
         save_lexeme_comparison_dictionary(lexeme_comparison_dict_file, seen_lexeme_comparisons)
 
-for n in range(6, 7):
+for n in range(2, 8):
     ngram_list_file = 'rules/database/ngrams.csv'
     pos_patterns_file = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
     id_array_file = f'rules/database/POS/{n}grams.csv'

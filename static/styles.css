@@ -320,24 +320,25 @@ a:label.logo {
 .home-content {
     width: 100%;
     position: relative;
-    top: -5%;
+    top: -10%;
     text-align: center;
-    padding-top: 20px;
 }
 
 .home-content h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 75px;
-    margin-bottom: 10px;
+    font-family: 'Roxborough CF';
+    font-size: 50px;
     font-weight: 700px;
     color: var(--pwhite);
-    text-shadow: 8px 9px 12.3px rgba(0, 0, 0, 0.8);
+    text-shadow: 8px 9px 12.3px rgba(8, 9, 13.3, 0.8);
+}
+.hero{
+    width:65%;
 }
 
 .home-content p {
     font-family: 'Montserrat';
     font-size: 27px;
-    margin-top: 85px;
+    margin-top: 20px;
     margin-bottom: 20px;
     font-style: italic;
     font-weight: lighter;
@@ -373,7 +374,7 @@ a:label.logo {
     padding: 27px 0px;
     text-align: center;
     margin: 20px 20px;
-    margin-top: 45px;
+    margin-top: 25px;
     border-radius: 10px;
     font-weight: bold;
     font-size: 30px;
@@ -410,7 +411,7 @@ a:label.logo {
 
 @media (max-width: 700px) {
     .home-content h1{
-        font-size: 45px;
+        font-size: 30px;
     }
 
     .home-content p {
@@ -689,6 +690,10 @@ a:label.logo {
         font-size: 0.875rem;
         margin-top: 10px;
     }
+    .home-content h1{
+        font-size: 40px;
+    }
+    
 }
 
 @media (max-width: 1000px) {
@@ -705,6 +710,9 @@ a:label.logo {
 
     .pantasa-container {
         width: 600px;
+    }
+    .home-content h1{
+        font-size: 35px;
     }
 }
 
@@ -726,6 +734,10 @@ a:label.logo {
 
     .logo{
         margin-left: 30px;
+    }
+
+    .home-content h1{
+        font-size: 30px;
     }
 
     #grammarTextarea::data-placeholder {
@@ -753,12 +765,6 @@ a:label.logo {
     .full-side-container {
         order: 2;
         flex-direction: column;
-    }
-
-
-    .info-container {
-        height: auto;
-        border-left: solid 1px #ccc;
     }
 
     .pantasa-container {
@@ -817,22 +823,10 @@ a:label.logo {
     #correctionsContent, #suggestionsContent { 
         font-size: 1rem;
     }
-
-    .info-container h1 {
-        text-align: left;
-        margin-top: 15px;
-        font-size: 1rem;
-    }
-    
-    .info-container p {
-        text-align: left;
-        margin-top: 15px;
-        font-size: 0.625rem;
+    .home-content h1{
+        font-size: 25px;
     }
 
-    .info-container i {
-        font-size: 0.3rem; 
-    }
 }
 
 @media (max-width: 600px) {
@@ -850,25 +844,13 @@ a:label.logo {
     #correctionsContent, #suggestionsContent { 
         font-size: 1.25rem;
     }
-
-    .info-container h1 {
-        font-size: 1.25rem; 
-        margin-top: 12px; 
+    .home-content h1{
+        font-size: 20px;
+    }
+    .hero{
+        width:90%;
     }
 
-    .info-container h2 {
-        font-size: 1rem;
-        margin-top: 10px; 
-    }
-
-    .info-container p {
-        font-size: 0.75rem; 
-        margin-top: 8px; 
-    }
-
-    .info-container i {
-        font-size: 0.5rem;
-    }
 }
 
 @media (max-width: 480px) {
@@ -885,25 +867,6 @@ a:label.logo {
 
     #correctionsContent, #suggestionsContent { 
         font-size: 1rem;
-    }
-
-    .info-container h1 {
-        font-size: 1rem; 
-        margin-top: 10px; 
-    }
-
-    .info-container h2 {
-        font-size: 0.875rem; 
-        margin-top: 8px; 
-    }
-
-    .info-container p {
-        font-size: 0.625rem; 
-        margin-top: 6px; 
-    }
-
-    .info-container i {
-        font-size: 0.4rem; 
     }
 }
 
