@@ -16,6 +16,18 @@ print("Loading model...")
 roberta_model = AutoModelForMaskedLM.from_pretrained(tagalog_roberta_model)
 print("Model and tokenizer loaded successfully.")
 
+# Load frequency dictionary for word frequency-based boost/penalty
+def load_frequency_dict(file_path):
+    frequency_dict = {}
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file:
+            word, frequency = line.strip().split(',')
+            frequency_dict[word] = int(frequency)
+    return frequency_dict
+
+# Load the frequency dictionary (assumes a CSV with 'word,frequency' format)
+frequency_dict = load_frequency_dict("path/to/frequency_dict.csv")
+
 def load_csv(file_path):
     print(f"Loading data from {file_path}...")
     with open(file_path, 'r', encoding='utf-8') as file:
@@ -23,20 +35,6 @@ def load_csv(file_path):
         data = [row for row in reader]
     print(f"Data loaded from {file_path}. Number of rows: {len(data)}")
     return data
-
-def load_frequency_dict(file_path):
-    frequency_dict = {}
-    try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            reader = csv.DictReader(file)
-            for row in reader:
-                word = row.get('Word')  # Adjust based on column name
-                frequency = int(row.get('Frequency', 0))  # Adjust column name as well
-                if word:
-                    frequency_dict[word] = frequency
-    except FileNotFoundError:
-        print(f"Frequency dictionary file not found: {file_path}")
-    return frequency_dict
 
 def load_lexeme_comparison_dictionary(file_path):
     comparisons = {}
@@ -64,7 +62,7 @@ def save_lexeme_comparison_dictionary(file_path, dictionary):
 
 def convert_id_array(id_array_str):
     if id_array_str is None:
-        return []  # Return an empty list or handle it accordingly
+        return []
     return id_array_str.strip("[]'").replace("'", "").split(', ')
 
 def load_and_convert_csv(file_path):
@@ -114,7 +112,7 @@ def compute_mlm_score(sentence, model, tokenizer, frequency_dict):
     input_ids = tokens['input_ids'][0]
     scores = []
 
-    for i in range(1, input_ids.size(0) - 1):
+    for i in range(1, input_ids.size(0) - 1):  # Skip [CLS] and [SEP] tokens
         masked_input_ids = input_ids.clone()
         masked_input_ids[i] = tokenizer.mask_token_id
 
@@ -133,7 +131,7 @@ def compute_mlm_score(sentence, model, tokenizer, frequency_dict):
         
         scores.append(penalized_score)
 
-    average_score = sum(scores) / len(scores) * 100
+    average_score = sum(scores) / len(scores) * 100  # Convert to percentage
     return average_score, scores
 
 def compute_word_score(word, sentence, model, tokenizer, frequency_dict):
@@ -195,8 +193,7 @@ def process_ngram_parallel(ngram_sentence, rough_pos, model, tokenizer, threshol
     This function allows parallel processing of n-grams.
     """
     # Compute MLM score for the full sequence
-    sequence_mlm_score, _ =  compute_mlm_score(ngram_sentence, model, tokenizer, frequency_dict)
-    sequence_mlm_score = float(sequence_mlm_score)
+    sequence_mlm_score, _ = compute_mlm_score(ngram_sentence, model, tokenizer, frequency_dict)
     
     if sequence_mlm_score >= threshold:
         print(f"Sequence MLM score {sequence_mlm_score} meets the threshold {threshold}. Computing individual word scores...")
@@ -233,83 +230,43 @@ def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_fi
     print("Loading ngram list file")
     ngram_list = load_csv(ngram_list_file)
 
-    seen_lexeme_comparisons = load_lexeme_comparison_dictionary(lexeme_comparison_dict_file)
-    
-    latest_pattern_id_input = get_latest_pattern_id(pos_patterns_file)
-    latest_pattern_id_output = get_latest_pattern_id(output_file)
-    latest_pattern_id = max(latest_pattern_id_input, latest_pattern_id_output)
-    
-    pattern_counter = latest_pattern_id + 1
-    pos_comparison_results = []
+    seen_ngrams = load_existing_results(output_file)
+    latest_pattern_id = get_latest_pattern_id(output_file) + 1
 
-    with open(output_file, 'w', newline='', encoding='utf-8') as file:
-        fieldnames = ['Pattern_ID', 'POS_N-Gram', 'Lexeme_N-Gram', 'MLM_Scores', 'Comparison_Replacement_Matrix', 'Final_Hybrid_N-Gram']
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-        writer.writeheader()
+    new_lexeme_comparison_dict = load_lexeme_comparison_dictionary(lexeme_comparison_dict_file)
+    
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        futures = []
+        for ngram_data in ngram_list:
+            rough_pos = ngram_data['POS']  # Or adjust based on your data's key
+            sentence = ngram_data['N-Gram']  # Adjust based on your data's key
 
-        process_count = 0
-        with ThreadPoolExecutor() as executor:
-            for pos_pattern in tqdm(pos_patterns, desc="POS Patterns"):
-                pattern_id = pos_pattern['Pattern_ID']
-                pattern = pos_pattern['POS_N-Gram']
-                writer.writerow({
+            futures.append(executor.submit(process_ngram_parallel, sentence, rough_pos, model, tokenizer, threshold, frequency_dict))
+
+        for future in tqdm(as_completed(futures), total=len(futures)):
+            final_ngram, comparison_matrix, mlm_score = future.result()
+            if final_ngram and final_ngram not in seen_ngrams:
+                seen_ngrams.add(final_ngram)
+                pattern_id = generate_pattern_id(latest_pattern_id)
+                latest_pattern_id += 1
+                row = {
                     'Pattern_ID': pattern_id,
-                    'POS_N-Gram': pattern,
-                    'Lexeme_N-Gram': '',
-                    'MLM_Scores': '',
-                    'Comparison_Replacement_Matrix': '',
-                    'Final_Hybrid_N-Gram': pattern_id
-                })
+                    'Final_Hybrid_N-Gram': final_ngram,
+                    'POS_Pattern_Comparison': ', '.join(comparison_matrix),
+                    'Lexeme_Comparison_ID': new_lexeme_comparison_dict.get((rough_pos, final_ngram), ""),
+                    'MLM_Score': mlm_score
+                }
+                with open(output_file, 'a', encoding='utf-8', newline='') as file:
+                    writer = csv.DictWriter(file, fieldnames=row.keys())
+                    if file.tell() == 0:  # Check if file is empty to write headers
+                        writer.writeheader()
+                    writer.writerow(row)
+                print(f"Saved: {row}")
 
-                id_array_row = find_row_containing_string(id_array, 'Pattern_ID', pattern_id)
-                if id_array_row is None:
-                    print(f"No matching row found for Pattern_ID: {pattern_id}")
-                    continue
-
-                id_array_value = id_array_row.get("ID_Array")
-                id_array_total_comparison = len(id_array_value) * 2
-                id_array_tally_comparison = 0
-
-                futures = []
-                for instance_id in convert_id_array(id_array_value):
-                    for ngram in ngram_list:
-                        if ngram['N-Gram_ID'] == instance_id.zfill(6):
-                            ngram_sentence = ngram.get('N-Gram', '')
-                            futures.append(executor.submit(
-                                process_ngram_parallel, ngram_sentence, pattern, model, tokenizer, threshold, frequency_dict
-                            ))
-
-                for future in tqdm(as_completed(futures), total=len(futures), desc="N-Gram Processing"):
-                    hybrid_ngram, comparison_matrix, sequence_mlm_score = future.result()
-                    if hybrid_ngram and comparison_matrix:
-                        pattern_counter += 1
-                        new_pattern_id = generate_pattern_id(pattern_counter)
-
-                        pos_comparison_results.append({
-                            'Pattern_ID': new_pattern_id,
-                            'POS_N-Gram': pattern,
-                            'Lexeme_N-Gram': ngram_sentence,
-                            'MLM_Scores': sequence_mlm_score,
-                            'Comparison_Replacement_Matrix': comparison_matrix,
-                            'Final_Hybrid_N-Gram': hybrid_ngram
-                        })
-
-                writer.writerows(pos_comparison_results)
-                pos_comparison_results = []
-
-        save_lexeme_comparison_dictionary(lexeme_comparison_dict_file, seen_lexeme_comparisons)
-
-# Load frequency dictionary before calling the function
-frequency_dict = load_frequency_dict('rules/database/word_frequency.csv')
-
-# Call the parallelized version
-for n in range(2, 8):
-    ngram_list_file = 'rules/database/ngram.csv'
-    pos_patterns_file = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
-    id_array_file = f'rules/database/POS/{n}grams.csv'
-    output_file = f'rules/database/Generalized/LexemeComparison/{n}grams.csv'
-    comparison_dict_file = 'rules/database/LexComparisonDictionary.txt'
-
-    print(f"Starting generalization for {n}-grams...")
-    generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_file, output_file, comparison_dict_file, roberta_model, roberta_tokenizer, frequency_dict)
-    print(f"Finished generalization for {n}-grams.")
+# Example usage of the generalize_patterns_parallel function
+ngram_list_file = "path/to/ngram_list.csv"
+pos_patterns_file = "path/to/pos_patterns.csv"
+id_array_file = "path/to/id_array.csv"
+output_file = "path/to/output_file.csv"
+lexeme_comparison_dict_file = "path/to/lexeme_comparison_dict.csv"
+generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_file, output_file, lexeme_comparison_dict_file, roberta_model, roberta_tokenizer, frequency_dict)
