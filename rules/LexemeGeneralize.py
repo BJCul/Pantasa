@@ -258,7 +258,7 @@ def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_fi
                     'Lexeme_N-Gram': '',
                     'MLM_Scores': '',
                     'Comparison_Replacement_Matrix': '',
-                    'Final_Hybrid_N-Gram': pattern_id
+                    'Final_Hybrid_N-Gram': pattern
                 })
 
                 id_array_row = find_row_containing_string(id_array, 'Pattern_ID', pattern_id)
@@ -284,6 +284,9 @@ def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_fi
                     if hybrid_ngram and comparison_matrix:
                         pattern_counter += 1
                         new_pattern_id = generate_pattern_id(pattern_counter)
+
+                        # Add to comparison dictionary
+                        seen_lexeme_comparisons[(pattern, ngram_sentence)] = new_pattern_id
 
                         pos_comparison_results.append({
                             'Pattern_ID': new_pattern_id,
