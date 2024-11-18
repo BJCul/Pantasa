@@ -1,3 +1,33 @@
+"""
+Program Title: Pantasa: Iterative rule-based using Hybrid ngram
+Programmers:    Agas, Carlo
+                Alcantara, James Patrick
+                Figueroa, Jarlson
+                Tapia, Rachelle
+            
+Where the program fits in the general system designs:
+    This program is part of the backend system of Pantasa for grammar error detection and correction using hybrid n-grams 
+    rule based system and the iterative processs. This is where the input sentence go after the user input a sentence.
+Date written and revised: October 10, 2024
+Purpose:
+    - To correct input text using a hybrid n-gram rule bank.
+    - To suggest and apply corrections for text tokens based on pattern
+      matching, Levenshtein distance, and rule frequency.
+Data Structures, Algorithms, and Control:
+    - Data Structures:
+        - Dictionary: Used for the rule pattern bank and token suggestions.
+        - List: Stores n-grams and their indices.
+        - Defaultdict & Counter: Track insert suggestions and their counts.
+    - Algorithms:
+        - Weighted Levenshtein distance for measuring similarity.
+        - N-gram generation for varying lengths.
+        - Correction tag generation for substitutions, deletions, and insertions.
+        - Majority rule for insertions based on suggestions.
+        - Iterative process
+    - Control:
+        - Iterative loops for n-gram generation and suggestion evaluation.
+        - Conditional logic to apply corrections based on tag type and frequency.
+"""
 import pandas as pd
 import re
 from collections import Counter, defaultdict
@@ -194,6 +224,38 @@ def edit_weighted_levenshtein(input_ngram, pattern_ngram):
             )
     
     return distance_matrix[len_input][len_pattern]
+
+"""
+Function Title: Generate Correction Token Tags
+Programmers:    Agas, Carlo
+                Alcantara, James Patrick
+                Figueroa, Jarlson
+                Tapia, Rachelle
+Where the function fits in the general system designs:
+    This function is a part of the Pantasa system program.
+    It identifies the necessary operations (keep, substitute, insert, or delete)
+    required to transform an input n-gram into a matching pattern n-gram.
+Date written and revised: October 10, 2024
+Purpose:
+    - To compare an input n-gram with a pattern n-gram and generate a sequence
+      of correction tags that detail the operations needed for transformation.
+    - The correction tags include:
+        1. `KEEP`: Indicates that the token is already correct.
+        2. `SUBSTITUTE`: Replaces an incorrect token with a correct one.
+        3. `INSERT`: Adds a missing token to the input.
+        4. `DELETE`: Removes an extra token from the input.
+Data Structures, Algorithms, and Control:
+    - **Data Structures**:
+        - List: Used to store and return the correction tags.
+    - **Algorithms**:
+        - Two-pointer technique to iterate through input and pattern tokens.
+        - Conditional logic to determine the type of operation (keep, substitute,
+          insert, or delete).
+    - **Control**:
+        - A `while` loop to process the tokens in both input and pattern n-grams.
+        - Additional `while` loops to handle leftover tokens (extra tokens in input
+          or pattern).
+"""
 
 # Step 3: Function to generate correction token tags based on the Levenshtein distance
 def generate_correction_tags(input_ngram, pattern_ngram):
@@ -471,6 +533,42 @@ def get_closest_words_by_pos(input_word, words_list, num_suggestions=1):
 
     return suggestions
 
+"""
+Function Title: POS-Based Correction Phase
+Programmers:    Agas, Carlo
+                Alcantara, James Patrick
+                Figueroa, Jarlson
+                Tapia, Rachelle
+Where the function fits in the general system designs:
+    This function is part of the text correction module, focusing on applying token-level
+    corrections based on suggestions generated during the suggestion phase. It integrates
+    grammatical rules and POS dictionaries to correct the input sentence effectively.
+Date written and revised: October 10, 2024
+Purpose:
+    - To process and apply token-level suggestions for corrections, including:
+        1. Keeping the token unchanged (`KEEP`).
+        2. Substituting the token with a more appropriate one (`SUBSTITUTE`).
+        3. Deleting unnecessary tokens (`DELETE`).
+        4. Inserting missing tokens based on POS tag rules (`INSERT`).
+    - To utilize part-of-speech (POS) dictionaries for substitution and insertion operations.
+    - To construct a grammatically corrected output sentence.
+Data Structures, Algorithms, and Control:
+    - **Data Structures**:
+        - `final_sentence`: List to store the corrected sentence tokens.
+        - `word_suggestions`: Dictionary to track suggestions for each word.
+        - `pos_tag_dict`: Dictionary to cache loaded POS tag word lists.
+        - `inserted_tokens`: Set to track inserted tokens and prevent duplication.
+    - **Algorithms**:
+        - Iterative approach to process `token_suggestions` and apply corrections.
+        - Conditional logic for handling different suggestion types (`KEEP`, `SUBSTITUTE`,
+          `DELETE`, `INSERT`).
+        - Leverages external helper functions for POS-related operations:
+          - `load_pos_tag_dictionary`: Loads POS-tagged word lists from a file.
+          - `get_closest_words_by_pos`: Retrieves the closest matching words for a target POS.
+    - **Control**:
+        - Iterates over `token_suggestions` using a loop and updates indices as suggestions are applied.
+        - Uses counters (`idx`) to sync corrections with `pos_tags`.
+"""
 
 # Step 6: Correction phase - apply the suggestions to correct the input sentence
 def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
