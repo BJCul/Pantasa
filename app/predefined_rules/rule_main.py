@@ -180,9 +180,10 @@ def apply_predefined_rules_pre(text):
 def apply_predefined_rules_post(text):
     pos = pos_tag(text)
 
-    
-    prefix_merged = merge_affixes(text, pos)
-    rule_corrected = correct_hyphenation(prefix_merged)
+    rd_correction = rd_interchange(text)
+    prefix_merged = merge_affixes(rd_correction, pos)
+    nang_ng_correction = handle_nang_ng(prefix_merged,pos)
+    rule_corrected = correct_hyphenation(nang_ng_correction)
 
     return rule_corrected
 
