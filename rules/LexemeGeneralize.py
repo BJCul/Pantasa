@@ -144,23 +144,37 @@ def compute_word_score(word, sentence, model, tokenizer, frequency_dict):
     index = words.index(word)
     sub_sentence = ' '.join(words[:index + 1])
 
+    # Tokenize and mask the word
     tokens = tokenizer(sub_sentence, return_tensors="pt")
     masked_input_ids = tokens['input_ids'].clone()
     word_token_index = tokens['input_ids'][0].size(0) - 2
     masked_input_ids[0, word_token_index] = tokenizer.mask_token_id
 
+    # Get MLM prediction probabilities
     with torch.no_grad():
         outputs = model(masked_input_ids)
-
     logits = outputs.logits
     word_token_id = tokens['input_ids'][0, word_token_index]
     probs = torch.softmax(logits[0, word_token_index], dim=-1)
-    score = probs[word_token_id].item()
+    score = probs[word_token_id].item() * 100  # Convert to percentage
 
+    # Adjust score based on frequency and thresholds
+    frequency = frequency_dict.get(word, 0)
+    if frequency > 5000 and score < 50.0:
+        score += 40.0
+    elif frequency > 1000 and score < 40.0:
+        score += 20.0
+    elif score < 40.0:
+        score -= 10.0
+
+    # Ensure score stays within bounds (0-100)
+    score = max(0, min(score, 100))
+
+    # Apply frequency-based complexity score
     complexity_score = compute_complexity_score(word, model, tokenizer, frequency_dict)
     penalized_score = score * complexity_score
 
-    return penalized_score * 100
+    return penalized_score
 
 def load_existing_results(output_file):
     if not os.path.exists(output_file):
@@ -191,16 +205,10 @@ def find_row_containing_string(data, column_name, search_string):
 
 
 def process_ngram_parallel(ngram_sentence, rough_pos, model, tokenizer, threshold, frequency_dict):
-    """
-    This function allows parallel processing of n-grams.
-    """
-    # Compute MLM score for the full sequence
-    sequence_mlm_score, _ =  compute_mlm_score(ngram_sentence, model, tokenizer, frequency_dict)
+    sequence_mlm_score, _ = compute_mlm_score(ngram_sentence, model, tokenizer, frequency_dict)
     sequence_mlm_score = float(sequence_mlm_score)
     
     if sequence_mlm_score >= threshold:
-        print(f"Sequence MLM score {sequence_mlm_score} meets the threshold {threshold}. Computing individual word scores...")
-        
         comparison_matrix = ['*'] * len(ngram_sentence.split())
         new_pattern = rough_pos.split()
         words = ngram_sentence.split()
@@ -208,20 +216,23 @@ def process_ngram_parallel(ngram_sentence, rough_pos, model, tokenizer, threshol
 
         if len(words) != len(rough_pos_tokens):
             print("Length mismatch between words and POS tokens for n-gram. Skipping...")
-            return None, None, None
+            return None, None, None, False
 
+        all_asterisks = True  # Track if all replacements remain as '*'
         for i, (pos_tag, word) in enumerate(zip(rough_pos_tokens, words)):
             word_score = compute_word_score(word, ngram_sentence, model, tokenizer, frequency_dict)
             if word_score >= threshold:
                 new_pattern[i] = word
                 comparison_matrix[i] = word
+                all_asterisks = False  # A replacement was made
             else:
                 new_pattern[i] = pos_tag
 
         final_hybrid_ngram = ' '.join(new_pattern)
-        return final_hybrid_ngram, comparison_matrix, sequence_mlm_score
+        return final_hybrid_ngram, comparison_matrix, sequence_mlm_score, all_asterisks
 
-    return None, None, None
+    return None, None, None, False
+
 
 def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_file, output_file, lexeme_comparison_dict_file, model, tokenizer, frequency_dict, threshold=80.0):
     print("Loading POS patterns...")
@@ -279,8 +290,8 @@ def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_fi
                                 process_ngram_parallel, ngram_sentence, pattern, model, tokenizer, threshold, frequency_dict
                             ))
 
-                for future in tqdm(as_completed(futures), total=len(futures), desc="N-Gram Processing"):
-                    hybrid_ngram, comparison_matrix, sequence_mlm_score = future.result()
+                for future in as_completed(futures):
+                    hybrid_ngram, comparison_matrix, sequence_mlm_score, is_all_asterisks = future.result()
                     if hybrid_ngram and comparison_matrix:
                         pattern_counter += 1
                         new_pattern_id = generate_pattern_id(pattern_counter)
@@ -288,14 +299,16 @@ def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_fi
                         # Add to comparison dictionary
                         seen_lexeme_comparisons[(pattern, ngram_sentence)] = new_pattern_id
 
-                        pos_comparison_results.append({
-                            'Pattern_ID': new_pattern_id,
-                            'POS_N-Gram': pattern,
-                            'Lexeme_N-Gram': ngram_sentence,
-                            'MLM_Scores': sequence_mlm_score,
-                            'Comparison_Replacement_Matrix': comparison_matrix,
-                            'Final_Hybrid_N-Gram': hybrid_ngram
-                        })
+                        if not is_all_asterisks:
+                            # Only add to output if the comparison matrix isn't all asterisks
+                            pos_comparison_results.append({
+                                'Pattern_ID': new_pattern_id,
+                                'POS_N-Gram': pattern,
+                                'Lexeme_N-Gram': ngram_sentence,
+                                'MLM_Scores': sequence_mlm_score,
+                                'Comparison_Replacement_Matrix': comparison_matrix,
+                                'Final_Hybrid_N-Gram': hybrid_ngram
+            })
 
                 writer.writerows(pos_comparison_results)
                 pos_comparison_results = []
@@ -306,7 +319,7 @@ def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_fi
 frequency_dict = load_frequency_dict('rules/database/word_frequency.csv')
 
 # Call the parallelized version
-for n in range(2, 8):
+for n in range(2, 4):
     ngram_list_file = 'rules/database/ngram.csv'
     pos_patterns_file = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
     id_array_file = f'rules/database/POS/{n}grams.csv'
