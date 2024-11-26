@@ -1,16 +1,16 @@
 import pandas as pd
 
 # Load the dataset
-input_file = 'rules/database/Generalized/LexemeComparison/3grams.csv'  # Replace with your actual file name
+input_file = 'rules/database/Generalized/LexemeComparison/4grams.csv'  # Replace with your actual file name
 
 # Read the CSV file
 df = pd.read_csv(input_file)
 
-# Sort by Final_Hybrid_N-Gram and MLM_Scores to prioritize higher scores
-df = df.sort_values(by=['Final_Hybrid_N-Gram', 'MLM_Scores'], ascending=[True, False])
+# Sort by Final_Hybrid_N-Gram to prioritize higher scores
+df = df.sort_values(by=['Final_Hybrid_N-Gram'], ascending=[True])
 
 # Remove duplicates, keeping only the first occurrence based on Final_Hybrid_N-Gram
-cleaned_df = df.drop_duplicates(subset=['Final_Hybrid_N-Gram'], keep='first').reset_index(drop=True)
+deduplicated_df = df.drop_duplicates(subset='Final_Hybrid_N-Gram', keep='first')
 
 # Optionally regenerate unique Pattern_IDs
 # Extract the n-gram size from existing IDs (assuming it's the first digit)

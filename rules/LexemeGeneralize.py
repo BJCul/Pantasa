@@ -4,7 +4,12 @@ import torch
 from torch.nn.functional import cosine_similarity
 import os
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from multiprocessing import cpu_count
 from tqdm import tqdm
+
+# Device setup
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+print(f"Using device: {device}")
 
 # Define the model
 global_max_score = 0
@@ -13,7 +18,7 @@ tagalog_roberta_model = "jcblaise/roberta-tagalog-base"
 print("Loading tokenizer...")
 roberta_tokenizer = AutoTokenizer.from_pretrained(tagalog_roberta_model)
 print("Loading model...")
-roberta_model = AutoModelForMaskedLM.from_pretrained(tagalog_roberta_model)
+roberta_model = AutoModelForMaskedLM.from_pretrained(tagalog_roberta_model).to(device)
 print("Model and tokenizer loaded successfully.")
 
 def load_csv(file_path):
@@ -75,7 +80,7 @@ def load_and_convert_csv(file_path):
     return data
 
 def get_subword_embeddings(word, model, tokenizer):
-    tokens = tokenizer(word, return_tensors="pt")
+    tokens = tokenizer(word, return_tensors="pt").to(device)  # Ensure tokens are on the correct device
     with torch.no_grad():
         outputs = model(**tokens, output_hidden_states=True)
     subword_embeddings = outputs.hidden_states[-1][0][1:-1]  # Ignore CLS and SEP tokens
@@ -83,7 +88,7 @@ def get_subword_embeddings(word, model, tokenizer):
 
 def compute_complexity_score(word, model, tokenizer, frequency_dict):
     # Get the whole word embedding
-    tokens = tokenizer(word, return_tensors="pt")
+    tokens = tokenizer(word, return_tensors="pt").to(device)  # Move tokens to device
     with torch.no_grad():
         outputs = model(**tokens, output_hidden_states=True)
     whole_word_embedding = torch.mean(outputs.hidden_states[-1][0][1:-1], dim=0)
@@ -93,7 +98,7 @@ def compute_complexity_score(word, model, tokenizer, frequency_dict):
     avg_subword_embedding = torch.mean(subword_embeddings, dim=0)
 
     # Calculate similarity
-    similarity = cosine_similarity(whole_word_embedding, avg_subword_embedding, dim=0).item()
+    similarity = cosine_similarity(whole_word_embedding.unsqueeze(0), avg_subword_embedding.unsqueeze(0)).item()
 
     # Frequency-based boost or penalty
     frequency_boost = 1.0
@@ -110,8 +115,8 @@ def compute_complexity_score(word, model, tokenizer, frequency_dict):
     return complexity_score
 
 def compute_mlm_score(sentence, model, tokenizer, frequency_dict):
-    tokens = tokenizer(sentence, return_tensors="pt")
-    input_ids = tokens['input_ids'][0]
+    tokens = tokenizer(sentence, return_tensors="pt").to(device)  # Ensure tokens are on the correct device
+    input_ids = tokens["input_ids"][0]
     scores = []
 
     for i in range(1, input_ids.size(0) - 1):
@@ -119,8 +124,7 @@ def compute_mlm_score(sentence, model, tokenizer, frequency_dict):
         masked_input_ids[i] = tokenizer.mask_token_id
 
         with torch.no_grad():
-            outputs = model(masked_input_ids.unsqueeze(0))
-
+            outputs = model(masked_input_ids.unsqueeze(0).to(device))  # Ensure inputs are on the correct device
         logits = outputs.logits[0, i]
         probs = torch.softmax(logits, dim=-1)
 
@@ -142,19 +146,19 @@ def compute_word_score(word, sentence, model, tokenizer, frequency_dict):
         raise ValueError(f"The word '{word}' is not found in the sentence.")
 
     index = words.index(word)
-    sub_sentence = ' '.join(words[:index + 1])
+    sub_sentence = " ".join(words[:index + 1])
 
     # Tokenize and mask the word
-    tokens = tokenizer(sub_sentence, return_tensors="pt")
-    masked_input_ids = tokens['input_ids'].clone()
-    word_token_index = tokens['input_ids'][0].size(0) - 2
+    tokens = tokenizer(sub_sentence, return_tensors="pt").to(device)  # Move tokens to device
+    masked_input_ids = tokens["input_ids"].clone()
+    word_token_index = tokens["input_ids"][0].size(0) - 2
     masked_input_ids[0, word_token_index] = tokenizer.mask_token_id
 
     # Get MLM prediction probabilities
     with torch.no_grad():
         outputs = model(masked_input_ids)
     logits = outputs.logits
-    word_token_id = tokens['input_ids'][0, word_token_index]
+    word_token_id = tokens["input_ids"][0, word_token_index]
     probs = torch.softmax(logits[0, word_token_index], dim=-1)
     score = probs[word_token_id].item() * 100  # Convert to percentage
 
@@ -203,7 +207,6 @@ def find_row_containing_string(data, column_name, search_string):
             return row  # Return the first matching row
     return None  # Return None if no match is found
 
-
 def process_ngram_parallel(ngram_sentence, rough_pos, model, tokenizer, threshold, frequency_dict):
     sequence_mlm_score, _ = compute_mlm_score(ngram_sentence, model, tokenizer, frequency_dict)
     sequence_mlm_score = float(sequence_mlm_score)
@@ -233,8 +236,7 @@ def process_ngram_parallel(ngram_sentence, rough_pos, model, tokenizer, threshol
 
     return None, None, None, False
 
-
-def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_file, output_file, lexeme_comparison_dict_file, model, tokenizer, frequency_dict, threshold=80.0):
+def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_file, output_file, lexeme_comparison_dict_file, model, tokenizer, frequency_dict, threshold=80.0, start_pattern_id=None):
     print("Loading POS patterns...")
     pos_patterns = load_csv(pos_patterns_file)
 
@@ -259,9 +261,14 @@ def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_fi
         writer.writeheader()
 
         process_count = 0
-        with ThreadPoolExecutor() as executor:
+        with ThreadPoolExecutor(max_workers=cpu_count()) as executor:
             for pos_pattern in tqdm(pos_patterns, desc="POS Patterns"):
                 pattern_id = pos_pattern['Pattern_ID']
+
+                # Skip patterns until the starting pattern ID is reached (if specified)
+                if start_pattern_id and int(pattern_id) < int(start_pattern_id):
+                    continue
+
                 pattern = pos_pattern['POS_N-Gram']
                 writer.writerow({
                     'Pattern_ID': pattern_id,
@@ -308,7 +315,7 @@ def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_fi
                                 'MLM_Scores': sequence_mlm_score,
                                 'Comparison_Replacement_Matrix': comparison_matrix,
                                 'Final_Hybrid_N-Gram': hybrid_ngram
-            })
+                            })
 
                 writer.writerows(pos_comparison_results)
                 pos_comparison_results = []
@@ -326,6 +333,9 @@ for n in range(4, 5):
     output_file = f'rules/database/Generalized/LexemeComparison/{n}grams.csv'
     comparison_dict_file = 'rules/database/LexComparisonDictionary.txt'
 
+    # Specify the starting pattern ID if resuming from an interruption
+    start_pattern_id = "427070"  # Replace with the desired starting Pattern ID
+
     print(f"Starting generalization for {n}-grams...")
-    generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_file, output_file, comparison_dict_file, roberta_model, roberta_tokenizer, frequency_dict)
+    generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_file, output_file, comparison_dict_file, roberta_model, roberta_tokenizer, frequency_dict, start_pattern_id=start_pattern_id)
     print(f"Finished generalization for {n}-grams.")
