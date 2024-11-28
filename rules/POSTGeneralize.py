@@ -118,7 +118,9 @@ def get_latest_pattern_id(file_path):
         return 0
 
 def process_pos_patterns(pos_patterns_file, generated_ngrams_file, pattern_file, output_file, model, tokenizer, threshold=0.80):
+    print(f"Loading POS patterns from: {pos_patterns_file}")
     pos_patterns = load_csv(pos_patterns_file)
+    print(f"Loaded POS patterns: {pos_patterns}")
     generated_ngrams = pd.read_csv(generated_ngrams_file)
 
     existing_patterns_output = collect_existing_patterns(output_file)
@@ -128,16 +130,20 @@ def process_pos_patterns(pos_patterns_file, generated_ngrams_file, pattern_file,
     pos_comparison_results = []
     new_patterns = []
     seen_comparisons = load_comparison_dictionary_txt(comparison_dict_file)
+    print(f"Loaded seen_comparisons: {seen_comparisons}")
+    
 
     for pattern in pos_patterns:
         pattern_id = pattern['Pattern_ID']
         rough_pos = pattern['RoughPOS_N-Gram']
         detailed_pos = pattern['DetailedPOS_N-Gram']
+        print(f"RoughPOS: {rough_pos}, DetailedPOS: {detailed_pos}")
         id_array = pattern['ID_Array'].split(',') if pattern['ID_Array'] else []
 
         if rough_pos:
             rough_pattern_size = get_ngram_size_from_pattern_id(pattern_id)
             rough_pos_matches = instance_collector(rough_pos, generated_ngrams, rough_pattern_size)
+            print(f"Matches for RoughPOS: {rough_pos} -> {rough_pos_matches}")
             rough_pos_frequency = rough_pos_matches.shape[0]
         else:
             rough_pos_frequency = None
@@ -151,12 +157,15 @@ def process_pos_patterns(pos_patterns_file, generated_ngrams_file, pattern_file,
 
         if rough_pos and detailed_pos:
             comparison_key = f"{rough_pos}::{detailed_pos}"
+            print(f"RoughPOS: {rough_pos}, DetailedPOS: {detailed_pos}")
             if comparison_key not in seen_comparisons:
+                print(f"Processing new comparison: {comparison_key}")
                 rough_scores, detailed_scores, comparison_matrix, new_pattern = compare_pos_sequences(rough_pos, detailed_pos, model, tokenizer, threshold)
                 if new_pattern not in existing_patterns_output:
                     new_pattern_id = generate_pattern_id(pattern_counter)
                     seen_comparisons[comparison_key] = new_pattern_id
                     pattern_counter += 1
+                    print(f"New pattern being added: {new_pattern}, ID: {new_pattern_id}")
                     pos_comparison_results.append({
                         'Pattern_ID': new_pattern_id,
                         'RoughPOS_N-Gram': rough_pos,
@@ -202,7 +211,7 @@ def process_pos_patterns(pos_patterns_file, generated_ngrams_file, pattern_file,
         writer.writerows(new_patterns)
 
 for n in range(2, 8):
-    ngram_csv = 'rules/database/ngrams.csv'
+    ngram_csv = 'rules/database/ngram.csv'
     pattern_csv = f'rules/database/POS/{n}grams.csv'
     output_csv = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
 
