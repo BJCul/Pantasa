@@ -1,7 +1,9 @@
 import csv
+import os
 from transformers import AutoTokenizer, AutoModelForMaskedLM
 import torch
 import pandas as pd
+import ast
 from hngram_counter import instance_collector, get_ngram_size_from_pattern_id  # Import functions from hngram_counter.py
 
 # Define the models
@@ -117,104 +119,163 @@ def get_latest_pattern_id(file_path):
     except FileNotFoundError:
         return 0
 
-def process_pos_patterns(pos_patterns_file, generated_ngrams_file, pattern_file, output_file, model, tokenizer, threshold=0.50):
-    print(f"Loading POS patterns from: {pos_patterns_file}")
-    pos_patterns = load_csv(pos_patterns_file)
-    print(f"Loaded POS patterns: {pos_patterns}")
+def process_pos_patterns_chunk(pos_patterns_chunk, generated_ngrams_file, output_file, pattern_file, model, tokenizer, seen_comparisons, pattern_counter, threshold=0.50):
     generated_ngrams = pd.read_csv(generated_ngrams_file)
-
     existing_patterns_output = collect_existing_patterns(output_file)
-    latest_pattern_id = max(get_latest_pattern_id(pos_patterns_file), get_latest_pattern_id(output_file))
-    pattern_counter = latest_pattern_id + 1
+    
+    # Replace NaN values in the chunk with empty strings
+    pos_patterns_chunk = pos_patterns_chunk.fillna('')
 
     pos_comparison_results = []
     new_patterns = []
-    seen_comparisons = load_comparison_dictionary_txt(comparison_dict_file)
-    print(f"Loaded seen_comparisons: {seen_comparisons}")
-    
 
-    for pattern in pos_patterns:
+    for _, pattern in pos_patterns_chunk.iterrows():
         pattern_id = pattern['Pattern_ID']
         rough_pos = pattern['RoughPOS_N-Gram']
         detailed_pos = pattern['DetailedPOS_N-Gram']
-        print(f"RoughPOS: {rough_pos}, DetailedPOS: {detailed_pos}")
-        id_array = pattern['ID_Array'].split(',') if pattern['ID_Array'] else []
+        id_array_str = pattern['ID_Array']
 
-        if rough_pos:
+        # Safely parse the ID_Array string into a list using ast.literal_eval
+        if id_array_str:
+            try:
+                id_array = ast.literal_eval(id_array_str)
+                if not isinstance(id_array, list):
+                    id_array = []  # Ensure id_array is a list even if parsing goes wrong
+            except (ValueError, SyntaxError):
+                id_array = []
+        else:
+            id_array = []
+
+        # Direct lookup using ID_Array for RoughPOS
+        if rough_pos and id_array:
             rough_pattern_size = get_ngram_size_from_pattern_id(pattern_id)
-            rough_pos_matches = instance_collector(rough_pos, generated_ngrams, rough_pattern_size)
-            print(f"Matches for RoughPOS: {rough_pos} -> {rough_pos_matches}")
+            # Convert id_array from string to integers if applicable
+            id_array = [int(id_.strip()) for id_ in id_array]
+            rough_pos_matches = generated_ngrams[generated_ngrams['N-Gram_ID'].isin(id_array)]
             rough_pos_frequency = rough_pos_matches.shape[0]
-        else:
-            rough_pos_frequency = None
-
-        if detailed_pos:
-            detailed_pattern_size = get_ngram_size_from_pattern_id(pattern_id)
-            detailed_pos_matches = instance_collector(detailed_pos, generated_ngrams, detailed_pattern_size)
-            detailed_pos_frequency = detailed_pos_matches.shape[0]
-        else:
-            detailed_pos_frequency = None
-
-        if rough_pos and detailed_pos:
-            comparison_key = f"{rough_pos}::{detailed_pos}"
-            print(f"RoughPOS: {rough_pos}, DetailedPOS: {detailed_pos}")
-            if comparison_key not in seen_comparisons:
-                print(f"Processing new comparison: {comparison_key}")
-                rough_scores, detailed_scores, comparison_matrix, new_pattern = compare_pos_sequences(rough_pos, detailed_pos, model, tokenizer, threshold)
-                if new_pattern not in existing_patterns_output:
-                    new_pattern_id = generate_pattern_id(pattern_counter)
-                    seen_comparisons[comparison_key] = new_pattern_id
-                    existing_patterns_output.add(new_pattern)
-                    pattern_counter += 1
-                    print(f"New pattern being added: {new_pattern}, ID: {new_pattern_id}")
-                    pos_comparison_results.append({
-                        'Pattern_ID': new_pattern_id,
-                        'RoughPOS_N-Gram': rough_pos,
-                        'RPOSN_Freq': rough_pos_frequency,
-                        'DetailedPOS_N-Gram': detailed_pos,
-                        'DPOSN_Freq': detailed_pos_frequency,
-                        'Comparison_Replacement_Matrix': comparison_matrix,
-                        'POS_N-Gram': new_pattern
-                    })
-                    new_patterns.append({
-                        'Pattern_ID': new_pattern_id,
-                        'RoughPOS_N-Gram': rough_pos,
-                        'DetailedPOS_N-Gram': detailed_pos,
-                        'Frequency': len(id_array),
-                        'ID_Array': ','.join(id_array)
-                    })
-                    print(f"Comparison made: Rough POS - {rough_pos}, Detailed POS - {detailed_pos}")
-            else:
-                print(f"Comparison already done for Rough POS - {rough_pos} and Detailed POS - {detailed_pos}")
-
-        else:
+            print(f"Matches for RoughPOS: {rough_pos} -> {rough_pos_matches}")
             pos_comparison_results.append({
                 'Pattern_ID': pattern_id,
                 'RoughPOS_N-Gram': rough_pos or None,
                 'RPOSN_Freq': rough_pos_frequency,
-                'DetailedPOS_N-Gram': detailed_pos or None,
-                'DPOSN_Freq': detailed_pos_frequency,
+                'DetailedPOS_N-Gram': None,
+                'DPOSN_Freq': None,
                 'Comparison_Replacement_Matrix': None,
-                'POS_N-Gram': rough_pos or detailed_pos
+                'POS_N-Gram': rough_pos
             })
 
-    save_comparison_dictionary_txt(comparison_dict_file, seen_comparisons)
+            for _, rough_pos_match in rough_pos_matches.iterrows():
+                match_pos =  rough_pos_match['DetailedPOS_N-Gram']               
+                comparison_key = f"{rough_pos}::{match_pos}"
+                print(f"RoughPOS: {rough_pos}, DetailedPOS: {match_pos}")
+                if comparison_key not in seen_comparisons:
+                    print(f"Processing new comparison: {comparison_key}")
+                    _, _, comparison_matrix, new_pattern = compare_pos_sequences(rough_pos, match_pos, model, tokenizer, threshold)
+                    if new_pattern not in existing_patterns_output:
+                        new_pattern_id = generate_pattern_id(pattern_counter)
+                        seen_comparisons[comparison_key] = new_pattern_id
+                        existing_patterns_output.add(new_pattern)
+                        pattern_counter += 1
 
-    with open(output_file, 'w', newline='', encoding='utf-8') as file:
-        fieldnames = ['Pattern_ID', 'RoughPOS_N-Gram', 'RPOSN_Freq', 'DetailedPOS_N-Gram', 'DPOSN_Freq', 'Comparison_Replacement_Matrix', 'POS_N-Gram']
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(pos_comparison_results)
+                        new_pattern_matches = instance_collector (new_pattern,  generated_ngrams, rough_pattern_size)
+                        ngram_id_list = new_pattern_matches['N-Gram_ID'].tolist()
 
-    with open(pattern_file, 'a', newline='', encoding='utf-8') as file:
-        fieldnames = ['Pattern_ID', 'RoughPOS_N-Gram', 'DetailedPOS_N-Gram', 'Frequency', 'ID_Array']
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-        writer.writerows(new_patterns)
 
-for n in range(4, 5):
+                        print(f"New pattern being added: {new_pattern}, ID: {new_pattern_id}")
+                        pos_comparison_results.append({
+                            'Pattern_ID': new_pattern_id,
+                            'RoughPOS_N-Gram': rough_pos,
+                            'RPOSN_Freq': rough_pos_frequency,
+                            'DetailedPOS_N-Gram': match_pos,
+                            'DPOSN_Freq': len(ngram_id_list),
+                            'Comparison_Replacement_Matrix': comparison_matrix,
+                            'POS_N-Gram': new_pattern
+                        })
+
+                        new_patterns.append({
+                            'Pattern_ID': new_pattern_id,
+                            'RoughPOS_N-Gram': rough_pos,
+                            'DetailedPOS_N-Gram': match_pos,
+                            'Frequency': len(ngram_id_list),
+                            'ID_Array': ','.join(map(str, ngram_id_list))
+                        })
+                        print(f"Comparison made: Rough POS - {rough_pos}, Detailed POS - {detailed_pos}")
+                else:
+                    print(f"Comparison already done for Rough POS - {rough_pos} and Detailed POS - {detailed_pos}")
+
+        else:
+            # Convert id_array from string to integers if applicable
+            id_array = [int(id_.strip()) for id_ in id_array]
+            detailed_pos_matches = generated_ngrams[generated_ngrams['N-Gram_ID'].isin(id_array)]
+            detailed_pos_frequency = detailed_pos_matches.shape[0]
+            pos_comparison_results.append({
+                'Pattern_ID': pattern_id,
+                'RoughPOS_N-Gram': None,
+                'RPOSN_Freq': None,
+                'DetailedPOS_N-Gram': detailed_pos,
+                'DPOSN_Freq': detailed_pos_frequency,
+                'Comparison_Replacement_Matrix': None,
+                'POS_N-Gram': detailed_pos
+            })
+
+    # Write comparison results to output file
+    if pos_comparison_results:
+        with open(output_file, 'a', newline='', encoding='utf-8') as file:
+            fieldnames = ['Pattern_ID', 'RoughPOS_N-Gram', 'RPOSN_Freq', 'DetailedPOS_N-Gram', 'DPOSN_Freq', 'Comparison_Replacement_Matrix', 'POS_N-Gram']
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            if os.stat(output_file).st_size == 0:
+                writer.writeheader()  # Write header if the file is empty
+            writer.writerows(pos_comparison_results)
+
+    # Write new patterns to pattern file
+    if new_patterns:
+        with open(pattern_file, 'a', newline='', encoding='utf-8') as file:
+            fieldnames = ['Pattern_ID', 'RoughPOS_N-Gram', 'DetailedPOS_N-Gram', 'Frequency', 'ID_Array']
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            if os.stat(pattern_file).st_size == 0:
+                writer.writeheader()  # Write header if the file is empty
+            writer.writerows(new_patterns)
+
+    return pattern_counter
+
+
+if __name__ == "__main__":
     ngram_csv = 'rules/database/ngram.csv'
-    pattern_csv = f'rules/database/POS/{n}grams.csv'
-    output_csv = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
+    for n in range(2, 3):
+        pattern_csv = f'rules/database/POS/{n}grams.csv'
+        output_csv = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
+        chunk_size = 5000
 
-    print(f"Processing n-gram size: {n}")
-    process_pos_patterns(pattern_csv, ngram_csv, pattern_csv, output_csv, roberta_model, roberta_tokenizer)
+        # Prepare the output files with headers if they are empty
+        if not os.path.exists(output_csv):
+            with open(output_csv, 'w', newline='', encoding='utf-8') as file:
+                fieldnames = ['Pattern_ID', 'RoughPOS_N-Gram', 'RPOSN_Freq', 'DetailedPOS_N-Gram', 'DPOSN_Freq', 'Comparison_Replacement_Matrix', 'POS_N-Gram']
+                writer = csv.DictWriter(file, fieldnames=fieldnames)
+                writer.writeheader()
+        
+        if not os.path.exists(pattern_csv):
+            with open(pattern_csv, 'w', newline='', encoding='utf-8') as file:
+                fieldnames = ['Pattern_ID', 'RoughPOS_N-Gram', 'DetailedPOS_N-Gram', 'Frequency', 'ID_Array']
+                writer = csv.DictWriter(file, fieldnames=fieldnames)
+                writer.writeheader()
+
+        # Load the existing comparison dictionary and latest pattern ID
+        seen_comparisons = load_comparison_dictionary_txt(comparison_dict_file)
+        latest_pattern_id = get_latest_pattern_id(output_csv)
+        pattern_counter = latest_pattern_id + 1
+
+        # Process CSV in chunks
+        for chunk in pd.read_csv(pattern_csv, chunksize=chunk_size):
+            pattern_counter = process_pos_patterns_chunk(
+                chunk,
+                ngram_csv,
+                output_csv,
+                pattern_csv,
+                roberta_model,
+                roberta_tokenizer,
+                seen_comparisons,
+                pattern_counter
+            )
+
+        # Save updated comparison dictionary
+        save_comparison_dictionary_txt(comparison_dict_file, seen_comparisons)

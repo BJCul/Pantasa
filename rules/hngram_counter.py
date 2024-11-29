@@ -174,6 +174,7 @@ def process_mixed_pos_patterns(generalized_patterns_df, clusters_df, ngrams_df):
     logging.info("Mixed POS patterns processing complete.")
     return updated_clusters_df
 
+"""
 # Load files
 generalized_patterns_file = "rules/database/Generalized/POSTComparison/7grams.csv"
 clusters_file = "rules/database/POS/7grams.csv"
@@ -194,3 +195,4 @@ logging.info(f"Saving updated clusters to {output_file}.")
 updated_clusters_df.to_csv(output_file, index=False)
 
 logging.info("Clusters file updated successfully.")
+"""
