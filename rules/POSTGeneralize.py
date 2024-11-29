@@ -210,10 +210,10 @@ def process_pos_patterns(pos_patterns_file, generated_ngrams_file, pattern_file,
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writerows(new_patterns)
 
-for n in range(2, 8):
-    ngram_csv = 'rules/database/test/ngram.csv'
-    pattern_csv = f'rules/database/test/POS/{n}grams.csv'
-    output_csv = f'rules/database/test/Generalized/POSTComparison/{n}grams.csv'
+for n in range(2, 4):
+    ngram_csv = 'rules/database/ngram.csv'
+    pattern_csv = f'rules/database/POS/{n}grams.csv'
+    output_csv = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
 
     print(f"Processing n-gram size: {n}")
     process_pos_patterns(pattern_csv, ngram_csv, pattern_csv, output_csv, roberta_model, roberta_tokenizer)
