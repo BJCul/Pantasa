@@ -4,6 +4,8 @@ from transformers import AutoTokenizer, AutoModelForMaskedLM
 import torch
 import pandas as pd
 import ast
+from concurrent.futures import ProcessPoolExecutor
+import multiprocessing
 from hngram_counter import instance_collector, get_ngram_size_from_pattern_id  # Import functions from hngram_counter.py
 
 # Define the models
