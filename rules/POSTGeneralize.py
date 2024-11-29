@@ -117,7 +117,7 @@ def get_latest_pattern_id(file_path):
     except FileNotFoundError:
         return 0
 
-def process_pos_patterns(pos_patterns_file, generated_ngrams_file, pattern_file, output_file, model, tokenizer, threshold=0.80):
+def process_pos_patterns(pos_patterns_file, generated_ngrams_file, pattern_file, output_file, model, tokenizer, threshold=0.50):
     print(f"Loading POS patterns from: {pos_patterns_file}")
     pos_patterns = load_csv(pos_patterns_file)
     print(f"Loaded POS patterns: {pos_patterns}")
@@ -211,7 +211,7 @@ def process_pos_patterns(pos_patterns_file, generated_ngrams_file, pattern_file,
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writerows(new_patterns)
 
-for n in range(2, 4):
+for n in range(4, 5):
     ngram_csv = 'rules/database/ngram.csv'
     pattern_csv = f'rules/database/POS/{n}grams.csv'
     output_csv = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
