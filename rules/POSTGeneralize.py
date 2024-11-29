@@ -164,6 +164,7 @@ def process_pos_patterns(pos_patterns_file, generated_ngrams_file, pattern_file,
                 if new_pattern not in existing_patterns_output:
                     new_pattern_id = generate_pattern_id(pattern_counter)
                     seen_comparisons[comparison_key] = new_pattern_id
+                    existing_patterns_output.add(new_pattern)
                     pattern_counter += 1
                     print(f"New pattern being added: {new_pattern}, ID: {new_pattern_id}")
                     pos_comparison_results.append({
