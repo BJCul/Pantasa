@@ -23,5 +23,3 @@ logs/pantasa.log
 *.log
 /logs
 logs/pantasa.log
-morphinas_project/Morphinas.jar
-morphinas_project/py4j-0.10.9.7.jar
