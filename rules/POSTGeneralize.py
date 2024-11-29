@@ -9,7 +9,7 @@ tagalog_roberta_model = "model/final_model"
 tagalog_roberta_tokenizer = "model/final_tokenizer"
 roberta_tokenizer = AutoTokenizer.from_pretrained(tagalog_roberta_tokenizer)
 roberta_model = AutoModelForMaskedLM.from_pretrained(tagalog_roberta_model)
-comparison_dict_file = "rules/database/PostComparisonDictionary.txt"
+comparison_dict_file = "rules/database/test/PostComparisonDictionary.txt"
 
 def load_csv(file_path):
     try:
@@ -211,9 +211,9 @@ def process_pos_patterns(pos_patterns_file, generated_ngrams_file, pattern_file,
         writer.writerows(new_patterns)
 
 for n in range(2, 8):
-    ngram_csv = 'rules/database/ngram.csv'
-    pattern_csv = f'rules/database/POS/{n}grams.csv'
-    output_csv = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
+    ngram_csv = 'rules/database/test/ngram.csv'
+    pattern_csv = f'rules/database/test/POS/{n}grams.csv'
+    output_csv = f'rules/database/test/Generalized/POSTComparison/{n}grams.csv'
 
     print(f"Processing n-gram size: {n}")
     process_pos_patterns(pattern_csv, ngram_csv, pattern_csv, output_csv, roberta_model, roberta_tokenizer)
