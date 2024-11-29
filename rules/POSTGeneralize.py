@@ -9,7 +9,7 @@ tagalog_roberta_model = "model/final_model"
 tagalog_roberta_tokenizer = "model/final_tokenizer"
 roberta_tokenizer = AutoTokenizer.from_pretrained(tagalog_roberta_tokenizer)
 roberta_model = AutoModelForMaskedLM.from_pretrained(tagalog_roberta_model)
-comparison_dict_file = "rules/database/test/PostComparisonDictionary.txt"
+comparison_dict_file = "rules/database/PostComparisonDictionary.txt"
 
 def load_csv(file_path):
     try:

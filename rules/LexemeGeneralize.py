@@ -340,11 +340,11 @@ frequency_dict = load_frequency_dict('rules/database/word_frequency.csv')
 
 # Call the parallelized version
 for n in range(2, 5):
-    ngram_list_file = 'rules/database/test/ngram.csv'
-    pos_patterns_file = f'rules/database/test/Generalized/POSTComparison/{n}grams.csv'
-    id_array_file = f'rules/database/test/POS/{n}grams.csv'
-    output_file = f'rules/database/test/Generalized/LexemeComparison/{n}grams.csv'
-    comparison_dict_file = 'rules/database/test/LexComparisonDictionary.txt'
+    ngram_list_file = 'rules/database/tngram.csv'
+    pos_patterns_file = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
+    id_array_file = f'rules/database/POS/{n}grams.csv'
+    output_file = f'rules/database/Generalized/LexemeComparison/{n}grams.csv'
+    comparison_dict_file = 'rules/database/LexComparisonDictionary.txt'
 
     # Specify the starting pattern ID if resuming from an interruption
     start_pattern_id = "00000"  # Replace with the desired starting Pattern ID
