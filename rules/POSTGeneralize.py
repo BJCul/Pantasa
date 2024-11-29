@@ -264,18 +264,24 @@ if __name__ == "__main__":
         latest_pattern_id = get_latest_pattern_id(output_csv)
         pattern_counter = latest_pattern_id + 1
 
-        # Process CSV in chunks
-        for chunk in pd.read_csv(pattern_csv, chunksize=chunk_size):
-            pattern_counter = process_pos_patterns_chunk(
-                chunk,
-                ngram_csv,
-                output_csv,
-                pattern_csv,
-                roberta_model,
-                roberta_tokenizer,
-                seen_comparisons,
-                pattern_counter
-            )
+        # Process CSV in chunks in parallel
+        with ProcessPoolExecutor(max_workers=multiprocessing.cpu_count()) as executor:
+            futures = []
+            for chunk in pd.read_csv(pattern_csv, chunksize=chunk_size):
+                futures.append(executor.submit(
+                    process_pos_patterns_chunk,
+                    chunk,
+                    ngram_csv,
+                    output_csv,
+                    pattern_csv,
+                    roberta_model,
+                    roberta_tokenizer,
+                    seen_comparisons,
+                    pattern_counter
+                ))
+
+            for future in futures:
+                pattern_counter = future.result()
 
         # Save updated comparison dictionary
         save_comparison_dictionary_txt(comparison_dict_file, seen_comparisons)
