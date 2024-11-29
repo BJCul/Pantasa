@@ -1,5 +1,4 @@
 Pattern_ID,RoughPOS_N-Gram,DetailedPOS_N-Gram,Frequency,ID_Array
-Pattern_ID,RoughPOS_N-Gram,DetailedPOS_N-Gram,Frequency,ID_Array
 400001,PR.*_CC.* VB.* CC.* PR.*,,2,"['030548', '045252']"
 400002,CC.* PR.* LM VB.*,,4,"['030550', '008686', '006396', '030861']"
 400003,RB.* PR.* CC.* FW,,4,"['047092', '022298', '039596', '024796']"
