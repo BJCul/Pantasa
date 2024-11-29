@@ -2,7 +2,7 @@ import os
 import re
 from concurrent.futures import ThreadPoolExecutor
 from tqdm import tqdm  # Import tqdm for progress tracking
-from Modules.Tokenizer import tokenize
+from Modules.Tokenizer import split_sentences as tokenize
 from Modules.POSRTagger import pos_tag  # Use the pos_tag function from POSRTagger for both Rough and Detailed POS
 from Modules.Lemmatizer import lemmatize_sentence
 
@@ -124,7 +124,7 @@ def preprocess_text(input_file, tokenized_file, output_file):
 
 def run_preprocessing():
     # Define your file paths here
-    input_txt = "data/raw/casual_tagalog/carlo_personal_essays.txt"           # Input file (the .txt file)
+    input_txt = "data/raw/ALT-Parallel-Corpus-20191206/data_fil.txt"           # Input file (the .txt file)
     tokenized_txt = "rules/database/tokenized_sentences.txt"  # File to save tokenized sentences
     output_csv = "rules/database/preprocessed.csv"     # File to save the preprocessed output
 

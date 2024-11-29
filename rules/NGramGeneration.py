@@ -56,7 +56,7 @@ def custom_ngrams(sequence, n):
     """Generate n-grams from a sequence."""
     return [tuple(sequence[i:i + n]) for i in range(len(sequence) - n + 1)]
 
-def generate_ngrams(word_sequence, rough_pos_sequence, detailed_pos_sequence, lemma_sequence, ngram_range=(1, 7), add_newline=False):
+def generate_ngrams(word_sequence, rough_pos_sequence, detailed_pos_sequence, lemma_sequence, ngram_range=(2, 7), add_newline=False):
     ngram_sequences = defaultdict(list)
     
     words = separate_punctuation(word_sequence)
@@ -82,7 +82,7 @@ def generate_ngrams(word_sequence, rough_pos_sequence, detailed_pos_sequence, le
             for word_gram, rough_pos_gram, detailed_pos_gram, lemma_gram in zip(word_n_grams, rough_pos_n_grams, detailed_pos_n_grams, lemma_n_grams):
                 unique_detailed_tags = set(tag for detailed_tag in detailed_pos_gram for tag in detailed_tag.split('_'))
                 
-                if len(unique_detailed_tags) >= 4:
+                if len(unique_detailed_tags) >= n:
                     ngram_str = ' '.join(word_gram)
                     lemma_str = ' '.join(lemma_gram)
                     rough_pos_str = ' '.join(rough_pos_gram)
@@ -166,5 +166,5 @@ def process_csv(input_file, output_file, start_row=0):
 # Example usage
 input_csv = 'rules/database/preprocessed.csv'
 output_csv = 'rules/database/ngram.csv'
-start_row = 14684  # Start processing from the start row
+start_row = 0  # Start processing from the start row
 process_csv(input_csv, output_csv, start_row)

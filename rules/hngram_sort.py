@@ -21,13 +21,15 @@ def tag_type(tag):
 
     # Ignore LM, FW, and TS if they are part of an underscore-separated tag
     exceptions = ["LM", "FW", "TS"]
+
+    _, detailed_tags = hierarchical_pos_tags.items()
     
     # Check for exceptions like LM, FW, TS
     if tag in ["LM", "FW", "TS"]:
         return "both POS tag"  # This tag is both rough and detailed
-    
+
     # Check if the tag is a combined rough POS tag (i.e., "NN.*_VB.*")
-    if "_" in tag:
+    elif "_" in tag:
         components = tag.split("_")
 
         # Filter out the exceptions
@@ -38,16 +40,15 @@ def tag_type(tag):
             return "detailed POS tag"
         # Check if all components are rough POS tags
         elif all(component in hierarchical_pos_tags for component in components):
-            return "rough POS tag"
-    
+            return "rough POS tag" 
     # Check if the tag is a rough POS tag
-    if tag in hierarchical_pos_tags:
+    elif tag in hierarchical_pos_tags:
         return "rough POS tag"
-    
     # Check if the tag is a detailed POS tag (found in the values of the dictionary)
-    for rough_tag, detailed_tags in hierarchical_pos_tags.items():
-        if tag in detailed_tags:
-            return "detailed POS tag"
+    elif tag in detailed_tags:
+        return "detailed POS tag"
+    else:
+        return "word"
     
 # Function to return 3 patterns based on rough POS tags, detailed POS tags, and words
 def classify_ngram_pos(pattern):
@@ -56,6 +57,7 @@ def classify_ngram_pos(pattern):
     # Separate patterns for rough POS, detailed POS, and words
     rough_pos_pattern = []
     detailed_pos_pattern = []
+    word_pattern = []
 
     for part in pattern_parts:
         tag_category = tag_type(part)
@@ -64,14 +66,22 @@ def classify_ngram_pos(pattern):
         if tag_category == "rough POS tag":
             rough_pos_pattern.append(part)  # Keep rough POS tag
             detailed_pos_pattern.append(r'.*')  # Replace detailed POS with wildcard
+            word_pattern.append(r'.*')  # Replace word with wildcard
         # Detailed POS Pattern
         elif tag_category == "detailed POS tag":
             rough_pos_pattern.append(r'.*')  # Replace rough POS with wildcard
             detailed_pos_pattern.append(part)  # Keep detailed POS tag
+            word_pattern.append(r'.*')  # Replace word with wildcard
         # Detailed POS Pattern
         elif tag_category == "both POS tag":
+            rough_pos_pattern.append(part)  # Replace rough POS with wildcard
+            detailed_pos_pattern.append(part)  # Replace detailed POS with wildcard
+            word_pattern.append(r'.*')  # Replace word with wildcard
+        elif tag_category == "word":
             rough_pos_pattern.append(r'.*')  # Replace rough POS with wildcard
             detailed_pos_pattern.append(r'.*')  # Replace detailed POS with wildcard
+            word_pattern.append(part)  # Replace word with wildcard
+
     
     # If Rough POS is filled only with ".*", it's considered Only Detailed POS
     if all(tag == '.*' for tag in rough_pos_pattern):
