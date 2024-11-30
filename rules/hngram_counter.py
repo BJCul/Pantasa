@@ -11,6 +11,7 @@ def get_ngram_size_from_pattern_id(pattern_id):
 
 # Function to filter n-grams based on the n-gram size
 def filter_by_ngram_size(pattern, ngrams_df, pattern_ngram_size):
+    logging.debug(f"Filtering n-grams based on size: {pattern_ngram_size}")
     return ngrams_df[ngrams_df['N-Gram_Size'] == pattern_ngram_size]
 
 # Hierarchical POS Tag Dictionary
@@ -29,6 +30,8 @@ hierarchical_pos_tags = {
     "PM.*": ["PMP", "PME", "PMQ", "PMC", "PMSC", "PMS"]
 }
 
+detailed_taglist = hierarchical_pos_tags.values()
+
 def tag_type(tag):
     # Check if the tag is a combined rough POS tag (i.e., "NN.*_VB.*")
     if "_" in tag:
@@ -39,27 +42,29 @@ def tag_type(tag):
         # Check if all components are detailed POS tags
         elif all(any(component in detailed_tags for detailed_tags in hierarchical_pos_tags.values()) for component in components):
             return "detailed POS tag"
-    
     # Check if the tag is a rough POS tag
-    if tag in hierarchical_pos_tags:
+    elif tag in hierarchical_pos_tags:
         return "rough POS tag"
-    
     # Check if the tag is a detailed POS tag (found in the values of the dictionary)
-    for rough_tag, detailed_tags in hierarchical_pos_tags.items():
-        if tag in detailed_tags:
-            return "detailed POS tag"
+    elif tag in detailed_taglist:
+        return "detailed POS tag"
+    # Tag not in the heirarchy is a word
+    else:
+        return "word"
     
     
 
 
 # Function to return 3 patterns based on rough POS tags, detailed POS tags, and words
 def search_pattern_conversion_based_on_tag_type(pattern):
+    logging.debug(f"Original pattern: {pattern}")
     
     pattern_parts = pattern.split()
     
     # Separate patterns for rough POS, detailed POS, and words
     rough_pos_pattern = []
     detailed_pos_pattern = []
+    word_pattern = []
 
 
     for part in pattern_parts:
@@ -69,18 +74,37 @@ def search_pattern_conversion_based_on_tag_type(pattern):
         if tag_category == "rough POS tag":
             rough_pos_pattern.append(part)  # Keep rough POS tag
             detailed_pos_pattern.append(r'.*')  # Replace detailed POS with wildcard
+            word_pattern.append(r'.*')  # Replace detailed POS with wildcard
 
         # Detailed POS Pattern
         elif tag_category == "detailed POS tag":
             rough_pos_pattern.append(r'.*')  # Replace rough POS with wildcard
             detailed_pos_pattern.append(part)  # Keep detailed POS tag
+            word_pattern.append(r'.*')  # Replace detailed POS with wildcard
+        
+        # Both POS Pattern
+        elif tag_category == "both POS tag":
+            rough_pos_pattern.append(part)  # Replace rough POS with wildcard
+            detailed_pos_pattern.append(part)  # Replace detailed POS with wildcard
+            word_pattern.append(r'.*')  # Replace detailed POS with wildcard
+
+        elif tag_category == "word":
+            rough_pos_pattern.append(r'.*')  # Replace rough POS with wildcard
+            detailed_pos_pattern.append(r'.*')  # Replace detailed POS with wildcard
+            word_pattern.append(part)  # Replace detailed POS with wildcard
+            
 
     
     # Join each pattern list to form a regex search pattern
     rough_pos_search_pattern = " ".join(rough_pos_pattern)
     detailed_pos_search_pattern = " ".join(detailed_pos_pattern)
+    word_search_pattern = " ".join(word_pattern)
+
+    logging.debug(f"Rough POS pattern: {rough_pos_search_pattern}")
+    logging.debug(f"Detailed POS pattern: {detailed_pos_search_pattern}")
+    logging.debug(f"Detailed POS pattern: {word_search_pattern}")
     
-    return rough_pos_search_pattern, detailed_pos_search_pattern
+    return rough_pos_search_pattern, detailed_pos_search_pattern, word_search_pattern
 
 # Function to apply rough POS, detailed POS, and word-based filtering
 def instance_collector(pattern, ngrams_df, pattern_ngram_size):
@@ -90,109 +114,98 @@ def instance_collector(pattern, ngrams_df, pattern_ngram_size):
     size_filtered_df = filter_by_ngram_size(pattern, ngrams_df, pattern_ngram_size)
 
     # Step 2: Get the three search patterns (rough POS, detailed POS, and words)
-    rough_pos_search_pattern, detailed_pos_search_pattern = search_pattern_conversion_based_on_tag_type(pattern)
+    rough_pos_search_pattern, detailed_pos_search_pattern, word_search_pattern = search_pattern_conversion_based_on_tag_type(pattern)
     
     # Step 3: Apply rough POS filtering
     rough_pos_matches = size_filtered_df[size_filtered_df['RoughPOS_N-Gram'].str.contains(rough_pos_search_pattern, regex=True)]
     
     # Step 4: Apply detailed POS filtering on the rough POS matches
     detailed_pos_matches = rough_pos_matches[rough_pos_matches['DetailedPOS_N-Gram'].str.contains(detailed_pos_search_pattern, regex=True)]
+
+    # Step 5: Apply word filtering on thhe detailed POS matches
+    word_matches = detailed_pos_matches[detailed_pos_matches['N-Gram'].str.contains(word_search_pattern, regex=True)]
     
-    return detailed_pos_matches
+    return word_matches
 
-# Define a function to validate the patterns based on your rules
-def is_valid_mixed_pos(row):
-    logging.debug(f"Validating row with Pattern_ID: {row.get('Pattern_ID', 'Unknown')}")
+
+# Function to update hngrams_df with batch results and save to CSV
+def update_hngrams_csv(hngrams_df, batch_df):
+    logging.debug(f"Updating hngrams_df with batch results.")
     
-    # Ensure all key columns are non-missing
-    if pd.isna(row['RoughPOS_N-Gram']) or pd.isna(row['DetailedPOS_N-Gram']) or pd.isna(row['Comparison_Replacement_Matrix']):
-        logging.debug(f"Row rejected due to missing values in key columns: {row}")
-        return False
-
-    # Extract the column values
-    rough_pos = row['RoughPOS_N-Gram']
-    detailed_pos = row['DetailedPOS_N-Gram']
-    replacement_matrix = row['Comparison_Replacement_Matrix']
-
-    # Check if RoughPOS and DetailedPOS are non-empty
-    if not rough_pos.strip() or not detailed_pos.strip():
-        logging.debug(f"Row rejected due to empty RoughPOS or DetailedPOS: {row}")
-        return False
-
-    # If all checks pass, the row is valid
-    logging.debug(f"Row accepted with mixed POS patterns: {row}")
-    return True
-
-
-# Function to process mixed POS patterns
-def process_mixed_pos_patterns(generalized_patterns_df, clusters_df, ngrams_df):
-    logging.info("Starting to process mixed POS patterns.")
-
-    # Identify rows with mixed POS sequences and non-empty comparison matrix
-    mixed_pos_df = generalized_patterns_df[generalized_patterns_df.apply(is_valid_mixed_pos, axis=1)]
-    logging.info(f"Found {len(mixed_pos_df)} valid mixed POS patterns.")
-
-    new_clusters = []
-
-    for index, row in mixed_pos_df.iterrows():
+    # Update the original hngrams_df with the processed batch data
+    for index, row in batch_df.iterrows():
         pattern_id = row['Pattern_ID']
-        rough_pos_ngram = row['RoughPOS_N-Gram']
-        detailed_pos_ngram = row['DetailedPOS_N-Gram']
-        ngram_size = len(rough_pos_ngram.split())  # Assume n-gram size from rough POS sequence
+        pattern = row['Hybrid_N-Gram']
+        frequency = row['Frequency']
+        rough_pos_pattern = row['Rough_POS']
+        detailed_pos_pattern = row['Detailed_POS']
 
-        logging.debug(f"Processing Pattern_ID {pattern_id} with RoughPOS {rough_pos_ngram}")
+        
+        # Update the corresponding row in the main hngrams_df DataFrame
+        hngrams_df.loc[hngrams_df['Pattern_ID'] == pattern_id, 'Frequency'] = frequency
+        hngrams_df.loc[hngrams_df['Pattern_ID'] == pattern_id, 'Rough_POS'] = rough_pos_pattern
+        hngrams_df.loc[hngrams_df['Pattern_ID'] == pattern_id, 'Detailed_POS'] = detailed_pos_pattern
+        hngrams_df.loc[hngrams_df['Pattern_ID'] == pattern_id, 'Detailed_POS'] 
+    
+    # Save the updated hngrams_df to the CSV file after processing each batch
+    hngrams_df.to_csv('rules/database/hngrams.csv', index=False)
+    logging.debug(f"hngrams.csv saved after processing batch.")
 
-        # Collect matching n-gram IDs using instance_collector
-        matched_instances = instance_collector(
-            rough_pos_ngram, 
-            ngrams_df, 
-            ngram_size
-        )
-        id_array = matched_instances['N-Gram_ID'].tolist()
-        frequency = len(id_array)
-
-        logging.debug(f"Matched {frequency} instances for Pattern_ID {pattern_id}")
-
-        if len(id_array) != 0:
-            # Construct new cluster entry
-            new_cluster = {
-                "Pattern_ID": pattern_id,
-                "RoughPOS_N-Gram": rough_pos_ngram,
-                "DetailedPOS_N-Gram": detailed_pos_ngram,
-                "Frequency": frequency,
-                "ID_Array": str(id_array)  # Convert list to string for storage
-            }
-            new_clusters.append(new_cluster)
+# Function to process hngrams_df in batches
+def process_in_batches(hngrams_df, ngrams_df, batch_size=100, start_pattern_id=None):
+    total_rows = len(hngrams_df)
+    
+    # Find the starting index based on the provided start_pattern_id
+    if start_pattern_id is not None:
+        start_index = hngrams_df.index[hngrams_df['Pattern_ID'] == start_pattern_id].tolist()
+        if start_index:
+            start_index = start_index[0]
+            logging.info(f"Starting from pattern ID {start_pattern_id} at row {start_index}")
         else:
-            # Remove the row from the generalized_patterns_df if no matches are found
-            generalized_patterns_df.drop(index, inplace=True)
+            logging.warning(f"Pattern ID {start_pattern_id} not found. Starting from the beginning.")
+            start_index = 0
+    else:
+        start_index = 0  # Start from the beginning if no start_pattern_id is provided
 
-    # Append new clusters to the clusters dataframe
-    new_clusters_df = pd.DataFrame(new_clusters)
-    updated_clusters_df = pd.concat([clusters_df, new_clusters_df], ignore_index=True)
+    # Iterate through the DataFrame in batches, starting from the calculated start_index
+    for start in range(start_index, total_rows, batch_size):
+        end = min(start + batch_size, total_rows)
+        logging.info(f"Processing batch from row {start} to {end}")
+        
+        batch_df = hngrams_df.iloc[start:end].copy()
+        
+        # Process each pattern in the current batch
+        for index, row in batch_df.iterrows():
+            pattern_id = row['Pattern_ID']
+            pattern = row['Hybrid_N-Gram']
+            pattern_ngram_size = get_ngram_size_from_pattern_id(pattern_id)
+            
+            # Apply the filtering process for each pattern
+            final_filtered_ngrams = instance_collector(pattern, ngrams_df, pattern_ngram_size)
+            
+            # Calculate the frequency of matches
+            total_matched_ngrams = final_filtered_ngrams.shape[0]
+            logging.info(f'Total matched n-grams for Pattern ID {pattern_id}: {total_matched_ngrams}')
+            
+            # Get the rough POS pattern for storage
+            rough_pos_pattern, detailed_pos_pattern, word_pattern = search_pattern_conversion_based_on_tag_type(pattern)
 
-    logging.info("Mixed POS patterns processing complete.")
-    return updated_clusters_df
+            # Update the batch DataFrame with frequency and rough POS pattern
+            batch_df.loc[index, 'Frequency'] = total_matched_ngrams
+            batch_df.loc[index, 'Rough_POS'] = rough_pos_pattern
+            batch_df.loc[index, 'Detailed_POS'] = detailed_pos_pattern
 
-"""
-# Load files
-generalized_patterns_file = "rules/database/Generalized/POSTComparison/7grams.csv"
-clusters_file = "rules/database/POS/7grams.csv"
-ngrams_file = "rules/database/ngram.csv"
+        # Update the main hngrams_df with the processed batch and save results to CSV
+        update_hngrams_csv(hngrams_df, batch_df)
 
-logging.info("Loading input files.")
-generalized_patterns_df = pd.read_csv(generalized_patterns_file)
-clusters_df = pd.read_csv(clusters_file)
-ngrams_df = pd.read_csv(ngrams_file)
+logging.info("All batches processed and hngrams.csv updated.")
 
-# Process the mixed POS patterns and update the clusters file
-logging.info("Processing mixed POS patterns.")
-updated_clusters_df = process_mixed_pos_patterns(generalized_patterns_df, clusters_df, ngrams_df)
 
-# Save the updated clusters file
-output_file = "rules/database/POS/updated_clusters.csv"
-logging.info(f"Saving updated clusters to {output_file}.")
-updated_clusters_df.to_csv(output_file, index=False)
+# Load the CSV files containing the patterns and n-grams
+hngrams_df = pd.read_csv('/content/Pantasa/rules/database/hngrams.csv')
+ngrams_df = pd.read_csv('/content/Pantasa/rules/database/ngrams.csv')
 
-logging.info("Clusters file updated successfully.")
-"""
+# Process the hngrams.csv in batches of 100 rows (adjust the batch size as needed)
+process_in_batches(hngrams_df, ngrams_df, batch_size=100, start_pattern_id=200001)
+
+logging.info("All batches processed and hngrams.csv updated.")

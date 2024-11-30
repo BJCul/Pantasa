@@ -1,63 +1,135 @@
 import pandas as pd
-from concurrent.futures import ThreadPoolExecutor
+import re
+import logging
+
+# Set up logging configuration
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # List of input CSV files
-input_files = [
-    'rules/database/POS/2grams.csv',
-    'rules/database/POS/3grams.csv',
-    'rules/database/POS/4grams.csv',
-    'rules/database/POS/5grams.csv',
-    'rules/database/POS/6grams.csv',
-    'rules/database/POS/7grams.csv'
+lex_files = [
+    'rules/database/Generalized/LexemeComparison/2grams.csv',
+    'rules/database/Generalized/LexemeComparison/3grams.csv',
+    'rules/database/Generalized/LexemeComparison/4grams.csv',
+    'rules/database/Generalized/LexemeComparison/6grams.csv',
+    'rules/database/Generalized/LexemeComparison/7grams.csv'
 ]
 
-# Output file names
-rough_ngrams_output_file = 'rules/database/rough_ngrams_merged.csv'
-detailed_ngrams_output_file = 'rules/database/detailed_ngrams_merged.csv'
+# Function to extract the n-gram size from the pattern ID
+def get_ngram_size_from_pattern_id(pattern_id):
+    return int(str(pattern_id)[0])
 
-# Function to process a single file and extract rough and detailed n-grams
-def process_file(file_path):
-    try:
-        # Read the CSV file
-        df = pd.read_csv(file_path)
+# Function to filter n-grams based on the n-gram size
+def filter_by_ngram_size(pattern, ngrams_df, pattern_ngram_size):
+    logging.debug(f"Filtering n-grams based on size: {pattern_ngram_size}")
+    return ngrams_df[ngrams_df['N-Gram_Size'] == pattern_ngram_size]
+
+# Hierarchical POS Tag Dictionary
+hierarchical_pos_tags = {
+    "NN.*": ["NNC", "NNP", "NNPA", "NNCA"],
+    "PR.*": ["PRS", "PRP", "PRSP", "PRO", "PRQ", "PRQP", "PRL", "PRC", "PRF", "PRI"],
+    "DT.*": ["DTC", "DTCP", "DTP", "DTPP"],
+    "CC.*": ["CCT", "CCR", "CCB", "CCA", "CCP", "CCU"],
+    "LM": [],
+    "TS": [],
+    "VB.*": ["VBW", "VBS", "VBH", "VBN", "VBTS", "VBTR", "VBTF", "VBTP", "VBAF", "VBOF", "VBOB", "VBOL", "VBOI", "VBRF"],
+    "JJ.*": ["JJD", "JJC", "JJCC", "JJCS", "JJCN", "JJN"],
+    "RB.*": ["RBD", "RBN", "RBK", "RBP", "RBB", "RBR", "RBQ", "RBT", "RBF", "RBW", "RBM", "RBL", "RBI", "RBJ", "RBS"],
+    "CD.*": ["CDB"],
+    "FW": [],
+    "PM.*": ["PMP", "PME", "PMQ", "PMC", "PMSC", "PMS"]
+}
+
+detailed_taglist = hierarchical_pos_tags.values()
+
+def tag_type(tag):
+    # Check if the tag is a combined rough POS tag (i.e., "NN.*_VB.*")
+    if "_" in tag:
+        components = tag.split("_")
+        # Check if all components are rough POS tags
+        if all(component in hierarchical_pos_tags for component in components):
+            return "rough POS tag"
+        # Check if all components are detailed POS tags
+        elif all(any(component in detailed_tags for detailed_tags in hierarchical_pos_tags.values()) for component in components):
+            return "detailed POS tag"
+    # Check if the tag is a rough POS tag
+    elif tag in hierarchical_pos_tags:
+        return "rough POS tag"
+    # Check if the tag is a detailed POS tag (found in the values of the dictionary)
+    elif tag in detailed_taglist:
+        return "detailed POS tag"
+    # Tag not in the heirarchy is a word
+    else:
+        return "word"
+    
+    
+# Function to return 3 patterns based on rough POS tags, detailed POS tags, and words
+def search_pattern_conversion_based_on_tag_type(pattern):
+    logging.debug(f"Original pattern: {pattern}")
+    
+    pattern_parts = pattern.split()
+    
+    # Separate patterns for rough POS, detailed POS, and words
+    rough_pos_pattern = []
+    detailed_pos_pattern = []
+    word_pattern = []
+
+
+    for part in pattern_parts:
+        tag_category = tag_type(part)
         
-        # Separate rough and detailed n-grams
-        rough_ngrams = df[['Pattern_ID', 'RoughPOS_N-Gram', 'Frequency', 'ID_Array']]
-        detailed_ngrams = df[['Pattern_ID', 'DetailedPOS_N-Gram', 'Frequency', 'ID_Array']]
+        # Rough POS Pattern
+        if tag_category == "rough POS tag":
+            rough_pos_pattern.append(part)  # Keep rough POS tag
+            detailed_pos_pattern.append(r'.*')  # Replace detailed POS with wildcard
+            word_pattern.append(r'.*')  # Replace detailed POS with wildcard
+
+        # Detailed POS Pattern
+        elif tag_category == "detailed POS tag":
+            rough_pos_pattern.append(r'.*')  # Replace rough POS with wildcard
+            detailed_pos_pattern.append(part)  # Keep detailed POS tag
+            word_pattern.append(r'.*')  # Replace detailed POS with wildcard
         
-        return rough_ngrams, detailed_ngrams
-    except Exception as e:
-        print(f"Error processing file {file_path}: {e}")
-        return pd.DataFrame(), pd.DataFrame()
+        # Both POS Pattern
+        elif tag_category == "both POS tag":
+            rough_pos_pattern.append(part)  # Replace rough POS with wildcard
+            detailed_pos_pattern.append(part)  # Replace detailed POS with wildcard
+            word_pattern.append(r'.*')  # Replace detailed POS with wildcard
 
-# Use ThreadPoolExecutor for parallel processing
-rough_ngrams_list = []
-detailed_ngrams_list = []
+        elif tag_category == "word":
+            rough_pos_pattern.append(r'.*')  # Replace rough POS with wildcard
+            detailed_pos_pattern.append(r'.*')  # Replace detailed POS with wildcard
+            word_pattern.append(part)  # Replace detailed POS with wildcard
+            
 
-with ThreadPoolExecutor() as executor:
-    futures = {executor.submit(process_file, file): file for file in input_files}
+    
+    # Join each pattern list to form a regex search pattern
+    rough_pos_search_pattern = " ".join(rough_pos_pattern)
+    detailed_pos_search_pattern = " ".join(detailed_pos_pattern)
+    word_search_pattern = " ".join(word_pattern)
 
-    for future in futures:
-        try:
-            rough_ngrams, detailed_ngrams = future.result()
-            if not rough_ngrams.empty:
-                rough_ngrams_list.append(rough_ngrams)
-            if not detailed_ngrams.empty:
-                detailed_ngrams_list.append(detailed_ngrams)
-        except Exception as e:
-            print(f"Error processing results: {e}")
+    logging.debug(f"Rough POS pattern: {rough_pos_search_pattern}")
+    logging.debug(f"Detailed POS pattern: {detailed_pos_search_pattern}")
+    logging.debug(f"Detailed POS pattern: {word_search_pattern}")
+    
+    return rough_pos_search_pattern, detailed_pos_search_pattern, word_search_pattern
 
-# Concatenate all rough and detailed n-grams
-all_rough_ngrams = pd.concat(rough_ngrams_list, ignore_index=True)
-all_detailed_ngrams = pd.concat(detailed_ngrams_list, ignore_index=True)
+# Function to apply rough POS, detailed POS, and word-based filtering
+def instance_collector(pattern, ngrams_df, pattern_ngram_size):
+    logging.debug(f"Searching n-gram matches for pattern id: {pattern}")
+    
+    # Step 1: Filter by n-gram size
+    size_filtered_df = filter_by_ngram_size(pattern, ngrams_df, pattern_ngram_size)
 
-# Drop rows with empty n-grams if necessary (optional)
-all_rough_ngrams.dropna(subset=['RoughPOS_N-Gram'], inplace=True)
-all_detailed_ngrams.dropna(subset=['DetailedPOS_N-Gram'], inplace=True)
+    # Step 2: Get the three search patterns (rough POS, detailed POS, and words)
+    rough_pos_search_pattern, detailed_pos_search_pattern, word_search_pattern = search_pattern_conversion_based_on_tag_type(pattern)
+    
+    # Step 3: Apply rough POS filtering
+    rough_pos_matches = size_filtered_df[size_filtered_df['RoughPOS_N-Gram'].str.contains(rough_pos_search_pattern, regex=True)]
+    
+    # Step 4: Apply detailed POS filtering on the rough POS matches
+    detailed_pos_matches = rough_pos_matches[rough_pos_matches['DetailedPOS_N-Gram'].str.contains(detailed_pos_search_pattern, regex=True)]
 
-# Save the combined DataFrames to CSV files
-all_rough_ngrams.to_csv(rough_ngrams_output_file, index=False)
-all_detailed_ngrams.to_csv(detailed_ngrams_output_file, index=False)
-
-print(f"Rough n-grams merged data saved to {rough_ngrams_output_file}")
-print(f"Detailed n-grams merged data saved to {detailed_ngrams_output_file}")
+    # Step 5: Apply word filtering on thhe detailed POS matches
+    word_matches = detailed_pos_matches[detailed_pos_matches['N-Gram'].str.contains(word_search_pattern, regex=True)]
+    
+    return word_matches

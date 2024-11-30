@@ -97,8 +97,8 @@ def compare_pos_sequences(rough_pos, detailed_pos, model, tokenizer, threshold=0
     new_pattern = [comparison_matrix[i] if comparison_matrix[i] != '*' else rough_tokens[i] for i in range(len(rough_tokens))]
     return rough_scores, detailed_scores, ' '.join(comparison_matrix), ' '.join(new_pattern)
 
-def generate_pattern_id(counter):
-    return f"{counter:06d}"
+def generate_pattern_id(size,counter):
+    return f"{size}{counter:05d}"
 
 def collect_existing_patterns(file_path):
     patterns = set()
@@ -116,12 +116,16 @@ def get_latest_pattern_id(file_path):
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
             reader = csv.DictReader(file)
-            pattern_ids = [int(row['Pattern_ID']) for row in reader if row['Pattern_ID'].isdigit()]
-            return max(pattern_ids, default=0)
+            pattern_ids = [
+                int(row['Pattern_ID']) 
+                for row in reader 
+                if row['Pattern_ID'].isdigit() and len(row['Pattern_ID']) == 6 and row['Pattern_ID'].startswith('3')
+            ]
+            return max(pattern_ids, default=300000)  # Starting from a default base for safety
     except FileNotFoundError:
-        return 0
+        return 300000  # Default starting point if file not found
 
-def process_pos_patterns_chunk(pos_patterns_chunk, generated_ngrams_file, output_file, pattern_file, model, tokenizer, seen_comparisons, pattern_counter, threshold=0.50):
+def process_pos_patterns_chunk(size, pos_patterns_chunk, generated_ngrams_file, output_file, pattern_file, model, tokenizer, seen_comparisons, pattern_counter, threshold=0.50):
     generated_ngrams = pd.read_csv(generated_ngrams_file)
     existing_patterns_output = collect_existing_patterns(output_file)
     
@@ -174,7 +178,7 @@ def process_pos_patterns_chunk(pos_patterns_chunk, generated_ngrams_file, output
                     print(f"Processing new comparison: {comparison_key}")
                     _, _, comparison_matrix, new_pattern = compare_pos_sequences(rough_pos, match_pos, model, tokenizer, threshold)
                     if new_pattern not in existing_patterns_output:
-                        new_pattern_id = generate_pattern_id(pattern_counter)
+                        new_pattern_id = generate_pattern_id(size, pattern_counter)
                         seen_comparisons[comparison_key] = new_pattern_id
                         existing_patterns_output.add(new_pattern)
                         pattern_counter += 1
@@ -243,7 +247,7 @@ def process_pos_patterns_chunk(pos_patterns_chunk, generated_ngrams_file, output
 
 if __name__ == "__main__":
     ngram_csv = 'rules/database/ngram.csv'
-    for n in range(2, 3):
+    for n in range(3, 4):
         pattern_csv = f'rules/database/POS/{n}grams.csv'
         output_csv = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
         chunk_size = 5000
@@ -263,7 +267,7 @@ if __name__ == "__main__":
 
         # Load the existing comparison dictionary and latest pattern ID
         seen_comparisons = load_comparison_dictionary_txt(comparison_dict_file)
-        latest_pattern_id = get_latest_pattern_id(output_csv)
+        latest_pattern_id = get_latest_pattern_id(pattern_csv)
         pattern_counter = latest_pattern_id + 1
 
         # Process CSV in chunks in parallel
@@ -272,6 +276,7 @@ if __name__ == "__main__":
             for chunk in pd.read_csv(pattern_csv, chunksize=chunk_size):
                 futures.append(executor.submit(
                     process_pos_patterns_chunk,
+                    n,
                     chunk,
                     ngram_csv,
                     output_csv,
