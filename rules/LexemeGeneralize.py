@@ -347,7 +347,7 @@ for n in range(2, 5):
     comparison_dict_file = 'rules/database/LexComparisonDictionary.txt'
 
     # Specify the starting pattern ID if resuming from an interruption
-    start_pattern_id = "00000"  # Replace with the desired starting Pattern ID
+    start_pattern_id = "000000"  # Replace with the desired starting Pattern ID
 
     print(f"Starting generalization for {n}-grams...")
     generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_file, output_file, comparison_dict_file, roberta_model, roberta_tokenizer, frequency_dict, start_pattern_id=start_pattern_id)

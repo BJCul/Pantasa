@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load the dataset
-file_path = 'rules/database/Generalized/POSTComparison/6grams.csv'  # Replace with your actual file name
+file_path = 'rules/database/Generalized/POSTComparison/5grams.csv'  # Replace with your actual file name
 
 # Read the CSV file
 df = pd.read_csv(file_path)

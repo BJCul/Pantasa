@@ -97,8 +97,8 @@ def compare_pos_sequences(rough_pos, detailed_pos, model, tokenizer, threshold=0
     new_pattern = [comparison_matrix[i] if comparison_matrix[i] != '*' else rough_tokens[i] for i in range(len(rough_tokens))]
     return rough_scores, detailed_scores, ' '.join(comparison_matrix), ' '.join(new_pattern)
 
-def generate_pattern_id(size,counter):
-    return f"{size}{counter:05d}"
+def generate_pattern_id(counter):
+    return f"{counter:06d}"
 
 def collect_existing_patterns(file_path):
     patterns = set()
@@ -125,7 +125,7 @@ def get_latest_pattern_id(file_path):
     except FileNotFoundError:
         return 500000  # Default starting point if file not found
 
-def process_pos_patterns_chunk(size, pos_patterns_chunk, generated_ngrams_file, output_file, pattern_file, model, tokenizer, seen_comparisons, pattern_counter, threshold=0.50):
+def process_pos_patterns_chunk(pos_patterns_chunk, generated_ngrams_file, output_file, pattern_file, model, tokenizer, seen_comparisons, pattern_counter, threshold=0.50):
     generated_ngrams = pd.read_csv(generated_ngrams_file)
     existing_patterns_output = collect_existing_patterns(output_file)
     
@@ -178,7 +178,7 @@ def process_pos_patterns_chunk(size, pos_patterns_chunk, generated_ngrams_file, 
                     print(f"Processing new comparison: {comparison_key}")
                     _, _, comparison_matrix, new_pattern = compare_pos_sequences(rough_pos, match_pos, model, tokenizer, threshold)
                     if new_pattern not in existing_patterns_output:
-                        new_pattern_id = generate_pattern_id(size, pattern_counter)
+                        new_pattern_id = generate_pattern_id(pattern_counter)
                         seen_comparisons[comparison_key] = new_pattern_id
                         existing_patterns_output.add(new_pattern)
                         pattern_counter += 1
@@ -276,7 +276,6 @@ if __name__ == "__main__":
             for chunk in pd.read_csv(pattern_csv, chunksize=chunk_size):
                 futures.append(executor.submit(
                     process_pos_patterns_chunk,
-                    n,
                     chunk,
                     ngram_csv,
                     output_csv,
