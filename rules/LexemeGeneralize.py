@@ -119,11 +119,11 @@ def compute_complexity_score(word, model, tokenizer, frequency_dict):
     if word in frequency_dict:
         frequency = frequency_dict[word]
         if frequency > 50000:
+            frequency_boost = 2.0
+        elif frequency > 10000:
             frequency_boost = 1.5
-        elif frequency > 5000:
-            frequency_boost = 1.0
         else:
-            frequency_boost = 0.
+            frequency_boost = 0.8
 
     complexity_score = similarity * frequency_boost
     return complexity_score
@@ -179,9 +179,9 @@ def compute_word_score(word, sentence, model, tokenizer, frequency_dict):
 
     # Adjust score based on frequency and thresholds
     frequency = frequency_dict.get(word, 0)
-    if frequency > 5000 and score < 50.0:
+    if frequency > 50000 and score < 50.0:
         score += 40.0
-    elif frequency > 5000 and score < 40.0:
+    elif frequency > 10000 and score < 40.0:
         score += 20.0
     elif score < 40.0:
         score -= 30.0
