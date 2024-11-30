@@ -119,11 +119,11 @@ def get_latest_pattern_id(file_path):
             pattern_ids = [
                 int(row['Pattern_ID']) 
                 for row in reader 
-                if row['Pattern_ID'].isdigit() and len(row['Pattern_ID']) == 6 and row['Pattern_ID'].startswith('3')
+                if row['Pattern_ID'].isdigit() and len(row['Pattern_ID']) == 6 and row['Pattern_ID'].startswith('5')
             ]
-            return max(pattern_ids, default=300000)  # Starting from a default base for safety
+            return max(pattern_ids, default=500000)  # Starting from a default base for safety
     except FileNotFoundError:
-        return 300000  # Default starting point if file not found
+        return 500000  # Default starting point if file not found
 
 def process_pos_patterns_chunk(size, pos_patterns_chunk, generated_ngrams_file, output_file, pattern_file, model, tokenizer, seen_comparisons, pattern_counter, threshold=0.50):
     generated_ngrams = pd.read_csv(generated_ngrams_file)
@@ -247,7 +247,7 @@ def process_pos_patterns_chunk(size, pos_patterns_chunk, generated_ngrams_file, 
 
 if __name__ == "__main__":
     ngram_csv = 'rules/database/ngram.csv'
-    for n in range(3, 4):
+    for n in range(5, 6):
         pattern_csv = f'rules/database/POS/{n}grams.csv'
         output_csv = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
         chunk_size = 5000
