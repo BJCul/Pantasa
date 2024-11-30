@@ -1,1180 +1,1499 @@
-Pattern_ID,RoughPOS_N-Gram,RPOSN_Freq,DetailedPOS_N-Gram,DPOSN_Freq,Comparison_Replacement_Matrix,POS_N-Gram,Effective_Freq
-500001,PR.* DT.* NN.* DT.* NN.*,2.0,,,,PR.* DT.* NN.* DT.* NN.*,2.0
-500002,DT.* NN.* DT.* NN.* CC.*,11.0,,,,DT.* NN.* DT.* NN.* CC.*,11.0
-500003,NN.* DT.* NN.* CC.* VB.*,2.0,,,,NN.* DT.* NN.* CC.* VB.*,2.0
-500004,DT.* NN.* CC.* VB.* CC.*,15.0,,,,DT.* NN.* CC.* VB.* CC.*,15.0
-500005,NN.* CC.* VB.* CC.* NN.*,11.0,,,,NN.* CC.* VB.* CC.* NN.*,11.0
-500006,CC.* VB.* CC.* NN.* PM.*,7.0,,,,CC.* VB.* CC.* NN.* PM.*,7.0
-500007,VB.* CC.* NN.* PM.* VB.*,2.0,,,,VB.* CC.* NN.* PM.* VB.*,2.0
-500008,CC.* NN.* PM.* VB.* CC.*,2.0,,,,CC.* NN.* PM.* VB.* CC.*,2.0
-500009,CC.* VB.* DT.* NN.* CC.*,22.0,,,,CC.* VB.* DT.* NN.* CC.*,22.0
-500010,VB.* DT.* NN.* CC.* DT.*,9.0,,,,VB.* DT.* NN.* CC.* DT.*,9.0
-500011,CC.* DT.* NN.* PM.* VB.*,5.0,,,,CC.* DT.* NN.* PM.* VB.*,5.0
-500012,DT.* NN.* PM.* VB.* RB.*,3.0,,,,DT.* NN.* PM.* VB.* RB.*,3.0
-500013,NN.* CC.* JJ.*_CC.* NN.* CC.*,3.0,,,,NN.* CC.* JJ.*_CC.* NN.* CC.*,3.0
-500014,CC.* JJ.*_CC.* NN.* CC.* FW,2.0,,,,CC.* JJ.*_CC.* NN.* CC.* FW,2.0
-500015,CC.* JJ.* DT.* NN.* CC.*,4.0,,,,CC.* JJ.* DT.* NN.* CC.*,4.0
-500016,NN.* PM.* VB.* RB.* DT.*,3.0,,,,NN.* PM.* VB.* RB.* DT.*,3.0
-500017,PM.* VB.* RB.* DT.* FW,2.0,,,,PM.* VB.* RB.* DT.* FW,2.0
-500018,FW NN.* DT.* NN.* PM.*,2.0,,,,FW NN.* DT.* NN.* PM.*,2.0
-500019,DT.* NN.* PM.* CC.* VB.*,4.0,,,,DT.* NN.* PM.* CC.* VB.*,4.0
-500020,NN.* PM.* CC.* VB.* DT.*,5.0,,,,NN.* PM.* CC.* VB.* DT.*,5.0
-500021,PM.* CC.* VB.* DT.* NN.*,4.0,,,,PM.* CC.* VB.* DT.* NN.*,4.0
-500022,PM.* NN.* CC.* RB.* RB.*,2.0,,,,PM.* NN.* CC.* RB.* RB.*,2.0
-500023,NN.* CC.* RB.* RB.* JJ.*,2.0,,,,NN.* CC.* RB.* RB.* JJ.*,2.0
-500024,RB.* RB.* JJ.* VB.* CC.*,2.0,,,,RB.* RB.* JJ.* VB.* CC.*,2.0
-500025,VB.* CC.* NN.* PR.* DT.*,2.0,,,,VB.* CC.* NN.* PR.* DT.*,2.0
-500026,CC.* NN.* PR.* DT.* NN.*,2.0,,,,CC.* NN.* PR.* DT.* NN.*,2.0
-500027,PR.* DT.* NN.* CC.* VB.*,3.0,,,,PR.* DT.* NN.* CC.* VB.*,3.0
-500028,CC.* DT.* NN.* PR.* PM.*,4.0,,,,CC.* DT.* NN.* PR.* PM.*,4.0
-500029,DT.* CC.* PM.* JJ.* CC.*,2.0,,,,DT.* CC.* PM.* JJ.* CC.*,2.0
-500030,CC.* PR.* LM VB.* CC.*,2.0,,,,CC.* PR.* LM VB.* CC.*,2.0
-500031,CC.* VB.* RB.* PR.* DT.*,3.0,,,,CC.* VB.* RB.* PR.* DT.*,3.0
-500032,VB.* RB.* PR.* DT.* NN.*,5.0,,,,VB.* RB.* PR.* DT.* NN.*,5.0
-500033,RB.* PR.* DT.* NN.* CC.*,7.0,,,,RB.* PR.* DT.* NN.* CC.*,7.0
-500034,PR.* DT.* NN.* CC.* DT.*,8.0,,,,PR.* DT.* NN.* CC.* DT.*,8.0
-500035,CC.* DT.* NN.* CC.* NN.*_CC.*,3.0,,,,CC.* DT.* NN.* CC.* NN.*_CC.*,3.0
-500036,DT.* NN.* CC.* NN.*_CC.* JJ.*,3.0,,,,DT.* NN.* CC.* NN.*_CC.* JJ.*,3.0
-500037,NN.* CC.* NN.*_CC.* JJ.* CC.*,4.0,,,,NN.* CC.* NN.*_CC.* JJ.* CC.*,4.0
-500038,VB.* PR.* DT.* NN.* PM.*,3.0,,,,VB.* PR.* DT.* NN.* PM.*,3.0
-500039,NN.* PM.* VB.* DT.* DT.*,2.0,,,,NN.* PM.* VB.* DT.* DT.*,2.0
-500040,PM.* VB.* DT.* DT.* NN.*,3.0,,,,PM.* VB.* DT.* DT.* NN.*,3.0
-500041,VB.* DT.* DT.* NN.* PM.*,2.0,,,,VB.* DT.* DT.* NN.* PM.*,2.0
-500042,NN.* PM.* VB.* DT.* FW,3.0,,,,NN.* PM.* VB.* DT.* FW,3.0
-500043,NN.* PM.* DT.* JJ.*_CC.* NN.*,4.0,,,,NN.* PM.* DT.* JJ.*_CC.* NN.*,4.0
-500044,VB.* RB.* CC.* NN.* DT.*,6.0,,,,VB.* RB.* CC.* NN.* DT.*,6.0
-500045,RB.* CC.* NN.* DT.* JJ.*,2.0,,,,RB.* CC.* NN.* DT.* JJ.*,2.0
-500046,CC.* NN.* DT.* JJ.* CC.*,2.0,,,,CC.* NN.* DT.* JJ.* CC.*,2.0
-500047,VB.* CC.* JJ.* CC.* NN.*,4.0,,,,VB.* CC.* JJ.* CC.* NN.*,4.0
-500048,CC.* PR.* CC.* PR.*_CC.* FW,2.0,,,,CC.* PR.* CC.* PR.*_CC.* FW,2.0
-500049,PR.* CC.* PR.*_CC.* FW PM.*,2.0,,,,PR.* CC.* PR.*_CC.* FW PM.*,2.0
-500050,PM.* VB.* CC.* PR.*_CC.* NN.*,3.0,,,,PM.* VB.* CC.* PR.*_CC.* NN.*,3.0
-500051,VB.* CC.* PR.*_CC.* NN.* CC.*,8.0,,,,VB.* CC.* PR.*_CC.* NN.* CC.*,8.0
-500052,CC.* PR.*_CC.* NN.* CC.* VB.*,7.0,,,,CC.* PR.*_CC.* NN.* CC.* VB.*,7.0
-500053,PR.*_CC.* NN.* CC.* VB.* DT.*,4.0,,,,PR.*_CC.* NN.* CC.* VB.* DT.*,4.0
-500054,NN.* CC.* VB.* DT.* NN.*,9.0,,,,NN.* CC.* VB.* DT.* NN.*,9.0
-500055,PR.*_CC.* DT.* NN.* NN.* CC.*,3.0,,,,PR.*_CC.* DT.* NN.* NN.* CC.*,3.0
-500056,DT.* NN.* NN.* CC.* PR.*_CC.*,2.0,,,,DT.* NN.* NN.* CC.* PR.*_CC.*,2.0
-500057,NN.* NN.* CC.* PR.*_CC.* FW,3.0,,,,NN.* NN.* CC.* PR.*_CC.* FW,3.0
-500058,NN.* CC.* PR.*_CC.* FW FW,6.0,,,,NN.* CC.* PR.*_CC.* FW FW,6.0
-500059,CC.* JJ.* PR.*_CC.* VB.* CC.*,2.0,,,,CC.* JJ.* PR.*_CC.* VB.* CC.*,2.0
-500060,CC.* VB.* CC.* NN.* CC.*,10.0,,,,CC.* VB.* CC.* NN.* CC.*,10.0
-500061,CC.* NN.* NN.* PM.* CC.*,2.0,,,,CC.* NN.* NN.* PM.* CC.*,2.0
-500062,CC.* NN.* CC.* VB.* CC.*,11.0,,,,CC.* NN.* CC.* VB.* CC.*,11.0
-500063,NN.* CC.* VB.* CC.* FW,3.0,,,,NN.* CC.* VB.* CC.* FW,3.0
-500064,NN.* CC.* JJ.* JJ.* CC.*,2.0,,,,NN.* CC.* JJ.* JJ.* CC.*,2.0
-500065,JJ.* CC.* VB.* DT.* DT.*,2.0,,,,JJ.* CC.* VB.* DT.* DT.*,2.0
-500066,CC.* VB.* DT.* DT.* NN.*,4.0,,,,CC.* VB.* DT.* DT.* NN.*,4.0
-500067,VB.* DT.* DT.* NN.* CC.*,12.0,,,,VB.* DT.* DT.* NN.* CC.*,12.0
-500068,DT.* DT.* NN.*_CC.* VB.* CC.*,3.0,,,,DT.* DT.* NN.*_CC.* VB.* CC.*,3.0
-500069,DT.* NN.*_CC.* VB.* CC.* DT.*,7.0,,,,DT.* NN.*_CC.* VB.* CC.* DT.*,7.0
-500070,NN.*_CC.* VB.* CC.* DT.* NN.*,3.0,,,,NN.*_CC.* VB.* CC.* DT.* NN.*,3.0
-500071,RB.* RB.*_CC.* VB.* CC.* NN.*,2.0,,,,RB.* RB.*_CC.* VB.* CC.* NN.*,2.0
-500072,RB.*_CC.* VB.* CC.* NN.* CC.*,4.0,,,,RB.*_CC.* VB.* CC.* NN.* CC.*,4.0
-500073,VB.* CC.* NN.* CC.* RB.*_CC.*,2.0,,,,VB.* CC.* NN.* CC.* RB.*_CC.*,2.0
-500074,CC.* NN.* CC.* RB.*_CC.* NN.*,4.0,,,,CC.* NN.* CC.* RB.*_CC.* NN.*,4.0
-500075,FW PR.* CC.* NN.* CC.*,3.0,,,,FW PR.* CC.* NN.* CC.*,3.0
-500076,CC.* NN.* CC.* VB.*_VB.* CC.*,3.0,,,,CC.* NN.* CC.* VB.*_VB.* CC.*,3.0
-500077,CC.* PR.*_CC.* NN.* CC.* NN.*,10.0,,,,CC.* PR.*_CC.* NN.* CC.* NN.*,10.0
-500078,DT.* NN.* PM.* RB.* PR.*_CC.*,2.0,,,,DT.* NN.* PM.* RB.* PR.*_CC.*,2.0
-500079,PM.* RB.* PR.*_CC.* VB.* DT.*,3.0,,,,PM.* RB.* PR.*_CC.* VB.* DT.*,3.0
-500080,RB.* PR.*_CC.* VB.* DT.* NN.*,2.0,,,,RB.* PR.*_CC.* VB.* DT.* NN.*,2.0
-500081,VB.* DT.* NN.* DT.* NN.*,4.0,,,,VB.* DT.* NN.* DT.* NN.*,4.0
-500082,DT.* NN.* CC.* VB.* DT.*,7.0,,,,DT.* NN.* CC.* VB.* DT.*,7.0
-500083,NN.* CC.* VB.* DT.* FW,4.0,,,,NN.* CC.* VB.* DT.* FW,4.0
-500084,NN.* CC.* RB.* RB.* VB.*,5.0,,,,NN.* CC.* RB.* RB.* VB.*,5.0
-500085,VB.* VB.* DT.* NN.* CC.*,2.0,,,,VB.* VB.* DT.* NN.* CC.*,2.0
-500086,VB.* DT.* NN.* CC.* CC.*,3.0,,,,VB.* DT.* NN.* CC.* CC.*,3.0
-500087,DT.* NN.* CC.* CC.* RB.*,2.0,,,,DT.* NN.* CC.* CC.* RB.*,2.0
-500088,PM.* FW CC.* PR.* CC.*,3.0,,,,PM.* FW CC.* PR.* CC.*,3.0
-500089,FW CC.* PR.* CC.* DT.*,2.0,,,,FW CC.* PR.* CC.* DT.*,2.0
-500090,CC.* PR.* CC.* DT.* NN.*,4.0,,,,CC.* PR.* CC.* DT.* NN.*,4.0
-500091,FW DT.* NN.* PM.* CC.*,3.0,,,,FW DT.* NN.* PM.* CC.*,3.0
-500092,DT.* NN.* PM.* CC.* RB.*,3.0,,,,DT.* NN.* PM.* CC.* RB.*,3.0
-500093,NN.* PM.* CC.* RB.* RB.*,3.0,,,,NN.* PM.* CC.* RB.* RB.*,3.0
-500094,PM.* DT.* NN.* DT.* NN.*,2.0,,,,PM.* DT.* NN.* DT.* NN.*,2.0
-500095,NN.* PR.*_CC.* JJ.* CC.* FW,2.0,,,,NN.* PR.*_CC.* JJ.* CC.* FW,2.0
-500096,FW PM.* VB.* PR.* DT.*,2.0,,,,FW PM.* VB.* PR.* DT.*,2.0
-500097,PM.* VB.* PR.* DT.* NN.*,6.0,,,,PM.* VB.* PR.* DT.* NN.*,6.0
-500098,VB.* PR.* DT.* NN.* CC.*,9.0,,,,VB.* PR.* DT.* NN.* CC.*,9.0
-500099,PR.* DT.* NN.* CC.* PR.*_CC.*,3.0,,,,PR.* DT.* NN.* CC.* PR.*_CC.*,3.0
-500100,DT.* NN.* CC.* PR.*_CC.* NN.*,9.0,,,,DT.* NN.* CC.* PR.*_CC.* NN.*,9.0
-500101,NN.* CC.* PR.*_CC.* NN.* DT.*,5.0,,,,NN.* CC.* PR.*_CC.* NN.* DT.*,5.0
-500102,CC.* PR.*_CC.* NN.* DT.* NN.*,5.0,,,,CC.* PR.*_CC.* NN.* DT.* NN.*,5.0
-500103,DT.* NN.* PM.* VB.* VB.*,2.0,,,,DT.* NN.* PM.* VB.* VB.*,2.0
-500104,DT.* NN.* PM.* PR.* CC.*,2.0,,,,DT.* NN.* PM.* PR.* CC.*,2.0
-500105,NN.* PM.* PR.* CC.* DT.*,2.0,,,,NN.* PM.* PR.* CC.* DT.*,2.0
-500106,PR.* CC.* DT.* NN.* PM.*,3.0,,,,PR.* CC.* DT.* NN.* PM.*,3.0
-500107,CC.* NN.* CC.* PR.*_CC.* NN.*,8.0,,,,CC.* NN.* CC.* PR.*_CC.* NN.*,8.0
-500108,NN.* CC.* PR.*_CC.* NN.* CC.*,5.0,,,,NN.* CC.* PR.*_CC.* NN.* CC.*,5.0
-500109,PR.*_CC.* NN.* CC.* NN.* PM.*,4.0,,,,PR.*_CC.* NN.* CC.* NN.* PM.*,4.0
-500110,CC.* NN.* PM.* VB.* DT.*,5.0,,,,CC.* NN.* PM.* VB.* DT.*,5.0
-500111,DT.* JJ.* CC.* NN.* CC.*,5.0,,,,DT.* JJ.* CC.* NN.* CC.*,5.0
-500112,CC.* VB.* DT.* NN.* PM.*,3.0,,,,CC.* VB.* DT.* NN.* PM.*,3.0
-500113,NN.* CC.* RB.*_CC.* VB.* DT.*,2.0,,,,NN.* CC.* RB.*_CC.* VB.* DT.*,2.0
-500114,NN.* CC.* NN.*_CC.* NN.* CC.*,2.0,,,,NN.* CC.* NN.*_CC.* NN.* CC.*,2.0
-500115,CC.* DT.* NN.* LM VB.*,2.0,,,,CC.* DT.* NN.* LM VB.*,2.0
-500116,DT.* NN.* LM VB.* CC.*,2.0,,,,DT.* NN.* LM VB.* CC.*,2.0
-500117,PM.* FW CC.* NN.* DT.*,2.0,,,,PM.* FW CC.* NN.* DT.*,2.0
-500118,FW CC.* NN.* DT.* DT.*,2.0,,,,FW CC.* NN.* DT.* DT.*,2.0
-500119,DT.* PR.* CC.* NN.* CC.*,3.0,,,,DT.* PR.* CC.* NN.* CC.*,3.0
-500120,JJ.*_CC.* FW FW DT.* NN.*,2.0,,,,JJ.*_CC.* FW FW DT.* NN.*,2.0
-500121,FW DT.* NN.* CC.* DT.*,3.0,,,,FW DT.* NN.* CC.* DT.*,3.0
-500122,RB.* PM.* JJ.* RB.* CC.*,2.0,,,,RB.* PM.* JJ.* RB.* CC.*,2.0
-500123,RB.* CC.* VB.* DT.* DT.*,2.0,,,,RB.* CC.* VB.* DT.* DT.*,2.0
-500124,DT.* DT.* NN.* CC.* FW,6.0,,,,DT.* DT.* NN.* CC.* FW,6.0
-500125,DT.* NN.* CC.* FW CC.*,2.0,,,,DT.* NN.* CC.* FW CC.*,2.0
-500126,RB.* DT.* NN.* CC.* VB.*,7.0,,,,RB.* DT.* NN.* CC.* VB.*,7.0
-500127,CC.* RB.* RB.* PR.* RB.*,2.0,,,,CC.* RB.* RB.* PR.* RB.*,2.0
-500128,RB.* RB.* PR.* RB.* PM.*,2.0,,,,RB.* RB.* PR.* RB.* PM.*,2.0
-500129,DT.* NN.* CC.* DT.* VB.*,2.0,,,,DT.* NN.* CC.* DT.* VB.*,2.0
-500130,NN.* CC.* DT.* VB.* CC.*,3.0,,,,NN.* CC.* DT.* VB.* CC.*,3.0
-500131,VB.* CC.* VB.* CC.* NN.*,4.0,,,,VB.* CC.* VB.* CC.* NN.*,4.0
-500132,CC.* VB.* CC.* NN.* DT.*,8.0,,,,CC.* VB.* CC.* NN.* DT.*,8.0
-500133,VB.* CC.* NN.* DT.* FW,4.0,,,,VB.* CC.* NN.* DT.* FW,4.0
-500134,CC.* NN.* PM.* RB.* RB.*,5.0,,,,CC.* NN.* PM.* RB.* RB.*,5.0
-500135,NN.* PM.* RB.* RB.* VB.*,5.0,,,,NN.* PM.* RB.* RB.* VB.*,5.0
-500136,PM.* RB.* RB.* VB.* PM.*,2.0,,,,PM.* RB.* RB.* VB.* PM.*,2.0
-500137,RB.* RB.* VB.* PM.* NN.*,2.0,,,,RB.* RB.* VB.* PM.* NN.*,2.0
-500138,PM.* CC.* VB.* PR.* CC.*,2.0,,,,PM.* CC.* VB.* PR.* CC.*,2.0
-500139,CC.* VB.* PR.* CC.* NN.*,5.0,,,,CC.* VB.* PR.* CC.* NN.*,5.0
-500140,VB.* PR.* CC.* NN.* DT.*,2.0,,,,VB.* PR.* CC.* NN.* DT.*,2.0
-500141,PR.* CC.* NN.* DT.* NN.*,2.0,,,,PR.* CC.* NN.* DT.* NN.*,2.0
-500142,CC.* NN.* DT.* NN.* DT.*,2.0,,,,CC.* NN.* DT.* NN.* DT.*,2.0
-500143,CC.* NN.* CC.* NN.*_CC.* NN.*,2.0,,,,CC.* NN.* CC.* NN.*_CC.* NN.*,2.0
-500144,NN.* PM.* JJ.*_CC.* NN.* CC.*,2.0,,,,NN.* PM.* JJ.*_CC.* NN.* CC.*,2.0
-500145,CC.* VB.* DT.* DT.* VB.*,2.0,,,,CC.* VB.* DT.* DT.* VB.*,2.0
-500146,VB.* DT.* DT.* VB.* PM.*,2.0,,,,VB.* DT.* DT.* VB.* PM.*,2.0
-500147,DT.* DT.* VB.* PM.* VB.*,2.0,,,,DT.* DT.* VB.* PM.* VB.*,2.0
-500148,DT.* NN.*_CC.* JJ.* CC.* NN.*,2.0,,,,DT.* NN.*_CC.* JJ.* CC.* NN.*,2.0
-500149,NN.*_CC.* JJ.* CC.* NN.* CC.*,2.0,,,,NN.*_CC.* JJ.* CC.* NN.* CC.*,2.0
-500150,PM.* DT.* VB.* CC.* FW,2.0,,,,PM.* DT.* VB.* CC.* FW,2.0
-500151,DT.* VB.* CC.* FW PM.*,2.0,,,,DT.* VB.* CC.* FW PM.*,2.0
-500152,VB.* CC.* FW PM.* NN.*,2.0,,,,VB.* CC.* FW PM.* NN.*,2.0
-500153,NN.* CC.* NN.* PM.* DT.*,2.0,,,,NN.* CC.* NN.* PM.* DT.*,2.0
-500154,CC.* NN.* PM.* DT.* JJ.*_CC.*,3.0,,,,CC.* NN.* PM.* DT.* JJ.*_CC.*,3.0
-500155,PM.* DT.* JJ.*_CC.* NN.* CC.*,3.0,,,,PM.* DT.* JJ.*_CC.* NN.* CC.*,3.0
-500156,NN.* CC.* VB.* PM.* FW,3.0,,,,NN.* CC.* VB.* PM.* FW,3.0
-500157,CC.* VB.* PM.* FW CC.*,2.0,,,,CC.* VB.* PM.* FW CC.*,2.0
-500158,VB.* PM.* FW CC.* NN.*,6.0,,,,VB.* PM.* FW CC.* NN.*,6.0
-500159,PM.* FW CC.* NN.* PM.*,4.0,,,,PM.* FW CC.* NN.* PM.*,4.0
-500160,FW CC.* NN.* PM.* CC.*,5.0,,,,FW CC.* NN.* PM.* CC.*,5.0
-500161,CC.* NN.* PM.* CC.* DT.*,3.0,,,,CC.* NN.* PM.* CC.* DT.*,3.0
-500162,VB.*_CC.* NN.* DT.* NN.* CC.*,2.0,,,,VB.*_CC.* NN.* DT.* NN.* CC.*,2.0
-500163,NN.* DT.* NN.* CC.* PR.*,3.0,,,,NN.* DT.* NN.* CC.* PR.*,3.0
-500164,CC.* PR.* DT.* PM.* FW,2.0,,,,CC.* PR.* DT.* PM.* FW,2.0
-500165,CC.* JJ.*_JJ.*_CC.* NN.* CC.* NN.*,2.0,,,,CC.* JJ.*_JJ.*_CC.* NN.* CC.* NN.*,2.0
-500166,NN.* DT.* JJ.*_CC.* NN.*_CC.* NN.*,2.0,,,,NN.* DT.* JJ.*_CC.* NN.*_CC.* NN.*,2.0
-500167,VB.* RB.* DT.* NN.* CC.*,11.0,,,,VB.* RB.* DT.* NN.* CC.*,11.0
-500168,RB.* DT.* NN.* CC.* NN.*,3.0,,,,RB.* DT.* NN.* CC.* NN.*,3.0
-500169,DT.* NN.* CC.* NN.* CC.*,13.0,,,,DT.* NN.* CC.* NN.* CC.*,13.0
-500170,NN.* CC.* NN.* CC.* FW,3.0,,,,NN.* CC.* NN.* CC.* FW,3.0
-500171,DT.* NN.* PM.* CC.* CC.*,5.0,,,,DT.* NN.* PM.* CC.* CC.*,5.0
-500172,NN.* PM.* CC.* CC.* NN.*,3.0,,,,NN.* PM.* CC.* CC.* NN.*,3.0
-500173,CC.* NN.* DT.* NN.* PM.*,3.0,,,,CC.* NN.* DT.* NN.* PM.*,3.0
-500174,NN.* DT.* NN.* PM.* VB.*_VB.*,2.0,,,,NN.* DT.* NN.* PM.* VB.*_VB.*,2.0
-500175,VB.* RB.* PR.* CC.* VB.*,2.0,,,,VB.* RB.* PR.* CC.* VB.*,2.0
-500176,RB.* PR.* CC.* VB.* CC.*,2.0,,,,RB.* PR.* CC.* VB.* CC.*,2.0
-500177,CC.* VB.* CC.* PR.* CC.*,2.0,,,,CC.* VB.* CC.* PR.* CC.*,2.0
-500178,LM VB.* CC.* VB.* CC.*,2.0,,,,LM VB.* CC.* VB.* CC.*,2.0
-500179,CC.* VB.* DT.* JJ.*_CC.* NN.*,2.0,,,,CC.* VB.* DT.* JJ.*_CC.* NN.*,2.0
-500180,VB.* DT.* JJ.*_CC.* NN.* CC.*,3.0,,,,VB.* DT.* JJ.*_CC.* NN.* CC.*,3.0
-500181,CC.* NN.* CC.* VB.* DT.*,9.0,,,,CC.* NN.* CC.* VB.* DT.*,9.0
-500182,CC.* NN.* PM.* FW CC.*,4.0,,,,CC.* NN.* PM.* FW CC.*,4.0
-500183,NN.* PM.* FW CC.* NN.*,3.0,,,,NN.* PM.* FW CC.* NN.*,3.0
-500184,PM.* FW CC.* NN.* CC.*,4.0,,,,PM.* FW CC.* NN.* CC.*,4.0
-500185,NN.* DT.* NN.* CC.* PM.*,2.0,,,,NN.* DT.* NN.* CC.* PM.*,2.0
-500186,PM.* CC.* JJ.* CC.* FW,2.0,,,,PM.* CC.* JJ.* CC.* FW,2.0
-500187,NN.* CC.* JJ.*_CC.* FW FW,2.0,,,,NN.* CC.* JJ.*_CC.* FW FW,2.0
-500188,CC.* JJ.*_CC.* FW FW CC.*,2.0,,,,CC.* JJ.*_CC.* FW FW CC.*,2.0
-500189,FW CC.* NN.* CC.* DT.*,3.0,,,,FW CC.* NN.* CC.* DT.*,3.0
-500190,CC.* NN.* CC.* DT.* NN.*,6.0,,,,CC.* NN.* CC.* DT.* NN.*,6.0
-500191,NN.* CC.* DT.* NN.* CC.*,7.0,,,,NN.* CC.* DT.* NN.* CC.*,7.0
-500192,NN.* PM.* RB.* VB.* PR.*,2.0,,,,NN.* PM.* RB.* VB.* PR.*,2.0
-500193,PM.* RB.* VB.* PR.* DT.*,2.0,,,,PM.* RB.* VB.* PR.* DT.*,2.0
-500194,DT.* NN.* JJ.* CC.* NN.*,2.0,,,,DT.* NN.* JJ.* CC.* NN.*,2.0
-500195,JJ.* CC.* NN.* CC.* NN.*,3.0,,,,JJ.* CC.* NN.* CC.* NN.*,3.0
-500196,CC.* NN.* CC.* FW PM.*,3.0,,,,CC.* NN.* CC.* FW PM.*,3.0
-500197,NN.* CC.* FW PM.* VB.*,3.0,,,,NN.* CC.* FW PM.* VB.*,3.0
-500198,FW PM.* VB.* RB.* PR.*,3.0,,,,FW PM.* VB.* RB.* PR.*,3.0
-500199,JJ.* DT.* NN.* CC.* DT.*,3.0,,,,JJ.* DT.* NN.* CC.* DT.*,3.0
-500200,VB.* PR.*_CC.* VB.* CC.* NN.*,2.0,,,,VB.* PR.*_CC.* VB.* CC.* NN.*,2.0
-500201,PR.*_CC.* VB.* CC.* NN.* RB.*,2.0,,,,PR.*_CC.* VB.* CC.* NN.* RB.*,2.0
-500202,RB.* CC.* NN.* PM.* VB.*,2.0,,,,RB.* CC.* NN.* PM.* VB.*,2.0
-500203,CC.* NN.* PM.* VB.* RB.*,7.0,,,,CC.* NN.* PM.* VB.* RB.*,7.0
-500204,NN.* PM.* VB.* RB.* PR.*,2.0,,,,NN.* PM.* VB.* RB.* PR.*,2.0
-500205,PR.* CC.* VB.* CC.* NN.*,3.0,,,,PR.* CC.* VB.* CC.* NN.*,3.0
-500206,NN.* CC.* RB.* RB.* CC.*,2.0,,,,NN.* CC.* RB.* RB.* CC.*,2.0
-500207,RB.* DT.* VB.* CC.* NN.*,4.0,,,,RB.* DT.* VB.* CC.* NN.*,4.0
-500208,DT.* VB.* CC.* NN.* PM.*,4.0,,,,DT.* VB.* CC.* NN.* PM.*,4.0
-500209,CC.* VB.* CC.* FW PM.*,3.0,,,,CC.* VB.* CC.* FW PM.*,3.0
-500210,CC.* FW PM.* CC.* VB.*,4.0,,,,CC.* FW PM.* CC.* VB.*,4.0
-500211,RB.* PM.* CC.* DT.* NN.*,2.0,,,,RB.* PM.* CC.* DT.* NN.*,2.0
-500212,DT.* NN.*_CC.* VB.* CC.* PR.*,2.0,,,,DT.* NN.*_CC.* VB.* CC.* PR.*,2.0
-500213,VB.* PM.* PM.* RB.* JJ.*,2.0,,,,VB.* PM.* PM.* RB.* JJ.*,2.0
-500214,RB.* DT.* NN.* CC.* FW,2.0,,,,RB.* DT.* NN.* CC.* FW,2.0
-500215,CC.* CD.* NN.* CC.* NN.*,2.0,,,,CC.* CD.* NN.* CC.* NN.*,2.0
-500216,CC.* VB.* RB.* RB.* DT.*,2.0,,,,CC.* VB.* RB.* RB.* DT.*,2.0
-500217,CC.* CD.* NN.* DT.* NN.*,2.0,,,,CC.* CD.* NN.* DT.* NN.*,2.0
-500218,NN.* NN.* PM.* CC.* PM.*,2.0,,,,NN.* NN.* PM.* CC.* PM.*,2.0
-500219,PM.* PR.* CC.* NN.* CC.*,2.0,,,,PM.* PR.* CC.* NN.* CC.*,2.0
-500220,CD.* NN.* CC.* VB.* CC.*,2.0,,,,CD.* NN.* CC.* VB.* CC.*,2.0
-500221,VB.* CC.* NN.* CC.* FW,9.0,,,,VB.* CC.* NN.* CC.* FW,9.0
-500222,DT.* NN.* NN.* CC.* JJ.*_CC.*,2.0,,,,DT.* NN.* NN.* CC.* JJ.*_CC.*,2.0
-500223,NN.* CC.* JJ.*_CC.* NN.* NN.*,2.0,,,,NN.* CC.* JJ.*_CC.* NN.* NN.*,2.0
-500224,VB.* RB.* DT.* DT.* NN.*_CC.*,2.0,,,,VB.* RB.* DT.* DT.* NN.*_CC.*,2.0
-500225,RB.* DT.* DT.* NN.*_CC.* VB.*,2.0,,,,RB.* DT.* DT.* NN.*_CC.* VB.*,2.0
-500226,CC.* DT.* DT.* NN.* CC.*,3.0,,,,CC.* DT.* DT.* NN.* CC.*,3.0
-500227,PR.* LM VB.* CC.* NN.*,3.0,,,,PR.* LM VB.* CC.* NN.*,3.0
-500228,LM VB.* CC.* NN.* CC.*,5.0,,,,LM VB.* CC.* NN.* CC.*,5.0
-500229,NN.* CC.* NN.* CC.* NN.*_CC.*,2.0,,,,NN.* CC.* NN.* CC.* NN.*_CC.*,2.0
-500230,CC.* JJ.* DT.* DT.* NN.*,2.0,,,,CC.* JJ.* DT.* DT.* NN.*,2.0
-500231,RB.*_CC.* VB.* CC.* DT.* FW,2.0,,,,RB.*_CC.* VB.* CC.* DT.* FW,2.0
-500232,VB.* DT.* NN.* NN.* CC.*,3.0,,,,VB.* DT.* NN.* NN.* CC.*,3.0
-500233,NN.* CC.* FW CC.* PR.*,3.0,,,,NN.* CC.* FW CC.* PR.*,3.0
-500234,RB.* VB.* CC.* NN.* DT.*,3.0,,,,RB.* VB.* CC.* NN.* DT.*,3.0
-500235,PM.* CC.* VB.* NN.* CC.*,2.0,,,,PM.* CC.* VB.* NN.* CC.*,2.0
-500236,CC.* PR.*_CC.* NN.* CC.* DT.*,3.0,,,,CC.* PR.*_CC.* NN.* CC.* DT.*,3.0
-500237,NN.* CC.* DT.* NN.*_CC.* PR.*,2.0,,,,NN.* CC.* DT.* NN.*_CC.* PR.*,2.0
-500238,CC.* DT.* NN.*_CC.* PR.* PM.*,2.0,,,,CC.* DT.* NN.*_CC.* PR.* PM.*,2.0
-500239,JJ.*_CC.* NN.* DT.* VB.* CC.*,2.0,,,,JJ.*_CC.* NN.* DT.* VB.* CC.*,2.0
-500240,NN.* DT.* VB.* CC.* DT.*,2.0,,,,NN.* DT.* VB.* CC.* DT.*,2.0
-500241,DT.* VB.* CC.* DT.* NN.*,4.0,,,,DT.* VB.* CC.* DT.* NN.*,4.0
-500242,VB.* CC.* DT.* NN.* PM.*,5.0,,,,VB.* CC.* DT.* NN.* PM.*,5.0
-500243,VB.* CC.* DT.* PR.*_CC.* NN.*,2.0,,,,VB.* CC.* DT.* PR.*_CC.* NN.*,2.0
-500244,DT.* PR.*_CC.* NN.* CC.* VB.*,2.0,,,,DT.* PR.*_CC.* NN.* CC.* VB.*,2.0
-500245,PR.*_CC.* NN.* CC.* VB.* RB.*,2.0,,,,PR.*_CC.* NN.* CC.* VB.* RB.*,2.0
-500246,VB.* RB.* CC.* NN.* CC.*,6.0,,,,VB.* RB.* CC.* NN.* CC.*,6.0
-500247,CC.* VB.* RB.* CC.* NN.*,5.0,,,,CC.* VB.* RB.* CC.* NN.*,5.0
-500248,RB.* CC.* NN.* DT.* NN.*,4.0,,,,RB.* CC.* NN.* DT.* NN.*,4.0
-500249,PR.* CC.* DT.* NN.*_CC.* JJ.*,2.0,,,,PR.* CC.* DT.* NN.*_CC.* JJ.*,2.0
-500250,PM.* VB.* DT.* NN.* CC.*,9.0,,,,PM.* VB.* DT.* NN.* CC.*,9.0
-500251,VB.* DT.* NN.* CC.* NN.*,10.0,,,,VB.* DT.* NN.* CC.* NN.*,10.0
-500252,NN.* CC.* FW CC.* JJ.*_CC.*,2.0,,,,NN.* CC.* FW CC.* JJ.*_CC.*,2.0
-500253,CC.* FW CC.* JJ.*_CC.* NN.*,2.0,,,,CC.* FW CC.* JJ.*_CC.* NN.*,2.0
-500254,PM.* CC.* VB.* DT.* NN.*_CC.*,2.0,,,,PM.* CC.* VB.* DT.* NN.*_CC.*,2.0
-500255,CC.* VB.* DT.* NN.*_CC.* NN.*,2.0,,,,CC.* VB.* DT.* NN.*_CC.* NN.*,2.0
-500256,FW PM.* CC.* VB.* CC.*,4.0,,,,FW PM.* CC.* VB.* CC.*,4.0
-500257,CC.* RB.*_CC.* NN.* CC.* VB.*,2.0,,,,CC.* RB.*_CC.* NN.* CC.* VB.*,2.0
-500258,JJ.* CC.* VB.* DT.* NN.*,2.0,,,,JJ.* CC.* VB.* DT.* NN.*,2.0
-500259,CC.* CC.* JJ.*_CC.* FW CC.*,2.0,,,,CC.* CC.* JJ.*_CC.* FW CC.*,2.0
-500260,PR.*_CC.* NN.* CC.* NN.* CC.*,7.0,,,,PR.*_CC.* NN.* CC.* NN.* CC.*,7.0
-500261,CC.* NN.* CC.* DT.* NN.*_CC.*,2.0,,,,CC.* NN.* CC.* DT.* NN.*_CC.*,2.0
-500262,NN.* CC.* DT.* NN.*_CC.* VB.*,6.0,,,,NN.* CC.* DT.* NN.*_CC.* VB.*,6.0
-500263,FW PM.* CC.* RB.* RB.*,3.0,,,,FW PM.* CC.* RB.* RB.*,3.0
-500264,CC.* CC.* PM.* VB.* DT.*,2.0,,,,CC.* CC.* PM.* VB.* DT.*,2.0
-500265,CC.* PM.* VB.* DT.* NN.*,2.0,,,,CC.* PM.* VB.* DT.* NN.*,2.0
-500266,DT.* VB.* PR.* CC.* NN.*,2.0,,,,DT.* VB.* PR.* CC.* NN.*,2.0
-500267,RB.* CC.* JJ.*_CC.* NN.* CC.*,4.0,,,,RB.* CC.* JJ.*_CC.* NN.* CC.*,4.0
-500268,CC.* JJ.*_CC.* NN.* CC.* NN.*,3.0,,,,CC.* JJ.*_CC.* NN.* CC.* NN.*,3.0
-500269,DT.* PR.*_CC.* PM.* FW CC.*,2.0,,,,DT.* PR.*_CC.* PM.* FW CC.*,2.0
-500270,NN.* CC.* NN.* CC.* PR.*_CC.*,4.0,,,,NN.* CC.* NN.* CC.* PR.*_CC.*,4.0
-500271,NN.* CC.* PR.*_CC.* NN.* FW,3.0,,,,NN.* CC.* PR.*_CC.* NN.* FW,3.0
-500272,CC.* PR.*_CC.* NN.* FW CC.*,2.0,,,,CC.* PR.*_CC.* NN.* FW CC.*,2.0
-500273,CC.* FW CC.* DT.* NN.*,3.0,,,,CC.* FW CC.* DT.* NN.*,3.0
-500274,FW CC.* DT.* NN.* LM,2.0,,,,FW CC.* DT.* NN.* LM,2.0
-500275,FW PM.* PM.* CC.* CC.*,2.0,,,,FW PM.* PM.* CC.* CC.*,2.0
-500276,PR.* PM.* JJ.* DT.* VB.*,2.0,,,,PR.* PM.* JJ.* DT.* VB.*,2.0
-500277,VB.* PR.* CC.* NN.* CC.*,9.0,,,,VB.* PR.* CC.* NN.* CC.*,9.0
-500278,CC.* NN.* CC.* JJ.* CC.*,2.0,,,,CC.* NN.* CC.* JJ.* CC.*,2.0
-500279,PM.* VB.* PR.* CC.* NN.*_CC.*,2.0,,,,PM.* VB.* PR.* CC.* NN.*_CC.*,2.0
-500280,VB.* PR.* CC.* NN.*_CC.* NN.*,3.0,,,,VB.* PR.* CC.* NN.*_CC.* NN.*,3.0
-500281,PR.* CC.* NN.*_CC.* NN.* CC.*,3.0,,,,PR.* CC.* NN.*_CC.* NN.* CC.*,3.0
-500282,NN.* CC.* CC.* PM.* FW,4.0,,,,NN.* CC.* CC.* PM.* FW,4.0
-500283,CC.* PR.* PM.* VB.* RB.*,2.0,,,,CC.* PR.* PM.* VB.* RB.*,2.0
-500284,PR.* PM.* VB.* RB.* DT.*,2.0,,,,PR.* PM.* VB.* RB.* DT.*,2.0
-500285,PM.* VB.* RB.* DT.* NN.*,7.0,,,,PM.* VB.* RB.* DT.* NN.*,7.0
-500286,NN.* CC.* VB.*_VB.* PR.* RB.*,2.0,,,,NN.* CC.* VB.*_VB.* PR.* RB.*,2.0
-500287,CC.* VB.*_VB.* PR.* RB.* RB.*,2.0,,,,CC.* VB.*_VB.* PR.* RB.* RB.*,2.0
-500288,PM.* VB.* PR.* CC.* NN.*,5.0,,,,PM.* VB.* PR.* CC.* NN.*,5.0
-500289,PR.*_CC.* NN.* CC.* RB.* RB.*,5.0,,,,PR.*_CC.* NN.* CC.* RB.* RB.*,5.0
-500290,CC.* RB.* RB.* VB.* DT.*,3.0,,,,CC.* RB.* RB.* VB.* DT.*,3.0
-500291,RB.* RB.* VB.* DT.* NN.*,7.0,,,,RB.* RB.* VB.* DT.* NN.*,7.0
-500292,RB.* VB.* DT.* NN.* CC.*,14.0,,,,RB.* VB.* DT.* NN.* CC.*,14.0
-500293,CC.* CC.* VB.* CC.* DT.*,2.0,,,,CC.* CC.* VB.* CC.* DT.*,2.0
-500294,DT.* CC.* PM.* FW CC.*,2.0,,,,DT.* CC.* PM.* FW CC.*,2.0
-500295,CC.* PM.* FW CC.* NN.*,2.0,,,,CC.* PM.* FW CC.* NN.*,2.0
-500296,PM.* CD.* NN.* CC.* NN.*,2.0,,,,PM.* CD.* NN.* CC.* NN.*,2.0
-500297,JJ.*_CC.* NN.* PR.* DT.* NN.*,2.0,,,,JJ.*_CC.* NN.* PR.* DT.* NN.*,2.0
-500298,VB.* CC.* NN.* DT.* NN.*,10.0,,,,VB.* CC.* NN.* DT.* NN.*,10.0
-500299,CC.* NN.* DT.* NN.* CC.*,9.0,,,,CC.* NN.* DT.* NN.* CC.*,9.0
-500300,DT.* NN.* CC.* PR.* PM.*,2.0,,,,DT.* NN.* CC.* PR.* PM.*,2.0
-500301,PM.* VB.* RB.* CC.* FW,2.0,,,,PM.* VB.* RB.* CC.* FW,2.0
-500302,CC.* RB.* DT.* VB.* CC.*,3.0,,,,CC.* RB.* DT.* VB.* CC.*,3.0
-500303,VB.* CC.* VB.* DT.* FW,2.0,,,,VB.* CC.* VB.* DT.* FW,2.0
-500304,CC.* RB.* VB.* DT.* NN.*,3.0,,,,CC.* RB.* VB.* DT.* NN.*,3.0
-500305,RB.* VB.* DT.* NN.* PM.*,5.0,,,,RB.* VB.* DT.* NN.* PM.*,5.0
-500306,VB.* DT.* NN.* PM.* CC.*,3.0,,,,VB.* DT.* NN.* PM.* CC.*,3.0
-500307,NN.* PM.* CC.* RB.* PR.*,2.0,,,,NN.* PM.* CC.* RB.* PR.*,2.0
-500308,DT.* NN.* CC.* DT.* FW,2.0,,,,DT.* NN.* CC.* DT.* FW,2.0
-500309,NN.* CC.* DT.* FW CC.*,2.0,,,,NN.* CC.* DT.* FW CC.*,2.0
-500310,NN.* CC.* NN.* PR.*_CC.* DT.*,2.0,,,,NN.* CC.* NN.* PR.*_CC.* DT.*,2.0
-500311,CC.* NN.* PR.*_CC.* DT.* NN.*,3.0,,,,CC.* NN.* PR.*_CC.* DT.* NN.*,3.0
-500312,NN.* PR.*_CC.* DT.* NN.* NN.*,3.0,,,,NN.* PR.*_CC.* DT.* NN.* NN.*,3.0
-500313,NN.* PM.* PR.* PM.* FW,3.0,,,,NN.* PM.* PR.* PM.* FW,3.0
-500314,PM.* PR.* PM.* FW VB.*,2.0,,,,PM.* PR.* PM.* FW VB.*,2.0
-500315,PR.* PM.* FW VB.* CC.*,4.0,,,,PR.* PM.* FW VB.* CC.*,4.0
-500316,DT.* JJ.*_CC.* NN.* DT.* NN.*,2.0,,,,DT.* JJ.*_CC.* NN.* DT.* NN.*,2.0
-500317,NN.* RB.* RB.* VB.* PR.*,2.0,,,,NN.* RB.* RB.* VB.* PR.*,2.0
-500318,RB.* RB.* VB.* PR.* CC.*,2.0,,,,RB.* RB.* VB.* PR.* CC.*,2.0
-500319,CC.* PR.*_CC.* FW FW RB.*,2.0,,,,CC.* PR.*_CC.* FW FW RB.*,2.0
-500320,DT.* NN.* LM RB.* VB.*_VB.*,2.0,,,,DT.* NN.* LM RB.* VB.*_VB.*,2.0
-500321,VB.*_VB.* CC.* NN.* CC.* DT.*,2.0,,,,VB.*_VB.* CC.* NN.* CC.* DT.*,2.0
-500322,RB.* CC.* PR.*_CC.* NN.* CC.*,4.0,,,,RB.* CC.* PR.*_CC.* NN.* CC.*,4.0
-500323,NN.* CC.* VB.* CC.* DT.*,7.0,,,,NN.* CC.* VB.* CC.* DT.*,7.0
-500324,CC.* VB.* CC.* DT.* NN.*,13.0,,,,CC.* VB.* CC.* DT.* NN.*,13.0
-500325,VB.* CC.* DT.* NN.* CC.*,16.0,,,,VB.* CC.* DT.* NN.* CC.*,16.0
-500326,CC.* DT.* NN.* CC.* PR.*,2.0,,,,CC.* DT.* NN.* CC.* PR.*,2.0
-500327,DT.* NN.* CC.* PR.* CC.*,3.0,,,,DT.* NN.* CC.* PR.* CC.*,3.0
-500328,PM.* NN.* CC.* PR.*_CC.* NN.*,5.0,,,,PM.* NN.* CC.* PR.*_CC.* NN.*,5.0
-500329,CC.* PR.*_CC.* NN.* DT.* FW,2.0,,,,CC.* PR.*_CC.* NN.* DT.* FW,2.0
-500330,DT.* FW CC.* PR.*_CC.* NN.*,3.0,,,,DT.* FW CC.* PR.*_CC.* NN.*,3.0
-500331,FW CC.* PR.*_CC.* NN.* PM.*,3.0,,,,FW CC.* PR.*_CC.* NN.* PM.*,3.0
-500332,VB.* CC.* RB.* PR.* PM.*,2.0,,,,VB.* CC.* RB.* PR.* PM.*,2.0
-500333,RB.* DT.* JJ.* CC.* NN.*,2.0,,,,RB.* DT.* JJ.* CC.* NN.*,2.0
-500334,NN.* CC.* PR.*_CC.* NN.* NN.*,3.0,,,,NN.* CC.* PR.*_CC.* NN.* NN.*,3.0
-500335,DT.* JJ.*_CC.* NN.* NN.* FW,2.0,,,,DT.* JJ.*_CC.* NN.* NN.* FW,2.0
-500336,NN.* NN.* PM.* JJ.*_CC.* FW,2.0,,,,NN.* NN.* PM.* JJ.*_CC.* FW,2.0
-500337,NN.* PM.* JJ.*_CC.* FW CC.*,2.0,,,,NN.* PM.* JJ.*_CC.* FW CC.*,2.0
-500338,PM.* JJ.*_CC.* FW CC.* DT.*,2.0,,,,PM.* JJ.*_CC.* FW CC.* DT.*,2.0
-500339,DT.* DT.* NN.* CC.* NN.*,4.0,,,,DT.* DT.* NN.* CC.* NN.*,4.0
-500340,DT.* NN.* PM.* RB.* VB.*,5.0,,,,DT.* NN.* PM.* RB.* VB.*,5.0
-500341,PR.* DT.* DT.* NN.* CC.*,2.0,,,,PR.* DT.* DT.* NN.* CC.*,2.0
-500342,DT.* DT.* NN.* CC.* VB.*,6.0,,,,DT.* DT.* NN.* CC.* VB.*,6.0
-500343,CC.* DT.* NN.*_CC.* VB.* CC.*,9.0,,,,CC.* DT.* NN.*_CC.* VB.* CC.*,9.0
-500344,CC.* DT.* JJ.* CC.* NN.*,2.0,,,,CC.* DT.* JJ.* CC.* NN.*,2.0
-500345,JJ.* DT.* NN.* DT.* NN.*,2.0,,,,JJ.* DT.* NN.* DT.* NN.*,2.0
-500346,NN.* DT.* NN.* CC.* DT.*,3.0,,,,NN.* DT.* NN.* CC.* DT.*,3.0
-500347,CC.* NN.* PM.* CC.* RB.*,3.0,,,,CC.* NN.* PM.* CC.* RB.*,3.0
-500348,NN.* PM.* CC.* RB.* VB.*,4.0,,,,NN.* PM.* CC.* RB.* VB.*,4.0
-500349,PM.* CC.* RB.* VB.* CC.*,2.0,,,,PM.* CC.* RB.* VB.* CC.*,2.0
-500350,CC.* RB.* VB.* CC.* NN.*,3.0,,,,CC.* RB.* VB.* CC.* NN.*,3.0
-500351,LM VB.* RB.* CC.* NN.*,3.0,,,,LM VB.* RB.* CC.* NN.*,3.0
-500352,VB.* RB.* CC.* NN.* PM.*,2.0,,,,VB.* RB.* CC.* NN.* PM.*,2.0
-500353,NN.* DT.* NN.* CC.* CC.*,2.0,,,,NN.* DT.* NN.* CC.* CC.*,2.0
-500354,DT.* NN.* CC.* CC.* FW,2.0,,,,DT.* NN.* CC.* CC.* FW,2.0
-500355,JJ.*_CC.* NN.* RB.* DT.* NN.*,2.0,,,,JJ.*_CC.* NN.* RB.* DT.* NN.*,2.0
-500356,NN.* RB.* DT.* NN.* PM.*,2.0,,,,NN.* RB.* DT.* NN.* PM.*,2.0
-500357,CC.* JJ.* CC.* NN.* PM.*,2.0,,,,CC.* JJ.* CC.* NN.* PM.*,2.0
-500358,CC.* NN.* PM.* PR.* RB.*,2.0,,,,CC.* NN.* PM.* PR.* RB.*,2.0
-500359,PR.* RB.* DT.* NN.*_CC.* VB.*,2.0,,,,PR.* RB.* DT.* NN.*_CC.* VB.*,2.0
-500360,PR.* CC.* NN.* CC.* DT.*,4.0,,,,PR.* CC.* NN.* CC.* DT.*,4.0
-500361,PM.* CC.* RB.* VB.* NN.*,2.0,,,,PM.* CC.* RB.* VB.* NN.*,2.0
-500362,CC.* VB.* PR.* CC.* FW,2.0,,,,CC.* VB.* PR.* CC.* FW,2.0
-500363,FW CC.* DT.* NN.* PM.*,3.0,,,,FW CC.* DT.* NN.* PM.*,3.0
-500364,CC.* DT.* NN.* PM.* JJ.*,3.0,,,,CC.* DT.* NN.* PM.* JJ.*,3.0
-500365,DT.* NN.* PM.* JJ.* RB.*,2.0,,,,DT.* NN.* PM.* JJ.* RB.*,2.0
-500366,RB.* DT.* NN.* PM.* CC.*,3.0,,,,RB.* DT.* NN.* PM.* CC.*,3.0
-500367,FW PM.* CC.* NN.* CC.*,6.0,,,,FW PM.* CC.* NN.* CC.*,6.0
-500368,PR.* RB.*_CC.* DT.* NN.* CC.*,2.0,,,,PR.* RB.*_CC.* DT.* NN.* CC.*,2.0
-500369,CC.* JJ.* PM.* CC.* PR.*,2.0,,,,CC.* JJ.* PM.* CC.* PR.*,2.0
-500370,JJ.* PM.* CC.* PR.* DT.*,2.0,,,,JJ.* PM.* CC.* PR.* DT.*,2.0
-500371,JJ.*_CC.* NN.* CC.* NN.* CC.*,5.0,,,,JJ.*_CC.* NN.* CC.* NN.* CC.*,5.0
-500372,NN.* CC.* NN.* CC.* VB.*,9.0,,,,NN.* CC.* NN.* CC.* VB.*,9.0
-500373,DT.* NN.* CC.* DT.* JJ.*,3.0,,,,DT.* NN.* CC.* DT.* JJ.*,3.0
-500374,JJ.* CC.* NN.* CC.* PR.*_CC.*,4.0,,,,JJ.* CC.* NN.* CC.* PR.*_CC.*,4.0
-500375,DT.* NN.*_CC.* VB.* CC.* NN.*,5.0,,,,DT.* NN.*_CC.* VB.* CC.* NN.*,5.0
-500376,CC.* VB.* CC.* DT.* FW,3.0,,,,CC.* VB.* CC.* DT.* FW,3.0
-500377,VB.* CC.* DT.* FW CC.*,3.0,,,,VB.* CC.* DT.* FW CC.*,3.0
-500378,RB.* CC.* JJ.*_CC.* NN.* DT.*,2.0,,,,RB.* CC.* JJ.*_CC.* NN.* DT.*,2.0
-500379,CC.* JJ.*_CC.* NN.* DT.* NN.*,4.0,,,,CC.* JJ.*_CC.* NN.* DT.* NN.*,4.0
-500380,CC.* VB.* DT.* PR.*_CC.* NN.*,2.0,,,,CC.* VB.* DT.* PR.*_CC.* NN.*,2.0
-500381,FW CC.* NN.* PM.* JJ.*,2.0,,,,FW CC.* NN.* PM.* JJ.*,2.0
-500382,DT.* NN.* DT.* FW PM.*,2.0,,,,DT.* NN.* DT.* FW PM.*,2.0
-500383,CC.* RB.* RB.* DT.* NN.*,2.0,,,,CC.* RB.* RB.* DT.* NN.*,2.0
-500384,CC.* DT.* NN.* CC.* CC.*,2.0,,,,CC.* DT.* NN.* CC.* CC.*,2.0
-500385,RB.* RB.* NN.* CC.* PR.*,2.0,,,,RB.* RB.* NN.* CC.* PR.*,2.0
-500386,DT.* NN.* DT.* VB.* CC.*,4.0,,,,DT.* NN.* DT.* VB.* CC.*,4.0
-500387,NN.* DT.* VB.* CC.* FW,2.0,,,,NN.* DT.* VB.* CC.* FW,2.0
-500388,FW CC.* NN.* CC.* NN.*,2.0,,,,FW CC.* NN.* CC.* NN.*,2.0
-500389,CC.* NN.* CC.* NN.* PM.*,11.0,,,,CC.* NN.* CC.* NN.* PM.*,11.0
-500390,NN.* CC.* NN.* PM.* RB.*,8.0,,,,NN.* CC.* NN.* PM.* RB.*,8.0
-500391,NN.* PM.* RB.* JJ.* CC.*,3.0,,,,NN.* PM.* RB.* JJ.* CC.*,3.0
-500392,JJ.* CC.* NN.* DT.* NN.*,2.0,,,,JJ.* CC.* NN.* DT.* NN.*,2.0
-500393,NN.* DT.* NN.* CC.* JJ.*,2.0,,,,NN.* DT.* NN.* CC.* JJ.*,2.0
-500394,DT.* NN.* CC.* JJ.* DT.*,2.0,,,,DT.* NN.* CC.* JJ.* DT.*,2.0
-500395,NN.* CC.* JJ.* DT.* NN.*,3.0,,,,NN.* CC.* JJ.* DT.* NN.*,3.0
-500396,JJ.* DT.* NN.* CC.* CC.*,2.0,,,,JJ.* DT.* NN.* CC.* CC.*,2.0
-500397,NN.* CC.* CC.* NN.*_CC.* JJ.*,2.0,,,,NN.* CC.* CC.* NN.*_CC.* JJ.*,2.0
-500398,CC.* NN.*_CC.* JJ.* CC.* NN.*,2.0,,,,CC.* NN.*_CC.* JJ.* CC.* NN.*,2.0
-500399,NN.*_CC.* JJ.* CC.* NN.* PM.*,2.0,,,,NN.*_CC.* JJ.* CC.* NN.* PM.*,2.0
-500400,JJ.* CC.* NN.* PM.* JJ.*,2.0,,,,JJ.* CC.* NN.* PM.* JJ.*,2.0
-500401,CC.* NN.* PM.* JJ.* RB.*,3.0,,,,CC.* NN.* PM.* JJ.* RB.*,3.0
-500402,NN.* CC.* PR.*_CC.* NN.* PM.*,10.0,,,,NN.* CC.* PR.*_CC.* NN.* PM.*,10.0
-500403,NN.* DT.* NN.* PM.* RB.*,2.0,,,,NN.* DT.* NN.* PM.* RB.*,2.0
-500404,NN.* CC.* NN.* PM.* PR.*_CC.*,2.0,,,,NN.* CC.* NN.* PM.* PR.*_CC.*,2.0
-500405,CC.* NN.* PM.* PR.*_CC.* FW,2.0,,,,CC.* NN.* PM.* PR.*_CC.* FW,2.0
-500406,NN.* PM.* PR.*_CC.* FW FW,2.0,,,,NN.* PM.* PR.*_CC.* FW FW,2.0
-500407,PR.*_CC.* FW FW PM.* VB.*,2.0,,,,PR.*_CC.* FW FW PM.* VB.*,2.0
-500408,CC.* FW PM.* VB.* DT.*,2.0,,,,CC.* FW PM.* VB.* DT.*,2.0
-500409,RB.* CC.* NN.* CC.* DT.*,4.0,,,,RB.* CC.* NN.* CC.* DT.*,4.0
-500410,JJ.* PR.*_CC.* VB.* CC.* DT.*,2.0,,,,JJ.* PR.*_CC.* VB.* CC.* DT.*,2.0
-500411,VB.* CC.* DT.* NN.*_CC.* VB.*,4.0,,,,VB.* CC.* DT.* NN.*_CC.* VB.*,4.0
-500412,NN.* DT.* JJ.*_CC.* NN.* CC.*,2.0,,,,NN.* DT.* JJ.*_CC.* NN.* CC.*,2.0
-500413,DT.* JJ.*_CC.* NN.* CC.* NN.*,4.0,,,,DT.* JJ.*_CC.* NN.* CC.* NN.*,4.0
-500414,VB.* DT.* JJ.*_CC.* NN.* NN.*,2.0,,,,VB.* DT.* JJ.*_CC.* NN.* NN.*,2.0
-500415,NN.* NN.* CC.* RB.* RB.*,2.0,,,,NN.* NN.* CC.* RB.* RB.*,2.0
-500416,RB.* RB.* VB.* DT.* FW,2.0,,,,RB.* RB.* VB.* DT.* FW,2.0
-500417,NN.* NN.* CC.* DT.* NN.*_CC.*,2.0,,,,NN.* NN.* CC.* DT.* NN.*_CC.*,2.0
-500418,DT.* NN.*_CC.* PR.*_CC.* NN.*_CC.* VB.*,2.0,,,,DT.* NN.*_CC.* PR.*_CC.* NN.*_CC.* VB.*,2.0
-500419,CC.* VB.* RB.* VB.* DT.*,2.0,,,,CC.* VB.* RB.* VB.* DT.*,2.0
-500420,VB.* RB.* VB.* DT.* NN.*,2.0,,,,VB.* RB.* VB.* DT.* NN.*,2.0
-500421,FW PM.* CC.* VB.* DT.*,3.0,,,,FW PM.* CC.* VB.* DT.*,3.0
-500422,CC.* PR.*_CC.* NN.* NN.* DT.*,2.0,,,,CC.* PR.*_CC.* NN.* NN.* DT.*,2.0
-500423,NN.* NN.* DT.* JJ.*_CC.* NN.*,2.0,,,,NN.* NN.* DT.* JJ.*_CC.* NN.*,2.0
-500424,NN.* DT.* JJ.*_CC.* NN.* NN.*,3.0,,,,NN.* DT.* JJ.*_CC.* NN.* NN.*,3.0
-500425,RB.* CC.* VB.*_CC.* NN.* CC.*,2.0,,,,RB.* CC.* VB.*_CC.* NN.* CC.*,2.0
-500426,CC.* NN.*_CC.* VB.* CC.* NN.*,3.0,,,,CC.* NN.*_CC.* VB.* CC.* NN.*,3.0
-500427,NN.*_CC.* VB.* CC.* NN.* PM.*,2.0,,,,NN.*_CC.* VB.* CC.* NN.* PM.*,2.0
-500428,VB.* CC.* NN.* PM.* PR.*_CC.*,2.0,,,,VB.* CC.* NN.* PM.* PR.*_CC.*,2.0
-500429,PR.* DT.* VB.*_CC.* NN.* CC.*,2.0,,,,PR.* DT.* VB.*_CC.* NN.* CC.*,2.0
-500430,NN.* CC.* NN.* CC.* JJ.*_CC.*,3.0,,,,NN.* CC.* NN.* CC.* JJ.*_CC.*,3.0
-500431,RB.* CC.* DT.* NN.* CC.*,7.0,,,,RB.* CC.* DT.* NN.* CC.*,7.0
-500432,CC.* DT.* NN.* CC.* NN.*,8.0,,,,CC.* DT.* NN.* CC.* NN.*,8.0
-500433,RB.* CC.* VB.* CC.* DT.*,5.0,,,,RB.* CC.* VB.* CC.* DT.*,5.0
-500434,CC.* DT.* NN.* PM.* FW,2.0,,,,CC.* DT.* NN.* PM.* FW,2.0
-500435,FW PM.* NN.* CC.* JJ.*,2.0,,,,FW PM.* NN.* CC.* JJ.*,2.0
-500436,FW RB.* CC.* DT.* NN.*,3.0,,,,FW RB.* CC.* DT.* NN.*,3.0
-500437,RB.* CC.* DT.* NN.* PM.*,2.0,,,,RB.* CC.* DT.* NN.* PM.*,2.0
-500438,NN.* CC.* VB.* PR.* CC.*,5.0,,,,NN.* CC.* VB.* PR.* CC.*,5.0
-500439,CC.* VB.* PR.* CC.* NN.*_CC.*,2.0,,,,CC.* VB.* PR.* CC.* NN.*_CC.*,2.0
-500440,PR.*_CC.* VB.* CC.* NN.* CC.*,2.0,,,,PR.*_CC.* VB.* CC.* NN.* CC.*,2.0
-500441,VB.* CC.* NN.* CC.* CC.*,2.0,,,,VB.* CC.* NN.* CC.* CC.*,2.0
-500442,CC.* NN.* PM.* PR.*_CC.* NN.*,2.0,,,,CC.* NN.* PM.* PR.*_CC.* NN.*,2.0
-500443,NN.* RB.* RB.* VB.* DT.*,5.0,,,,NN.* RB.* RB.* VB.* DT.*,5.0
-500444,FW CC.* VB.* PM.* NN.*,2.0,,,,FW CC.* VB.* PM.* NN.*,2.0
-500445,CC.* VB.* PM.* NN.* CC.*,3.0,,,,CC.* VB.* PM.* NN.* CC.*,3.0
-500446,PR.* CC.* NN.* CC.* FW,3.0,,,,PR.* CC.* NN.* CC.* FW,3.0
-500447,FW FW CC.* PR.*_CC.* NN.*,3.0,,,,FW FW CC.* PR.*_CC.* NN.*,3.0
-500448,FW CC.* PR.*_CC.* NN.* DT.*,2.0,,,,FW CC.* PR.*_CC.* NN.* DT.*,2.0
-500449,CC.* NN.* CC.* JJ.*_CC.* NN.*,3.0,,,,CC.* NN.* CC.* JJ.*_CC.* NN.*,3.0
-500450,CC.* JJ.*_CC.* NN.* FW FW,2.0,,,,CC.* JJ.*_CC.* NN.* FW FW,2.0
-500451,DT.* NN.* CC.* VB.* PM.*,5.0,,,,DT.* NN.* CC.* VB.* PM.*,5.0
-500452,NN.* CC.* VB.* CC.* JJ.*,3.0,,,,NN.* CC.* VB.* CC.* JJ.*,3.0
-500453,VB.* CC.* DT.* NN.* DT.*,3.0,,,,VB.* CC.* DT.* NN.* DT.*,3.0
-500454,PR.* CC.* DT.* NN.* CC.*,4.0,,,,PR.* CC.* DT.* NN.* CC.*,4.0
-500455,NN.* CC.* PR.*_CC.* NN.* JJ.*,2.0,,,,NN.* CC.* PR.*_CC.* NN.* JJ.*,2.0
-500456,CC.* PR.*_CC.* NN.* JJ.* CC.*,2.0,,,,CC.* PR.*_CC.* NN.* JJ.* CC.*,2.0
-500457,CC.* NN.* CC.* JJ.*_CC.* FW,2.0,,,,CC.* NN.* CC.* JJ.*_CC.* FW,2.0
-500458,LM VB.* RB.* CC.* DT.*,2.0,,,,LM VB.* RB.* CC.* DT.*,2.0
-500459,NN.* CC.* NN.* CC.* NN.*,4.0,,,,NN.* CC.* NN.* CC.* NN.*,4.0
-500460,PR.* DT.* VB.* CC.* NN.*,2.0,,,,PR.* DT.* VB.* CC.* NN.*,2.0
-500461,CC.* DT.* VB.* RB.* CC.*,2.0,,,,CC.* DT.* VB.* RB.* CC.*,2.0
-500462,DT.* DT.* JJ.* PM.* NN.*,2.0,,,,DT.* DT.* JJ.* PM.* NN.*,2.0
-500463,DT.* JJ.* PM.* NN.* CC.*,6.0,,,,DT.* JJ.* PM.* NN.* CC.*,6.0
-500464,JJ.* PM.* NN.* CC.* VB.*_CC.*,2.0,,,,JJ.* PM.* NN.* CC.* VB.*_CC.*,2.0
-500465,CC.* NN.* CC.* PR.* DT.*,2.0,,,,CC.* NN.* CC.* PR.* DT.*,2.0
-500466,NN.* CC.* PR.* DT.* VB.*,2.0,,,,NN.* CC.* PR.* DT.* VB.*,2.0
-500467,CC.* PR.* DT.* VB.* CC.*,3.0,,,,CC.* PR.* DT.* VB.* CC.*,3.0
-500468,FW CC.* VB.* CC.* DT.*,2.0,,,,FW CC.* VB.* CC.* DT.*,2.0
-500469,CC.* VB.* PR.* DT.* NN.*,2.0,,,,CC.* VB.* PR.* DT.* NN.*,2.0
-500470,PR.* DT.* NN.* CC.* PR.*,2.0,,,,PR.* DT.* NN.* CC.* PR.*,2.0
-500471,VB.* CC.* NN.* PM.* RB.*,2.0,,,,VB.* CC.* NN.* PM.* RB.*,2.0
-500472,CC.* NN.* PM.* RB.* PR.*,3.0,,,,CC.* NN.* PM.* RB.* PR.*,3.0
-500473,PR.* VB.* CC.* NN.* CC.*,2.0,,,,PR.* VB.* CC.* NN.* CC.*,2.0
-500474,DT.* VB.* NN.* PR.* CC.*,2.0,,,,DT.* VB.* NN.* PR.* CC.*,2.0
-500475,NN.* NN.* CC.* DT.* VB.*_CC.*,2.0,,,,NN.* NN.* CC.* DT.* VB.*_CC.*,2.0
-500476,NN.* CC.* DT.* VB.*_CC.* NN.*,4.0,,,,NN.* CC.* DT.* VB.*_CC.* NN.*,4.0
-500477,DT.* VB.* DT.* NN.* CC.*,2.0,,,,DT.* VB.* DT.* NN.* CC.*,2.0
-500478,CC.* PR.*_CC.* NN.* PM.* NN.*,4.0,,,,CC.* PR.*_CC.* NN.* PM.* NN.*,4.0
-500479,NN.* CC.* RB.* DT.* VB.*,2.0,,,,NN.* CC.* RB.* DT.* VB.*,2.0
-500480,PM.* JJ.* CC.* NN.* CC.*,5.0,,,,PM.* JJ.* CC.* NN.* CC.*,5.0
-500481,PR.*_CC.* NN.* DT.* FW FW,2.0,,,,PR.*_CC.* NN.* DT.* FW FW,2.0
-500482,CC.* VB.* RB.* DT.* NN.*,3.0,,,,CC.* VB.* RB.* DT.* NN.*,3.0
-500483,DT.* NN.* CC.* PR.* RB.*,2.0,,,,DT.* NN.* CC.* PR.* RB.*,2.0
-500484,PM.* CC.* DT.* NN.* CC.*,2.0,,,,PM.* CC.* DT.* NN.* CC.*,2.0
-500485,CC.* VB.* PR.* CC.* VB.*_CC.*,2.0,,,,CC.* VB.* PR.* CC.* VB.*_CC.*,2.0
-500486,VB.* PR.* CC.* VB.*_CC.* NN.*,2.0,,,,VB.* PR.* CC.* VB.*_CC.* NN.*,2.0
-500487,VB.*_CC.* NN.* PM.* NN.* CC.*,2.0,,,,VB.*_CC.* NN.* PM.* NN.* CC.*,2.0
-500488,VB.* DT.* NN.* PM.* FW,2.0,,,,VB.* DT.* NN.* PM.* FW,2.0
-500489,RB.* DT.* NN.* RB.* NN.*,2.0,,,,RB.* DT.* NN.* RB.* NN.*,2.0
-500490,NN.* RB.* NN.* PM.* CD.*,2.0,,,,NN.* RB.* NN.* PM.* CD.*,2.0
-500491,RB.* RB.* PR.*_CC.* NN.* DT.*,2.0,,,,RB.* RB.* PR.*_CC.* NN.* DT.*,2.0
-500492,VB.* DT.* PR.*_CC.* NN.* CC.*,2.0,,,,VB.* DT.* PR.*_CC.* NN.* CC.*,2.0
-500493,DT.* PR.*_CC.* NN.* CC.* NN.*,4.0,,,,DT.* PR.*_CC.* NN.* CC.* NN.*,4.0
-500494,PM.* NN.* FW DT.* NN.*,2.0,,,,PM.* NN.* FW DT.* NN.*,2.0
-500495,NN.* FW DT.* NN.* CC.*,3.0,,,,NN.* FW DT.* NN.* CC.*,3.0
-500496,NN.* CC.* JJ.* RB.* CC.*,2.0,,,,NN.* CC.* JJ.* RB.* CC.*,2.0
-500497,NN.* CC.* RB.* RB.* RB.*,2.0,,,,NN.* CC.* RB.* RB.* RB.*,2.0
-500498,PM.* NN.* CC.* VB.* CC.*,5.0,,,,PM.* NN.* CC.* VB.* CC.*,5.0
-500499,PM.* NN.* DT.* DT.* NN.*,2.0,,,,PM.* NN.* DT.* DT.* NN.*,2.0
-500500,RB.* RB.* VB.* NN.* DT.*,2.0,,,,RB.* RB.* VB.* NN.* DT.*,2.0
-500501,NN.* RB.*_CC.* CD.* PM.* RB.*,2.0,,,,NN.* RB.*_CC.* CD.* PM.* RB.*,2.0
-500502,CC.* PR.*_CC.* DT.* NN.* PM.*,3.0,,,,CC.* PR.*_CC.* DT.* NN.* PM.*,3.0
-500503,RB.* PR.* CC.* NN.* CC.*,2.0,,,,RB.* PR.* CC.* NN.* CC.*,2.0
-500504,NN.* PM.* VB.* PR.* DT.*,4.0,,,,NN.* PM.* VB.* PR.* DT.*,4.0
-500505,VB.* PR.* DT.* DT.* NN.*,2.0,,,,VB.* PR.* DT.* DT.* NN.*,2.0
-500506,NN.* CC.* NN.* CC.* VB.*_CC.*,2.0,,,,NN.* CC.* NN.* CC.* VB.*_CC.*,2.0
-500507,VB.*_CC.* NN.* DT.* FW FW,2.0,,,,VB.*_CC.* NN.* DT.* FW FW,2.0
-500508,NN.* CC.* VB.* DT.* VB.*,2.0,,,,NN.* CC.* VB.* DT.* VB.*,2.0
-500509,CC.* VB.* DT.* VB.* CC.*,3.0,,,,CC.* VB.* DT.* VB.* CC.*,3.0
-500510,VB.* DT.* VB.* CC.* DT.*,2.0,,,,VB.* DT.* VB.* CC.* DT.*,2.0
-500511,PR.* DT.* NN.* CC.* NN.*,4.0,,,,PR.* DT.* NN.* CC.* NN.*,4.0
-500512,DT.* NN.* CC.* NN.* PM.*,7.0,,,,DT.* NN.* CC.* NN.* PM.*,7.0
-500513,NN.* CC.* NN.* PM.* JJ.*,2.0,,,,NN.* CC.* NN.* PM.* JJ.*,2.0
-500514,NN.* CC.* VB.* CC.* CD.*,3.0,,,,NN.* CC.* VB.* CC.* CD.*,3.0
-500515,VB.* PM.* NN.* CC.* VB.*,3.0,,,,VB.* PM.* NN.* CC.* VB.*,3.0
-500516,PM.* NN.* CC.* VB.* DT.*,4.0,,,,PM.* NN.* CC.* VB.* DT.*,4.0
-500517,PM.* DT.* NN.* CC.* VB.*,2.0,,,,PM.* DT.* NN.* CC.* VB.*,2.0
-500518,CC.* NN.* PM.* RB.* VB.*,3.0,,,,CC.* NN.* PM.* RB.* VB.*,3.0
-500519,NN.* PM.* RB.* VB.* PR.*_CC.*,2.0,,,,NN.* PM.* RB.* VB.* PR.*_CC.*,2.0
-500520,CC.* VB.* DT.* FW CC.*,2.0,,,,CC.* VB.* DT.* FW CC.*,2.0
-500521,DT.* PR.*_CC.* NN.* CC.* CC.*,2.0,,,,DT.* PR.*_CC.* NN.* CC.* CC.*,2.0
-500522,DT.* JJ.*_JJ.*_CC.* NN.* CC.* RB.*,2.0,,,,DT.* JJ.*_JJ.*_CC.* NN.* CC.* RB.*,2.0
-500523,NN.* RB.* RB.* JJ.* PM.*,3.0,,,,NN.* RB.* RB.* JJ.* PM.*,3.0
-500524,JJ.* FW CC.* NN.* PM.*,2.0,,,,JJ.* FW CC.* NN.* PM.*,2.0
-500525,DT.* FW CC.* VB.* CC.*,4.0,,,,DT.* FW CC.* VB.* CC.*,4.0
-500526,FW CC.* VB.* CC.* NN.*,5.0,,,,FW CC.* VB.* CC.* NN.*,5.0
-500527,VB.*_CC.* NN.* CC.* FW PM.*,2.0,,,,VB.*_CC.* NN.* CC.* FW PM.*,2.0
-500528,FW PM.* VB.* DT.* NN.*,5.0,,,,FW PM.* VB.* DT.* NN.*,5.0
-500529,CC.* PR.*_CC.* NN.* PM.* VB.*,4.0,,,,CC.* PR.*_CC.* NN.* PM.* VB.*,4.0
-500530,PR.*_CC.* NN.* PM.* VB.* DT.*,2.0,,,,PR.*_CC.* NN.* PM.* VB.* DT.*,2.0
-500531,NN.* PM.* VB.* DT.* NN.*,3.0,,,,NN.* PM.* VB.* DT.* NN.*,3.0
-500532,VB.* DT.* NN.* PM.* VB.*,4.0,,,,VB.* DT.* NN.* PM.* VB.*,4.0
-500533,DT.* NN.* PM.* VB.* PR.*,4.0,,,,DT.* NN.* PM.* VB.* PR.*,4.0
-500534,FW PM.* PM.* NN.* NN.*,2.0,,,,FW PM.* PM.* NN.* NN.*,2.0
-500535,JJ.*_CC.* NN.* DT.* NN.* PM.*,3.0,,,,JJ.*_CC.* NN.* DT.* NN.* PM.*,3.0
-500536,RB.* VB.* DT.* DT.* NN.*,2.0,,,,RB.* VB.* DT.* DT.* NN.*,2.0
-500537,CC.* CC.* NN.* PM.* RB.*,2.0,,,,CC.* CC.* NN.* PM.* RB.*,2.0
-500538,CC.* NN.* PM.* RB.* CC.*,4.0,,,,CC.* NN.* PM.* RB.* CC.*,4.0
-500539,NN.* CC.* RB.* VB.* CC.*,4.0,,,,NN.* CC.* RB.* VB.* CC.*,4.0
-500540,VB.* CC.* PR.*_CC.* NN.* DT.*,2.0,,,,VB.* CC.* PR.*_CC.* NN.* DT.*,2.0
-500541,PM.* RB.* JJ.* CC.* DT.*,2.0,,,,PM.* RB.* JJ.* CC.* DT.*,2.0
-500542,JJ.* CC.* DT.* NN.* CC.*,3.0,,,,JJ.* CC.* DT.* NN.* CC.*,3.0
-500543,PR.* CC.* RB.*_CC.* NN.* CC.*,2.0,,,,PR.* CC.* RB.*_CC.* NN.* CC.*,2.0
-500544,RB.*_CC.* NN.* CC.* NN.* PM.*,2.0,,,,RB.*_CC.* NN.* CC.* NN.* PM.*,2.0
-500545,CC.* DT.* NN.* PR.* CC.*,4.0,,,,CC.* DT.* NN.* PR.* CC.*,4.0
-500546,CC.* DT.* NN.* CC.* VB.*,12.0,,,,CC.* DT.* NN.* CC.* VB.*,12.0
-500547,DT.* NN.* CC.* VB.* PR.*_CC.*,2.0,,,,DT.* NN.* CC.* VB.* PR.*_CC.*,2.0
-500548,RB.*_CC.* VB.* CC.* NN.* DT.*,2.0,,,,RB.*_CC.* VB.* CC.* NN.* DT.*,2.0
-500549,NN.* CC.* VB.* CC.* JJ.*_CC.*,3.0,,,,NN.* CC.* VB.* CC.* JJ.*_CC.*,3.0
-500550,CC.* VB.* CC.* JJ.*_CC.* NN.*_CC.*,2.0,,,,CC.* VB.* CC.* JJ.*_CC.* NN.*_CC.*,2.0
-500551,CC.* CC.* DT.* DT.* NN.*,2.0,,,,CC.* CC.* DT.* DT.* NN.*,2.0
-500552,NN.* CC.* VB.* PR.* RB.*_CC.*,2.0,,,,NN.* CC.* VB.* PR.* RB.*_CC.*,2.0
-500553,NN.* PR.* PM.* RB.* RB.*,2.0,,,,NN.* PR.* PM.* RB.* RB.*,2.0
-500554,PM.* RB.* RB.* PR.* VB.*,2.0,,,,PM.* RB.* RB.* PR.* VB.*,2.0
-500555,RB.* RB.* PR.* VB.* DT.*,3.0,,,,RB.* RB.* PR.* VB.* DT.*,3.0
-500556,VB.* DT.* PR.*_CC.* FW FW,2.0,,,,VB.* DT.* PR.*_CC.* FW FW,2.0
-500557,CC.* PR.*_CC.* DT.* NN.*_CC.* VB.*,2.0,,,,CC.* PR.*_CC.* DT.* NN.*_CC.* VB.*,2.0
-500558,VB.* JJ.* DT.* NN.* CC.*,3.0,,,,VB.* JJ.* DT.* NN.* CC.*,3.0
-500559,VB.* PR.* CC.* VB.* CC.*,2.0,,,,VB.* PR.* CC.* VB.* CC.*,2.0
-500560,PM.* FW DT.* NN.* CC.*,5.0,,,,PM.* FW DT.* NN.* CC.*,5.0
-500561,FW DT.* NN.* CC.* NN.*,3.0,,,,FW DT.* NN.* CC.* NN.*,3.0
-500562,NN.* CC.* VB.* RB.* DT.*,6.0,,,,NN.* CC.* VB.* RB.* DT.*,6.0
-500563,CC.* NN.* RB.* RB.* JJ.*,2.0,,,,CC.* NN.* RB.* RB.* JJ.*,2.0
-500564,CC.* DT.* NN.*_CC.* VB.* LM,2.0,,,,CC.* DT.* NN.*_CC.* VB.* LM,2.0
-500565,CC.* DT.* NN.* PM.* RB.*,3.0,,,,CC.* DT.* NN.* PM.* RB.*,3.0
-500566,NN.* PM.* RB.* VB.* DT.*,4.0,,,,NN.* PM.* RB.* VB.* DT.*,4.0
-500567,RB.* RB.* RB.* DT.* NN.*,2.0,,,,RB.* RB.* RB.* DT.* NN.*,2.0
-500568,RB.* DT.* NN.* DT.* NN.*,2.0,,,,RB.* DT.* NN.* DT.* NN.*,2.0
-500569,CC.* JJ.*_CC.* NN.* NN.* FW,2.0,,,,CC.* JJ.*_CC.* NN.* NN.* FW,2.0
-500570,JJ.*_CC.* NN.* NN.* FW CC.*,2.0,,,,JJ.*_CC.* NN.* NN.* FW CC.*,2.0
-500571,CC.* NN.* LM VB.* CC.*,3.0,,,,CC.* NN.* LM VB.* CC.*,3.0
-500572,LM VB.* CC.* NN.* PM.*,2.0,,,,LM VB.* CC.* NN.* PM.*,2.0
-500573,PR.*_CC.* NN.* CC.* VB.* CC.*,2.0,,,,PR.*_CC.* NN.* CC.* VB.* CC.*,2.0
-500574,NN.* CC.* VB.* CC.* VB.*,3.0,,,,NN.* CC.* VB.* CC.* VB.*,3.0
-500575,DT.* NN.* PM.* CC.* PR.*_CC.*,2.0,,,,DT.* NN.* PM.* CC.* PR.*_CC.*,2.0
-500576,PR.*_CC.* VB.* PM.* NN.* CC.*,2.0,,,,PR.*_CC.* VB.* PM.* NN.* CC.*,2.0
-500577,CC.* NN.* CC.* DT.* VB.*,2.0,,,,CC.* NN.* CC.* DT.* VB.*,2.0
-500578,VB.* RB.* CC.* DT.* PR.*,2.0,,,,VB.* RB.* CC.* DT.* PR.*,2.0
-500579,NN.* RB.* RB.*_CC.* VB.* DT.*,2.0,,,,NN.* RB.* RB.*_CC.* VB.* DT.*,2.0
-500580,DT.* CC.* PM.* NN.* CC.*,2.0,,,,DT.* CC.* PM.* NN.* CC.*,2.0
-500581,LM DT.* NN.*_CC.* VB.* CC.*,2.0,,,,LM DT.* NN.*_CC.* VB.* CC.*,2.0
-500582,JJ.*_CC.* NN.* CC.* NN.* PM.*,2.0,,,,JJ.*_CC.* NN.* CC.* NN.* PM.*,2.0
-500583,NN.* PM.* CC.* VB.* RB.*,3.0,,,,NN.* PM.* CC.* VB.* RB.*,3.0
-500584,NN.*_CC.* VB.* CC.* VB.* CC.*,2.0,,,,NN.*_CC.* VB.* CC.* VB.* CC.*,2.0
-500585,NN.* CC.* FW PM.* CC.*,3.0,,,,NN.* CC.* FW PM.* CC.*,3.0
-500586,CC.* JJ.* CC.* DT.* NN.*,2.0,,,,CC.* JJ.* CC.* DT.* NN.*,2.0
-500587,JJ.* CC.* DT.* NN.* PR.*,2.0,,,,JJ.* CC.* DT.* NN.* PR.*,2.0
-500588,PR.*_CC.* DT.* NN.* PM.* CC.*,3.0,,,,PR.*_CC.* DT.* NN.* PM.* CC.*,3.0
-500589,NN.* PM.* CC.* CC.* RB.*,2.0,,,,NN.* PM.* CC.* CC.* RB.*,2.0
-500590,VB.* DT.* NN.* CC.* PR.*,2.0,,,,VB.* DT.* NN.* CC.* PR.*,2.0
-500591,CC.* PR.* RB.*_CC.* FW FW,2.0,,,,CC.* PR.* RB.*_CC.* FW FW,2.0
-500592,PR.* RB.*_CC.* FW FW CC.*,2.0,,,,PR.* RB.*_CC.* FW FW CC.*,2.0
-500593,VB.* RB.* DT.* NN.* DT.*,2.0,,,,VB.* RB.* DT.* NN.* DT.*,2.0
-500594,PR.* RB.* VB.* DT.* NN.*,2.0,,,,PR.* RB.* VB.* DT.* NN.*,2.0
-500595,CC.* NN.* RB.* CC.* DT.*,2.0,,,,CC.* NN.* RB.* CC.* DT.*,2.0
-500596,VB.* CC.* NN.* PM.* CC.*,2.0,,,,VB.* CC.* NN.* PM.* CC.*,2.0
-500597,CC.* NN.* PM.* CC.* VB.*,6.0,,,,CC.* NN.* PM.* CC.* VB.*,6.0
-500598,JJ.* VB.* DT.* NN.* CC.*,2.0,,,,JJ.* VB.* DT.* NN.* CC.*,2.0
-500599,PM.* CC.* VB.* CC.* FW,3.0,,,,PM.* CC.* VB.* CC.* FW,3.0
-500600,VB.* PR.* CC.* NN.* PM.*,2.0,,,,VB.* PR.* CC.* NN.* PM.*,2.0
-500601,PR.* CC.* NN.* PM.* FW,2.0,,,,PR.* CC.* NN.* PM.* FW,2.0
-500602,FW PM.* VB.* PR.* CC.*,4.0,,,,FW PM.* VB.* PR.* CC.*,4.0
-500603,CC.* NN.* PM.* PR.* DT.*,2.0,,,,CC.* NN.* PM.* PR.* DT.*,2.0
-500604,PM.* CC.* VB.* CC.* NN.*,3.0,,,,PM.* CC.* VB.* CC.* NN.*,3.0
-500605,FW NN.* CC.* NN.* PM.*,3.0,,,,FW NN.* CC.* NN.* PM.*,3.0
-500606,RB.* DT.* JJ.*_CC.* NN.* NN.*,2.0,,,,RB.* DT.* JJ.*_CC.* NN.* NN.*,2.0
-500607,DT.* JJ.*_CC.* NN.* NN.* NN.*,2.0,,,,DT.* JJ.*_CC.* NN.* NN.* NN.*,2.0
-500608,VB.*_VB.*_CC.* NN.* DT.* NN.* CC.*,2.0,,,,VB.*_VB.*_CC.* NN.* DT.* NN.* CC.*,2.0
-500609,NN.* DT.* NN.* CC.* FW,5.0,,,,NN.* DT.* NN.* CC.* FW,5.0
-500610,CC.* CC.* PM.* NN.* CC.*,4.0,,,,CC.* CC.* PM.* NN.* CC.*,4.0
-500611,NN.* CC.* RB.* PR.* PR.*,2.0,,,,NN.* CC.* RB.* PR.* PR.*,2.0
-500612,VB.* DT.* NN.* CC.* FW,3.0,,,,VB.* DT.* NN.* CC.* FW,3.0
-500613,RB.* DT.* NN.* CD.* PM.*,2.0,,,,RB.* DT.* NN.* CD.* PM.*,2.0
-500614,PM.* RB.* VB.* DT.* NN.*,5.0,,,,PM.* RB.* VB.* DT.* NN.*,5.0
-500615,VB.* DT.* NN.* CC.* VB.*,5.0,,,,VB.* DT.* NN.* CC.* VB.*,5.0
-500616,NN.* CC.* NN.* RB.* RB.*,3.0,,,,NN.* CC.* NN.* RB.* RB.*,3.0
-500617,CC.* NN.* RB.* RB.* VB.*,3.0,,,,CC.* NN.* RB.* RB.* VB.*,3.0
-500618,RB.* RB.* VB.* DT.* PR.*_CC.*,2.0,,,,RB.* RB.* VB.* DT.* PR.*_CC.*,2.0
-500619,VB.* DT.* PR.*_CC.* DT.* NN.*,2.0,,,,VB.* DT.* PR.*_CC.* DT.* NN.*,2.0
-500620,DT.* PR.*_CC.* DT.* NN.* CC.*,2.0,,,,DT.* PR.*_CC.* DT.* NN.* CC.*,2.0
-500621,PR.*_CC.* DT.* NN.* CC.* VB.*,3.0,,,,PR.*_CC.* DT.* NN.* CC.* VB.*,3.0
-500622,CC.* PR.*_CC.* NN.* CC.* RB.*,4.0,,,,CC.* PR.*_CC.* NN.* CC.* RB.*,4.0
-500623,CC.* RB.* RB.* VB.* CC.*,2.0,,,,CC.* RB.* RB.* VB.* CC.*,2.0
-500624,JJ.* DT.* NN.* CC.* RB.*_CC.*,2.0,,,,JJ.* DT.* NN.* CC.* RB.*_CC.*,2.0
-500625,DT.* NN.* CC.* RB.*_CC.* VB.*,3.0,,,,DT.* NN.* CC.* RB.*_CC.* VB.*,3.0
-500626,NN.* CC.* RB.*_CC.* VB.* CC.*,2.0,,,,NN.* CC.* RB.*_CC.* VB.* CC.*,2.0
-500627,CC.* RB.*_CC.* VB.* CC.* NN.*,3.0,,,,CC.* RB.*_CC.* VB.* CC.* NN.*,3.0
-500628,CC.* PR.* DT.* NN.* CC.*,2.0,,,,CC.* PR.* DT.* NN.* CC.*,2.0
-500629,PR.*_CC.* NN.* PM.* RB.* RB.*,2.0,,,,PR.*_CC.* NN.* PM.* RB.* RB.*,2.0
-500630,CC.* DT.* NN.* PM.* CC.*,5.0,,,,CC.* DT.* NN.* PM.* CC.*,5.0
-500631,CC.* PR.*_CC.* JJ.* CC.* NN.*,2.0,,,,CC.* PR.*_CC.* JJ.* CC.* NN.*,2.0
-500632,NN.* FW PM.* VB.* RB.*,2.0,,,,NN.* FW PM.* VB.* RB.*,2.0
-500633,VB.* PR.* CC.* PM.* FW,2.0,,,,VB.* PR.* CC.* PM.* FW,2.0
-500634,PM.* RB.* VB.* CC.* FW,2.0,,,,PM.* RB.* VB.* CC.* FW,2.0
-500635,PM.* CC.* VB.* CC.* DT.*,2.0,,,,PM.* CC.* VB.* CC.* DT.*,2.0
-500636,CC.* DT.* NN.* CC.* FW,2.0,,,,CC.* DT.* NN.* CC.* FW,2.0
-500637,RB.* CC.* FW DT.* NN.*,2.0,,,,RB.* CC.* FW DT.* NN.*,2.0
-500638,CC.* PM.* NN.* CC.* NN.*,2.0,,,,CC.* PM.* NN.* CC.* NN.*,2.0
-500639,PM.* NN.* CC.* NN.* CC.*,2.0,,,,PM.* NN.* CC.* NN.* CC.*,2.0
-500640,CC.* NN.* CC.* NN.* CC.*,3.0,,,,CC.* NN.* CC.* NN.* CC.*,3.0
-500641,NN.* CC.* NN.* CC.* DT.*,4.0,,,,NN.* CC.* NN.* CC.* DT.*,4.0
-500642,RB.* NN.* DT.* NN.* CC.*,2.0,,,,RB.* NN.* DT.* NN.* CC.*,2.0
-500643,DT.* NN.* CC.* DT.* NN.*,3.0,,,,DT.* NN.* CC.* DT.* NN.*,3.0
-500644,CC.* PR.*_CC.* VB.*_CC.* NN.* PM.*,2.0,,,,CC.* PR.*_CC.* VB.*_CC.* NN.* PM.*,2.0
-500645,RB.* CC.* NN.* CC.* VB.*,2.0,,,,RB.* CC.* NN.* CC.* VB.*,2.0
-500646,CC.* NN.* PM.* FW DT.*,2.0,,,,CC.* NN.* PM.* FW DT.*,2.0
-500647,PR.*_CC.* FW FW CC.* NN.*,2.0,,,,PR.*_CC.* FW FW CC.* NN.*,2.0
-500648,FW CC.* NN.* PM.* VB.*,4.0,,,,FW CC.* NN.* PM.* VB.*,4.0
-500649,VB.* DT.* NN.* CC.* PM.*,3.0,,,,VB.* DT.* NN.* CC.* PM.*,3.0
-500650,PM.* RB.* CC.* VB.* DT.*,2.0,,,,PM.* RB.* CC.* VB.* DT.*,2.0
-500651,RB.* CC.* VB.* DT.* NN.*,6.0,,,,RB.* CC.* VB.* DT.* NN.*,6.0
-500652,DT.* NN.* PM.* FW CC.*,2.0,,,,DT.* NN.* PM.* FW CC.*,2.0
-500653,LM VB.*_VB.* CC.* NN.* CC.*,2.0,,,,LM VB.*_VB.* CC.* NN.* CC.*,2.0
-500654,CC.* NN.* CC.* PR.* CC.*,2.0,,,,CC.* NN.* CC.* PR.* CC.*,2.0
-500655,NN.* CC.* PR.* CC.* RB.*,3.0,,,,NN.* CC.* PR.* CC.* RB.*,3.0
-500656,CC.* JJ.*_CC.* NN.* CC.* CC.*,2.0,,,,CC.* JJ.*_CC.* NN.* CC.* CC.*,2.0
-500657,DT.* NN.* PR.*_CC.* VB.* PM.*,2.0,,,,DT.* NN.* PR.*_CC.* VB.* PM.*,2.0
-500658,NN.* PR.*_CC.* VB.* PM.* FW,2.0,,,,NN.* PR.*_CC.* VB.* PM.* FW,2.0
-500659,PR.*_CC.* VB.* PM.* FW CC.*,2.0,,,,PR.*_CC.* VB.* PM.* FW CC.*,2.0
-500660,NN.* PM.* VB.* RB.* CC.*,4.0,,,,NN.* PM.* VB.* RB.* CC.*,4.0
-500661,VB.* RB.* CC.* DT.* NN.*,3.0,,,,VB.* RB.* CC.* DT.* NN.*,3.0
-500662,RB.* RB.* DT.* NN.* PM.*,4.0,,,,RB.* RB.* DT.* NN.* PM.*,4.0
-500663,NN.* PM.* PR.* DT.* VB.*,2.0,,,,NN.* PM.* PR.* DT.* VB.*,2.0
-500664,DT.* VB.* CC.* JJ.* CC.*,2.0,,,,DT.* VB.* CC.* JJ.* CC.*,2.0
-500665,NN.* PM.* CC.* NN.*_CC.* JJ.*,2.0,,,,NN.* PM.* CC.* NN.*_CC.* JJ.*,2.0
-500666,CC.* FW PM.* NN.* CC.*,3.0,,,,CC.* FW PM.* NN.* CC.*,3.0
-500667,NN.* CC.* NN.* PM.* VB.*,5.0,,,,NN.* CC.* NN.* PM.* VB.*,5.0
-500668,VB.* CC.* NN.* PM.* NN.*,2.0,,,,VB.* CC.* NN.* PM.* NN.*,2.0
-500669,RB.* VB.* PR.* DT.* FW,2.0,,,,RB.* VB.* PR.* DT.* FW,2.0
-500670,RB.* PM.* RB.* VB.* DT.*,3.0,,,,RB.* PM.* RB.* VB.* DT.*,3.0
-500671,CC.* DT.* NN.* CC.* PR.*_CC.*,2.0,,,,CC.* DT.* NN.* CC.* PR.*_CC.*,2.0
-500672,PR.*_CC.* NN.* PM.* VB.* PR.*,2.0,,,,PR.*_CC.* NN.* PM.* VB.* PR.*,2.0
-500673,NN.* PM.* VB.* PR.* CC.*,4.0,,,,NN.* PM.* VB.* PR.* CC.*,4.0
-500674,DT.* PR.* CC.* JJ.*_JJ.*_CC.* NN.*,2.0,,,,DT.* PR.* CC.* JJ.*_JJ.*_CC.* NN.*,2.0
-500675,PR.* CC.* JJ.*_JJ.*_CC.* NN.* CC.*,2.0,,,,PR.* CC.* JJ.*_JJ.*_CC.* NN.* CC.*,2.0
-500676,PR.*_CC.* NN.* DT.* VB.* CC.*,2.0,,,,PR.*_CC.* NN.* DT.* VB.* CC.*,2.0
-500677,CC.* NN.* RB.* PR.* CC.*,2.0,,,,CC.* NN.* RB.* PR.* CC.*,2.0
-500678,CC.* NN.*_CC.* JJ.* PM.* CC.*,2.0,,,,CC.* NN.*_CC.* JJ.* PM.* CC.*,2.0
-500679,NN.* PM.* VB.* PM.* FW,2.0,,,,NN.* PM.* VB.* PM.* FW,2.0
-500680,VB.* PM.* FW DT.* NN.*,4.0,,,,VB.* PM.* FW DT.* NN.*,4.0
-500681,FW PM.* CC.* VB.* NN.*,2.0,,,,FW PM.* CC.* VB.* NN.*,2.0
-500682,CC.* VB.* NN.* CC.* PR.*_CC.*,2.0,,,,CC.* VB.* NN.* CC.* PR.*_CC.*,2.0
-500683,VB.* NN.* CC.* PR.*_CC.* FW,2.0,,,,VB.* NN.* CC.* PR.*_CC.* FW,2.0
-500684,RB.* PR.*_CC.* VB.* DT.* DT.*,2.0,,,,RB.* PR.*_CC.* VB.* DT.* DT.*,2.0
-500685,PR.*_CC.* VB.* DT.* DT.* NN.*,2.0,,,,PR.*_CC.* VB.* DT.* DT.* NN.*,2.0
-500686,VB.* CC.* PR.*_CC.* FW CC.*,2.0,,,,VB.* CC.* PR.*_CC.* FW CC.*,2.0
-500687,PR.* DT.* DT.* NN.* PM.*,2.0,,,,PR.* DT.* DT.* NN.* PM.*,2.0
-500688,CC.* RB.* VB.* PM.* NN.*,2.0,,,,CC.* RB.* VB.* PM.* NN.*,2.0
-500689,NN.* PM.* LM VB.* CC.*,2.0,,,,NN.* PM.* LM VB.* CC.*,2.0
-500690,NN.* PM.* CC.* VB.* CC.*,5.0,,,,NN.* PM.* CC.* VB.* CC.*,5.0
-500691,NN.* PM.* DT.* JJ.*_CC.* NN.*_CC.*,2.0,,,,NN.* PM.* DT.* JJ.*_CC.* NN.*_CC.*,2.0
-500692,DT.* JJ.*_CC.* NN.*_CC.* NN.* NN.*,2.0,,,,DT.* JJ.*_CC.* NN.*_CC.* NN.* NN.*,2.0
-500693,NN.* DT.* VB.* CC.* VB.*,2.0,,,,NN.* DT.* VB.* CC.* VB.*,2.0
-500694,DT.* DT.* NN.* PM.* CC.*,3.0,,,,DT.* DT.* NN.* PM.* CC.*,3.0
-500695,VB.* RB.* DT.* PR.*_CC.* NN.*,2.0,,,,VB.* RB.* DT.* PR.*_CC.* NN.*,2.0
-500696,RB.* DT.* PR.*_CC.* NN.* CC.*,4.0,,,,RB.* DT.* PR.*_CC.* NN.* CC.*,4.0
-500697,CC.* JJ.*_CC.* FW CC.* NN.*,2.0,,,,CC.* JJ.*_CC.* FW CC.* NN.*,2.0
-500698,CC.* PR.* PR.*_CC.* NN.* CC.*,2.0,,,,CC.* PR.* PR.*_CC.* NN.* CC.*,2.0
-500699,CC.* VB.* CC.* JJ.* PM.*,2.0,,,,CC.* VB.* CC.* JJ.* PM.*,2.0
-500700,PR.* PM.* VB.* PM.* FW,2.0,,,,PR.* PM.* VB.* PM.* FW,2.0
-500701,PM.* VB.* PM.* FW CC.*,2.0,,,,PM.* VB.* PM.* FW CC.*,2.0
-500702,CC.* NN.* PR.* CC.* DT.*,3.0,,,,CC.* NN.* PR.* CC.* DT.*,3.0
-500703,NN.* PR.* CC.* DT.* NN.*,4.0,,,,NN.* PR.* CC.* DT.* NN.*,4.0
-500704,CC.* DT.* NN.* DT.* NN.*,3.0,,,,CC.* DT.* NN.* DT.* NN.*,3.0
-500705,CC.* VB.* PM.* VB.* CC.*,3.0,,,,CC.* VB.* PM.* VB.* CC.*,3.0
-500706,VB.* PM.* VB.* CC.* NN.*,4.0,,,,VB.* PM.* VB.* CC.* NN.*,4.0
-500707,PM.* VB.* CC.* NN.* CC.*,6.0,,,,PM.* VB.* CC.* NN.* CC.*,6.0
-500708,VB.* DT.* NN.* CC.* JJ.*_CC.*,3.0,,,,VB.* DT.* NN.* CC.* JJ.*_CC.*,3.0
-500709,DT.* NN.* CC.* JJ.*_CC.* NN.*,2.0,,,,DT.* NN.* CC.* JJ.*_CC.* NN.*,2.0
-500710,JJ.*_CC.* NN.* CC.* FW FW,3.0,,,,JJ.*_CC.* NN.* CC.* FW FW,3.0
-500711,VB.* DT.* FW CC.* NN.*,4.0,,,,VB.* DT.* FW CC.* NN.*,4.0
-500712,CC.* NN.* CC.* NN.* DT.*,3.0,,,,CC.* NN.* CC.* NN.* DT.*,3.0
-500713,VB.* CD.* NN.* RB.* PR.*,2.0,,,,VB.* CD.* NN.* RB.* PR.*,2.0
-500714,CC.* VB.*_CC.* NN.* CC.* NN.*,4.0,,,,CC.* VB.*_CC.* NN.* CC.* NN.*,4.0
-500715,RB.* DT.* VB.* DT.* NN.*,3.0,,,,RB.* DT.* VB.* DT.* NN.*,3.0
-500716,PM.* VB.* PR.*_CC.* VB.* CC.*,2.0,,,,PM.* VB.* PR.*_CC.* VB.* CC.*,2.0
-500717,VB.* PR.*_CC.* VB.* CC.* PR.*_CC.*,2.0,,,,VB.* PR.*_CC.* VB.* CC.* PR.*_CC.*,2.0
-500718,CC.* RB.* RB.* PR.* VB.*,2.0,,,,CC.* RB.* RB.* PR.* VB.*,2.0
-500719,RB.* PR.* VB.* DT.* NN.*,2.0,,,,RB.* PR.* VB.* DT.* NN.*,2.0
-500720,PR.* VB.* DT.* NN.* CC.*,3.0,,,,PR.* VB.* DT.* NN.* CC.*,3.0
-500721,VB.* CC.* NN.* CC.* PR.*,2.0,,,,VB.* CC.* NN.* CC.* PR.*,2.0
-500722,FW PM.* VB.* CC.* DT.*,2.0,,,,FW PM.* VB.* CC.* DT.*,2.0
-500723,PM.* VB.* CC.* DT.* NN.*,5.0,,,,PM.* VB.* CC.* DT.* NN.*,5.0
-500724,CC.* FW FW DT.* JJ.*_CC.*,2.0,,,,CC.* FW FW DT.* JJ.*_CC.*,2.0
-500725,FW FW DT.* JJ.*_CC.* NN.*,2.0,,,,FW FW DT.* JJ.*_CC.* NN.*,2.0
-500726,NN.* CC.* VB.* CC.* PR.*_CC.*,3.0,,,,NN.* CC.* VB.* CC.* PR.*_CC.*,3.0
-500727,CC.* VB.* CC.* PR.*_CC.* NN.*,3.0,,,,CC.* VB.* CC.* PR.*_CC.* NN.*,3.0
-500728,VB.* PR.* CC.* PR.*_CC.* NN.*_CC.*,2.0,,,,VB.* PR.* CC.* PR.*_CC.* NN.*_CC.*,2.0
-500729,VB.* DT.* NN.* CC.* RB.*,3.0,,,,VB.* DT.* NN.* CC.* RB.*,3.0
-500730,FW PM.* NN.* CC.* VB.*,2.0,,,,FW PM.* NN.* CC.* VB.*,2.0
-500731,DT.* NN.* DT.* NN.* PM.*,2.0,,,,DT.* NN.* DT.* NN.* PM.*,2.0
-500732,RB.* PM.* NN.* DT.* NN.*,2.0,,,,RB.* PM.* NN.* DT.* NN.*,2.0
-500733,RB.* VB.* CC.* NN.* CC.*,2.0,,,,RB.* VB.* CC.* NN.* CC.*,2.0
-500734,DT.* NN.* PR.* CC.* VB.*,2.0,,,,DT.* NN.* PR.* CC.* VB.*,2.0
-500735,RB.* PM.* NN.* CC.* PR.*_CC.*,2.0,,,,RB.* PM.* NN.* CC.* PR.*_CC.*,2.0
-500736,VB.* CC.* NN.*_CC.* PR.* PM.*,2.0,,,,VB.* CC.* NN.*_CC.* PR.* PM.*,2.0
-500737,CC.* PR.* CC.* PR.*_CC.* NN.*,2.0,,,,CC.* PR.* CC.* PR.*_CC.* NN.*,2.0
-500738,NN.* CC.* NN.* PM.* CC.*,4.0,,,,NN.* CC.* NN.* PM.* CC.*,4.0
-500739,NN.* PM.* CC.* RB.* CC.*,2.0,,,,NN.* PM.* CC.* RB.* CC.*,2.0
-500740,PM.* CC.* RB.* CC.* NN.*,2.0,,,,PM.* CC.* RB.* CC.* NN.*,2.0
-500741,CC.* RB.* CC.* NN.* CC.*,2.0,,,,CC.* RB.* CC.* NN.* CC.*,2.0
-500742,DT.* NN.* CC.* NN.* FW,4.0,,,,DT.* NN.* CC.* NN.* FW,4.0
-500743,NN.* PR.* CC.* PR.*_CC.* NN.*,3.0,,,,NN.* PR.* CC.* PR.*_CC.* NN.*,3.0
-500744,PR.* CC.* PR.*_CC.* NN.* CC.*,3.0,,,,PR.* CC.* PR.*_CC.* NN.* CC.*,3.0
-500745,JJ.* RB.* DT.* NN.* CC.*,2.0,,,,JJ.* RB.* DT.* NN.* CC.*,2.0
-500746,JJ.* JJ.* PR.* CC.* CC.*,2.0,,,,JJ.* JJ.* PR.* CC.* CC.*,2.0
-500747,CC.* NN.*_CC.* PR.* PM.* JJ.*,2.0,,,,CC.* NN.*_CC.* PR.* PM.* JJ.*,2.0
-500748,CC.* DT.* NN.* NN.* PM.*,2.0,,,,CC.* DT.* NN.* NN.* PM.*,2.0
-500749,NN.* LM VB.* CC.* VB.*,2.0,,,,NN.* LM VB.* CC.* VB.*,2.0
-500750,VB.*_VB.* CC.* NN.* CC.* NN.*,2.0,,,,VB.*_VB.* CC.* NN.* CC.* NN.*,2.0
-500751,NN.* PM.* RB.* RB.* PR.*,2.0,,,,NN.* PM.* RB.* RB.* PR.*,2.0
-500752,RB.* RB.* PR.* VB.* PM.*,2.0,,,,RB.* RB.* PR.* VB.* PM.*,2.0
-500753,RB.* PR.* VB.* PM.* PR.*,2.0,,,,RB.* PR.* VB.* PM.* PR.*,2.0
-500754,CC.* NN.* PM.* JJ.* PM.*,2.0,,,,CC.* NN.* PM.* JJ.* PM.*,2.0
-500755,CC.* CC.* NN.* CC.* NN.*,3.0,,,,CC.* CC.* NN.* CC.* NN.*,3.0
-500756,RB.* LM FW CC.* NN.*,2.0,,,,RB.* LM FW CC.* NN.*,2.0
-500757,VB.* CC.* FW CC.* NN.*,2.0,,,,VB.* CC.* FW CC.* NN.*,2.0
-500758,PR.*_CC.* VB.* DT.* NN.* NN.*,2.0,,,,PR.*_CC.* VB.* DT.* NN.* NN.*,2.0
-500759,PM.* RB.* VB.* PM.* FW,3.0,,,,PM.* RB.* VB.* PM.* FW,3.0
-500760,PM.* FW CC.* DT.* NN.*,2.0,,,,PM.* FW CC.* DT.* NN.*,2.0
-500761,CC.* NN.* CC.* DT.* JJ.*_CC.*,2.0,,,,CC.* NN.* CC.* DT.* JJ.*_CC.*,2.0
-500762,NN.* CC.* DT.* JJ.*_CC.* NN.*,3.0,,,,NN.* CC.* DT.* JJ.*_CC.* NN.*,3.0
-500763,CC.* DT.* JJ.*_CC.* NN.* CC.*,4.0,,,,CC.* DT.* JJ.*_CC.* NN.* CC.*,4.0
-500764,CC.* NN.* CC.* VB.* PR.*,2.0,,,,CC.* NN.* CC.* VB.* PR.*,2.0
-500765,NN.* RB.* DT.* NN.* CC.*,2.0,,,,NN.* RB.* DT.* NN.* CC.*,2.0
-500766,NN.* CC.* NN.* CC.* PM.*,2.0,,,,NN.* CC.* NN.* CC.* PM.*,2.0
-500767,CC.* PM.* NN.* CC.* VB.*,2.0,,,,CC.* PM.* NN.* CC.* VB.*,2.0
-500768,VB.* CC.* JJ.*_CC.* NN.* CC.*,2.0,,,,VB.* CC.* JJ.*_CC.* NN.* CC.*,2.0
-500769,CC.* RB.* PR.* VB.* CC.*,2.0,,,,CC.* RB.* PR.* VB.* CC.*,2.0
-500770,RB.* PR.* VB.* CC.* NN.*,2.0,,,,RB.* PR.* VB.* CC.* NN.*,2.0
-500771,FW CC.* NN.* DT.* NN.*,2.0,,,,FW CC.* NN.* DT.* NN.*,2.0
-500772,RB.* DT.* NN.* PM.* VB.*,3.0,,,,RB.* DT.* NN.* PM.* VB.*,3.0
-500773,DT.* NN.* PM.* VB.* NN.*,2.0,,,,DT.* NN.* PM.* VB.* NN.*,2.0
-500774,PM.* CC.* NN.* CC.* NN.*,2.0,,,,PM.* CC.* NN.* CC.* NN.*,2.0
-500775,CC.* NN.* CC.* NN.* FW,2.0,,,,CC.* NN.* CC.* NN.* FW,2.0
-500776,CC.* NN.* CC.* JJ.*_CC.* PR.*,2.0,,,,CC.* NN.* CC.* JJ.*_CC.* PR.*,2.0
-500777,NN.* CC.* JJ.*_CC.* PR.* CC.*,2.0,,,,NN.* CC.* JJ.*_CC.* PR.* CC.*,2.0
-500778,NN.* PM.* VB.* PR.* PM.*,2.0,,,,NN.* PM.* VB.* PR.* PM.*,2.0
-500779,CC.* PM.* JJ.* CC.* NN.*,2.0,,,,CC.* PM.* JJ.* CC.* NN.*,2.0
-500780,NN.* CC.* DT.* NN.* FW,3.0,,,,NN.* CC.* DT.* NN.* FW,3.0
-500781,VB.* NN.* CC.* NN.*_CC.* VB.*,2.0,,,,VB.* NN.* CC.* NN.*_CC.* VB.*,2.0
-500782,CC.* RB.* CC.* PR.*_CC.* NN.*,2.0,,,,CC.* RB.* CC.* PR.*_CC.* NN.*,2.0
-500783,RB.* DT.* FW CC.* NN.*,3.0,,,,RB.* DT.* FW CC.* NN.*,3.0
-500784,DT.* FW CC.* NN.* CC.*,2.0,,,,DT.* FW CC.* NN.* CC.*,2.0
-500785,PM.* CC.* DT.* DT.* NN.*,2.0,,,,PM.* CC.* DT.* DT.* NN.*,2.0
-500786,DT.* FW CC.* NN.* PM.*,3.0,,,,DT.* FW CC.* NN.* PM.*,3.0
-500787,PM.* RB.* RB.* VB.* DT.*,2.0,,,,PM.* RB.* RB.* VB.* DT.*,2.0
-500788,NN.* PM.* RB.* CC.* VB.*,2.0,,,,NN.* PM.* RB.* CC.* VB.*,2.0
-500789,PM.* RB.* CC.* NN.* CC.*,2.0,,,,PM.* RB.* CC.* NN.* CC.*,2.0
-500790,RB.* VB.* DT.* NN.* DT.*,2.0,,,,RB.* VB.* DT.* NN.* DT.*,2.0
-500791,NN.* LM VB.* RB.* VB.*,2.0,,,,NN.* LM VB.* RB.* VB.*,2.0
-500792,VB.*_VB.* CC.* DT.* NN.* CC.*,2.0,,,,VB.*_VB.* CC.* DT.* NN.* CC.*,2.0
-500793,FW CC.* NN.* CC.* VB.*,2.0,,,,FW CC.* NN.* CC.* VB.*,2.0
-500794,CC.* VB.* CC.* VB.* DT.*,2.0,,,,CC.* VB.* CC.* VB.* DT.*,2.0
-500795,VB.* CC.* VB.* DT.* NN.*,3.0,,,,VB.* CC.* VB.* DT.* NN.*,3.0
-500796,NN.* DT.* DT.* NN.* CC.*,3.0,,,,NN.* DT.* DT.* NN.* CC.*,3.0
-500797,DT.* NN.* CC.* DT.* NN.*_CC.*,2.0,,,,DT.* NN.* CC.* DT.* NN.*_CC.*,2.0
-500798,NN.* PM.* PR.* RB.* LM,2.0,,,,NN.* PM.* PR.* RB.* LM,2.0
-500799,NN.* DT.* NN.* PM.* VB.*,2.0,,,,NN.* DT.* NN.* PM.* VB.*,2.0
-500800,NN.* CC.* VB.* RB.* CC.*,2.0,,,,NN.* CC.* VB.* RB.* CC.*,2.0
-500801,RB.* PM.* VB.*_CC.* VB.* DT.*,2.0,,,,RB.* PM.* VB.*_CC.* VB.* DT.*,2.0
-500802,PM.* VB.*_CC.* VB.* DT.* DT.*,2.0,,,,PM.* VB.*_CC.* VB.* DT.* DT.*,2.0
-500803,VB.*_CC.* VB.* DT.* DT.* NN.*,2.0,,,,VB.*_CC.* VB.* DT.* DT.* NN.*,2.0
-500804,NN.* CC.* JJ.* DT.* DT.*,2.0,,,,NN.* CC.* JJ.* DT.* DT.*,2.0
-500805,DT.* NN.* PM.* CC.* PM.*,2.0,,,,DT.* NN.* PM.* CC.* PM.*,2.0
-500806,NN.* PM.* CC.* PM.* FW,3.0,,,,NN.* PM.* CC.* PM.* FW,3.0
-500807,CC.* PM.* FW DT.* NN.*,2.0,,,,CC.* PM.* FW DT.* NN.*,2.0
-500808,CC.* JJ.* CC.* NN.* CC.*,5.0,,,,CC.* JJ.* CC.* NN.* CC.*,5.0
-500809,NN.* CC.* FW RB.* CC.*,3.0,,,,NN.* CC.* FW RB.* CC.*,3.0
-500810,CC.* VB.* CC.* PR.*_CC.* FW,2.0,,,,CC.* VB.* CC.* PR.*_CC.* FW,2.0
-500811,CC.* PR.*_CC.* FW CC.* NN.*,2.0,,,,CC.* PR.*_CC.* FW CC.* NN.*,2.0
-500812,DT.* VB.* CC.* NN.* CC.*,3.0,,,,DT.* VB.* CC.* NN.* CC.*,3.0
-500813,DT.* NN.* PM.* RB.* RB.*,3.0,,,,DT.* NN.* PM.* RB.* RB.*,3.0
-500814,DT.* NN.* CC.* PM.* FW,2.0,,,,DT.* NN.* CC.* PM.* FW,2.0
-500815,FW CC.* NN.* PR.* PM.*,2.0,,,,FW CC.* NN.* PR.* PM.*,2.0
-500816,RB.* CC.* NN.* CC.* NN.*,2.0,,,,RB.* CC.* NN.* CC.* NN.*,2.0
-500817,CC.* DT.* NN.* CC.* RB.*,3.0,,,,CC.* DT.* NN.* CC.* RB.*,3.0
-500818,RB.*_CC.* VB.* CC.* NN.* NN.*,3.0,,,,RB.*_CC.* VB.* CC.* NN.* NN.*,3.0
-500819,CC.* PM.* NN.* RB.* RB.*,2.0,,,,CC.* PM.* NN.* RB.* RB.*,2.0
-500820,NN.* DT.* NN.* CC.* NN.*,2.0,,,,NN.* DT.* NN.* CC.* NN.*,2.0
-500821,DT.* VB.*_VB.* CC.* DT.* NN.*,2.0,,,,DT.* VB.*_VB.* CC.* DT.* NN.*,2.0
-500822,FW PM.* PM.* VB.* RB.*,2.0,,,,FW PM.* PM.* VB.* RB.*,2.0
-500823,PM.* PM.* VB.* RB.* DT.*,2.0,,,,PM.* PM.* VB.* RB.* DT.*,2.0
-500824,RB.* RB.* VB.* CC.* DT.*,2.0,,,,RB.* RB.* VB.* CC.* DT.*,2.0
-500825,NN.* PM.* RB.* PR.* CC.*,2.0,,,,NN.* PM.* RB.* PR.* CC.*,2.0
-500826,FW CC.* CC.* DT.* NN.*,2.0,,,,FW CC.* CC.* DT.* NN.*,2.0
-500827,PM.* NN.* CC.* VB.* RB.*,2.0,,,,PM.* NN.* CC.* VB.* RB.*,2.0
-500828,CC.* NN.* PM.* CC.* FW,2.0,,,,CC.* NN.* PM.* CC.* FW,2.0
-500829,NN.* PM.* CC.* FW PM.*,2.0,,,,NN.* PM.* CC.* FW PM.*,2.0
-500830,PM.* RB.*_CC.* VB.* CC.* NN.*,2.0,,,,PM.* RB.*_CC.* VB.* CC.* NN.*,2.0
-500831,DT.* NN.* CC.* JJ.* RB.*,2.0,,,,DT.* NN.* CC.* JJ.* RB.*,2.0
-500832,CC.* NN.* CC.* VB.* RB.*,5.0,,,,CC.* NN.* CC.* VB.* RB.*,5.0
-500833,JJ.*_CC.* NN.* DT.* NN.* CC.*,2.0,,,,JJ.*_CC.* NN.* DT.* NN.* CC.*,2.0
-500834,NN.* PM.* DT.* FW CC.*,2.0,,,,NN.* PM.* DT.* FW CC.*,2.0
-500835,CC.* CC.* DT.* NN.* CC.*,2.0,,,,CC.* CC.* DT.* NN.* CC.*,2.0
-500836,DT.* NN.* CC.* DT.* PR.*_CC.*,2.0,,,,DT.* NN.* CC.* DT.* PR.*_CC.*,2.0
-500837,NN.* CC.* DT.* PR.*_CC.* FW,2.0,,,,NN.* CC.* DT.* PR.*_CC.* FW,2.0
-500838,CC.* DT.* PR.*_CC.* FW FW,2.0,,,,CC.* DT.* PR.*_CC.* FW FW,2.0
-500839,DT.* NN.* PM.* CC.* FW,2.0,,,,DT.* NN.* PM.* CC.* FW,2.0
-500840,RB.* DT.* DT.* NN.* CC.*,3.0,,,,RB.* DT.* DT.* NN.* CC.*,3.0
-500841,NN.* CC.* PR.* PM.* FW,2.0,,,,NN.* CC.* PR.* PM.* FW,2.0
-500842,CC.* VB.* RB.* DT.* DT.*,3.0,,,,CC.* VB.* RB.* DT.* DT.*,3.0
-500843,NN.*_CC.* VB.* RB.*_CC.* VB.* CC.*,2.0,,,,NN.*_CC.* VB.* RB.*_CC.* VB.* CC.*,2.0
-500844,NN.* CC.* VB.* PR.*_CC.* VB.*,2.0,,,,NN.* CC.* VB.* PR.*_CC.* VB.*,2.0
-500845,CC.* PR.*_CC.* NN.* PM.* DT.*,2.0,,,,CC.* PR.*_CC.* NN.* PM.* DT.*,2.0
-500846,NN.* CC.* VB.* PR.*_CC.* FW,2.0,,,,NN.* CC.* VB.* PR.*_CC.* FW,2.0
-500847,PM.* FW DT.* PR.*_CC.* NN.*,2.0,,,,PM.* FW DT.* PR.*_CC.* NN.*,2.0
-500848,FW DT.* PR.*_CC.* NN.* NN.*,2.0,,,,FW DT.* PR.*_CC.* NN.* NN.*,2.0
-500849,NN.* FW CC.* VB.* CC.*,2.0,,,,NN.* FW CC.* VB.* CC.*,2.0
-500850,RB.* DT.* VB.* NN.* CC.*,2.0,,,,RB.* DT.* VB.* NN.* CC.*,2.0
-500851,CC.* NN.* CC.* DT.* JJ.*,2.0,,,,CC.* NN.* CC.* DT.* JJ.*,2.0
-500852,NN.* CC.* DT.* JJ.* PM.*,3.0,,,,NN.* CC.* DT.* JJ.* PM.*,3.0
-500853,CC.* DT.* JJ.* PM.* NN.*,2.0,,,,CC.* DT.* JJ.* PM.* NN.*,2.0
-500854,VB.* PR.* RB.* DT.* NN.*,2.0,,,,VB.* PR.* RB.* DT.* NN.*,2.0
-500855,CC.* VB.* PR.* CC.* VB.*,2.0,,,,CC.* VB.* PR.* CC.* VB.*,2.0
-500856,CC.* NN.* CC.* PM.* FW,3.0,,,,CC.* NN.* CC.* PM.* FW,3.0
-500857,PR.* CC.* DT.* JJ.*_CC.* NN.*,2.0,,,,PR.* CC.* DT.* JJ.*_CC.* NN.*,2.0
-500858,DT.* JJ.*_CC.* NN.* CC.* FW,4.0,,,,DT.* JJ.*_CC.* NN.* CC.* FW,4.0
-500859,CC.* DT.* JJ.* PM.* CC.*,2.0,,,,CC.* DT.* JJ.* PM.* CC.*,2.0
-500860,RB.*_CC.* VB.* PR.* CC.* NN.*,2.0,,,,RB.*_CC.* VB.* PR.* CC.* NN.*,2.0
-500861,PR.* CC.* NN.* CC.* PR.*_CC.*,2.0,,,,PR.* CC.* NN.* CC.* PR.*_CC.*,2.0
-500862,CC.* NN.* PM.* VB.* PM.*,2.0,,,,CC.* NN.* PM.* VB.* PM.*,2.0
-500863,RB.* RB.*_CC.* VB.* DT.* NN.*,2.0,,,,RB.* RB.*_CC.* VB.* DT.* NN.*,2.0
-500864,RB.*_CC.* VB.* DT.* NN.* CC.*,3.0,,,,RB.*_CC.* VB.* DT.* NN.* CC.*,3.0
-500865,CC.* NN.* CC.* NN.*_CC.* JJ.*,2.0,,,,CC.* NN.* CC.* NN.*_CC.* JJ.*,2.0
-500866,CC.* NN.* PR.* PM.* VB.*,2.0,,,,CC.* NN.* PR.* PM.* VB.*,2.0
-500867,NN.* PR.* PM.* VB.* CC.*,2.0,,,,NN.* PR.* PM.* VB.* CC.*,2.0
-500868,PR.* PM.* VB.* CC.* DT.*,2.0,,,,PR.* PM.* VB.* CC.* DT.*,2.0
-500869,VB.* DT.* NN.* CC.* PR.*_CC.*,3.0,,,,VB.* DT.* NN.* CC.* PR.*_CC.*,3.0
-500870,CC.* PR.*_CC.* NN.* PM.* CC.*,3.0,,,,CC.* PR.*_CC.* NN.* PM.* CC.*,3.0
-500871,DT.* NN.*_CC.* NN.* PM.* RB.*,2.0,,,,DT.* NN.*_CC.* NN.* PM.* RB.*,2.0
-500872,NN.* CC.* RB.* PR.* VB.*,2.0,,,,NN.* CC.* RB.* PR.* VB.*,2.0
-500873,JJ.* CC.* DT.* NN.* PM.*,4.0,,,,JJ.* CC.* DT.* NN.* PM.*,4.0
-500874,JJ.* CC.* NN.* CC.* VB.*,2.0,,,,JJ.* CC.* NN.* CC.* VB.*,2.0
-500875,RB.*_CC.* VB.* CC.* FW CC.*,2.0,,,,RB.*_CC.* VB.* CC.* FW CC.*,2.0
-500876,NN.* CC.* VB.* RB.* PR.*,2.0,,,,NN.* CC.* VB.* RB.* PR.*,2.0
-500877,PR.* CC.* PR.*_CC.* NN.* RB.*,2.0,,,,PR.* CC.* PR.*_CC.* NN.* RB.*,2.0
-500878,DT.* NN.* CC.* DT.* JJ.*_CC.*,2.0,,,,DT.* NN.* CC.* DT.* JJ.*_CC.*,2.0
-500879,VB.* RB.*_CC.* VB.* CC.* NN.*,2.0,,,,VB.* RB.*_CC.* VB.* CC.* NN.*,2.0
-500880,RB.*_CC.* NN.* CC.* NN.* CC.*,2.0,,,,RB.*_CC.* NN.* CC.* NN.* CC.*,2.0
-500881,CC.* NN.* PM.* JJ.* CC.*,2.0,,,,CC.* NN.* PM.* JJ.* CC.*,2.0
-500882,NN.* PM.* JJ.* CC.* DT.*,3.0,,,,NN.* PM.* JJ.* CC.* DT.*,3.0
-500883,PM.* JJ.* CC.* DT.* NN.*,4.0,,,,PM.* JJ.* CC.* DT.* NN.*,4.0
-500884,VB.* PR.* CC.* DT.* NN.*,2.0,,,,VB.* PR.* CC.* DT.* NN.*,2.0
-500885,FW RB.* CC.* NN.* CC.*,2.0,,,,FW RB.* CC.* NN.* CC.*,2.0
-500886,NN.* CC.* NN.* PM.* FW,2.0,,,,NN.* CC.* NN.* PM.* FW,2.0
-500887,PM.* CC.* VB.* RB.* DT.*,2.0,,,,PM.* CC.* VB.* RB.* DT.*,2.0
-500888,RB.* DT.* CC.* PM.* FW,2.0,,,,RB.* DT.* CC.* PM.* FW,2.0
-500889,RB.* RB.* JJ.* PM.* FW,2.0,,,,RB.* RB.* JJ.* PM.* FW,2.0
-500890,CC.* JJ.*_CC.* NN.* PM.* VB.*,2.0,,,,CC.* JJ.*_CC.* NN.* PM.* VB.*,2.0
-500891,JJ.*_CC.* NN.* PM.* VB.* DT.*,2.0,,,,JJ.*_CC.* NN.* PM.* VB.* DT.*,2.0
-500892,JJ.*_CC.* NN.* CC.* VB.* CC.*,2.0,,,,JJ.*_CC.* NN.* CC.* VB.* CC.*,2.0
-500893,DT.* DT.* NN.* PR.* LM,2.0,,,,DT.* DT.* NN.* PR.* LM,2.0
-500894,PR.* LM DT.* NN.* CC.*,3.0,,,,PR.* LM DT.* NN.* CC.*,3.0
-500895,NN.* CC.* NN.* PM.* PR.*,2.0,,,,NN.* CC.* NN.* PM.* PR.*,2.0
-500896,NN.* CC.* VB.*_VB.* CC.* VB.*,2.0,,,,NN.* CC.* VB.*_VB.* CC.* VB.*,2.0
-500897,NN.* CC.* VB.* PR.* PM.*,2.0,,,,NN.* CC.* VB.* PR.* PM.*,2.0
-500898,PR.*_CC.* NN.* CC.* VB.* PR.*,2.0,,,,PR.*_CC.* NN.* CC.* VB.* PR.*,2.0
-500899,DT.* NN.* PM.* CC.* JJ.*,2.0,,,,DT.* NN.* PM.* CC.* JJ.*,2.0
-500900,PM.* FW CC.* NN.* NN.*,2.0,,,,PM.* FW CC.* NN.* NN.*,2.0
-500901,CC.* NN.* CC.* CC.* PM.*,2.0,,,,CC.* NN.* CC.* CC.* PM.*,2.0
-500902,PR.* DT.* FW CC.* PR.*_CC.*,2.0,,,,PR.* DT.* FW CC.* PR.*_CC.*,2.0
-500903,NN.* NN.* CC.* VB.* RB.*,2.0,,,,NN.* NN.* CC.* VB.* RB.*,2.0
-500904,DT.* NN.* CC.* VB.* RB.*,4.0,,,,DT.* NN.* CC.* VB.* RB.*,4.0
-500905,JJ.* CC.* NN.* CC.* DT.*,2.0,,,,JJ.* CC.* NN.* CC.* DT.*,2.0
-500906,PR.*_CC.* NN.*_CC.* VB.* CC.* VB.*,2.0,,,,PR.*_CC.* NN.*_CC.* VB.* CC.* VB.*,2.0
-500907,NN.* PM.* RB.* RB.* RB.*,2.0,,,,NN.* PM.* RB.* RB.* RB.*,2.0
-500908,NN.* PM.* VB.* CC.* FW,3.0,,,,NN.* PM.* VB.* CC.* FW,3.0
-500909,JJ.* CC.* PR.*_CC.* NN.* PM.*,2.0,,,,JJ.* CC.* PR.*_CC.* NN.* PM.*,2.0
-500910,PM.* CC.* PM.* FW CC.*,2.0,,,,PM.* CC.* PM.* FW CC.*,2.0
-500911,CC.* VB.* CC.* PM.* FW,2.0,,,,CC.* VB.* CC.* PM.* FW,2.0
-500912,DT.* NN.* RB.* NN.* CC.*,2.0,,,,DT.* NN.* RB.* NN.* CC.*,2.0
-500913,LM RB.* VB.* DT.* NN.*,2.0,,,,LM RB.* VB.* DT.* NN.*,2.0
-500914,RB.* RB.* DT.* VB.* CC.*,2.0,,,,RB.* RB.* DT.* VB.* CC.*,2.0
-500915,RB.* RB.* DT.* PR.*_CC.* NN.*,2.0,,,,RB.* RB.* DT.* PR.*_CC.* NN.*,2.0
-500916,CC.* NN.* CC.* VB.* PR.*_CC.*,2.0,,,,CC.* NN.* CC.* VB.* PR.*_CC.*,2.0
-500917,CC.* RB.* RB.* DT.* CC.*,2.0,,,,CC.* RB.* RB.* DT.* CC.*,2.0
-500918,RB.* RB.* DT.* CC.* PM.*,2.0,,,,RB.* RB.* DT.* CC.* PM.*,2.0
-500919,RB.* JJ.* CC.* NN.* CC.*,4.0,,,,RB.* JJ.* CC.* NN.* CC.*,4.0
-500920,DT.* RB.* JJ.* CC.* NN.*,2.0,,,,DT.* RB.* JJ.* CC.* NN.*,2.0
-500921,FW CC.* NN.* PM.* RB.*,2.0,,,,FW CC.* NN.* PM.* RB.*,2.0
-500922,RB.* CC.* RB.* PR.* VB.*,2.0,,,,RB.* CC.* RB.* PR.* VB.*,2.0
-500923,NN.* PM.* JJ.* CC.* NN.*,2.0,,,,NN.* PM.* JJ.* CC.* NN.*,2.0
-500924,NN.* CC.* RB.* RB.* DT.*,2.0,,,,NN.* CC.* RB.* RB.* DT.*,2.0
-500925,CC.* FW RB.* CC.* NN.*,2.0,,,,CC.* FW RB.* CC.* NN.*,2.0
-500926,DT.* VB.* CC.* NN.* DT.*,2.0,,,,DT.* VB.* CC.* NN.* DT.*,2.0
-500927,PM.* PR.* DT.* NN.* CC.*,2.0,,,,PM.* PR.* DT.* NN.* CC.*,2.0
-500928,PR.* LM VB.*_VB.* CC.* DT.*,2.0,,,,PR.* LM VB.*_VB.* CC.* DT.*,2.0
-500929,CC.* DT.* NN.*_CC.* VB.*_VB.* CC.*,2.0,,,,CC.* DT.* NN.*_CC.* VB.*_VB.* CC.*,2.0
-500930,DT.* NN.*_CC.* VB.*_VB.* CC.* NN.*,2.0,,,,DT.* NN.*_CC.* VB.*_VB.* CC.* NN.*,2.0
-500931,CC.* DT.* VB.* CC.* NN.*,2.0,,,,CC.* DT.* VB.* CC.* NN.*,2.0
-500932,DT.* DT.* NN.* RB.* CC.*,2.0,,,,DT.* DT.* NN.* RB.* CC.*,2.0
-500933,VB.* CC.* DT.* FW PM.*,2.0,,,,VB.* CC.* DT.* FW PM.*,2.0
-500934,LM VB.* CC.* JJ.*_CC.* NN.*,2.0,,,,LM VB.* CC.* JJ.*_CC.* NN.*,2.0
-500935,CC.* VB.*_VB.* CC.* DT.* FW,2.0,,,,CC.* VB.*_VB.* CC.* DT.* FW,2.0
-500936,VB.*_VB.* CC.* DT.* FW FW,2.0,,,,VB.*_VB.* CC.* DT.* FW FW,2.0
-500937,NN.* PM.* RB.* VB.* PM.*,2.0,,,,NN.* PM.* RB.* VB.* PM.*,2.0
-500938,RB.* CC.* NN.* PM.* CC.*,2.0,,,,RB.* CC.* NN.* PM.* CC.*,2.0
-500939,CC.* NN.* CC.* PR.* PM.*,2.0,,,,CC.* NN.* CC.* PR.* PM.*,2.0
-500940,,,DTC NNC DTP NNP CCT,3.0,,DTC NNC DTP NNP CCT,3.0
-500941,,,PMS NNC CCP RBF RBI,2.0,,PMS NNC CCP RBF RBI,2.0
-500942,,,NNC CCP RBF RBI JJD,2.0,,NNC CCP RBF RBI JJD,2.0
-500943,,,DTC CCR PMS JJD CCB,2.0,,DTC CCR PMS JJD CCB,2.0
-500944,,,RBI PRO DTC NNC CCB,2.0,,RBI PRO DTC NNC CCB,2.0
-500945,,,PRO DTC NNC CCB DTCP,3.0,,PRO DTC NNC CCB DTCP,3.0
-500946,,,CCB DTCP NNC CCT NNC_CCP,2.0,,CCB DTCP NNC CCT NNC_CCP,2.0
-500947,,,DTCP NNC CCT NNC_CCP JJD,2.0,,DTCP NNC CCT NNC_CCP JJD,2.0
-500948,,,NNC CCT NNC_CCP JJD CCA,2.0,,NNC CCT NNC_CCP JJD CCA,2.0
-500949,,,VBTR DTC DTCP NNC CCB,3.0,,VBTR DTC DTCP NNC CCB,3.0
-500950,,,DTC DTCP NNC_CCP VBTR CCB,2.0,,DTC DTCP NNC_CCP VBTR CCB,2.0
-500951,,,NNC_CCP VBTR CCB DTCP NNC,2.0,,NNC_CCP VBTR CCB DTCP NNC,2.0
-500952,,,CCB NNC CCT RBT_CCP NNC,2.0,,CCB NNC CCT RBT_CCP NNC,2.0
-500953,,,PMS FW CCT PRSP CCP,2.0,,PMS FW CCT PRSP CCP,2.0
-500954,,,FW CCT PRSP CCP DTP,2.0,,FW CCT PRSP CCP DTP,2.0
-500955,,,CCT PRSP CCP DTP NNP,2.0,,CCT PRSP CCP DTP NNP,2.0
-500956,,,CCT NNC CCB PRI_CCP NNC,4.0,,CCT NNC CCB PRI_CCP NNC,4.0
-500957,,,NNC CCB PRI_CCP NNC CCT,2.0,,NNC CCB PRI_CCP NNC CCT,2.0
-500958,,,DTC JJD CCP NNC CCB,2.0,,DTC JJD CCP NNC CCB,2.0
-500959,,,JJD_CCP FW FW DTP NNP,2.0,,JJD_CCP FW FW DTP NNP,2.0
-500960,,,DTC DTCP NNC CCB FW,5.0,,DTC DTCP NNC CCB FW,5.0
-500961,,,CCP VBOF DTC NNC CCB,2.0,,CCP VBOF DTC NNC CCB,2.0
-500962,,,CCT NNC DTP NNP DTC,2.0,,CCT NNC DTP NNP DTC,2.0
-500963,,,CCA VBW DTC DTCP VBAF,2.0,,CCA VBW DTC DTCP VBAF,2.0
-500964,,,VBW DTC DTCP VBAF PMC,2.0,,VBW DTC DTCP VBAF PMC,2.0
-500965,,,DTC DTCP VBAF PMC VBTS,2.0,,DTC DTCP VBAF PMC VBTS,2.0
-500966,,,DTC NNC_CCP JJD CCT NNC,2.0,,DTC NNC_CCP JJD CCT NNC,2.0
-500967,,,NNC_CCP JJD CCT NNC CCB,2.0,,NNC_CCP JJD CCT NNC CCB,2.0
-500968,,,NNC CCP VBTS PMS FW,2.0,,NNC CCP VBTS PMS FW,2.0
-500969,,,CCP VBTS PMS FW CCT,2.0,,CCP VBTS PMS FW CCT,2.0
-500970,,,VBTS PMS FW CCT NNP,2.0,,VBTS PMS FW CCT NNP,2.0
-500971,,,NNC DTP JJD_CCP NNP_CCP NNP,2.0,,NNC DTP JJD_CCP NNP_CCP NNP,2.0
-500972,,,VBTS RBI DTP NNP CCP,2.0,,VBTS RBI DTP NNP CCP,2.0
-500973,,,FW DTP NNP PMS CCA,2.0,,FW DTP NNP PMS CCA,2.0
-500974,,,VBTR PRP DTC NNC CCB,2.0,,VBTR PRP DTC NNC CCB,2.0
-500975,,,PRP DTC NNC CCB DTCP,2.0,,PRP DTC NNC CCB DTCP,2.0
-500976,,,DTCP NNC JJC CCB NNP,2.0,,DTCP NNC JJC CCB NNP,2.0
-500977,,,NNP CCT NNC CCB FW,2.0,,NNP CCT NNC CCB FW,2.0
-500978,,,CCP DTC DTCP NNC CCB,2.0,,CCP DTC DTCP NNC CCB,2.0
-500979,,,PRO LM VBTF CCT NNC,2.0,,PRO LM VBTF CCT NNC,2.0
-500980,,,LM VBTF CCT NNC CCB,2.0,,LM VBTF CCT NNC CCB,2.0
-500981,,,NNC CCT DTCP NNC_CCP PRO,2.0,,NNC CCT DTCP NNC_CCP PRO,2.0
-500982,,,CCT DTCP NNC_CCP PRO PMC,2.0,,CCT DTCP NNC_CCP PRO PMC,2.0
-500983,,,RBI CCB NNC DTP NNP,3.0,,RBI CCB NNC DTP NNP,3.0
-500984,,,PMS VBOF DTC NNC CCB,2.0,,PMS VBOF DTC NNC CCB,2.0
-500985,,,NNC CCB FW CCB JJD_CCP,2.0,,NNC CCB FW CCB JJD_CCP,2.0
-500986,,,PRSP_CCP NNC CCB NNC CCT,2.0,,PRSP_CCP NNC CCB NNC CCT,2.0
-500987,,,CCT CCR PMS VBTF DTP,2.0,,CCT CCR PMS VBTF DTP,2.0
-500988,,,CCR PMS VBTF DTP NNP,2.0,,CCR PMS VBTF DTP NNP,2.0
-500989,,,CCT JJD_CCP NNC CCB NNC,2.0,,CCT JJD_CCP NNC CCB NNC,2.0
-500990,,,CCB NNC CCP DTP NNP,2.0,,CCB NNC CCP DTP NNP,2.0
-500991,,,PMC VBTF RBI DTC NNC,2.0,,PMC VBTF RBI DTC NNC,2.0
-500992,,,PRI_CCP NNC CCA RBF RBI,2.0,,PRI_CCP NNC CCA RBF RBI,2.0
-500993,,,RBF RBI VBTS DTC NNC,2.0,,RBF RBI VBTS DTC NNC,2.0
-500994,,,DTC CCR PMS FW CCB,2.0,,DTC CCR PMS FW CCB,2.0
-500995,,,VBTR CCT VBOF DTC FW,2.0,,VBTR CCT VBOF DTC FW,2.0
-500996,,,RBI PRL DTC NNC CCB,2.0,,RBI PRL DTC NNC CCB,2.0
-500997,,,PRL DTC NNC CCB DTCP,2.0,,PRL DTC NNC CCB DTCP,2.0
-500998,,,CCB NNC PRS_CCP DTP NNP,2.0,,CCB NNC PRS_CCP DTP NNP,2.0
-500999,,,NNC PRS_CCP DTP NNP NNP,3.0,,NNC PRS_CCP DTP NNP NNP,3.0
-501000,,,DTC JJN_CCP NNC DTP NNP,2.0,,DTC JJN_CCP NNC DTP NNP,2.0
-501001,,,VBTR_VBAF CCT NNC CCB DTCP,2.0,,VBTR_VBAF CCT NNC CCB DTCP,2.0
-501002,,,NNC CCB PRI_CCP NNC DTC,2.0,,NNC CCB PRI_CCP NNC DTC,2.0
-501003,,,CCB PRI_CCP NNC DTC FW,2.0,,CCB PRI_CCP NNC DTC FW,2.0
-501004,,,RBI DTC JJD CCP NNC,2.0,,RBI DTC JJD CCP NNC,2.0
-501005,,,NNC CCB PRI_CCP NNP NNP,2.0,,NNC CCB PRI_CCP NNP NNP,2.0
-501006,,,NNP NNP CCT PRI_CCP FW,2.0,,NNP NNP CCT PRI_CCP FW,2.0
-501007,,,NNP CCT PRI_CCP FW FW,3.0,,NNP CCT PRI_CCP FW FW,3.0
-501008,,,NNP NNP PMC JJD_CCP FW,2.0,,NNP NNP PMC JJD_CCP FW,2.0
-501009,,,DTC DTCP NNC CCB NNP,3.0,,DTC DTCP NNC CCB NNP,3.0
-501010,,,NNC CCB DTCP NNC_CCP VBTR,3.0,,NNC CCB DTCP NNC_CCP VBTR,3.0
-501011,,,CCB DTCP NNC_CCP VBTR CCT,3.0,,CCB DTCP NNC_CCP VBTR CCT,3.0
-501012,,,DTCP NNC_CCP VBTR CCT DTCP,3.0,,DTCP NNC_CCP VBTR CCT DTCP,3.0
-501013,,,JJD DTC NNC DTP NNP,2.0,,JJD DTC NNC DTP NNP,2.0
-501014,,,NNC DTP NNP CCT DTCP,2.0,,NNC DTP NNP CCT DTCP,2.0
-501015,,,VBTR RBI CCB NNC PMS,2.0,,VBTR RBI CCB NNC PMS,2.0
-501016,,,VBTS PRO CCT NNC CCB,2.0,,VBTS PRO CCT NNC CCB,2.0
-501017,,,PRO CCT NNC CCB DTCP,3.0,,PRO CCT NNC CCB DTCP,3.0
-501018,,,DTC NNC CCB DTCP JJD,2.0,,DTC NNC CCB DTCP JJD,2.0
-501019,,,DTCP NNC_CCP VBTR CCB NNC,2.0,,DTCP NNC_CCP VBTR CCB NNC,2.0
-501020,,,CCB NNPA CCT NNP PMC,2.0,,CCB NNPA CCT NNP PMC,2.0
-501021,,,NNPA CCT JJD DTP NNP,2.0,,NNPA CCT JJD DTP NNP,2.0
-501022,,,CCT NNC_CCP JJD CCB NNP,2.0,,CCT NNC_CCP JJD CCB NNP,2.0
-501023,,,NNC_CCP JJD CCB NNP PMC,2.0,,NNC_CCP JJD CCB NNP PMC,2.0
-501024,,,JJD CCB NNP PMC JJCC,2.0,,JJD CCB NNP PMC JJCC,2.0
-501025,,,NNC CCB PRI_CCP NNC PMC,2.0,,NNC CCB PRI_CCP NNC PMC,2.0
-501026,,,DTP NNP DTC NNC CCB,2.0,,DTP NNP DTC NNC CCB,2.0
-501027,,,CCT DTCP NNC_CCP VBTR CCT,2.0,,CCT DTCP NNC_CCP VBTR CCT,2.0
-501028,,,NNC DTP JJD_CCP NNP NNP,2.0,,NNC DTP JJD_CCP NNP NNP,2.0
-501029,,,RBI CCT DTCP NNC CCB,3.0,,RBI CCT DTCP NNC CCB,3.0
-501030,,,CCT DTCP NNC CCB NNPA,3.0,,CCT DTCP NNC CCB NNPA,3.0
-501031,,,FW PMC NNC CCB JJD,2.0,,FW PMC NNC CCB JJD,2.0
-501032,,,RBD CCP VBTR CCT DTCP,2.0,,RBD CCP VBTR CCT DTCP,2.0
-501033,,,CCP VBTF CCB DTCP NNC,2.0,,CCP VBTF CCB DTCP NNC,2.0
-501034,,,NNC CCB NNP CCA VBTS,2.0,,NNC CCB NNP CCA VBTS,2.0
-501035,,,CCB NNP CCA VBTS CCT,2.0,,CCB NNP CCA VBTS CCT,2.0
-501036,,,DTCP JJD PMS NNP CCT,2.0,,DTCP JJD PMS NNP CCT,2.0
-501037,,,PRI_CCP NNC DTC FW FW,2.0,,PRI_CCP NNC DTC FW FW,2.0
-501038,,,DTC PRI_CCP NNC CCT NNC,2.0,,DTC PRI_CCP NNC CCT NNC,2.0
-501039,,,PMS NNP FW DTC NNC,2.0,,PMS NNP FW DTC NNC,2.0
-501040,,,RBK RBQ VBH NNC DTC,2.0,,RBK RBQ VBH NNC DTC,2.0
-501041,,,CCT PRSP_CCP DTCP NNC PMS,3.0,,CCT PRSP_CCP DTCP NNC PMS,3.0
-501042,,,VBTR PRS DTC NNC CCT,2.0,,VBTR PRS DTC NNC CCT,2.0
-501043,,,DTC NNC CCT NNP PMS,3.0,,DTC NNC CCT NNP PMS,3.0
-501044,,,JJD CCP NNC CCB NNP,2.0,,JJD CCP NNC CCB NNP,2.0
-501045,,,CCR VBAF CCP DTC NNC,2.0,,CCR VBAF CCP DTC NNC,2.0
-501046,,,FW CCP VBTR CCB NNC,3.0,,FW CCP VBTR CCB NNC,3.0
-501047,,,FW PMP PMS NNPA NNP,2.0,,FW PMP PMS NNPA NNP,2.0
-501048,,,VBOF DTC DTCP NNC CCB,3.0,,VBOF DTC DTCP NNC CCB,3.0
-501049,,,DTCP NNC CCB NNP CCP,2.0,,DTCP NNC CCB NNP CCP,2.0
-501050,,,VBTF DTC PRSP_CCP FW FW,2.0,,VBTF DTC PRSP_CCP FW FW,2.0
-501051,,,NNC CCT NNC CCB PRI_CCP,2.0,,NNC CCT NNC CCB PRI_CCP,2.0
-501052,,,CCB DTCP NNC PMC RBF,2.0,,CCB DTCP NNC PMC RBF,2.0
-501053,,,DTC CCR PMS NNC CCB,2.0,,DTC CCR PMS NNC CCB,2.0
-501054,,,FW PMC CCA NNC CCB,2.0,,FW PMC CCA NNC CCB,2.0
-501055,,,VBW CCA VBAF CCT NNC,2.0,,VBW CCA VBAF CCT NNC,2.0
-501056,,,VBAF CCT NNC CCB FW,2.0,,VBAF CCT NNC CCB FW,2.0
-501057,,,CCT NNC CCB FW PMS,2.0,,CCT NNC CCB FW PMS,2.0
-501058,,,PRSP_CCP DTCP NNC PMS CCA,2.0,,PRSP_CCP DTCP NNC PMS CCA,2.0
-501059,,,CCT NNC PMS FW CCB,2.0,,CCT NNC PMS FW CCB,2.0
-501060,,,NNP FW DTC NNC CCB,2.0,,NNP FW DTC NNC CCB,2.0
-501061,,,RBI DTP JJD_CCP NNP NNP,2.0,,RBI DTP JJD_CCP NNP NNP,2.0
-501062,,,CCT CCR PMS NNC CCB,2.0,,CCT CCR PMS NNC CCB,2.0
-501063,,,DTC FW CCP VBTS CCB,2.0,,DTC FW CCP VBTS CCB,2.0
-501064,,,RBW DTC NNP CDB PMC,2.0,,RBW DTC NNP CDB PMC,2.0
-501065,,,CCP VBOF DTC NNC CCT,2.0,,CCP VBOF DTC NNC CCT,2.0
-501066,,,NNC CCB NNP RBK RBQ,2.0,,NNC CCB NNP RBK RBQ,2.0
-501067,,,DTC NNC CCB PRSP_CCP NNC,2.0,,DTC NNC CCB PRSP_CCP NNC,2.0
-501068,,,NNC CCP VBS CCB DTCP,2.0,,NNC CCP VBS CCB DTCP,2.0
-501069,,,CCP VBS CCB DTCP NNC,2.0,,CCP VBS CCB DTCP NNC,2.0
-501070,,,VBS CCB DTCP NNC CCA,2.0,,VBS CCB DTCP NNC CCA,2.0
-501071,,,NNP CCT DTCP NNC CCB,3.0,,NNP CCT DTCP NNC CCB,3.0
-501072,,,PRI_CCP FW FW CCT NNP,2.0,,PRI_CCP FW FW CCT NNP,2.0
-501073,,,CCT NNC PMC VBTS RBI,2.0,,CCT NNC PMC VBTS RBI,2.0
-501074,,,NNC PMC VBTS RBI CCB,2.0,,NNC PMC VBTS RBI CCB,2.0
-501075,,,CCT PRI_CCP NNC CCT NNP,2.0,,CCT PRI_CCP NNC CCT NNP,2.0
-501076,,,NNC CCT PRI_CCP NNC PMC,3.0,,NNC CCT PRI_CCP NNC PMC,3.0
-501077,,,DTC PRI CCT JJCS_JJD_CCP NNC,2.0,,DTC PRI CCT JJCS_JJD_CCP NNC,2.0
-501078,,,PRI CCT JJCS_JJD_CCP NNC CCB,2.0,,PRI CCT JJCS_JJD_CCP NNC CCB,2.0
-501079,,,VBTS PMS FW DTP NNP,3.0,,VBTS PMS FW DTP NNP,3.0
-501080,,,VBH NNC CCT PRI_CCP FW,2.0,,VBH NNC CCT PRI_CCP FW,2.0
-501081,,,RBF PRP_CCP VBOF DTC DTCP,2.0,,RBF PRP_CCP VBOF DTC DTCP,2.0
-501082,,,PRP_CCP VBOF DTC DTCP NNC,2.0,,PRP_CCP VBOF DTC DTCP NNC,2.0
-501083,,,FW PMC VBOF DTC NNC,2.0,,FW PMC VBOF DTC NNC,2.0
-501084,,,CCB DTCP NNC CCP VBTS,2.0,,CCB DTCP NNC CCP VBTS,2.0
-501085,,,DTP JJD_CCP NNC_CCP NNP NNP,2.0,,DTP JJD_CCP NNC_CCP NNP NNP,2.0
-501086,,,PMS FW CCT NNC PMC,2.0,,PMS FW CCT NNC PMC,2.0
-501087,,,CCT DTCP NNC DTP NNP,2.0,,CCT DTCP NNC DTP NNP,2.0
-501088,,,NNC CCT NNP PMC RBF,3.0,,NNC CCT NNP PMC RBF,3.0
-501089,,,NNP PMC PRO PMS FW,2.0,,NNP PMC PRO PMS FW,2.0
-501090,,,DTCP NNC_CCP VBTS CCT NNC,2.0,,DTCP NNC_CCP VBTS CCT NNC,2.0
-501091,,,FW PMC VBTR CCP DTC,2.0,,FW PMC VBTR CCP DTC,2.0
-501092,,,DTCP NNC CCP VBTR CCB,3.0,,DTCP NNC CCP VBTR CCB,3.0
-501093,,,VBTS CCT NNC_CCP PRO PMC,2.0,,VBTS CCT NNC_CCP PRO PMC,2.0
-501094,,,PRI_CCP NNC CCT NNP PMC,2.0,,PRI_CCP NNC CCT NNP PMC,2.0
-501095,,,CCT NNP PMC RBF PRP,2.0,,CCT NNP PMC RBF PRP,2.0
-501096,,,PMC RBW VBTS PMS FW,2.0,,PMC RBW VBTS PMS FW,2.0
-501097,,,CCT NNC CCB DTCP JJD_CCP,2.0,,CCT NNC CCB DTCP JJD_CCP,2.0
-501098,,,CCT NNC CCB NNP FW,2.0,,CCT NNC CCB NNP FW,2.0
-501099,,,DTCP NNC DTP NNP CCT,2.0,,DTCP NNC DTP NNP CCT,2.0
-501100,,,NNC CCT DTCP NNPA FW,2.0,,NNC CCT DTCP NNPA FW,2.0
-501101,,,DTP NNP CCT NNC CCB,4.0,,DTP NNP CCT NNC CCB,4.0
-501102,,,DTC NNC CCB DTCP NNC_CCP,2.0,,DTC NNC CCB DTCP NNC_CCP,2.0
-501103,,,DTC DTCP NNC PMC CCA,2.0,,DTC DTCP NNC PMC CCA,2.0
-501104,,,NNC CCB FW RBL CCT,2.0,,NNC CCB FW RBL CCT,2.0
-501105,,,VBOF PRS CCT NNC CCB,2.0,,VBOF PRS CCT NNC CCB,2.0
-501106,,,DTC VBTR CCB NNC CCT,2.0,,DTC VBTR CCB NNC CCT,2.0
-501107,,,JJD DTC NNC CCB DTCP,2.0,,JJD DTC NNC CCB DTCP,2.0
-501108,,,CCA VBTS DTC NNC CCT,2.0,,CCA VBTS DTC NNC CCT,2.0
-501109,,,DTC NNC CCB NNP FW,2.0,,DTC NNC CCB NNP FW,2.0
-501110,,,CCT NNC CCB NNPA PMC,2.0,,CCT NNC CCB NNPA PMC,2.0
-501111,,,DTP NNP CCA DTC PRSP_CCP,2.0,,DTP NNP CCA DTC PRSP_CCP,2.0
-501112,,,NNP CCA DTC PRSP_CCP FW,2.0,,NNP CCA DTC PRSP_CCP FW,2.0
-501113,,,CCA DTC PRSP_CCP FW FW,2.0,,CCA DTC PRSP_CCP FW FW,2.0
-501114,,,RBI DTC DTCP NNC CCP,2.0,,RBI DTC DTCP NNC CCP,2.0
-501115,,,CCT NNC CCB PRSP_CCP NNC,2.0,,CCT NNC CCB PRSP_CCP NNC,2.0
-501116,,,NNC CCB PRSP_CCP NNC PMC,3.0,,NNC CCB PRSP_CCP NNC PMC,3.0
-501117,,,PMS FW DTC PRI_CCP NNP,2.0,,PMS FW DTC PRI_CCP NNP,2.0
-501118,,,FW DTC PRI_CCP NNP NNP,2.0,,FW DTC PRI_CCP NNP NNP,2.0
-501119,,,NNC CCB DTCP JJD PMS,3.0,,NNC CCB DTCP JJD PMS,3.0
-501120,,,CCB DTCP JJD PMS NNP,2.0,,CCB DTCP JJD PMS NNP,2.0
-501121,,,PRP CCB DTCP JJD_CCP NNC,2.0,,PRP CCB DTCP JJD_CCP NNC,2.0
-501122,,,CCB DTCP JJD_CCP NNC CCT,3.0,,CCB DTCP JJD_CCP NNC CCT,3.0
-501123,,,DTCP JJD_CCP NNC CCT FW,2.0,,DTCP JJD_CCP NNC CCT FW,2.0
-501124,,,CCB DTCP JJD PMS CCR,2.0,,CCB DTCP JJD PMS CCR,2.0
-501125,,,NNC DTC NNP CCT FW,2.0,,NNC DTC NNP CCT FW,2.0
-501126,,,CCB DTCP NNC CCP VBOF,2.0,,CCB DTCP NNC CCP VBOF,2.0
-501127,,,CCP VBTR CCB NNC CCA,2.0,,CCP VBTR CCB NNC CCA,2.0
-501128,,,PMS FW DTP NNP CCB,2.0,,PMS FW DTP NNP CCB,2.0
-501129,,,CCB NNC CCR VBOF RBI,2.0,,CCB NNC CCR VBOF RBI,2.0
-501130,,,NNC CCT NNP PMS FW,2.0,,NNC CCT NNP PMS FW,2.0
-501131,,,DTC DTCP NNC PRO LM,2.0,,DTC DTCP NNC PRO LM,2.0
-501132,,,NNC CCB NNP CCP DTP,2.0,,NNC CCB NNP CCP DTP,2.0
-501133,,,PRO LM DTC NNC CCB,2.0,,PRO LM DTC NNC CCB,2.0
-501134,,,CCT PRSP_CCP NNC CCP VBTS,2.0,,CCT PRSP_CCP NNC CCP VBTS,2.0
-501135,,,PMS FW CCT NNC CCB,2.0,,PMS FW CCT NNC CCB,2.0
-501136,,,CCT DTCP NNC CCB NNP,3.0,,CCT DTCP NNC CCB NNP,3.0
-501137,,,RBF JJD CCP NNC CCB,2.0,,RBF JJD CCP NNC CCB,2.0
-501138,,,DTCP NNC CCP VBTS CCT,2.0,,DTCP NNC CCP VBTS CCT,2.0
-501139,,,CCT NNC DTP NNP CCA,2.0,,CCT NNC DTP NNP CCA,2.0
-501140,,,PRO LM VBTR_VBAF CCT DTCP,2.0,,PRO LM VBTR_VBAF CCT DTCP,2.0
-501141,,,DTCP NNC_CCP VBTR_VBAF CCB NNC,2.0,,DTCP NNC_CCP VBTR_VBAF CCB NNC,2.0
-501142,,,FW FW CCT PRI_CCP NNC,2.0,,FW FW CCT PRI_CCP NNC,2.0
-501211,CC.* DT.* NN.* CC.* NN.*_CC.*,3.0,CCA DTCP NNC CCB NNC_CCP,3.0,* * * * NNC_CCP,CC.* DT.* NN.* CC.* NNC_CCP,3.0
-501256,CC.* JJ.* PR.*_CC.* VB.* CC.*,2.0,CCP JJD PRP_CCP VBW CCA,2.0,* * PRP_CCP * *,CC.* JJ.* PRP_CCP VB.* CC.*,2.0
-501277,NN.*_CC.* VB.* CC.* DT.* NN.*,3.0,NNC_CCP VBTR CCB DTCP NNC,5.0,NNC_CCP * * * *,NNC_CCP VB.* CC.* DT.* NN.*,5.0
-501279,RB.* RB.*_CC.* VB.* CC.* NN.*,2.0,RBW RBD_CCP VBTR CCB NNP,2.0,* RBD_CCP * * *,RB.* RBD_CCP VB.* CC.* NN.*,2.0
-501297,RB.* PR.*_CC.* VB.* DT.* NN.*,2.0,RBW PRP_CCP VBOB DTC NNC,2.0,* PRP_CCP * * *,RB.* PRP_CCP VB.* DT.* NN.*,2.0
-501386,JJ.*_CC.* FW FW DT.* NN.*,2.0,JJD_CCP FW FW DTP NNP,2.0,JJD_CCP * FW * *,JJD_CCP FW FW DT.* NN.*,2.0
-501439,NN.*_CC.* JJ.* CC.* NN.* CC.*,2.0,NNC_CCP JJD CCT NNC CCB,2.0,NNC_CCP * * * *,NNC_CCP JJ.* CC.* NN.* CC.*,2.0
-501474,CC.* JJ.*_JJ.*_CC.* NN.* CC.* NN.*,2.0,CCB JJCS_JJD_CCP NNC CCP NNC,2.0,* JJCS_JJD_CCP * * *,CC.* JJCS_JJD_CCP NN.* CC.* NN.*,2.0
-501520,CC.* JJ.*_CC.* FW FW CC.*,2.0,CCB JJD_CCP FW FW CCT,2.0,* JJD_CCP * FW *,CC.* JJD_CCP FW FW CC.*,2.0
-501602,RB.*_CC.* VB.* CC.* DT.* FW,2.0,RBD_CCP VBOF CCP DTCP FW,2.0,RBD_CCP * * * *,RBD_CCP VB.* CC.* DT.* FW,2.0
-501616,JJ.*_CC.* NN.* DT.* VB.* CC.*,2.0,JJD_CCP NNC DTC VBTR CCB,2.0,JJD_CCP * * * *,JJD_CCP NN.* DT.* VB.* CC.*,2.0
-501676,CC.* PR.*_CC.* NN.* FW CC.*,2.0,CCP PRI_CCP NNP FW CCB,2.0,* PRI_CCP * FW *,CC.* PRI_CCP NN.* FW CC.*,2.0
-501732,JJ.*_CC.* NN.* PR.* DT.* NN.*,2.0,JJD_CCP NNC PRL DTP NNP,2.0,JJD_CCP * * * *,JJD_CCP NN.* PR.* DT.* NN.*,2.0
-501757,NN.* CC.* NN.* PR.*_CC.* DT.*,2.0,NNC CCB NNC PRS_CCP DTP,2.0,* * * PRS_CCP *,NN.* CC.* NN.* PRS_CCP DT.*,2.0
-501760,NN.* PR.*_CC.* DT.* NN.* NN.*,3.0,NNC PRS_CCP DTP NNP NNP,3.0,* PRS_CCP * * *,NN.* PRS_CCP DT.* NN.* NN.*,3.0
-501773,DT.* NN.* LM RB.* VB.*_VB.*,2.0,DTP NNP LM RBF VBTR_VBAF,2.0,* * * * VBTR_VBAF,DT.* NN.* LM RB.* VBTR_VBAF,2.0
-501801,NN.* PM.* JJ.*_CC.* FW CC.*,2.0,NNP PMS JJD_CCP FW CCB,2.0,* * JJD_CCP * *,NN.* PM.* JJD_CCP FW CC.*,2.0
-501862,JJ.*_CC.* NN.* CC.* NN.* CC.*,5.0,JJD_CCP NNC CCT NNPA CCP,4.0,JJD_CCP * * * *,JJD_CCP NN.* CC.* NN.* CC.*,4.0
-501959,CC.* NN.*_CC.* VB.* CC.* NN.*,3.0,CCB NNC_CCP VBOF CCB NNPA,5.0,* NNC_CCP * * *,CC.* NNC_CCP VB.* CC.* NN.*,5.0
-502176,RB.*_CC.* VB.* CC.* NN.* DT.*,2.0,RBD_CCP VBTR CCB NNP DTC,2.0,RBD_CCP * * * *,RBD_CCP VB.* CC.* NN.* DT.*,2.0
-502211,JJ.*_CC.* NN.* NN.* FW CC.*,2.0,JJD_CCP NNC NNPA FW CCP,2.0,JJD_CCP * * * *,JJD_CCP NN.* NN.* FW CC.*,2.0
-502233,NN.*_CC.* VB.* CC.* VB.* CC.*,2.0,NNC_CCP VBW CCA VBAF CCT,2.0,NNC_CCP * * * *,NNC_CCP VB.* CC.* VB.* CC.*,2.0
-502247,CC.* PR.* RB.*_CC.* FW FW,2.0,CCA PRI RBI_CCP FW FW,2.0,* * RBI_CCP * FW,CC.* PR.* RBI_CCP FW FW,2.0
-502248,PR.* RB.*_CC.* FW FW CC.*,2.0,PRI RBI_CCP FW FW CCB,2.0,* RBI_CCP * FW *,PR.* RBI_CCP FW FW CC.*,2.0
-502315,CC.* RB.*_CC.* VB.* CC.* NN.*,3.0,CCR RBD_CCP VBAF CCT NNP,3.0,* RBD_CCP * * *,CC.* RBD_CCP VB.* CC.* NN.*,3.0
-502349,PR.*_CC.* FW FW CC.* NN.*,2.0,PRI_CCP FW FW CCT NNP,2.0,PRI_CCP * FW * *,PRI_CCP FW FW CC.* NN.*,2.0
-502416,RB.* PR.*_CC.* VB.* DT.* DT.*,2.0,RBF PRP_CCP VBOF DTC DTCP,2.0,* PRP_CCP * * *,RB.* PRP_CCP VB.* DT.* DT.*,2.0
-502417,PR.*_CC.* VB.* DT.* DT.* NN.*,2.0,PRP_CCP VBOF DTC DTCP NNC,2.0,PRP_CCP * * * *,PRP_CCP VB.* DT.* DT.* NN.*,2.0
-502438,CC.* JJ.*_CC.* FW CC.* NN.*,2.0,CCB JJD_CCP FW CCB NNPA,2.0,* JJD_CCP * * *,CC.* JJD_CCP FW CC.* NN.*,2.0
-502466,JJ.*_CC.* NN.* CC.* FW FW,3.0,JJD_CCP NNC CCT FW FW,2.0,JJD_CCP * * * *,JJD_CCP NN.* CC.* FW FW,2.0
-502599,VB.*_VB.* CC.* DT.* NN.* CC.*,2.0,VBTR_VBAF CCP DTC NNC CCB,2.0,VBTR_VBAF * * * *,VBTR_VBAF CC.* DT.* NN.* CC.*,2.0
-502681,NN.*_CC.* VB.* RB.*_CC.* VB.* CC.*,2.0,NNC_CCP VBS RBI_CCP VBW CCA,2.0,NNC_CCP * RBI_CCP * *,NNC_CCP VB.* RBI_CCP VB.* CC.*,2.0
-502714,RB.*_CC.* VB.* DT.* NN.* CC.*,3.0,RBT_CCP VBAF DTP NNP CCT,2.0,RBT_CCP * * * *,RBT_CCP VB.* DT.* NN.* CC.*,2.0
-502763,JJ.*_CC.* NN.* CC.* VB.* CC.*,2.0,JJD_CCP NNC CCR VBTR CCT,2.0,JJD_CCP * * * *,JJD_CCP NN.* CC.* VB.* CC.*,2.0
-502801,CC.* NN.* CC.* VB.* PR.*_CC.*,2.0,CCB NNP CCP VBTR PRP_CCP,2.0,* * * * PRP_CCP,CC.* NN.* CC.* VB.* PRP_CCP,2.0
-502833,CC.* VB.*_VB.* CC.* DT.* FW,2.0,CCP VBTR_VBAF CCT DTCP FW,2.0,* VBTR_VBAF * * *,CC.* VBTR_VBAF CC.* DT.* FW,2.0
-502834,VB.*_VB.* CC.* DT.* FW FW,2.0,VBTR_VBAF CCB DTCP FW FW,2.0,VBTR_VBAF * * * *,VBTR_VBAF CC.* DT.* FW FW,2.0
+Pattern_ID,RoughPOS_N-Gram,RPOSN_Freq,DetailedPOS_N-Gram,DPOSN_Freq,Comparison_Replacement_Matrix,POS_N-Gram
+500001,PR.* DT.* NN.* DT.* NN.*,2.0,,,,PR.* DT.* NN.* DT.* NN.*
+500002,DT.* NN.* DT.* NN.* CC.*,11.0,,,,DT.* NN.* DT.* NN.* CC.*
+500003,NN.* DT.* NN.* CC.* VB.*,2.0,,,,NN.* DT.* NN.* CC.* VB.*
+500004,DT.* NN.* CC.* VB.* CC.*,15.0,,,,DT.* NN.* CC.* VB.* CC.*
+500005,NN.* CC.* VB.* CC.* NN.*,11.0,,,,NN.* CC.* VB.* CC.* NN.*
+500006,CC.* VB.* CC.* NN.* PM.*,7.0,,,,CC.* VB.* CC.* NN.* PM.*
+500007,VB.* CC.* NN.* PM.* VB.*,2.0,,,,VB.* CC.* NN.* PM.* VB.*
+500008,CC.* NN.* PM.* VB.* CC.*,2.0,,,,CC.* NN.* PM.* VB.* CC.*
+500009,CC.* VB.* DT.* NN.* CC.*,22.0,,,,CC.* VB.* DT.* NN.* CC.*
+500010,VB.* DT.* NN.* CC.* DT.*,9.0,,,,VB.* DT.* NN.* CC.* DT.*
+500011,CC.* DT.* NN.* PM.* VB.*,5.0,,,,CC.* DT.* NN.* PM.* VB.*
+500012,DT.* NN.* PM.* VB.* RB.*,3.0,,,,DT.* NN.* PM.* VB.* RB.*
+500013,NN.* CC.* JJ.*_CC.* NN.* CC.*,3.0,,,,NN.* CC.* JJ.*_CC.* NN.* CC.*
+500014,CC.* JJ.*_CC.* NN.* CC.* FW,2.0,,,,CC.* JJ.*_CC.* NN.* CC.* FW
+500015,CC.* JJ.* DT.* NN.* CC.*,4.0,,,,CC.* JJ.* DT.* NN.* CC.*
+500016,NN.* PM.* VB.* RB.* DT.*,3.0,,,,NN.* PM.* VB.* RB.* DT.*
+500017,PM.* VB.* RB.* DT.* FW,2.0,,,,PM.* VB.* RB.* DT.* FW
+500018,FW NN.* DT.* NN.* PM.*,2.0,,,,FW NN.* DT.* NN.* PM.*
+500019,DT.* NN.* PM.* CC.* VB.*,4.0,,,,DT.* NN.* PM.* CC.* VB.*
+500020,NN.* PM.* CC.* VB.* DT.*,5.0,,,,NN.* PM.* CC.* VB.* DT.*
+500021,PM.* CC.* VB.* DT.* NN.*,4.0,,,,PM.* CC.* VB.* DT.* NN.*
+500022,PM.* NN.* CC.* RB.* RB.*,2.0,,,,PM.* NN.* CC.* RB.* RB.*
+500023,NN.* CC.* RB.* RB.* JJ.*,2.0,,,,NN.* CC.* RB.* RB.* JJ.*
+500024,RB.* RB.* JJ.* VB.* CC.*,2.0,,,,RB.* RB.* JJ.* VB.* CC.*
+500025,VB.* CC.* NN.* PR.* DT.*,2.0,,,,VB.* CC.* NN.* PR.* DT.*
+500026,CC.* NN.* PR.* DT.* NN.*,2.0,,,,CC.* NN.* PR.* DT.* NN.*
+500027,PR.* DT.* NN.* CC.* VB.*,3.0,,,,PR.* DT.* NN.* CC.* VB.*
+500028,CC.* DT.* NN.* PR.* PM.*,4.0,,,,CC.* DT.* NN.* PR.* PM.*
+500029,DT.* CC.* PM.* JJ.* CC.*,2.0,,,,DT.* CC.* PM.* JJ.* CC.*
+500030,CC.* PR.* LM VB.* CC.*,2.0,,,,CC.* PR.* LM VB.* CC.*
+500031,CC.* VB.* RB.* PR.* DT.*,3.0,,,,CC.* VB.* RB.* PR.* DT.*
+500032,VB.* RB.* PR.* DT.* NN.*,5.0,,,,VB.* RB.* PR.* DT.* NN.*
+500033,RB.* PR.* DT.* NN.* CC.*,7.0,,,,RB.* PR.* DT.* NN.* CC.*
+500034,PR.* DT.* NN.* CC.* DT.*,8.0,,,,PR.* DT.* NN.* CC.* DT.*
+500035,CC.* DT.* NN.* CC.* NN.*_CC.*,3.0,,,,CC.* DT.* NN.* CC.* NN.*_CC.*
+500036,DT.* NN.* CC.* NN.*_CC.* JJ.*,3.0,,,,DT.* NN.* CC.* NN.*_CC.* JJ.*
+500037,NN.* CC.* NN.*_CC.* JJ.* CC.*,4.0,,,,NN.* CC.* NN.*_CC.* JJ.* CC.*
+500038,VB.* PR.* DT.* NN.* PM.*,3.0,,,,VB.* PR.* DT.* NN.* PM.*
+500039,NN.* PM.* VB.* DT.* DT.*,2.0,,,,NN.* PM.* VB.* DT.* DT.*
+500040,PM.* VB.* DT.* DT.* NN.*,3.0,,,,PM.* VB.* DT.* DT.* NN.*
+500041,VB.* DT.* DT.* NN.* PM.*,2.0,,,,VB.* DT.* DT.* NN.* PM.*
+500042,NN.* PM.* VB.* DT.* FW,3.0,,,,NN.* PM.* VB.* DT.* FW
+500043,NN.* PM.* DT.* JJ.*_CC.* NN.*,4.0,,,,NN.* PM.* DT.* JJ.*_CC.* NN.*
+500044,VB.* RB.* CC.* NN.* DT.*,6.0,,,,VB.* RB.* CC.* NN.* DT.*
+500045,RB.* CC.* NN.* DT.* JJ.*,2.0,,,,RB.* CC.* NN.* DT.* JJ.*
+500046,CC.* NN.* DT.* JJ.* CC.*,2.0,,,,CC.* NN.* DT.* JJ.* CC.*
+500047,VB.* CC.* JJ.* CC.* NN.*,4.0,,,,VB.* CC.* JJ.* CC.* NN.*
+500048,CC.* PR.* CC.* PR.*_CC.* FW,2.0,,,,CC.* PR.* CC.* PR.*_CC.* FW
+500049,PR.* CC.* PR.*_CC.* FW PM.*,2.0,,,,PR.* CC.* PR.*_CC.* FW PM.*
+500050,PM.* VB.* CC.* PR.*_CC.* NN.*,3.0,,,,PM.* VB.* CC.* PR.*_CC.* NN.*
+500051,VB.* CC.* PR.*_CC.* NN.* CC.*,8.0,,,,VB.* CC.* PR.*_CC.* NN.* CC.*
+500052,CC.* PR.*_CC.* NN.* CC.* VB.*,7.0,,,,CC.* PR.*_CC.* NN.* CC.* VB.*
+500053,PR.*_CC.* NN.* CC.* VB.* DT.*,4.0,,,,PR.*_CC.* NN.* CC.* VB.* DT.*
+500054,NN.* CC.* VB.* DT.* NN.*,9.0,,,,NN.* CC.* VB.* DT.* NN.*
+500055,PR.*_CC.* DT.* NN.* NN.* CC.*,3.0,,,,PR.*_CC.* DT.* NN.* NN.* CC.*
+500056,DT.* NN.* NN.* CC.* PR.*_CC.*,2.0,,,,DT.* NN.* NN.* CC.* PR.*_CC.*
+500057,NN.* NN.* CC.* PR.*_CC.* FW,3.0,,,,NN.* NN.* CC.* PR.*_CC.* FW
+500058,NN.* CC.* PR.*_CC.* FW FW,6.0,,,,NN.* CC.* PR.*_CC.* FW FW
+500059,CC.* JJ.* PR.*_CC.* VB.* CC.*,2.0,,,,CC.* JJ.* PR.*_CC.* VB.* CC.*
+500060,CC.* VB.* CC.* NN.* CC.*,10.0,,,,CC.* VB.* CC.* NN.* CC.*
+500061,CC.* NN.* NN.* PM.* CC.*,2.0,,,,CC.* NN.* NN.* PM.* CC.*
+500062,CC.* NN.* CC.* VB.* CC.*,11.0,,,,CC.* NN.* CC.* VB.* CC.*
+500063,NN.* CC.* VB.* CC.* FW,3.0,,,,NN.* CC.* VB.* CC.* FW
+500064,NN.* CC.* JJ.* JJ.* CC.*,2.0,,,,NN.* CC.* JJ.* JJ.* CC.*
+500065,JJ.* CC.* VB.* DT.* DT.*,2.0,,,,JJ.* CC.* VB.* DT.* DT.*
+500066,CC.* VB.* DT.* DT.* NN.*,4.0,,,,CC.* VB.* DT.* DT.* NN.*
+500067,VB.* DT.* DT.* NN.* CC.*,12.0,,,,VB.* DT.* DT.* NN.* CC.*
+500068,DT.* DT.* NN.*_CC.* VB.* CC.*,3.0,,,,DT.* DT.* NN.*_CC.* VB.* CC.*
+500069,DT.* NN.*_CC.* VB.* CC.* DT.*,7.0,,,,DT.* NN.*_CC.* VB.* CC.* DT.*
+500070,NN.*_CC.* VB.* CC.* DT.* NN.*,3.0,,,,NN.*_CC.* VB.* CC.* DT.* NN.*
+500071,RB.* RB.*_CC.* VB.* CC.* NN.*,2.0,,,,RB.* RB.*_CC.* VB.* CC.* NN.*
+500072,RB.*_CC.* VB.* CC.* NN.* CC.*,4.0,,,,RB.*_CC.* VB.* CC.* NN.* CC.*
+500073,VB.* CC.* NN.* CC.* RB.*_CC.*,2.0,,,,VB.* CC.* NN.* CC.* RB.*_CC.*
+500074,CC.* NN.* CC.* RB.*_CC.* NN.*,4.0,,,,CC.* NN.* CC.* RB.*_CC.* NN.*
+500075,FW PR.* CC.* NN.* CC.*,3.0,,,,FW PR.* CC.* NN.* CC.*
+500076,CC.* NN.* CC.* VB.*_VB.* CC.*,3.0,,,,CC.* NN.* CC.* VB.*_VB.* CC.*
+500077,CC.* PR.*_CC.* NN.* CC.* NN.*,10.0,,,,CC.* PR.*_CC.* NN.* CC.* NN.*
+500078,DT.* NN.* PM.* RB.* PR.*_CC.*,2.0,,,,DT.* NN.* PM.* RB.* PR.*_CC.*
+500079,PM.* RB.* PR.*_CC.* VB.* DT.*,3.0,,,,PM.* RB.* PR.*_CC.* VB.* DT.*
+500080,RB.* PR.*_CC.* VB.* DT.* NN.*,2.0,,,,RB.* PR.*_CC.* VB.* DT.* NN.*
+500081,VB.* DT.* NN.* DT.* NN.*,4.0,,,,VB.* DT.* NN.* DT.* NN.*
+500082,DT.* NN.* CC.* VB.* DT.*,7.0,,,,DT.* NN.* CC.* VB.* DT.*
+500083,NN.* CC.* VB.* DT.* FW,4.0,,,,NN.* CC.* VB.* DT.* FW
+500084,NN.* CC.* RB.* RB.* VB.*,5.0,,,,NN.* CC.* RB.* RB.* VB.*
+500085,VB.* VB.* DT.* NN.* CC.*,2.0,,,,VB.* VB.* DT.* NN.* CC.*
+500086,VB.* DT.* NN.* CC.* CC.*,3.0,,,,VB.* DT.* NN.* CC.* CC.*
+500087,DT.* NN.* CC.* CC.* RB.*,2.0,,,,DT.* NN.* CC.* CC.* RB.*
+500088,PM.* FW CC.* PR.* CC.*,3.0,,,,PM.* FW CC.* PR.* CC.*
+500089,FW CC.* PR.* CC.* DT.*,2.0,,,,FW CC.* PR.* CC.* DT.*
+500090,CC.* PR.* CC.* DT.* NN.*,4.0,,,,CC.* PR.* CC.* DT.* NN.*
+500091,FW DT.* NN.* PM.* CC.*,3.0,,,,FW DT.* NN.* PM.* CC.*
+500092,DT.* NN.* PM.* CC.* RB.*,3.0,,,,DT.* NN.* PM.* CC.* RB.*
+500093,NN.* PM.* CC.* RB.* RB.*,3.0,,,,NN.* PM.* CC.* RB.* RB.*
+500094,PM.* DT.* NN.* DT.* NN.*,2.0,,,,PM.* DT.* NN.* DT.* NN.*
+500095,NN.* PR.*_CC.* JJ.* CC.* FW,2.0,,,,NN.* PR.*_CC.* JJ.* CC.* FW
+500096,FW PM.* VB.* PR.* DT.*,2.0,,,,FW PM.* VB.* PR.* DT.*
+500097,PM.* VB.* PR.* DT.* NN.*,6.0,,,,PM.* VB.* PR.* DT.* NN.*
+500098,VB.* PR.* DT.* NN.* CC.*,9.0,,,,VB.* PR.* DT.* NN.* CC.*
+500099,PR.* DT.* NN.* CC.* PR.*_CC.*,3.0,,,,PR.* DT.* NN.* CC.* PR.*_CC.*
+500100,DT.* NN.* CC.* PR.*_CC.* NN.*,9.0,,,,DT.* NN.* CC.* PR.*_CC.* NN.*
+500101,NN.* CC.* PR.*_CC.* NN.* DT.*,5.0,,,,NN.* CC.* PR.*_CC.* NN.* DT.*
+500102,CC.* PR.*_CC.* NN.* DT.* NN.*,5.0,,,,CC.* PR.*_CC.* NN.* DT.* NN.*
+500103,DT.* NN.* PM.* VB.* VB.*,2.0,,,,DT.* NN.* PM.* VB.* VB.*
+500104,DT.* NN.* PM.* PR.* CC.*,2.0,,,,DT.* NN.* PM.* PR.* CC.*
+500105,NN.* PM.* PR.* CC.* DT.*,2.0,,,,NN.* PM.* PR.* CC.* DT.*
+500106,PR.* CC.* DT.* NN.* PM.*,3.0,,,,PR.* CC.* DT.* NN.* PM.*
+500107,CC.* NN.* CC.* PR.*_CC.* NN.*,8.0,,,,CC.* NN.* CC.* PR.*_CC.* NN.*
+500108,NN.* CC.* PR.*_CC.* NN.* CC.*,5.0,,,,NN.* CC.* PR.*_CC.* NN.* CC.*
+500109,PR.*_CC.* NN.* CC.* NN.* PM.*,4.0,,,,PR.*_CC.* NN.* CC.* NN.* PM.*
+500110,CC.* NN.* PM.* VB.* DT.*,5.0,,,,CC.* NN.* PM.* VB.* DT.*
+500111,DT.* JJ.* CC.* NN.* CC.*,5.0,,,,DT.* JJ.* CC.* NN.* CC.*
+500112,CC.* VB.* DT.* NN.* PM.*,3.0,,,,CC.* VB.* DT.* NN.* PM.*
+500113,NN.* CC.* RB.*_CC.* VB.* DT.*,2.0,,,,NN.* CC.* RB.*_CC.* VB.* DT.*
+500114,NN.* CC.* NN.*_CC.* NN.* CC.*,2.0,,,,NN.* CC.* NN.*_CC.* NN.* CC.*
+500115,CC.* DT.* NN.* LM VB.*,2.0,,,,CC.* DT.* NN.* LM VB.*
+500116,DT.* NN.* LM VB.* CC.*,2.0,,,,DT.* NN.* LM VB.* CC.*
+500117,PM.* FW CC.* NN.* DT.*,2.0,,,,PM.* FW CC.* NN.* DT.*
+500118,FW CC.* NN.* DT.* DT.*,2.0,,,,FW CC.* NN.* DT.* DT.*
+500119,DT.* PR.* CC.* NN.* CC.*,3.0,,,,DT.* PR.* CC.* NN.* CC.*
+500120,JJ.*_CC.* FW FW DT.* NN.*,2.0,,,,JJ.*_CC.* FW FW DT.* NN.*
+500121,FW DT.* NN.* CC.* DT.*,3.0,,,,FW DT.* NN.* CC.* DT.*
+500122,RB.* PM.* JJ.* RB.* CC.*,2.0,,,,RB.* PM.* JJ.* RB.* CC.*
+500123,RB.* CC.* VB.* DT.* DT.*,2.0,,,,RB.* CC.* VB.* DT.* DT.*
+500124,DT.* DT.* NN.* CC.* FW,6.0,,,,DT.* DT.* NN.* CC.* FW
+500125,DT.* NN.* CC.* FW CC.*,2.0,,,,DT.* NN.* CC.* FW CC.*
+500126,RB.* DT.* NN.* CC.* VB.*,7.0,,,,RB.* DT.* NN.* CC.* VB.*
+500127,CC.* RB.* RB.* PR.* RB.*,2.0,,,,CC.* RB.* RB.* PR.* RB.*
+500128,RB.* RB.* PR.* RB.* PM.*,2.0,,,,RB.* RB.* PR.* RB.* PM.*
+500129,DT.* NN.* CC.* DT.* VB.*,2.0,,,,DT.* NN.* CC.* DT.* VB.*
+500130,NN.* CC.* DT.* VB.* CC.*,3.0,,,,NN.* CC.* DT.* VB.* CC.*
+500131,VB.* CC.* VB.* CC.* NN.*,4.0,,,,VB.* CC.* VB.* CC.* NN.*
+500132,CC.* VB.* CC.* NN.* DT.*,8.0,,,,CC.* VB.* CC.* NN.* DT.*
+500133,VB.* CC.* NN.* DT.* FW,4.0,,,,VB.* CC.* NN.* DT.* FW
+500134,CC.* NN.* PM.* RB.* RB.*,5.0,,,,CC.* NN.* PM.* RB.* RB.*
+500135,NN.* PM.* RB.* RB.* VB.*,5.0,,,,NN.* PM.* RB.* RB.* VB.*
+500136,PM.* RB.* RB.* VB.* PM.*,2.0,,,,PM.* RB.* RB.* VB.* PM.*
+500137,RB.* RB.* VB.* PM.* NN.*,2.0,,,,RB.* RB.* VB.* PM.* NN.*
+500138,PM.* CC.* VB.* PR.* CC.*,2.0,,,,PM.* CC.* VB.* PR.* CC.*
+500139,CC.* VB.* PR.* CC.* NN.*,5.0,,,,CC.* VB.* PR.* CC.* NN.*
+500140,VB.* PR.* CC.* NN.* DT.*,2.0,,,,VB.* PR.* CC.* NN.* DT.*
+500141,PR.* CC.* NN.* DT.* NN.*,2.0,,,,PR.* CC.* NN.* DT.* NN.*
+500142,CC.* NN.* DT.* NN.* DT.*,2.0,,,,CC.* NN.* DT.* NN.* DT.*
+500143,CC.* NN.* CC.* NN.*_CC.* NN.*,2.0,,,,CC.* NN.* CC.* NN.*_CC.* NN.*
+500144,NN.* PM.* JJ.*_CC.* NN.* CC.*,2.0,,,,NN.* PM.* JJ.*_CC.* NN.* CC.*
+500145,CC.* VB.* DT.* DT.* VB.*,2.0,,,,CC.* VB.* DT.* DT.* VB.*
+500146,VB.* DT.* DT.* VB.* PM.*,2.0,,,,VB.* DT.* DT.* VB.* PM.*
+500147,DT.* DT.* VB.* PM.* VB.*,2.0,,,,DT.* DT.* VB.* PM.* VB.*
+500148,DT.* NN.*_CC.* JJ.* CC.* NN.*,2.0,,,,DT.* NN.*_CC.* JJ.* CC.* NN.*
+500149,NN.*_CC.* JJ.* CC.* NN.* CC.*,2.0,,,,NN.*_CC.* JJ.* CC.* NN.* CC.*
+500150,PM.* DT.* VB.* CC.* FW,2.0,,,,PM.* DT.* VB.* CC.* FW
+500151,DT.* VB.* CC.* FW PM.*,2.0,,,,DT.* VB.* CC.* FW PM.*
+500152,VB.* CC.* FW PM.* NN.*,2.0,,,,VB.* CC.* FW PM.* NN.*
+500153,NN.* CC.* NN.* PM.* DT.*,2.0,,,,NN.* CC.* NN.* PM.* DT.*
+500154,CC.* NN.* PM.* DT.* JJ.*_CC.*,3.0,,,,CC.* NN.* PM.* DT.* JJ.*_CC.*
+500155,PM.* DT.* JJ.*_CC.* NN.* CC.*,3.0,,,,PM.* DT.* JJ.*_CC.* NN.* CC.*
+500156,NN.* CC.* VB.* PM.* FW,3.0,,,,NN.* CC.* VB.* PM.* FW
+500157,CC.* VB.* PM.* FW CC.*,2.0,,,,CC.* VB.* PM.* FW CC.*
+500158,VB.* PM.* FW CC.* NN.*,6.0,,,,VB.* PM.* FW CC.* NN.*
+500159,PM.* FW CC.* NN.* PM.*,4.0,,,,PM.* FW CC.* NN.* PM.*
+500160,FW CC.* NN.* PM.* CC.*,5.0,,,,FW CC.* NN.* PM.* CC.*
+500161,CC.* NN.* PM.* CC.* DT.*,3.0,,,,CC.* NN.* PM.* CC.* DT.*
+500162,VB.*_CC.* NN.* DT.* NN.* CC.*,2.0,,,,VB.*_CC.* NN.* DT.* NN.* CC.*
+500163,NN.* DT.* NN.* CC.* PR.*,3.0,,,,NN.* DT.* NN.* CC.* PR.*
+500164,CC.* PR.* DT.* PM.* FW,2.0,,,,CC.* PR.* DT.* PM.* FW
+500165,CC.* JJ.*_JJ.*_CC.* NN.* CC.* NN.*,2.0,,,,CC.* JJ.*_JJ.*_CC.* NN.* CC.* NN.*
+500166,NN.* DT.* JJ.*_CC.* NN.*_CC.* NN.*,2.0,,,,NN.* DT.* JJ.*_CC.* NN.*_CC.* NN.*
+500167,VB.* RB.* DT.* NN.* CC.*,11.0,,,,VB.* RB.* DT.* NN.* CC.*
+500168,RB.* DT.* NN.* CC.* NN.*,3.0,,,,RB.* DT.* NN.* CC.* NN.*
+500169,DT.* NN.* CC.* NN.* CC.*,13.0,,,,DT.* NN.* CC.* NN.* CC.*
+500170,NN.* CC.* NN.* CC.* FW,3.0,,,,NN.* CC.* NN.* CC.* FW
+500171,DT.* NN.* PM.* CC.* CC.*,5.0,,,,DT.* NN.* PM.* CC.* CC.*
+500172,NN.* PM.* CC.* CC.* NN.*,3.0,,,,NN.* PM.* CC.* CC.* NN.*
+500173,CC.* NN.* DT.* NN.* PM.*,3.0,,,,CC.* NN.* DT.* NN.* PM.*
+500174,NN.* DT.* NN.* PM.* VB.*_VB.*,2.0,,,,NN.* DT.* NN.* PM.* VB.*_VB.*
+500175,VB.* RB.* PR.* CC.* VB.*,2.0,,,,VB.* RB.* PR.* CC.* VB.*
+500176,RB.* PR.* CC.* VB.* CC.*,2.0,,,,RB.* PR.* CC.* VB.* CC.*
+500177,CC.* VB.* CC.* PR.* CC.*,2.0,,,,CC.* VB.* CC.* PR.* CC.*
+500178,LM VB.* CC.* VB.* CC.*,2.0,,,,LM VB.* CC.* VB.* CC.*
+500179,CC.* VB.* DT.* JJ.*_CC.* NN.*,2.0,,,,CC.* VB.* DT.* JJ.*_CC.* NN.*
+500180,VB.* DT.* JJ.*_CC.* NN.* CC.*,3.0,,,,VB.* DT.* JJ.*_CC.* NN.* CC.*
+500181,CC.* NN.* CC.* VB.* DT.*,9.0,,,,CC.* NN.* CC.* VB.* DT.*
+500182,CC.* NN.* PM.* FW CC.*,4.0,,,,CC.* NN.* PM.* FW CC.*
+500183,NN.* PM.* FW CC.* NN.*,3.0,,,,NN.* PM.* FW CC.* NN.*
+500184,PM.* FW CC.* NN.* CC.*,4.0,,,,PM.* FW CC.* NN.* CC.*
+500185,NN.* DT.* NN.* CC.* PM.*,2.0,,,,NN.* DT.* NN.* CC.* PM.*
+500186,PM.* CC.* JJ.* CC.* FW,2.0,,,,PM.* CC.* JJ.* CC.* FW
+500187,NN.* CC.* JJ.*_CC.* FW FW,2.0,,,,NN.* CC.* JJ.*_CC.* FW FW
+500188,CC.* JJ.*_CC.* FW FW CC.*,2.0,,,,CC.* JJ.*_CC.* FW FW CC.*
+500189,FW CC.* NN.* CC.* DT.*,3.0,,,,FW CC.* NN.* CC.* DT.*
+500190,CC.* NN.* CC.* DT.* NN.*,6.0,,,,CC.* NN.* CC.* DT.* NN.*
+500191,NN.* CC.* DT.* NN.* CC.*,7.0,,,,NN.* CC.* DT.* NN.* CC.*
+500192,NN.* PM.* RB.* VB.* PR.*,2.0,,,,NN.* PM.* RB.* VB.* PR.*
+500193,PM.* RB.* VB.* PR.* DT.*,2.0,,,,PM.* RB.* VB.* PR.* DT.*
+500194,DT.* NN.* JJ.* CC.* NN.*,2.0,,,,DT.* NN.* JJ.* CC.* NN.*
+500195,JJ.* CC.* NN.* CC.* NN.*,3.0,,,,JJ.* CC.* NN.* CC.* NN.*
+500196,CC.* NN.* CC.* FW PM.*,3.0,,,,CC.* NN.* CC.* FW PM.*
+500197,NN.* CC.* FW PM.* VB.*,3.0,,,,NN.* CC.* FW PM.* VB.*
+500198,FW PM.* VB.* RB.* PR.*,3.0,,,,FW PM.* VB.* RB.* PR.*
+500199,JJ.* DT.* NN.* CC.* DT.*,3.0,,,,JJ.* DT.* NN.* CC.* DT.*
+500200,VB.* PR.*_CC.* VB.* CC.* NN.*,2.0,,,,VB.* PR.*_CC.* VB.* CC.* NN.*
+500201,PR.*_CC.* VB.* CC.* NN.* RB.*,2.0,,,,PR.*_CC.* VB.* CC.* NN.* RB.*
+500202,RB.* CC.* NN.* PM.* VB.*,2.0,,,,RB.* CC.* NN.* PM.* VB.*
+500203,CC.* NN.* PM.* VB.* RB.*,7.0,,,,CC.* NN.* PM.* VB.* RB.*
+500204,NN.* PM.* VB.* RB.* PR.*,2.0,,,,NN.* PM.* VB.* RB.* PR.*
+500205,PR.* CC.* VB.* CC.* NN.*,3.0,,,,PR.* CC.* VB.* CC.* NN.*
+500206,NN.* CC.* RB.* RB.* CC.*,2.0,,,,NN.* CC.* RB.* RB.* CC.*
+500207,RB.* DT.* VB.* CC.* NN.*,4.0,,,,RB.* DT.* VB.* CC.* NN.*
+500208,DT.* VB.* CC.* NN.* PM.*,4.0,,,,DT.* VB.* CC.* NN.* PM.*
+500209,CC.* VB.* CC.* FW PM.*,3.0,,,,CC.* VB.* CC.* FW PM.*
+500210,CC.* FW PM.* CC.* VB.*,4.0,,,,CC.* FW PM.* CC.* VB.*
+500211,RB.* PM.* CC.* DT.* NN.*,2.0,,,,RB.* PM.* CC.* DT.* NN.*
+500212,DT.* NN.*_CC.* VB.* CC.* PR.*,2.0,,,,DT.* NN.*_CC.* VB.* CC.* PR.*
+500213,VB.* PM.* PM.* RB.* JJ.*,2.0,,,,VB.* PM.* PM.* RB.* JJ.*
+500214,RB.* DT.* NN.* CC.* FW,2.0,,,,RB.* DT.* NN.* CC.* FW
+500215,CC.* CD.* NN.* CC.* NN.*,2.0,,,,CC.* CD.* NN.* CC.* NN.*
+500216,CC.* VB.* RB.* RB.* DT.*,2.0,,,,CC.* VB.* RB.* RB.* DT.*
+500217,CC.* CD.* NN.* DT.* NN.*,2.0,,,,CC.* CD.* NN.* DT.* NN.*
+500218,NN.* NN.* PM.* CC.* PM.*,2.0,,,,NN.* NN.* PM.* CC.* PM.*
+500219,PM.* PR.* CC.* NN.* CC.*,2.0,,,,PM.* PR.* CC.* NN.* CC.*
+500220,CD.* NN.* CC.* VB.* CC.*,2.0,,,,CD.* NN.* CC.* VB.* CC.*
+500221,VB.* CC.* NN.* CC.* FW,9.0,,,,VB.* CC.* NN.* CC.* FW
+500222,DT.* NN.* NN.* CC.* JJ.*_CC.*,2.0,,,,DT.* NN.* NN.* CC.* JJ.*_CC.*
+500223,NN.* CC.* JJ.*_CC.* NN.* NN.*,2.0,,,,NN.* CC.* JJ.*_CC.* NN.* NN.*
+500224,VB.* RB.* DT.* DT.* NN.*_CC.*,2.0,,,,VB.* RB.* DT.* DT.* NN.*_CC.*
+500225,RB.* DT.* DT.* NN.*_CC.* VB.*,2.0,,,,RB.* DT.* DT.* NN.*_CC.* VB.*
+500226,CC.* DT.* DT.* NN.* CC.*,3.0,,,,CC.* DT.* DT.* NN.* CC.*
+500227,PR.* LM VB.* CC.* NN.*,3.0,,,,PR.* LM VB.* CC.* NN.*
+500228,LM VB.* CC.* NN.* CC.*,5.0,,,,LM VB.* CC.* NN.* CC.*
+500229,NN.* CC.* NN.* CC.* NN.*_CC.*,2.0,,,,NN.* CC.* NN.* CC.* NN.*_CC.*
+500230,CC.* JJ.* DT.* DT.* NN.*,2.0,,,,CC.* JJ.* DT.* DT.* NN.*
+500231,RB.*_CC.* VB.* CC.* DT.* FW,2.0,,,,RB.*_CC.* VB.* CC.* DT.* FW
+500232,VB.* DT.* NN.* NN.* CC.*,3.0,,,,VB.* DT.* NN.* NN.* CC.*
+500233,NN.* CC.* FW CC.* PR.*,3.0,,,,NN.* CC.* FW CC.* PR.*
+500234,RB.* VB.* CC.* NN.* DT.*,3.0,,,,RB.* VB.* CC.* NN.* DT.*
+500235,PM.* CC.* VB.* NN.* CC.*,2.0,,,,PM.* CC.* VB.* NN.* CC.*
+500236,CC.* PR.*_CC.* NN.* CC.* DT.*,3.0,,,,CC.* PR.*_CC.* NN.* CC.* DT.*
+500237,NN.* CC.* DT.* NN.*_CC.* PR.*,2.0,,,,NN.* CC.* DT.* NN.*_CC.* PR.*
+500238,CC.* DT.* NN.*_CC.* PR.* PM.*,2.0,,,,CC.* DT.* NN.*_CC.* PR.* PM.*
+500239,JJ.*_CC.* NN.* DT.* VB.* CC.*,2.0,,,,JJ.*_CC.* NN.* DT.* VB.* CC.*
+500240,NN.* DT.* VB.* CC.* DT.*,2.0,,,,NN.* DT.* VB.* CC.* DT.*
+500241,DT.* VB.* CC.* DT.* NN.*,4.0,,,,DT.* VB.* CC.* DT.* NN.*
+500242,VB.* CC.* DT.* NN.* PM.*,5.0,,,,VB.* CC.* DT.* NN.* PM.*
+500243,VB.* CC.* DT.* PR.*_CC.* NN.*,2.0,,,,VB.* CC.* DT.* PR.*_CC.* NN.*
+500244,DT.* PR.*_CC.* NN.* CC.* VB.*,2.0,,,,DT.* PR.*_CC.* NN.* CC.* VB.*
+500245,PR.*_CC.* NN.* CC.* VB.* RB.*,2.0,,,,PR.*_CC.* NN.* CC.* VB.* RB.*
+500246,VB.* RB.* CC.* NN.* CC.*,6.0,,,,VB.* RB.* CC.* NN.* CC.*
+500247,CC.* VB.* RB.* CC.* NN.*,5.0,,,,CC.* VB.* RB.* CC.* NN.*
+500248,RB.* CC.* NN.* DT.* NN.*,4.0,,,,RB.* CC.* NN.* DT.* NN.*
+500249,PR.* CC.* DT.* NN.*_CC.* JJ.*,2.0,,,,PR.* CC.* DT.* NN.*_CC.* JJ.*
+500250,PM.* VB.* DT.* NN.* CC.*,9.0,,,,PM.* VB.* DT.* NN.* CC.*
+500251,VB.* DT.* NN.* CC.* NN.*,10.0,,,,VB.* DT.* NN.* CC.* NN.*
+500252,NN.* CC.* FW CC.* JJ.*_CC.*,2.0,,,,NN.* CC.* FW CC.* JJ.*_CC.*
+500253,CC.* FW CC.* JJ.*_CC.* NN.*,2.0,,,,CC.* FW CC.* JJ.*_CC.* NN.*
+500254,PM.* CC.* VB.* DT.* NN.*_CC.*,2.0,,,,PM.* CC.* VB.* DT.* NN.*_CC.*
+500255,CC.* VB.* DT.* NN.*_CC.* NN.*,2.0,,,,CC.* VB.* DT.* NN.*_CC.* NN.*
+500256,FW PM.* CC.* VB.* CC.*,4.0,,,,FW PM.* CC.* VB.* CC.*
+500257,CC.* RB.*_CC.* NN.* CC.* VB.*,2.0,,,,CC.* RB.*_CC.* NN.* CC.* VB.*
+500258,JJ.* CC.* VB.* DT.* NN.*,2.0,,,,JJ.* CC.* VB.* DT.* NN.*
+500259,CC.* CC.* JJ.*_CC.* FW CC.*,2.0,,,,CC.* CC.* JJ.*_CC.* FW CC.*
+500260,PR.*_CC.* NN.* CC.* NN.* CC.*,7.0,,,,PR.*_CC.* NN.* CC.* NN.* CC.*
+500261,CC.* NN.* CC.* DT.* NN.*_CC.*,2.0,,,,CC.* NN.* CC.* DT.* NN.*_CC.*
+500262,NN.* CC.* DT.* NN.*_CC.* VB.*,6.0,,,,NN.* CC.* DT.* NN.*_CC.* VB.*
+500263,FW PM.* CC.* RB.* RB.*,3.0,,,,FW PM.* CC.* RB.* RB.*
+500264,CC.* CC.* PM.* VB.* DT.*,2.0,,,,CC.* CC.* PM.* VB.* DT.*
+500265,CC.* PM.* VB.* DT.* NN.*,2.0,,,,CC.* PM.* VB.* DT.* NN.*
+500266,DT.* VB.* PR.* CC.* NN.*,2.0,,,,DT.* VB.* PR.* CC.* NN.*
+500267,RB.* CC.* JJ.*_CC.* NN.* CC.*,4.0,,,,RB.* CC.* JJ.*_CC.* NN.* CC.*
+500268,CC.* JJ.*_CC.* NN.* CC.* NN.*,3.0,,,,CC.* JJ.*_CC.* NN.* CC.* NN.*
+500269,DT.* PR.*_CC.* PM.* FW CC.*,2.0,,,,DT.* PR.*_CC.* PM.* FW CC.*
+500270,NN.* CC.* NN.* CC.* PR.*_CC.*,4.0,,,,NN.* CC.* NN.* CC.* PR.*_CC.*
+500271,NN.* CC.* PR.*_CC.* NN.* FW,3.0,,,,NN.* CC.* PR.*_CC.* NN.* FW
+500272,CC.* PR.*_CC.* NN.* FW CC.*,2.0,,,,CC.* PR.*_CC.* NN.* FW CC.*
+500273,CC.* FW CC.* DT.* NN.*,3.0,,,,CC.* FW CC.* DT.* NN.*
+500274,FW CC.* DT.* NN.* LM,2.0,,,,FW CC.* DT.* NN.* LM
+500275,FW PM.* PM.* CC.* CC.*,2.0,,,,FW PM.* PM.* CC.* CC.*
+500276,PR.* PM.* JJ.* DT.* VB.*,2.0,,,,PR.* PM.* JJ.* DT.* VB.*
+500277,VB.* PR.* CC.* NN.* CC.*,9.0,,,,VB.* PR.* CC.* NN.* CC.*
+500278,CC.* NN.* CC.* JJ.* CC.*,2.0,,,,CC.* NN.* CC.* JJ.* CC.*
+500279,PM.* VB.* PR.* CC.* NN.*_CC.*,2.0,,,,PM.* VB.* PR.* CC.* NN.*_CC.*
+500280,VB.* PR.* CC.* NN.*_CC.* NN.*,3.0,,,,VB.* PR.* CC.* NN.*_CC.* NN.*
+500281,PR.* CC.* NN.*_CC.* NN.* CC.*,3.0,,,,PR.* CC.* NN.*_CC.* NN.* CC.*
+500282,NN.* CC.* CC.* PM.* FW,4.0,,,,NN.* CC.* CC.* PM.* FW
+500283,CC.* PR.* PM.* VB.* RB.*,2.0,,,,CC.* PR.* PM.* VB.* RB.*
+500284,PR.* PM.* VB.* RB.* DT.*,2.0,,,,PR.* PM.* VB.* RB.* DT.*
+500285,PM.* VB.* RB.* DT.* NN.*,7.0,,,,PM.* VB.* RB.* DT.* NN.*
+500286,NN.* CC.* VB.*_VB.* PR.* RB.*,2.0,,,,NN.* CC.* VB.*_VB.* PR.* RB.*
+500287,CC.* VB.*_VB.* PR.* RB.* RB.*,2.0,,,,CC.* VB.*_VB.* PR.* RB.* RB.*
+500288,PM.* VB.* PR.* CC.* NN.*,5.0,,,,PM.* VB.* PR.* CC.* NN.*
+500289,PR.*_CC.* NN.* CC.* RB.* RB.*,5.0,,,,PR.*_CC.* NN.* CC.* RB.* RB.*
+500290,CC.* RB.* RB.* VB.* DT.*,3.0,,,,CC.* RB.* RB.* VB.* DT.*
+500291,RB.* RB.* VB.* DT.* NN.*,7.0,,,,RB.* RB.* VB.* DT.* NN.*
+500292,RB.* VB.* DT.* NN.* CC.*,14.0,,,,RB.* VB.* DT.* NN.* CC.*
+500293,CC.* CC.* VB.* CC.* DT.*,2.0,,,,CC.* CC.* VB.* CC.* DT.*
+500294,DT.* CC.* PM.* FW CC.*,2.0,,,,DT.* CC.* PM.* FW CC.*
+500295,CC.* PM.* FW CC.* NN.*,2.0,,,,CC.* PM.* FW CC.* NN.*
+500296,PM.* CD.* NN.* CC.* NN.*,2.0,,,,PM.* CD.* NN.* CC.* NN.*
+500297,JJ.*_CC.* NN.* PR.* DT.* NN.*,2.0,,,,JJ.*_CC.* NN.* PR.* DT.* NN.*
+500298,VB.* CC.* NN.* DT.* NN.*,10.0,,,,VB.* CC.* NN.* DT.* NN.*
+500299,CC.* NN.* DT.* NN.* CC.*,9.0,,,,CC.* NN.* DT.* NN.* CC.*
+500300,DT.* NN.* CC.* PR.* PM.*,2.0,,,,DT.* NN.* CC.* PR.* PM.*
+500301,PM.* VB.* RB.* CC.* FW,2.0,,,,PM.* VB.* RB.* CC.* FW
+500302,CC.* RB.* DT.* VB.* CC.*,3.0,,,,CC.* RB.* DT.* VB.* CC.*
+500303,VB.* CC.* VB.* DT.* FW,2.0,,,,VB.* CC.* VB.* DT.* FW
+500304,CC.* RB.* VB.* DT.* NN.*,3.0,,,,CC.* RB.* VB.* DT.* NN.*
+500305,RB.* VB.* DT.* NN.* PM.*,5.0,,,,RB.* VB.* DT.* NN.* PM.*
+500306,VB.* DT.* NN.* PM.* CC.*,3.0,,,,VB.* DT.* NN.* PM.* CC.*
+500307,NN.* PM.* CC.* RB.* PR.*,2.0,,,,NN.* PM.* CC.* RB.* PR.*
+500308,DT.* NN.* CC.* DT.* FW,2.0,,,,DT.* NN.* CC.* DT.* FW
+500309,NN.* CC.* DT.* FW CC.*,2.0,,,,NN.* CC.* DT.* FW CC.*
+500310,NN.* CC.* NN.* PR.*_CC.* DT.*,2.0,,,,NN.* CC.* NN.* PR.*_CC.* DT.*
+500311,CC.* NN.* PR.*_CC.* DT.* NN.*,3.0,,,,CC.* NN.* PR.*_CC.* DT.* NN.*
+500312,NN.* PR.*_CC.* DT.* NN.* NN.*,3.0,,,,NN.* PR.*_CC.* DT.* NN.* NN.*
+500313,NN.* PM.* PR.* PM.* FW,3.0,,,,NN.* PM.* PR.* PM.* FW
+500314,PM.* PR.* PM.* FW VB.*,2.0,,,,PM.* PR.* PM.* FW VB.*
+500315,PR.* PM.* FW VB.* CC.*,4.0,,,,PR.* PM.* FW VB.* CC.*
+500316,DT.* JJ.*_CC.* NN.* DT.* NN.*,2.0,,,,DT.* JJ.*_CC.* NN.* DT.* NN.*
+500317,NN.* RB.* RB.* VB.* PR.*,2.0,,,,NN.* RB.* RB.* VB.* PR.*
+500318,RB.* RB.* VB.* PR.* CC.*,2.0,,,,RB.* RB.* VB.* PR.* CC.*
+500319,CC.* PR.*_CC.* FW FW RB.*,2.0,,,,CC.* PR.*_CC.* FW FW RB.*
+500320,DT.* NN.* LM RB.* VB.*_VB.*,2.0,,,,DT.* NN.* LM RB.* VB.*_VB.*
+500321,VB.*_VB.* CC.* NN.* CC.* DT.*,2.0,,,,VB.*_VB.* CC.* NN.* CC.* DT.*
+500322,RB.* CC.* PR.*_CC.* NN.* CC.*,4.0,,,,RB.* CC.* PR.*_CC.* NN.* CC.*
+500323,NN.* CC.* VB.* CC.* DT.*,7.0,,,,NN.* CC.* VB.* CC.* DT.*
+500324,CC.* VB.* CC.* DT.* NN.*,13.0,,,,CC.* VB.* CC.* DT.* NN.*
+500325,VB.* CC.* DT.* NN.* CC.*,16.0,,,,VB.* CC.* DT.* NN.* CC.*
+500326,CC.* DT.* NN.* CC.* PR.*,2.0,,,,CC.* DT.* NN.* CC.* PR.*
+500327,DT.* NN.* CC.* PR.* CC.*,3.0,,,,DT.* NN.* CC.* PR.* CC.*
+500328,PM.* NN.* CC.* PR.*_CC.* NN.*,5.0,,,,PM.* NN.* CC.* PR.*_CC.* NN.*
+500329,CC.* PR.*_CC.* NN.* DT.* FW,2.0,,,,CC.* PR.*_CC.* NN.* DT.* FW
+500330,DT.* FW CC.* PR.*_CC.* NN.*,3.0,,,,DT.* FW CC.* PR.*_CC.* NN.*
+500331,FW CC.* PR.*_CC.* NN.* PM.*,3.0,,,,FW CC.* PR.*_CC.* NN.* PM.*
+500332,VB.* CC.* RB.* PR.* PM.*,2.0,,,,VB.* CC.* RB.* PR.* PM.*
+500333,RB.* DT.* JJ.* CC.* NN.*,2.0,,,,RB.* DT.* JJ.* CC.* NN.*
+500334,NN.* CC.* PR.*_CC.* NN.* NN.*,3.0,,,,NN.* CC.* PR.*_CC.* NN.* NN.*
+500335,DT.* JJ.*_CC.* NN.* NN.* FW,2.0,,,,DT.* JJ.*_CC.* NN.* NN.* FW
+500336,NN.* NN.* PM.* JJ.*_CC.* FW,2.0,,,,NN.* NN.* PM.* JJ.*_CC.* FW
+500337,NN.* PM.* JJ.*_CC.* FW CC.*,2.0,,,,NN.* PM.* JJ.*_CC.* FW CC.*
+500338,PM.* JJ.*_CC.* FW CC.* DT.*,2.0,,,,PM.* JJ.*_CC.* FW CC.* DT.*
+500339,DT.* DT.* NN.* CC.* NN.*,4.0,,,,DT.* DT.* NN.* CC.* NN.*
+500340,DT.* NN.* PM.* RB.* VB.*,5.0,,,,DT.* NN.* PM.* RB.* VB.*
+500341,PR.* DT.* DT.* NN.* CC.*,2.0,,,,PR.* DT.* DT.* NN.* CC.*
+500342,DT.* DT.* NN.* CC.* VB.*,6.0,,,,DT.* DT.* NN.* CC.* VB.*
+500343,CC.* DT.* NN.*_CC.* VB.* CC.*,9.0,,,,CC.* DT.* NN.*_CC.* VB.* CC.*
+500344,CC.* DT.* JJ.* CC.* NN.*,2.0,,,,CC.* DT.* JJ.* CC.* NN.*
+500345,JJ.* DT.* NN.* DT.* NN.*,2.0,,,,JJ.* DT.* NN.* DT.* NN.*
+500346,NN.* DT.* NN.* CC.* DT.*,3.0,,,,NN.* DT.* NN.* CC.* DT.*
+500347,CC.* NN.* PM.* CC.* RB.*,3.0,,,,CC.* NN.* PM.* CC.* RB.*
+500348,NN.* PM.* CC.* RB.* VB.*,4.0,,,,NN.* PM.* CC.* RB.* VB.*
+500349,PM.* CC.* RB.* VB.* CC.*,2.0,,,,PM.* CC.* RB.* VB.* CC.*
+500350,CC.* RB.* VB.* CC.* NN.*,3.0,,,,CC.* RB.* VB.* CC.* NN.*
+500351,LM VB.* RB.* CC.* NN.*,3.0,,,,LM VB.* RB.* CC.* NN.*
+500352,VB.* RB.* CC.* NN.* PM.*,2.0,,,,VB.* RB.* CC.* NN.* PM.*
+500353,NN.* DT.* NN.* CC.* CC.*,2.0,,,,NN.* DT.* NN.* CC.* CC.*
+500354,DT.* NN.* CC.* CC.* FW,2.0,,,,DT.* NN.* CC.* CC.* FW
+500355,JJ.*_CC.* NN.* RB.* DT.* NN.*,2.0,,,,JJ.*_CC.* NN.* RB.* DT.* NN.*
+500356,NN.* RB.* DT.* NN.* PM.*,2.0,,,,NN.* RB.* DT.* NN.* PM.*
+500357,CC.* JJ.* CC.* NN.* PM.*,2.0,,,,CC.* JJ.* CC.* NN.* PM.*
+500358,CC.* NN.* PM.* PR.* RB.*,2.0,,,,CC.* NN.* PM.* PR.* RB.*
+500359,PR.* RB.* DT.* NN.*_CC.* VB.*,2.0,,,,PR.* RB.* DT.* NN.*_CC.* VB.*
+500360,PR.* CC.* NN.* CC.* DT.*,4.0,,,,PR.* CC.* NN.* CC.* DT.*
+500361,PM.* CC.* RB.* VB.* NN.*,2.0,,,,PM.* CC.* RB.* VB.* NN.*
+500362,CC.* VB.* PR.* CC.* FW,2.0,,,,CC.* VB.* PR.* CC.* FW
+500363,FW CC.* DT.* NN.* PM.*,3.0,,,,FW CC.* DT.* NN.* PM.*
+500364,CC.* DT.* NN.* PM.* JJ.*,3.0,,,,CC.* DT.* NN.* PM.* JJ.*
+500365,DT.* NN.* PM.* JJ.* RB.*,2.0,,,,DT.* NN.* PM.* JJ.* RB.*
+500366,RB.* DT.* NN.* PM.* CC.*,3.0,,,,RB.* DT.* NN.* PM.* CC.*
+500367,FW PM.* CC.* NN.* CC.*,6.0,,,,FW PM.* CC.* NN.* CC.*
+500368,PR.* RB.*_CC.* DT.* NN.* CC.*,2.0,,,,PR.* RB.*_CC.* DT.* NN.* CC.*
+500369,CC.* JJ.* PM.* CC.* PR.*,2.0,,,,CC.* JJ.* PM.* CC.* PR.*
+500370,JJ.* PM.* CC.* PR.* DT.*,2.0,,,,JJ.* PM.* CC.* PR.* DT.*
+500371,JJ.*_CC.* NN.* CC.* NN.* CC.*,5.0,,,,JJ.*_CC.* NN.* CC.* NN.* CC.*
+500372,NN.* CC.* NN.* CC.* VB.*,9.0,,,,NN.* CC.* NN.* CC.* VB.*
+500373,DT.* NN.* CC.* DT.* JJ.*,3.0,,,,DT.* NN.* CC.* DT.* JJ.*
+500374,JJ.* CC.* NN.* CC.* PR.*_CC.*,4.0,,,,JJ.* CC.* NN.* CC.* PR.*_CC.*
+500375,DT.* NN.*_CC.* VB.* CC.* NN.*,5.0,,,,DT.* NN.*_CC.* VB.* CC.* NN.*
+500376,CC.* VB.* CC.* DT.* FW,3.0,,,,CC.* VB.* CC.* DT.* FW
+500377,VB.* CC.* DT.* FW CC.*,3.0,,,,VB.* CC.* DT.* FW CC.*
+500378,RB.* CC.* JJ.*_CC.* NN.* DT.*,2.0,,,,RB.* CC.* JJ.*_CC.* NN.* DT.*
+500379,CC.* JJ.*_CC.* NN.* DT.* NN.*,4.0,,,,CC.* JJ.*_CC.* NN.* DT.* NN.*
+500380,CC.* VB.* DT.* PR.*_CC.* NN.*,2.0,,,,CC.* VB.* DT.* PR.*_CC.* NN.*
+500381,FW CC.* NN.* PM.* JJ.*,2.0,,,,FW CC.* NN.* PM.* JJ.*
+500382,DT.* NN.* DT.* FW PM.*,2.0,,,,DT.* NN.* DT.* FW PM.*
+500383,CC.* RB.* RB.* DT.* NN.*,2.0,,,,CC.* RB.* RB.* DT.* NN.*
+500384,CC.* DT.* NN.* CC.* CC.*,2.0,,,,CC.* DT.* NN.* CC.* CC.*
+500385,RB.* RB.* NN.* CC.* PR.*,2.0,,,,RB.* RB.* NN.* CC.* PR.*
+500386,DT.* NN.* DT.* VB.* CC.*,4.0,,,,DT.* NN.* DT.* VB.* CC.*
+500387,NN.* DT.* VB.* CC.* FW,2.0,,,,NN.* DT.* VB.* CC.* FW
+500388,FW CC.* NN.* CC.* NN.*,2.0,,,,FW CC.* NN.* CC.* NN.*
+500389,CC.* NN.* CC.* NN.* PM.*,11.0,,,,CC.* NN.* CC.* NN.* PM.*
+500390,NN.* CC.* NN.* PM.* RB.*,8.0,,,,NN.* CC.* NN.* PM.* RB.*
+500391,NN.* PM.* RB.* JJ.* CC.*,3.0,,,,NN.* PM.* RB.* JJ.* CC.*
+500392,JJ.* CC.* NN.* DT.* NN.*,2.0,,,,JJ.* CC.* NN.* DT.* NN.*
+500393,NN.* DT.* NN.* CC.* JJ.*,2.0,,,,NN.* DT.* NN.* CC.* JJ.*
+500394,DT.* NN.* CC.* JJ.* DT.*,2.0,,,,DT.* NN.* CC.* JJ.* DT.*
+500395,NN.* CC.* JJ.* DT.* NN.*,3.0,,,,NN.* CC.* JJ.* DT.* NN.*
+500396,JJ.* DT.* NN.* CC.* CC.*,2.0,,,,JJ.* DT.* NN.* CC.* CC.*
+500397,NN.* CC.* CC.* NN.*_CC.* JJ.*,2.0,,,,NN.* CC.* CC.* NN.*_CC.* JJ.*
+500398,CC.* NN.*_CC.* JJ.* CC.* NN.*,2.0,,,,CC.* NN.*_CC.* JJ.* CC.* NN.*
+500399,NN.*_CC.* JJ.* CC.* NN.* PM.*,2.0,,,,NN.*_CC.* JJ.* CC.* NN.* PM.*
+500400,JJ.* CC.* NN.* PM.* JJ.*,2.0,,,,JJ.* CC.* NN.* PM.* JJ.*
+500401,CC.* NN.* PM.* JJ.* RB.*,3.0,,,,CC.* NN.* PM.* JJ.* RB.*
+500402,NN.* CC.* PR.*_CC.* NN.* PM.*,10.0,,,,NN.* CC.* PR.*_CC.* NN.* PM.*
+500403,NN.* DT.* NN.* PM.* RB.*,2.0,,,,NN.* DT.* NN.* PM.* RB.*
+500404,NN.* CC.* NN.* PM.* PR.*_CC.*,2.0,,,,NN.* CC.* NN.* PM.* PR.*_CC.*
+500405,CC.* NN.* PM.* PR.*_CC.* FW,2.0,,,,CC.* NN.* PM.* PR.*_CC.* FW
+500406,NN.* PM.* PR.*_CC.* FW FW,2.0,,,,NN.* PM.* PR.*_CC.* FW FW
+500407,PR.*_CC.* FW FW PM.* VB.*,2.0,,,,PR.*_CC.* FW FW PM.* VB.*
+500408,CC.* FW PM.* VB.* DT.*,2.0,,,,CC.* FW PM.* VB.* DT.*
+500409,RB.* CC.* NN.* CC.* DT.*,4.0,,,,RB.* CC.* NN.* CC.* DT.*
+500410,JJ.* PR.*_CC.* VB.* CC.* DT.*,2.0,,,,JJ.* PR.*_CC.* VB.* CC.* DT.*
+500411,VB.* CC.* DT.* NN.*_CC.* VB.*,4.0,,,,VB.* CC.* DT.* NN.*_CC.* VB.*
+500412,NN.* DT.* JJ.*_CC.* NN.* CC.*,2.0,,,,NN.* DT.* JJ.*_CC.* NN.* CC.*
+500413,DT.* JJ.*_CC.* NN.* CC.* NN.*,4.0,,,,DT.* JJ.*_CC.* NN.* CC.* NN.*
+500414,VB.* DT.* JJ.*_CC.* NN.* NN.*,2.0,,,,VB.* DT.* JJ.*_CC.* NN.* NN.*
+500415,NN.* NN.* CC.* RB.* RB.*,2.0,,,,NN.* NN.* CC.* RB.* RB.*
+500416,RB.* RB.* VB.* DT.* FW,2.0,,,,RB.* RB.* VB.* DT.* FW
+500417,NN.* NN.* CC.* DT.* NN.*_CC.*,2.0,,,,NN.* NN.* CC.* DT.* NN.*_CC.*
+500418,DT.* NN.*_CC.* PR.*_CC.* NN.*_CC.* VB.*,2.0,,,,DT.* NN.*_CC.* PR.*_CC.* NN.*_CC.* VB.*
+500419,CC.* VB.* RB.* VB.* DT.*,2.0,,,,CC.* VB.* RB.* VB.* DT.*
+500420,VB.* RB.* VB.* DT.* NN.*,2.0,,,,VB.* RB.* VB.* DT.* NN.*
+500421,FW PM.* CC.* VB.* DT.*,3.0,,,,FW PM.* CC.* VB.* DT.*
+500422,CC.* PR.*_CC.* NN.* NN.* DT.*,2.0,,,,CC.* PR.*_CC.* NN.* NN.* DT.*
+500423,NN.* NN.* DT.* JJ.*_CC.* NN.*,2.0,,,,NN.* NN.* DT.* JJ.*_CC.* NN.*
+500424,NN.* DT.* JJ.*_CC.* NN.* NN.*,3.0,,,,NN.* DT.* JJ.*_CC.* NN.* NN.*
+500425,RB.* CC.* VB.*_CC.* NN.* CC.*,2.0,,,,RB.* CC.* VB.*_CC.* NN.* CC.*
+500426,CC.* NN.*_CC.* VB.* CC.* NN.*,3.0,,,,CC.* NN.*_CC.* VB.* CC.* NN.*
+500427,NN.*_CC.* VB.* CC.* NN.* PM.*,2.0,,,,NN.*_CC.* VB.* CC.* NN.* PM.*
+500428,VB.* CC.* NN.* PM.* PR.*_CC.*,2.0,,,,VB.* CC.* NN.* PM.* PR.*_CC.*
+500429,PR.* DT.* VB.*_CC.* NN.* CC.*,2.0,,,,PR.* DT.* VB.*_CC.* NN.* CC.*
+500430,NN.* CC.* NN.* CC.* JJ.*_CC.*,3.0,,,,NN.* CC.* NN.* CC.* JJ.*_CC.*
+500431,RB.* CC.* DT.* NN.* CC.*,7.0,,,,RB.* CC.* DT.* NN.* CC.*
+500432,CC.* DT.* NN.* CC.* NN.*,8.0,,,,CC.* DT.* NN.* CC.* NN.*
+500433,RB.* CC.* VB.* CC.* DT.*,5.0,,,,RB.* CC.* VB.* CC.* DT.*
+500434,CC.* DT.* NN.* PM.* FW,2.0,,,,CC.* DT.* NN.* PM.* FW
+500435,FW PM.* NN.* CC.* JJ.*,2.0,,,,FW PM.* NN.* CC.* JJ.*
+500436,FW RB.* CC.* DT.* NN.*,3.0,,,,FW RB.* CC.* DT.* NN.*
+500437,RB.* CC.* DT.* NN.* PM.*,2.0,,,,RB.* CC.* DT.* NN.* PM.*
+500438,NN.* CC.* VB.* PR.* CC.*,5.0,,,,NN.* CC.* VB.* PR.* CC.*
+500439,CC.* VB.* PR.* CC.* NN.*_CC.*,2.0,,,,CC.* VB.* PR.* CC.* NN.*_CC.*
+500440,PR.*_CC.* VB.* CC.* NN.* CC.*,2.0,,,,PR.*_CC.* VB.* CC.* NN.* CC.*
+500441,VB.* CC.* NN.* CC.* CC.*,2.0,,,,VB.* CC.* NN.* CC.* CC.*
+500442,CC.* NN.* PM.* PR.*_CC.* NN.*,2.0,,,,CC.* NN.* PM.* PR.*_CC.* NN.*
+500443,NN.* RB.* RB.* VB.* DT.*,5.0,,,,NN.* RB.* RB.* VB.* DT.*
+500444,FW CC.* VB.* PM.* NN.*,2.0,,,,FW CC.* VB.* PM.* NN.*
+500445,CC.* VB.* PM.* NN.* CC.*,3.0,,,,CC.* VB.* PM.* NN.* CC.*
+500446,PR.* CC.* NN.* CC.* FW,3.0,,,,PR.* CC.* NN.* CC.* FW
+500447,FW FW CC.* PR.*_CC.* NN.*,3.0,,,,FW FW CC.* PR.*_CC.* NN.*
+500448,FW CC.* PR.*_CC.* NN.* DT.*,2.0,,,,FW CC.* PR.*_CC.* NN.* DT.*
+500449,CC.* NN.* CC.* JJ.*_CC.* NN.*,3.0,,,,CC.* NN.* CC.* JJ.*_CC.* NN.*
+500450,CC.* JJ.*_CC.* NN.* FW FW,2.0,,,,CC.* JJ.*_CC.* NN.* FW FW
+500451,DT.* NN.* CC.* VB.* PM.*,5.0,,,,DT.* NN.* CC.* VB.* PM.*
+500452,NN.* CC.* VB.* CC.* JJ.*,3.0,,,,NN.* CC.* VB.* CC.* JJ.*
+500453,VB.* CC.* DT.* NN.* DT.*,3.0,,,,VB.* CC.* DT.* NN.* DT.*
+500454,PR.* CC.* DT.* NN.* CC.*,4.0,,,,PR.* CC.* DT.* NN.* CC.*
+500455,NN.* CC.* PR.*_CC.* NN.* JJ.*,2.0,,,,NN.* CC.* PR.*_CC.* NN.* JJ.*
+500456,CC.* PR.*_CC.* NN.* JJ.* CC.*,2.0,,,,CC.* PR.*_CC.* NN.* JJ.* CC.*
+500457,CC.* NN.* CC.* JJ.*_CC.* FW,2.0,,,,CC.* NN.* CC.* JJ.*_CC.* FW
+500458,LM VB.* RB.* CC.* DT.*,2.0,,,,LM VB.* RB.* CC.* DT.*
+500459,NN.* CC.* NN.* CC.* NN.*,4.0,,,,NN.* CC.* NN.* CC.* NN.*
+500460,PR.* DT.* VB.* CC.* NN.*,2.0,,,,PR.* DT.* VB.* CC.* NN.*
+500461,CC.* DT.* VB.* RB.* CC.*,2.0,,,,CC.* DT.* VB.* RB.* CC.*
+500462,DT.* DT.* JJ.* PM.* NN.*,2.0,,,,DT.* DT.* JJ.* PM.* NN.*
+500463,DT.* JJ.* PM.* NN.* CC.*,6.0,,,,DT.* JJ.* PM.* NN.* CC.*
+500464,JJ.* PM.* NN.* CC.* VB.*_CC.*,2.0,,,,JJ.* PM.* NN.* CC.* VB.*_CC.*
+500465,CC.* NN.* CC.* PR.* DT.*,2.0,,,,CC.* NN.* CC.* PR.* DT.*
+500466,NN.* CC.* PR.* DT.* VB.*,2.0,,,,NN.* CC.* PR.* DT.* VB.*
+500467,CC.* PR.* DT.* VB.* CC.*,3.0,,,,CC.* PR.* DT.* VB.* CC.*
+500468,FW CC.* VB.* CC.* DT.*,2.0,,,,FW CC.* VB.* CC.* DT.*
+500469,CC.* VB.* PR.* DT.* NN.*,2.0,,,,CC.* VB.* PR.* DT.* NN.*
+500470,PR.* DT.* NN.* CC.* PR.*,2.0,,,,PR.* DT.* NN.* CC.* PR.*
+500471,VB.* CC.* NN.* PM.* RB.*,2.0,,,,VB.* CC.* NN.* PM.* RB.*
+500472,CC.* NN.* PM.* RB.* PR.*,3.0,,,,CC.* NN.* PM.* RB.* PR.*
+500473,PR.* VB.* CC.* NN.* CC.*,2.0,,,,PR.* VB.* CC.* NN.* CC.*
+500474,DT.* VB.* NN.* PR.* CC.*,2.0,,,,DT.* VB.* NN.* PR.* CC.*
+500475,NN.* NN.* CC.* DT.* VB.*_CC.*,2.0,,,,NN.* NN.* CC.* DT.* VB.*_CC.*
+500476,NN.* CC.* DT.* VB.*_CC.* NN.*,4.0,,,,NN.* CC.* DT.* VB.*_CC.* NN.*
+500477,DT.* VB.* DT.* NN.* CC.*,2.0,,,,DT.* VB.* DT.* NN.* CC.*
+500478,CC.* PR.*_CC.* NN.* PM.* NN.*,4.0,,,,CC.* PR.*_CC.* NN.* PM.* NN.*
+500479,NN.* CC.* RB.* DT.* VB.*,2.0,,,,NN.* CC.* RB.* DT.* VB.*
+500480,PM.* JJ.* CC.* NN.* CC.*,5.0,,,,PM.* JJ.* CC.* NN.* CC.*
+500481,PR.*_CC.* NN.* DT.* FW FW,2.0,,,,PR.*_CC.* NN.* DT.* FW FW
+500482,CC.* VB.* RB.* DT.* NN.*,3.0,,,,CC.* VB.* RB.* DT.* NN.*
+500483,DT.* NN.* CC.* PR.* RB.*,2.0,,,,DT.* NN.* CC.* PR.* RB.*
+500484,PM.* CC.* DT.* NN.* CC.*,2.0,,,,PM.* CC.* DT.* NN.* CC.*
+500485,CC.* VB.* PR.* CC.* VB.*_CC.*,2.0,,,,CC.* VB.* PR.* CC.* VB.*_CC.*
+500486,VB.* PR.* CC.* VB.*_CC.* NN.*,2.0,,,,VB.* PR.* CC.* VB.*_CC.* NN.*
+500487,VB.*_CC.* NN.* PM.* NN.* CC.*,2.0,,,,VB.*_CC.* NN.* PM.* NN.* CC.*
+500488,VB.* DT.* NN.* PM.* FW,2.0,,,,VB.* DT.* NN.* PM.* FW
+500489,RB.* DT.* NN.* RB.* NN.*,2.0,,,,RB.* DT.* NN.* RB.* NN.*
+500490,NN.* RB.* NN.* PM.* CD.*,2.0,,,,NN.* RB.* NN.* PM.* CD.*
+500491,RB.* RB.* PR.*_CC.* NN.* DT.*,2.0,,,,RB.* RB.* PR.*_CC.* NN.* DT.*
+500492,VB.* DT.* PR.*_CC.* NN.* CC.*,2.0,,,,VB.* DT.* PR.*_CC.* NN.* CC.*
+500493,DT.* PR.*_CC.* NN.* CC.* NN.*,4.0,,,,DT.* PR.*_CC.* NN.* CC.* NN.*
+500494,PM.* NN.* FW DT.* NN.*,2.0,,,,PM.* NN.* FW DT.* NN.*
+500495,NN.* FW DT.* NN.* CC.*,3.0,,,,NN.* FW DT.* NN.* CC.*
+500496,NN.* CC.* JJ.* RB.* CC.*,2.0,,,,NN.* CC.* JJ.* RB.* CC.*
+500497,NN.* CC.* RB.* RB.* RB.*,2.0,,,,NN.* CC.* RB.* RB.* RB.*
+500498,PM.* NN.* CC.* VB.* CC.*,5.0,,,,PM.* NN.* CC.* VB.* CC.*
+500499,PM.* NN.* DT.* DT.* NN.*,2.0,,,,PM.* NN.* DT.* DT.* NN.*
+500500,RB.* RB.* VB.* NN.* DT.*,2.0,,,,RB.* RB.* VB.* NN.* DT.*
+500501,NN.* RB.*_CC.* CD.* PM.* RB.*,2.0,,,,NN.* RB.*_CC.* CD.* PM.* RB.*
+500502,CC.* PR.*_CC.* DT.* NN.* PM.*,3.0,,,,CC.* PR.*_CC.* DT.* NN.* PM.*
+500503,RB.* PR.* CC.* NN.* CC.*,2.0,,,,RB.* PR.* CC.* NN.* CC.*
+500504,NN.* PM.* VB.* PR.* DT.*,4.0,,,,NN.* PM.* VB.* PR.* DT.*
+500505,VB.* PR.* DT.* DT.* NN.*,2.0,,,,VB.* PR.* DT.* DT.* NN.*
+500506,NN.* CC.* NN.* CC.* VB.*_CC.*,2.0,,,,NN.* CC.* NN.* CC.* VB.*_CC.*
+500507,VB.*_CC.* NN.* DT.* FW FW,2.0,,,,VB.*_CC.* NN.* DT.* FW FW
+500508,NN.* CC.* VB.* DT.* VB.*,2.0,,,,NN.* CC.* VB.* DT.* VB.*
+500509,CC.* VB.* DT.* VB.* CC.*,3.0,,,,CC.* VB.* DT.* VB.* CC.*
+500510,VB.* DT.* VB.* CC.* DT.*,2.0,,,,VB.* DT.* VB.* CC.* DT.*
+500511,PR.* DT.* NN.* CC.* NN.*,4.0,,,,PR.* DT.* NN.* CC.* NN.*
+500512,DT.* NN.* CC.* NN.* PM.*,7.0,,,,DT.* NN.* CC.* NN.* PM.*
+500513,NN.* CC.* NN.* PM.* JJ.*,2.0,,,,NN.* CC.* NN.* PM.* JJ.*
+500514,NN.* CC.* VB.* CC.* CD.*,3.0,,,,NN.* CC.* VB.* CC.* CD.*
+500515,VB.* PM.* NN.* CC.* VB.*,3.0,,,,VB.* PM.* NN.* CC.* VB.*
+500516,PM.* NN.* CC.* VB.* DT.*,4.0,,,,PM.* NN.* CC.* VB.* DT.*
+500517,PM.* DT.* NN.* CC.* VB.*,2.0,,,,PM.* DT.* NN.* CC.* VB.*
+500518,CC.* NN.* PM.* RB.* VB.*,3.0,,,,CC.* NN.* PM.* RB.* VB.*
+500519,NN.* PM.* RB.* VB.* PR.*_CC.*,2.0,,,,NN.* PM.* RB.* VB.* PR.*_CC.*
+500520,CC.* VB.* DT.* FW CC.*,2.0,,,,CC.* VB.* DT.* FW CC.*
+500521,DT.* PR.*_CC.* NN.* CC.* CC.*,2.0,,,,DT.* PR.*_CC.* NN.* CC.* CC.*
+500522,DT.* JJ.*_JJ.*_CC.* NN.* CC.* RB.*,2.0,,,,DT.* JJ.*_JJ.*_CC.* NN.* CC.* RB.*
+500523,NN.* RB.* RB.* JJ.* PM.*,3.0,,,,NN.* RB.* RB.* JJ.* PM.*
+500524,JJ.* FW CC.* NN.* PM.*,2.0,,,,JJ.* FW CC.* NN.* PM.*
+500525,DT.* FW CC.* VB.* CC.*,4.0,,,,DT.* FW CC.* VB.* CC.*
+500526,FW CC.* VB.* CC.* NN.*,5.0,,,,FW CC.* VB.* CC.* NN.*
+500527,VB.*_CC.* NN.* CC.* FW PM.*,2.0,,,,VB.*_CC.* NN.* CC.* FW PM.*
+500528,FW PM.* VB.* DT.* NN.*,5.0,,,,FW PM.* VB.* DT.* NN.*
+500529,CC.* PR.*_CC.* NN.* PM.* VB.*,4.0,,,,CC.* PR.*_CC.* NN.* PM.* VB.*
+500530,PR.*_CC.* NN.* PM.* VB.* DT.*,2.0,,,,PR.*_CC.* NN.* PM.* VB.* DT.*
+500531,NN.* PM.* VB.* DT.* NN.*,3.0,,,,NN.* PM.* VB.* DT.* NN.*
+500532,VB.* DT.* NN.* PM.* VB.*,4.0,,,,VB.* DT.* NN.* PM.* VB.*
+500533,DT.* NN.* PM.* VB.* PR.*,4.0,,,,DT.* NN.* PM.* VB.* PR.*
+500534,FW PM.* PM.* NN.* NN.*,2.0,,,,FW PM.* PM.* NN.* NN.*
+500535,JJ.*_CC.* NN.* DT.* NN.* PM.*,3.0,,,,JJ.*_CC.* NN.* DT.* NN.* PM.*
+500536,RB.* VB.* DT.* DT.* NN.*,2.0,,,,RB.* VB.* DT.* DT.* NN.*
+500537,CC.* CC.* NN.* PM.* RB.*,2.0,,,,CC.* CC.* NN.* PM.* RB.*
+500538,CC.* NN.* PM.* RB.* CC.*,4.0,,,,CC.* NN.* PM.* RB.* CC.*
+500539,NN.* CC.* RB.* VB.* CC.*,4.0,,,,NN.* CC.* RB.* VB.* CC.*
+500540,VB.* CC.* PR.*_CC.* NN.* DT.*,2.0,,,,VB.* CC.* PR.*_CC.* NN.* DT.*
+500541,PM.* RB.* JJ.* CC.* DT.*,2.0,,,,PM.* RB.* JJ.* CC.* DT.*
+500542,JJ.* CC.* DT.* NN.* CC.*,3.0,,,,JJ.* CC.* DT.* NN.* CC.*
+500543,PR.* CC.* RB.*_CC.* NN.* CC.*,2.0,,,,PR.* CC.* RB.*_CC.* NN.* CC.*
+500544,RB.*_CC.* NN.* CC.* NN.* PM.*,2.0,,,,RB.*_CC.* NN.* CC.* NN.* PM.*
+500545,CC.* DT.* NN.* PR.* CC.*,4.0,,,,CC.* DT.* NN.* PR.* CC.*
+500546,CC.* DT.* NN.* CC.* VB.*,12.0,,,,CC.* DT.* NN.* CC.* VB.*
+500547,DT.* NN.* CC.* VB.* PR.*_CC.*,2.0,,,,DT.* NN.* CC.* VB.* PR.*_CC.*
+500548,RB.*_CC.* VB.* CC.* NN.* DT.*,2.0,,,,RB.*_CC.* VB.* CC.* NN.* DT.*
+500549,NN.* CC.* VB.* CC.* JJ.*_CC.*,3.0,,,,NN.* CC.* VB.* CC.* JJ.*_CC.*
+500550,CC.* VB.* CC.* JJ.*_CC.* NN.*_CC.*,2.0,,,,CC.* VB.* CC.* JJ.*_CC.* NN.*_CC.*
+500551,CC.* CC.* DT.* DT.* NN.*,2.0,,,,CC.* CC.* DT.* DT.* NN.*
+500552,NN.* CC.* VB.* PR.* RB.*_CC.*,2.0,,,,NN.* CC.* VB.* PR.* RB.*_CC.*
+500553,NN.* PR.* PM.* RB.* RB.*,2.0,,,,NN.* PR.* PM.* RB.* RB.*
+500554,PM.* RB.* RB.* PR.* VB.*,2.0,,,,PM.* RB.* RB.* PR.* VB.*
+500555,RB.* RB.* PR.* VB.* DT.*,3.0,,,,RB.* RB.* PR.* VB.* DT.*
+500556,VB.* DT.* PR.*_CC.* FW FW,2.0,,,,VB.* DT.* PR.*_CC.* FW FW
+500557,CC.* PR.*_CC.* DT.* NN.*_CC.* VB.*,2.0,,,,CC.* PR.*_CC.* DT.* NN.*_CC.* VB.*
+500558,VB.* JJ.* DT.* NN.* CC.*,3.0,,,,VB.* JJ.* DT.* NN.* CC.*
+500559,VB.* PR.* CC.* VB.* CC.*,2.0,,,,VB.* PR.* CC.* VB.* CC.*
+500560,PM.* FW DT.* NN.* CC.*,5.0,,,,PM.* FW DT.* NN.* CC.*
+500561,FW DT.* NN.* CC.* NN.*,3.0,,,,FW DT.* NN.* CC.* NN.*
+500562,NN.* CC.* VB.* RB.* DT.*,6.0,,,,NN.* CC.* VB.* RB.* DT.*
+500563,CC.* NN.* RB.* RB.* JJ.*,2.0,,,,CC.* NN.* RB.* RB.* JJ.*
+500564,CC.* DT.* NN.*_CC.* VB.* LM,2.0,,,,CC.* DT.* NN.*_CC.* VB.* LM
+500565,CC.* DT.* NN.* PM.* RB.*,3.0,,,,CC.* DT.* NN.* PM.* RB.*
+500566,NN.* PM.* RB.* VB.* DT.*,4.0,,,,NN.* PM.* RB.* VB.* DT.*
+500567,RB.* RB.* RB.* DT.* NN.*,2.0,,,,RB.* RB.* RB.* DT.* NN.*
+500568,RB.* DT.* NN.* DT.* NN.*,2.0,,,,RB.* DT.* NN.* DT.* NN.*
+500569,CC.* JJ.*_CC.* NN.* NN.* FW,2.0,,,,CC.* JJ.*_CC.* NN.* NN.* FW
+500570,JJ.*_CC.* NN.* NN.* FW CC.*,2.0,,,,JJ.*_CC.* NN.* NN.* FW CC.*
+500571,CC.* NN.* LM VB.* CC.*,3.0,,,,CC.* NN.* LM VB.* CC.*
+500572,LM VB.* CC.* NN.* PM.*,2.0,,,,LM VB.* CC.* NN.* PM.*
+500573,PR.*_CC.* NN.* CC.* VB.* CC.*,2.0,,,,PR.*_CC.* NN.* CC.* VB.* CC.*
+500574,NN.* CC.* VB.* CC.* VB.*,3.0,,,,NN.* CC.* VB.* CC.* VB.*
+500575,DT.* NN.* PM.* CC.* PR.*_CC.*,2.0,,,,DT.* NN.* PM.* CC.* PR.*_CC.*
+500576,PR.*_CC.* VB.* PM.* NN.* CC.*,2.0,,,,PR.*_CC.* VB.* PM.* NN.* CC.*
+500577,CC.* NN.* CC.* DT.* VB.*,2.0,,,,CC.* NN.* CC.* DT.* VB.*
+500578,VB.* RB.* CC.* DT.* PR.*,2.0,,,,VB.* RB.* CC.* DT.* PR.*
+500579,NN.* RB.* RB.*_CC.* VB.* DT.*,2.0,,,,NN.* RB.* RB.*_CC.* VB.* DT.*
+500580,DT.* CC.* PM.* NN.* CC.*,2.0,,,,DT.* CC.* PM.* NN.* CC.*
+500581,LM DT.* NN.*_CC.* VB.* CC.*,2.0,,,,LM DT.* NN.*_CC.* VB.* CC.*
+500582,JJ.*_CC.* NN.* CC.* NN.* PM.*,2.0,,,,JJ.*_CC.* NN.* CC.* NN.* PM.*
+500583,NN.* PM.* CC.* VB.* RB.*,3.0,,,,NN.* PM.* CC.* VB.* RB.*
+500584,NN.*_CC.* VB.* CC.* VB.* CC.*,2.0,,,,NN.*_CC.* VB.* CC.* VB.* CC.*
+500585,NN.* CC.* FW PM.* CC.*,3.0,,,,NN.* CC.* FW PM.* CC.*
+500586,CC.* JJ.* CC.* DT.* NN.*,2.0,,,,CC.* JJ.* CC.* DT.* NN.*
+500587,JJ.* CC.* DT.* NN.* PR.*,2.0,,,,JJ.* CC.* DT.* NN.* PR.*
+500588,PR.*_CC.* DT.* NN.* PM.* CC.*,3.0,,,,PR.*_CC.* DT.* NN.* PM.* CC.*
+500589,NN.* PM.* CC.* CC.* RB.*,2.0,,,,NN.* PM.* CC.* CC.* RB.*
+500590,VB.* DT.* NN.* CC.* PR.*,2.0,,,,VB.* DT.* NN.* CC.* PR.*
+500591,CC.* PR.* RB.*_CC.* FW FW,2.0,,,,CC.* PR.* RB.*_CC.* FW FW
+500592,PR.* RB.*_CC.* FW FW CC.*,2.0,,,,PR.* RB.*_CC.* FW FW CC.*
+500593,VB.* RB.* DT.* NN.* DT.*,2.0,,,,VB.* RB.* DT.* NN.* DT.*
+500594,PR.* RB.* VB.* DT.* NN.*,2.0,,,,PR.* RB.* VB.* DT.* NN.*
+500595,CC.* NN.* RB.* CC.* DT.*,2.0,,,,CC.* NN.* RB.* CC.* DT.*
+500596,VB.* CC.* NN.* PM.* CC.*,2.0,,,,VB.* CC.* NN.* PM.* CC.*
+500597,CC.* NN.* PM.* CC.* VB.*,6.0,,,,CC.* NN.* PM.* CC.* VB.*
+500598,JJ.* VB.* DT.* NN.* CC.*,2.0,,,,JJ.* VB.* DT.* NN.* CC.*
+500599,PM.* CC.* VB.* CC.* FW,3.0,,,,PM.* CC.* VB.* CC.* FW
+500600,VB.* PR.* CC.* NN.* PM.*,2.0,,,,VB.* PR.* CC.* NN.* PM.*
+500601,PR.* CC.* NN.* PM.* FW,2.0,,,,PR.* CC.* NN.* PM.* FW
+500602,FW PM.* VB.* PR.* CC.*,4.0,,,,FW PM.* VB.* PR.* CC.*
+500603,CC.* NN.* PM.* PR.* DT.*,2.0,,,,CC.* NN.* PM.* PR.* DT.*
+500604,PM.* CC.* VB.* CC.* NN.*,3.0,,,,PM.* CC.* VB.* CC.* NN.*
+500605,FW NN.* CC.* NN.* PM.*,3.0,,,,FW NN.* CC.* NN.* PM.*
+500606,RB.* DT.* JJ.*_CC.* NN.* NN.*,2.0,,,,RB.* DT.* JJ.*_CC.* NN.* NN.*
+500607,DT.* JJ.*_CC.* NN.* NN.* NN.*,2.0,,,,DT.* JJ.*_CC.* NN.* NN.* NN.*
+500608,VB.*_VB.*_CC.* NN.* DT.* NN.* CC.*,2.0,,,,VB.*_VB.*_CC.* NN.* DT.* NN.* CC.*
+500609,NN.* DT.* NN.* CC.* FW,5.0,,,,NN.* DT.* NN.* CC.* FW
+500610,CC.* CC.* PM.* NN.* CC.*,4.0,,,,CC.* CC.* PM.* NN.* CC.*
+500611,NN.* CC.* RB.* PR.* PR.*,2.0,,,,NN.* CC.* RB.* PR.* PR.*
+500612,VB.* DT.* NN.* CC.* FW,3.0,,,,VB.* DT.* NN.* CC.* FW
+500613,RB.* DT.* NN.* CD.* PM.*,2.0,,,,RB.* DT.* NN.* CD.* PM.*
+500614,PM.* RB.* VB.* DT.* NN.*,5.0,,,,PM.* RB.* VB.* DT.* NN.*
+500615,VB.* DT.* NN.* CC.* VB.*,5.0,,,,VB.* DT.* NN.* CC.* VB.*
+500616,NN.* CC.* NN.* RB.* RB.*,3.0,,,,NN.* CC.* NN.* RB.* RB.*
+500617,CC.* NN.* RB.* RB.* VB.*,3.0,,,,CC.* NN.* RB.* RB.* VB.*
+500618,RB.* RB.* VB.* DT.* PR.*_CC.*,2.0,,,,RB.* RB.* VB.* DT.* PR.*_CC.*
+500619,VB.* DT.* PR.*_CC.* DT.* NN.*,2.0,,,,VB.* DT.* PR.*_CC.* DT.* NN.*
+500620,DT.* PR.*_CC.* DT.* NN.* CC.*,2.0,,,,DT.* PR.*_CC.* DT.* NN.* CC.*
+500621,PR.*_CC.* DT.* NN.* CC.* VB.*,3.0,,,,PR.*_CC.* DT.* NN.* CC.* VB.*
+500622,CC.* PR.*_CC.* NN.* CC.* RB.*,4.0,,,,CC.* PR.*_CC.* NN.* CC.* RB.*
+500623,CC.* RB.* RB.* VB.* CC.*,2.0,,,,CC.* RB.* RB.* VB.* CC.*
+500624,JJ.* DT.* NN.* CC.* RB.*_CC.*,2.0,,,,JJ.* DT.* NN.* CC.* RB.*_CC.*
+500625,DT.* NN.* CC.* RB.*_CC.* VB.*,3.0,,,,DT.* NN.* CC.* RB.*_CC.* VB.*
+500626,NN.* CC.* RB.*_CC.* VB.* CC.*,2.0,,,,NN.* CC.* RB.*_CC.* VB.* CC.*
+500627,CC.* RB.*_CC.* VB.* CC.* NN.*,3.0,,,,CC.* RB.*_CC.* VB.* CC.* NN.*
+500628,CC.* PR.* DT.* NN.* CC.*,2.0,,,,CC.* PR.* DT.* NN.* CC.*
+500629,PR.*_CC.* NN.* PM.* RB.* RB.*,2.0,,,,PR.*_CC.* NN.* PM.* RB.* RB.*
+500630,CC.* DT.* NN.* PM.* CC.*,5.0,,,,CC.* DT.* NN.* PM.* CC.*
+500631,CC.* PR.*_CC.* JJ.* CC.* NN.*,2.0,,,,CC.* PR.*_CC.* JJ.* CC.* NN.*
+500632,NN.* FW PM.* VB.* RB.*,2.0,,,,NN.* FW PM.* VB.* RB.*
+500633,VB.* PR.* CC.* PM.* FW,2.0,,,,VB.* PR.* CC.* PM.* FW
+500634,PM.* RB.* VB.* CC.* FW,2.0,,,,PM.* RB.* VB.* CC.* FW
+500635,PM.* CC.* VB.* CC.* DT.*,2.0,,,,PM.* CC.* VB.* CC.* DT.*
+500636,CC.* DT.* NN.* CC.* FW,2.0,,,,CC.* DT.* NN.* CC.* FW
+500637,RB.* CC.* FW DT.* NN.*,2.0,,,,RB.* CC.* FW DT.* NN.*
+500638,CC.* PM.* NN.* CC.* NN.*,2.0,,,,CC.* PM.* NN.* CC.* NN.*
+500639,PM.* NN.* CC.* NN.* CC.*,2.0,,,,PM.* NN.* CC.* NN.* CC.*
+500640,CC.* NN.* CC.* NN.* CC.*,3.0,,,,CC.* NN.* CC.* NN.* CC.*
+500641,NN.* CC.* NN.* CC.* DT.*,4.0,,,,NN.* CC.* NN.* CC.* DT.*
+500642,RB.* NN.* DT.* NN.* CC.*,2.0,,,,RB.* NN.* DT.* NN.* CC.*
+500643,DT.* NN.* CC.* DT.* NN.*,3.0,,,,DT.* NN.* CC.* DT.* NN.*
+500644,CC.* PR.*_CC.* VB.*_CC.* NN.* PM.*,2.0,,,,CC.* PR.*_CC.* VB.*_CC.* NN.* PM.*
+500645,RB.* CC.* NN.* CC.* VB.*,2.0,,,,RB.* CC.* NN.* CC.* VB.*
+500646,CC.* NN.* PM.* FW DT.*,2.0,,,,CC.* NN.* PM.* FW DT.*
+500647,PR.*_CC.* FW FW CC.* NN.*,2.0,,,,PR.*_CC.* FW FW CC.* NN.*
+500648,FW CC.* NN.* PM.* VB.*,4.0,,,,FW CC.* NN.* PM.* VB.*
+500649,VB.* DT.* NN.* CC.* PM.*,3.0,,,,VB.* DT.* NN.* CC.* PM.*
+500650,PM.* RB.* CC.* VB.* DT.*,2.0,,,,PM.* RB.* CC.* VB.* DT.*
+500651,RB.* CC.* VB.* DT.* NN.*,6.0,,,,RB.* CC.* VB.* DT.* NN.*
+500652,DT.* NN.* PM.* FW CC.*,2.0,,,,DT.* NN.* PM.* FW CC.*
+500653,LM VB.*_VB.* CC.* NN.* CC.*,2.0,,,,LM VB.*_VB.* CC.* NN.* CC.*
+500654,CC.* NN.* CC.* PR.* CC.*,2.0,,,,CC.* NN.* CC.* PR.* CC.*
+500655,NN.* CC.* PR.* CC.* RB.*,3.0,,,,NN.* CC.* PR.* CC.* RB.*
+500656,CC.* JJ.*_CC.* NN.* CC.* CC.*,2.0,,,,CC.* JJ.*_CC.* NN.* CC.* CC.*
+500657,DT.* NN.* PR.*_CC.* VB.* PM.*,2.0,,,,DT.* NN.* PR.*_CC.* VB.* PM.*
+500658,NN.* PR.*_CC.* VB.* PM.* FW,2.0,,,,NN.* PR.*_CC.* VB.* PM.* FW
+500659,PR.*_CC.* VB.* PM.* FW CC.*,2.0,,,,PR.*_CC.* VB.* PM.* FW CC.*
+500660,NN.* PM.* VB.* RB.* CC.*,4.0,,,,NN.* PM.* VB.* RB.* CC.*
+500661,VB.* RB.* CC.* DT.* NN.*,3.0,,,,VB.* RB.* CC.* DT.* NN.*
+500662,RB.* RB.* DT.* NN.* PM.*,4.0,,,,RB.* RB.* DT.* NN.* PM.*
+500663,NN.* PM.* PR.* DT.* VB.*,2.0,,,,NN.* PM.* PR.* DT.* VB.*
+500664,DT.* VB.* CC.* JJ.* CC.*,2.0,,,,DT.* VB.* CC.* JJ.* CC.*
+500665,NN.* PM.* CC.* NN.*_CC.* JJ.*,2.0,,,,NN.* PM.* CC.* NN.*_CC.* JJ.*
+500666,CC.* FW PM.* NN.* CC.*,3.0,,,,CC.* FW PM.* NN.* CC.*
+500667,NN.* CC.* NN.* PM.* VB.*,5.0,,,,NN.* CC.* NN.* PM.* VB.*
+500668,VB.* CC.* NN.* PM.* NN.*,2.0,,,,VB.* CC.* NN.* PM.* NN.*
+500669,RB.* VB.* PR.* DT.* FW,2.0,,,,RB.* VB.* PR.* DT.* FW
+500670,RB.* PM.* RB.* VB.* DT.*,3.0,,,,RB.* PM.* RB.* VB.* DT.*
+500671,CC.* DT.* NN.* CC.* PR.*_CC.*,2.0,,,,CC.* DT.* NN.* CC.* PR.*_CC.*
+500672,PR.*_CC.* NN.* PM.* VB.* PR.*,2.0,,,,PR.*_CC.* NN.* PM.* VB.* PR.*
+500673,NN.* PM.* VB.* PR.* CC.*,4.0,,,,NN.* PM.* VB.* PR.* CC.*
+500674,DT.* PR.* CC.* JJ.*_JJ.*_CC.* NN.*,2.0,,,,DT.* PR.* CC.* JJ.*_JJ.*_CC.* NN.*
+500675,PR.* CC.* JJ.*_JJ.*_CC.* NN.* CC.*,2.0,,,,PR.* CC.* JJ.*_JJ.*_CC.* NN.* CC.*
+500676,PR.*_CC.* NN.* DT.* VB.* CC.*,2.0,,,,PR.*_CC.* NN.* DT.* VB.* CC.*
+500677,CC.* NN.* RB.* PR.* CC.*,2.0,,,,CC.* NN.* RB.* PR.* CC.*
+500678,CC.* NN.*_CC.* JJ.* PM.* CC.*,2.0,,,,CC.* NN.*_CC.* JJ.* PM.* CC.*
+500679,NN.* PM.* VB.* PM.* FW,2.0,,,,NN.* PM.* VB.* PM.* FW
+500680,VB.* PM.* FW DT.* NN.*,4.0,,,,VB.* PM.* FW DT.* NN.*
+500681,FW PM.* CC.* VB.* NN.*,2.0,,,,FW PM.* CC.* VB.* NN.*
+500682,CC.* VB.* NN.* CC.* PR.*_CC.*,2.0,,,,CC.* VB.* NN.* CC.* PR.*_CC.*
+500683,VB.* NN.* CC.* PR.*_CC.* FW,2.0,,,,VB.* NN.* CC.* PR.*_CC.* FW
+500684,RB.* PR.*_CC.* VB.* DT.* DT.*,2.0,,,,RB.* PR.*_CC.* VB.* DT.* DT.*
+500685,PR.*_CC.* VB.* DT.* DT.* NN.*,2.0,,,,PR.*_CC.* VB.* DT.* DT.* NN.*
+500686,VB.* CC.* PR.*_CC.* FW CC.*,2.0,,,,VB.* CC.* PR.*_CC.* FW CC.*
+500687,PR.* DT.* DT.* NN.* PM.*,2.0,,,,PR.* DT.* DT.* NN.* PM.*
+500688,CC.* RB.* VB.* PM.* NN.*,2.0,,,,CC.* RB.* VB.* PM.* NN.*
+500689,NN.* PM.* LM VB.* CC.*,2.0,,,,NN.* PM.* LM VB.* CC.*
+500690,NN.* PM.* CC.* VB.* CC.*,5.0,,,,NN.* PM.* CC.* VB.* CC.*
+500691,NN.* PM.* DT.* JJ.*_CC.* NN.*_CC.*,2.0,,,,NN.* PM.* DT.* JJ.*_CC.* NN.*_CC.*
+500692,DT.* JJ.*_CC.* NN.*_CC.* NN.* NN.*,2.0,,,,DT.* JJ.*_CC.* NN.*_CC.* NN.* NN.*
+500693,NN.* DT.* VB.* CC.* VB.*,2.0,,,,NN.* DT.* VB.* CC.* VB.*
+500694,DT.* DT.* NN.* PM.* CC.*,3.0,,,,DT.* DT.* NN.* PM.* CC.*
+500695,VB.* RB.* DT.* PR.*_CC.* NN.*,2.0,,,,VB.* RB.* DT.* PR.*_CC.* NN.*
+500696,RB.* DT.* PR.*_CC.* NN.* CC.*,4.0,,,,RB.* DT.* PR.*_CC.* NN.* CC.*
+500697,CC.* JJ.*_CC.* FW CC.* NN.*,2.0,,,,CC.* JJ.*_CC.* FW CC.* NN.*
+500698,CC.* PR.* PR.*_CC.* NN.* CC.*,2.0,,,,CC.* PR.* PR.*_CC.* NN.* CC.*
+500699,CC.* VB.* CC.* JJ.* PM.*,2.0,,,,CC.* VB.* CC.* JJ.* PM.*
+500700,PR.* PM.* VB.* PM.* FW,2.0,,,,PR.* PM.* VB.* PM.* FW
+500701,PM.* VB.* PM.* FW CC.*,2.0,,,,PM.* VB.* PM.* FW CC.*
+500702,CC.* NN.* PR.* CC.* DT.*,3.0,,,,CC.* NN.* PR.* CC.* DT.*
+500703,NN.* PR.* CC.* DT.* NN.*,4.0,,,,NN.* PR.* CC.* DT.* NN.*
+500704,CC.* DT.* NN.* DT.* NN.*,3.0,,,,CC.* DT.* NN.* DT.* NN.*
+500705,CC.* VB.* PM.* VB.* CC.*,3.0,,,,CC.* VB.* PM.* VB.* CC.*
+500706,VB.* PM.* VB.* CC.* NN.*,4.0,,,,VB.* PM.* VB.* CC.* NN.*
+500707,PM.* VB.* CC.* NN.* CC.*,6.0,,,,PM.* VB.* CC.* NN.* CC.*
+500708,VB.* DT.* NN.* CC.* JJ.*_CC.*,3.0,,,,VB.* DT.* NN.* CC.* JJ.*_CC.*
+500709,DT.* NN.* CC.* JJ.*_CC.* NN.*,2.0,,,,DT.* NN.* CC.* JJ.*_CC.* NN.*
+500710,JJ.*_CC.* NN.* CC.* FW FW,3.0,,,,JJ.*_CC.* NN.* CC.* FW FW
+500711,VB.* DT.* FW CC.* NN.*,4.0,,,,VB.* DT.* FW CC.* NN.*
+500712,CC.* NN.* CC.* NN.* DT.*,3.0,,,,CC.* NN.* CC.* NN.* DT.*
+500713,VB.* CD.* NN.* RB.* PR.*,2.0,,,,VB.* CD.* NN.* RB.* PR.*
+500714,CC.* VB.*_CC.* NN.* CC.* NN.*,4.0,,,,CC.* VB.*_CC.* NN.* CC.* NN.*
+500715,RB.* DT.* VB.* DT.* NN.*,3.0,,,,RB.* DT.* VB.* DT.* NN.*
+500716,PM.* VB.* PR.*_CC.* VB.* CC.*,2.0,,,,PM.* VB.* PR.*_CC.* VB.* CC.*
+500717,VB.* PR.*_CC.* VB.* CC.* PR.*_CC.*,2.0,,,,VB.* PR.*_CC.* VB.* CC.* PR.*_CC.*
+500718,CC.* RB.* RB.* PR.* VB.*,2.0,,,,CC.* RB.* RB.* PR.* VB.*
+500719,RB.* PR.* VB.* DT.* NN.*,2.0,,,,RB.* PR.* VB.* DT.* NN.*
+500720,PR.* VB.* DT.* NN.* CC.*,3.0,,,,PR.* VB.* DT.* NN.* CC.*
+500721,VB.* CC.* NN.* CC.* PR.*,2.0,,,,VB.* CC.* NN.* CC.* PR.*
+500722,FW PM.* VB.* CC.* DT.*,2.0,,,,FW PM.* VB.* CC.* DT.*
+500723,PM.* VB.* CC.* DT.* NN.*,5.0,,,,PM.* VB.* CC.* DT.* NN.*
+500724,CC.* FW FW DT.* JJ.*_CC.*,2.0,,,,CC.* FW FW DT.* JJ.*_CC.*
+500725,FW FW DT.* JJ.*_CC.* NN.*,2.0,,,,FW FW DT.* JJ.*_CC.* NN.*
+500726,NN.* CC.* VB.* CC.* PR.*_CC.*,3.0,,,,NN.* CC.* VB.* CC.* PR.*_CC.*
+500727,CC.* VB.* CC.* PR.*_CC.* NN.*,3.0,,,,CC.* VB.* CC.* PR.*_CC.* NN.*
+500728,VB.* PR.* CC.* PR.*_CC.* NN.*_CC.*,2.0,,,,VB.* PR.* CC.* PR.*_CC.* NN.*_CC.*
+500729,VB.* DT.* NN.* CC.* RB.*,3.0,,,,VB.* DT.* NN.* CC.* RB.*
+500730,FW PM.* NN.* CC.* VB.*,2.0,,,,FW PM.* NN.* CC.* VB.*
+500731,DT.* NN.* DT.* NN.* PM.*,2.0,,,,DT.* NN.* DT.* NN.* PM.*
+500732,RB.* PM.* NN.* DT.* NN.*,2.0,,,,RB.* PM.* NN.* DT.* NN.*
+500733,RB.* VB.* CC.* NN.* CC.*,2.0,,,,RB.* VB.* CC.* NN.* CC.*
+500734,DT.* NN.* PR.* CC.* VB.*,2.0,,,,DT.* NN.* PR.* CC.* VB.*
+500735,RB.* PM.* NN.* CC.* PR.*_CC.*,2.0,,,,RB.* PM.* NN.* CC.* PR.*_CC.*
+500736,VB.* CC.* NN.*_CC.* PR.* PM.*,2.0,,,,VB.* CC.* NN.*_CC.* PR.* PM.*
+500737,CC.* PR.* CC.* PR.*_CC.* NN.*,2.0,,,,CC.* PR.* CC.* PR.*_CC.* NN.*
+500738,NN.* CC.* NN.* PM.* CC.*,4.0,,,,NN.* CC.* NN.* PM.* CC.*
+500739,NN.* PM.* CC.* RB.* CC.*,2.0,,,,NN.* PM.* CC.* RB.* CC.*
+500740,PM.* CC.* RB.* CC.* NN.*,2.0,,,,PM.* CC.* RB.* CC.* NN.*
+500741,CC.* RB.* CC.* NN.* CC.*,2.0,,,,CC.* RB.* CC.* NN.* CC.*
+500742,DT.* NN.* CC.* NN.* FW,4.0,,,,DT.* NN.* CC.* NN.* FW
+500743,NN.* PR.* CC.* PR.*_CC.* NN.*,3.0,,,,NN.* PR.* CC.* PR.*_CC.* NN.*
+500744,PR.* CC.* PR.*_CC.* NN.* CC.*,3.0,,,,PR.* CC.* PR.*_CC.* NN.* CC.*
+500745,JJ.* RB.* DT.* NN.* CC.*,2.0,,,,JJ.* RB.* DT.* NN.* CC.*
+500746,JJ.* JJ.* PR.* CC.* CC.*,2.0,,,,JJ.* JJ.* PR.* CC.* CC.*
+500747,CC.* NN.*_CC.* PR.* PM.* JJ.*,2.0,,,,CC.* NN.*_CC.* PR.* PM.* JJ.*
+500748,CC.* DT.* NN.* NN.* PM.*,2.0,,,,CC.* DT.* NN.* NN.* PM.*
+500749,NN.* LM VB.* CC.* VB.*,2.0,,,,NN.* LM VB.* CC.* VB.*
+500750,VB.*_VB.* CC.* NN.* CC.* NN.*,2.0,,,,VB.*_VB.* CC.* NN.* CC.* NN.*
+500751,NN.* PM.* RB.* RB.* PR.*,2.0,,,,NN.* PM.* RB.* RB.* PR.*
+500752,RB.* RB.* PR.* VB.* PM.*,2.0,,,,RB.* RB.* PR.* VB.* PM.*
+500753,RB.* PR.* VB.* PM.* PR.*,2.0,,,,RB.* PR.* VB.* PM.* PR.*
+500754,CC.* NN.* PM.* JJ.* PM.*,2.0,,,,CC.* NN.* PM.* JJ.* PM.*
+500755,CC.* CC.* NN.* CC.* NN.*,3.0,,,,CC.* CC.* NN.* CC.* NN.*
+500756,RB.* LM FW CC.* NN.*,2.0,,,,RB.* LM FW CC.* NN.*
+500757,VB.* CC.* FW CC.* NN.*,2.0,,,,VB.* CC.* FW CC.* NN.*
+500758,PR.*_CC.* VB.* DT.* NN.* NN.*,2.0,,,,PR.*_CC.* VB.* DT.* NN.* NN.*
+500759,PM.* RB.* VB.* PM.* FW,3.0,,,,PM.* RB.* VB.* PM.* FW
+500760,PM.* FW CC.* DT.* NN.*,2.0,,,,PM.* FW CC.* DT.* NN.*
+500761,CC.* NN.* CC.* DT.* JJ.*_CC.*,2.0,,,,CC.* NN.* CC.* DT.* JJ.*_CC.*
+500762,NN.* CC.* DT.* JJ.*_CC.* NN.*,3.0,,,,NN.* CC.* DT.* JJ.*_CC.* NN.*
+500763,CC.* DT.* JJ.*_CC.* NN.* CC.*,4.0,,,,CC.* DT.* JJ.*_CC.* NN.* CC.*
+500764,CC.* NN.* CC.* VB.* PR.*,2.0,,,,CC.* NN.* CC.* VB.* PR.*
+500765,NN.* RB.* DT.* NN.* CC.*,2.0,,,,NN.* RB.* DT.* NN.* CC.*
+500766,NN.* CC.* NN.* CC.* PM.*,2.0,,,,NN.* CC.* NN.* CC.* PM.*
+500767,CC.* PM.* NN.* CC.* VB.*,2.0,,,,CC.* PM.* NN.* CC.* VB.*
+500768,VB.* CC.* JJ.*_CC.* NN.* CC.*,2.0,,,,VB.* CC.* JJ.*_CC.* NN.* CC.*
+500769,CC.* RB.* PR.* VB.* CC.*,2.0,,,,CC.* RB.* PR.* VB.* CC.*
+500770,RB.* PR.* VB.* CC.* NN.*,2.0,,,,RB.* PR.* VB.* CC.* NN.*
+500771,FW CC.* NN.* DT.* NN.*,2.0,,,,FW CC.* NN.* DT.* NN.*
+500772,RB.* DT.* NN.* PM.* VB.*,3.0,,,,RB.* DT.* NN.* PM.* VB.*
+500773,DT.* NN.* PM.* VB.* NN.*,2.0,,,,DT.* NN.* PM.* VB.* NN.*
+500774,PM.* CC.* NN.* CC.* NN.*,2.0,,,,PM.* CC.* NN.* CC.* NN.*
+500775,CC.* NN.* CC.* NN.* FW,2.0,,,,CC.* NN.* CC.* NN.* FW
+500776,CC.* NN.* CC.* JJ.*_CC.* PR.*,2.0,,,,CC.* NN.* CC.* JJ.*_CC.* PR.*
+500777,NN.* CC.* JJ.*_CC.* PR.* CC.*,2.0,,,,NN.* CC.* JJ.*_CC.* PR.* CC.*
+500778,NN.* PM.* VB.* PR.* PM.*,2.0,,,,NN.* PM.* VB.* PR.* PM.*
+500779,CC.* PM.* JJ.* CC.* NN.*,2.0,,,,CC.* PM.* JJ.* CC.* NN.*
+500780,NN.* CC.* DT.* NN.* FW,3.0,,,,NN.* CC.* DT.* NN.* FW
+500781,VB.* NN.* CC.* NN.*_CC.* VB.*,2.0,,,,VB.* NN.* CC.* NN.*_CC.* VB.*
+500782,CC.* RB.* CC.* PR.*_CC.* NN.*,2.0,,,,CC.* RB.* CC.* PR.*_CC.* NN.*
+500783,RB.* DT.* FW CC.* NN.*,3.0,,,,RB.* DT.* FW CC.* NN.*
+500784,DT.* FW CC.* NN.* CC.*,2.0,,,,DT.* FW CC.* NN.* CC.*
+500785,PM.* CC.* DT.* DT.* NN.*,2.0,,,,PM.* CC.* DT.* DT.* NN.*
+500786,DT.* FW CC.* NN.* PM.*,3.0,,,,DT.* FW CC.* NN.* PM.*
+500787,PM.* RB.* RB.* VB.* DT.*,2.0,,,,PM.* RB.* RB.* VB.* DT.*
+500788,NN.* PM.* RB.* CC.* VB.*,2.0,,,,NN.* PM.* RB.* CC.* VB.*
+500789,PM.* RB.* CC.* NN.* CC.*,2.0,,,,PM.* RB.* CC.* NN.* CC.*
+500790,RB.* VB.* DT.* NN.* DT.*,2.0,,,,RB.* VB.* DT.* NN.* DT.*
+500791,NN.* LM VB.* RB.* VB.*,2.0,,,,NN.* LM VB.* RB.* VB.*
+500792,VB.*_VB.* CC.* DT.* NN.* CC.*,2.0,,,,VB.*_VB.* CC.* DT.* NN.* CC.*
+500793,FW CC.* NN.* CC.* VB.*,2.0,,,,FW CC.* NN.* CC.* VB.*
+500794,CC.* VB.* CC.* VB.* DT.*,2.0,,,,CC.* VB.* CC.* VB.* DT.*
+500795,VB.* CC.* VB.* DT.* NN.*,3.0,,,,VB.* CC.* VB.* DT.* NN.*
+500796,NN.* DT.* DT.* NN.* CC.*,3.0,,,,NN.* DT.* DT.* NN.* CC.*
+500797,DT.* NN.* CC.* DT.* NN.*_CC.*,2.0,,,,DT.* NN.* CC.* DT.* NN.*_CC.*
+500798,NN.* PM.* PR.* RB.* LM,2.0,,,,NN.* PM.* PR.* RB.* LM
+500799,NN.* DT.* NN.* PM.* VB.*,2.0,,,,NN.* DT.* NN.* PM.* VB.*
+500800,NN.* CC.* VB.* RB.* CC.*,2.0,,,,NN.* CC.* VB.* RB.* CC.*
+500801,RB.* PM.* VB.*_CC.* VB.* DT.*,2.0,,,,RB.* PM.* VB.*_CC.* VB.* DT.*
+500802,PM.* VB.*_CC.* VB.* DT.* DT.*,2.0,,,,PM.* VB.*_CC.* VB.* DT.* DT.*
+500803,VB.*_CC.* VB.* DT.* DT.* NN.*,2.0,,,,VB.*_CC.* VB.* DT.* DT.* NN.*
+500804,NN.* CC.* JJ.* DT.* DT.*,2.0,,,,NN.* CC.* JJ.* DT.* DT.*
+500805,DT.* NN.* PM.* CC.* PM.*,2.0,,,,DT.* NN.* PM.* CC.* PM.*
+500806,NN.* PM.* CC.* PM.* FW,3.0,,,,NN.* PM.* CC.* PM.* FW
+500807,CC.* PM.* FW DT.* NN.*,2.0,,,,CC.* PM.* FW DT.* NN.*
+500808,CC.* JJ.* CC.* NN.* CC.*,5.0,,,,CC.* JJ.* CC.* NN.* CC.*
+500809,NN.* CC.* FW RB.* CC.*,3.0,,,,NN.* CC.* FW RB.* CC.*
+500810,CC.* VB.* CC.* PR.*_CC.* FW,2.0,,,,CC.* VB.* CC.* PR.*_CC.* FW
+500811,CC.* PR.*_CC.* FW CC.* NN.*,2.0,,,,CC.* PR.*_CC.* FW CC.* NN.*
+500812,DT.* VB.* CC.* NN.* CC.*,3.0,,,,DT.* VB.* CC.* NN.* CC.*
+500813,DT.* NN.* PM.* RB.* RB.*,3.0,,,,DT.* NN.* PM.* RB.* RB.*
+500814,DT.* NN.* CC.* PM.* FW,2.0,,,,DT.* NN.* CC.* PM.* FW
+500815,FW CC.* NN.* PR.* PM.*,2.0,,,,FW CC.* NN.* PR.* PM.*
+500816,RB.* CC.* NN.* CC.* NN.*,2.0,,,,RB.* CC.* NN.* CC.* NN.*
+500817,CC.* DT.* NN.* CC.* RB.*,3.0,,,,CC.* DT.* NN.* CC.* RB.*
+500818,RB.*_CC.* VB.* CC.* NN.* NN.*,3.0,,,,RB.*_CC.* VB.* CC.* NN.* NN.*
+500819,CC.* PM.* NN.* RB.* RB.*,2.0,,,,CC.* PM.* NN.* RB.* RB.*
+500820,NN.* DT.* NN.* CC.* NN.*,2.0,,,,NN.* DT.* NN.* CC.* NN.*
+500821,DT.* VB.*_VB.* CC.* DT.* NN.*,2.0,,,,DT.* VB.*_VB.* CC.* DT.* NN.*
+500822,FW PM.* PM.* VB.* RB.*,2.0,,,,FW PM.* PM.* VB.* RB.*
+500823,PM.* PM.* VB.* RB.* DT.*,2.0,,,,PM.* PM.* VB.* RB.* DT.*
+500824,RB.* RB.* VB.* CC.* DT.*,2.0,,,,RB.* RB.* VB.* CC.* DT.*
+500825,NN.* PM.* RB.* PR.* CC.*,2.0,,,,NN.* PM.* RB.* PR.* CC.*
+500826,FW CC.* CC.* DT.* NN.*,2.0,,,,FW CC.* CC.* DT.* NN.*
+500827,PM.* NN.* CC.* VB.* RB.*,2.0,,,,PM.* NN.* CC.* VB.* RB.*
+500828,CC.* NN.* PM.* CC.* FW,2.0,,,,CC.* NN.* PM.* CC.* FW
+500829,NN.* PM.* CC.* FW PM.*,2.0,,,,NN.* PM.* CC.* FW PM.*
+500830,PM.* RB.*_CC.* VB.* CC.* NN.*,2.0,,,,PM.* RB.*_CC.* VB.* CC.* NN.*
+500831,DT.* NN.* CC.* JJ.* RB.*,2.0,,,,DT.* NN.* CC.* JJ.* RB.*
+500832,CC.* NN.* CC.* VB.* RB.*,5.0,,,,CC.* NN.* CC.* VB.* RB.*
+500833,JJ.*_CC.* NN.* DT.* NN.* CC.*,2.0,,,,JJ.*_CC.* NN.* DT.* NN.* CC.*
+500834,NN.* PM.* DT.* FW CC.*,2.0,,,,NN.* PM.* DT.* FW CC.*
+500835,CC.* CC.* DT.* NN.* CC.*,2.0,,,,CC.* CC.* DT.* NN.* CC.*
+500836,DT.* NN.* CC.* DT.* PR.*_CC.*,2.0,,,,DT.* NN.* CC.* DT.* PR.*_CC.*
+500837,NN.* CC.* DT.* PR.*_CC.* FW,2.0,,,,NN.* CC.* DT.* PR.*_CC.* FW
+500838,CC.* DT.* PR.*_CC.* FW FW,2.0,,,,CC.* DT.* PR.*_CC.* FW FW
+500839,DT.* NN.* PM.* CC.* FW,2.0,,,,DT.* NN.* PM.* CC.* FW
+500840,RB.* DT.* DT.* NN.* CC.*,3.0,,,,RB.* DT.* DT.* NN.* CC.*
+500841,NN.* CC.* PR.* PM.* FW,2.0,,,,NN.* CC.* PR.* PM.* FW
+500842,CC.* VB.* RB.* DT.* DT.*,3.0,,,,CC.* VB.* RB.* DT.* DT.*
+500843,NN.*_CC.* VB.* RB.*_CC.* VB.* CC.*,2.0,,,,NN.*_CC.* VB.* RB.*_CC.* VB.* CC.*
+500844,NN.* CC.* VB.* PR.*_CC.* VB.*,2.0,,,,NN.* CC.* VB.* PR.*_CC.* VB.*
+500845,CC.* PR.*_CC.* NN.* PM.* DT.*,2.0,,,,CC.* PR.*_CC.* NN.* PM.* DT.*
+500846,NN.* CC.* VB.* PR.*_CC.* FW,2.0,,,,NN.* CC.* VB.* PR.*_CC.* FW
+500847,PM.* FW DT.* PR.*_CC.* NN.*,2.0,,,,PM.* FW DT.* PR.*_CC.* NN.*
+500848,FW DT.* PR.*_CC.* NN.* NN.*,2.0,,,,FW DT.* PR.*_CC.* NN.* NN.*
+500849,NN.* FW CC.* VB.* CC.*,2.0,,,,NN.* FW CC.* VB.* CC.*
+500850,RB.* DT.* VB.* NN.* CC.*,2.0,,,,RB.* DT.* VB.* NN.* CC.*
+500851,CC.* NN.* CC.* DT.* JJ.*,2.0,,,,CC.* NN.* CC.* DT.* JJ.*
+500852,NN.* CC.* DT.* JJ.* PM.*,3.0,,,,NN.* CC.* DT.* JJ.* PM.*
+500853,CC.* DT.* JJ.* PM.* NN.*,2.0,,,,CC.* DT.* JJ.* PM.* NN.*
+500854,VB.* PR.* RB.* DT.* NN.*,2.0,,,,VB.* PR.* RB.* DT.* NN.*
+500855,CC.* VB.* PR.* CC.* VB.*,2.0,,,,CC.* VB.* PR.* CC.* VB.*
+500856,CC.* NN.* CC.* PM.* FW,3.0,,,,CC.* NN.* CC.* PM.* FW
+500857,PR.* CC.* DT.* JJ.*_CC.* NN.*,2.0,,,,PR.* CC.* DT.* JJ.*_CC.* NN.*
+500858,DT.* JJ.*_CC.* NN.* CC.* FW,4.0,,,,DT.* JJ.*_CC.* NN.* CC.* FW
+500859,CC.* DT.* JJ.* PM.* CC.*,2.0,,,,CC.* DT.* JJ.* PM.* CC.*
+500860,RB.*_CC.* VB.* PR.* CC.* NN.*,2.0,,,,RB.*_CC.* VB.* PR.* CC.* NN.*
+500861,PR.* CC.* NN.* CC.* PR.*_CC.*,2.0,,,,PR.* CC.* NN.* CC.* PR.*_CC.*
+500862,CC.* NN.* PM.* VB.* PM.*,2.0,,,,CC.* NN.* PM.* VB.* PM.*
+500863,RB.* RB.*_CC.* VB.* DT.* NN.*,2.0,,,,RB.* RB.*_CC.* VB.* DT.* NN.*
+500864,RB.*_CC.* VB.* DT.* NN.* CC.*,3.0,,,,RB.*_CC.* VB.* DT.* NN.* CC.*
+500865,CC.* NN.* CC.* NN.*_CC.* JJ.*,2.0,,,,CC.* NN.* CC.* NN.*_CC.* JJ.*
+500866,CC.* NN.* PR.* PM.* VB.*,2.0,,,,CC.* NN.* PR.* PM.* VB.*
+500867,NN.* PR.* PM.* VB.* CC.*,2.0,,,,NN.* PR.* PM.* VB.* CC.*
+500868,PR.* PM.* VB.* CC.* DT.*,2.0,,,,PR.* PM.* VB.* CC.* DT.*
+500869,VB.* DT.* NN.* CC.* PR.*_CC.*,3.0,,,,VB.* DT.* NN.* CC.* PR.*_CC.*
+500870,CC.* PR.*_CC.* NN.* PM.* CC.*,3.0,,,,CC.* PR.*_CC.* NN.* PM.* CC.*
+500871,DT.* NN.*_CC.* NN.* PM.* RB.*,2.0,,,,DT.* NN.*_CC.* NN.* PM.* RB.*
+500872,NN.* CC.* RB.* PR.* VB.*,2.0,,,,NN.* CC.* RB.* PR.* VB.*
+500873,JJ.* CC.* DT.* NN.* PM.*,4.0,,,,JJ.* CC.* DT.* NN.* PM.*
+500874,JJ.* CC.* NN.* CC.* VB.*,2.0,,,,JJ.* CC.* NN.* CC.* VB.*
+500875,RB.*_CC.* VB.* CC.* FW CC.*,2.0,,,,RB.*_CC.* VB.* CC.* FW CC.*
+500876,NN.* CC.* VB.* RB.* PR.*,2.0,,,,NN.* CC.* VB.* RB.* PR.*
+500877,PR.* CC.* PR.*_CC.* NN.* RB.*,2.0,,,,PR.* CC.* PR.*_CC.* NN.* RB.*
+500878,DT.* NN.* CC.* DT.* JJ.*_CC.*,2.0,,,,DT.* NN.* CC.* DT.* JJ.*_CC.*
+500879,VB.* RB.*_CC.* VB.* CC.* NN.*,2.0,,,,VB.* RB.*_CC.* VB.* CC.* NN.*
+500880,RB.*_CC.* NN.* CC.* NN.* CC.*,2.0,,,,RB.*_CC.* NN.* CC.* NN.* CC.*
+500881,CC.* NN.* PM.* JJ.* CC.*,2.0,,,,CC.* NN.* PM.* JJ.* CC.*
+500882,NN.* PM.* JJ.* CC.* DT.*,3.0,,,,NN.* PM.* JJ.* CC.* DT.*
+500883,PM.* JJ.* CC.* DT.* NN.*,4.0,,,,PM.* JJ.* CC.* DT.* NN.*
+500884,VB.* PR.* CC.* DT.* NN.*,2.0,,,,VB.* PR.* CC.* DT.* NN.*
+500885,FW RB.* CC.* NN.* CC.*,2.0,,,,FW RB.* CC.* NN.* CC.*
+500886,NN.* CC.* NN.* PM.* FW,2.0,,,,NN.* CC.* NN.* PM.* FW
+500887,PM.* CC.* VB.* RB.* DT.*,2.0,,,,PM.* CC.* VB.* RB.* DT.*
+500888,RB.* DT.* CC.* PM.* FW,2.0,,,,RB.* DT.* CC.* PM.* FW
+500889,RB.* RB.* JJ.* PM.* FW,2.0,,,,RB.* RB.* JJ.* PM.* FW
+500890,CC.* JJ.*_CC.* NN.* PM.* VB.*,2.0,,,,CC.* JJ.*_CC.* NN.* PM.* VB.*
+500891,JJ.*_CC.* NN.* PM.* VB.* DT.*,2.0,,,,JJ.*_CC.* NN.* PM.* VB.* DT.*
+500892,JJ.*_CC.* NN.* CC.* VB.* CC.*,2.0,,,,JJ.*_CC.* NN.* CC.* VB.* CC.*
+500893,DT.* DT.* NN.* PR.* LM,2.0,,,,DT.* DT.* NN.* PR.* LM
+500894,PR.* LM DT.* NN.* CC.*,3.0,,,,PR.* LM DT.* NN.* CC.*
+500895,NN.* CC.* NN.* PM.* PR.*,2.0,,,,NN.* CC.* NN.* PM.* PR.*
+500896,NN.* CC.* VB.*_VB.* CC.* VB.*,2.0,,,,NN.* CC.* VB.*_VB.* CC.* VB.*
+500897,NN.* CC.* VB.* PR.* PM.*,2.0,,,,NN.* CC.* VB.* PR.* PM.*
+500898,PR.*_CC.* NN.* CC.* VB.* PR.*,2.0,,,,PR.*_CC.* NN.* CC.* VB.* PR.*
+500899,DT.* NN.* PM.* CC.* JJ.*,2.0,,,,DT.* NN.* PM.* CC.* JJ.*
+500900,PM.* FW CC.* NN.* NN.*,2.0,,,,PM.* FW CC.* NN.* NN.*
+500901,CC.* NN.* CC.* CC.* PM.*,2.0,,,,CC.* NN.* CC.* CC.* PM.*
+500902,PR.* DT.* FW CC.* PR.*_CC.*,2.0,,,,PR.* DT.* FW CC.* PR.*_CC.*
+500903,NN.* NN.* CC.* VB.* RB.*,2.0,,,,NN.* NN.* CC.* VB.* RB.*
+500904,DT.* NN.* CC.* VB.* RB.*,4.0,,,,DT.* NN.* CC.* VB.* RB.*
+500905,JJ.* CC.* NN.* CC.* DT.*,2.0,,,,JJ.* CC.* NN.* CC.* DT.*
+500906,PR.*_CC.* NN.*_CC.* VB.* CC.* VB.*,2.0,,,,PR.*_CC.* NN.*_CC.* VB.* CC.* VB.*
+500907,NN.* PM.* RB.* RB.* RB.*,2.0,,,,NN.* PM.* RB.* RB.* RB.*
+500908,NN.* PM.* VB.* CC.* FW,3.0,,,,NN.* PM.* VB.* CC.* FW
+500909,JJ.* CC.* PR.*_CC.* NN.* PM.*,2.0,,,,JJ.* CC.* PR.*_CC.* NN.* PM.*
+500910,PM.* CC.* PM.* FW CC.*,2.0,,,,PM.* CC.* PM.* FW CC.*
+500911,CC.* VB.* CC.* PM.* FW,2.0,,,,CC.* VB.* CC.* PM.* FW
+500912,DT.* NN.* RB.* NN.* CC.*,2.0,,,,DT.* NN.* RB.* NN.* CC.*
+500913,LM RB.* VB.* DT.* NN.*,2.0,,,,LM RB.* VB.* DT.* NN.*
+500914,RB.* RB.* DT.* VB.* CC.*,2.0,,,,RB.* RB.* DT.* VB.* CC.*
+500915,RB.* RB.* DT.* PR.*_CC.* NN.*,2.0,,,,RB.* RB.* DT.* PR.*_CC.* NN.*
+500916,CC.* NN.* CC.* VB.* PR.*_CC.*,2.0,,,,CC.* NN.* CC.* VB.* PR.*_CC.*
+500917,CC.* RB.* RB.* DT.* CC.*,2.0,,,,CC.* RB.* RB.* DT.* CC.*
+500918,RB.* RB.* DT.* CC.* PM.*,2.0,,,,RB.* RB.* DT.* CC.* PM.*
+500919,RB.* JJ.* CC.* NN.* CC.*,4.0,,,,RB.* JJ.* CC.* NN.* CC.*
+500920,DT.* RB.* JJ.* CC.* NN.*,2.0,,,,DT.* RB.* JJ.* CC.* NN.*
+500921,FW CC.* NN.* PM.* RB.*,2.0,,,,FW CC.* NN.* PM.* RB.*
+500922,RB.* CC.* RB.* PR.* VB.*,2.0,,,,RB.* CC.* RB.* PR.* VB.*
+500923,NN.* PM.* JJ.* CC.* NN.*,2.0,,,,NN.* PM.* JJ.* CC.* NN.*
+500924,NN.* CC.* RB.* RB.* DT.*,2.0,,,,NN.* CC.* RB.* RB.* DT.*
+500925,CC.* FW RB.* CC.* NN.*,2.0,,,,CC.* FW RB.* CC.* NN.*
+500926,DT.* VB.* CC.* NN.* DT.*,2.0,,,,DT.* VB.* CC.* NN.* DT.*
+500927,PM.* PR.* DT.* NN.* CC.*,2.0,,,,PM.* PR.* DT.* NN.* CC.*
+500928,PR.* LM VB.*_VB.* CC.* DT.*,2.0,,,,PR.* LM VB.*_VB.* CC.* DT.*
+500929,CC.* DT.* NN.*_CC.* VB.*_VB.* CC.*,2.0,,,,CC.* DT.* NN.*_CC.* VB.*_VB.* CC.*
+500930,DT.* NN.*_CC.* VB.*_VB.* CC.* NN.*,2.0,,,,DT.* NN.*_CC.* VB.*_VB.* CC.* NN.*
+500931,CC.* DT.* VB.* CC.* NN.*,2.0,,,,CC.* DT.* VB.* CC.* NN.*
+500932,DT.* DT.* NN.* RB.* CC.*,2.0,,,,DT.* DT.* NN.* RB.* CC.*
+500933,VB.* CC.* DT.* FW PM.*,2.0,,,,VB.* CC.* DT.* FW PM.*
+500934,LM VB.* CC.* JJ.*_CC.* NN.*,2.0,,,,LM VB.* CC.* JJ.*_CC.* NN.*
+500935,CC.* VB.*_VB.* CC.* DT.* FW,2.0,,,,CC.* VB.*_VB.* CC.* DT.* FW
+500936,VB.*_VB.* CC.* DT.* FW FW,2.0,,,,VB.*_VB.* CC.* DT.* FW FW
+500937,NN.* PM.* RB.* VB.* PM.*,2.0,,,,NN.* PM.* RB.* VB.* PM.*
+500938,RB.* CC.* NN.* PM.* CC.*,2.0,,,,RB.* CC.* NN.* PM.* CC.*
+500939,CC.* NN.* CC.* PR.* PM.*,2.0,,,,CC.* NN.* CC.* PR.* PM.*
+500940,,,DTC NNC DTP NNP CCT,3.0,,DTC NNC DTP NNP CCT
+500941,,,PMS NNC CCP RBF RBI,2.0,,PMS NNC CCP RBF RBI
+500942,,,NNC CCP RBF RBI JJD,2.0,,NNC CCP RBF RBI JJD
+500943,,,DTC CCR PMS JJD CCB,2.0,,DTC CCR PMS JJD CCB
+500944,,,RBI PRO DTC NNC CCB,2.0,,RBI PRO DTC NNC CCB
+500945,,,PRO DTC NNC CCB DTCP,3.0,,PRO DTC NNC CCB DTCP
+500946,,,CCB DTCP NNC CCT NNC_CCP,2.0,,CCB DTCP NNC CCT NNC_CCP
+500947,,,DTCP NNC CCT NNC_CCP JJD,2.0,,DTCP NNC CCT NNC_CCP JJD
+500948,,,NNC CCT NNC_CCP JJD CCA,2.0,,NNC CCT NNC_CCP JJD CCA
+500949,,,VBTR DTC DTCP NNC CCB,3.0,,VBTR DTC DTCP NNC CCB
+500950,,,DTC DTCP NNC_CCP VBTR CCB,2.0,,DTC DTCP NNC_CCP VBTR CCB
+500951,,,NNC_CCP VBTR CCB DTCP NNC,2.0,,NNC_CCP VBTR CCB DTCP NNC
+500952,,,CCB NNC CCT RBT_CCP NNC,2.0,,CCB NNC CCT RBT_CCP NNC
+500953,,,PMS FW CCT PRSP CCP,2.0,,PMS FW CCT PRSP CCP
+500954,,,FW CCT PRSP CCP DTP,2.0,,FW CCT PRSP CCP DTP
+500955,,,CCT PRSP CCP DTP NNP,2.0,,CCT PRSP CCP DTP NNP
+500956,,,CCT NNC CCB PRI_CCP NNC,4.0,,CCT NNC CCB PRI_CCP NNC
+500957,,,NNC CCB PRI_CCP NNC CCT,2.0,,NNC CCB PRI_CCP NNC CCT
+500958,,,DTC JJD CCP NNC CCB,2.0,,DTC JJD CCP NNC CCB
+500959,,,JJD_CCP FW FW DTP NNP,2.0,,JJD_CCP FW FW DTP NNP
+500960,,,DTC DTCP NNC CCB FW,5.0,,DTC DTCP NNC CCB FW
+500961,,,CCP VBOF DTC NNC CCB,2.0,,CCP VBOF DTC NNC CCB
+500962,,,CCT NNC DTP NNP DTC,2.0,,CCT NNC DTP NNP DTC
+500963,,,CCA VBW DTC DTCP VBAF,2.0,,CCA VBW DTC DTCP VBAF
+500964,,,VBW DTC DTCP VBAF PMC,2.0,,VBW DTC DTCP VBAF PMC
+500965,,,DTC DTCP VBAF PMC VBTS,2.0,,DTC DTCP VBAF PMC VBTS
+500966,,,DTC NNC_CCP JJD CCT NNC,2.0,,DTC NNC_CCP JJD CCT NNC
+500967,,,NNC_CCP JJD CCT NNC CCB,2.0,,NNC_CCP JJD CCT NNC CCB
+500968,,,NNC CCP VBTS PMS FW,2.0,,NNC CCP VBTS PMS FW
+500969,,,CCP VBTS PMS FW CCT,2.0,,CCP VBTS PMS FW CCT
+500970,,,VBTS PMS FW CCT NNP,2.0,,VBTS PMS FW CCT NNP
+500971,,,NNC DTP JJD_CCP NNP_CCP NNP,2.0,,NNC DTP JJD_CCP NNP_CCP NNP
+500972,,,VBTS RBI DTP NNP CCP,2.0,,VBTS RBI DTP NNP CCP
+500973,,,FW DTP NNP PMS CCA,2.0,,FW DTP NNP PMS CCA
+500974,,,VBTR PRP DTC NNC CCB,2.0,,VBTR PRP DTC NNC CCB
+500975,,,PRP DTC NNC CCB DTCP,2.0,,PRP DTC NNC CCB DTCP
+500976,,,DTCP NNC JJC CCB NNP,2.0,,DTCP NNC JJC CCB NNP
+500977,,,NNP CCT NNC CCB FW,2.0,,NNP CCT NNC CCB FW
+500978,,,CCP DTC DTCP NNC CCB,2.0,,CCP DTC DTCP NNC CCB
+500979,,,PRO LM VBTF CCT NNC,2.0,,PRO LM VBTF CCT NNC
+500980,,,LM VBTF CCT NNC CCB,2.0,,LM VBTF CCT NNC CCB
+500981,,,NNC CCT DTCP NNC_CCP PRO,2.0,,NNC CCT DTCP NNC_CCP PRO
+500982,,,CCT DTCP NNC_CCP PRO PMC,2.0,,CCT DTCP NNC_CCP PRO PMC
+500983,,,RBI CCB NNC DTP NNP,3.0,,RBI CCB NNC DTP NNP
+500984,,,PMS VBOF DTC NNC CCB,2.0,,PMS VBOF DTC NNC CCB
+500985,,,NNC CCB FW CCB JJD_CCP,2.0,,NNC CCB FW CCB JJD_CCP
+500986,,,PRSP_CCP NNC CCB NNC CCT,2.0,,PRSP_CCP NNC CCB NNC CCT
+500987,,,CCT CCR PMS VBTF DTP,2.0,,CCT CCR PMS VBTF DTP
+500988,,,CCR PMS VBTF DTP NNP,2.0,,CCR PMS VBTF DTP NNP
+500989,,,CCT JJD_CCP NNC CCB NNC,2.0,,CCT JJD_CCP NNC CCB NNC
+500990,,,CCB NNC CCP DTP NNP,2.0,,CCB NNC CCP DTP NNP
+500991,,,PMC VBTF RBI DTC NNC,2.0,,PMC VBTF RBI DTC NNC
+500992,,,PRI_CCP NNC CCA RBF RBI,2.0,,PRI_CCP NNC CCA RBF RBI
+500993,,,RBF RBI VBTS DTC NNC,2.0,,RBF RBI VBTS DTC NNC
+500994,,,DTC CCR PMS FW CCB,2.0,,DTC CCR PMS FW CCB
+500995,,,VBTR CCT VBOF DTC FW,2.0,,VBTR CCT VBOF DTC FW
+500996,,,RBI PRL DTC NNC CCB,2.0,,RBI PRL DTC NNC CCB
+500997,,,PRL DTC NNC CCB DTCP,2.0,,PRL DTC NNC CCB DTCP
+500998,,,CCB NNC PRS_CCP DTP NNP,2.0,,CCB NNC PRS_CCP DTP NNP
+500999,,,NNC PRS_CCP DTP NNP NNP,3.0,,NNC PRS_CCP DTP NNP NNP
+501000,,,DTC JJN_CCP NNC DTP NNP,2.0,,DTC JJN_CCP NNC DTP NNP
+501001,,,VBTR_VBAF CCT NNC CCB DTCP,2.0,,VBTR_VBAF CCT NNC CCB DTCP
+501002,,,NNC CCB PRI_CCP NNC DTC,2.0,,NNC CCB PRI_CCP NNC DTC
+501003,,,CCB PRI_CCP NNC DTC FW,2.0,,CCB PRI_CCP NNC DTC FW
+501004,,,RBI DTC JJD CCP NNC,2.0,,RBI DTC JJD CCP NNC
+501005,,,NNC CCB PRI_CCP NNP NNP,2.0,,NNC CCB PRI_CCP NNP NNP
+501006,,,NNP NNP CCT PRI_CCP FW,2.0,,NNP NNP CCT PRI_CCP FW
+501007,,,NNP CCT PRI_CCP FW FW,3.0,,NNP CCT PRI_CCP FW FW
+501008,,,NNP NNP PMC JJD_CCP FW,2.0,,NNP NNP PMC JJD_CCP FW
+501009,,,DTC DTCP NNC CCB NNP,3.0,,DTC DTCP NNC CCB NNP
+501010,,,NNC CCB DTCP NNC_CCP VBTR,3.0,,NNC CCB DTCP NNC_CCP VBTR
+501011,,,CCB DTCP NNC_CCP VBTR CCT,3.0,,CCB DTCP NNC_CCP VBTR CCT
+501012,,,DTCP NNC_CCP VBTR CCT DTCP,3.0,,DTCP NNC_CCP VBTR CCT DTCP
+501013,,,JJD DTC NNC DTP NNP,2.0,,JJD DTC NNC DTP NNP
+501014,,,NNC DTP NNP CCT DTCP,2.0,,NNC DTP NNP CCT DTCP
+501015,,,VBTR RBI CCB NNC PMS,2.0,,VBTR RBI CCB NNC PMS
+501016,,,VBTS PRO CCT NNC CCB,2.0,,VBTS PRO CCT NNC CCB
+501017,,,PRO CCT NNC CCB DTCP,3.0,,PRO CCT NNC CCB DTCP
+501018,,,DTC NNC CCB DTCP JJD,2.0,,DTC NNC CCB DTCP JJD
+501019,,,DTCP NNC_CCP VBTR CCB NNC,2.0,,DTCP NNC_CCP VBTR CCB NNC
+501020,,,CCB NNPA CCT NNP PMC,2.0,,CCB NNPA CCT NNP PMC
+501021,,,NNPA CCT JJD DTP NNP,2.0,,NNPA CCT JJD DTP NNP
+501022,,,CCT NNC_CCP JJD CCB NNP,2.0,,CCT NNC_CCP JJD CCB NNP
+501023,,,NNC_CCP JJD CCB NNP PMC,2.0,,NNC_CCP JJD CCB NNP PMC
+501024,,,JJD CCB NNP PMC JJCC,2.0,,JJD CCB NNP PMC JJCC
+501025,,,NNC CCB PRI_CCP NNC PMC,2.0,,NNC CCB PRI_CCP NNC PMC
+501026,,,DTP NNP DTC NNC CCB,2.0,,DTP NNP DTC NNC CCB
+501027,,,CCT DTCP NNC_CCP VBTR CCT,2.0,,CCT DTCP NNC_CCP VBTR CCT
+501028,,,NNC DTP JJD_CCP NNP NNP,2.0,,NNC DTP JJD_CCP NNP NNP
+501029,,,RBI CCT DTCP NNC CCB,3.0,,RBI CCT DTCP NNC CCB
+501030,,,CCT DTCP NNC CCB NNPA,3.0,,CCT DTCP NNC CCB NNPA
+501031,,,FW PMC NNC CCB JJD,2.0,,FW PMC NNC CCB JJD
+501032,,,RBD CCP VBTR CCT DTCP,2.0,,RBD CCP VBTR CCT DTCP
+501033,,,CCP VBTF CCB DTCP NNC,2.0,,CCP VBTF CCB DTCP NNC
+501034,,,NNC CCB NNP CCA VBTS,2.0,,NNC CCB NNP CCA VBTS
+501035,,,CCB NNP CCA VBTS CCT,2.0,,CCB NNP CCA VBTS CCT
+501036,,,DTCP JJD PMS NNP CCT,2.0,,DTCP JJD PMS NNP CCT
+501037,,,PRI_CCP NNC DTC FW FW,2.0,,PRI_CCP NNC DTC FW FW
+501038,,,DTC PRI_CCP NNC CCT NNC,2.0,,DTC PRI_CCP NNC CCT NNC
+501039,,,PMS NNP FW DTC NNC,2.0,,PMS NNP FW DTC NNC
+501040,,,RBK RBQ VBH NNC DTC,2.0,,RBK RBQ VBH NNC DTC
+501041,,,CCT PRSP_CCP DTCP NNC PMS,3.0,,CCT PRSP_CCP DTCP NNC PMS
+501042,,,VBTR PRS DTC NNC CCT,2.0,,VBTR PRS DTC NNC CCT
+501043,,,DTC NNC CCT NNP PMS,3.0,,DTC NNC CCT NNP PMS
+501044,,,JJD CCP NNC CCB NNP,2.0,,JJD CCP NNC CCB NNP
+501045,,,CCR VBAF CCP DTC NNC,2.0,,CCR VBAF CCP DTC NNC
+501046,,,FW CCP VBTR CCB NNC,3.0,,FW CCP VBTR CCB NNC
+501047,,,FW PMP PMS NNPA NNP,2.0,,FW PMP PMS NNPA NNP
+501048,,,VBOF DTC DTCP NNC CCB,3.0,,VBOF DTC DTCP NNC CCB
+501049,,,DTCP NNC CCB NNP CCP,2.0,,DTCP NNC CCB NNP CCP
+501050,,,VBTF DTC PRSP_CCP FW FW,2.0,,VBTF DTC PRSP_CCP FW FW
+501051,,,NNC CCT NNC CCB PRI_CCP,2.0,,NNC CCT NNC CCB PRI_CCP
+501052,,,CCB DTCP NNC PMC RBF,2.0,,CCB DTCP NNC PMC RBF
+501053,,,DTC CCR PMS NNC CCB,2.0,,DTC CCR PMS NNC CCB
+501054,,,FW PMC CCA NNC CCB,2.0,,FW PMC CCA NNC CCB
+501055,,,VBW CCA VBAF CCT NNC,2.0,,VBW CCA VBAF CCT NNC
+501056,,,VBAF CCT NNC CCB FW,2.0,,VBAF CCT NNC CCB FW
+501057,,,CCT NNC CCB FW PMS,2.0,,CCT NNC CCB FW PMS
+501058,,,PRSP_CCP DTCP NNC PMS CCA,2.0,,PRSP_CCP DTCP NNC PMS CCA
+501059,,,CCT NNC PMS FW CCB,2.0,,CCT NNC PMS FW CCB
+501060,,,NNP FW DTC NNC CCB,2.0,,NNP FW DTC NNC CCB
+501061,,,RBI DTP JJD_CCP NNP NNP,2.0,,RBI DTP JJD_CCP NNP NNP
+501062,,,CCT CCR PMS NNC CCB,2.0,,CCT CCR PMS NNC CCB
+501063,,,DTC FW CCP VBTS CCB,2.0,,DTC FW CCP VBTS CCB
+501064,,,RBW DTC NNP CDB PMC,2.0,,RBW DTC NNP CDB PMC
+501065,,,CCP VBOF DTC NNC CCT,2.0,,CCP VBOF DTC NNC CCT
+501066,,,NNC CCB NNP RBK RBQ,2.0,,NNC CCB NNP RBK RBQ
+501067,,,DTC NNC CCB PRSP_CCP NNC,2.0,,DTC NNC CCB PRSP_CCP NNC
+501068,,,NNC CCP VBS CCB DTCP,2.0,,NNC CCP VBS CCB DTCP
+501069,,,CCP VBS CCB DTCP NNC,2.0,,CCP VBS CCB DTCP NNC
+501070,,,VBS CCB DTCP NNC CCA,2.0,,VBS CCB DTCP NNC CCA
+501071,,,NNP CCT DTCP NNC CCB,3.0,,NNP CCT DTCP NNC CCB
+501072,,,PRI_CCP FW FW CCT NNP,2.0,,PRI_CCP FW FW CCT NNP
+501073,,,CCT NNC PMC VBTS RBI,2.0,,CCT NNC PMC VBTS RBI
+501074,,,NNC PMC VBTS RBI CCB,2.0,,NNC PMC VBTS RBI CCB
+501075,,,CCT PRI_CCP NNC CCT NNP,2.0,,CCT PRI_CCP NNC CCT NNP
+501076,,,NNC CCT PRI_CCP NNC PMC,3.0,,NNC CCT PRI_CCP NNC PMC
+501077,,,DTC PRI CCT JJCS_JJD_CCP NNC,2.0,,DTC PRI CCT JJCS_JJD_CCP NNC
+501078,,,PRI CCT JJCS_JJD_CCP NNC CCB,2.0,,PRI CCT JJCS_JJD_CCP NNC CCB
+501079,,,VBTS PMS FW DTP NNP,3.0,,VBTS PMS FW DTP NNP
+501080,,,VBH NNC CCT PRI_CCP FW,2.0,,VBH NNC CCT PRI_CCP FW
+501081,,,RBF PRP_CCP VBOF DTC DTCP,2.0,,RBF PRP_CCP VBOF DTC DTCP
+501082,,,PRP_CCP VBOF DTC DTCP NNC,2.0,,PRP_CCP VBOF DTC DTCP NNC
+501083,,,FW PMC VBOF DTC NNC,2.0,,FW PMC VBOF DTC NNC
+501084,,,CCB DTCP NNC CCP VBTS,2.0,,CCB DTCP NNC CCP VBTS
+501085,,,DTP JJD_CCP NNC_CCP NNP NNP,2.0,,DTP JJD_CCP NNC_CCP NNP NNP
+501086,,,PMS FW CCT NNC PMC,2.0,,PMS FW CCT NNC PMC
+501087,,,CCT DTCP NNC DTP NNP,2.0,,CCT DTCP NNC DTP NNP
+501088,,,NNC CCT NNP PMC RBF,3.0,,NNC CCT NNP PMC RBF
+501089,,,NNP PMC PRO PMS FW,2.0,,NNP PMC PRO PMS FW
+501090,,,DTCP NNC_CCP VBTS CCT NNC,2.0,,DTCP NNC_CCP VBTS CCT NNC
+501091,,,FW PMC VBTR CCP DTC,2.0,,FW PMC VBTR CCP DTC
+501092,,,DTCP NNC CCP VBTR CCB,3.0,,DTCP NNC CCP VBTR CCB
+501093,,,VBTS CCT NNC_CCP PRO PMC,2.0,,VBTS CCT NNC_CCP PRO PMC
+501094,,,PRI_CCP NNC CCT NNP PMC,2.0,,PRI_CCP NNC CCT NNP PMC
+501095,,,CCT NNP PMC RBF PRP,2.0,,CCT NNP PMC RBF PRP
+501096,,,PMC RBW VBTS PMS FW,2.0,,PMC RBW VBTS PMS FW
+501097,,,CCT NNC CCB DTCP JJD_CCP,2.0,,CCT NNC CCB DTCP JJD_CCP
+501098,,,CCT NNC CCB NNP FW,2.0,,CCT NNC CCB NNP FW
+501099,,,DTCP NNC DTP NNP CCT,2.0,,DTCP NNC DTP NNP CCT
+501100,,,NNC CCT DTCP NNPA FW,2.0,,NNC CCT DTCP NNPA FW
+501101,,,DTP NNP CCT NNC CCB,4.0,,DTP NNP CCT NNC CCB
+501102,,,DTC NNC CCB DTCP NNC_CCP,2.0,,DTC NNC CCB DTCP NNC_CCP
+501103,,,DTC DTCP NNC PMC CCA,2.0,,DTC DTCP NNC PMC CCA
+501104,,,NNC CCB FW RBL CCT,2.0,,NNC CCB FW RBL CCT
+501105,,,VBOF PRS CCT NNC CCB,2.0,,VBOF PRS CCT NNC CCB
+501106,,,DTC VBTR CCB NNC CCT,2.0,,DTC VBTR CCB NNC CCT
+501107,,,JJD DTC NNC CCB DTCP,2.0,,JJD DTC NNC CCB DTCP
+501108,,,CCA VBTS DTC NNC CCT,2.0,,CCA VBTS DTC NNC CCT
+501109,,,DTC NNC CCB NNP FW,2.0,,DTC NNC CCB NNP FW
+501110,,,CCT NNC CCB NNPA PMC,2.0,,CCT NNC CCB NNPA PMC
+501111,,,DTP NNP CCA DTC PRSP_CCP,2.0,,DTP NNP CCA DTC PRSP_CCP
+501112,,,NNP CCA DTC PRSP_CCP FW,2.0,,NNP CCA DTC PRSP_CCP FW
+501113,,,CCA DTC PRSP_CCP FW FW,2.0,,CCA DTC PRSP_CCP FW FW
+501114,,,RBI DTC DTCP NNC CCP,2.0,,RBI DTC DTCP NNC CCP
+501115,,,CCT NNC CCB PRSP_CCP NNC,2.0,,CCT NNC CCB PRSP_CCP NNC
+501116,,,NNC CCB PRSP_CCP NNC PMC,3.0,,NNC CCB PRSP_CCP NNC PMC
+501117,,,PMS FW DTC PRI_CCP NNP,2.0,,PMS FW DTC PRI_CCP NNP
+501118,,,FW DTC PRI_CCP NNP NNP,2.0,,FW DTC PRI_CCP NNP NNP
+501119,,,NNC CCB DTCP JJD PMS,3.0,,NNC CCB DTCP JJD PMS
+501120,,,CCB DTCP JJD PMS NNP,2.0,,CCB DTCP JJD PMS NNP
+501121,,,PRP CCB DTCP JJD_CCP NNC,2.0,,PRP CCB DTCP JJD_CCP NNC
+501122,,,CCB DTCP JJD_CCP NNC CCT,3.0,,CCB DTCP JJD_CCP NNC CCT
+501123,,,DTCP JJD_CCP NNC CCT FW,2.0,,DTCP JJD_CCP NNC CCT FW
+501124,,,CCB DTCP JJD PMS CCR,2.0,,CCB DTCP JJD PMS CCR
+501125,,,NNC DTC NNP CCT FW,2.0,,NNC DTC NNP CCT FW
+501126,,,CCB DTCP NNC CCP VBOF,2.0,,CCB DTCP NNC CCP VBOF
+501127,,,CCP VBTR CCB NNC CCA,2.0,,CCP VBTR CCB NNC CCA
+501128,,,PMS FW DTP NNP CCB,2.0,,PMS FW DTP NNP CCB
+501129,,,CCB NNC CCR VBOF RBI,2.0,,CCB NNC CCR VBOF RBI
+501130,,,NNC CCT NNP PMS FW,2.0,,NNC CCT NNP PMS FW
+501131,,,DTC DTCP NNC PRO LM,2.0,,DTC DTCP NNC PRO LM
+501132,,,NNC CCB NNP CCP DTP,2.0,,NNC CCB NNP CCP DTP
+501133,,,PRO LM DTC NNC CCB,2.0,,PRO LM DTC NNC CCB
+501134,,,CCT PRSP_CCP NNC CCP VBTS,2.0,,CCT PRSP_CCP NNC CCP VBTS
+501135,,,PMS FW CCT NNC CCB,2.0,,PMS FW CCT NNC CCB
+501136,,,CCT DTCP NNC CCB NNP,3.0,,CCT DTCP NNC CCB NNP
+501137,,,RBF JJD CCP NNC CCB,2.0,,RBF JJD CCP NNC CCB
+501138,,,DTCP NNC CCP VBTS CCT,2.0,,DTCP NNC CCP VBTS CCT
+501139,,,CCT NNC DTP NNP CCA,2.0,,CCT NNC DTP NNP CCA
+501140,,,PRO LM VBTR_VBAF CCT DTCP,2.0,,PRO LM VBTR_VBAF CCT DTCP
+501141,,,DTCP NNC_CCP VBTR_VBAF CCB NNC,2.0,,DTCP NNC_CCP VBTR_VBAF CCB NNC
+501142,,,FW FW CCT PRI_CCP NNC,2.0,,FW FW CCT PRI_CCP NNC
+501143,PR.* DT.* NN.* DT.* NN.*,2.0,PRP DTC NNC DTP NNP,3.0,* * * * *,PR.* DT.* NN.* DT.* NN.*
+501144,DT.* NN.* DT.* NN.* CC.*,11.0,DTC NNC DTP NNP CCT,11.0,* * * * *,DT.* NN.* DT.* NN.* CC.*
+501146,NN.* DT.* NN.* CC.* VB.*,2.0,NNC DTP NNP CCT VBTF,2.0,* * * * *,NN.* DT.* NN.* CC.* VB.*
+501147,DT.* NN.* CC.* VB.* CC.*,15.0,DTP NNP CCT VBTF CCP,16.0,* * * * *,DT.* NN.* CC.* VB.* CC.*
+501150,NN.* CC.* VB.* CC.* NN.*,11.0,NNP CCA VBTR CCB NNC,11.0,* * * * *,NN.* CC.* VB.* CC.* NN.*
+501160,CC.* VB.* DT.* NN.* CC.*,22.0,CCP VBTF DTC NNC CCB,29.0,* * * * *,CC.* VB.* DT.* NN.* CC.*
+501162,VB.* DT.* NN.* CC.* DT.*,9.0,VBTF DTC NNC CCB DTCP,10.0,* * * * *,VB.* DT.* NN.* CC.* DT.*
+501169,NN.* CC.* JJ.*_CC.* NN.* CC.*,3.0,NNC CCT JJD_CCP NNC CCB,3.0,* * * * *,NN.* CC.* JJ.*_CC.* NN.* CC.*
+501174,CC.* JJ.* DT.* NN.* CC.*,4.0,CCB JJD DTC NNC CCP,4.0,* * * * *,CC.* JJ.* DT.* NN.* CC.*
+501183,NN.* PM.* CC.* VB.* DT.*,5.0,NNC PMS CCA VBOF DTC,6.0,* * * * *,NN.* PM.* CC.* VB.* DT.*
+501188,RB.* RB.* JJ.* VB.* CC.*,2.0,RBF RBI JJD VBOF CCR,2.0,* * * * *,RB.* RB.* JJ.* VB.* CC.*
+501193,PR.* DT.* NN.* CC.* VB.*,3.0,PRS DTP NNP CCA VBTR,6.0,* * * * *,PR.* DT.* NN.* CC.* VB.*
+501203,VB.* RB.* PR.* DT.* NN.*,5.0,VBTS RBI PRL DTC NNC,6.0,* * * * *,VB.* RB.* PR.* DT.* NN.*
+501209,PR.* DT.* NN.* CC.* DT.*,8.0,PRP DTC NNC CCB DTCP,8.0,* * * * *,PR.* DT.* NN.* CC.* DT.*
+501210,CC.* DT.* NN.* CC.* NN.*_CC.*,3.0,CCB DTCP NNC CCT NNC_CCP,3.0,* * * * *,CC.* DT.* NN.* CC.* NN.*_CC.*
+501211,CC.* DT.* NN.* CC.* NN.*_CC.*,3.0,CCA DTCP NNC CCB NNC_CCP,3.0,* * * * NNC_CCP,CC.* DT.* NN.* CC.* NNC_CCP
+501213,NN.* CC.* NN.*_CC.* JJ.* CC.*,4.0,NNC CCT NNC_CCP JJD CCA,4.0,* * * * *,NN.* CC.* NN.*_CC.* JJ.* CC.*
+501224,NN.* PM.* DT.* JJ.*_CC.* NN.*,4.0,NNC PMS DTP JJD_CCP NNP,6.0,* * * * *,NN.* PM.* DT.* JJ.*_CC.* NN.*
+501225,VB.* RB.* CC.* NN.* DT.*,6.0,VBTS RBI CCB NNP DTC,7.0,* * * * *,VB.* RB.* CC.* NN.* DT.*
+501230,RB.* CC.* NN.* DT.* JJ.*,2.0,RBI CCB NNP DTC JJD,2.0,* * * * *,RB.* CC.* NN.* DT.* JJ.*
+501232,CC.* NN.* DT.* JJ.* CC.*,2.0,CCB NNP DTC JJD CCP,2.0,* * * * *,CC.* NN.* DT.* JJ.* CC.*
+501249,NN.* CC.* VB.* DT.* NN.*,9.0,NNC CCP VBW DTP NNP,9.0,* * * * *,NN.* CC.* VB.* DT.* NN.*
+501253,DT.* NN.* NN.* CC.* PR.*_CC.*,2.0,DTP NNP NNP CCB PRI_CCP,3.0,* * * * *,DT.* NN.* NN.* CC.* PR.*_CC.*
+501254,NN.* NN.* CC.* PR.*_CC.* FW,3.0,NNP NNP CCB PRI_CCP FW,3.0,* * * * *,NN.* NN.* CC.* PR.*_CC.* FW
+501255,NN.* CC.* PR.*_CC.* FW FW,6.0,NNP CCB PRI_CCP FW FW,6.0,* * * * FW,NN.* CC.* PR.*_CC.* FW FW
+501256,CC.* JJ.* PR.*_CC.* VB.* CC.*,2.0,CCP JJD PRP_CCP VBW CCA,2.0,* * PRP_CCP * *,CC.* JJ.* PRP_CCP VB.* CC.*
+501259,CC.* VB.* CC.* NN.* CC.*,10.0,CCP VBTS CCB NNP CCT,18.0,* * * * *,CC.* VB.* CC.* NN.* CC.*
+501264,CC.* NN.* CC.* VB.* CC.*,11.0,CCB NNP CCA VBTS CCT,21.0,* * * * *,CC.* NN.* CC.* VB.* CC.*
+501267,NN.* CC.* VB.* CC.* FW,3.0,NNC CCR VBW CCT FW,3.0,* * * * *,NN.* CC.* VB.* CC.* FW
+501269,NN.* CC.* JJ.* JJ.* CC.*,2.0,NNC CCT JJCC JJD CCP,2.0,* * * * *,NN.* CC.* JJ.* JJ.* CC.*
+501270,JJ.* CC.* VB.* DT.* DT.*,2.0,JJD CCP VBTR DTC DTCP,2.0,* * * * *,JJ.* CC.* VB.* DT.* DT.*
+501271,CC.* VB.* DT.* DT.* NN.*,4.0,CCP VBTR DTC DTCP NNC,10.0,* * * * *,CC.* VB.* DT.* DT.* NN.*
+501273,VB.* DT.* DT.* NN.* CC.*,12.0,VBTF DTC DTCP NNC CCB,13.0,* * * * *,VB.* DT.* DT.* NN.* CC.*
+501274,DT.* DT.* NN.*_CC.* VB.* CC.*,3.0,DTC DTCP NNC_CCP VBTR CCB,3.0,* * * * *,DT.* DT.* NN.*_CC.* VB.* CC.*
+501276,DT.* NN.*_CC.* VB.* CC.* DT.*,7.0,DTC NNC_CCP VBTS CCT DTCP,7.0,* * * * *,DT.* NN.*_CC.* VB.* CC.* DT.*
+501277,NN.*_CC.* VB.* CC.* DT.* NN.*,3.0,NNC_CCP VBTR CCB DTCP NNC,5.0,NNC_CCP * * * *,NNC_CCP VB.* CC.* DT.* NN.*
+501279,RB.* RB.*_CC.* VB.* CC.* NN.*,2.0,RBW RBD_CCP VBTR CCB NNP,2.0,* RBD_CCP * * *,RB.* RBD_CCP VB.* CC.* NN.*
+501297,RB.* PR.*_CC.* VB.* DT.* NN.*,2.0,RBW PRP_CCP VBOB DTC NNC,2.0,* PRP_CCP * * *,RB.* PRP_CCP VB.* DT.* NN.*
+501298,VB.* DT.* NN.* DT.* NN.*,4.0,VBOB DTC NNC DTP NNPA,4.0,* * * * *,VB.* DT.* NN.* DT.* NN.*
+501300,DT.* NN.* CC.* VB.* DT.*,7.0,DTP NNPA CCP VBOF DTC,7.0,* * * * *,DT.* NN.* CC.* VB.* DT.*
+501302,NN.* CC.* VB.* DT.* FW,4.0,NNPA CCP VBOF DTC FW,4.0,* * * * *,NN.* CC.* VB.* DT.* FW
+501305,NN.* CC.* RB.* RB.* VB.*,5.0,NNC CCA RBM RBF VBW,5.0,* * * * *,NN.* CC.* RB.* RB.* VB.*
+501307,VB.* VB.* DT.* NN.* CC.*,2.0,VBS VBOF DTP NNP CCT,2.0,* * * * *,VB.* VB.* DT.* NN.* CC.*
+501308,VB.* DT.* NN.* CC.* CC.*,3.0,VBOF DTP NNP CCT CCA,3.0,* * * * *,VB.* DT.* NN.* CC.* CC.*
+501310,DT.* NN.* CC.* CC.* RB.*,2.0,DTP NNP CCT CCA RBI,2.0,* * * * *,DT.* NN.* CC.* CC.* RB.*
+501314,FW CC.* PR.* CC.* DT.*,2.0,FW CCT PRSP CCP DTP,2.0,FW * * * *,FW CC.* PR.* CC.* DT.*
+501336,VB.* PR.* DT.* NN.* CC.*,9.0,VBOF PRS DTP NNP CCT,9.0,* * * * *,VB.* PR.* DT.* NN.* CC.*
+501339,PR.* DT.* NN.* CC.* PR.*_CC.*,3.0,PRQ DTC NNC CCB PRI_CCP,3.0,* * * * *,PR.* DT.* NN.* CC.* PR.*_CC.*
+501342,DT.* NN.* CC.* PR.*_CC.* NN.*,9.0,DTC NNC CCB PRI_CCP NNP,9.0,* * * * *,DT.* NN.* CC.* PR.*_CC.* NN.*
+501350,DT.* NN.* PM.* VB.* VB.*,2.0,DTC NNC PMS VBS VBW,2.0,* * * * *,DT.* NN.* PM.* VB.* VB.*
+501376,NN.* CC.* NN.*_CC.* NN.* CC.*,2.0,NNC CCB NNC_CCP NNP CCT,2.0,* * * * *,NN.* CC.* NN.*_CC.* NN.* CC.*
+501377,CC.* DT.* NN.* LM VB.*,2.0,CCB DTCP NNC LM VBTS,3.0,* * * * *,CC.* DT.* NN.* LM VB.*
+501386,JJ.*_CC.* FW FW DT.* NN.*,2.0,JJD_CCP FW FW DTP NNP,2.0,JJD_CCP * FW * *,JJD_CCP FW FW DT.* NN.*
+501387,FW DT.* NN.* CC.* DT.*,3.0,FW DTP NNP CCT DTCP,3.0,FW * * * *,FW DT.* NN.* CC.* DT.*
+501389,RB.* CC.* VB.* DT.* DT.*,2.0,RBI CCR VBTF DTC DTCP,3.0,* * * * *,RB.* CC.* VB.* DT.* DT.*
+501390,DT.* DT.* NN.* CC.* FW,6.0,DTC DTCP NNC CCB FW,6.0,* * * * *,DT.* DT.* NN.* CC.* FW
+501392,DT.* NN.* CC.* FW CC.*,2.0,DTP NNP CCB FW CCP,2.0,* * * * *,DT.* NN.* CC.* FW CC.*
+501393,RB.* DT.* NN.* CC.* VB.*,7.0,RBI DTP NNP CCT VBAF,8.0,* * * * *,RB.* DT.* NN.* CC.* VB.*
+501395,CC.* RB.* RB.* PR.* RB.*,2.0,CCR RBM RBD PRP RBW,2.0,* * * * *,CC.* RB.* RB.* PR.* RB.*
+501398,DT.* NN.* CC.* DT.* VB.*,2.0,DTC NNC CCB DTCP VBW,3.0,* * * * *,DT.* NN.* CC.* DT.* VB.*
+501399,NN.* CC.* DT.* VB.* CC.*,3.0,NNC CCB DTCP VBW CCA,3.0,* * * * *,NN.* CC.* DT.* VB.* CC.*
+501404,CC.* VB.* CC.* NN.* DT.*,8.0,CCA VBW CCB NNP DTC,11.0,* * * * *,CC.* VB.* CC.* NN.* DT.*
+501407,VB.* CC.* NN.* DT.* FW,4.0,VBOF CCB NNP DTC FW,4.0,* * * * *,VB.* CC.* NN.* DT.* FW
+501435,CC.* VB.* DT.* DT.* VB.*,2.0,CCA VBW DTC DTCP VBAF,2.0,* * * * *,CC.* VB.* DT.* DT.* VB.*
+501438,DT.* NN.*_CC.* JJ.* CC.* NN.*,2.0,DTC NNC_CCP JJD CCT NNC,2.0,* * * * *,DT.* NN.*_CC.* JJ.* CC.* NN.*
+501439,NN.*_CC.* JJ.* CC.* NN.* CC.*,2.0,NNC_CCP JJD CCT NNC CCB,2.0,NNC_CCP * * * *,NNC_CCP JJ.* CC.* NN.* CC.*
+501440,PM.* DT.* VB.* CC.* FW,2.0,PMSC DTC VBTR CCP FW,2.0,* * * * *,PM.* DT.* VB.* CC.* FW
+501462,FW CC.* NN.* PM.* CC.*,5.0,FW CCT NNP PMSC CCA,5.0,FW * * * *,FW CC.* NN.* PM.* CC.*
+501471,NN.* DT.* NN.* CC.* PR.*,3.0,NNC DTP NNP CCP PRS,3.0,* * * * *,NN.* DT.* NN.* CC.* PR.*
+501474,CC.* JJ.*_JJ.*_CC.* NN.* CC.* NN.*,2.0,CCB JJCS_JJD_CCP NNC CCP NNC,2.0,* JJCS_JJD_CCP * * *,CC.* JJCS_JJD_CCP NN.* CC.* NN.*
+501476,NN.* DT.* JJ.*_CC.* NN.*_CC.* NN.*,2.0,NNC DTP JJD_CCP NNP_CCP NNP,2.0,* * * * *,NN.* DT.* JJ.*_CC.* NN.*_CC.* NN.*
+501477,VB.* RB.* DT.* NN.* CC.*,11.0,VBTS RBI DTP NNP CCP,12.0,* * * * *,VB.* RB.* DT.* NN.* CC.*
+501480,RB.* DT.* NN.* CC.* NN.*,3.0,RBI DTP NNP CCT NNC,4.0,* * * * *,RB.* DT.* NN.* CC.* NN.*
+501481,DT.* NN.* CC.* NN.* CC.*,13.0,DTP NNP CCP NNC CCB,13.0,* * * * *,DT.* NN.* CC.* NN.* CC.*
+501483,NN.* CC.* NN.* CC.* FW,3.0,NNP CCP NNC CCB FW,3.0,* * * * *,NN.* CC.* NN.* CC.* FW
+501497,VB.* RB.* PR.* CC.* VB.*,2.0,VBTS RBD PRS CCA VBTR,2.0,* * * * *,VB.* RB.* PR.* CC.* VB.*
+501498,RB.* PR.* CC.* VB.* CC.*,2.0,RBD PRS CCA VBTR CCB,3.0,* * * * *,RB.* PR.* CC.* VB.* CC.*
+501499,CC.* VB.* CC.* PR.* CC.*,2.0,CCA VBTR CCB PRI CCP,3.0,* * * * *,CC.* VB.* CC.* PR.* CC.*
+501501,LM VB.* CC.* VB.* CC.*,2.0,LM VBTF CCB VBW CCA,3.0,LM * * * *,LM VB.* CC.* VB.* CC.*
+501503,CC.* VB.* DT.* JJ.*_CC.* NN.*,2.0,CCA VBOF DTC JJD_CCP NNP,4.0,* * * * *,CC.* VB.* DT.* JJ.*_CC.* NN.*
+501506,CC.* NN.* CC.* VB.* DT.*,9.0,CCB NNPA CCP VBAF DTC,13.0,* * * * *,CC.* NN.* CC.* VB.* DT.*
+501512,NN.* PM.* FW CC.* NN.*,3.0,NNCA PMS FW CCB NNPA,3.0,* * FW * *,NN.* PM.* FW CC.* NN.*
+501519,NN.* CC.* JJ.*_CC.* FW FW,2.0,NNC CCB JJD_CCP FW FW,2.0,* * * * FW,NN.* CC.* JJ.*_CC.* FW FW
+501520,CC.* JJ.*_CC.* FW FW CC.*,2.0,CCB JJD_CCP FW FW CCT,2.0,* JJD_CCP * FW *,CC.* JJD_CCP FW FW CC.*
+501525,NN.* CC.* DT.* NN.* CC.*,7.0,NNC CCP DTP NNP CCA,7.0,* * * * *,NN.* CC.* DT.* NN.* CC.*
+501526,NN.* PM.* RB.* VB.* PR.*,2.0,NNP PMS RBW VBTR PRP,4.0,* * * * *,NN.* PM.* RB.* VB.* PR.*
+501531,JJ.* CC.* NN.* CC.* NN.*,3.0,JJC CCB NNP CCT NNC,3.0,* * * * *,JJ.* CC.* NN.* CC.* NN.*
+501541,JJ.* DT.* NN.* CC.* DT.*,3.0,JJD DTC NNP CCB DTCP,3.0,* * * * *,JJ.* DT.* NN.* CC.* DT.*
+501558,RB.* DT.* VB.* CC.* NN.*,4.0,RBI DTC VBTS CCB NNP,4.0,* * * * *,RB.* DT.* VB.* CC.* NN.*
+501572,DT.* NN.*_CC.* VB.* CC.* PR.*,2.0,DTC NNC_CCP VBTR CCT PRSP,3.0,* * * * *,DT.* NN.*_CC.* VB.* CC.* PR.*
+501576,RB.* DT.* NN.* CC.* FW,2.0,RBI DTC NNC CCB FW,2.0,* * * * *,RB.* DT.* NN.* CC.* FW
+501587,CD.* NN.* CC.* VB.* CC.*,2.0,CDB NNC CCP VBTS CCB,2.0,* * * * *,CD.* NN.* CC.* VB.* CC.*
+501588,VB.* CC.* NN.* CC.* FW,9.0,VBTS CCB NNP CCT FW,9.0,* * * * *,VB.* CC.* NN.* CC.* FW
+501591,NN.* CC.* JJ.*_CC.* NN.* NN.*,2.0,NNPA CCT JJD_CCP NNC NNPA,2.0,* * * * *,NN.* CC.* JJ.*_CC.* NN.* NN.*
+501592,VB.* RB.* DT.* DT.* NN.*_CC.*,2.0,VBTS RBI DTC DTCP NNC_CCP,2.0,* * * * *,VB.* RB.* DT.* DT.* NN.*_CC.*
+501594,RB.* DT.* DT.* NN.*_CC.* VB.*,2.0,RBI DTC DTCP NNC_CCP VBS,2.0,* * * * *,RB.* DT.* DT.* NN.*_CC.* VB.*
+501595,CC.* DT.* DT.* NN.* CC.*,3.0,CCP DTC DTCP NNC CCB,3.0,* * * * *,CC.* DT.* DT.* NN.* CC.*
+501598,LM VB.* CC.* NN.* CC.*,5.0,LM VBTS CCR NNC CCT,7.0,LM * * * *,LM VB.* CC.* NN.* CC.*
+501599,NN.* CC.* NN.* CC.* NN.*_CC.*,2.0,NNC CCB NNP CCT NNC_CCP,2.0,* * * * *,NN.* CC.* NN.* CC.* NN.*_CC.*
+501600,CC.* JJ.* DT.* DT.* NN.*,2.0,CCB JJD DTC DTCP NNC,3.0,* * * * *,CC.* JJ.* DT.* DT.* NN.*
+501602,RB.*_CC.* VB.* CC.* DT.* FW,2.0,RBD_CCP VBOF CCP DTCP FW,2.0,RBD_CCP * * * *,RBD_CCP VB.* CC.* DT.* FW
+501603,VB.* DT.* NN.* NN.* CC.*,3.0,VBOF DTP NNPA NNP CCT,4.0,* * * * *,VB.* DT.* NN.* NN.* CC.*
+501606,NN.* CC.* FW CC.* PR.*,3.0,NNC CCT FW CCP PRP,3.0,* * * * *,NN.* CC.* FW CC.* PR.*
+501608,RB.* VB.* CC.* NN.* DT.*,3.0,RBI VBTR CCT NNPA DTC,5.0,* * * * *,RB.* VB.* CC.* NN.* DT.*
+501614,NN.* CC.* DT.* NN.*_CC.* PR.*,2.0,NNC CCT DTCP NNC_CCP PRO,3.0,* * * * *,NN.* CC.* DT.* NN.*_CC.* PR.*
+501616,JJ.*_CC.* NN.* DT.* VB.* CC.*,2.0,JJD_CCP NNC DTC VBTR CCB,2.0,JJD_CCP * * * *,JJD_CCP NN.* DT.* VB.* CC.*
+501617,NN.* DT.* VB.* CC.* DT.*,2.0,NNC DTC VBTR CCB DTCP,3.0,* * * * *,NN.* DT.* VB.* CC.* DT.*
+501618,DT.* VB.* CC.* DT.* NN.*,4.0,DTC VBTR CCB DTCP NNC,7.0,* * * * *,DT.* VB.* CC.* DT.* NN.*
+501635,PR.* CC.* DT.* NN.*_CC.* JJ.*,2.0,PRI CCP DTC NNC_CCP JJD,2.0,* * * * *,PR.* CC.* DT.* NN.*_CC.* JJ.*
+501638,VB.* DT.* NN.* CC.* NN.*,10.0,VBOF DTC NNC CCB NNP,11.0,* * * * *,VB.* DT.* NN.* CC.* NN.*
+501640,NN.* CC.* FW CC.* JJ.*_CC.*,2.0,NNC CCB FW CCB JJD_CCP,2.0,* * * * *,NN.* CC.* FW CC.* JJ.*_CC.*
+501642,CC.* FW CC.* JJ.*_CC.* NN.*,2.0,CCB FW CCB JJD_CCP NNP,2.0,* FW * * *,CC.* FW CC.* JJ.*_CC.* NN.*
+501651,JJ.* CC.* VB.* DT.* NN.*,2.0,JJC CCP VBTS DTC NNC,3.0,* * * * *,JJ.* CC.* VB.* DT.* NN.*
+501653,CC.* CC.* JJ.*_CC.* FW CC.*,2.0,CCA CCB JJD_CCP FW CCP,2.0,* * * * *,CC.* CC.* JJ.*_CC.* FW CC.*
+501661,NN.* CC.* DT.* NN.*_CC.* VB.*,6.0,NNC CCT DTCP NNC_CCP VBTR,7.0,* * * * *,NN.* CC.* DT.* NN.*_CC.* VB.*
+501672,DT.* PR.*_CC.* PM.* FW CC.*,2.0,DTC PRSP_CCP PMS FW CCB,2.0,* * * FW *,DT.* PR.*_CC.* PM.* FW CC.*
+501673,NN.* CC.* NN.* CC.* PR.*_CC.*,4.0,NNC CCB NNC CCT PRI_CCP,4.0,* * * * *,NN.* CC.* NN.* CC.* PR.*_CC.*
+501674,NN.* CC.* PR.*_CC.* NN.* FW,3.0,NNC CCT PRI_CCP NNP FW,3.0,* * * * FW,NN.* CC.* PR.*_CC.* NN.* FW
+501676,CC.* PR.*_CC.* NN.* FW CC.*,2.0,CCP PRI_CCP NNP FW CCB,2.0,* PRI_CCP * FW *,CC.* PRI_CCP NN.* FW CC.*
+501677,CC.* FW CC.* DT.* NN.*,3.0,CCP FW CCB DTCP NNP,5.0,* FW * * *,CC.* FW CC.* DT.* NN.*
+501679,FW CC.* DT.* NN.* LM,2.0,FW CCB DTCP NNP LM,2.0,FW * * * *,FW CC.* DT.* NN.* LM
+501688,VB.* PR.* CC.* NN.* CC.*,9.0,VBOF PRS CCB NNPA CCR,9.0,* * * * *,VB.* PR.* CC.* NN.* CC.*
+501696,PR.* CC.* NN.*_CC.* NN.* CC.*,3.0,PRS CCT NNP_CCP NNP CCA,3.0,* * * * *,PR.* CC.* NN.*_CC.* NN.* CC.*
+501710,NN.* CC.* VB.*_VB.* PR.* RB.*,2.0,NNC CCR VBTF_VBOF PRP RBK,2.0,* * * * *,NN.* CC.* VB.*_VB.* PR.* RB.*
+501724,RB.* RB.* VB.* DT.* NN.*,7.0,RBF RBI VBTS DTC NNC,9.0,* * * * *,RB.* RB.* VB.* DT.* NN.*
+501725,RB.* VB.* DT.* NN.* CC.*,14.0,RBI VBTS DTC NNC CCR,18.0,* * * * *,RB.* VB.* DT.* NN.* CC.*
+501726,CC.* CC.* VB.* CC.* DT.*,2.0,CCR CCT VBAF CCP DTC,2.0,* * * * *,CC.* CC.* VB.* CC.* DT.*
+501732,JJ.*_CC.* NN.* PR.* DT.* NN.*,2.0,JJD_CCP NNC PRL DTP NNP,2.0,JJD_CCP * * * *,JJD_CCP NN.* PR.* DT.* NN.*
+501737,VB.* CC.* NN.* DT.* NN.*,10.0,VBW CCB NNP DTC NNC,10.0,* * * * *,VB.* CC.* NN.* DT.* NN.*
+501744,CC.* RB.* DT.* VB.* CC.*,3.0,CCP RBI DTC VBTR CCT,3.0,* * * * *,CC.* RB.* DT.* VB.* CC.*
+501747,CC.* RB.* VB.* DT.* NN.*,3.0,CCP RBF VBTS DTC NNC,4.0,* * * * *,CC.* RB.* VB.* DT.* NN.*
+501755,DT.* NN.* CC.* DT.* FW,2.0,DTC NNC CCB DTCP FW,2.0,* * * * *,DT.* NN.* CC.* DT.* FW
+501756,NN.* CC.* DT.* FW CC.*,2.0,NNC CCB DTCP FW CCT,2.0,* * * * *,NN.* CC.* DT.* FW CC.*
+501757,NN.* CC.* NN.* PR.*_CC.* DT.*,2.0,NNC CCB NNC PRS_CCP DTP,2.0,* * * PRS_CCP *,NN.* CC.* NN.* PRS_CCP DT.*
+501760,NN.* PR.*_CC.* DT.* NN.* NN.*,3.0,NNC PRS_CCP DTP NNP NNP,3.0,* PRS_CCP * * *,NN.* PRS_CCP DT.* NN.* NN.*
+501766,DT.* JJ.*_CC.* NN.* DT.* NN.*,2.0,DTC JJN_CCP NNC DTP NNP,2.0,* * * * *,DT.* JJ.*_CC.* NN.* DT.* NN.*
+501767,NN.* RB.* RB.* VB.* PR.*,2.0,NNP RBK RBQ VBAF PRS,2.0,* * * * *,NN.* RB.* RB.* VB.* PR.*
+501773,DT.* NN.* LM RB.* VB.*_VB.*,2.0,DTP NNP LM RBF VBTR_VBAF,2.0,* * * * VBTR_VBAF,DT.* NN.* LM RB.* VBTR_VBAF
+501776,NN.* CC.* VB.* CC.* DT.*,7.0,NNC CCP VBAF CCT DTCP,7.0,* * * * *,NN.* CC.* VB.* CC.* DT.*
+501777,CC.* VB.* CC.* DT.* NN.*,13.0,CCP VBAF CCT DTCP NNC,22.0,* * * * *,CC.* VB.* CC.* DT.* NN.*
+501779,VB.* CC.* DT.* NN.* CC.*,16.0,VBAF CCT DTCP NNC CCP,18.0,* * * * *,VB.* CC.* DT.* NN.* CC.*
+501782,CC.* DT.* NN.* CC.* PR.*,2.0,CCA DTC NNC CCB PRI,4.0,* * * * *,CC.* DT.* NN.* CC.* PR.*
+501784,DT.* NN.* CC.* PR.* CC.*,3.0,DTC NNC CCB PRI CCA,4.0,* * * * *,DT.* NN.* CC.* PR.* CC.*
+501796,NN.* CC.* PR.*_CC.* NN.* NN.*,3.0,NNC CCB PRI_CCP NNP NNP,3.0,* * * * *,NN.* CC.* PR.*_CC.* NN.* NN.*
+501798,DT.* JJ.*_CC.* NN.* NN.* FW,2.0,DTPP JJD_CCP NNP NNP FW,2.0,* * * * *,DT.* JJ.*_CC.* NN.* NN.* FW
+501801,NN.* PM.* JJ.*_CC.* FW CC.*,2.0,NNP PMS JJD_CCP FW CCB,2.0,* * JJD_CCP * *,NN.* PM.* JJD_CCP FW CC.*
+501804,DT.* DT.* NN.* CC.* NN.*,4.0,DTC DTCP NNC CCB NNP,5.0,* * * * *,DT.* DT.* NN.* CC.* NN.*
+501807,PR.* DT.* DT.* NN.* CC.*,2.0,PRL DTC DTCP NNC CCA,2.0,* * * * *,PR.* DT.* DT.* NN.* CC.*
+501808,DT.* DT.* NN.* CC.* VB.*,6.0,DTC DTCP NNC CCA VBN,7.0,* * * * *,DT.* DT.* NN.* CC.* VB.*
+501809,CC.* DT.* NN.*_CC.* VB.* CC.*,9.0,CCB DTCP NNC_CCP VBTR CCT,12.0,* * * * *,CC.* DT.* NN.*_CC.* VB.* CC.*
+501813,JJ.* DT.* NN.* DT.* NN.*,2.0,JJD DTC NNC DTP NNP,2.0,* * * * *,JJ.* DT.* NN.* DT.* NN.*
+501814,NN.* DT.* NN.* CC.* DT.*,3.0,NNC DTP NNP CCT DTCP,3.0,* * * * *,NN.* DT.* NN.* CC.* DT.*
+501818,NN.* PM.* CC.* RB.* VB.*,4.0,NNPA PMS CCP RBW VBTS,4.0,* * * * *,NN.* PM.* CC.* RB.* VB.*
+501827,NN.* DT.* NN.* CC.* CC.*,2.0,NNC DTP NNP CCA CCB,2.0,* * * * *,NN.* DT.* NN.* CC.* CC.*
+501828,DT.* NN.* CC.* CC.* FW,2.0,DTP NNP CCR CCT FW,2.0,* * * * *,DT.* NN.* CC.* CC.* FW
+501843,CC.* VB.* PR.* CC.* FW,2.0,CCR VBS PRP CCP FW,2.0,* * * * *,CC.* VB.* PR.* CC.* FW
+501862,JJ.*_CC.* NN.* CC.* NN.* CC.*,5.0,JJD_CCP NNC CCT NNPA CCP,4.0,JJD_CCP * * * *,JJD_CCP NN.* CC.* NN.* CC.*
+501864,NN.* CC.* NN.* CC.* VB.*,9.0,NNC CCT NNPA CCP VBW,13.0,* * * * *,NN.* CC.* NN.* CC.* VB.*
+501865,DT.* NN.* CC.* DT.* JJ.*,3.0,DTC NNC CCB DTCP JJD,5.0,* * * * *,DT.* NN.* CC.* DT.* JJ.*
+501869,CC.* VB.* CC.* DT.* FW,3.0,CCP VBTR CCB DTCP FW,9.0,* * * * *,CC.* VB.* CC.* DT.* FW
+501871,VB.* CC.* DT.* FW CC.*,3.0,VBTF CCT DTCP FW CCA,3.0,* * * * *,VB.* CC.* DT.* FW CC.*
+501886,DT.* NN.* DT.* VB.* CC.*,4.0,DTP NNP DTC VBTR CCP,4.0,* * * * *,DT.* NN.* DT.* VB.* CC.*
+501888,NN.* DT.* VB.* CC.* FW,2.0,NNP DTC VBTR CCP FW,2.0,* * * * *,NN.* DT.* VB.* CC.* FW
+501901,NN.* PM.* RB.* JJ.* CC.*,3.0,NNC PMS RBF JJD CCT,3.0,* * * * *,NN.* PM.* RB.* JJ.* CC.*
+501903,NN.* DT.* NN.* CC.* JJ.*,2.0,NNC DTC NNPA CCT JJD,2.0,* * * * *,NN.* DT.* NN.* CC.* JJ.*
+501904,DT.* NN.* CC.* JJ.* DT.*,2.0,DTC NNPA CCT JJD DTP,3.0,* * * * *,DT.* NN.* CC.* JJ.* DT.*
+501906,NN.* CC.* JJ.* DT.* NN.*,3.0,NNPA CCT JJD DTP NNP,4.0,* * * * *,NN.* CC.* JJ.* DT.* NN.*
+501909,NN.* CC.* CC.* NN.*_CC.* JJ.*,2.0,NNC CCA CCR NNC_CCP JJCC,2.0,* * * * *,NN.* CC.* CC.* NN.*_CC.* JJ.*
+501934,VB.* CC.* DT.* NN.*_CC.* VB.*,4.0,VBTS CCP DTC NNC_CCP VBTF,5.0,* * * * *,VB.* CC.* DT.* NN.*_CC.* VB.*
+501935,NN.* DT.* JJ.*_CC.* NN.* CC.*,2.0,NNC DTC JJD_CCP NNC CCT,2.0,* * * * *,NN.* DT.* JJ.*_CC.* NN.* CC.*
+501936,DT.* JJ.*_CC.* NN.* CC.* NN.*,4.0,DTC JJD_CCP NNC CCT NNC,5.0,* * * * *,DT.* JJ.*_CC.* NN.* CC.* NN.*
+501939,VB.* DT.* JJ.*_CC.* NN.* NN.*,2.0,VBOF DTP JJD_CCP NNP NNP,2.0,* * * * *,VB.* DT.* JJ.*_CC.* NN.* NN.*
+501941,NN.* NN.* CC.* RB.* RB.*,2.0,NNC NNPA CCP RBT RBF,2.0,* * * * *,NN.* NN.* CC.* RB.* RB.*
+501943,RB.* RB.* VB.* DT.* FW,2.0,RBK RBQ VBRF DTP FW,2.0,* * * * *,RB.* RB.* VB.* DT.* FW
+501944,NN.* NN.* CC.* DT.* NN.*_CC.*,2.0,NNP NNP CCT DTCP NNC_CCP,2.0,* * * * *,NN.* NN.* CC.* DT.* NN.*_CC.*
+501946,DT.* NN.*_CC.* PR.*_CC.* NN.*_CC.* VB.*,2.0,DTC NNC_CCP PRQ_CCP NNC_CCP VBAF,2.0,* * * * *,DT.* NN.*_CC.* PR.*_CC.* NN.*_CC.* VB.*
+501948,CC.* VB.* RB.* VB.* DT.*,2.0,CCA VBS RBW VBOF DTC,3.0,* * * * *,CC.* VB.* RB.* VB.* DT.*
+501949,VB.* RB.* VB.* DT.* NN.*,2.0,VBS RBM VBTS DTC NNC,3.0,* * * * *,VB.* RB.* VB.* DT.* NN.*
+501955,NN.* NN.* DT.* JJ.*_CC.* NN.*,2.0,NNC NNC DTP JJD_CCP NNP,2.0,* * * * *,NN.* NN.* DT.* JJ.*_CC.* NN.*
+501956,NN.* DT.* JJ.*_CC.* NN.* NN.*,3.0,NNC DTP JJD_CCP NNP NNP,5.0,* * * * *,NN.* DT.* JJ.*_CC.* NN.* NN.*
+501959,CC.* NN.*_CC.* VB.* CC.* NN.*,3.0,CCB NNC_CCP VBOF CCB NNPA,5.0,* NNC_CCP * * *,CC.* NNC_CCP VB.* CC.* NN.*
+501966,NN.* CC.* NN.* CC.* JJ.*_CC.*,3.0,NNP CCT NNC CCP JJN_CCP,3.0,* * * * *,NN.* CC.* NN.* CC.* JJ.*_CC.*
+501967,RB.* CC.* DT.* NN.* CC.*,7.0,RBI CCT DTCP NNC CCB,7.0,* * * * *,RB.* CC.* DT.* NN.* CC.*
+501969,CC.* DT.* NN.* CC.* NN.*,8.0,CCB DTCP NNC CCT NNPA,13.0,* * * * *,CC.* DT.* NN.* CC.* NN.*
+501970,RB.* CC.* VB.* CC.* DT.*,5.0,RBF CCP VBTF CCB DTC,6.0,* * * * *,RB.* CC.* VB.* CC.* DT.*
+501973,FW RB.* CC.* DT.* NN.*,3.0,FW RBW CCP DTP NNP,3.0,FW * * * *,FW RB.* CC.* DT.* NN.*
+501978,NN.* CC.* VB.* PR.* CC.*,5.0,NNC CCR VBTF PRP CCB,5.0,* * * * *,NN.* CC.* VB.* PR.* CC.*
+501987,NN.* RB.* RB.* VB.* DT.*,5.0,NNP RBK RBQ VBRF DTP,7.0,* * * * *,NN.* RB.* RB.* VB.* DT.*
+502003,NN.* CC.* VB.* CC.* JJ.*,3.0,NNC CCP VBOF CCB JJN,7.0,* * * * *,NN.* CC.* VB.* CC.* JJ.*
+502004,VB.* CC.* DT.* NN.* DT.*,3.0,VBTF CCB DTCP NNC DTC,3.0,* * * * *,VB.* CC.* DT.* NN.* DT.*
+502006,PR.* CC.* DT.* NN.* CC.*,4.0,PRI CCR DTC NNC CCB,4.0,* * * * *,PR.* CC.* DT.* NN.* CC.*
+502013,LM VB.* RB.* CC.* DT.*,2.0,LM VBTR RBF CCA DTC,3.0,LM * * * *,LM VB.* RB.* CC.* DT.*
+502015,NN.* CC.* NN.* CC.* NN.*,4.0,NNP CCT NNPA CCR NNC,6.0,* * * * *,NN.* CC.* NN.* CC.* NN.*
+502017,PR.* DT.* VB.* CC.* NN.*,2.0,PRP DTC VBTR CCT NNP,2.0,* * * * *,PR.* DT.* VB.* CC.* NN.*
+502033,FW CC.* VB.* CC.* DT.*,2.0,FW CCP VBOF CCB DTCP,2.0,FW * * * *,FW CC.* VB.* CC.* DT.*
+502035,PR.* DT.* NN.* CC.* PR.*,2.0,PRP DTC NNC CCB PRI,5.0,* * * * *,PR.* DT.* NN.* CC.* PR.*
+502045,NN.* NN.* CC.* DT.* VB.*_CC.*,2.0,NNP NNP CCT DTCP VBTR_CCP,2.0,* * * * *,NN.* NN.* CC.* DT.* VB.*_CC.*
+502047,NN.* CC.* DT.* VB.*_CC.* NN.*,4.0,NNC CCB DTCP VBRF_CCP NNPA,4.0,* * * * *,NN.* CC.* DT.* VB.*_CC.* NN.*
+502048,DT.* VB.* DT.* NN.* CC.*,2.0,DTC VBOF DTP NNP CCT,2.0,* * * * *,DT.* VB.* DT.* NN.* CC.*
+502053,NN.* CC.* RB.* DT.* VB.*,2.0,NNC CCP RBI DTC VBS,2.0,* * * * *,NN.* CC.* RB.* DT.* VB.*
+502068,RB.* DT.* NN.* RB.* NN.*,2.0,RBR DTP NNP RBL NNPA,2.0,* * * * *,RB.* DT.* NN.* RB.* NN.*
+502094,VB.* PR.* DT.* DT.* NN.*,2.0,VBTS PRS DTC DTCP NNC,3.0,* * * * *,VB.* PR.* DT.* DT.* NN.*
+502096,NN.* CC.* NN.* CC.* VB.*_CC.*,2.0,NNC CCB NNC CCT VBAF_CCP,3.0,* * * * *,NN.* CC.* NN.* CC.* VB.*_CC.*
+502099,NN.* CC.* VB.* DT.* VB.*,2.0,NNC CCP VBOF DTC VBTS,2.0,* * * * *,NN.* CC.* VB.* DT.* VB.*
+502100,CC.* VB.* DT.* VB.* CC.*,3.0,CCP VBOF DTC VBTS CCB,4.0,* * * * *,CC.* VB.* DT.* VB.* CC.*
+502101,VB.* DT.* VB.* CC.* DT.*,2.0,VBOF DTC VBTS CCB DTCP,2.0,* * * * *,VB.* DT.* VB.* CC.* DT.*
+502102,PR.* DT.* NN.* CC.* NN.*,4.0,PRS DTC NNC CCT NNP,5.0,* * * * *,PR.* DT.* NN.* CC.* NN.*
+502103,DT.* NN.* CC.* NN.* PM.*,7.0,DTC NNC CCT NNP PMS,7.0,* * * * *,DT.* NN.* CC.* NN.* PM.*
+502108,NN.* CC.* VB.* CC.* CD.*,3.0,NNC CCP VBTR CCT CDB,3.0,* * * * *,NN.* CC.* VB.* CC.* CD.*
+502120,CC.* VB.* DT.* FW CC.*,2.0,CCA VBTR DTC FW CCB,4.0,* * * * *,CC.* VB.* DT.* FW CC.*
+502122,DT.* JJ.*_JJ.*_CC.* NN.* CC.* RB.*,2.0,DTC JJCS_JJD_CCP NNC CCP RBF,2.0,* * * * *,DT.* JJ.*_JJ.*_CC.* NN.* CC.* RB.*
+502130,DT.* FW CC.* VB.* CC.*,4.0,DTC FW CCP VBTS CCB,4.0,* * * * *,DT.* FW CC.* VB.* CC.*
+502133,FW CC.* VB.* CC.* NN.*,5.0,FW CCP VBTS CCB NNPA,6.0,FW * * * *,FW CC.* VB.* CC.* NN.*
+502154,RB.* VB.* DT.* DT.* NN.*,2.0,RBM VBOF DTC DTCP NNC,3.0,* * * * *,RB.* VB.* DT.* DT.* NN.*
+502161,NN.* CC.* RB.* VB.* CC.*,4.0,NNC CCP RBM VBOF CCB,6.0,* * * * *,NN.* CC.* RB.* VB.* CC.*
+502165,JJ.* CC.* DT.* NN.* CC.*,3.0,JJC CCB DTCP NNC CCP,3.0,* * * * *,JJ.* CC.* DT.* NN.* CC.*
+502173,CC.* DT.* NN.* CC.* VB.*,12.0,CCB DTCP NNC CCP VBTS,16.0,* * * * *,CC.* DT.* NN.* CC.* VB.*
+502176,RB.*_CC.* VB.* CC.* NN.* DT.*,2.0,RBD_CCP VBTR CCB NNP DTC,2.0,RBD_CCP * * * *,RBD_CCP VB.* CC.* NN.* DT.*
+502178,NN.* CC.* VB.* CC.* JJ.*_CC.*,3.0,NNP CCT VBW CCT JJN_CCP,4.0,* * * * *,NN.* CC.* VB.* CC.* JJ.*_CC.*
+502180,CC.* VB.* CC.* JJ.*_CC.* NN.*_CC.*,2.0,CCP VBTS CCT JJC_CCP NNC_CCP,2.0,* * * * *,CC.* VB.* CC.* JJ.*_CC.* NN.*_CC.*
+502181,CC.* CC.* DT.* DT.* NN.*,2.0,CCR CCT DTC DTCP NNC,2.0,* * * * *,CC.* CC.* DT.* DT.* NN.*
+502189,RB.* RB.* PR.* VB.* DT.*,3.0,RBF RBI PRP VBTF DTC,3.0,* * * * *,RB.* RB.* PR.* VB.* DT.*
+502190,VB.* DT.* PR.*_CC.* FW FW,2.0,VBTF DTC PRSP_CCP FW FW,2.0,* * * * FW,VB.* DT.* PR.*_CC.* FW FW
+502192,VB.* JJ.* DT.* NN.* CC.*,3.0,VBTS JJD DTC NNC CCR,3.0,* * * * *,VB.* JJ.* DT.* NN.* CC.*
+502198,FW DT.* NN.* CC.* NN.*,3.0,FW DTP NNP CCT NNPA,3.0,FW * * * *,FW DT.* NN.* CC.* NN.*
+502202,CC.* NN.* RB.* RB.* JJ.*,2.0,CCB NNP RBK RBQ JJD,2.0,* * * * *,CC.* NN.* RB.* RB.* JJ.*
+502203,CC.* DT.* NN.*_CC.* VB.* LM,2.0,CCA DTCP NNC_CCP VBS LM,2.0,* * * * LM,CC.* DT.* NN.*_CC.* VB.* LM
+502207,RB.* RB.* RB.* DT.* NN.*,2.0,RBF RBI RBR DTP NNP,3.0,* * * * *,RB.* RB.* RB.* DT.* NN.*
+502208,RB.* DT.* NN.* DT.* NN.*,2.0,RBR DTP NNP DTC NNC,2.0,* * * * *,RB.* DT.* NN.* DT.* NN.*
+502211,JJ.*_CC.* NN.* NN.* FW CC.*,2.0,JJD_CCP NNC NNPA FW CCP,2.0,JJD_CCP * * * *,JJD_CCP NN.* NN.* FW CC.*
+502217,NN.* CC.* VB.* CC.* VB.*,3.0,NNC CCA VBTS CCP VBOF,5.0,* * * * *,NN.* CC.* VB.* CC.* VB.*
+502225,VB.* RB.* CC.* DT.* PR.*,2.0,VBOF RBI CCB DTCP PRO,2.0,* * * * *,VB.* RB.* CC.* DT.* PR.*
+502228,LM DT.* NN.*_CC.* VB.* CC.*,2.0,LM DTC NNC_CCP VBTS CCT,2.0,LM * * * *,LM DT.* NN.*_CC.* VB.* CC.*
+502233,NN.*_CC.* VB.* CC.* VB.* CC.*,2.0,NNC_CCP VBW CCA VBAF CCT,2.0,NNC_CCP * * * *,NNC_CCP VB.* CC.* VB.* CC.*
+502239,JJ.* CC.* DT.* NN.* PR.*,2.0,JJN CCP DTC NNC PRS,2.0,* * * * *,JJ.* CC.* DT.* NN.* PR.*
+502242,NN.* PM.* CC.* CC.* RB.*,2.0,NNC PMS CCA CCR RBT,2.0,* * * * *,NN.* PM.* CC.* CC.* RB.*
+502244,VB.* DT.* NN.* CC.* PR.*,2.0,VBTS DTC NNC CCT PRI,5.0,* * * * *,VB.* DT.* NN.* CC.* PR.*
+502247,CC.* PR.* RB.*_CC.* FW FW,2.0,CCA PRI RBI_CCP FW FW,2.0,* * RBI_CCP * FW,CC.* PR.* RBI_CCP FW FW
+502248,PR.* RB.*_CC.* FW FW CC.*,2.0,PRI RBI_CCP FW FW CCB,2.0,* RBI_CCP * FW *,PR.* RBI_CCP FW FW CC.*
+502250,VB.* RB.* DT.* NN.* DT.*,2.0,VBTF RBI DTC NNC DTP,2.0,* * * * *,VB.* RB.* DT.* NN.* DT.*
+502251,PR.* RB.* VB.* DT.* NN.*,2.0,PRSP RBI VBTS DTP NNP,4.0,* * * * *,PR.* RB.* VB.* DT.* NN.*
+502259,JJ.* VB.* DT.* NN.* CC.*,2.0,JJCC VBW DTC NNC CCB,2.0,* * * * *,JJ.* VB.* DT.* NN.* CC.*
+502261,PM.* CC.* VB.* CC.* FW,3.0,PMSC CCA VBW CCT FW,3.0,* * * * *,PM.* CC.* VB.* CC.* FW
+502278,RB.* DT.* JJ.*_CC.* NN.* NN.*,2.0,RBI DTP JJD_CCP NNP NNP,2.0,* * * * *,RB.* DT.* JJ.*_CC.* NN.* NN.*
+502280,DT.* JJ.*_CC.* NN.* NN.* NN.*,2.0,DTP JJD_CCP NNC NNP NNP,4.0,* * * * *,DT.* JJ.*_CC.* NN.* NN.* NN.*
+502283,NN.* DT.* NN.* CC.* FW,5.0,NNC DTP NNP CCB FW,5.0,* * * * *,NN.* DT.* NN.* CC.* FW
+502287,NN.* CC.* RB.* PR.* PR.*,2.0,NNC CCA RBF PRS PRQ,2.0,* * * * *,NN.* CC.* RB.* PR.* PR.*
+502288,VB.* DT.* NN.* CC.* FW,3.0,VBTF DTC NNC CCT FW,3.0,* * * * *,VB.* DT.* NN.* CC.* FW
+502293,VB.* DT.* NN.* CC.* VB.*,5.0,VBTS DTP NNP CCP VBOF,6.0,* * * * *,VB.* DT.* NN.* CC.* VB.*
+502295,NN.* CC.* NN.* RB.* RB.*,3.0,NNC CCB NNP RBK RBQ,3.0,* * * * *,NN.* CC.* NN.* RB.* RB.*
+502296,CC.* NN.* RB.* RB.* VB.*,3.0,CCB NNP RBK RBQ VBOL,6.0,* * * * *,CC.* NN.* RB.* RB.* VB.*
+502298,RB.* RB.* VB.* DT.* PR.*_CC.*,2.0,RBK RBQ VBOL DTC PRSP_CCP,2.0,* * * * *,RB.* RB.* VB.* DT.* PR.*_CC.*
+502299,VB.* DT.* PR.*_CC.* DT.* NN.*,2.0,VBOL DTC PRSP_CCP DTCP NNC,3.0,* * * * *,VB.* DT.* PR.*_CC.* DT.* NN.*
+502300,DT.* PR.*_CC.* DT.* NN.* CC.*,2.0,DTC PRSP_CCP DTCP NNC CCR,2.0,* * * * *,DT.* PR.*_CC.* DT.* NN.* CC.*
+502307,CC.* RB.* RB.* VB.* CC.*,2.0,CCA RBM RBF VBW CCB,2.0,* * * * *,CC.* RB.* RB.* VB.* CC.*
+502310,JJ.* DT.* NN.* CC.* RB.*_CC.*,2.0,JJD DTC NNC CCT RBT_CCP,2.0,* * * * *,JJ.* DT.* NN.* CC.* RB.*_CC.*
+502311,DT.* NN.* CC.* RB.*_CC.* VB.*,3.0,DTC NNC CCP RBD_CCP VBOF,3.0,* * * * *,DT.* NN.* CC.* RB.*_CC.* VB.*
+502313,NN.* CC.* RB.*_CC.* VB.* CC.*,2.0,NNC CCP RBD_CCP VBOF CCB,2.0,* * * * *,NN.* CC.* RB.*_CC.* VB.* CC.*
+502315,CC.* RB.*_CC.* VB.* CC.* NN.*,3.0,CCR RBD_CCP VBAF CCT NNP,3.0,* RBD_CCP * * *,CC.* RBD_CCP VB.* CC.* NN.*
+502332,CC.* DT.* NN.* CC.* FW,2.0,CCP DTC NNC CCA FW,2.0,* * * * *,CC.* DT.* NN.* CC.* FW
+502334,RB.* CC.* FW DT.* NN.*,2.0,RBR CCT FW DTP NNP,2.0,* * * * *,RB.* CC.* FW DT.* NN.*
+502340,NN.* CC.* NN.* CC.* DT.*,4.0,NNP CCA NNC CCB DTCP,4.0,* * * * *,NN.* CC.* NN.* CC.* DT.*
+502342,RB.* NN.* DT.* NN.* CC.*,2.0,RBL NNPA DTC NNC CCT,2.0,* * * * *,RB.* NN.* DT.* NN.* CC.*
+502343,DT.* NN.* CC.* DT.* NN.*,3.0,DTP NNP CCT DTCP NNC,5.0,* * * * *,DT.* NN.* CC.* DT.* NN.*
+502349,PR.*_CC.* FW FW CC.* NN.*,2.0,PRI_CCP FW FW CCT NNP,2.0,PRI_CCP * FW * *,PRI_CCP FW FW CC.* NN.*
+502356,RB.* CC.* VB.* DT.* NN.*,6.0,RBF CCP VBTR DTC NNC,6.0,* * * * *,RB.* CC.* VB.* DT.* NN.*
+502357,DT.* NN.* PM.* FW CC.*,2.0,DTC NNC PMS FW CCB,2.0,* * * FW *,DT.* NN.* PM.* FW CC.*
+502362,NN.* CC.* PR.* CC.* RB.*,3.0,NNC CCB PRI CCA RBF,3.0,* * * * *,NN.* CC.* PR.* CC.* RB.*
+502374,VB.* RB.* CC.* DT.* NN.*,3.0,VBTS RBI CCB DTCP NNC,4.0,* * * * *,VB.* RB.* CC.* DT.* NN.*
+502381,DT.* VB.* CC.* JJ.* CC.*,2.0,DTC VBTR CCP JJD CCT,2.0,* * * * *,DT.* VB.* CC.* JJ.* CC.*
+502389,RB.* VB.* PR.* DT.* FW,2.0,RBW VBTS PRP DTC FW,2.0,* * * * *,RB.* VB.* PR.* DT.* FW
+502394,CC.* DT.* NN.* CC.* PR.*_CC.*,2.0,CCB DTCP NNP CCT PRSP_CCP,2.0,* * * * *,CC.* DT.* NN.* CC.* PR.*_CC.*
+502416,RB.* PR.*_CC.* VB.* DT.* DT.*,2.0,RBF PRP_CCP VBOF DTC DTCP,2.0,* PRP_CCP * * *,RB.* PRP_CCP VB.* DT.* DT.*
+502417,PR.*_CC.* VB.* DT.* DT.* NN.*,2.0,PRP_CCP VBOF DTC DTCP NNC,2.0,PRP_CCP * * * *,PRP_CCP VB.* DT.* DT.* NN.*
+502424,NN.* PM.* LM VB.* CC.*,2.0,NNC PMS LM VBAF CCB,2.0,* * LM * *,NN.* PM.* LM VB.* CC.*
+502430,DT.* JJ.*_CC.* NN.*_CC.* NN.* NN.*,2.0,DTP JJD_CCP NNC_CCP NNP NNP,2.0,* * * * *,DT.* JJ.*_CC.* NN.*_CC.* NN.* NN.*
+502431,NN.* DT.* VB.* CC.* VB.*,2.0,NNP DTC VBTS CCP VBW,2.0,* * * * *,NN.* DT.* VB.* CC.* VB.*
+502436,RB.* DT.* PR.*_CC.* NN.* CC.*,4.0,RBI DTC PRI_CCP NNP CCP,4.0,* * * * *,RB.* DT.* PR.*_CC.* NN.* CC.*
+502438,CC.* JJ.*_CC.* FW CC.* NN.*,2.0,CCB JJD_CCP FW CCB NNPA,2.0,* JJD_CCP * * *,CC.* JJD_CCP FW CC.* NN.*
+502450,NN.* PR.* CC.* DT.* NN.*,4.0,NNC PRS CCU DTP NNP,5.0,* * * * *,NN.* PR.* CC.* DT.* NN.*
+502453,CC.* DT.* NN.* DT.* NN.*,3.0,CCA DTCP NNC DTP NNP,3.0,* * * * *,CC.* DT.* NN.* DT.* NN.*
+502464,VB.* DT.* NN.* CC.* JJ.*_CC.*,3.0,VBAF DTP NNP CCB JJD_CCP,4.0,* * * * *,VB.* DT.* NN.* CC.* JJ.*_CC.*
+502465,DT.* NN.* CC.* JJ.*_CC.* NN.*,2.0,DTP NNP CCB JJD_CCP NNC,2.0,* * * * *,DT.* NN.* CC.* JJ.*_CC.* NN.*
+502466,JJ.*_CC.* NN.* CC.* FW FW,3.0,JJD_CCP NNC CCT FW FW,2.0,JJD_CCP * * * *,JJD_CCP NN.* CC.* FW FW
+502468,VB.* DT.* FW CC.* NN.*,4.0,VBOF DTC FW CCB NNP,5.0,* * * * *,VB.* DT.* FW CC.* NN.*
+502471,CC.* NN.* CC.* NN.* DT.*,3.0,CCB NNP CCA NNC DTP,4.0,* * * * *,CC.* NN.* CC.* NN.* DT.*
+502478,RB.* DT.* VB.* DT.* NN.*,3.0,RBI DTC VBTS DTP NNP,3.0,* * * * *,RB.* DT.* VB.* DT.* NN.*
+502481,VB.* PR.*_CC.* VB.* CC.* PR.*_CC.*,2.0,VBS PRO_CCP VBW CCT PRSP_CCP,2.0,* * * * *,VB.* PR.*_CC.* VB.* CC.* PR.*_CC.*
+502484,RB.* PR.* VB.* DT.* NN.*,2.0,RBQ PRS VBOF DTC NNC,4.0,* * * * *,RB.* PR.* VB.* DT.* NN.*
+502485,PR.* VB.* DT.* NN.* CC.*,3.0,PRS VBOF DTC NNC CCB,6.0,* * * * *,PR.* VB.* DT.* NN.* CC.*
+502491,CC.* FW FW DT.* JJ.*_CC.*,2.0,CCB FW FW DTP JJD_CCP,2.0,* FW FW * *,CC.* FW FW DT.* JJ.*_CC.*
+502495,NN.* CC.* VB.* CC.* PR.*_CC.*,3.0,NNP CCR VBTF CCR PRQ_CCP,4.0,* * * * *,NN.* CC.* VB.* CC.* PR.*_CC.*
+502499,VB.* DT.* NN.* CC.* RB.*,3.0,VBTS DTC NNC CCA RBR,3.0,* * * * *,VB.* DT.* NN.* CC.* RB.*
+502505,DT.* NN.* PR.* CC.* VB.*,2.0,DTC NNC PRP CCP VBOF,2.0,* * * * *,DT.* NN.* PR.* CC.* VB.*
+502519,DT.* NN.* CC.* NN.* FW,4.0,DTC NNC CCB NNP FW,4.0,* * * * *,DT.* NN.* CC.* NN.* FW
+502523,JJ.* RB.* DT.* NN.* CC.*,2.0,JJD RBI DTP NNP CCT,2.0,* * * * *,JJ.* RB.* DT.* NN.* CC.*
+502529,NN.* LM VB.* CC.* VB.*,2.0,NNP LM VBTF CCT VBW,2.0,* LM * * *,NN.* LM VB.* CC.* VB.*
+502541,RB.* LM FW CC.* NN.*,2.0,RBI LM FW CCB NNP,2.0,* LM FW * *,RB.* LM FW CC.* NN.*
+502544,VB.* CC.* FW CC.* NN.*,2.0,VBTS CCP FW CCT NNPA,2.0,* * * * *,VB.* CC.* FW CC.* NN.*
+502551,NN.* CC.* DT.* JJ.*_CC.* NN.*,3.0,NNC CCB DTCP JJD_CCP NNP,3.0,* * * * *,NN.* CC.* DT.* JJ.*_CC.* NN.*
+502552,CC.* DT.* JJ.*_CC.* NN.* CC.*,4.0,CCB DTCP JJD_CCP NNP CCT,4.0,* * * * *,CC.* DT.* JJ.*_CC.* NN.* CC.*
+502554,NN.* RB.* DT.* NN.* CC.*,2.0,NNCA RBI DTCP NNC CCP,2.0,* * * * *,NN.* RB.* DT.* NN.* CC.*
+502559,VB.* CC.* JJ.*_CC.* NN.* CC.*,2.0,VBTS CCB JJD_CCP NNP CCP,3.0,* * * * *,VB.* CC.* JJ.*_CC.* NN.* CC.*
+502561,CC.* RB.* PR.* VB.* CC.*,2.0,CCP RBF PRS VBW CCR,3.0,* * * * *,CC.* RB.* PR.* VB.* CC.*
+502565,FW CC.* NN.* DT.* NN.*,2.0,FW CCB NNP DTC NNC,3.0,FW * * * *,FW CC.* NN.* DT.* NN.*
+502577,NN.* PM.* VB.* PR.* PM.*,2.0,NNC PMS VBW PRP PMQ,2.0,* * * * *,NN.* PM.* VB.* PR.* PM.*
+502580,NN.* CC.* DT.* NN.* FW,3.0,NNC CCT DTCP NNPA FW,3.0,* * * * FW,NN.* CC.* DT.* NN.* FW
+502586,RB.* DT.* FW CC.* NN.*,3.0,RBI DTC FW CCB NNP,3.0,* * * * *,RB.* DT.* FW CC.* NN.*
+502594,NN.* PM.* RB.* CC.* VB.*,2.0,NNC PMS RBW CCP VBW,2.0,* * * * *,NN.* PM.* RB.* CC.* VB.*
+502597,RB.* VB.* DT.* NN.* DT.*,2.0,RBM VBTS DTC NNC DTP,2.0,* * * * *,RB.* VB.* DT.* NN.* DT.*
+502598,NN.* LM VB.* RB.* VB.*,2.0,NNP LM VBTS RBW VBW,3.0,* LM * * *,NN.* LM VB.* RB.* VB.*
+502599,VB.*_VB.* CC.* DT.* NN.* CC.*,2.0,VBTR_VBAF CCP DTC NNC CCB,2.0,VBTR_VBAF * * * *,VBTR_VBAF CC.* DT.* NN.* CC.*
+502602,CC.* VB.* CC.* VB.* DT.*,2.0,CCP VBTR CCB VBW DTC,4.0,* * * * *,CC.* VB.* CC.* VB.* DT.*
+502604,VB.* CC.* VB.* DT.* NN.*,3.0,VBW CCA VBOF DTC NNC,4.0,* * * * *,VB.* CC.* VB.* DT.* NN.*
+502605,NN.* DT.* DT.* NN.* CC.*,3.0,NNPA DTC DTCP NNC CCB,3.0,* * * * *,NN.* DT.* DT.* NN.* CC.*
+502606,DT.* NN.* CC.* DT.* NN.*_CC.*,2.0,DTC NNC CCB DTCP NNC_CCP,2.0,* * * * *,DT.* NN.* CC.* DT.* NN.*_CC.*
+502619,NN.* CC.* JJ.* DT.* DT.*,2.0,NNP CCA JJD DTC DTCP,2.0,* * * * *,NN.* CC.* JJ.* DT.* DT.*
+502629,CC.* VB.* CC.* PR.*_CC.* FW,2.0,CCA VBTS CCB PRI_CCP FW,3.0,* * * * *,CC.* VB.* CC.* PR.*_CC.* FW
+502636,DT.* NN.* CC.* PM.* FW,2.0,DTC NNC CCT PMS FW,2.0,* * * * FW,DT.* NN.* CC.* PM.* FW
+502640,CC.* DT.* NN.* CC.* RB.*,3.0,CCB DTCP NNC CCT RBL,5.0,* * * * *,CC.* DT.* NN.* CC.* RB.*
+502646,NN.* DT.* NN.* CC.* NN.*,2.0,NNC DTP NNP CCA NNPA,2.0,* * * * *,NN.* DT.* NN.* CC.* NN.*
+502647,DT.* VB.*_VB.* CC.* DT.* NN.*,2.0,DTC VBTR_VBAF CCT DTCP NNC,2.0,* * * * *,DT.* VB.*_VB.* CC.* DT.* NN.*
+502653,RB.* RB.* VB.* CC.* DT.*,2.0,RBK RBQ VBW CCP DTC,3.0,* * * * *,RB.* RB.* VB.* CC.* DT.*
+502656,NN.* PM.* RB.* PR.* CC.*,2.0,NNC PMS RBF PRS CCP,2.0,* * * * *,NN.* PM.* RB.* PR.* CC.*
+502657,FW CC.* CC.* DT.* NN.*,2.0,FW CCT CCB DTCP NNP,2.0,FW * * * *,FW CC.* CC.* DT.* NN.*
+502671,CC.* CC.* DT.* NN.* CC.*,2.0,CCA CCB DTCP NNP CCP,2.0,* * * * *,CC.* CC.* DT.* NN.* CC.*
+502672,DT.* NN.* CC.* DT.* PR.*_CC.*,2.0,DTP NNP CCA DTC PRSP_CCP,2.0,* * * * *,DT.* NN.* CC.* DT.* PR.*_CC.*
+502673,NN.* CC.* DT.* PR.*_CC.* FW,2.0,NNP CCA DTC PRSP_CCP FW,2.0,* * * * *,NN.* CC.* DT.* PR.*_CC.* FW
+502674,CC.* DT.* PR.*_CC.* FW FW,2.0,CCA DTC PRSP_CCP FW FW,2.0,* * * * FW,CC.* DT.* PR.*_CC.* FW FW
+502677,RB.* DT.* DT.* NN.* CC.*,3.0,RBI DTC DTCP NNC CCP,3.0,* * * * *,RB.* DT.* DT.* NN.* CC.*
+502681,NN.*_CC.* VB.* RB.*_CC.* VB.* CC.*,2.0,NNC_CCP VBS RBI_CCP VBW CCA,2.0,NNC_CCP * RBI_CCP * *,NNC_CCP VB.* RBI_CCP VB.* CC.*
+502690,NN.* FW CC.* VB.* CC.*,2.0,NNC FW CCP VBTR CCB,2.0,* * * * *,NN.* FW CC.* VB.* CC.*
+502701,CC.* NN.* CC.* PM.* FW,3.0,CCB NNPA CCP PMS FW,4.0,* * * * FW,CC.* NN.* CC.* PM.* FW
+502704,DT.* JJ.*_CC.* NN.* CC.* FW,4.0,DTC JJD_CCP NNC CCB FW,4.0,* * * * *,DT.* JJ.*_CC.* NN.* CC.* FW
+502714,RB.*_CC.* VB.* DT.* NN.* CC.*,3.0,RBT_CCP VBAF DTP NNP CCT,2.0,RBT_CCP * * * *,RBT_CCP VB.* DT.* NN.* CC.*
+502724,VB.* DT.* NN.* CC.* PR.*_CC.*,3.0,VBOF DTC NNC CCB PRSP_CCP,3.0,* * * * *,VB.* DT.* NN.* CC.* PR.*_CC.*
+502729,DT.* NN.*_CC.* NN.* PM.* RB.*,2.0,DTP NNP_CCP NNP PMS RBF,2.0,* * * * *,DT.* NN.*_CC.* NN.* PM.* RB.*
+502731,NN.* CC.* RB.* PR.* VB.*,2.0,NNC CCB RBF PRS VBW,2.0,* * * * *,NN.* CC.* RB.* PR.* VB.*
+502740,DT.* NN.* CC.* DT.* JJ.*_CC.*,2.0,DTP NNP CCB DTCP JJD_CCP,2.0,* * * * *,DT.* NN.* CC.* DT.* JJ.*_CC.*
+502742,VB.* RB.*_CC.* VB.* CC.* NN.*,2.0,VBS RBI_CCP VBW CCT NNP,2.0,* * * * *,VB.* RB.*_CC.* VB.* CC.* NN.*
+502747,NN.* PM.* JJ.* CC.* DT.*,3.0,NNC PMS JJD CCP DTP,3.0,* * * * *,NN.* PM.* JJ.* CC.* DT.*
+502763,JJ.*_CC.* NN.* CC.* VB.* CC.*,2.0,JJD_CCP NNC CCR VBTR CCT,2.0,JJD_CCP * * * *,JJD_CCP NN.* CC.* VB.* CC.*
+502769,NN.* CC.* VB.*_VB.* CC.* VB.*,2.0,NNC CCP VBTR_VBAF CCT VBTR,2.0,* * * * *,NN.* CC.* VB.*_VB.* CC.* VB.*
+502779,PR.* DT.* FW CC.* PR.*_CC.*,2.0,PRP DTC FW CCB PRI_CCP,2.0,* * * * *,PR.* DT.* FW CC.* PR.*_CC.*
+502780,NN.* NN.* CC.* VB.* RB.*,2.0,NNP NNPA CCA VBS RBW,3.0,* * * * *,NN.* NN.* CC.* VB.* RB.*
+502790,NN.* PM.* VB.* CC.* FW,3.0,NNC PMS VBAF CCT FW,3.0,* * * * *,NN.* PM.* VB.* CC.* FW
+502795,DT.* NN.* RB.* NN.* CC.*,2.0,DTC NNP RBW NNPA CCA,3.0,* * * * *,DT.* NN.* RB.* NN.* CC.*
+502798,LM RB.* VB.* DT.* NN.*,2.0,LM RBD VBOF DTC NNC,2.0,LM * * * *,LM RB.* VB.* DT.* NN.*
+502799,RB.* RB.* DT.* VB.* CC.*,2.0,RBD RBW DTC VBOF CCA,2.0,* * * * *,RB.* RB.* DT.* VB.* CC.*
+502801,CC.* NN.* CC.* VB.* PR.*_CC.*,2.0,CCB NNP CCP VBTR PRP_CCP,2.0,* * * * PRP_CCP,CC.* NN.* CC.* VB.* PRP_CCP
+502812,RB.* CC.* RB.* PR.* VB.*,2.0,RBF CCP RBI PRS VBOF,2.0,* * * * *,RB.* CC.* RB.* PR.* VB.*
+502824,CC.* DT.* NN.*_CC.* VB.*_VB.* CC.*,2.0,CCB DTCP NNC_CCP VBTR_VBAF CCB,2.0,* * * * *,CC.* DT.* NN.*_CC.* VB.*_VB.* CC.*
+502828,DT.* DT.* NN.* RB.* CC.*,2.0,DTC DTCP NNC RBW CCT,2.0,* * * * *,DT.* DT.* NN.* RB.* CC.*
+502830,LM VB.* CC.* JJ.*_CC.* NN.*,2.0,LM VBTF CCP JJC_CCP NNP,2.0,LM * * * *,LM VB.* CC.* JJ.*_CC.* NN.*
+502833,CC.* VB.*_VB.* CC.* DT.* FW,2.0,CCP VBTR_VBAF CCT DTCP FW,2.0,* VBTR_VBAF * * *,CC.* VBTR_VBAF CC.* DT.* FW
+502834,VB.*_VB.* CC.* DT.* FW FW,2.0,VBTR_VBAF CCB DTCP FW FW,2.0,VBTR_VBAF * * * *,VBTR_VBAF CC.* DT.* FW FW

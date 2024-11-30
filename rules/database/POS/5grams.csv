@@ -1,1180 +1,1499 @@
-Pattern_ID,RoughPOS_N-Gram,RPOSN_Freq,DetailedPOS_N-Gram,DPOSN_Freq,Comparison_Replacement_Matrix,POS_N-Gram,Effective_Freq
-500001,PR.* DT.* NN.* DT.* NN.*,2.0,,,,PR.* DT.* NN.* DT.* NN.*,2.0
-500002,DT.* NN.* DT.* NN.* CC.*,11.0,,,,DT.* NN.* DT.* NN.* CC.*,11.0
-500003,NN.* DT.* NN.* CC.* VB.*,2.0,,,,NN.* DT.* NN.* CC.* VB.*,2.0
-500004,DT.* NN.* CC.* VB.* CC.*,15.0,,,,DT.* NN.* CC.* VB.* CC.*,15.0
-500005,NN.* CC.* VB.* CC.* NN.*,11.0,,,,NN.* CC.* VB.* CC.* NN.*,11.0
-500006,CC.* VB.* CC.* NN.* PM.*,7.0,,,,CC.* VB.* CC.* NN.* PM.*,7.0
-500007,VB.* CC.* NN.* PM.* VB.*,2.0,,,,VB.* CC.* NN.* PM.* VB.*,2.0
-500008,CC.* NN.* PM.* VB.* CC.*,2.0,,,,CC.* NN.* PM.* VB.* CC.*,2.0
-500009,CC.* VB.* DT.* NN.* CC.*,22.0,,,,CC.* VB.* DT.* NN.* CC.*,22.0
-500010,VB.* DT.* NN.* CC.* DT.*,9.0,,,,VB.* DT.* NN.* CC.* DT.*,9.0
-500011,CC.* DT.* NN.* PM.* VB.*,5.0,,,,CC.* DT.* NN.* PM.* VB.*,5.0
-500012,DT.* NN.* PM.* VB.* RB.*,3.0,,,,DT.* NN.* PM.* VB.* RB.*,3.0
-500013,NN.* CC.* JJ.*_CC.* NN.* CC.*,3.0,,,,NN.* CC.* JJ.*_CC.* NN.* CC.*,3.0
-500014,CC.* JJ.*_CC.* NN.* CC.* FW,2.0,,,,CC.* JJ.*_CC.* NN.* CC.* FW,2.0
-500015,CC.* JJ.* DT.* NN.* CC.*,4.0,,,,CC.* JJ.* DT.* NN.* CC.*,4.0
-500016,NN.* PM.* VB.* RB.* DT.*,3.0,,,,NN.* PM.* VB.* RB.* DT.*,3.0
-500017,PM.* VB.* RB.* DT.* FW,2.0,,,,PM.* VB.* RB.* DT.* FW,2.0
-500018,FW NN.* DT.* NN.* PM.*,2.0,,,,FW NN.* DT.* NN.* PM.*,2.0
-500019,DT.* NN.* PM.* CC.* VB.*,4.0,,,,DT.* NN.* PM.* CC.* VB.*,4.0
-500020,NN.* PM.* CC.* VB.* DT.*,5.0,,,,NN.* PM.* CC.* VB.* DT.*,5.0
-500021,PM.* CC.* VB.* DT.* NN.*,4.0,,,,PM.* CC.* VB.* DT.* NN.*,4.0
-500022,PM.* NN.* CC.* RB.* RB.*,2.0,,,,PM.* NN.* CC.* RB.* RB.*,2.0
-500023,NN.* CC.* RB.* RB.* JJ.*,2.0,,,,NN.* CC.* RB.* RB.* JJ.*,2.0
-500024,RB.* RB.* JJ.* VB.* CC.*,2.0,,,,RB.* RB.* JJ.* VB.* CC.*,2.0
-500025,VB.* CC.* NN.* PR.* DT.*,2.0,,,,VB.* CC.* NN.* PR.* DT.*,2.0
-500026,CC.* NN.* PR.* DT.* NN.*,2.0,,,,CC.* NN.* PR.* DT.* NN.*,2.0
-500027,PR.* DT.* NN.* CC.* VB.*,3.0,,,,PR.* DT.* NN.* CC.* VB.*,3.0
-500028,CC.* DT.* NN.* PR.* PM.*,4.0,,,,CC.* DT.* NN.* PR.* PM.*,4.0
-500029,DT.* CC.* PM.* JJ.* CC.*,2.0,,,,DT.* CC.* PM.* JJ.* CC.*,2.0
-500030,CC.* PR.* LM VB.* CC.*,2.0,,,,CC.* PR.* LM VB.* CC.*,2.0
-500031,CC.* VB.* RB.* PR.* DT.*,3.0,,,,CC.* VB.* RB.* PR.* DT.*,3.0
-500032,VB.* RB.* PR.* DT.* NN.*,5.0,,,,VB.* RB.* PR.* DT.* NN.*,5.0
-500033,RB.* PR.* DT.* NN.* CC.*,7.0,,,,RB.* PR.* DT.* NN.* CC.*,7.0
-500034,PR.* DT.* NN.* CC.* DT.*,8.0,,,,PR.* DT.* NN.* CC.* DT.*,8.0
-500035,CC.* DT.* NN.* CC.* NN.*_CC.*,3.0,,,,CC.* DT.* NN.* CC.* NN.*_CC.*,3.0
-500036,DT.* NN.* CC.* NN.*_CC.* JJ.*,3.0,,,,DT.* NN.* CC.* NN.*_CC.* JJ.*,3.0
-500037,NN.* CC.* NN.*_CC.* JJ.* CC.*,4.0,,,,NN.* CC.* NN.*_CC.* JJ.* CC.*,4.0
-500038,VB.* PR.* DT.* NN.* PM.*,3.0,,,,VB.* PR.* DT.* NN.* PM.*,3.0
-500039,NN.* PM.* VB.* DT.* DT.*,2.0,,,,NN.* PM.* VB.* DT.* DT.*,2.0
-500040,PM.* VB.* DT.* DT.* NN.*,3.0,,,,PM.* VB.* DT.* DT.* NN.*,3.0
-500041,VB.* DT.* DT.* NN.* PM.*,2.0,,,,VB.* DT.* DT.* NN.* PM.*,2.0
-500042,NN.* PM.* VB.* DT.* FW,3.0,,,,NN.* PM.* VB.* DT.* FW,3.0
-500043,NN.* PM.* DT.* JJ.*_CC.* NN.*,4.0,,,,NN.* PM.* DT.* JJ.*_CC.* NN.*,4.0
-500044,VB.* RB.* CC.* NN.* DT.*,6.0,,,,VB.* RB.* CC.* NN.* DT.*,6.0
-500045,RB.* CC.* NN.* DT.* JJ.*,2.0,,,,RB.* CC.* NN.* DT.* JJ.*,2.0
-500046,CC.* NN.* DT.* JJ.* CC.*,2.0,,,,CC.* NN.* DT.* JJ.* CC.*,2.0
-500047,VB.* CC.* JJ.* CC.* NN.*,4.0,,,,VB.* CC.* JJ.* CC.* NN.*,4.0
-500048,CC.* PR.* CC.* PR.*_CC.* FW,2.0,,,,CC.* PR.* CC.* PR.*_CC.* FW,2.0
-500049,PR.* CC.* PR.*_CC.* FW PM.*,2.0,,,,PR.* CC.* PR.*_CC.* FW PM.*,2.0
-500050,PM.* VB.* CC.* PR.*_CC.* NN.*,3.0,,,,PM.* VB.* CC.* PR.*_CC.* NN.*,3.0
-500051,VB.* CC.* PR.*_CC.* NN.* CC.*,8.0,,,,VB.* CC.* PR.*_CC.* NN.* CC.*,8.0
-500052,CC.* PR.*_CC.* NN.* CC.* VB.*,7.0,,,,CC.* PR.*_CC.* NN.* CC.* VB.*,7.0
-500053,PR.*_CC.* NN.* CC.* VB.* DT.*,4.0,,,,PR.*_CC.* NN.* CC.* VB.* DT.*,4.0
-500054,NN.* CC.* VB.* DT.* NN.*,9.0,,,,NN.* CC.* VB.* DT.* NN.*,9.0
-500055,PR.*_CC.* DT.* NN.* NN.* CC.*,3.0,,,,PR.*_CC.* DT.* NN.* NN.* CC.*,3.0
-500056,DT.* NN.* NN.* CC.* PR.*_CC.*,2.0,,,,DT.* NN.* NN.* CC.* PR.*_CC.*,2.0
-500057,NN.* NN.* CC.* PR.*_CC.* FW,3.0,,,,NN.* NN.* CC.* PR.*_CC.* FW,3.0
-500058,NN.* CC.* PR.*_CC.* FW FW,6.0,,,,NN.* CC.* PR.*_CC.* FW FW,6.0
-500059,CC.* JJ.* PR.*_CC.* VB.* CC.*,2.0,,,,CC.* JJ.* PR.*_CC.* VB.* CC.*,2.0
-500060,CC.* VB.* CC.* NN.* CC.*,10.0,,,,CC.* VB.* CC.* NN.* CC.*,10.0
-500061,CC.* NN.* NN.* PM.* CC.*,2.0,,,,CC.* NN.* NN.* PM.* CC.*,2.0
-500062,CC.* NN.* CC.* VB.* CC.*,11.0,,,,CC.* NN.* CC.* VB.* CC.*,11.0
-500063,NN.* CC.* VB.* CC.* FW,3.0,,,,NN.* CC.* VB.* CC.* FW,3.0
-500064,NN.* CC.* JJ.* JJ.* CC.*,2.0,,,,NN.* CC.* JJ.* JJ.* CC.*,2.0
-500065,JJ.* CC.* VB.* DT.* DT.*,2.0,,,,JJ.* CC.* VB.* DT.* DT.*,2.0
-500066,CC.* VB.* DT.* DT.* NN.*,4.0,,,,CC.* VB.* DT.* DT.* NN.*,4.0
-500067,VB.* DT.* DT.* NN.* CC.*,12.0,,,,VB.* DT.* DT.* NN.* CC.*,12.0
-500068,DT.* DT.* NN.*_CC.* VB.* CC.*,3.0,,,,DT.* DT.* NN.*_CC.* VB.* CC.*,3.0
-500069,DT.* NN.*_CC.* VB.* CC.* DT.*,7.0,,,,DT.* NN.*_CC.* VB.* CC.* DT.*,7.0
-500070,NN.*_CC.* VB.* CC.* DT.* NN.*,3.0,,,,NN.*_CC.* VB.* CC.* DT.* NN.*,3.0
-500071,RB.* RB.*_CC.* VB.* CC.* NN.*,2.0,,,,RB.* RB.*_CC.* VB.* CC.* NN.*,2.0
-500072,RB.*_CC.* VB.* CC.* NN.* CC.*,4.0,,,,RB.*_CC.* VB.* CC.* NN.* CC.*,4.0
-500073,VB.* CC.* NN.* CC.* RB.*_CC.*,2.0,,,,VB.* CC.* NN.* CC.* RB.*_CC.*,2.0
-500074,CC.* NN.* CC.* RB.*_CC.* NN.*,4.0,,,,CC.* NN.* CC.* RB.*_CC.* NN.*,4.0
-500075,FW PR.* CC.* NN.* CC.*,3.0,,,,FW PR.* CC.* NN.* CC.*,3.0
-500076,CC.* NN.* CC.* VB.*_VB.* CC.*,3.0,,,,CC.* NN.* CC.* VB.*_VB.* CC.*,3.0
-500077,CC.* PR.*_CC.* NN.* CC.* NN.*,10.0,,,,CC.* PR.*_CC.* NN.* CC.* NN.*,10.0
-500078,DT.* NN.* PM.* RB.* PR.*_CC.*,2.0,,,,DT.* NN.* PM.* RB.* PR.*_CC.*,2.0
-500079,PM.* RB.* PR.*_CC.* VB.* DT.*,3.0,,,,PM.* RB.* PR.*_CC.* VB.* DT.*,3.0
-500080,RB.* PR.*_CC.* VB.* DT.* NN.*,2.0,,,,RB.* PR.*_CC.* VB.* DT.* NN.*,2.0
-500081,VB.* DT.* NN.* DT.* NN.*,4.0,,,,VB.* DT.* NN.* DT.* NN.*,4.0
-500082,DT.* NN.* CC.* VB.* DT.*,7.0,,,,DT.* NN.* CC.* VB.* DT.*,7.0
-500083,NN.* CC.* VB.* DT.* FW,4.0,,,,NN.* CC.* VB.* DT.* FW,4.0
-500084,NN.* CC.* RB.* RB.* VB.*,5.0,,,,NN.* CC.* RB.* RB.* VB.*,5.0
-500085,VB.* VB.* DT.* NN.* CC.*,2.0,,,,VB.* VB.* DT.* NN.* CC.*,2.0
-500086,VB.* DT.* NN.* CC.* CC.*,3.0,,,,VB.* DT.* NN.* CC.* CC.*,3.0
-500087,DT.* NN.* CC.* CC.* RB.*,2.0,,,,DT.* NN.* CC.* CC.* RB.*,2.0
-500088,PM.* FW CC.* PR.* CC.*,3.0,,,,PM.* FW CC.* PR.* CC.*,3.0
-500089,FW CC.* PR.* CC.* DT.*,2.0,,,,FW CC.* PR.* CC.* DT.*,2.0
-500090,CC.* PR.* CC.* DT.* NN.*,4.0,,,,CC.* PR.* CC.* DT.* NN.*,4.0
-500091,FW DT.* NN.* PM.* CC.*,3.0,,,,FW DT.* NN.* PM.* CC.*,3.0
-500092,DT.* NN.* PM.* CC.* RB.*,3.0,,,,DT.* NN.* PM.* CC.* RB.*,3.0
-500093,NN.* PM.* CC.* RB.* RB.*,3.0,,,,NN.* PM.* CC.* RB.* RB.*,3.0
-500094,PM.* DT.* NN.* DT.* NN.*,2.0,,,,PM.* DT.* NN.* DT.* NN.*,2.0
-500095,NN.* PR.*_CC.* JJ.* CC.* FW,2.0,,,,NN.* PR.*_CC.* JJ.* CC.* FW,2.0
-500096,FW PM.* VB.* PR.* DT.*,2.0,,,,FW PM.* VB.* PR.* DT.*,2.0
-500097,PM.* VB.* PR.* DT.* NN.*,6.0,,,,PM.* VB.* PR.* DT.* NN.*,6.0
-500098,VB.* PR.* DT.* NN.* CC.*,9.0,,,,VB.* PR.* DT.* NN.* CC.*,9.0
-500099,PR.* DT.* NN.* CC.* PR.*_CC.*,3.0,,,,PR.* DT.* NN.* CC.* PR.*_CC.*,3.0
-500100,DT.* NN.* CC.* PR.*_CC.* NN.*,9.0,,,,DT.* NN.* CC.* PR.*_CC.* NN.*,9.0
-500101,NN.* CC.* PR.*_CC.* NN.* DT.*,5.0,,,,NN.* CC.* PR.*_CC.* NN.* DT.*,5.0
-500102,CC.* PR.*_CC.* NN.* DT.* NN.*,5.0,,,,CC.* PR.*_CC.* NN.* DT.* NN.*,5.0
-500103,DT.* NN.* PM.* VB.* VB.*,2.0,,,,DT.* NN.* PM.* VB.* VB.*,2.0
-500104,DT.* NN.* PM.* PR.* CC.*,2.0,,,,DT.* NN.* PM.* PR.* CC.*,2.0
-500105,NN.* PM.* PR.* CC.* DT.*,2.0,,,,NN.* PM.* PR.* CC.* DT.*,2.0
-500106,PR.* CC.* DT.* NN.* PM.*,3.0,,,,PR.* CC.* DT.* NN.* PM.*,3.0
-500107,CC.* NN.* CC.* PR.*_CC.* NN.*,8.0,,,,CC.* NN.* CC.* PR.*_CC.* NN.*,8.0
-500108,NN.* CC.* PR.*_CC.* NN.* CC.*,5.0,,,,NN.* CC.* PR.*_CC.* NN.* CC.*,5.0
-500109,PR.*_CC.* NN.* CC.* NN.* PM.*,4.0,,,,PR.*_CC.* NN.* CC.* NN.* PM.*,4.0
-500110,CC.* NN.* PM.* VB.* DT.*,5.0,,,,CC.* NN.* PM.* VB.* DT.*,5.0
-500111,DT.* JJ.* CC.* NN.* CC.*,5.0,,,,DT.* JJ.* CC.* NN.* CC.*,5.0
-500112,CC.* VB.* DT.* NN.* PM.*,3.0,,,,CC.* VB.* DT.* NN.* PM.*,3.0
-500113,NN.* CC.* RB.*_CC.* VB.* DT.*,2.0,,,,NN.* CC.* RB.*_CC.* VB.* DT.*,2.0
-500114,NN.* CC.* NN.*_CC.* NN.* CC.*,2.0,,,,NN.* CC.* NN.*_CC.* NN.* CC.*,2.0
-500115,CC.* DT.* NN.* LM VB.*,2.0,,,,CC.* DT.* NN.* LM VB.*,2.0
-500116,DT.* NN.* LM VB.* CC.*,2.0,,,,DT.* NN.* LM VB.* CC.*,2.0
-500117,PM.* FW CC.* NN.* DT.*,2.0,,,,PM.* FW CC.* NN.* DT.*,2.0
-500118,FW CC.* NN.* DT.* DT.*,2.0,,,,FW CC.* NN.* DT.* DT.*,2.0
-500119,DT.* PR.* CC.* NN.* CC.*,3.0,,,,DT.* PR.* CC.* NN.* CC.*,3.0
-500120,JJ.*_CC.* FW FW DT.* NN.*,2.0,,,,JJ.*_CC.* FW FW DT.* NN.*,2.0
-500121,FW DT.* NN.* CC.* DT.*,3.0,,,,FW DT.* NN.* CC.* DT.*,3.0
-500122,RB.* PM.* JJ.* RB.* CC.*,2.0,,,,RB.* PM.* JJ.* RB.* CC.*,2.0
-500123,RB.* CC.* VB.* DT.* DT.*,2.0,,,,RB.* CC.* VB.* DT.* DT.*,2.0
-500124,DT.* DT.* NN.* CC.* FW,6.0,,,,DT.* DT.* NN.* CC.* FW,6.0
-500125,DT.* NN.* CC.* FW CC.*,2.0,,,,DT.* NN.* CC.* FW CC.*,2.0
-500126,RB.* DT.* NN.* CC.* VB.*,7.0,,,,RB.* DT.* NN.* CC.* VB.*,7.0
-500127,CC.* RB.* RB.* PR.* RB.*,2.0,,,,CC.* RB.* RB.* PR.* RB.*,2.0
-500128,RB.* RB.* PR.* RB.* PM.*,2.0,,,,RB.* RB.* PR.* RB.* PM.*,2.0
-500129,DT.* NN.* CC.* DT.* VB.*,2.0,,,,DT.* NN.* CC.* DT.* VB.*,2.0
-500130,NN.* CC.* DT.* VB.* CC.*,3.0,,,,NN.* CC.* DT.* VB.* CC.*,3.0
-500131,VB.* CC.* VB.* CC.* NN.*,4.0,,,,VB.* CC.* VB.* CC.* NN.*,4.0
-500132,CC.* VB.* CC.* NN.* DT.*,8.0,,,,CC.* VB.* CC.* NN.* DT.*,8.0
-500133,VB.* CC.* NN.* DT.* FW,4.0,,,,VB.* CC.* NN.* DT.* FW,4.0
-500134,CC.* NN.* PM.* RB.* RB.*,5.0,,,,CC.* NN.* PM.* RB.* RB.*,5.0
-500135,NN.* PM.* RB.* RB.* VB.*,5.0,,,,NN.* PM.* RB.* RB.* VB.*,5.0
-500136,PM.* RB.* RB.* VB.* PM.*,2.0,,,,PM.* RB.* RB.* VB.* PM.*,2.0
-500137,RB.* RB.* VB.* PM.* NN.*,2.0,,,,RB.* RB.* VB.* PM.* NN.*,2.0
-500138,PM.* CC.* VB.* PR.* CC.*,2.0,,,,PM.* CC.* VB.* PR.* CC.*,2.0
-500139,CC.* VB.* PR.* CC.* NN.*,5.0,,,,CC.* VB.* PR.* CC.* NN.*,5.0
-500140,VB.* PR.* CC.* NN.* DT.*,2.0,,,,VB.* PR.* CC.* NN.* DT.*,2.0
-500141,PR.* CC.* NN.* DT.* NN.*,2.0,,,,PR.* CC.* NN.* DT.* NN.*,2.0
-500142,CC.* NN.* DT.* NN.* DT.*,2.0,,,,CC.* NN.* DT.* NN.* DT.*,2.0
-500143,CC.* NN.* CC.* NN.*_CC.* NN.*,2.0,,,,CC.* NN.* CC.* NN.*_CC.* NN.*,2.0
-500144,NN.* PM.* JJ.*_CC.* NN.* CC.*,2.0,,,,NN.* PM.* JJ.*_CC.* NN.* CC.*,2.0
-500145,CC.* VB.* DT.* DT.* VB.*,2.0,,,,CC.* VB.* DT.* DT.* VB.*,2.0
-500146,VB.* DT.* DT.* VB.* PM.*,2.0,,,,VB.* DT.* DT.* VB.* PM.*,2.0
-500147,DT.* DT.* VB.* PM.* VB.*,2.0,,,,DT.* DT.* VB.* PM.* VB.*,2.0
-500148,DT.* NN.*_CC.* JJ.* CC.* NN.*,2.0,,,,DT.* NN.*_CC.* JJ.* CC.* NN.*,2.0
-500149,NN.*_CC.* JJ.* CC.* NN.* CC.*,2.0,,,,NN.*_CC.* JJ.* CC.* NN.* CC.*,2.0
-500150,PM.* DT.* VB.* CC.* FW,2.0,,,,PM.* DT.* VB.* CC.* FW,2.0
-500151,DT.* VB.* CC.* FW PM.*,2.0,,,,DT.* VB.* CC.* FW PM.*,2.0
-500152,VB.* CC.* FW PM.* NN.*,2.0,,,,VB.* CC.* FW PM.* NN.*,2.0
-500153,NN.* CC.* NN.* PM.* DT.*,2.0,,,,NN.* CC.* NN.* PM.* DT.*,2.0
-500154,CC.* NN.* PM.* DT.* JJ.*_CC.*,3.0,,,,CC.* NN.* PM.* DT.* JJ.*_CC.*,3.0
-500155,PM.* DT.* JJ.*_CC.* NN.* CC.*,3.0,,,,PM.* DT.* JJ.*_CC.* NN.* CC.*,3.0
-500156,NN.* CC.* VB.* PM.* FW,3.0,,,,NN.* CC.* VB.* PM.* FW,3.0
-500157,CC.* VB.* PM.* FW CC.*,2.0,,,,CC.* VB.* PM.* FW CC.*,2.0
-500158,VB.* PM.* FW CC.* NN.*,6.0,,,,VB.* PM.* FW CC.* NN.*,6.0
-500159,PM.* FW CC.* NN.* PM.*,4.0,,,,PM.* FW CC.* NN.* PM.*,4.0
-500160,FW CC.* NN.* PM.* CC.*,5.0,,,,FW CC.* NN.* PM.* CC.*,5.0
-500161,CC.* NN.* PM.* CC.* DT.*,3.0,,,,CC.* NN.* PM.* CC.* DT.*,3.0
-500162,VB.*_CC.* NN.* DT.* NN.* CC.*,2.0,,,,VB.*_CC.* NN.* DT.* NN.* CC.*,2.0
-500163,NN.* DT.* NN.* CC.* PR.*,3.0,,,,NN.* DT.* NN.* CC.* PR.*,3.0
-500164,CC.* PR.* DT.* PM.* FW,2.0,,,,CC.* PR.* DT.* PM.* FW,2.0
-500165,CC.* JJ.*_JJ.*_CC.* NN.* CC.* NN.*,2.0,,,,CC.* JJ.*_JJ.*_CC.* NN.* CC.* NN.*,2.0
-500166,NN.* DT.* JJ.*_CC.* NN.*_CC.* NN.*,2.0,,,,NN.* DT.* JJ.*_CC.* NN.*_CC.* NN.*,2.0
-500167,VB.* RB.* DT.* NN.* CC.*,11.0,,,,VB.* RB.* DT.* NN.* CC.*,11.0
-500168,RB.* DT.* NN.* CC.* NN.*,3.0,,,,RB.* DT.* NN.* CC.* NN.*,3.0
-500169,DT.* NN.* CC.* NN.* CC.*,13.0,,,,DT.* NN.* CC.* NN.* CC.*,13.0
-500170,NN.* CC.* NN.* CC.* FW,3.0,,,,NN.* CC.* NN.* CC.* FW,3.0
-500171,DT.* NN.* PM.* CC.* CC.*,5.0,,,,DT.* NN.* PM.* CC.* CC.*,5.0
-500172,NN.* PM.* CC.* CC.* NN.*,3.0,,,,NN.* PM.* CC.* CC.* NN.*,3.0
-500173,CC.* NN.* DT.* NN.* PM.*,3.0,,,,CC.* NN.* DT.* NN.* PM.*,3.0
-500174,NN.* DT.* NN.* PM.* VB.*_VB.*,2.0,,,,NN.* DT.* NN.* PM.* VB.*_VB.*,2.0
-500175,VB.* RB.* PR.* CC.* VB.*,2.0,,,,VB.* RB.* PR.* CC.* VB.*,2.0
-500176,RB.* PR.* CC.* VB.* CC.*,2.0,,,,RB.* PR.* CC.* VB.* CC.*,2.0
-500177,CC.* VB.* CC.* PR.* CC.*,2.0,,,,CC.* VB.* CC.* PR.* CC.*,2.0
-500178,LM VB.* CC.* VB.* CC.*,2.0,,,,LM VB.* CC.* VB.* CC.*,2.0
-500179,CC.* VB.* DT.* JJ.*_CC.* NN.*,2.0,,,,CC.* VB.* DT.* JJ.*_CC.* NN.*,2.0
-500180,VB.* DT.* JJ.*_CC.* NN.* CC.*,3.0,,,,VB.* DT.* JJ.*_CC.* NN.* CC.*,3.0
-500181,CC.* NN.* CC.* VB.* DT.*,9.0,,,,CC.* NN.* CC.* VB.* DT.*,9.0
-500182,CC.* NN.* PM.* FW CC.*,4.0,,,,CC.* NN.* PM.* FW CC.*,4.0
-500183,NN.* PM.* FW CC.* NN.*,3.0,,,,NN.* PM.* FW CC.* NN.*,3.0
-500184,PM.* FW CC.* NN.* CC.*,4.0,,,,PM.* FW CC.* NN.* CC.*,4.0
-500185,NN.* DT.* NN.* CC.* PM.*,2.0,,,,NN.* DT.* NN.* CC.* PM.*,2.0
-500186,PM.* CC.* JJ.* CC.* FW,2.0,,,,PM.* CC.* JJ.* CC.* FW,2.0
-500187,NN.* CC.* JJ.*_CC.* FW FW,2.0,,,,NN.* CC.* JJ.*_CC.* FW FW,2.0
-500188,CC.* JJ.*_CC.* FW FW CC.*,2.0,,,,CC.* JJ.*_CC.* FW FW CC.*,2.0
-500189,FW CC.* NN.* CC.* DT.*,3.0,,,,FW CC.* NN.* CC.* DT.*,3.0
-500190,CC.* NN.* CC.* DT.* NN.*,6.0,,,,CC.* NN.* CC.* DT.* NN.*,6.0
-500191,NN.* CC.* DT.* NN.* CC.*,7.0,,,,NN.* CC.* DT.* NN.* CC.*,7.0
-500192,NN.* PM.* RB.* VB.* PR.*,2.0,,,,NN.* PM.* RB.* VB.* PR.*,2.0
-500193,PM.* RB.* VB.* PR.* DT.*,2.0,,,,PM.* RB.* VB.* PR.* DT.*,2.0
-500194,DT.* NN.* JJ.* CC.* NN.*,2.0,,,,DT.* NN.* JJ.* CC.* NN.*,2.0
-500195,JJ.* CC.* NN.* CC.* NN.*,3.0,,,,JJ.* CC.* NN.* CC.* NN.*,3.0
-500196,CC.* NN.* CC.* FW PM.*,3.0,,,,CC.* NN.* CC.* FW PM.*,3.0
-500197,NN.* CC.* FW PM.* VB.*,3.0,,,,NN.* CC.* FW PM.* VB.*,3.0
-500198,FW PM.* VB.* RB.* PR.*,3.0,,,,FW PM.* VB.* RB.* PR.*,3.0
-500199,JJ.* DT.* NN.* CC.* DT.*,3.0,,,,JJ.* DT.* NN.* CC.* DT.*,3.0
-500200,VB.* PR.*_CC.* VB.* CC.* NN.*,2.0,,,,VB.* PR.*_CC.* VB.* CC.* NN.*,2.0
-500201,PR.*_CC.* VB.* CC.* NN.* RB.*,2.0,,,,PR.*_CC.* VB.* CC.* NN.* RB.*,2.0
-500202,RB.* CC.* NN.* PM.* VB.*,2.0,,,,RB.* CC.* NN.* PM.* VB.*,2.0
-500203,CC.* NN.* PM.* VB.* RB.*,7.0,,,,CC.* NN.* PM.* VB.* RB.*,7.0
-500204,NN.* PM.* VB.* RB.* PR.*,2.0,,,,NN.* PM.* VB.* RB.* PR.*,2.0
-500205,PR.* CC.* VB.* CC.* NN.*,3.0,,,,PR.* CC.* VB.* CC.* NN.*,3.0
-500206,NN.* CC.* RB.* RB.* CC.*,2.0,,,,NN.* CC.* RB.* RB.* CC.*,2.0
-500207,RB.* DT.* VB.* CC.* NN.*,4.0,,,,RB.* DT.* VB.* CC.* NN.*,4.0
-500208,DT.* VB.* CC.* NN.* PM.*,4.0,,,,DT.* VB.* CC.* NN.* PM.*,4.0
-500209,CC.* VB.* CC.* FW PM.*,3.0,,,,CC.* VB.* CC.* FW PM.*,3.0
-500210,CC.* FW PM.* CC.* VB.*,4.0,,,,CC.* FW PM.* CC.* VB.*,4.0
-500211,RB.* PM.* CC.* DT.* NN.*,2.0,,,,RB.* PM.* CC.* DT.* NN.*,2.0
-500212,DT.* NN.*_CC.* VB.* CC.* PR.*,2.0,,,,DT.* NN.*_CC.* VB.* CC.* PR.*,2.0
-500213,VB.* PM.* PM.* RB.* JJ.*,2.0,,,,VB.* PM.* PM.* RB.* JJ.*,2.0
-500214,RB.* DT.* NN.* CC.* FW,2.0,,,,RB.* DT.* NN.* CC.* FW,2.0
-500215,CC.* CD.* NN.* CC.* NN.*,2.0,,,,CC.* CD.* NN.* CC.* NN.*,2.0
-500216,CC.* VB.* RB.* RB.* DT.*,2.0,,,,CC.* VB.* RB.* RB.* DT.*,2.0
-500217,CC.* CD.* NN.* DT.* NN.*,2.0,,,,CC.* CD.* NN.* DT.* NN.*,2.0
-500218,NN.* NN.* PM.* CC.* PM.*,2.0,,,,NN.* NN.* PM.* CC.* PM.*,2.0
-500219,PM.* PR.* CC.* NN.* CC.*,2.0,,,,PM.* PR.* CC.* NN.* CC.*,2.0
-500220,CD.* NN.* CC.* VB.* CC.*,2.0,,,,CD.* NN.* CC.* VB.* CC.*,2.0
-500221,VB.* CC.* NN.* CC.* FW,9.0,,,,VB.* CC.* NN.* CC.* FW,9.0
-500222,DT.* NN.* NN.* CC.* JJ.*_CC.*,2.0,,,,DT.* NN.* NN.* CC.* JJ.*_CC.*,2.0
-500223,NN.* CC.* JJ.*_CC.* NN.* NN.*,2.0,,,,NN.* CC.* JJ.*_CC.* NN.* NN.*,2.0
-500224,VB.* RB.* DT.* DT.* NN.*_CC.*,2.0,,,,VB.* RB.* DT.* DT.* NN.*_CC.*,2.0
-500225,RB.* DT.* DT.* NN.*_CC.* VB.*,2.0,,,,RB.* DT.* DT.* NN.*_CC.* VB.*,2.0
-500226,CC.* DT.* DT.* NN.* CC.*,3.0,,,,CC.* DT.* DT.* NN.* CC.*,3.0
-500227,PR.* LM VB.* CC.* NN.*,3.0,,,,PR.* LM VB.* CC.* NN.*,3.0
-500228,LM VB.* CC.* NN.* CC.*,5.0,,,,LM VB.* CC.* NN.* CC.*,5.0
-500229,NN.* CC.* NN.* CC.* NN.*_CC.*,2.0,,,,NN.* CC.* NN.* CC.* NN.*_CC.*,2.0
-500230,CC.* JJ.* DT.* DT.* NN.*,2.0,,,,CC.* JJ.* DT.* DT.* NN.*,2.0
-500231,RB.*_CC.* VB.* CC.* DT.* FW,2.0,,,,RB.*_CC.* VB.* CC.* DT.* FW,2.0
-500232,VB.* DT.* NN.* NN.* CC.*,3.0,,,,VB.* DT.* NN.* NN.* CC.*,3.0
-500233,NN.* CC.* FW CC.* PR.*,3.0,,,,NN.* CC.* FW CC.* PR.*,3.0
-500234,RB.* VB.* CC.* NN.* DT.*,3.0,,,,RB.* VB.* CC.* NN.* DT.*,3.0
-500235,PM.* CC.* VB.* NN.* CC.*,2.0,,,,PM.* CC.* VB.* NN.* CC.*,2.0
-500236,CC.* PR.*_CC.* NN.* CC.* DT.*,3.0,,,,CC.* PR.*_CC.* NN.* CC.* DT.*,3.0
-500237,NN.* CC.* DT.* NN.*_CC.* PR.*,2.0,,,,NN.* CC.* DT.* NN.*_CC.* PR.*,2.0
-500238,CC.* DT.* NN.*_CC.* PR.* PM.*,2.0,,,,CC.* DT.* NN.*_CC.* PR.* PM.*,2.0
-500239,JJ.*_CC.* NN.* DT.* VB.* CC.*,2.0,,,,JJ.*_CC.* NN.* DT.* VB.* CC.*,2.0
-500240,NN.* DT.* VB.* CC.* DT.*,2.0,,,,NN.* DT.* VB.* CC.* DT.*,2.0
-500241,DT.* VB.* CC.* DT.* NN.*,4.0,,,,DT.* VB.* CC.* DT.* NN.*,4.0
-500242,VB.* CC.* DT.* NN.* PM.*,5.0,,,,VB.* CC.* DT.* NN.* PM.*,5.0
-500243,VB.* CC.* DT.* PR.*_CC.* NN.*,2.0,,,,VB.* CC.* DT.* PR.*_CC.* NN.*,2.0
-500244,DT.* PR.*_CC.* NN.* CC.* VB.*,2.0,,,,DT.* PR.*_CC.* NN.* CC.* VB.*,2.0
-500245,PR.*_CC.* NN.* CC.* VB.* RB.*,2.0,,,,PR.*_CC.* NN.* CC.* VB.* RB.*,2.0
-500246,VB.* RB.* CC.* NN.* CC.*,6.0,,,,VB.* RB.* CC.* NN.* CC.*,6.0
-500247,CC.* VB.* RB.* CC.* NN.*,5.0,,,,CC.* VB.* RB.* CC.* NN.*,5.0
-500248,RB.* CC.* NN.* DT.* NN.*,4.0,,,,RB.* CC.* NN.* DT.* NN.*,4.0
-500249,PR.* CC.* DT.* NN.*_CC.* JJ.*,2.0,,,,PR.* CC.* DT.* NN.*_CC.* JJ.*,2.0
-500250,PM.* VB.* DT.* NN.* CC.*,9.0,,,,PM.* VB.* DT.* NN.* CC.*,9.0
-500251,VB.* DT.* NN.* CC.* NN.*,10.0,,,,VB.* DT.* NN.* CC.* NN.*,10.0
-500252,NN.* CC.* FW CC.* JJ.*_CC.*,2.0,,,,NN.* CC.* FW CC.* JJ.*_CC.*,2.0
-500253,CC.* FW CC.* JJ.*_CC.* NN.*,2.0,,,,CC.* FW CC.* JJ.*_CC.* NN.*,2.0
-500254,PM.* CC.* VB.* DT.* NN.*_CC.*,2.0,,,,PM.* CC.* VB.* DT.* NN.*_CC.*,2.0
-500255,CC.* VB.* DT.* NN.*_CC.* NN.*,2.0,,,,CC.* VB.* DT.* NN.*_CC.* NN.*,2.0
-500256,FW PM.* CC.* VB.* CC.*,4.0,,,,FW PM.* CC.* VB.* CC.*,4.0
-500257,CC.* RB.*_CC.* NN.* CC.* VB.*,2.0,,,,CC.* RB.*_CC.* NN.* CC.* VB.*,2.0
-500258,JJ.* CC.* VB.* DT.* NN.*,2.0,,,,JJ.* CC.* VB.* DT.* NN.*,2.0
-500259,CC.* CC.* JJ.*_CC.* FW CC.*,2.0,,,,CC.* CC.* JJ.*_CC.* FW CC.*,2.0
-500260,PR.*_CC.* NN.* CC.* NN.* CC.*,7.0,,,,PR.*_CC.* NN.* CC.* NN.* CC.*,7.0
-500261,CC.* NN.* CC.* DT.* NN.*_CC.*,2.0,,,,CC.* NN.* CC.* DT.* NN.*_CC.*,2.0
-500262,NN.* CC.* DT.* NN.*_CC.* VB.*,6.0,,,,NN.* CC.* DT.* NN.*_CC.* VB.*,6.0
-500263,FW PM.* CC.* RB.* RB.*,3.0,,,,FW PM.* CC.* RB.* RB.*,3.0
-500264,CC.* CC.* PM.* VB.* DT.*,2.0,,,,CC.* CC.* PM.* VB.* DT.*,2.0
-500265,CC.* PM.* VB.* DT.* NN.*,2.0,,,,CC.* PM.* VB.* DT.* NN.*,2.0
-500266,DT.* VB.* PR.* CC.* NN.*,2.0,,,,DT.* VB.* PR.* CC.* NN.*,2.0
-500267,RB.* CC.* JJ.*_CC.* NN.* CC.*,4.0,,,,RB.* CC.* JJ.*_CC.* NN.* CC.*,4.0
-500268,CC.* JJ.*_CC.* NN.* CC.* NN.*,3.0,,,,CC.* JJ.*_CC.* NN.* CC.* NN.*,3.0
-500269,DT.* PR.*_CC.* PM.* FW CC.*,2.0,,,,DT.* PR.*_CC.* PM.* FW CC.*,2.0
-500270,NN.* CC.* NN.* CC.* PR.*_CC.*,4.0,,,,NN.* CC.* NN.* CC.* PR.*_CC.*,4.0
-500271,NN.* CC.* PR.*_CC.* NN.* FW,3.0,,,,NN.* CC.* PR.*_CC.* NN.* FW,3.0
-500272,CC.* PR.*_CC.* NN.* FW CC.*,2.0,,,,CC.* PR.*_CC.* NN.* FW CC.*,2.0
-500273,CC.* FW CC.* DT.* NN.*,3.0,,,,CC.* FW CC.* DT.* NN.*,3.0
-500274,FW CC.* DT.* NN.* LM,2.0,,,,FW CC.* DT.* NN.* LM,2.0
-500275,FW PM.* PM.* CC.* CC.*,2.0,,,,FW PM.* PM.* CC.* CC.*,2.0
-500276,PR.* PM.* JJ.* DT.* VB.*,2.0,,,,PR.* PM.* JJ.* DT.* VB.*,2.0
-500277,VB.* PR.* CC.* NN.* CC.*,9.0,,,,VB.* PR.* CC.* NN.* CC.*,9.0
-500278,CC.* NN.* CC.* JJ.* CC.*,2.0,,,,CC.* NN.* CC.* JJ.* CC.*,2.0
-500279,PM.* VB.* PR.* CC.* NN.*_CC.*,2.0,,,,PM.* VB.* PR.* CC.* NN.*_CC.*,2.0
-500280,VB.* PR.* CC.* NN.*_CC.* NN.*,3.0,,,,VB.* PR.* CC.* NN.*_CC.* NN.*,3.0
-500281,PR.* CC.* NN.*_CC.* NN.* CC.*,3.0,,,,PR.* CC.* NN.*_CC.* NN.* CC.*,3.0
-500282,NN.* CC.* CC.* PM.* FW,4.0,,,,NN.* CC.* CC.* PM.* FW,4.0
-500283,CC.* PR.* PM.* VB.* RB.*,2.0,,,,CC.* PR.* PM.* VB.* RB.*,2.0
-500284,PR.* PM.* VB.* RB.* DT.*,2.0,,,,PR.* PM.* VB.* RB.* DT.*,2.0
-500285,PM.* VB.* RB.* DT.* NN.*,7.0,,,,PM.* VB.* RB.* DT.* NN.*,7.0
-500286,NN.* CC.* VB.*_VB.* PR.* RB.*,2.0,,,,NN.* CC.* VB.*_VB.* PR.* RB.*,2.0
-500287,CC.* VB.*_VB.* PR.* RB.* RB.*,2.0,,,,CC.* VB.*_VB.* PR.* RB.* RB.*,2.0
-500288,PM.* VB.* PR.* CC.* NN.*,5.0,,,,PM.* VB.* PR.* CC.* NN.*,5.0
-500289,PR.*_CC.* NN.* CC.* RB.* RB.*,5.0,,,,PR.*_CC.* NN.* CC.* RB.* RB.*,5.0
-500290,CC.* RB.* RB.* VB.* DT.*,3.0,,,,CC.* RB.* RB.* VB.* DT.*,3.0
-500291,RB.* RB.* VB.* DT.* NN.*,7.0,,,,RB.* RB.* VB.* DT.* NN.*,7.0
-500292,RB.* VB.* DT.* NN.* CC.*,14.0,,,,RB.* VB.* DT.* NN.* CC.*,14.0
-500293,CC.* CC.* VB.* CC.* DT.*,2.0,,,,CC.* CC.* VB.* CC.* DT.*,2.0
-500294,DT.* CC.* PM.* FW CC.*,2.0,,,,DT.* CC.* PM.* FW CC.*,2.0
-500295,CC.* PM.* FW CC.* NN.*,2.0,,,,CC.* PM.* FW CC.* NN.*,2.0
-500296,PM.* CD.* NN.* CC.* NN.*,2.0,,,,PM.* CD.* NN.* CC.* NN.*,2.0
-500297,JJ.*_CC.* NN.* PR.* DT.* NN.*,2.0,,,,JJ.*_CC.* NN.* PR.* DT.* NN.*,2.0
-500298,VB.* CC.* NN.* DT.* NN.*,10.0,,,,VB.* CC.* NN.* DT.* NN.*,10.0
-500299,CC.* NN.* DT.* NN.* CC.*,9.0,,,,CC.* NN.* DT.* NN.* CC.*,9.0
-500300,DT.* NN.* CC.* PR.* PM.*,2.0,,,,DT.* NN.* CC.* PR.* PM.*,2.0
-500301,PM.* VB.* RB.* CC.* FW,2.0,,,,PM.* VB.* RB.* CC.* FW,2.0
-500302,CC.* RB.* DT.* VB.* CC.*,3.0,,,,CC.* RB.* DT.* VB.* CC.*,3.0
-500303,VB.* CC.* VB.* DT.* FW,2.0,,,,VB.* CC.* VB.* DT.* FW,2.0
-500304,CC.* RB.* VB.* DT.* NN.*,3.0,,,,CC.* RB.* VB.* DT.* NN.*,3.0
-500305,RB.* VB.* DT.* NN.* PM.*,5.0,,,,RB.* VB.* DT.* NN.* PM.*,5.0
-500306,VB.* DT.* NN.* PM.* CC.*,3.0,,,,VB.* DT.* NN.* PM.* CC.*,3.0
-500307,NN.* PM.* CC.* RB.* PR.*,2.0,,,,NN.* PM.* CC.* RB.* PR.*,2.0
-500308,DT.* NN.* CC.* DT.* FW,2.0,,,,DT.* NN.* CC.* DT.* FW,2.0
-500309,NN.* CC.* DT.* FW CC.*,2.0,,,,NN.* CC.* DT.* FW CC.*,2.0
-500310,NN.* CC.* NN.* PR.*_CC.* DT.*,2.0,,,,NN.* CC.* NN.* PR.*_CC.* DT.*,2.0
-500311,CC.* NN.* PR.*_CC.* DT.* NN.*,3.0,,,,CC.* NN.* PR.*_CC.* DT.* NN.*,3.0
-500312,NN.* PR.*_CC.* DT.* NN.* NN.*,3.0,,,,NN.* PR.*_CC.* DT.* NN.* NN.*,3.0
-500313,NN.* PM.* PR.* PM.* FW,3.0,,,,NN.* PM.* PR.* PM.* FW,3.0
-500314,PM.* PR.* PM.* FW VB.*,2.0,,,,PM.* PR.* PM.* FW VB.*,2.0
-500315,PR.* PM.* FW VB.* CC.*,4.0,,,,PR.* PM.* FW VB.* CC.*,4.0
-500316,DT.* JJ.*_CC.* NN.* DT.* NN.*,2.0,,,,DT.* JJ.*_CC.* NN.* DT.* NN.*,2.0
-500317,NN.* RB.* RB.* VB.* PR.*,2.0,,,,NN.* RB.* RB.* VB.* PR.*,2.0
-500318,RB.* RB.* VB.* PR.* CC.*,2.0,,,,RB.* RB.* VB.* PR.* CC.*,2.0
-500319,CC.* PR.*_CC.* FW FW RB.*,2.0,,,,CC.* PR.*_CC.* FW FW RB.*,2.0
-500320,DT.* NN.* LM RB.* VB.*_VB.*,2.0,,,,DT.* NN.* LM RB.* VB.*_VB.*,2.0
-500321,VB.*_VB.* CC.* NN.* CC.* DT.*,2.0,,,,VB.*_VB.* CC.* NN.* CC.* DT.*,2.0
-500322,RB.* CC.* PR.*_CC.* NN.* CC.*,4.0,,,,RB.* CC.* PR.*_CC.* NN.* CC.*,4.0
-500323,NN.* CC.* VB.* CC.* DT.*,7.0,,,,NN.* CC.* VB.* CC.* DT.*,7.0
-500324,CC.* VB.* CC.* DT.* NN.*,13.0,,,,CC.* VB.* CC.* DT.* NN.*,13.0
-500325,VB.* CC.* DT.* NN.* CC.*,16.0,,,,VB.* CC.* DT.* NN.* CC.*,16.0
-500326,CC.* DT.* NN.* CC.* PR.*,2.0,,,,CC.* DT.* NN.* CC.* PR.*,2.0
-500327,DT.* NN.* CC.* PR.* CC.*,3.0,,,,DT.* NN.* CC.* PR.* CC.*,3.0
-500328,PM.* NN.* CC.* PR.*_CC.* NN.*,5.0,,,,PM.* NN.* CC.* PR.*_CC.* NN.*,5.0
-500329,CC.* PR.*_CC.* NN.* DT.* FW,2.0,,,,CC.* PR.*_CC.* NN.* DT.* FW,2.0
-500330,DT.* FW CC.* PR.*_CC.* NN.*,3.0,,,,DT.* FW CC.* PR.*_CC.* NN.*,3.0
-500331,FW CC.* PR.*_CC.* NN.* PM.*,3.0,,,,FW CC.* PR.*_CC.* NN.* PM.*,3.0
-500332,VB.* CC.* RB.* PR.* PM.*,2.0,,,,VB.* CC.* RB.* PR.* PM.*,2.0
-500333,RB.* DT.* JJ.* CC.* NN.*,2.0,,,,RB.* DT.* JJ.* CC.* NN.*,2.0
-500334,NN.* CC.* PR.*_CC.* NN.* NN.*,3.0,,,,NN.* CC.* PR.*_CC.* NN.* NN.*,3.0
-500335,DT.* JJ.*_CC.* NN.* NN.* FW,2.0,,,,DT.* JJ.*_CC.* NN.* NN.* FW,2.0
-500336,NN.* NN.* PM.* JJ.*_CC.* FW,2.0,,,,NN.* NN.* PM.* JJ.*_CC.* FW,2.0
-500337,NN.* PM.* JJ.*_CC.* FW CC.*,2.0,,,,NN.* PM.* JJ.*_CC.* FW CC.*,2.0
-500338,PM.* JJ.*_CC.* FW CC.* DT.*,2.0,,,,PM.* JJ.*_CC.* FW CC.* DT.*,2.0
-500339,DT.* DT.* NN.* CC.* NN.*,4.0,,,,DT.* DT.* NN.* CC.* NN.*,4.0
-500340,DT.* NN.* PM.* RB.* VB.*,5.0,,,,DT.* NN.* PM.* RB.* VB.*,5.0
-500341,PR.* DT.* DT.* NN.* CC.*,2.0,,,,PR.* DT.* DT.* NN.* CC.*,2.0
-500342,DT.* DT.* NN.* CC.* VB.*,6.0,,,,DT.* DT.* NN.* CC.* VB.*,6.0
-500343,CC.* DT.* NN.*_CC.* VB.* CC.*,9.0,,,,CC.* DT.* NN.*_CC.* VB.* CC.*,9.0
-500344,CC.* DT.* JJ.* CC.* NN.*,2.0,,,,CC.* DT.* JJ.* CC.* NN.*,2.0
-500345,JJ.* DT.* NN.* DT.* NN.*,2.0,,,,JJ.* DT.* NN.* DT.* NN.*,2.0
-500346,NN.* DT.* NN.* CC.* DT.*,3.0,,,,NN.* DT.* NN.* CC.* DT.*,3.0
-500347,CC.* NN.* PM.* CC.* RB.*,3.0,,,,CC.* NN.* PM.* CC.* RB.*,3.0
-500348,NN.* PM.* CC.* RB.* VB.*,4.0,,,,NN.* PM.* CC.* RB.* VB.*,4.0
-500349,PM.* CC.* RB.* VB.* CC.*,2.0,,,,PM.* CC.* RB.* VB.* CC.*,2.0
-500350,CC.* RB.* VB.* CC.* NN.*,3.0,,,,CC.* RB.* VB.* CC.* NN.*,3.0
-500351,LM VB.* RB.* CC.* NN.*,3.0,,,,LM VB.* RB.* CC.* NN.*,3.0
-500352,VB.* RB.* CC.* NN.* PM.*,2.0,,,,VB.* RB.* CC.* NN.* PM.*,2.0
-500353,NN.* DT.* NN.* CC.* CC.*,2.0,,,,NN.* DT.* NN.* CC.* CC.*,2.0
-500354,DT.* NN.* CC.* CC.* FW,2.0,,,,DT.* NN.* CC.* CC.* FW,2.0
-500355,JJ.*_CC.* NN.* RB.* DT.* NN.*,2.0,,,,JJ.*_CC.* NN.* RB.* DT.* NN.*,2.0
-500356,NN.* RB.* DT.* NN.* PM.*,2.0,,,,NN.* RB.* DT.* NN.* PM.*,2.0
-500357,CC.* JJ.* CC.* NN.* PM.*,2.0,,,,CC.* JJ.* CC.* NN.* PM.*,2.0
-500358,CC.* NN.* PM.* PR.* RB.*,2.0,,,,CC.* NN.* PM.* PR.* RB.*,2.0
-500359,PR.* RB.* DT.* NN.*_CC.* VB.*,2.0,,,,PR.* RB.* DT.* NN.*_CC.* VB.*,2.0
-500360,PR.* CC.* NN.* CC.* DT.*,4.0,,,,PR.* CC.* NN.* CC.* DT.*,4.0
-500361,PM.* CC.* RB.* VB.* NN.*,2.0,,,,PM.* CC.* RB.* VB.* NN.*,2.0
-500362,CC.* VB.* PR.* CC.* FW,2.0,,,,CC.* VB.* PR.* CC.* FW,2.0
-500363,FW CC.* DT.* NN.* PM.*,3.0,,,,FW CC.* DT.* NN.* PM.*,3.0
-500364,CC.* DT.* NN.* PM.* JJ.*,3.0,,,,CC.* DT.* NN.* PM.* JJ.*,3.0
-500365,DT.* NN.* PM.* JJ.* RB.*,2.0,,,,DT.* NN.* PM.* JJ.* RB.*,2.0
-500366,RB.* DT.* NN.* PM.* CC.*,3.0,,,,RB.* DT.* NN.* PM.* CC.*,3.0
-500367,FW PM.* CC.* NN.* CC.*,6.0,,,,FW PM.* CC.* NN.* CC.*,6.0
-500368,PR.* RB.*_CC.* DT.* NN.* CC.*,2.0,,,,PR.* RB.*_CC.* DT.* NN.* CC.*,2.0
-500369,CC.* JJ.* PM.* CC.* PR.*,2.0,,,,CC.* JJ.* PM.* CC.* PR.*,2.0
-500370,JJ.* PM.* CC.* PR.* DT.*,2.0,,,,JJ.* PM.* CC.* PR.* DT.*,2.0
-500371,JJ.*_CC.* NN.* CC.* NN.* CC.*,5.0,,,,JJ.*_CC.* NN.* CC.* NN.* CC.*,5.0
-500372,NN.* CC.* NN.* CC.* VB.*,9.0,,,,NN.* CC.* NN.* CC.* VB.*,9.0
-500373,DT.* NN.* CC.* DT.* JJ.*,3.0,,,,DT.* NN.* CC.* DT.* JJ.*,3.0
-500374,JJ.* CC.* NN.* CC.* PR.*_CC.*,4.0,,,,JJ.* CC.* NN.* CC.* PR.*_CC.*,4.0
-500375,DT.* NN.*_CC.* VB.* CC.* NN.*,5.0,,,,DT.* NN.*_CC.* VB.* CC.* NN.*,5.0
-500376,CC.* VB.* CC.* DT.* FW,3.0,,,,CC.* VB.* CC.* DT.* FW,3.0
-500377,VB.* CC.* DT.* FW CC.*,3.0,,,,VB.* CC.* DT.* FW CC.*,3.0
-500378,RB.* CC.* JJ.*_CC.* NN.* DT.*,2.0,,,,RB.* CC.* JJ.*_CC.* NN.* DT.*,2.0
-500379,CC.* JJ.*_CC.* NN.* DT.* NN.*,4.0,,,,CC.* JJ.*_CC.* NN.* DT.* NN.*,4.0
-500380,CC.* VB.* DT.* PR.*_CC.* NN.*,2.0,,,,CC.* VB.* DT.* PR.*_CC.* NN.*,2.0
-500381,FW CC.* NN.* PM.* JJ.*,2.0,,,,FW CC.* NN.* PM.* JJ.*,2.0
-500382,DT.* NN.* DT.* FW PM.*,2.0,,,,DT.* NN.* DT.* FW PM.*,2.0
-500383,CC.* RB.* RB.* DT.* NN.*,2.0,,,,CC.* RB.* RB.* DT.* NN.*,2.0
-500384,CC.* DT.* NN.* CC.* CC.*,2.0,,,,CC.* DT.* NN.* CC.* CC.*,2.0
-500385,RB.* RB.* NN.* CC.* PR.*,2.0,,,,RB.* RB.* NN.* CC.* PR.*,2.0
-500386,DT.* NN.* DT.* VB.* CC.*,4.0,,,,DT.* NN.* DT.* VB.* CC.*,4.0
-500387,NN.* DT.* VB.* CC.* FW,2.0,,,,NN.* DT.* VB.* CC.* FW,2.0
-500388,FW CC.* NN.* CC.* NN.*,2.0,,,,FW CC.* NN.* CC.* NN.*,2.0
-500389,CC.* NN.* CC.* NN.* PM.*,11.0,,,,CC.* NN.* CC.* NN.* PM.*,11.0
-500390,NN.* CC.* NN.* PM.* RB.*,8.0,,,,NN.* CC.* NN.* PM.* RB.*,8.0
-500391,NN.* PM.* RB.* JJ.* CC.*,3.0,,,,NN.* PM.* RB.* JJ.* CC.*,3.0
-500392,JJ.* CC.* NN.* DT.* NN.*,2.0,,,,JJ.* CC.* NN.* DT.* NN.*,2.0
-500393,NN.* DT.* NN.* CC.* JJ.*,2.0,,,,NN.* DT.* NN.* CC.* JJ.*,2.0
-500394,DT.* NN.* CC.* JJ.* DT.*,2.0,,,,DT.* NN.* CC.* JJ.* DT.*,2.0
-500395,NN.* CC.* JJ.* DT.* NN.*,3.0,,,,NN.* CC.* JJ.* DT.* NN.*,3.0
-500396,JJ.* DT.* NN.* CC.* CC.*,2.0,,,,JJ.* DT.* NN.* CC.* CC.*,2.0
-500397,NN.* CC.* CC.* NN.*_CC.* JJ.*,2.0,,,,NN.* CC.* CC.* NN.*_CC.* JJ.*,2.0
-500398,CC.* NN.*_CC.* JJ.* CC.* NN.*,2.0,,,,CC.* NN.*_CC.* JJ.* CC.* NN.*,2.0
-500399,NN.*_CC.* JJ.* CC.* NN.* PM.*,2.0,,,,NN.*_CC.* JJ.* CC.* NN.* PM.*,2.0
-500400,JJ.* CC.* NN.* PM.* JJ.*,2.0,,,,JJ.* CC.* NN.* PM.* JJ.*,2.0
-500401,CC.* NN.* PM.* JJ.* RB.*,3.0,,,,CC.* NN.* PM.* JJ.* RB.*,3.0
-500402,NN.* CC.* PR.*_CC.* NN.* PM.*,10.0,,,,NN.* CC.* PR.*_CC.* NN.* PM.*,10.0
-500403,NN.* DT.* NN.* PM.* RB.*,2.0,,,,NN.* DT.* NN.* PM.* RB.*,2.0
-500404,NN.* CC.* NN.* PM.* PR.*_CC.*,2.0,,,,NN.* CC.* NN.* PM.* PR.*_CC.*,2.0
-500405,CC.* NN.* PM.* PR.*_CC.* FW,2.0,,,,CC.* NN.* PM.* PR.*_CC.* FW,2.0
-500406,NN.* PM.* PR.*_CC.* FW FW,2.0,,,,NN.* PM.* PR.*_CC.* FW FW,2.0
-500407,PR.*_CC.* FW FW PM.* VB.*,2.0,,,,PR.*_CC.* FW FW PM.* VB.*,2.0
-500408,CC.* FW PM.* VB.* DT.*,2.0,,,,CC.* FW PM.* VB.* DT.*,2.0
-500409,RB.* CC.* NN.* CC.* DT.*,4.0,,,,RB.* CC.* NN.* CC.* DT.*,4.0
-500410,JJ.* PR.*_CC.* VB.* CC.* DT.*,2.0,,,,JJ.* PR.*_CC.* VB.* CC.* DT.*,2.0
-500411,VB.* CC.* DT.* NN.*_CC.* VB.*,4.0,,,,VB.* CC.* DT.* NN.*_CC.* VB.*,4.0
-500412,NN.* DT.* JJ.*_CC.* NN.* CC.*,2.0,,,,NN.* DT.* JJ.*_CC.* NN.* CC.*,2.0
-500413,DT.* JJ.*_CC.* NN.* CC.* NN.*,4.0,,,,DT.* JJ.*_CC.* NN.* CC.* NN.*,4.0
-500414,VB.* DT.* JJ.*_CC.* NN.* NN.*,2.0,,,,VB.* DT.* JJ.*_CC.* NN.* NN.*,2.0
-500415,NN.* NN.* CC.* RB.* RB.*,2.0,,,,NN.* NN.* CC.* RB.* RB.*,2.0
-500416,RB.* RB.* VB.* DT.* FW,2.0,,,,RB.* RB.* VB.* DT.* FW,2.0
-500417,NN.* NN.* CC.* DT.* NN.*_CC.*,2.0,,,,NN.* NN.* CC.* DT.* NN.*_CC.*,2.0
-500418,DT.* NN.*_CC.* PR.*_CC.* NN.*_CC.* VB.*,2.0,,,,DT.* NN.*_CC.* PR.*_CC.* NN.*_CC.* VB.*,2.0
-500419,CC.* VB.* RB.* VB.* DT.*,2.0,,,,CC.* VB.* RB.* VB.* DT.*,2.0
-500420,VB.* RB.* VB.* DT.* NN.*,2.0,,,,VB.* RB.* VB.* DT.* NN.*,2.0
-500421,FW PM.* CC.* VB.* DT.*,3.0,,,,FW PM.* CC.* VB.* DT.*,3.0
-500422,CC.* PR.*_CC.* NN.* NN.* DT.*,2.0,,,,CC.* PR.*_CC.* NN.* NN.* DT.*,2.0
-500423,NN.* NN.* DT.* JJ.*_CC.* NN.*,2.0,,,,NN.* NN.* DT.* JJ.*_CC.* NN.*,2.0
-500424,NN.* DT.* JJ.*_CC.* NN.* NN.*,3.0,,,,NN.* DT.* JJ.*_CC.* NN.* NN.*,3.0
-500425,RB.* CC.* VB.*_CC.* NN.* CC.*,2.0,,,,RB.* CC.* VB.*_CC.* NN.* CC.*,2.0
-500426,CC.* NN.*_CC.* VB.* CC.* NN.*,3.0,,,,CC.* NN.*_CC.* VB.* CC.* NN.*,3.0
-500427,NN.*_CC.* VB.* CC.* NN.* PM.*,2.0,,,,NN.*_CC.* VB.* CC.* NN.* PM.*,2.0
-500428,VB.* CC.* NN.* PM.* PR.*_CC.*,2.0,,,,VB.* CC.* NN.* PM.* PR.*_CC.*,2.0
-500429,PR.* DT.* VB.*_CC.* NN.* CC.*,2.0,,,,PR.* DT.* VB.*_CC.* NN.* CC.*,2.0
-500430,NN.* CC.* NN.* CC.* JJ.*_CC.*,3.0,,,,NN.* CC.* NN.* CC.* JJ.*_CC.*,3.0
-500431,RB.* CC.* DT.* NN.* CC.*,7.0,,,,RB.* CC.* DT.* NN.* CC.*,7.0
-500432,CC.* DT.* NN.* CC.* NN.*,8.0,,,,CC.* DT.* NN.* CC.* NN.*,8.0
-500433,RB.* CC.* VB.* CC.* DT.*,5.0,,,,RB.* CC.* VB.* CC.* DT.*,5.0
-500434,CC.* DT.* NN.* PM.* FW,2.0,,,,CC.* DT.* NN.* PM.* FW,2.0
-500435,FW PM.* NN.* CC.* JJ.*,2.0,,,,FW PM.* NN.* CC.* JJ.*,2.0
-500436,FW RB.* CC.* DT.* NN.*,3.0,,,,FW RB.* CC.* DT.* NN.*,3.0
-500437,RB.* CC.* DT.* NN.* PM.*,2.0,,,,RB.* CC.* DT.* NN.* PM.*,2.0
-500438,NN.* CC.* VB.* PR.* CC.*,5.0,,,,NN.* CC.* VB.* PR.* CC.*,5.0
-500439,CC.* VB.* PR.* CC.* NN.*_CC.*,2.0,,,,CC.* VB.* PR.* CC.* NN.*_CC.*,2.0
-500440,PR.*_CC.* VB.* CC.* NN.* CC.*,2.0,,,,PR.*_CC.* VB.* CC.* NN.* CC.*,2.0
-500441,VB.* CC.* NN.* CC.* CC.*,2.0,,,,VB.* CC.* NN.* CC.* CC.*,2.0
-500442,CC.* NN.* PM.* PR.*_CC.* NN.*,2.0,,,,CC.* NN.* PM.* PR.*_CC.* NN.*,2.0
-500443,NN.* RB.* RB.* VB.* DT.*,5.0,,,,NN.* RB.* RB.* VB.* DT.*,5.0
-500444,FW CC.* VB.* PM.* NN.*,2.0,,,,FW CC.* VB.* PM.* NN.*,2.0
-500445,CC.* VB.* PM.* NN.* CC.*,3.0,,,,CC.* VB.* PM.* NN.* CC.*,3.0
-500446,PR.* CC.* NN.* CC.* FW,3.0,,,,PR.* CC.* NN.* CC.* FW,3.0
-500447,FW FW CC.* PR.*_CC.* NN.*,3.0,,,,FW FW CC.* PR.*_CC.* NN.*,3.0
-500448,FW CC.* PR.*_CC.* NN.* DT.*,2.0,,,,FW CC.* PR.*_CC.* NN.* DT.*,2.0
-500449,CC.* NN.* CC.* JJ.*_CC.* NN.*,3.0,,,,CC.* NN.* CC.* JJ.*_CC.* NN.*,3.0
-500450,CC.* JJ.*_CC.* NN.* FW FW,2.0,,,,CC.* JJ.*_CC.* NN.* FW FW,2.0
-500451,DT.* NN.* CC.* VB.* PM.*,5.0,,,,DT.* NN.* CC.* VB.* PM.*,5.0
-500452,NN.* CC.* VB.* CC.* JJ.*,3.0,,,,NN.* CC.* VB.* CC.* JJ.*,3.0
-500453,VB.* CC.* DT.* NN.* DT.*,3.0,,,,VB.* CC.* DT.* NN.* DT.*,3.0
-500454,PR.* CC.* DT.* NN.* CC.*,4.0,,,,PR.* CC.* DT.* NN.* CC.*,4.0
-500455,NN.* CC.* PR.*_CC.* NN.* JJ.*,2.0,,,,NN.* CC.* PR.*_CC.* NN.* JJ.*,2.0
-500456,CC.* PR.*_CC.* NN.* JJ.* CC.*,2.0,,,,CC.* PR.*_CC.* NN.* JJ.* CC.*,2.0
-500457,CC.* NN.* CC.* JJ.*_CC.* FW,2.0,,,,CC.* NN.* CC.* JJ.*_CC.* FW,2.0
-500458,LM VB.* RB.* CC.* DT.*,2.0,,,,LM VB.* RB.* CC.* DT.*,2.0
-500459,NN.* CC.* NN.* CC.* NN.*,4.0,,,,NN.* CC.* NN.* CC.* NN.*,4.0
-500460,PR.* DT.* VB.* CC.* NN.*,2.0,,,,PR.* DT.* VB.* CC.* NN.*,2.0
-500461,CC.* DT.* VB.* RB.* CC.*,2.0,,,,CC.* DT.* VB.* RB.* CC.*,2.0
-500462,DT.* DT.* JJ.* PM.* NN.*,2.0,,,,DT.* DT.* JJ.* PM.* NN.*,2.0
-500463,DT.* JJ.* PM.* NN.* CC.*,6.0,,,,DT.* JJ.* PM.* NN.* CC.*,6.0
-500464,JJ.* PM.* NN.* CC.* VB.*_CC.*,2.0,,,,JJ.* PM.* NN.* CC.* VB.*_CC.*,2.0
-500465,CC.* NN.* CC.* PR.* DT.*,2.0,,,,CC.* NN.* CC.* PR.* DT.*,2.0
-500466,NN.* CC.* PR.* DT.* VB.*,2.0,,,,NN.* CC.* PR.* DT.* VB.*,2.0
-500467,CC.* PR.* DT.* VB.* CC.*,3.0,,,,CC.* PR.* DT.* VB.* CC.*,3.0
-500468,FW CC.* VB.* CC.* DT.*,2.0,,,,FW CC.* VB.* CC.* DT.*,2.0
-500469,CC.* VB.* PR.* DT.* NN.*,2.0,,,,CC.* VB.* PR.* DT.* NN.*,2.0
-500470,PR.* DT.* NN.* CC.* PR.*,2.0,,,,PR.* DT.* NN.* CC.* PR.*,2.0
-500471,VB.* CC.* NN.* PM.* RB.*,2.0,,,,VB.* CC.* NN.* PM.* RB.*,2.0
-500472,CC.* NN.* PM.* RB.* PR.*,3.0,,,,CC.* NN.* PM.* RB.* PR.*,3.0
-500473,PR.* VB.* CC.* NN.* CC.*,2.0,,,,PR.* VB.* CC.* NN.* CC.*,2.0
-500474,DT.* VB.* NN.* PR.* CC.*,2.0,,,,DT.* VB.* NN.* PR.* CC.*,2.0
-500475,NN.* NN.* CC.* DT.* VB.*_CC.*,2.0,,,,NN.* NN.* CC.* DT.* VB.*_CC.*,2.0
-500476,NN.* CC.* DT.* VB.*_CC.* NN.*,4.0,,,,NN.* CC.* DT.* VB.*_CC.* NN.*,4.0
-500477,DT.* VB.* DT.* NN.* CC.*,2.0,,,,DT.* VB.* DT.* NN.* CC.*,2.0
-500478,CC.* PR.*_CC.* NN.* PM.* NN.*,4.0,,,,CC.* PR.*_CC.* NN.* PM.* NN.*,4.0
-500479,NN.* CC.* RB.* DT.* VB.*,2.0,,,,NN.* CC.* RB.* DT.* VB.*,2.0
-500480,PM.* JJ.* CC.* NN.* CC.*,5.0,,,,PM.* JJ.* CC.* NN.* CC.*,5.0
-500481,PR.*_CC.* NN.* DT.* FW FW,2.0,,,,PR.*_CC.* NN.* DT.* FW FW,2.0
-500482,CC.* VB.* RB.* DT.* NN.*,3.0,,,,CC.* VB.* RB.* DT.* NN.*,3.0
-500483,DT.* NN.* CC.* PR.* RB.*,2.0,,,,DT.* NN.* CC.* PR.* RB.*,2.0
-500484,PM.* CC.* DT.* NN.* CC.*,2.0,,,,PM.* CC.* DT.* NN.* CC.*,2.0
-500485,CC.* VB.* PR.* CC.* VB.*_CC.*,2.0,,,,CC.* VB.* PR.* CC.* VB.*_CC.*,2.0
-500486,VB.* PR.* CC.* VB.*_CC.* NN.*,2.0,,,,VB.* PR.* CC.* VB.*_CC.* NN.*,2.0
-500487,VB.*_CC.* NN.* PM.* NN.* CC.*,2.0,,,,VB.*_CC.* NN.* PM.* NN.* CC.*,2.0
-500488,VB.* DT.* NN.* PM.* FW,2.0,,,,VB.* DT.* NN.* PM.* FW,2.0
-500489,RB.* DT.* NN.* RB.* NN.*,2.0,,,,RB.* DT.* NN.* RB.* NN.*,2.0
-500490,NN.* RB.* NN.* PM.* CD.*,2.0,,,,NN.* RB.* NN.* PM.* CD.*,2.0
-500491,RB.* RB.* PR.*_CC.* NN.* DT.*,2.0,,,,RB.* RB.* PR.*_CC.* NN.* DT.*,2.0
-500492,VB.* DT.* PR.*_CC.* NN.* CC.*,2.0,,,,VB.* DT.* PR.*_CC.* NN.* CC.*,2.0
-500493,DT.* PR.*_CC.* NN.* CC.* NN.*,4.0,,,,DT.* PR.*_CC.* NN.* CC.* NN.*,4.0
-500494,PM.* NN.* FW DT.* NN.*,2.0,,,,PM.* NN.* FW DT.* NN.*,2.0
-500495,NN.* FW DT.* NN.* CC.*,3.0,,,,NN.* FW DT.* NN.* CC.*,3.0
-500496,NN.* CC.* JJ.* RB.* CC.*,2.0,,,,NN.* CC.* JJ.* RB.* CC.*,2.0
-500497,NN.* CC.* RB.* RB.* RB.*,2.0,,,,NN.* CC.* RB.* RB.* RB.*,2.0
-500498,PM.* NN.* CC.* VB.* CC.*,5.0,,,,PM.* NN.* CC.* VB.* CC.*,5.0
-500499,PM.* NN.* DT.* DT.* NN.*,2.0,,,,PM.* NN.* DT.* DT.* NN.*,2.0
-500500,RB.* RB.* VB.* NN.* DT.*,2.0,,,,RB.* RB.* VB.* NN.* DT.*,2.0
-500501,NN.* RB.*_CC.* CD.* PM.* RB.*,2.0,,,,NN.* RB.*_CC.* CD.* PM.* RB.*,2.0
-500502,CC.* PR.*_CC.* DT.* NN.* PM.*,3.0,,,,CC.* PR.*_CC.* DT.* NN.* PM.*,3.0
-500503,RB.* PR.* CC.* NN.* CC.*,2.0,,,,RB.* PR.* CC.* NN.* CC.*,2.0
-500504,NN.* PM.* VB.* PR.* DT.*,4.0,,,,NN.* PM.* VB.* PR.* DT.*,4.0
-500505,VB.* PR.* DT.* DT.* NN.*,2.0,,,,VB.* PR.* DT.* DT.* NN.*,2.0
-500506,NN.* CC.* NN.* CC.* VB.*_CC.*,2.0,,,,NN.* CC.* NN.* CC.* VB.*_CC.*,2.0
-500507,VB.*_CC.* NN.* DT.* FW FW,2.0,,,,VB.*_CC.* NN.* DT.* FW FW,2.0
-500508,NN.* CC.* VB.* DT.* VB.*,2.0,,,,NN.* CC.* VB.* DT.* VB.*,2.0
-500509,CC.* VB.* DT.* VB.* CC.*,3.0,,,,CC.* VB.* DT.* VB.* CC.*,3.0
-500510,VB.* DT.* VB.* CC.* DT.*,2.0,,,,VB.* DT.* VB.* CC.* DT.*,2.0
-500511,PR.* DT.* NN.* CC.* NN.*,4.0,,,,PR.* DT.* NN.* CC.* NN.*,4.0
-500512,DT.* NN.* CC.* NN.* PM.*,7.0,,,,DT.* NN.* CC.* NN.* PM.*,7.0
-500513,NN.* CC.* NN.* PM.* JJ.*,2.0,,,,NN.* CC.* NN.* PM.* JJ.*,2.0
-500514,NN.* CC.* VB.* CC.* CD.*,3.0,,,,NN.* CC.* VB.* CC.* CD.*,3.0
-500515,VB.* PM.* NN.* CC.* VB.*,3.0,,,,VB.* PM.* NN.* CC.* VB.*,3.0
-500516,PM.* NN.* CC.* VB.* DT.*,4.0,,,,PM.* NN.* CC.* VB.* DT.*,4.0
-500517,PM.* DT.* NN.* CC.* VB.*,2.0,,,,PM.* DT.* NN.* CC.* VB.*,2.0
-500518,CC.* NN.* PM.* RB.* VB.*,3.0,,,,CC.* NN.* PM.* RB.* VB.*,3.0
-500519,NN.* PM.* RB.* VB.* PR.*_CC.*,2.0,,,,NN.* PM.* RB.* VB.* PR.*_CC.*,2.0
-500520,CC.* VB.* DT.* FW CC.*,2.0,,,,CC.* VB.* DT.* FW CC.*,2.0
-500521,DT.* PR.*_CC.* NN.* CC.* CC.*,2.0,,,,DT.* PR.*_CC.* NN.* CC.* CC.*,2.0
-500522,DT.* JJ.*_JJ.*_CC.* NN.* CC.* RB.*,2.0,,,,DT.* JJ.*_JJ.*_CC.* NN.* CC.* RB.*,2.0
-500523,NN.* RB.* RB.* JJ.* PM.*,3.0,,,,NN.* RB.* RB.* JJ.* PM.*,3.0
-500524,JJ.* FW CC.* NN.* PM.*,2.0,,,,JJ.* FW CC.* NN.* PM.*,2.0
-500525,DT.* FW CC.* VB.* CC.*,4.0,,,,DT.* FW CC.* VB.* CC.*,4.0
-500526,FW CC.* VB.* CC.* NN.*,5.0,,,,FW CC.* VB.* CC.* NN.*,5.0
-500527,VB.*_CC.* NN.* CC.* FW PM.*,2.0,,,,VB.*_CC.* NN.* CC.* FW PM.*,2.0
-500528,FW PM.* VB.* DT.* NN.*,5.0,,,,FW PM.* VB.* DT.* NN.*,5.0
-500529,CC.* PR.*_CC.* NN.* PM.* VB.*,4.0,,,,CC.* PR.*_CC.* NN.* PM.* VB.*,4.0
-500530,PR.*_CC.* NN.* PM.* VB.* DT.*,2.0,,,,PR.*_CC.* NN.* PM.* VB.* DT.*,2.0
-500531,NN.* PM.* VB.* DT.* NN.*,3.0,,,,NN.* PM.* VB.* DT.* NN.*,3.0
-500532,VB.* DT.* NN.* PM.* VB.*,4.0,,,,VB.* DT.* NN.* PM.* VB.*,4.0
-500533,DT.* NN.* PM.* VB.* PR.*,4.0,,,,DT.* NN.* PM.* VB.* PR.*,4.0
-500534,FW PM.* PM.* NN.* NN.*,2.0,,,,FW PM.* PM.* NN.* NN.*,2.0
-500535,JJ.*_CC.* NN.* DT.* NN.* PM.*,3.0,,,,JJ.*_CC.* NN.* DT.* NN.* PM.*,3.0
-500536,RB.* VB.* DT.* DT.* NN.*,2.0,,,,RB.* VB.* DT.* DT.* NN.*,2.0
-500537,CC.* CC.* NN.* PM.* RB.*,2.0,,,,CC.* CC.* NN.* PM.* RB.*,2.0
-500538,CC.* NN.* PM.* RB.* CC.*,4.0,,,,CC.* NN.* PM.* RB.* CC.*,4.0
-500539,NN.* CC.* RB.* VB.* CC.*,4.0,,,,NN.* CC.* RB.* VB.* CC.*,4.0
-500540,VB.* CC.* PR.*_CC.* NN.* DT.*,2.0,,,,VB.* CC.* PR.*_CC.* NN.* DT.*,2.0
-500541,PM.* RB.* JJ.* CC.* DT.*,2.0,,,,PM.* RB.* JJ.* CC.* DT.*,2.0
-500542,JJ.* CC.* DT.* NN.* CC.*,3.0,,,,JJ.* CC.* DT.* NN.* CC.*,3.0
-500543,PR.* CC.* RB.*_CC.* NN.* CC.*,2.0,,,,PR.* CC.* RB.*_CC.* NN.* CC.*,2.0
-500544,RB.*_CC.* NN.* CC.* NN.* PM.*,2.0,,,,RB.*_CC.* NN.* CC.* NN.* PM.*,2.0
-500545,CC.* DT.* NN.* PR.* CC.*,4.0,,,,CC.* DT.* NN.* PR.* CC.*,4.0
-500546,CC.* DT.* NN.* CC.* VB.*,12.0,,,,CC.* DT.* NN.* CC.* VB.*,12.0
-500547,DT.* NN.* CC.* VB.* PR.*_CC.*,2.0,,,,DT.* NN.* CC.* VB.* PR.*_CC.*,2.0
-500548,RB.*_CC.* VB.* CC.* NN.* DT.*,2.0,,,,RB.*_CC.* VB.* CC.* NN.* DT.*,2.0
-500549,NN.* CC.* VB.* CC.* JJ.*_CC.*,3.0,,,,NN.* CC.* VB.* CC.* JJ.*_CC.*,3.0
-500550,CC.* VB.* CC.* JJ.*_CC.* NN.*_CC.*,2.0,,,,CC.* VB.* CC.* JJ.*_CC.* NN.*_CC.*,2.0
-500551,CC.* CC.* DT.* DT.* NN.*,2.0,,,,CC.* CC.* DT.* DT.* NN.*,2.0
-500552,NN.* CC.* VB.* PR.* RB.*_CC.*,2.0,,,,NN.* CC.* VB.* PR.* RB.*_CC.*,2.0
-500553,NN.* PR.* PM.* RB.* RB.*,2.0,,,,NN.* PR.* PM.* RB.* RB.*,2.0
-500554,PM.* RB.* RB.* PR.* VB.*,2.0,,,,PM.* RB.* RB.* PR.* VB.*,2.0
-500555,RB.* RB.* PR.* VB.* DT.*,3.0,,,,RB.* RB.* PR.* VB.* DT.*,3.0
-500556,VB.* DT.* PR.*_CC.* FW FW,2.0,,,,VB.* DT.* PR.*_CC.* FW FW,2.0
-500557,CC.* PR.*_CC.* DT.* NN.*_CC.* VB.*,2.0,,,,CC.* PR.*_CC.* DT.* NN.*_CC.* VB.*,2.0
-500558,VB.* JJ.* DT.* NN.* CC.*,3.0,,,,VB.* JJ.* DT.* NN.* CC.*,3.0
-500559,VB.* PR.* CC.* VB.* CC.*,2.0,,,,VB.* PR.* CC.* VB.* CC.*,2.0
-500560,PM.* FW DT.* NN.* CC.*,5.0,,,,PM.* FW DT.* NN.* CC.*,5.0
-500561,FW DT.* NN.* CC.* NN.*,3.0,,,,FW DT.* NN.* CC.* NN.*,3.0
-500562,NN.* CC.* VB.* RB.* DT.*,6.0,,,,NN.* CC.* VB.* RB.* DT.*,6.0
-500563,CC.* NN.* RB.* RB.* JJ.*,2.0,,,,CC.* NN.* RB.* RB.* JJ.*,2.0
-500564,CC.* DT.* NN.*_CC.* VB.* LM,2.0,,,,CC.* DT.* NN.*_CC.* VB.* LM,2.0
-500565,CC.* DT.* NN.* PM.* RB.*,3.0,,,,CC.* DT.* NN.* PM.* RB.*,3.0
-500566,NN.* PM.* RB.* VB.* DT.*,4.0,,,,NN.* PM.* RB.* VB.* DT.*,4.0
-500567,RB.* RB.* RB.* DT.* NN.*,2.0,,,,RB.* RB.* RB.* DT.* NN.*,2.0
-500568,RB.* DT.* NN.* DT.* NN.*,2.0,,,,RB.* DT.* NN.* DT.* NN.*,2.0
-500569,CC.* JJ.*_CC.* NN.* NN.* FW,2.0,,,,CC.* JJ.*_CC.* NN.* NN.* FW,2.0
-500570,JJ.*_CC.* NN.* NN.* FW CC.*,2.0,,,,JJ.*_CC.* NN.* NN.* FW CC.*,2.0
-500571,CC.* NN.* LM VB.* CC.*,3.0,,,,CC.* NN.* LM VB.* CC.*,3.0
-500572,LM VB.* CC.* NN.* PM.*,2.0,,,,LM VB.* CC.* NN.* PM.*,2.0
-500573,PR.*_CC.* NN.* CC.* VB.* CC.*,2.0,,,,PR.*_CC.* NN.* CC.* VB.* CC.*,2.0
-500574,NN.* CC.* VB.* CC.* VB.*,3.0,,,,NN.* CC.* VB.* CC.* VB.*,3.0
-500575,DT.* NN.* PM.* CC.* PR.*_CC.*,2.0,,,,DT.* NN.* PM.* CC.* PR.*_CC.*,2.0
-500576,PR.*_CC.* VB.* PM.* NN.* CC.*,2.0,,,,PR.*_CC.* VB.* PM.* NN.* CC.*,2.0
-500577,CC.* NN.* CC.* DT.* VB.*,2.0,,,,CC.* NN.* CC.* DT.* VB.*,2.0
-500578,VB.* RB.* CC.* DT.* PR.*,2.0,,,,VB.* RB.* CC.* DT.* PR.*,2.0
-500579,NN.* RB.* RB.*_CC.* VB.* DT.*,2.0,,,,NN.* RB.* RB.*_CC.* VB.* DT.*,2.0
-500580,DT.* CC.* PM.* NN.* CC.*,2.0,,,,DT.* CC.* PM.* NN.* CC.*,2.0
-500581,LM DT.* NN.*_CC.* VB.* CC.*,2.0,,,,LM DT.* NN.*_CC.* VB.* CC.*,2.0
-500582,JJ.*_CC.* NN.* CC.* NN.* PM.*,2.0,,,,JJ.*_CC.* NN.* CC.* NN.* PM.*,2.0
-500583,NN.* PM.* CC.* VB.* RB.*,3.0,,,,NN.* PM.* CC.* VB.* RB.*,3.0
-500584,NN.*_CC.* VB.* CC.* VB.* CC.*,2.0,,,,NN.*_CC.* VB.* CC.* VB.* CC.*,2.0
-500585,NN.* CC.* FW PM.* CC.*,3.0,,,,NN.* CC.* FW PM.* CC.*,3.0
-500586,CC.* JJ.* CC.* DT.* NN.*,2.0,,,,CC.* JJ.* CC.* DT.* NN.*,2.0
-500587,JJ.* CC.* DT.* NN.* PR.*,2.0,,,,JJ.* CC.* DT.* NN.* PR.*,2.0
-500588,PR.*_CC.* DT.* NN.* PM.* CC.*,3.0,,,,PR.*_CC.* DT.* NN.* PM.* CC.*,3.0
-500589,NN.* PM.* CC.* CC.* RB.*,2.0,,,,NN.* PM.* CC.* CC.* RB.*,2.0
-500590,VB.* DT.* NN.* CC.* PR.*,2.0,,,,VB.* DT.* NN.* CC.* PR.*,2.0
-500591,CC.* PR.* RB.*_CC.* FW FW,2.0,,,,CC.* PR.* RB.*_CC.* FW FW,2.0
-500592,PR.* RB.*_CC.* FW FW CC.*,2.0,,,,PR.* RB.*_CC.* FW FW CC.*,2.0
-500593,VB.* RB.* DT.* NN.* DT.*,2.0,,,,VB.* RB.* DT.* NN.* DT.*,2.0
-500594,PR.* RB.* VB.* DT.* NN.*,2.0,,,,PR.* RB.* VB.* DT.* NN.*,2.0
-500595,CC.* NN.* RB.* CC.* DT.*,2.0,,,,CC.* NN.* RB.* CC.* DT.*,2.0
-500596,VB.* CC.* NN.* PM.* CC.*,2.0,,,,VB.* CC.* NN.* PM.* CC.*,2.0
-500597,CC.* NN.* PM.* CC.* VB.*,6.0,,,,CC.* NN.* PM.* CC.* VB.*,6.0
-500598,JJ.* VB.* DT.* NN.* CC.*,2.0,,,,JJ.* VB.* DT.* NN.* CC.*,2.0
-500599,PM.* CC.* VB.* CC.* FW,3.0,,,,PM.* CC.* VB.* CC.* FW,3.0
-500600,VB.* PR.* CC.* NN.* PM.*,2.0,,,,VB.* PR.* CC.* NN.* PM.*,2.0
-500601,PR.* CC.* NN.* PM.* FW,2.0,,,,PR.* CC.* NN.* PM.* FW,2.0
-500602,FW PM.* VB.* PR.* CC.*,4.0,,,,FW PM.* VB.* PR.* CC.*,4.0
-500603,CC.* NN.* PM.* PR.* DT.*,2.0,,,,CC.* NN.* PM.* PR.* DT.*,2.0
-500604,PM.* CC.* VB.* CC.* NN.*,3.0,,,,PM.* CC.* VB.* CC.* NN.*,3.0
-500605,FW NN.* CC.* NN.* PM.*,3.0,,,,FW NN.* CC.* NN.* PM.*,3.0
-500606,RB.* DT.* JJ.*_CC.* NN.* NN.*,2.0,,,,RB.* DT.* JJ.*_CC.* NN.* NN.*,2.0
-500607,DT.* JJ.*_CC.* NN.* NN.* NN.*,2.0,,,,DT.* JJ.*_CC.* NN.* NN.* NN.*,2.0
-500608,VB.*_VB.*_CC.* NN.* DT.* NN.* CC.*,2.0,,,,VB.*_VB.*_CC.* NN.* DT.* NN.* CC.*,2.0
-500609,NN.* DT.* NN.* CC.* FW,5.0,,,,NN.* DT.* NN.* CC.* FW,5.0
-500610,CC.* CC.* PM.* NN.* CC.*,4.0,,,,CC.* CC.* PM.* NN.* CC.*,4.0
-500611,NN.* CC.* RB.* PR.* PR.*,2.0,,,,NN.* CC.* RB.* PR.* PR.*,2.0
-500612,VB.* DT.* NN.* CC.* FW,3.0,,,,VB.* DT.* NN.* CC.* FW,3.0
-500613,RB.* DT.* NN.* CD.* PM.*,2.0,,,,RB.* DT.* NN.* CD.* PM.*,2.0
-500614,PM.* RB.* VB.* DT.* NN.*,5.0,,,,PM.* RB.* VB.* DT.* NN.*,5.0
-500615,VB.* DT.* NN.* CC.* VB.*,5.0,,,,VB.* DT.* NN.* CC.* VB.*,5.0
-500616,NN.* CC.* NN.* RB.* RB.*,3.0,,,,NN.* CC.* NN.* RB.* RB.*,3.0
-500617,CC.* NN.* RB.* RB.* VB.*,3.0,,,,CC.* NN.* RB.* RB.* VB.*,3.0
-500618,RB.* RB.* VB.* DT.* PR.*_CC.*,2.0,,,,RB.* RB.* VB.* DT.* PR.*_CC.*,2.0
-500619,VB.* DT.* PR.*_CC.* DT.* NN.*,2.0,,,,VB.* DT.* PR.*_CC.* DT.* NN.*,2.0
-500620,DT.* PR.*_CC.* DT.* NN.* CC.*,2.0,,,,DT.* PR.*_CC.* DT.* NN.* CC.*,2.0
-500621,PR.*_CC.* DT.* NN.* CC.* VB.*,3.0,,,,PR.*_CC.* DT.* NN.* CC.* VB.*,3.0
-500622,CC.* PR.*_CC.* NN.* CC.* RB.*,4.0,,,,CC.* PR.*_CC.* NN.* CC.* RB.*,4.0
-500623,CC.* RB.* RB.* VB.* CC.*,2.0,,,,CC.* RB.* RB.* VB.* CC.*,2.0
-500624,JJ.* DT.* NN.* CC.* RB.*_CC.*,2.0,,,,JJ.* DT.* NN.* CC.* RB.*_CC.*,2.0
-500625,DT.* NN.* CC.* RB.*_CC.* VB.*,3.0,,,,DT.* NN.* CC.* RB.*_CC.* VB.*,3.0
-500626,NN.* CC.* RB.*_CC.* VB.* CC.*,2.0,,,,NN.* CC.* RB.*_CC.* VB.* CC.*,2.0
-500627,CC.* RB.*_CC.* VB.* CC.* NN.*,3.0,,,,CC.* RB.*_CC.* VB.* CC.* NN.*,3.0
-500628,CC.* PR.* DT.* NN.* CC.*,2.0,,,,CC.* PR.* DT.* NN.* CC.*,2.0
-500629,PR.*_CC.* NN.* PM.* RB.* RB.*,2.0,,,,PR.*_CC.* NN.* PM.* RB.* RB.*,2.0
-500630,CC.* DT.* NN.* PM.* CC.*,5.0,,,,CC.* DT.* NN.* PM.* CC.*,5.0
-500631,CC.* PR.*_CC.* JJ.* CC.* NN.*,2.0,,,,CC.* PR.*_CC.* JJ.* CC.* NN.*,2.0
-500632,NN.* FW PM.* VB.* RB.*,2.0,,,,NN.* FW PM.* VB.* RB.*,2.0
-500633,VB.* PR.* CC.* PM.* FW,2.0,,,,VB.* PR.* CC.* PM.* FW,2.0
-500634,PM.* RB.* VB.* CC.* FW,2.0,,,,PM.* RB.* VB.* CC.* FW,2.0
-500635,PM.* CC.* VB.* CC.* DT.*,2.0,,,,PM.* CC.* VB.* CC.* DT.*,2.0
-500636,CC.* DT.* NN.* CC.* FW,2.0,,,,CC.* DT.* NN.* CC.* FW,2.0
-500637,RB.* CC.* FW DT.* NN.*,2.0,,,,RB.* CC.* FW DT.* NN.*,2.0
-500638,CC.* PM.* NN.* CC.* NN.*,2.0,,,,CC.* PM.* NN.* CC.* NN.*,2.0
-500639,PM.* NN.* CC.* NN.* CC.*,2.0,,,,PM.* NN.* CC.* NN.* CC.*,2.0
-500640,CC.* NN.* CC.* NN.* CC.*,3.0,,,,CC.* NN.* CC.* NN.* CC.*,3.0
-500641,NN.* CC.* NN.* CC.* DT.*,4.0,,,,NN.* CC.* NN.* CC.* DT.*,4.0
-500642,RB.* NN.* DT.* NN.* CC.*,2.0,,,,RB.* NN.* DT.* NN.* CC.*,2.0
-500643,DT.* NN.* CC.* DT.* NN.*,3.0,,,,DT.* NN.* CC.* DT.* NN.*,3.0
-500644,CC.* PR.*_CC.* VB.*_CC.* NN.* PM.*,2.0,,,,CC.* PR.*_CC.* VB.*_CC.* NN.* PM.*,2.0
-500645,RB.* CC.* NN.* CC.* VB.*,2.0,,,,RB.* CC.* NN.* CC.* VB.*,2.0
-500646,CC.* NN.* PM.* FW DT.*,2.0,,,,CC.* NN.* PM.* FW DT.*,2.0
-500647,PR.*_CC.* FW FW CC.* NN.*,2.0,,,,PR.*_CC.* FW FW CC.* NN.*,2.0
-500648,FW CC.* NN.* PM.* VB.*,4.0,,,,FW CC.* NN.* PM.* VB.*,4.0
-500649,VB.* DT.* NN.* CC.* PM.*,3.0,,,,VB.* DT.* NN.* CC.* PM.*,3.0
-500650,PM.* RB.* CC.* VB.* DT.*,2.0,,,,PM.* RB.* CC.* VB.* DT.*,2.0
-500651,RB.* CC.* VB.* DT.* NN.*,6.0,,,,RB.* CC.* VB.* DT.* NN.*,6.0
-500652,DT.* NN.* PM.* FW CC.*,2.0,,,,DT.* NN.* PM.* FW CC.*,2.0
-500653,LM VB.*_VB.* CC.* NN.* CC.*,2.0,,,,LM VB.*_VB.* CC.* NN.* CC.*,2.0
-500654,CC.* NN.* CC.* PR.* CC.*,2.0,,,,CC.* NN.* CC.* PR.* CC.*,2.0
-500655,NN.* CC.* PR.* CC.* RB.*,3.0,,,,NN.* CC.* PR.* CC.* RB.*,3.0
-500656,CC.* JJ.*_CC.* NN.* CC.* CC.*,2.0,,,,CC.* JJ.*_CC.* NN.* CC.* CC.*,2.0
-500657,DT.* NN.* PR.*_CC.* VB.* PM.*,2.0,,,,DT.* NN.* PR.*_CC.* VB.* PM.*,2.0
-500658,NN.* PR.*_CC.* VB.* PM.* FW,2.0,,,,NN.* PR.*_CC.* VB.* PM.* FW,2.0
-500659,PR.*_CC.* VB.* PM.* FW CC.*,2.0,,,,PR.*_CC.* VB.* PM.* FW CC.*,2.0
-500660,NN.* PM.* VB.* RB.* CC.*,4.0,,,,NN.* PM.* VB.* RB.* CC.*,4.0
-500661,VB.* RB.* CC.* DT.* NN.*,3.0,,,,VB.* RB.* CC.* DT.* NN.*,3.0
-500662,RB.* RB.* DT.* NN.* PM.*,4.0,,,,RB.* RB.* DT.* NN.* PM.*,4.0
-500663,NN.* PM.* PR.* DT.* VB.*,2.0,,,,NN.* PM.* PR.* DT.* VB.*,2.0
-500664,DT.* VB.* CC.* JJ.* CC.*,2.0,,,,DT.* VB.* CC.* JJ.* CC.*,2.0
-500665,NN.* PM.* CC.* NN.*_CC.* JJ.*,2.0,,,,NN.* PM.* CC.* NN.*_CC.* JJ.*,2.0
-500666,CC.* FW PM.* NN.* CC.*,3.0,,,,CC.* FW PM.* NN.* CC.*,3.0
-500667,NN.* CC.* NN.* PM.* VB.*,5.0,,,,NN.* CC.* NN.* PM.* VB.*,5.0
-500668,VB.* CC.* NN.* PM.* NN.*,2.0,,,,VB.* CC.* NN.* PM.* NN.*,2.0
-500669,RB.* VB.* PR.* DT.* FW,2.0,,,,RB.* VB.* PR.* DT.* FW,2.0
-500670,RB.* PM.* RB.* VB.* DT.*,3.0,,,,RB.* PM.* RB.* VB.* DT.*,3.0
-500671,CC.* DT.* NN.* CC.* PR.*_CC.*,2.0,,,,CC.* DT.* NN.* CC.* PR.*_CC.*,2.0
-500672,PR.*_CC.* NN.* PM.* VB.* PR.*,2.0,,,,PR.*_CC.* NN.* PM.* VB.* PR.*,2.0
-500673,NN.* PM.* VB.* PR.* CC.*,4.0,,,,NN.* PM.* VB.* PR.* CC.*,4.0
-500674,DT.* PR.* CC.* JJ.*_JJ.*_CC.* NN.*,2.0,,,,DT.* PR.* CC.* JJ.*_JJ.*_CC.* NN.*,2.0
-500675,PR.* CC.* JJ.*_JJ.*_CC.* NN.* CC.*,2.0,,,,PR.* CC.* JJ.*_JJ.*_CC.* NN.* CC.*,2.0
-500676,PR.*_CC.* NN.* DT.* VB.* CC.*,2.0,,,,PR.*_CC.* NN.* DT.* VB.* CC.*,2.0
-500677,CC.* NN.* RB.* PR.* CC.*,2.0,,,,CC.* NN.* RB.* PR.* CC.*,2.0
-500678,CC.* NN.*_CC.* JJ.* PM.* CC.*,2.0,,,,CC.* NN.*_CC.* JJ.* PM.* CC.*,2.0
-500679,NN.* PM.* VB.* PM.* FW,2.0,,,,NN.* PM.* VB.* PM.* FW,2.0
-500680,VB.* PM.* FW DT.* NN.*,4.0,,,,VB.* PM.* FW DT.* NN.*,4.0
-500681,FW PM.* CC.* VB.* NN.*,2.0,,,,FW PM.* CC.* VB.* NN.*,2.0
-500682,CC.* VB.* NN.* CC.* PR.*_CC.*,2.0,,,,CC.* VB.* NN.* CC.* PR.*_CC.*,2.0
-500683,VB.* NN.* CC.* PR.*_CC.* FW,2.0,,,,VB.* NN.* CC.* PR.*_CC.* FW,2.0
-500684,RB.* PR.*_CC.* VB.* DT.* DT.*,2.0,,,,RB.* PR.*_CC.* VB.* DT.* DT.*,2.0
-500685,PR.*_CC.* VB.* DT.* DT.* NN.*,2.0,,,,PR.*_CC.* VB.* DT.* DT.* NN.*,2.0
-500686,VB.* CC.* PR.*_CC.* FW CC.*,2.0,,,,VB.* CC.* PR.*_CC.* FW CC.*,2.0
-500687,PR.* DT.* DT.* NN.* PM.*,2.0,,,,PR.* DT.* DT.* NN.* PM.*,2.0
-500688,CC.* RB.* VB.* PM.* NN.*,2.0,,,,CC.* RB.* VB.* PM.* NN.*,2.0
-500689,NN.* PM.* LM VB.* CC.*,2.0,,,,NN.* PM.* LM VB.* CC.*,2.0
-500690,NN.* PM.* CC.* VB.* CC.*,5.0,,,,NN.* PM.* CC.* VB.* CC.*,5.0
-500691,NN.* PM.* DT.* JJ.*_CC.* NN.*_CC.*,2.0,,,,NN.* PM.* DT.* JJ.*_CC.* NN.*_CC.*,2.0
-500692,DT.* JJ.*_CC.* NN.*_CC.* NN.* NN.*,2.0,,,,DT.* JJ.*_CC.* NN.*_CC.* NN.* NN.*,2.0
-500693,NN.* DT.* VB.* CC.* VB.*,2.0,,,,NN.* DT.* VB.* CC.* VB.*,2.0
-500694,DT.* DT.* NN.* PM.* CC.*,3.0,,,,DT.* DT.* NN.* PM.* CC.*,3.0
-500695,VB.* RB.* DT.* PR.*_CC.* NN.*,2.0,,,,VB.* RB.* DT.* PR.*_CC.* NN.*,2.0
-500696,RB.* DT.* PR.*_CC.* NN.* CC.*,4.0,,,,RB.* DT.* PR.*_CC.* NN.* CC.*,4.0
-500697,CC.* JJ.*_CC.* FW CC.* NN.*,2.0,,,,CC.* JJ.*_CC.* FW CC.* NN.*,2.0
-500698,CC.* PR.* PR.*_CC.* NN.* CC.*,2.0,,,,CC.* PR.* PR.*_CC.* NN.* CC.*,2.0
-500699,CC.* VB.* CC.* JJ.* PM.*,2.0,,,,CC.* VB.* CC.* JJ.* PM.*,2.0
-500700,PR.* PM.* VB.* PM.* FW,2.0,,,,PR.* PM.* VB.* PM.* FW,2.0
-500701,PM.* VB.* PM.* FW CC.*,2.0,,,,PM.* VB.* PM.* FW CC.*,2.0
-500702,CC.* NN.* PR.* CC.* DT.*,3.0,,,,CC.* NN.* PR.* CC.* DT.*,3.0
-500703,NN.* PR.* CC.* DT.* NN.*,4.0,,,,NN.* PR.* CC.* DT.* NN.*,4.0
-500704,CC.* DT.* NN.* DT.* NN.*,3.0,,,,CC.* DT.* NN.* DT.* NN.*,3.0
-500705,CC.* VB.* PM.* VB.* CC.*,3.0,,,,CC.* VB.* PM.* VB.* CC.*,3.0
-500706,VB.* PM.* VB.* CC.* NN.*,4.0,,,,VB.* PM.* VB.* CC.* NN.*,4.0
-500707,PM.* VB.* CC.* NN.* CC.*,6.0,,,,PM.* VB.* CC.* NN.* CC.*,6.0
-500708,VB.* DT.* NN.* CC.* JJ.*_CC.*,3.0,,,,VB.* DT.* NN.* CC.* JJ.*_CC.*,3.0
-500709,DT.* NN.* CC.* JJ.*_CC.* NN.*,2.0,,,,DT.* NN.* CC.* JJ.*_CC.* NN.*,2.0
-500710,JJ.*_CC.* NN.* CC.* FW FW,3.0,,,,JJ.*_CC.* NN.* CC.* FW FW,3.0
-500711,VB.* DT.* FW CC.* NN.*,4.0,,,,VB.* DT.* FW CC.* NN.*,4.0
-500712,CC.* NN.* CC.* NN.* DT.*,3.0,,,,CC.* NN.* CC.* NN.* DT.*,3.0
-500713,VB.* CD.* NN.* RB.* PR.*,2.0,,,,VB.* CD.* NN.* RB.* PR.*,2.0
-500714,CC.* VB.*_CC.* NN.* CC.* NN.*,4.0,,,,CC.* VB.*_CC.* NN.* CC.* NN.*,4.0
-500715,RB.* DT.* VB.* DT.* NN.*,3.0,,,,RB.* DT.* VB.* DT.* NN.*,3.0
-500716,PM.* VB.* PR.*_CC.* VB.* CC.*,2.0,,,,PM.* VB.* PR.*_CC.* VB.* CC.*,2.0
-500717,VB.* PR.*_CC.* VB.* CC.* PR.*_CC.*,2.0,,,,VB.* PR.*_CC.* VB.* CC.* PR.*_CC.*,2.0
-500718,CC.* RB.* RB.* PR.* VB.*,2.0,,,,CC.* RB.* RB.* PR.* VB.*,2.0
-500719,RB.* PR.* VB.* DT.* NN.*,2.0,,,,RB.* PR.* VB.* DT.* NN.*,2.0
-500720,PR.* VB.* DT.* NN.* CC.*,3.0,,,,PR.* VB.* DT.* NN.* CC.*,3.0
-500721,VB.* CC.* NN.* CC.* PR.*,2.0,,,,VB.* CC.* NN.* CC.* PR.*,2.0
-500722,FW PM.* VB.* CC.* DT.*,2.0,,,,FW PM.* VB.* CC.* DT.*,2.0
-500723,PM.* VB.* CC.* DT.* NN.*,5.0,,,,PM.* VB.* CC.* DT.* NN.*,5.0
-500724,CC.* FW FW DT.* JJ.*_CC.*,2.0,,,,CC.* FW FW DT.* JJ.*_CC.*,2.0
-500725,FW FW DT.* JJ.*_CC.* NN.*,2.0,,,,FW FW DT.* JJ.*_CC.* NN.*,2.0
-500726,NN.* CC.* VB.* CC.* PR.*_CC.*,3.0,,,,NN.* CC.* VB.* CC.* PR.*_CC.*,3.0
-500727,CC.* VB.* CC.* PR.*_CC.* NN.*,3.0,,,,CC.* VB.* CC.* PR.*_CC.* NN.*,3.0
-500728,VB.* PR.* CC.* PR.*_CC.* NN.*_CC.*,2.0,,,,VB.* PR.* CC.* PR.*_CC.* NN.*_CC.*,2.0
-500729,VB.* DT.* NN.* CC.* RB.*,3.0,,,,VB.* DT.* NN.* CC.* RB.*,3.0
-500730,FW PM.* NN.* CC.* VB.*,2.0,,,,FW PM.* NN.* CC.* VB.*,2.0
-500731,DT.* NN.* DT.* NN.* PM.*,2.0,,,,DT.* NN.* DT.* NN.* PM.*,2.0
-500732,RB.* PM.* NN.* DT.* NN.*,2.0,,,,RB.* PM.* NN.* DT.* NN.*,2.0
-500733,RB.* VB.* CC.* NN.* CC.*,2.0,,,,RB.* VB.* CC.* NN.* CC.*,2.0
-500734,DT.* NN.* PR.* CC.* VB.*,2.0,,,,DT.* NN.* PR.* CC.* VB.*,2.0
-500735,RB.* PM.* NN.* CC.* PR.*_CC.*,2.0,,,,RB.* PM.* NN.* CC.* PR.*_CC.*,2.0
-500736,VB.* CC.* NN.*_CC.* PR.* PM.*,2.0,,,,VB.* CC.* NN.*_CC.* PR.* PM.*,2.0
-500737,CC.* PR.* CC.* PR.*_CC.* NN.*,2.0,,,,CC.* PR.* CC.* PR.*_CC.* NN.*,2.0
-500738,NN.* CC.* NN.* PM.* CC.*,4.0,,,,NN.* CC.* NN.* PM.* CC.*,4.0
-500739,NN.* PM.* CC.* RB.* CC.*,2.0,,,,NN.* PM.* CC.* RB.* CC.*,2.0
-500740,PM.* CC.* RB.* CC.* NN.*,2.0,,,,PM.* CC.* RB.* CC.* NN.*,2.0
-500741,CC.* RB.* CC.* NN.* CC.*,2.0,,,,CC.* RB.* CC.* NN.* CC.*,2.0
-500742,DT.* NN.* CC.* NN.* FW,4.0,,,,DT.* NN.* CC.* NN.* FW,4.0
-500743,NN.* PR.* CC.* PR.*_CC.* NN.*,3.0,,,,NN.* PR.* CC.* PR.*_CC.* NN.*,3.0
-500744,PR.* CC.* PR.*_CC.* NN.* CC.*,3.0,,,,PR.* CC.* PR.*_CC.* NN.* CC.*,3.0
-500745,JJ.* RB.* DT.* NN.* CC.*,2.0,,,,JJ.* RB.* DT.* NN.* CC.*,2.0
-500746,JJ.* JJ.* PR.* CC.* CC.*,2.0,,,,JJ.* JJ.* PR.* CC.* CC.*,2.0
-500747,CC.* NN.*_CC.* PR.* PM.* JJ.*,2.0,,,,CC.* NN.*_CC.* PR.* PM.* JJ.*,2.0
-500748,CC.* DT.* NN.* NN.* PM.*,2.0,,,,CC.* DT.* NN.* NN.* PM.*,2.0
-500749,NN.* LM VB.* CC.* VB.*,2.0,,,,NN.* LM VB.* CC.* VB.*,2.0
-500750,VB.*_VB.* CC.* NN.* CC.* NN.*,2.0,,,,VB.*_VB.* CC.* NN.* CC.* NN.*,2.0
-500751,NN.* PM.* RB.* RB.* PR.*,2.0,,,,NN.* PM.* RB.* RB.* PR.*,2.0
-500752,RB.* RB.* PR.* VB.* PM.*,2.0,,,,RB.* RB.* PR.* VB.* PM.*,2.0
-500753,RB.* PR.* VB.* PM.* PR.*,2.0,,,,RB.* PR.* VB.* PM.* PR.*,2.0
-500754,CC.* NN.* PM.* JJ.* PM.*,2.0,,,,CC.* NN.* PM.* JJ.* PM.*,2.0
-500755,CC.* CC.* NN.* CC.* NN.*,3.0,,,,CC.* CC.* NN.* CC.* NN.*,3.0
-500756,RB.* LM FW CC.* NN.*,2.0,,,,RB.* LM FW CC.* NN.*,2.0
-500757,VB.* CC.* FW CC.* NN.*,2.0,,,,VB.* CC.* FW CC.* NN.*,2.0
-500758,PR.*_CC.* VB.* DT.* NN.* NN.*,2.0,,,,PR.*_CC.* VB.* DT.* NN.* NN.*,2.0
-500759,PM.* RB.* VB.* PM.* FW,3.0,,,,PM.* RB.* VB.* PM.* FW,3.0
-500760,PM.* FW CC.* DT.* NN.*,2.0,,,,PM.* FW CC.* DT.* NN.*,2.0
-500761,CC.* NN.* CC.* DT.* JJ.*_CC.*,2.0,,,,CC.* NN.* CC.* DT.* JJ.*_CC.*,2.0
-500762,NN.* CC.* DT.* JJ.*_CC.* NN.*,3.0,,,,NN.* CC.* DT.* JJ.*_CC.* NN.*,3.0
-500763,CC.* DT.* JJ.*_CC.* NN.* CC.*,4.0,,,,CC.* DT.* JJ.*_CC.* NN.* CC.*,4.0
-500764,CC.* NN.* CC.* VB.* PR.*,2.0,,,,CC.* NN.* CC.* VB.* PR.*,2.0
-500765,NN.* RB.* DT.* NN.* CC.*,2.0,,,,NN.* RB.* DT.* NN.* CC.*,2.0
-500766,NN.* CC.* NN.* CC.* PM.*,2.0,,,,NN.* CC.* NN.* CC.* PM.*,2.0
-500767,CC.* PM.* NN.* CC.* VB.*,2.0,,,,CC.* PM.* NN.* CC.* VB.*,2.0
-500768,VB.* CC.* JJ.*_CC.* NN.* CC.*,2.0,,,,VB.* CC.* JJ.*_CC.* NN.* CC.*,2.0
-500769,CC.* RB.* PR.* VB.* CC.*,2.0,,,,CC.* RB.* PR.* VB.* CC.*,2.0
-500770,RB.* PR.* VB.* CC.* NN.*,2.0,,,,RB.* PR.* VB.* CC.* NN.*,2.0
-500771,FW CC.* NN.* DT.* NN.*,2.0,,,,FW CC.* NN.* DT.* NN.*,2.0
-500772,RB.* DT.* NN.* PM.* VB.*,3.0,,,,RB.* DT.* NN.* PM.* VB.*,3.0
-500773,DT.* NN.* PM.* VB.* NN.*,2.0,,,,DT.* NN.* PM.* VB.* NN.*,2.0
-500774,PM.* CC.* NN.* CC.* NN.*,2.0,,,,PM.* CC.* NN.* CC.* NN.*,2.0
-500775,CC.* NN.* CC.* NN.* FW,2.0,,,,CC.* NN.* CC.* NN.* FW,2.0
-500776,CC.* NN.* CC.* JJ.*_CC.* PR.*,2.0,,,,CC.* NN.* CC.* JJ.*_CC.* PR.*,2.0
-500777,NN.* CC.* JJ.*_CC.* PR.* CC.*,2.0,,,,NN.* CC.* JJ.*_CC.* PR.* CC.*,2.0
-500778,NN.* PM.* VB.* PR.* PM.*,2.0,,,,NN.* PM.* VB.* PR.* PM.*,2.0
-500779,CC.* PM.* JJ.* CC.* NN.*,2.0,,,,CC.* PM.* JJ.* CC.* NN.*,2.0
-500780,NN.* CC.* DT.* NN.* FW,3.0,,,,NN.* CC.* DT.* NN.* FW,3.0
-500781,VB.* NN.* CC.* NN.*_CC.* VB.*,2.0,,,,VB.* NN.* CC.* NN.*_CC.* VB.*,2.0
-500782,CC.* RB.* CC.* PR.*_CC.* NN.*,2.0,,,,CC.* RB.* CC.* PR.*_CC.* NN.*,2.0
-500783,RB.* DT.* FW CC.* NN.*,3.0,,,,RB.* DT.* FW CC.* NN.*,3.0
-500784,DT.* FW CC.* NN.* CC.*,2.0,,,,DT.* FW CC.* NN.* CC.*,2.0
-500785,PM.* CC.* DT.* DT.* NN.*,2.0,,,,PM.* CC.* DT.* DT.* NN.*,2.0
-500786,DT.* FW CC.* NN.* PM.*,3.0,,,,DT.* FW CC.* NN.* PM.*,3.0
-500787,PM.* RB.* RB.* VB.* DT.*,2.0,,,,PM.* RB.* RB.* VB.* DT.*,2.0
-500788,NN.* PM.* RB.* CC.* VB.*,2.0,,,,NN.* PM.* RB.* CC.* VB.*,2.0
-500789,PM.* RB.* CC.* NN.* CC.*,2.0,,,,PM.* RB.* CC.* NN.* CC.*,2.0
-500790,RB.* VB.* DT.* NN.* DT.*,2.0,,,,RB.* VB.* DT.* NN.* DT.*,2.0
-500791,NN.* LM VB.* RB.* VB.*,2.0,,,,NN.* LM VB.* RB.* VB.*,2.0
-500792,VB.*_VB.* CC.* DT.* NN.* CC.*,2.0,,,,VB.*_VB.* CC.* DT.* NN.* CC.*,2.0
-500793,FW CC.* NN.* CC.* VB.*,2.0,,,,FW CC.* NN.* CC.* VB.*,2.0
-500794,CC.* VB.* CC.* VB.* DT.*,2.0,,,,CC.* VB.* CC.* VB.* DT.*,2.0
-500795,VB.* CC.* VB.* DT.* NN.*,3.0,,,,VB.* CC.* VB.* DT.* NN.*,3.0
-500796,NN.* DT.* DT.* NN.* CC.*,3.0,,,,NN.* DT.* DT.* NN.* CC.*,3.0
-500797,DT.* NN.* CC.* DT.* NN.*_CC.*,2.0,,,,DT.* NN.* CC.* DT.* NN.*_CC.*,2.0
-500798,NN.* PM.* PR.* RB.* LM,2.0,,,,NN.* PM.* PR.* RB.* LM,2.0
-500799,NN.* DT.* NN.* PM.* VB.*,2.0,,,,NN.* DT.* NN.* PM.* VB.*,2.0
-500800,NN.* CC.* VB.* RB.* CC.*,2.0,,,,NN.* CC.* VB.* RB.* CC.*,2.0
-500801,RB.* PM.* VB.*_CC.* VB.* DT.*,2.0,,,,RB.* PM.* VB.*_CC.* VB.* DT.*,2.0
-500802,PM.* VB.*_CC.* VB.* DT.* DT.*,2.0,,,,PM.* VB.*_CC.* VB.* DT.* DT.*,2.0
-500803,VB.*_CC.* VB.* DT.* DT.* NN.*,2.0,,,,VB.*_CC.* VB.* DT.* DT.* NN.*,2.0
-500804,NN.* CC.* JJ.* DT.* DT.*,2.0,,,,NN.* CC.* JJ.* DT.* DT.*,2.0
-500805,DT.* NN.* PM.* CC.* PM.*,2.0,,,,DT.* NN.* PM.* CC.* PM.*,2.0
-500806,NN.* PM.* CC.* PM.* FW,3.0,,,,NN.* PM.* CC.* PM.* FW,3.0
-500807,CC.* PM.* FW DT.* NN.*,2.0,,,,CC.* PM.* FW DT.* NN.*,2.0
-500808,CC.* JJ.* CC.* NN.* CC.*,5.0,,,,CC.* JJ.* CC.* NN.* CC.*,5.0
-500809,NN.* CC.* FW RB.* CC.*,3.0,,,,NN.* CC.* FW RB.* CC.*,3.0
-500810,CC.* VB.* CC.* PR.*_CC.* FW,2.0,,,,CC.* VB.* CC.* PR.*_CC.* FW,2.0
-500811,CC.* PR.*_CC.* FW CC.* NN.*,2.0,,,,CC.* PR.*_CC.* FW CC.* NN.*,2.0
-500812,DT.* VB.* CC.* NN.* CC.*,3.0,,,,DT.* VB.* CC.* NN.* CC.*,3.0
-500813,DT.* NN.* PM.* RB.* RB.*,3.0,,,,DT.* NN.* PM.* RB.* RB.*,3.0
-500814,DT.* NN.* CC.* PM.* FW,2.0,,,,DT.* NN.* CC.* PM.* FW,2.0
-500815,FW CC.* NN.* PR.* PM.*,2.0,,,,FW CC.* NN.* PR.* PM.*,2.0
-500816,RB.* CC.* NN.* CC.* NN.*,2.0,,,,RB.* CC.* NN.* CC.* NN.*,2.0
-500817,CC.* DT.* NN.* CC.* RB.*,3.0,,,,CC.* DT.* NN.* CC.* RB.*,3.0
-500818,RB.*_CC.* VB.* CC.* NN.* NN.*,3.0,,,,RB.*_CC.* VB.* CC.* NN.* NN.*,3.0
-500819,CC.* PM.* NN.* RB.* RB.*,2.0,,,,CC.* PM.* NN.* RB.* RB.*,2.0
-500820,NN.* DT.* NN.* CC.* NN.*,2.0,,,,NN.* DT.* NN.* CC.* NN.*,2.0
-500821,DT.* VB.*_VB.* CC.* DT.* NN.*,2.0,,,,DT.* VB.*_VB.* CC.* DT.* NN.*,2.0
-500822,FW PM.* PM.* VB.* RB.*,2.0,,,,FW PM.* PM.* VB.* RB.*,2.0
-500823,PM.* PM.* VB.* RB.* DT.*,2.0,,,,PM.* PM.* VB.* RB.* DT.*,2.0
-500824,RB.* RB.* VB.* CC.* DT.*,2.0,,,,RB.* RB.* VB.* CC.* DT.*,2.0
-500825,NN.* PM.* RB.* PR.* CC.*,2.0,,,,NN.* PM.* RB.* PR.* CC.*,2.0
-500826,FW CC.* CC.* DT.* NN.*,2.0,,,,FW CC.* CC.* DT.* NN.*,2.0
-500827,PM.* NN.* CC.* VB.* RB.*,2.0,,,,PM.* NN.* CC.* VB.* RB.*,2.0
-500828,CC.* NN.* PM.* CC.* FW,2.0,,,,CC.* NN.* PM.* CC.* FW,2.0
-500829,NN.* PM.* CC.* FW PM.*,2.0,,,,NN.* PM.* CC.* FW PM.*,2.0
-500830,PM.* RB.*_CC.* VB.* CC.* NN.*,2.0,,,,PM.* RB.*_CC.* VB.* CC.* NN.*,2.0
-500831,DT.* NN.* CC.* JJ.* RB.*,2.0,,,,DT.* NN.* CC.* JJ.* RB.*,2.0
-500832,CC.* NN.* CC.* VB.* RB.*,5.0,,,,CC.* NN.* CC.* VB.* RB.*,5.0
-500833,JJ.*_CC.* NN.* DT.* NN.* CC.*,2.0,,,,JJ.*_CC.* NN.* DT.* NN.* CC.*,2.0
-500834,NN.* PM.* DT.* FW CC.*,2.0,,,,NN.* PM.* DT.* FW CC.*,2.0
-500835,CC.* CC.* DT.* NN.* CC.*,2.0,,,,CC.* CC.* DT.* NN.* CC.*,2.0
-500836,DT.* NN.* CC.* DT.* PR.*_CC.*,2.0,,,,DT.* NN.* CC.* DT.* PR.*_CC.*,2.0
-500837,NN.* CC.* DT.* PR.*_CC.* FW,2.0,,,,NN.* CC.* DT.* PR.*_CC.* FW,2.0
-500838,CC.* DT.* PR.*_CC.* FW FW,2.0,,,,CC.* DT.* PR.*_CC.* FW FW,2.0
-500839,DT.* NN.* PM.* CC.* FW,2.0,,,,DT.* NN.* PM.* CC.* FW,2.0
-500840,RB.* DT.* DT.* NN.* CC.*,3.0,,,,RB.* DT.* DT.* NN.* CC.*,3.0
-500841,NN.* CC.* PR.* PM.* FW,2.0,,,,NN.* CC.* PR.* PM.* FW,2.0
-500842,CC.* VB.* RB.* DT.* DT.*,3.0,,,,CC.* VB.* RB.* DT.* DT.*,3.0
-500843,NN.*_CC.* VB.* RB.*_CC.* VB.* CC.*,2.0,,,,NN.*_CC.* VB.* RB.*_CC.* VB.* CC.*,2.0
-500844,NN.* CC.* VB.* PR.*_CC.* VB.*,2.0,,,,NN.* CC.* VB.* PR.*_CC.* VB.*,2.0
-500845,CC.* PR.*_CC.* NN.* PM.* DT.*,2.0,,,,CC.* PR.*_CC.* NN.* PM.* DT.*,2.0
-500846,NN.* CC.* VB.* PR.*_CC.* FW,2.0,,,,NN.* CC.* VB.* PR.*_CC.* FW,2.0
-500847,PM.* FW DT.* PR.*_CC.* NN.*,2.0,,,,PM.* FW DT.* PR.*_CC.* NN.*,2.0
-500848,FW DT.* PR.*_CC.* NN.* NN.*,2.0,,,,FW DT.* PR.*_CC.* NN.* NN.*,2.0
-500849,NN.* FW CC.* VB.* CC.*,2.0,,,,NN.* FW CC.* VB.* CC.*,2.0
-500850,RB.* DT.* VB.* NN.* CC.*,2.0,,,,RB.* DT.* VB.* NN.* CC.*,2.0
-500851,CC.* NN.* CC.* DT.* JJ.*,2.0,,,,CC.* NN.* CC.* DT.* JJ.*,2.0
-500852,NN.* CC.* DT.* JJ.* PM.*,3.0,,,,NN.* CC.* DT.* JJ.* PM.*,3.0
-500853,CC.* DT.* JJ.* PM.* NN.*,2.0,,,,CC.* DT.* JJ.* PM.* NN.*,2.0
-500854,VB.* PR.* RB.* DT.* NN.*,2.0,,,,VB.* PR.* RB.* DT.* NN.*,2.0
-500855,CC.* VB.* PR.* CC.* VB.*,2.0,,,,CC.* VB.* PR.* CC.* VB.*,2.0
-500856,CC.* NN.* CC.* PM.* FW,3.0,,,,CC.* NN.* CC.* PM.* FW,3.0
-500857,PR.* CC.* DT.* JJ.*_CC.* NN.*,2.0,,,,PR.* CC.* DT.* JJ.*_CC.* NN.*,2.0
-500858,DT.* JJ.*_CC.* NN.* CC.* FW,4.0,,,,DT.* JJ.*_CC.* NN.* CC.* FW,4.0
-500859,CC.* DT.* JJ.* PM.* CC.*,2.0,,,,CC.* DT.* JJ.* PM.* CC.*,2.0
-500860,RB.*_CC.* VB.* PR.* CC.* NN.*,2.0,,,,RB.*_CC.* VB.* PR.* CC.* NN.*,2.0
-500861,PR.* CC.* NN.* CC.* PR.*_CC.*,2.0,,,,PR.* CC.* NN.* CC.* PR.*_CC.*,2.0
-500862,CC.* NN.* PM.* VB.* PM.*,2.0,,,,CC.* NN.* PM.* VB.* PM.*,2.0
-500863,RB.* RB.*_CC.* VB.* DT.* NN.*,2.0,,,,RB.* RB.*_CC.* VB.* DT.* NN.*,2.0
-500864,RB.*_CC.* VB.* DT.* NN.* CC.*,3.0,,,,RB.*_CC.* VB.* DT.* NN.* CC.*,3.0
-500865,CC.* NN.* CC.* NN.*_CC.* JJ.*,2.0,,,,CC.* NN.* CC.* NN.*_CC.* JJ.*,2.0
-500866,CC.* NN.* PR.* PM.* VB.*,2.0,,,,CC.* NN.* PR.* PM.* VB.*,2.0
-500867,NN.* PR.* PM.* VB.* CC.*,2.0,,,,NN.* PR.* PM.* VB.* CC.*,2.0
-500868,PR.* PM.* VB.* CC.* DT.*,2.0,,,,PR.* PM.* VB.* CC.* DT.*,2.0
-500869,VB.* DT.* NN.* CC.* PR.*_CC.*,3.0,,,,VB.* DT.* NN.* CC.* PR.*_CC.*,3.0
-500870,CC.* PR.*_CC.* NN.* PM.* CC.*,3.0,,,,CC.* PR.*_CC.* NN.* PM.* CC.*,3.0
-500871,DT.* NN.*_CC.* NN.* PM.* RB.*,2.0,,,,DT.* NN.*_CC.* NN.* PM.* RB.*,2.0
-500872,NN.* CC.* RB.* PR.* VB.*,2.0,,,,NN.* CC.* RB.* PR.* VB.*,2.0
-500873,JJ.* CC.* DT.* NN.* PM.*,4.0,,,,JJ.* CC.* DT.* NN.* PM.*,4.0
-500874,JJ.* CC.* NN.* CC.* VB.*,2.0,,,,JJ.* CC.* NN.* CC.* VB.*,2.0
-500875,RB.*_CC.* VB.* CC.* FW CC.*,2.0,,,,RB.*_CC.* VB.* CC.* FW CC.*,2.0
-500876,NN.* CC.* VB.* RB.* PR.*,2.0,,,,NN.* CC.* VB.* RB.* PR.*,2.0
-500877,PR.* CC.* PR.*_CC.* NN.* RB.*,2.0,,,,PR.* CC.* PR.*_CC.* NN.* RB.*,2.0
-500878,DT.* NN.* CC.* DT.* JJ.*_CC.*,2.0,,,,DT.* NN.* CC.* DT.* JJ.*_CC.*,2.0
-500879,VB.* RB.*_CC.* VB.* CC.* NN.*,2.0,,,,VB.* RB.*_CC.* VB.* CC.* NN.*,2.0
-500880,RB.*_CC.* NN.* CC.* NN.* CC.*,2.0,,,,RB.*_CC.* NN.* CC.* NN.* CC.*,2.0
-500881,CC.* NN.* PM.* JJ.* CC.*,2.0,,,,CC.* NN.* PM.* JJ.* CC.*,2.0
-500882,NN.* PM.* JJ.* CC.* DT.*,3.0,,,,NN.* PM.* JJ.* CC.* DT.*,3.0
-500883,PM.* JJ.* CC.* DT.* NN.*,4.0,,,,PM.* JJ.* CC.* DT.* NN.*,4.0
-500884,VB.* PR.* CC.* DT.* NN.*,2.0,,,,VB.* PR.* CC.* DT.* NN.*,2.0
-500885,FW RB.* CC.* NN.* CC.*,2.0,,,,FW RB.* CC.* NN.* CC.*,2.0
-500886,NN.* CC.* NN.* PM.* FW,2.0,,,,NN.* CC.* NN.* PM.* FW,2.0
-500887,PM.* CC.* VB.* RB.* DT.*,2.0,,,,PM.* CC.* VB.* RB.* DT.*,2.0
-500888,RB.* DT.* CC.* PM.* FW,2.0,,,,RB.* DT.* CC.* PM.* FW,2.0
-500889,RB.* RB.* JJ.* PM.* FW,2.0,,,,RB.* RB.* JJ.* PM.* FW,2.0
-500890,CC.* JJ.*_CC.* NN.* PM.* VB.*,2.0,,,,CC.* JJ.*_CC.* NN.* PM.* VB.*,2.0
-500891,JJ.*_CC.* NN.* PM.* VB.* DT.*,2.0,,,,JJ.*_CC.* NN.* PM.* VB.* DT.*,2.0
-500892,JJ.*_CC.* NN.* CC.* VB.* CC.*,2.0,,,,JJ.*_CC.* NN.* CC.* VB.* CC.*,2.0
-500893,DT.* DT.* NN.* PR.* LM,2.0,,,,DT.* DT.* NN.* PR.* LM,2.0
-500894,PR.* LM DT.* NN.* CC.*,3.0,,,,PR.* LM DT.* NN.* CC.*,3.0
-500895,NN.* CC.* NN.* PM.* PR.*,2.0,,,,NN.* CC.* NN.* PM.* PR.*,2.0
-500896,NN.* CC.* VB.*_VB.* CC.* VB.*,2.0,,,,NN.* CC.* VB.*_VB.* CC.* VB.*,2.0
-500897,NN.* CC.* VB.* PR.* PM.*,2.0,,,,NN.* CC.* VB.* PR.* PM.*,2.0
-500898,PR.*_CC.* NN.* CC.* VB.* PR.*,2.0,,,,PR.*_CC.* NN.* CC.* VB.* PR.*,2.0
-500899,DT.* NN.* PM.* CC.* JJ.*,2.0,,,,DT.* NN.* PM.* CC.* JJ.*,2.0
-500900,PM.* FW CC.* NN.* NN.*,2.0,,,,PM.* FW CC.* NN.* NN.*,2.0
-500901,CC.* NN.* CC.* CC.* PM.*,2.0,,,,CC.* NN.* CC.* CC.* PM.*,2.0
-500902,PR.* DT.* FW CC.* PR.*_CC.*,2.0,,,,PR.* DT.* FW CC.* PR.*_CC.*,2.0
-500903,NN.* NN.* CC.* VB.* RB.*,2.0,,,,NN.* NN.* CC.* VB.* RB.*,2.0
-500904,DT.* NN.* CC.* VB.* RB.*,4.0,,,,DT.* NN.* CC.* VB.* RB.*,4.0
-500905,JJ.* CC.* NN.* CC.* DT.*,2.0,,,,JJ.* CC.* NN.* CC.* DT.*,2.0
-500906,PR.*_CC.* NN.*_CC.* VB.* CC.* VB.*,2.0,,,,PR.*_CC.* NN.*_CC.* VB.* CC.* VB.*,2.0
-500907,NN.* PM.* RB.* RB.* RB.*,2.0,,,,NN.* PM.* RB.* RB.* RB.*,2.0
-500908,NN.* PM.* VB.* CC.* FW,3.0,,,,NN.* PM.* VB.* CC.* FW,3.0
-500909,JJ.* CC.* PR.*_CC.* NN.* PM.*,2.0,,,,JJ.* CC.* PR.*_CC.* NN.* PM.*,2.0
-500910,PM.* CC.* PM.* FW CC.*,2.0,,,,PM.* CC.* PM.* FW CC.*,2.0
-500911,CC.* VB.* CC.* PM.* FW,2.0,,,,CC.* VB.* CC.* PM.* FW,2.0
-500912,DT.* NN.* RB.* NN.* CC.*,2.0,,,,DT.* NN.* RB.* NN.* CC.*,2.0
-500913,LM RB.* VB.* DT.* NN.*,2.0,,,,LM RB.* VB.* DT.* NN.*,2.0
-500914,RB.* RB.* DT.* VB.* CC.*,2.0,,,,RB.* RB.* DT.* VB.* CC.*,2.0
-500915,RB.* RB.* DT.* PR.*_CC.* NN.*,2.0,,,,RB.* RB.* DT.* PR.*_CC.* NN.*,2.0
-500916,CC.* NN.* CC.* VB.* PR.*_CC.*,2.0,,,,CC.* NN.* CC.* VB.* PR.*_CC.*,2.0
-500917,CC.* RB.* RB.* DT.* CC.*,2.0,,,,CC.* RB.* RB.* DT.* CC.*,2.0
-500918,RB.* RB.* DT.* CC.* PM.*,2.0,,,,RB.* RB.* DT.* CC.* PM.*,2.0
-500919,RB.* JJ.* CC.* NN.* CC.*,4.0,,,,RB.* JJ.* CC.* NN.* CC.*,4.0
-500920,DT.* RB.* JJ.* CC.* NN.*,2.0,,,,DT.* RB.* JJ.* CC.* NN.*,2.0
-500921,FW CC.* NN.* PM.* RB.*,2.0,,,,FW CC.* NN.* PM.* RB.*,2.0
-500922,RB.* CC.* RB.* PR.* VB.*,2.0,,,,RB.* CC.* RB.* PR.* VB.*,2.0
-500923,NN.* PM.* JJ.* CC.* NN.*,2.0,,,,NN.* PM.* JJ.* CC.* NN.*,2.0
-500924,NN.* CC.* RB.* RB.* DT.*,2.0,,,,NN.* CC.* RB.* RB.* DT.*,2.0
-500925,CC.* FW RB.* CC.* NN.*,2.0,,,,CC.* FW RB.* CC.* NN.*,2.0
-500926,DT.* VB.* CC.* NN.* DT.*,2.0,,,,DT.* VB.* CC.* NN.* DT.*,2.0
-500927,PM.* PR.* DT.* NN.* CC.*,2.0,,,,PM.* PR.* DT.* NN.* CC.*,2.0
-500928,PR.* LM VB.*_VB.* CC.* DT.*,2.0,,,,PR.* LM VB.*_VB.* CC.* DT.*,2.0
-500929,CC.* DT.* NN.*_CC.* VB.*_VB.* CC.*,2.0,,,,CC.* DT.* NN.*_CC.* VB.*_VB.* CC.*,2.0
-500930,DT.* NN.*_CC.* VB.*_VB.* CC.* NN.*,2.0,,,,DT.* NN.*_CC.* VB.*_VB.* CC.* NN.*,2.0
-500931,CC.* DT.* VB.* CC.* NN.*,2.0,,,,CC.* DT.* VB.* CC.* NN.*,2.0
-500932,DT.* DT.* NN.* RB.* CC.*,2.0,,,,DT.* DT.* NN.* RB.* CC.*,2.0
-500933,VB.* CC.* DT.* FW PM.*,2.0,,,,VB.* CC.* DT.* FW PM.*,2.0
-500934,LM VB.* CC.* JJ.*_CC.* NN.*,2.0,,,,LM VB.* CC.* JJ.*_CC.* NN.*,2.0
-500935,CC.* VB.*_VB.* CC.* DT.* FW,2.0,,,,CC.* VB.*_VB.* CC.* DT.* FW,2.0
-500936,VB.*_VB.* CC.* DT.* FW FW,2.0,,,,VB.*_VB.* CC.* DT.* FW FW,2.0
-500937,NN.* PM.* RB.* VB.* PM.*,2.0,,,,NN.* PM.* RB.* VB.* PM.*,2.0
-500938,RB.* CC.* NN.* PM.* CC.*,2.0,,,,RB.* CC.* NN.* PM.* CC.*,2.0
-500939,CC.* NN.* CC.* PR.* PM.*,2.0,,,,CC.* NN.* CC.* PR.* PM.*,2.0
-500940,,,DTC NNC DTP NNP CCT,3.0,,DTC NNC DTP NNP CCT,3.0
-500941,,,PMS NNC CCP RBF RBI,2.0,,PMS NNC CCP RBF RBI,2.0
-500942,,,NNC CCP RBF RBI JJD,2.0,,NNC CCP RBF RBI JJD,2.0
-500943,,,DTC CCR PMS JJD CCB,2.0,,DTC CCR PMS JJD CCB,2.0
-500944,,,RBI PRO DTC NNC CCB,2.0,,RBI PRO DTC NNC CCB,2.0
-500945,,,PRO DTC NNC CCB DTCP,3.0,,PRO DTC NNC CCB DTCP,3.0
-500946,,,CCB DTCP NNC CCT NNC_CCP,2.0,,CCB DTCP NNC CCT NNC_CCP,2.0
-500947,,,DTCP NNC CCT NNC_CCP JJD,2.0,,DTCP NNC CCT NNC_CCP JJD,2.0
-500948,,,NNC CCT NNC_CCP JJD CCA,2.0,,NNC CCT NNC_CCP JJD CCA,2.0
-500949,,,VBTR DTC DTCP NNC CCB,3.0,,VBTR DTC DTCP NNC CCB,3.0
-500950,,,DTC DTCP NNC_CCP VBTR CCB,2.0,,DTC DTCP NNC_CCP VBTR CCB,2.0
-500951,,,NNC_CCP VBTR CCB DTCP NNC,2.0,,NNC_CCP VBTR CCB DTCP NNC,2.0
-500952,,,CCB NNC CCT RBT_CCP NNC,2.0,,CCB NNC CCT RBT_CCP NNC,2.0
-500953,,,PMS FW CCT PRSP CCP,2.0,,PMS FW CCT PRSP CCP,2.0
-500954,,,FW CCT PRSP CCP DTP,2.0,,FW CCT PRSP CCP DTP,2.0
-500955,,,CCT PRSP CCP DTP NNP,2.0,,CCT PRSP CCP DTP NNP,2.0
-500956,,,CCT NNC CCB PRI_CCP NNC,4.0,,CCT NNC CCB PRI_CCP NNC,4.0
-500957,,,NNC CCB PRI_CCP NNC CCT,2.0,,NNC CCB PRI_CCP NNC CCT,2.0
-500958,,,DTC JJD CCP NNC CCB,2.0,,DTC JJD CCP NNC CCB,2.0
-500959,,,JJD_CCP FW FW DTP NNP,2.0,,JJD_CCP FW FW DTP NNP,2.0
-500960,,,DTC DTCP NNC CCB FW,5.0,,DTC DTCP NNC CCB FW,5.0
-500961,,,CCP VBOF DTC NNC CCB,2.0,,CCP VBOF DTC NNC CCB,2.0
-500962,,,CCT NNC DTP NNP DTC,2.0,,CCT NNC DTP NNP DTC,2.0
-500963,,,CCA VBW DTC DTCP VBAF,2.0,,CCA VBW DTC DTCP VBAF,2.0
-500964,,,VBW DTC DTCP VBAF PMC,2.0,,VBW DTC DTCP VBAF PMC,2.0
-500965,,,DTC DTCP VBAF PMC VBTS,2.0,,DTC DTCP VBAF PMC VBTS,2.0
-500966,,,DTC NNC_CCP JJD CCT NNC,2.0,,DTC NNC_CCP JJD CCT NNC,2.0
-500967,,,NNC_CCP JJD CCT NNC CCB,2.0,,NNC_CCP JJD CCT NNC CCB,2.0
-500968,,,NNC CCP VBTS PMS FW,2.0,,NNC CCP VBTS PMS FW,2.0
-500969,,,CCP VBTS PMS FW CCT,2.0,,CCP VBTS PMS FW CCT,2.0
-500970,,,VBTS PMS FW CCT NNP,2.0,,VBTS PMS FW CCT NNP,2.0
-500971,,,NNC DTP JJD_CCP NNP_CCP NNP,2.0,,NNC DTP JJD_CCP NNP_CCP NNP,2.0
-500972,,,VBTS RBI DTP NNP CCP,2.0,,VBTS RBI DTP NNP CCP,2.0
-500973,,,FW DTP NNP PMS CCA,2.0,,FW DTP NNP PMS CCA,2.0
-500974,,,VBTR PRP DTC NNC CCB,2.0,,VBTR PRP DTC NNC CCB,2.0
-500975,,,PRP DTC NNC CCB DTCP,2.0,,PRP DTC NNC CCB DTCP,2.0
-500976,,,DTCP NNC JJC CCB NNP,2.0,,DTCP NNC JJC CCB NNP,2.0
-500977,,,NNP CCT NNC CCB FW,2.0,,NNP CCT NNC CCB FW,2.0
-500978,,,CCP DTC DTCP NNC CCB,2.0,,CCP DTC DTCP NNC CCB,2.0
-500979,,,PRO LM VBTF CCT NNC,2.0,,PRO LM VBTF CCT NNC,2.0
-500980,,,LM VBTF CCT NNC CCB,2.0,,LM VBTF CCT NNC CCB,2.0
-500981,,,NNC CCT DTCP NNC_CCP PRO,2.0,,NNC CCT DTCP NNC_CCP PRO,2.0
-500982,,,CCT DTCP NNC_CCP PRO PMC,2.0,,CCT DTCP NNC_CCP PRO PMC,2.0
-500983,,,RBI CCB NNC DTP NNP,3.0,,RBI CCB NNC DTP NNP,3.0
-500984,,,PMS VBOF DTC NNC CCB,2.0,,PMS VBOF DTC NNC CCB,2.0
-500985,,,NNC CCB FW CCB JJD_CCP,2.0,,NNC CCB FW CCB JJD_CCP,2.0
-500986,,,PRSP_CCP NNC CCB NNC CCT,2.0,,PRSP_CCP NNC CCB NNC CCT,2.0
-500987,,,CCT CCR PMS VBTF DTP,2.0,,CCT CCR PMS VBTF DTP,2.0
-500988,,,CCR PMS VBTF DTP NNP,2.0,,CCR PMS VBTF DTP NNP,2.0
-500989,,,CCT JJD_CCP NNC CCB NNC,2.0,,CCT JJD_CCP NNC CCB NNC,2.0
-500990,,,CCB NNC CCP DTP NNP,2.0,,CCB NNC CCP DTP NNP,2.0
-500991,,,PMC VBTF RBI DTC NNC,2.0,,PMC VBTF RBI DTC NNC,2.0
-500992,,,PRI_CCP NNC CCA RBF RBI,2.0,,PRI_CCP NNC CCA RBF RBI,2.0
-500993,,,RBF RBI VBTS DTC NNC,2.0,,RBF RBI VBTS DTC NNC,2.0
-500994,,,DTC CCR PMS FW CCB,2.0,,DTC CCR PMS FW CCB,2.0
-500995,,,VBTR CCT VBOF DTC FW,2.0,,VBTR CCT VBOF DTC FW,2.0
-500996,,,RBI PRL DTC NNC CCB,2.0,,RBI PRL DTC NNC CCB,2.0
-500997,,,PRL DTC NNC CCB DTCP,2.0,,PRL DTC NNC CCB DTCP,2.0
-500998,,,CCB NNC PRS_CCP DTP NNP,2.0,,CCB NNC PRS_CCP DTP NNP,2.0
-500999,,,NNC PRS_CCP DTP NNP NNP,3.0,,NNC PRS_CCP DTP NNP NNP,3.0
-501000,,,DTC JJN_CCP NNC DTP NNP,2.0,,DTC JJN_CCP NNC DTP NNP,2.0
-501001,,,VBTR_VBAF CCT NNC CCB DTCP,2.0,,VBTR_VBAF CCT NNC CCB DTCP,2.0
-501002,,,NNC CCB PRI_CCP NNC DTC,2.0,,NNC CCB PRI_CCP NNC DTC,2.0
-501003,,,CCB PRI_CCP NNC DTC FW,2.0,,CCB PRI_CCP NNC DTC FW,2.0
-501004,,,RBI DTC JJD CCP NNC,2.0,,RBI DTC JJD CCP NNC,2.0
-501005,,,NNC CCB PRI_CCP NNP NNP,2.0,,NNC CCB PRI_CCP NNP NNP,2.0
-501006,,,NNP NNP CCT PRI_CCP FW,2.0,,NNP NNP CCT PRI_CCP FW,2.0
-501007,,,NNP CCT PRI_CCP FW FW,3.0,,NNP CCT PRI_CCP FW FW,3.0
-501008,,,NNP NNP PMC JJD_CCP FW,2.0,,NNP NNP PMC JJD_CCP FW,2.0
-501009,,,DTC DTCP NNC CCB NNP,3.0,,DTC DTCP NNC CCB NNP,3.0
-501010,,,NNC CCB DTCP NNC_CCP VBTR,3.0,,NNC CCB DTCP NNC_CCP VBTR,3.0
-501011,,,CCB DTCP NNC_CCP VBTR CCT,3.0,,CCB DTCP NNC_CCP VBTR CCT,3.0
-501012,,,DTCP NNC_CCP VBTR CCT DTCP,3.0,,DTCP NNC_CCP VBTR CCT DTCP,3.0
-501013,,,JJD DTC NNC DTP NNP,2.0,,JJD DTC NNC DTP NNP,2.0
-501014,,,NNC DTP NNP CCT DTCP,2.0,,NNC DTP NNP CCT DTCP,2.0
-501015,,,VBTR RBI CCB NNC PMS,2.0,,VBTR RBI CCB NNC PMS,2.0
-501016,,,VBTS PRO CCT NNC CCB,2.0,,VBTS PRO CCT NNC CCB,2.0
-501017,,,PRO CCT NNC CCB DTCP,3.0,,PRO CCT NNC CCB DTCP,3.0
-501018,,,DTC NNC CCB DTCP JJD,2.0,,DTC NNC CCB DTCP JJD,2.0
-501019,,,DTCP NNC_CCP VBTR CCB NNC,2.0,,DTCP NNC_CCP VBTR CCB NNC,2.0
-501020,,,CCB NNPA CCT NNP PMC,2.0,,CCB NNPA CCT NNP PMC,2.0
-501021,,,NNPA CCT JJD DTP NNP,2.0,,NNPA CCT JJD DTP NNP,2.0
-501022,,,CCT NNC_CCP JJD CCB NNP,2.0,,CCT NNC_CCP JJD CCB NNP,2.0
-501023,,,NNC_CCP JJD CCB NNP PMC,2.0,,NNC_CCP JJD CCB NNP PMC,2.0
-501024,,,JJD CCB NNP PMC JJCC,2.0,,JJD CCB NNP PMC JJCC,2.0
-501025,,,NNC CCB PRI_CCP NNC PMC,2.0,,NNC CCB PRI_CCP NNC PMC,2.0
-501026,,,DTP NNP DTC NNC CCB,2.0,,DTP NNP DTC NNC CCB,2.0
-501027,,,CCT DTCP NNC_CCP VBTR CCT,2.0,,CCT DTCP NNC_CCP VBTR CCT,2.0
-501028,,,NNC DTP JJD_CCP NNP NNP,2.0,,NNC DTP JJD_CCP NNP NNP,2.0
-501029,,,RBI CCT DTCP NNC CCB,3.0,,RBI CCT DTCP NNC CCB,3.0
-501030,,,CCT DTCP NNC CCB NNPA,3.0,,CCT DTCP NNC CCB NNPA,3.0
-501031,,,FW PMC NNC CCB JJD,2.0,,FW PMC NNC CCB JJD,2.0
-501032,,,RBD CCP VBTR CCT DTCP,2.0,,RBD CCP VBTR CCT DTCP,2.0
-501033,,,CCP VBTF CCB DTCP NNC,2.0,,CCP VBTF CCB DTCP NNC,2.0
-501034,,,NNC CCB NNP CCA VBTS,2.0,,NNC CCB NNP CCA VBTS,2.0
-501035,,,CCB NNP CCA VBTS CCT,2.0,,CCB NNP CCA VBTS CCT,2.0
-501036,,,DTCP JJD PMS NNP CCT,2.0,,DTCP JJD PMS NNP CCT,2.0
-501037,,,PRI_CCP NNC DTC FW FW,2.0,,PRI_CCP NNC DTC FW FW,2.0
-501038,,,DTC PRI_CCP NNC CCT NNC,2.0,,DTC PRI_CCP NNC CCT NNC,2.0
-501039,,,PMS NNP FW DTC NNC,2.0,,PMS NNP FW DTC NNC,2.0
-501040,,,RBK RBQ VBH NNC DTC,2.0,,RBK RBQ VBH NNC DTC,2.0
-501041,,,CCT PRSP_CCP DTCP NNC PMS,3.0,,CCT PRSP_CCP DTCP NNC PMS,3.0
-501042,,,VBTR PRS DTC NNC CCT,2.0,,VBTR PRS DTC NNC CCT,2.0
-501043,,,DTC NNC CCT NNP PMS,3.0,,DTC NNC CCT NNP PMS,3.0
-501044,,,JJD CCP NNC CCB NNP,2.0,,JJD CCP NNC CCB NNP,2.0
-501045,,,CCR VBAF CCP DTC NNC,2.0,,CCR VBAF CCP DTC NNC,2.0
-501046,,,FW CCP VBTR CCB NNC,3.0,,FW CCP VBTR CCB NNC,3.0
-501047,,,FW PMP PMS NNPA NNP,2.0,,FW PMP PMS NNPA NNP,2.0
-501048,,,VBOF DTC DTCP NNC CCB,3.0,,VBOF DTC DTCP NNC CCB,3.0
-501049,,,DTCP NNC CCB NNP CCP,2.0,,DTCP NNC CCB NNP CCP,2.0
-501050,,,VBTF DTC PRSP_CCP FW FW,2.0,,VBTF DTC PRSP_CCP FW FW,2.0
-501051,,,NNC CCT NNC CCB PRI_CCP,2.0,,NNC CCT NNC CCB PRI_CCP,2.0
-501052,,,CCB DTCP NNC PMC RBF,2.0,,CCB DTCP NNC PMC RBF,2.0
-501053,,,DTC CCR PMS NNC CCB,2.0,,DTC CCR PMS NNC CCB,2.0
-501054,,,FW PMC CCA NNC CCB,2.0,,FW PMC CCA NNC CCB,2.0
-501055,,,VBW CCA VBAF CCT NNC,2.0,,VBW CCA VBAF CCT NNC,2.0
-501056,,,VBAF CCT NNC CCB FW,2.0,,VBAF CCT NNC CCB FW,2.0
-501057,,,CCT NNC CCB FW PMS,2.0,,CCT NNC CCB FW PMS,2.0
-501058,,,PRSP_CCP DTCP NNC PMS CCA,2.0,,PRSP_CCP DTCP NNC PMS CCA,2.0
-501059,,,CCT NNC PMS FW CCB,2.0,,CCT NNC PMS FW CCB,2.0
-501060,,,NNP FW DTC NNC CCB,2.0,,NNP FW DTC NNC CCB,2.0
-501061,,,RBI DTP JJD_CCP NNP NNP,2.0,,RBI DTP JJD_CCP NNP NNP,2.0
-501062,,,CCT CCR PMS NNC CCB,2.0,,CCT CCR PMS NNC CCB,2.0
-501063,,,DTC FW CCP VBTS CCB,2.0,,DTC FW CCP VBTS CCB,2.0
-501064,,,RBW DTC NNP CDB PMC,2.0,,RBW DTC NNP CDB PMC,2.0
-501065,,,CCP VBOF DTC NNC CCT,2.0,,CCP VBOF DTC NNC CCT,2.0
-501066,,,NNC CCB NNP RBK RBQ,2.0,,NNC CCB NNP RBK RBQ,2.0
-501067,,,DTC NNC CCB PRSP_CCP NNC,2.0,,DTC NNC CCB PRSP_CCP NNC,2.0
-501068,,,NNC CCP VBS CCB DTCP,2.0,,NNC CCP VBS CCB DTCP,2.0
-501069,,,CCP VBS CCB DTCP NNC,2.0,,CCP VBS CCB DTCP NNC,2.0
-501070,,,VBS CCB DTCP NNC CCA,2.0,,VBS CCB DTCP NNC CCA,2.0
-501071,,,NNP CCT DTCP NNC CCB,3.0,,NNP CCT DTCP NNC CCB,3.0
-501072,,,PRI_CCP FW FW CCT NNP,2.0,,PRI_CCP FW FW CCT NNP,2.0
-501073,,,CCT NNC PMC VBTS RBI,2.0,,CCT NNC PMC VBTS RBI,2.0
-501074,,,NNC PMC VBTS RBI CCB,2.0,,NNC PMC VBTS RBI CCB,2.0
-501075,,,CCT PRI_CCP NNC CCT NNP,2.0,,CCT PRI_CCP NNC CCT NNP,2.0
-501076,,,NNC CCT PRI_CCP NNC PMC,3.0,,NNC CCT PRI_CCP NNC PMC,3.0
-501077,,,DTC PRI CCT JJCS_JJD_CCP NNC,2.0,,DTC PRI CCT JJCS_JJD_CCP NNC,2.0
-501078,,,PRI CCT JJCS_JJD_CCP NNC CCB,2.0,,PRI CCT JJCS_JJD_CCP NNC CCB,2.0
-501079,,,VBTS PMS FW DTP NNP,3.0,,VBTS PMS FW DTP NNP,3.0
-501080,,,VBH NNC CCT PRI_CCP FW,2.0,,VBH NNC CCT PRI_CCP FW,2.0
-501081,,,RBF PRP_CCP VBOF DTC DTCP,2.0,,RBF PRP_CCP VBOF DTC DTCP,2.0
-501082,,,PRP_CCP VBOF DTC DTCP NNC,2.0,,PRP_CCP VBOF DTC DTCP NNC,2.0
-501083,,,FW PMC VBOF DTC NNC,2.0,,FW PMC VBOF DTC NNC,2.0
-501084,,,CCB DTCP NNC CCP VBTS,2.0,,CCB DTCP NNC CCP VBTS,2.0
-501085,,,DTP JJD_CCP NNC_CCP NNP NNP,2.0,,DTP JJD_CCP NNC_CCP NNP NNP,2.0
-501086,,,PMS FW CCT NNC PMC,2.0,,PMS FW CCT NNC PMC,2.0
-501087,,,CCT DTCP NNC DTP NNP,2.0,,CCT DTCP NNC DTP NNP,2.0
-501088,,,NNC CCT NNP PMC RBF,3.0,,NNC CCT NNP PMC RBF,3.0
-501089,,,NNP PMC PRO PMS FW,2.0,,NNP PMC PRO PMS FW,2.0
-501090,,,DTCP NNC_CCP VBTS CCT NNC,2.0,,DTCP NNC_CCP VBTS CCT NNC,2.0
-501091,,,FW PMC VBTR CCP DTC,2.0,,FW PMC VBTR CCP DTC,2.0
-501092,,,DTCP NNC CCP VBTR CCB,3.0,,DTCP NNC CCP VBTR CCB,3.0
-501093,,,VBTS CCT NNC_CCP PRO PMC,2.0,,VBTS CCT NNC_CCP PRO PMC,2.0
-501094,,,PRI_CCP NNC CCT NNP PMC,2.0,,PRI_CCP NNC CCT NNP PMC,2.0
-501095,,,CCT NNP PMC RBF PRP,2.0,,CCT NNP PMC RBF PRP,2.0
-501096,,,PMC RBW VBTS PMS FW,2.0,,PMC RBW VBTS PMS FW,2.0
-501097,,,CCT NNC CCB DTCP JJD_CCP,2.0,,CCT NNC CCB DTCP JJD_CCP,2.0
-501098,,,CCT NNC CCB NNP FW,2.0,,CCT NNC CCB NNP FW,2.0
-501099,,,DTCP NNC DTP NNP CCT,2.0,,DTCP NNC DTP NNP CCT,2.0
-501100,,,NNC CCT DTCP NNPA FW,2.0,,NNC CCT DTCP NNPA FW,2.0
-501101,,,DTP NNP CCT NNC CCB,4.0,,DTP NNP CCT NNC CCB,4.0
-501102,,,DTC NNC CCB DTCP NNC_CCP,2.0,,DTC NNC CCB DTCP NNC_CCP,2.0
-501103,,,DTC DTCP NNC PMC CCA,2.0,,DTC DTCP NNC PMC CCA,2.0
-501104,,,NNC CCB FW RBL CCT,2.0,,NNC CCB FW RBL CCT,2.0
-501105,,,VBOF PRS CCT NNC CCB,2.0,,VBOF PRS CCT NNC CCB,2.0
-501106,,,DTC VBTR CCB NNC CCT,2.0,,DTC VBTR CCB NNC CCT,2.0
-501107,,,JJD DTC NNC CCB DTCP,2.0,,JJD DTC NNC CCB DTCP,2.0
-501108,,,CCA VBTS DTC NNC CCT,2.0,,CCA VBTS DTC NNC CCT,2.0
-501109,,,DTC NNC CCB NNP FW,2.0,,DTC NNC CCB NNP FW,2.0
-501110,,,CCT NNC CCB NNPA PMC,2.0,,CCT NNC CCB NNPA PMC,2.0
-501111,,,DTP NNP CCA DTC PRSP_CCP,2.0,,DTP NNP CCA DTC PRSP_CCP,2.0
-501112,,,NNP CCA DTC PRSP_CCP FW,2.0,,NNP CCA DTC PRSP_CCP FW,2.0
-501113,,,CCA DTC PRSP_CCP FW FW,2.0,,CCA DTC PRSP_CCP FW FW,2.0
-501114,,,RBI DTC DTCP NNC CCP,2.0,,RBI DTC DTCP NNC CCP,2.0
-501115,,,CCT NNC CCB PRSP_CCP NNC,2.0,,CCT NNC CCB PRSP_CCP NNC,2.0
-501116,,,NNC CCB PRSP_CCP NNC PMC,3.0,,NNC CCB PRSP_CCP NNC PMC,3.0
-501117,,,PMS FW DTC PRI_CCP NNP,2.0,,PMS FW DTC PRI_CCP NNP,2.0
-501118,,,FW DTC PRI_CCP NNP NNP,2.0,,FW DTC PRI_CCP NNP NNP,2.0
-501119,,,NNC CCB DTCP JJD PMS,3.0,,NNC CCB DTCP JJD PMS,3.0
-501120,,,CCB DTCP JJD PMS NNP,2.0,,CCB DTCP JJD PMS NNP,2.0
-501121,,,PRP CCB DTCP JJD_CCP NNC,2.0,,PRP CCB DTCP JJD_CCP NNC,2.0
-501122,,,CCB DTCP JJD_CCP NNC CCT,3.0,,CCB DTCP JJD_CCP NNC CCT,3.0
-501123,,,DTCP JJD_CCP NNC CCT FW,2.0,,DTCP JJD_CCP NNC CCT FW,2.0
-501124,,,CCB DTCP JJD PMS CCR,2.0,,CCB DTCP JJD PMS CCR,2.0
-501125,,,NNC DTC NNP CCT FW,2.0,,NNC DTC NNP CCT FW,2.0
-501126,,,CCB DTCP NNC CCP VBOF,2.0,,CCB DTCP NNC CCP VBOF,2.0
-501127,,,CCP VBTR CCB NNC CCA,2.0,,CCP VBTR CCB NNC CCA,2.0
-501128,,,PMS FW DTP NNP CCB,2.0,,PMS FW DTP NNP CCB,2.0
-501129,,,CCB NNC CCR VBOF RBI,2.0,,CCB NNC CCR VBOF RBI,2.0
-501130,,,NNC CCT NNP PMS FW,2.0,,NNC CCT NNP PMS FW,2.0
-501131,,,DTC DTCP NNC PRO LM,2.0,,DTC DTCP NNC PRO LM,2.0
-501132,,,NNC CCB NNP CCP DTP,2.0,,NNC CCB NNP CCP DTP,2.0
-501133,,,PRO LM DTC NNC CCB,2.0,,PRO LM DTC NNC CCB,2.0
-501134,,,CCT PRSP_CCP NNC CCP VBTS,2.0,,CCT PRSP_CCP NNC CCP VBTS,2.0
-501135,,,PMS FW CCT NNC CCB,2.0,,PMS FW CCT NNC CCB,2.0
-501136,,,CCT DTCP NNC CCB NNP,3.0,,CCT DTCP NNC CCB NNP,3.0
-501137,,,RBF JJD CCP NNC CCB,2.0,,RBF JJD CCP NNC CCB,2.0
-501138,,,DTCP NNC CCP VBTS CCT,2.0,,DTCP NNC CCP VBTS CCT,2.0
-501139,,,CCT NNC DTP NNP CCA,2.0,,CCT NNC DTP NNP CCA,2.0
-501140,,,PRO LM VBTR_VBAF CCT DTCP,2.0,,PRO LM VBTR_VBAF CCT DTCP,2.0
-501141,,,DTCP NNC_CCP VBTR_VBAF CCB NNC,2.0,,DTCP NNC_CCP VBTR_VBAF CCB NNC,2.0
-501142,,,FW FW CCT PRI_CCP NNC,2.0,,FW FW CCT PRI_CCP NNC,2.0
-5501211,CC.* DT.* NN.* CC.* NN.*_CC.*,3.0,CCA DTCP NNC CCB NNC_CCP,3.0,* * * * NNC_CCP,CC.* DT.* NN.* CC.* NNC_CCP,3.0
-5501256,CC.* JJ.* PR.*_CC.* VB.* CC.*,2.0,CCP JJD PRP_CCP VBW CCA,2.0,* * PRP_CCP * *,CC.* JJ.* PRP_CCP VB.* CC.*,2.0
-5501277,NN.*_CC.* VB.* CC.* DT.* NN.*,3.0,NNC_CCP VBTR CCB DTCP NNC,5.0,NNC_CCP * * * *,NNC_CCP VB.* CC.* DT.* NN.*,5.0
-5501279,RB.* RB.*_CC.* VB.* CC.* NN.*,2.0,RBW RBD_CCP VBTR CCB NNP,2.0,* RBD_CCP * * *,RB.* RBD_CCP VB.* CC.* NN.*,2.0
-5501297,RB.* PR.*_CC.* VB.* DT.* NN.*,2.0,RBW PRP_CCP VBOB DTC NNC,2.0,* PRP_CCP * * *,RB.* PRP_CCP VB.* DT.* NN.*,2.0
-5501386,JJ.*_CC.* FW FW DT.* NN.*,2.0,JJD_CCP FW FW DTP NNP,2.0,JJD_CCP * FW * *,JJD_CCP FW FW DT.* NN.*,2.0
-5501439,NN.*_CC.* JJ.* CC.* NN.* CC.*,2.0,NNC_CCP JJD CCT NNC CCB,2.0,NNC_CCP * * * *,NNC_CCP JJ.* CC.* NN.* CC.*,2.0
-5501474,CC.* JJ.*_JJ.*_CC.* NN.* CC.* NN.*,2.0,CCB JJCS_JJD_CCP NNC CCP NNC,2.0,* JJCS_JJD_CCP * * *,CC.* JJCS_JJD_CCP NN.* CC.* NN.*,2.0
-5501520,CC.* JJ.*_CC.* FW FW CC.*,2.0,CCB JJD_CCP FW FW CCT,2.0,* JJD_CCP * FW *,CC.* JJD_CCP FW FW CC.*,2.0
-5501602,RB.*_CC.* VB.* CC.* DT.* FW,2.0,RBD_CCP VBOF CCP DTCP FW,2.0,RBD_CCP * * * *,RBD_CCP VB.* CC.* DT.* FW,2.0
-5501616,JJ.*_CC.* NN.* DT.* VB.* CC.*,2.0,JJD_CCP NNC DTC VBTR CCB,2.0,JJD_CCP * * * *,JJD_CCP NN.* DT.* VB.* CC.*,2.0
-5501676,CC.* PR.*_CC.* NN.* FW CC.*,2.0,CCP PRI_CCP NNP FW CCB,2.0,* PRI_CCP * FW *,CC.* PRI_CCP NN.* FW CC.*,2.0
-5501732,JJ.*_CC.* NN.* PR.* DT.* NN.*,2.0,JJD_CCP NNC PRL DTP NNP,2.0,JJD_CCP * * * *,JJD_CCP NN.* PR.* DT.* NN.*,2.0
-5501757,NN.* CC.* NN.* PR.*_CC.* DT.*,2.0,NNC CCB NNC PRS_CCP DTP,2.0,* * * PRS_CCP *,NN.* CC.* NN.* PRS_CCP DT.*,2.0
-5501760,NN.* PR.*_CC.* DT.* NN.* NN.*,3.0,NNC PRS_CCP DTP NNP NNP,3.0,* PRS_CCP * * *,NN.* PRS_CCP DT.* NN.* NN.*,3.0
-5501773,DT.* NN.* LM RB.* VB.*_VB.*,2.0,DTP NNP LM RBF VBTR_VBAF,2.0,* * * * VBTR_VBAF,DT.* NN.* LM RB.* VBTR_VBAF,2.0
-5501801,NN.* PM.* JJ.*_CC.* FW CC.*,2.0,NNP PMS JJD_CCP FW CCB,2.0,* * JJD_CCP * *,NN.* PM.* JJD_CCP FW CC.*,2.0
-5501862,JJ.*_CC.* NN.* CC.* NN.* CC.*,5.0,JJD_CCP NNC CCT NNPA CCP,4.0,JJD_CCP * * * *,JJD_CCP NN.* CC.* NN.* CC.*,4.0
-5501959,CC.* NN.*_CC.* VB.* CC.* NN.*,3.0,CCB NNC_CCP VBOF CCB NNPA,5.0,* NNC_CCP * * *,CC.* NNC_CCP VB.* CC.* NN.*,5.0
-5502176,RB.*_CC.* VB.* CC.* NN.* DT.*,2.0,RBD_CCP VBTR CCB NNP DTC,2.0,RBD_CCP * * * *,RBD_CCP VB.* CC.* NN.* DT.*,2.0
-5502211,JJ.*_CC.* NN.* NN.* FW CC.*,2.0,JJD_CCP NNC NNPA FW CCP,2.0,JJD_CCP * * * *,JJD_CCP NN.* NN.* FW CC.*,2.0
-5502233,NN.*_CC.* VB.* CC.* VB.* CC.*,2.0,NNC_CCP VBW CCA VBAF CCT,2.0,NNC_CCP * * * *,NNC_CCP VB.* CC.* VB.* CC.*,2.0
-5502247,CC.* PR.* RB.*_CC.* FW FW,2.0,CCA PRI RBI_CCP FW FW,2.0,* * RBI_CCP * FW,CC.* PR.* RBI_CCP FW FW,2.0
-5502248,PR.* RB.*_CC.* FW FW CC.*,2.0,PRI RBI_CCP FW FW CCB,2.0,* RBI_CCP * FW *,PR.* RBI_CCP FW FW CC.*,2.0
-5502315,CC.* RB.*_CC.* VB.* CC.* NN.*,3.0,CCR RBD_CCP VBAF CCT NNP,3.0,* RBD_CCP * * *,CC.* RBD_CCP VB.* CC.* NN.*,3.0
-5502349,PR.*_CC.* FW FW CC.* NN.*,2.0,PRI_CCP FW FW CCT NNP,2.0,PRI_CCP * FW * *,PRI_CCP FW FW CC.* NN.*,2.0
-5502416,RB.* PR.*_CC.* VB.* DT.* DT.*,2.0,RBF PRP_CCP VBOF DTC DTCP,2.0,* PRP_CCP * * *,RB.* PRP_CCP VB.* DT.* DT.*,2.0
-5502417,PR.*_CC.* VB.* DT.* DT.* NN.*,2.0,PRP_CCP VBOF DTC DTCP NNC,2.0,PRP_CCP * * * *,PRP_CCP VB.* DT.* DT.* NN.*,2.0
-5502438,CC.* JJ.*_CC.* FW CC.* NN.*,2.0,CCB JJD_CCP FW CCB NNPA,2.0,* JJD_CCP * * *,CC.* JJD_CCP FW CC.* NN.*,2.0
-5502466,JJ.*_CC.* NN.* CC.* FW FW,3.0,JJD_CCP NNC CCT FW FW,2.0,JJD_CCP * * * *,JJD_CCP NN.* CC.* FW FW,2.0
-5502599,VB.*_VB.* CC.* DT.* NN.* CC.*,2.0,VBTR_VBAF CCP DTC NNC CCB,2.0,VBTR_VBAF * * * *,VBTR_VBAF CC.* DT.* NN.* CC.*,2.0
-5502681,NN.*_CC.* VB.* RB.*_CC.* VB.* CC.*,2.0,NNC_CCP VBS RBI_CCP VBW CCA,2.0,NNC_CCP * RBI_CCP * *,NNC_CCP VB.* RBI_CCP VB.* CC.*,2.0
-5502714,RB.*_CC.* VB.* DT.* NN.* CC.*,3.0,RBT_CCP VBAF DTP NNP CCT,2.0,RBT_CCP * * * *,RBT_CCP VB.* DT.* NN.* CC.*,2.0
-5502763,JJ.*_CC.* NN.* CC.* VB.* CC.*,2.0,JJD_CCP NNC CCR VBTR CCT,2.0,JJD_CCP * * * *,JJD_CCP NN.* CC.* VB.* CC.*,2.0
-5502801,CC.* NN.* CC.* VB.* PR.*_CC.*,2.0,CCB NNP CCP VBTR PRP_CCP,2.0,* * * * PRP_CCP,CC.* NN.* CC.* VB.* PRP_CCP,2.0
-5502833,CC.* VB.*_VB.* CC.* DT.* FW,2.0,CCP VBTR_VBAF CCT DTCP FW,2.0,* VBTR_VBAF * * *,CC.* VBTR_VBAF CC.* DT.* FW,2.0
-5502834,VB.*_VB.* CC.* DT.* FW FW,2.0,VBTR_VBAF CCB DTCP FW FW,2.0,VBTR_VBAF * * * *,VBTR_VBAF CC.* DT.* FW FW,2.0
+Pattern_ID,RoughPOS_N-Gram,DetailedPOS_N-Gram,Frequency,ID_Array
+500001,PR.* DT.* NN.* DT.* NN.*,,2,"['047070', '041480']"
+500002,DT.* NN.* DT.* NN.* CC.*,,11,"['047071', '035428', '022532', '034599', '045636', '017627', '033258', '032981', '010020', '015686', '026829']"
+500003,NN.* DT.* NN.* CC.* VB.*,,2,"['047072', '035429']"
+500004,DT.* NN.* CC.* VB.* CC.*,,15,"['047073', '022727', '035461', '012118', '041992', '008754', '004317', '015345', '009537', '000193', '003697', '002380', '048854', '003864', '004087']"
+500005,NN.* CC.* VB.* CC.* NN.*,,11,"['047074', '022728', '012007', '011575', '045400', '009469', '009538', '014683', '039174', '036950', '048193']"
+500006,CC.* VB.* CC.* NN.* PM.*,,7,"['047075', '006740', '009539', '031036', '000205', '014684', '003698']"
+500007,VB.* CC.* NN.* PM.* VB.*,,2,"['047076', '045432']"
+500008,CC.* NN.* PM.* VB.* CC.*,,2,"['047077', '000386']"
+500009,CC.* VB.* DT.* NN.* CC.*,,22,"['035533', '000880', '034044', '029242', '020957', '021129', '028575', '016832', '032051', '019283', '009791', '026761', '019124', '040038', '040050', '001604', '001513', '037458', '013379', '037244', '023715', '036197']"
+500010,VB.* DT.* NN.* CC.* DT.*,,9,"['035534', '000881', '007284', '009384', '032052', '032144', '014214', '024777', '023566']"
+500011,CC.* DT.* NN.* PM.* VB.*,,5,"['035535', '035490', '035495', '041227', '014878']"
+500012,DT.* NN.* PM.* VB.* RB.*,,3,"['035536', '035491', '014879']"
+500013,NN.* CC.* JJ.*_CC.* NN.* CC.*,,3,"['035541', '032355', '009570']"
+500014,CC.* JJ.*_CC.* NN.* CC.* FW,,2,"['035542', '032356']"
+500015,CC.* JJ.* DT.* NN.* CC.*,,4,"['000707', '045834', '034256', '005804']"
+500016,NN.* PM.* VB.* RB.* DT.*,,3,"['022701', '021053', '010138']"
+500017,PM.* VB.* RB.* DT.* FW,,2,"['022702', '021054']"
+500018,FW NN.* DT.* NN.* PM.*,,2,"['022705', '017671']"
+500019,DT.* NN.* PM.* CC.* VB.*,,4,"['022707', '017661', '038671', '037256']"
+500020,NN.* PM.* CC.* VB.* DT.*,,5,"['022708', '018151', '017662', '040036', '003072']"
+500021,PM.* CC.* VB.* DT.* NN.*,,4,"['022709', '019282', '040037', '036196']"
+500022,PM.* NN.* CC.* RB.* RB.*,,2,"['022717', '035432']"
+500023,NN.* CC.* RB.* RB.* JJ.*,,2,"['022718', '047342']"
+500024,RB.* RB.* JJ.* VB.* CC.*,,2,"['022720', '034235']"
+500025,VB.* CC.* NN.* PR.* DT.*,,2,"['022723', '037252']"
+500026,CC.* NN.* PR.* DT.* NN.*,,2,"['022724', '037253']"
+500027,PR.* DT.* NN.* CC.* VB.*,,3,"['022726', '033452', '026789']"
+500028,CC.* DT.* NN.* PR.* PM.*,,4,"['012503', '004577', '019345', '014511']"
+500029,DT.* CC.* PM.* JJ.* CC.*,,2,"['008697', '004713']"
+500030,CC.* PR.* LM VB.* CC.*,,2,"['008700', '006406']"
+500031,CC.* VB.* RB.* PR.* DT.*,,3,"['000652', '022522', '007184']"
+500032,VB.* RB.* PR.* DT.* NN.*,,5,"['000653', '007185', '027180', '026787', '013986']"
+500033,RB.* PR.* DT.* NN.* CC.*,,7,"['000654', '007767', '007186', '027181', '026788', '003516', '003719']"
+500034,PR.* DT.* NN.* CC.* DT.*,,8,"['000655', '022378', '007768', '007187', '033130', '002863', '003517', '023232']"
+500035,CC.* DT.* NN.* CC.* NN.*_CC.*,,3,"['000656', '003379', '004570']"
+500036,DT.* NN.* CC.* NN.*_CC.* JJ.*,,3,"['000657', '003380', '004571']"
+500037,NN.* CC.* NN.*_CC.* JJ.* CC.*,,4,"['000658', '008525', '006136', '001606']"
+500038,VB.* PR.* DT.* NN.* PM.*,,3,"['047186', '031000', '001163']"
+500039,NN.* PM.* VB.* DT.* DT.*,,2,"['047188', '024176']"
+500040,PM.* VB.* DT.* DT.* NN.*,,3,"['047189', '021840', '024177']"
+500041,VB.* DT.* DT.* NN.* PM.*,,2,"['047190', '028161']"
+500042,NN.* PM.* VB.* DT.* FW,,3,"['047193', '041942', '039170']"
+500043,NN.* PM.* DT.* JJ.*_CC.* NN.*,,4,"['035532', '047300', '025528', '013161']"
+500044,VB.* RB.* CC.* NN.* DT.*,,6,"['030885', '018126', '020322', '015344', '039847', '037571']"
+500045,RB.* CC.* NN.* DT.* JJ.*,,2,"['030886', '025633']"
+500046,CC.* NN.* DT.* JJ.* CC.*,,2,"['030887', '025634']"
+500047,VB.* CC.* JJ.* CC.* NN.*,,4,"['030893', '026686', '014854', '000788']"
+500048,CC.* PR.* CC.* PR.*_CC.* FW,,2,"['030900', '048802']"
+500049,PR.* CC.* PR.*_CC.* FW PM.*,,2,"['030901', '048803']"
+500050,PM.* VB.* CC.* PR.*_CC.* NN.*,,3,"['018527', '033744', '029273']"
+500051,VB.* CC.* PR.*_CC.* NN.* CC.*,,8,"['018528', '000507', '020926', '005378', '008864', '000196', '036248', '048294']"
+500052,CC.* PR.*_CC.* NN.* CC.* VB.*,,7,"['018529', '000371', '020927', '008865', '002763', '014179', '036456']"
+500053,PR.*_CC.* NN.* CC.* VB.* DT.*,,4,"['018530', '000372', '018760', '009789']"
+500054,NN.* CC.* VB.* DT.* NN.*,,9,"['018531', '000373', '002588', '029241', '020956', '016831', '009790', '013378', '037243']"
+500055,PR.*_CC.* DT.* NN.* NN.* CC.*,,3,"['018536', '012016', '034010']"
+500056,DT.* NN.* NN.* CC.* PR.*_CC.*,,2,"['018537', '048807']"
+500057,NN.* NN.* CC.* PR.*_CC.* FW,,3,"['018538', '007650', '048808']"
+500058,NN.* CC.* PR.*_CC.* FW FW,,6,"['018539', '007651', '032293', '020156', '048809', '036671']"
+500059,CC.* JJ.* PR.*_CC.* VB.* CC.*,,2,"['012365', '006946']"
+500060,CC.* VB.* CC.* NN.* CC.*,,10,"['012368', '008267', '012008', '045401', '032999', '005107', '026000', '003183', '004088', '048194']"
+500061,CC.* NN.* NN.* PM.* CC.*,,2,"['012369', '036209']"
+500062,CC.* NN.* CC.* VB.* CC.*,,11,"['008604', '030148', '011574', '045399', '033559', '015781', '015021', '001509', '014682', '003182', '038212']"
+500063,NN.* CC.* VB.* CC.* FW,,3,"['008605', '043375', '008755']"
+500064,NN.* CC.* JJ.* JJ.* CC.*,,2,"['008614', '004774']"
+500065,JJ.* CC.* VB.* DT.* DT.*,,2,"['008617', '013169']"
+500066,CC.* VB.* DT.* DT.* NN.*,,4,"['008618', '035455', '018143', '013170']"
+500067,VB.* DT.* DT.* NN.* CC.*,,12,"['008619', '035456', '018144', '021841', '021124', '027250', '004387', '040972', '038363', '048673', '013171', '036006']"
+500068,DT.* DT.* NN.*_CC.* VB.* CC.*,,3,"['004210', '008144', '007301']"
+500069,DT.* NN.*_CC.* VB.* CC.* DT.*,,7,"['004211', '008145', '007515', '007130', '005983', '019145', '004077']"
+500070,NN.*_CC.* VB.* CC.* DT.* NN.*,,3,"['004212', '027874', '019146']"
+500071,RB.* RB.*_CC.* VB.* CC.* NN.*,,2,"['000585', '021047']"
+500072,RB.*_CC.* VB.* CC.* NN.* CC.*,,4,"['000586', '033017', '042193', '011503']"
+500073,VB.* CC.* NN.* CC.* RB.*_CC.*,,2,"['000587', '026358']"
+500074,CC.* NN.* CC.* RB.*_CC.* NN.*,,4,"['000588', '008085', '026359', '000778']"
+500075,FW PR.* CC.* NN.* CC.*,,3,"['047199', '008926', '036668']"
+500076,CC.* NN.* CC.* VB.*_VB.* CC.*,,3,"['047201', '032295', '012548']"
+500077,CC.* PR.*_CC.* NN.* CC.* NN.*,,10,"['047205', '012276', '030147', '032774', '005379', '010255', '014650', '039018', '025235', '036249']"
+500078,DT.* NN.* PM.* RB.* PR.*_CC.*,,2,"['035422', '029694']"
+500079,PM.* RB.* PR.*_CC.* VB.* DT.*,,3,"['035424', '027728', '031752']"
+500080,RB.* PR.*_CC.* VB.* DT.* NN.*,,2,"['035425', '028783']"
+500081,VB.* DT.* NN.* DT.* NN.*,,4,"['035427', '033257', '027504', '015685']"
+500082,DT.* NN.* CC.* VB.* DT.*,,7,"['035430', '016830', '010929', '001603', '037955', '013377', '036008']"
+500083,NN.* CC.* VB.* DT.* FW,,4,"['035431', '020853', '010930', '036009']"
+500084,NN.* CC.* RB.* RB.* VB.*,,5,"['035433', '007890', '045459', '005799', '004593']"
+500085,VB.* VB.* DT.* NN.* CC.*,,2,"['035437', '014362']"
+500086,VB.* DT.* NN.* CC.* CC.*,,3,"['035438', '007894', '032782']"
+500087,DT.* NN.* CC.* CC.* RB.*,,2,"['035439', '002373']"
+500088,PM.* FW CC.* PR.* CC.*,,3,"['035445', '018050', '023088']"
+500089,FW CC.* PR.* CC.* DT.*,,2,"['035446', '023089']"
+500090,CC.* PR.* CC.* DT.* NN.*,,4,"['035447', '003381', '023090', '014303']"
+500091,FW DT.* NN.* PM.* CC.*,,3,"['022527', '018605', '025166']"
+500092,DT.* NN.* PM.* CC.* RB.*,,3,"['022528', '007763', '034328']"
+500093,NN.* PM.* CC.* RB.* RB.*,,3,"['022529', '040312', '025869']"
+500094,PM.* DT.* NN.* DT.* NN.*,,2,"['022531', '027869']"
+500095,NN.* PR.*_CC.* JJ.* CC.* FW,,2,"['022536', '048336']"
+500096,FW PM.* VB.* PR.* DT.*,,2,"['000512', '028403']"
+500097,PM.* VB.* PR.* DT.* NN.*,,6,"['000513', '033567', '017164', '028798', '042127', '001162']"
+500098,VB.* PR.* DT.* NN.* CC.*,,9,"['000514', '022377', '006737', '033451', '033547', '033568', '017165', '028799', '002862']"
+500099,PR.* DT.* NN.* CC.* PR.*_CC.*,,3,"['000515', '033737', '044275']"
+500100,DT.* NN.* CC.* PR.*_CC.* NN.*,,9,"['000516', '033738', '044276', '028188', '004389', '040032', '001419', '001806', '037460']"
+500101,NN.* CC.* PR.*_CC.* NN.* DT.*,,5,"['000517', '022015', '007290', '021160', '039234']"
+500102,CC.* PR.*_CC.* NN.* DT.* NN.*,,5,"['000518', '045350', '006226', '021083', '010168']"
+500103,DT.* NN.* PM.* VB.* VB.*,,2,"['000520', '024092']"
+500104,DT.* NN.* PM.* PR.* CC.*,,2,"['018519', '032624']"
+500105,NN.* PM.* PR.* CC.* DT.*,,2,"['018520', '017548']"
+500106,PR.* CC.* DT.* NN.* PM.*,,3,"['012272', '020279', '037929']"
+500107,CC.* NN.* CC.* PR.*_CC.* NN.*,,8,"['012274', '046157', '021159', '012557', '005795', '040779', '026837', '013073']"
+500108,NN.* CC.* PR.*_CC.* NN.* CC.*,,5,"['012275', '012558', '005796', '025234', '037461']"
+500109,PR.*_CC.* NN.* CC.* NN.* PM.*,,4,"['012277', '010256', '039460', '039019']"
+500110,CC.* NN.* PM.* VB.* DT.*,,5,"['008520', '021133', '032616', '032779', '041941']"
+500111,DT.* JJ.* CC.* NN.* CC.*,,5,"['008524', '007288', '017619', '021116', '003180']"
+500112,CC.* VB.* DT.* NN.* PM.*,,3,"['000374', '032622', '026084']"
+500113,NN.* CC.* RB.*_CC.* VB.* DT.*,,2,"['000377', '013570']"
+500114,NN.* CC.* NN.*_CC.* NN.* CC.*,,2,"['000383', '002201']"
+500115,CC.* DT.* NN.* LM VB.*,,2,"['000391', '017551']"
+500116,DT.* NN.* LM VB.* CC.*,,2,"['000392', '017552']"
+500117,PM.* FW CC.* NN.* DT.*,,2,"['000397', '019876']"
+500118,FW CC.* NN.* DT.* DT.*,,2,"['000398', '009954']"
+500119,DT.* PR.* CC.* NN.* CC.*,,3,"['000402', '042423', '001507']"
+500120,JJ.*_CC.* FW FW DT.* NN.*,,2,"['046726', '046628']"
+500121,FW DT.* NN.* CC.* DT.*,,3,"['046727', '019141', '039402']"
+500122,RB.* PM.* JJ.* RB.* CC.*,,2,"['035451', '021858']"
+500123,RB.* CC.* VB.* DT.* DT.*,,2,"['035454', '021145']"
+500124,DT.* DT.* NN.* CC.* FW,,6,"['035457', '018145', '009957', '019818', '040973', '048674']"
+500125,DT.* NN.* CC.* FW CC.*,,2,"['035458', '039907']"
+500126,RB.* DT.* NN.* CC.* VB.*,,7,"['035460', '017204', '016945', '004316', '040732', '026096', '013376']"
+500127,CC.* RB.* RB.* PR.* RB.*,,2,"['000872', '024188']"
+500128,RB.* RB.* PR.* RB.* PM.*,,2,"['000873', '024189']"
+500129,DT.* NN.* CC.* DT.* VB.*,,2,"['000882', '018753']"
+500130,NN.* CC.* DT.* VB.* CC.*,,3,"['000883', '003621', '013269']"
+500131,VB.* CC.* VB.* CC.* NN.*,,4,"['000886', '007751', '032998', '031035']"
+500132,CC.* VB.* CC.* NN.* DT.*,,8,"['000887', '007752', '020858', '041664', '014450', '038642', '037259', '023767']"
+500133,VB.* CC.* NN.* DT.* FW,,4,"['000888', '034880', '021049', '038357']"
+500134,CC.* NN.* PM.* RB.* RB.*,,5,"['022507', '005043', '026819', '038575', '037339']"
+500135,NN.* PM.* RB.* RB.* VB.*,,5,"['022508', '044280', '043135', '009515', '024738']"
+500136,PM.* RB.* RB.* VB.* PM.*,,2,"['022509', '044281']"
+500137,RB.* RB.* VB.* PM.* NN.*,,2,"['022510', '044282']"
+500138,PM.* CC.* VB.* PR.* CC.*,,2,"['022517', '033033']"
+500139,CC.* VB.* PR.* CC.* NN.*,,5,"['022518', '016225', '019582', '040735', '038221']"
+500140,VB.* PR.* CC.* NN.* DT.*,,2,"['022519', '008167']"
+500141,PR.* CC.* NN.* DT.* NN.*,,2,"['022520', '008168']"
+500142,CC.* NN.* DT.* NN.* DT.*,,2,"['022521', '016660']"
+500143,CC.* NN.* CC.* NN.*_CC.* NN.*,,2,"['000950', '002200']"
+500144,NN.* PM.* JJ.*_CC.* NN.* CC.*,,2,"['000954', '048199']"
+500145,CC.* VB.* DT.* DT.* VB.*,,2,"['018512', '016188']"
+500146,VB.* DT.* DT.* VB.* PM.*,,2,"['018513', '016189']"
+500147,DT.* DT.* VB.* PM.* VB.*,,2,"['018514', '016190']"
+500148,DT.* NN.*_CC.* JJ.* CC.* NN.*,,2,"['008479', '007506']"
+500149,NN.*_CC.* JJ.* CC.* NN.* CC.*,,2,"['008480', '007507']"
+500150,PM.* DT.* VB.* CC.* FW,,2,"['047291', '014007']"
+500151,DT.* VB.* CC.* FW PM.*,,2,"['047292', '010560']"
+500152,VB.* CC.* FW PM.* NN.*,,2,"['047293', '036067']"
+500153,NN.* CC.* NN.* PM.* DT.*,,2,"['047298', '019733']"
+500154,CC.* NN.* PM.* DT.* JJ.*_CC.*,,3,"['047299', '042278', '019734']"
+500155,PM.* DT.* JJ.*_CC.* NN.* CC.*,,3,"['047301', '025242', '013162']"
+500156,NN.* CC.* VB.* PM.* FW,,3,"['047304', '034332', '043949']"
+500157,CC.* VB.* PM.* FW CC.*,,2,"['047305', '046624']"
+500158,VB.* PM.* FW CC.* NN.*,,6,"['047306', '028183', '016417', '040346', '023096', '024105']"
+500159,PM.* FW CC.* NN.* PM.*,,4,"['047307', '021699', '016418', '040347']"
+500160,FW CC.* NN.* PM.* CC.*,,5,"['047308', '034601', '021794', '016419', '043128']"
+500161,CC.* NN.* PM.* CC.* DT.*,,3,"['047309', '007521', '016420']"
+500162,VB.*_CC.* NN.* DT.* NN.* CC.*,,2,"['035347', '027259']"
+500163,NN.* DT.* NN.* CC.* PR.*,,3,"['035348', '030062', '032982']"
+500164,CC.* PR.* DT.* PM.* FW,,2,"['035351', '012133']"
+500165,CC.* JJ.*_JJ.*_CC.* NN.* CC.* NN.*,,2,"['035355', '010653']"
+500166,NN.* DT.* JJ.*_CC.* NN.*_CC.* NN.*,,2,"['035358', '045188']"
+500167,VB.* RB.* DT.* NN.* CC.*,,11,"['022498', '012189', '011156', '017203', '016944', '010140', '009665', '009567', '009464', '014687', '038675']"
+500168,RB.* DT.* NN.* CC.* NN.*,,3,"['022499', '010268', '037844']"
+500169,DT.* NN.* CC.* NN.* CC.*,,13,"['022500', '034046', '020953', '021126', '043607', '043373', '041667', '009948', '027260', '040319', '040040', '048922', '048872']"
+500170,NN.* CC.* NN.* CC.* FW,,3,"['022501', '022382', '027261']"
+500171,DT.* NN.* PM.* CC.* CC.*,,5,"['018606', '028778', '042291', '026824', '037931']"
+500172,NN.* PM.* CC.* CC.* NN.*,,3,"['018607', '019807', '037932']"
+500173,CC.* NN.* DT.* NN.* PM.*,,3,"['018610', '018128', '024090']"
+500174,NN.* DT.* NN.* PM.* VB.*_VB.*,,2,"['018611', '026714']"
+500175,VB.* RB.* PR.* CC.* VB.*,,2,"['008403', '008264']"
+500176,RB.* PR.* CC.* VB.* CC.*,,2,"['008404', '008265']"
+500177,CC.* VB.* CC.* PR.* CC.*,,2,"['008406', '007995']"
+500178,LM VB.* CC.* VB.* CC.*,,2,"['002261', '001297']"
+500179,CC.* VB.* DT.* JJ.*_CC.* NN.*,,2,"['002263', '013654']"
+500180,VB.* DT.* JJ.*_CC.* NN.* CC.*,,3,"['002264', '044555', '013573']"
+500181,CC.* NN.* CC.* VB.* DT.*,,9,"['002587', '006407', '020955', '021128', '020852', '026720', '040049', '001365', '013652']"
+500182,CC.* NN.* PM.* FW CC.*,,4,"['046759', '044228', '028413', '024286']"
+500183,NN.* PM.* FW CC.* NN.*,,3,"['046760', '020295', '041705']"
+500184,PM.* FW CC.* NN.* CC.*,,4,"['046761', '002664', '024287', '048624']"
+500185,NN.* DT.* NN.* CC.* PM.*,,2,"['046763', '023769']"
+500186,PM.* CC.* JJ.* CC.* FW,,2,"['046767', '038219']"
+500187,NN.* CC.* JJ.*_CC.* FW FW,,2,"['034997', '011305']"
+500188,CC.* JJ.*_CC.* FW FW CC.*,,2,"['034998', '011306']"
+500189,FW CC.* NN.* CC.* DT.*,,3,"['035000', '043379', '024805']"
+500190,CC.* NN.* CC.* DT.* NN.*,,6,"['035001', '046148', '034594', '026935', '026424', '024806']"
+500191,NN.* CC.* DT.* NN.* CC.*,,7,"['035002', '016781', '032146', '038364', '048920', '002371', '023436']"
+500192,NN.* PM.* RB.* VB.* PR.*,,2,"['022374', '042723']"
+500193,PM.* RB.* VB.* PR.* DT.*,,2,"['022375', '032794']"
+500194,DT.* NN.* JJ.* CC.* NN.*,,2,"['022379', '021057']"
+500195,JJ.* CC.* NN.* CC.* NN.*,,3,"['022381', '021117', '048326']"
+500196,CC.* NN.* CC.* FW PM.*,,3,"['022383', '033001', '043088']"
+500197,NN.* CC.* FW PM.* VB.*,,3,"['022384', '020948', '028401']"
+500198,FW PM.* VB.* RB.* PR.*,,3,"['022386', '033026', '022757']"
+500199,JJ.* DT.* NN.* CC.* DT.*,,3,"['012525', '043093', '038660']"
+500200,VB.* PR.*_CC.* VB.* CC.* NN.*,,2,"['008258', '026076']"
+500201,PR.*_CC.* VB.* CC.* NN.* RB.*,,2,"['008259', '006948']"
+500202,RB.* CC.* NN.* PM.* VB.*,,2,"['008260', '041940']"
+500203,CC.* NN.* PM.* VB.* RB.*,,7,"['008261', '044719', '021052', '011164', '020319', '010137', '048106']"
+500204,NN.* PM.* VB.* RB.* PR.*,,2,"['008262', '042185']"
+500205,PR.* CC.* VB.* CC.* NN.*,,3,"['008266', '006739', '002548']"
+500206,NN.* CC.* RB.* RB.* CC.*,,2,"['008269', '048297']"
+500207,RB.* DT.* VB.* CC.* NN.*,,4,"['046610', '045430', '020013', '037947']"
+500208,DT.* VB.* CC.* NN.* PM.*,,4,"['046611', '045431', '016899', '037574']"
+500209,CC.* VB.* CC.* FW PM.*,,3,"['046619', '012100', '044378']"
+500210,CC.* FW PM.* CC.* VB.*,,4,"['046621', '033003', '033139', '033031']"
+500211,RB.* PM.* CC.* DT.* NN.*,,2,"['035493', '006610']"
+500212,DT.* NN.*_CC.* VB.* CC.* PR.*,,2,"['030275', '003964']"
+500213,VB.* PM.* PM.* RB.* JJ.*,,2,"['030277', '044769']"
+500214,RB.* DT.* NN.* CC.* FW,,2,"['018397', '009666']"
+500215,CC.* CD.* NN.* CC.* NN.*,,2,"['046186', '030091']"
+500216,CC.* VB.* RB.* RB.* DT.*,,2,"['046195', '001716']"
+500217,CC.* CD.* NN.* DT.* NN.*,,2,"['030445', '026712']"
+500218,NN.* NN.* PM.* CC.* PM.*,,2,"['030446', '036210']"
+500219,PM.* PR.* CC.* NN.* CC.*,,2,"['030451', '023811']"
+500220,CD.* NN.* CC.* VB.* CC.*,,2,"['012006', '048151']"
+500221,VB.* CC.* NN.* CC.* FW,,9,"['012009', '045402', '042947', '033000', '026941', '015169', '026078', '014714', '013157']"
+500222,DT.* NN.* NN.* CC.* JJ.*_CC.*,,2,"['012017', '000200']"
+500223,NN.* CC.* JJ.*_CC.* NN.* NN.*,,2,"['012019', '028809']"
+500224,VB.* RB.* DT.* DT.* NN.*_CC.*,,2,"['008142', '031028']"
+500225,RB.* DT.* DT.* NN.*_CC.* VB.*,,2,"['008143', '031029']"
+500226,CC.* DT.* DT.* NN.* CC.*,,3,"['008148', '005386', '008752']"
+500227,PR.* LM VB.* CC.* NN.*,,3,"['002197', '003376', '002490']"
+500228,LM VB.* CC.* NN.* CC.*,,5,"['002198', '003377', '017553', '044321', '004576']"
+500229,NN.* CC.* NN.* CC.* NN.*_CC.*,,2,"['002199', '040320']"
+500230,CC.* JJ.* DT.* DT.* NN.*,,2,"['002206', '012898']"
+500231,RB.*_CC.* VB.* CC.* DT.* FW,,2,"['046327', '011217']"
+500232,VB.* DT.* NN.* NN.* CC.*,,3,"['034869', '001159', '024907']"
+500233,NN.* CC.* FW CC.* PR.*,,3,"['034872', '045403', '031037']"
+500234,RB.* VB.* CC.* NN.* DT.*,,3,"['034879', '030059', '038356']"
+500235,PM.* CC.* VB.* NN.* CC.*,,2,"['030186', '032290']"
+500236,CC.* PR.*_CC.* NN.* CC.* DT.*,,3,"['030187', '002872', '038538']"
+500237,NN.* CC.* DT.* NN.*_CC.* PR.*,,2,"['030189', '044247']"
+500238,CC.* DT.* NN.*_CC.* PR.* PM.*,,2,"['030190', '044248']"
+500239,JJ.*_CC.* NN.* DT.* VB.* CC.*,,2,"['030195', '030169']"
+500240,NN.* DT.* VB.* CC.* DT.*,,2,"['030196', '030170']"
+500241,DT.* VB.* CC.* DT.* NN.*,,4,"['030197', '010017', '031004', '015016']"
+500242,VB.* CC.* DT.* NN.* PM.*,,5,"['030198', '021769', '011460', '025672', '013261']"
+500243,VB.* CC.* DT.* PR.*_CC.* NN.*,,2,"['030206', '006594']"
+500244,DT.* PR.*_CC.* NN.* CC.* VB.*,,2,"['030208', '040767']"
+500245,PR.*_CC.* NN.* CC.* VB.* RB.*,,2,"['030209', '008866']"
+500246,VB.* RB.* CC.* NN.* CC.*,,6,"['030210', '029440', '043546', '015612', '040279', '026422']"
+500247,CC.* VB.* RB.* CC.* NN.*,,5,"['018125', '030141', '044560', '041488', '015611']"
+500248,RB.* CC.* NN.* DT.* NN.*,,4,"['018127', '039848', '039261', '047222']"
+500249,PR.* CC.* DT.* NN.*_CC.* JJ.*,,2,"['018135', '007998']"
+500250,PM.* VB.* DT.* NN.* CC.*,,9,"['018140', '020951', '021135', '032617', '032781', '043941', '032352', '002989', '036065']"
+500251,VB.* DT.* NN.* CC.* NN.*,,10,"['018141', '034045', '033625', '029243', '020952', '016833', '010970', '026762', '040318', '040039']"
+500252,NN.* CC.* FW CC.* JJ.*_CC.*,,2,"['018146', '017543']"
+500253,CC.* FW CC.* JJ.*_CC.* NN.*,,2,"['018147', '017544']"
+500254,PM.* CC.* VB.* DT.* NN.*_CC.*,,2,"['018152', '021736']"
+500255,CC.* VB.* DT.* NN.*_CC.* NN.*,,2,"['018153', '021737']"
+500256,FW PM.* CC.* VB.* CC.*,,4,"['012134', '033140', '013175', '023765']"
+500257,CC.* RB.*_CC.* NN.* CC.* VB.*,,2,"['008086', '002029']"
+500258,JJ.* CC.* VB.* DT.* NN.*,,2,"['008091', '034043']"
+500259,CC.* CC.* JJ.*_CC.* FW CC.*,,2,"['035048', '015720']"
+500260,PR.*_CC.* NN.* CC.* NN.* CC.*,,7,"['030413', '032775', '005380', '027750', '010145', '036250', '047237']"
+500261,CC.* NN.* CC.* DT.* NN.*_CC.*,,2,"['030414', '007512']"
+500262,NN.* CC.* DT.* NN.*_CC.* VB.*,,6,"['030415', '007513', '029160', '015674', '004391', '019143']"
+500263,FW PM.* CC.* RB.* RB.*,,3,"['030423', '017668', '025178']"
+500264,CC.* CC.* PM.* VB.* DT.*,,2,"['022110', '024896']"
+500265,CC.* PM.* VB.* DT.* NN.*,,2,"['022111', '024897']"
+500266,DT.* VB.* PR.* CC.* NN.*,,2,"['011778', '034576']"
+500267,RB.* CC.* JJ.*_CC.* NN.* CC.*,,4,"['046146', '046200', '003256', '042338']"
+500268,CC.* JJ.*_CC.* NN.* CC.* NN.*,,3,"['046147', '046201', '039167']"
+500269,DT.* PR.*_CC.* PM.* FW CC.*,,2,"['046154', '019955']"
+500270,NN.* CC.* NN.* CC.* PR.*_CC.*,,4,"['046156', '012556', '005794', '013072']"
+500271,NN.* CC.* PR.*_CC.* NN.* FW,,3,"['046158', '033739', '032238']"
+500272,CC.* PR.*_CC.* NN.* FW CC.*,,2,"['046159', '032239']"
+500273,CC.* FW CC.* DT.* NN.*,,3,"['034555', '034323', '021055']"
+500274,FW CC.* DT.* NN.* LM,,2,"['034556', '007386']"
+500275,FW PM.* PM.* CC.* CC.*,,2,"['034559', '024184']"
+500276,PR.* PM.* JJ.* DT.* VB.*,,2,"['034573', '014183']"
+500277,VB.* PR.* CC.* NN.* CC.*,,9,"['034577', '007381', '019583', '041057', '026835', '025932', '025340', '003129', '047231']"
+500278,CC.* NN.* CC.* JJ.* CC.*,,2,"['034578', '003130']"
+500279,PM.* VB.* PR.* CC.* NN.*_CC.*,,2,"['018052', '004444']"
+500280,VB.* PR.* CC.* NN.*_CC.* NN.*,,3,"['018053', '004445', '002767']"
+500281,PR.* CC.* NN.*_CC.* NN.* CC.*,,3,"['018054', '004446', '002768']"
+500282,NN.* CC.* CC.* PM.* FW,,4,"['018055', '017736', '017867', '017437']"
+500283,CC.* PR.* PM.* VB.* RB.*,,2,"['012186', '009662']"
+500284,PR.* PM.* VB.* RB.* DT.*,,2,"['012187', '009663']"
+500285,PM.* VB.* RB.* DT.* NN.*,,7,"['012188', '010139', '009664', '009566', '026844', '014686', '023494']"
+500286,NN.* CC.* VB.*_VB.* PR.* RB.*,,2,"['012192', '013576']"
+500287,CC.* VB.*_VB.* PR.* RB.* RB.*,,2,"['012193', '013577']"
+500288,PM.* VB.* PR.* CC.* NN.*,,5,"['007881', '028193', '041056', '025931', '047230']"
+500289,PR.*_CC.* NN.* CC.* RB.* RB.*,,5,"['007889', '005798', '037463', '048296', '047341']"
+500290,CC.* RB.* RB.* VB.* DT.*,,3,"['007891', '045460', '014389']"
+500291,RB.* RB.* VB.* DT.* NN.*,,7,"['007892', '027502', '014390', '038680', '038303', '024740', '012906']"
+500292,RB.* VB.* DT.* NN.* CC.*,,14,"['007893', '029754', '016896', '016828', '041935', '032143', '031539', '038681', '024741', '014170', '013892', '012907', '048192', '012594']"
+500293,CC.* CC.* VB.* CC.* DT.*,,2,"['007897', '011458']"
+500294,DT.* CC.* PM.* FW CC.*,,2,"['046138', '037468']"
+500295,CC.* PM.* FW CC.* NN.*,,2,"['046139', '002663']"
+500296,PM.* CD.* NN.* CC.* NN.*,,2,"['046142', '016001']"
+500297,JJ.*_CC.* NN.* PR.* DT.* NN.*,,2,"['034434', '024892']"
+500298,VB.* CC.* NN.* DT.* NN.*,,10,"['030060', '045787', '020859', '041665', '040236', '037949', '013566', '037260', '023768', '023435']"
+500299,CC.* NN.* DT.* NN.* CC.*,,9,"['030061', '034618', '034252', '033120', '041666', '027182', '037950', '013567', '047223']"
+500300,DT.* NN.* CC.* PR.* PM.*,,2,"['030063', '007753']"
+500301,PM.* VB.* RB.* CC.* FW,,2,"['021890', '048108']"
+500302,CC.* RB.* DT.* VB.* CC.*,,3,"['012144', '029280', '037946']"
+500303,VB.* CC.* VB.* DT.* FW,,2,"['012146', '024312']"
+500304,CC.* RB.* VB.* DT.* NN.*,,3,"['007760', '034331', '015683']"
+500305,RB.* VB.* DT.* NN.* PM.*,,5,"['007761', '014391', '024362', '048005', '047226']"
+500306,VB.* DT.* NN.* PM.* CC.*,,3,"['007762', '032319', '014392']"
+500307,NN.* PM.* CC.* RB.* PR.*,,2,"['007764', '041075']"
+500308,DT.* NN.* CC.* DT.* FW,,2,"['007769', '023567']"
+500309,NN.* CC.* DT.* FW CC.*,,2,"['007770', '007383']"
+500310,NN.* CC.* NN.* PR.*_CC.* DT.*,,2,"['046203', '020151']"
+500311,CC.* NN.* PR.*_CC.* DT.* NN.*,,3,"['046204', '020152', '019810']"
+500312,NN.* PR.*_CC.* DT.* NN.* NN.*,,3,"['046205', '020153', '039852']"
+500313,NN.* PM.* PR.* PM.* FW,,3,"['046207', '043844', '037164']"
+500314,PM.* PR.* PM.* FW VB.*,,2,"['046208', '037165']"
+500315,PR.* PM.* FW VB.* CC.*,,4,"['046209', '014962', '037166', '048291']"
+500316,DT.* JJ.*_CC.* NN.* DT.* NN.*,,2,"['045933', '039361']"
+500317,NN.* RB.* RB.* VB.* PR.*,,2,"['045939', '001286']"
+500318,RB.* RB.* VB.* PR.* CC.*,,2,"['045940', '001287']"
+500319,CC.* PR.*_CC.* FW FW RB.*,,2,"['045944', '038342']"
+500320,DT.* NN.* LM RB.* VB.*_VB.*,,2,"['034589', '007388']"
+500321,VB.*_VB.* CC.* NN.* CC.* DT.*,,2,"['034593', '001167']"
+500322,RB.* CC.* PR.*_CC.* NN.* CC.*,,4,"['030146', '039017', '002762', '037156']"
+500323,NN.* CC.* VB.* CC.* DT.*,,7,"['030149', '007304', '042859', '028409', '041993', '004318', '002381']"
+500324,CC.* VB.* CC.* DT.* NN.*,,13,"['030150', '021768', '006957', '021476', '042860', '011459', '033250', '028397', '028410', '043945', '004876', '004319', '025671']"
+500325,VB.* CC.* DT.* NN.* CC.*,,16,"['030151', '006958', '042861', '033251', '020930', '028398', '028411', '043946', '016168', '027875', '004877', '004320', '009477', '031005', '001416', '001712']"
+500326,CC.* DT.* NN.* CC.* PR.*,,2,"['030152', '006612']"
+500327,DT.* NN.* CC.* PR.* CC.*,,3,"['030153', '002991', '014301']"
+500328,PM.* NN.* CC.* PR.*_CC.* NN.*,,5,"['022014', '007648', '010449', '027805', '039233']"
+500329,CC.* PR.*_CC.* NN.* DT.* FW,,2,"['022016', '021161']"
+500330,DT.* FW CC.* PR.*_CC.* NN.*,,3,"['022019', '038134', '022804']"
+500331,FW CC.* PR.*_CC.* NN.* PM.*,,3,"['022020', '048138', '022805']"
+500332,VB.* CC.* RB.* PR.* PM.*,,2,"['011680', '014180']"
+500333,RB.* DT.* JJ.* CC.* NN.*,,2,"['007638', '021115']"
+500334,NN.* CC.* PR.*_CC.* NN.* NN.*,,3,"['007649', '026838', '000790']"
+500335,DT.* JJ.*_CC.* NN.* NN.* FW,,2,"['034687', '017865']"
+500336,NN.* NN.* PM.* JJ.*_CC.* FW,,2,"['034689', '019226']"
+500337,NN.* PM.* JJ.*_CC.* FW CC.*,,2,"['034690', '021088']"
+500338,PM.* JJ.*_CC.* FW CC.* DT.*,,2,"['034691', '021089']"
+500339,DT.* DT.* NN.* CC.* NN.*,,4,"['021842', '021783', '021125', '023497']"
+500340,DT.* NN.* PM.* RB.* VB.*,,5,"['017974', '044681', '042722', '042248', '048007']"
+500341,PR.* DT.* DT.* NN.* CC.*,,2,"['012116', '021177']"
+500342,DT.* DT.* NN.* CC.* VB.*,,6,"['012117', '041991', '008753', '009536', '013935', '036007']"
+500343,CC.* DT.* NN.*_CC.* VB.* CC.*,,9,"['007514', '007524', '007129', '007133', '029161', '015675', '004392', '019144', '003963']"
+500344,CC.* DT.* JJ.* CC.* NN.*,,2,"['007518', '007287']"
+500345,JJ.* DT.* NN.* DT.* NN.*,,2,"['034598', '013267']"
+500346,NN.* DT.* NN.* CC.* DT.*,,3,"['034600', '016779', '041613']"
+500347,CC.* NN.* PM.* CC.* RB.*,,3,"['034602', '027792', '040311']"
+500348,NN.* PM.* CC.* RB.* VB.*,,4,"['034603', '034329', '043933', '039853']"
+500349,PM.* CC.* RB.* VB.* CC.*,,2,"['034604', '039854']"
+500350,CC.* RB.* VB.* CC.* NN.*,,3,"['034605', '010356', '003521']"
+500351,LM VB.* RB.* CC.* NN.*,,3,"['034615', '004592', '039846']"
+500352,VB.* RB.* CC.* NN.* PM.*,,2,"['034616', '012705']"
+500353,NN.* DT.* NN.* CC.* CC.*,,2,"['034619', '037951']"
+500354,DT.* NN.* CC.* CC.* FW,,2,"['034620', '033174']"
+500355,JJ.*_CC.* NN.* RB.* DT.* NN.*,,2,"['029999', '037843']"
+500356,NN.* RB.* DT.* NN.* PM.*,,2,"['030000', '020292']"
+500357,CC.* JJ.* CC.* NN.* PM.*,,2,"['021774', '021773']"
+500358,CC.* NN.* PM.* PR.* RB.*,,2,"['021776', '039021']"
+500359,PR.* RB.* DT.* NN.*_CC.* VB.*,,2,"['021779', '032059']"
+500360,PR.* CC.* NN.* CC.* DT.*,,4,"['007382', '016216', '019584', '001724']"
+500361,PM.* CC.* RB.* VB.* NN.*,,2,"['045797', '043934']"
+500362,CC.* VB.* PR.* CC.* FW,,2,"['034320', '024131']"
+500363,FW CC.* DT.* NN.* PM.*,,3,"['034324', '019958', '047329']"
+500364,CC.* DT.* NN.* PM.* JJ.*,,3,"['034325', '011347', '003000']"
+500365,DT.* NN.* PM.* JJ.* RB.*,,2,"['034326', '003001']"
+500366,RB.* DT.* NN.* PM.* CC.*,,3,"['034327', '019216', '026823']"
+500367,FW PM.* CC.* NN.* CC.*,,6,"['034333', '044549', '042367', '010206', '039244', '047712']"
+500368,PR.* RB.*_CC.* DT.* NN.* CC.*,,2,"['017724', '024291']"
+500369,CC.* JJ.* PM.* CC.* PR.*,,2,"['017728', '005641']"
+500370,JJ.* PM.* CC.* PR.* DT.*,,2,"['017729', '005642']"
+500371,JJ.*_CC.* NN.* CC.* NN.* CC.*,,5,"['011572', '042339', '016221', '009780', '039168']"
+500372,NN.* CC.* NN.* CC.* VB.*,,9,"['011573', '045398', '020954', '021127', '020851', '043374', '016222', '015020', '048923']"
+500373,DT.* NN.* CC.* DT.* JJ.*,,3,"['007285', '033131', '038661']"
+500374,JJ.* CC.* NN.* CC.* PR.*_CC.*,,4,"['007289', '021158', '000789', '047345']"
+500375,DT.* NN.*_CC.* VB.* CC.* NN.*,,5,"['007302', '007134', '027891', '015676', '004393']"
+500376,CC.* VB.* CC.* DT.* FW,,3,"['007305', '041994', '002756']"
+500377,VB.* CC.* DT.* FW CC.*,,3,"['007306', '040338', '002757']"
+500378,RB.* CC.* JJ.*_CC.* NN.* DT.*,,2,"['045633', '036231']"
+500379,CC.* JJ.*_CC.* NN.* DT.* NN.*,,4,"['045634', '009511', '037160', '036232']"
+500380,CC.* VB.* DT.* PR.*_CC.* NN.*,,2,"['029571', '018775']"
+500381,FW CC.* NN.* PM.* JJ.*,,2,"['021700', '042956']"
+500382,DT.* NN.* DT.* FW PM.*,,2,"['017665', '047711']"
+500383,CC.* RB.* RB.* DT.* NN.*,,2,"['017670', '040730']"
+500384,CC.* DT.* NN.* CC.* CC.*,,2,"['007188', '002372']"
+500385,RB.* RB.* NN.* CC.* PR.*,,2,"['045574', '015678']"
+500386,DT.* NN.* DT.* VB.* CC.*,,4,"['034241', '041011', '015164', '024310']"
+500387,NN.* DT.* VB.* CC.* FW,,2,"['034242', '010559']"
+500388,FW CC.* NN.* CC.* NN.*,,2,"['034243', '010561']"
+500389,CC.* NN.* CC.* NN.* PM.*,,11,"['034244', '021118', '032777', '044161', '010135', '041670', '009781', '026674', '024281', '048873', '047714']"
+500390,NN.* CC.* NN.* PM.* RB.*,,8,"['034245', '021119', '042196', '010257', '041671', '041005', '026675', '047715']"
+500391,NN.* PM.* RB.* JJ.* CC.*,,3,"['034247', '032055', '038544']"
+500392,JJ.* CC.* NN.* DT.* NN.*,,2,"['034251', '033119']"
+500393,NN.* DT.* NN.* CC.* JJ.*,,2,"['034253', '019238']"
+500394,DT.* NN.* CC.* JJ.* DT.*,,2,"['034254', '027252']"
+500395,NN.* CC.* JJ.* DT.* NN.*,,3,"['034255', '045454', '037194']"
+500396,JJ.* DT.* NN.* CC.* CC.*,,2,"['034257', '033173']"
+500397,NN.* CC.* CC.* NN.*_CC.* JJ.*,,2,"['034259', '002039']"
+500398,CC.* NN.*_CC.* JJ.* CC.* NN.*,,2,"['034261', '001607']"
+500399,NN.*_CC.* JJ.* CC.* NN.* PM.*,,2,"['034262', '001608']"
+500400,JJ.* CC.* NN.* PM.* JJ.*,,2,"['034263', '001609']"
+500401,CC.* NN.* PM.* JJ.* RB.*,,3,"['034264', '005874', '024990']"
+500402,NN.* CC.* PR.*_CC.* NN.* PM.*,,10,"['029687', '044277', '028189', '010450', '040780', '040033', '000198', '001807', '013074', '048383']"
+500403,NN.* DT.* NN.* PM.* RB.*,,2,"['029693', '009513']"
+500404,NN.* CC.* NN.* PM.* PR.*_CC.*,,2,"['021790', '019716']"
+500405,CC.* NN.* PM.* PR.*_CC.* FW,,2,"['021791', '019717']"
+500406,NN.* PM.* PR.*_CC.* FW FW,,2,"['021792', '019718']"
+500407,PR.*_CC.* FW FW PM.* VB.*,,2,"['021793', '024782']"
+500408,CC.* FW PM.* VB.* DT.*,,2,"['012101', '020949']"
+500409,RB.* CC.* NN.* CC.* DT.*,,4,"['012106', '027796', '040280', '026423']"
+500410,JJ.* PR.*_CC.* VB.* CC.* DT.*,,2,"['007126', '033554']"
+500411,VB.* CC.* DT.* NN.*_CC.* VB.*,,4,"['007128', '007132', '038232', '003962']"
+500412,NN.* DT.* JJ.*_CC.* NN.* CC.*,,2,"['007137', '039237']"
+500413,DT.* JJ.*_CC.* NN.* CC.* NN.*,,4,"['007138', '044556', '016220', '013953']"
+500414,VB.* DT.* JJ.*_CC.* NN.* NN.*,,2,"['045453', '013066']"
+500415,NN.* NN.* CC.* RB.* RB.*,,2,"['045458', '042851']"
+500416,RB.* RB.* VB.* DT.* FW,,2,"['045461', '045483']"
+500417,NN.* NN.* CC.* DT.* NN.*_CC.*,,2,"['045463', '015997']"
+500418,DT.* NN.*_CC.* PR.*_CC.* NN.*_CC.* VB.*,,2,"['045466', '038225']"
+500419,CC.* VB.* RB.* VB.* DT.*,,2,"['029752', '025400']"
+500420,VB.* RB.* VB.* DT.* NN.*,,2,"['029753', '015770']"
+500421,FW PM.* CC.* VB.* DT.*,,3,"['021735', '017205', '019281']"
+500422,CC.* PR.*_CC.* NN.* NN.* DT.*,,2,"['017861', '024954']"
+500423,NN.* NN.* DT.* JJ.*_CC.* NN.*,,2,"['017863', '036240']"
+500424,NN.* DT.* JJ.*_CC.* NN.* NN.*,,3,"['017864', '037038', '036241']"
+500425,RB.* CC.* VB.*_CC.* NN.* CC.*,,2,"['011344', '005111']"
+500426,CC.* NN.*_CC.* VB.* CC.* NN.*,,3,"['007051', '041677', '023433']"
+500427,NN.*_CC.* VB.* CC.* NN.* PM.*,,2,"['007052', '041678']"
+500428,VB.* CC.* NN.* PM.* PR.*_CC.*,,2,"['007053', '043130']"
+500429,PR.* DT.* VB.*_CC.* NN.* CC.*,,2,"['034040', '028406']"
+500430,NN.* CC.* NN.* CC.* JJ.*_CC.*,,3,"['034047', '004870', '009949']"
+500431,RB.* CC.* DT.* NN.* CC.*,,7,"['029507', '006341', '005630', '037590', '048870', '003862', '037180']"
+500432,CC.* DT.* NN.* CC.* NN.*,,8,"['029508', '016782', '027797', '009947', '048921', '048871', '048797', '023437']"
+500433,RB.* CC.* VB.* CC.* DT.*,,5,"['021767', '006956', '021475', '033249', '002755']"
+500434,CC.* DT.* NN.* PM.* FW,,2,"['021770', '025673']"
+500435,FW PM.* NN.* CC.* JJ.*,,2,"['021771', '044379']"
+500436,FW RB.* CC.* DT.* NN.*,,3,"['017985', '038344', '037589']"
+500437,RB.* CC.* DT.* NN.* PM.*,,2,"['017986', '044679']"
+500438,NN.* CC.* VB.* PR.* CC.*,,5,"['017988', '016224', '019581', '040734', '002765']"
+500439,CC.* VB.* PR.* CC.* NN.*_CC.*,,2,"['017989', '002766']"
+500440,PR.*_CC.* VB.* CC.* NN.* CC.*,,2,"['006941', '026077']"
+500441,VB.* CC.* NN.* CC.* CC.*,,2,"['006942', '006744']"
+500442,CC.* NN.* PM.* PR.*_CC.* NN.*,,2,"['006951', '043131']"
+500443,NN.* RB.* RB.* VB.* DT.*,,5,"['045482', '010923', '011169', '010512', '014804']"
+500444,FW CC.* VB.* PM.* NN.*,,2,"['045486', '048255']"
+500445,CC.* VB.* PM.* NN.* CC.*,,3,"['045487', '044308', '026791']"
+500446,PR.* CC.* NN.* CC.* FW,,3,"['045347', '042424', '013860']"
+500447,FW FW CC.* PR.*_CC.* NN.*,,3,"['045348', '048137', '048155']"
+500448,FW CC.* PR.*_CC.* NN.* DT.*,,2,"['045349', '010167']"
+500449,CC.* NN.* CC.* JJ.*_CC.* NN.*,,3,"['034002', '031588', '039166']"
+500450,CC.* JJ.*_CC.* NN.* FW FW,,2,"['034004', '026971']"
+500451,DT.* NN.* CC.* VB.* PM.*,,5,"['029358', '033453', '043948', '026790', '014172']"
+500452,NN.* CC.* VB.* CC.* JJ.*,,3,"['029361', '027962', '014852']"
+500453,VB.* CC.* DT.* NN.* DT.*,,3,"['021477', '041990', '010018']"
+500454,PR.* CC.* DT.* NN.* CC.*,,4,"['003382', '039857', '000183', '048796']"
+500455,NN.* CC.* PR.*_CC.* NN.* JJ.*,,2,"['003393', '027806']"
+500456,CC.* PR.*_CC.* NN.* JJ.* CC.*,,2,"['003394', '003511']"
+500457,CC.* NN.* CC.* JJ.*_CC.* FW,,2,"['011304', '009950']"
+500458,LM VB.* RB.* CC.* DT.*,,2,"['006826', '010632']"
+500459,NN.* CC.* NN.* CC.* NN.*,,4,"['045392', '032776', '041668', '041669']"
+500460,PR.* DT.* VB.* CC.* NN.*,,2,"['045397', '037228']"
+500461,CC.* DT.* VB.* RB.* CC.*,,2,"['029438', '003860']"
+500462,DT.* DT.* JJ.* PM.* NN.*,,2,"['021148', '009525']"
+500463,DT.* JJ.* PM.* NN.* CC.*,,6,"['021149', '044381', '009526', '040749', '014681', '038664']"
+500464,JJ.* PM.* NN.* CC.* VB.*_CC.*,,2,"['021150', '038665']"
+500465,CC.* NN.* CC.* PR.* DT.*,,2,"['017621', '027886']"
+500466,NN.* CC.* PR.* DT.* VB.*,,2,"['017622', '015293']"
+500467,CC.* PR.* DT.* VB.* CC.*,,3,"['017623', '015294', '015301']"
+500468,FW CC.* VB.* CC.* DT.*,,2,"['017625', '025670']"
+500469,CC.* VB.* PR.* DT.* NN.*,,2,"['006736', '030999']"
+500470,PR.* DT.* NN.* CC.* PR.*,,2,"['006738', '014300']"
+500471,VB.* CC.* NN.* PM.* RB.*,,2,"['006741', '041679']"
+500472,CC.* NN.* PM.* RB.* PR.*,,3,"['006742', '010258', '026676']"
+500473,PR.* VB.* CC.* NN.* CC.*,,2,"['006743', '026940']"
+500474,DT.* VB.* NN.* PR.* CC.*,,2,"['006751', '009378']"
+500475,NN.* NN.* CC.* DT.* VB.*_CC.*,,2,"['045189', '009708']"
+500476,NN.* CC.* DT.* VB.*_CC.* NN.*,,4,"['045190', '021153', '016385', '009709']"
+500477,DT.* VB.* DT.* NN.* CC.*,,2,"['033624', '023565']"
+500478,CC.* PR.*_CC.* NN.* PM.* NN.*,,4,"['029275', '027640', '000199', '002064']"
+500479,NN.* CC.* RB.* DT.* VB.*,,2,"['029279', '037945']"
+500480,PM.* JJ.* CC.* NN.* CC.*,,5,"['021157', '028590', '004782', '035547', '012546']"
+500481,PR.*_CC.* NN.* DT.* FW FW,,2,"['021162', '017436']"
+500482,CC.* VB.* RB.* DT.* NN.*,,3,"['011155', '015321', '038674']"
+500483,DT.* NN.* CC.* PR.* RB.*,,2,"['011158', '026849']"
+500484,PM.* CC.* DT.* NN.* CC.*,,2,"['006611', '004085']"
+500485,CC.* VB.* PR.* CC.* VB.*_CC.*,,2,"['043019', '015346']"
+500486,VB.* PR.* CC.* VB.*_CC.* NN.*,,2,"['043020', '015347']"
+500487,VB.*_CC.* NN.* PM.* NN.* CC.*,,2,"['043023', '010717']"
+500488,VB.* DT.* NN.* PM.* FW,,2,"['020709', '024363']"
+500489,RB.* DT.* NN.* RB.* NN.*,,2,"['017422', '024727']"
+500490,NN.* RB.* NN.* PM.* CD.*,,2,"['017424', '012714']"
+500491,RB.* RB.* PR.*_CC.* NN.* DT.*,,2,"['017434', '010657']"
+500492,VB.* DT.* PR.*_CC.* NN.* CC.*,,2,"['006475', '006338']"
+500493,DT.* PR.*_CC.* NN.* CC.* NN.*,,4,"['006476', '015393', '024469', '036948']"
+500494,PM.* NN.* FW DT.* NN.*,,2,"['045032', '021092']"
+500495,NN.* FW DT.* NN.* CC.*,,3,"['045033', '021093', '024280']"
+500496,NN.* CC.* JJ.* RB.* CC.*,,2,"['042845', '019240']"
+500497,NN.* CC.* RB.* RB.* RB.*,,2,"['042852', '024731']"
+500498,PM.* NN.* CC.* VB.* CC.*,,5,"['042858', '043578', '009468', '040751', '000204']"
+500499,PM.* NN.* DT.* DT.* NN.*,,2,"['042870', '044780']"
+500500,RB.* RB.* VB.* NN.* DT.*,,2,"['042877', '017382']"
+500501,NN.* RB.*_CC.* CD.* PM.* RB.*,,2,"['029295', '031622']"
+500502,CC.* PR.*_CC.* DT.* NN.* PM.*,,3,"['029303', '028776', '031729']"
+500503,RB.* PR.* CC.* NN.* CC.*,,2,"['021173', '016215']"
+500504,NN.* PM.* VB.* PR.* DT.*,,4,"['021174', '017163', '028797', '001161']"
+500505,VB.* PR.* DT.* DT.* NN.*,,2,"['021176', '005507']"
+500506,NN.* CC.* NN.* CC.* VB.*_CC.*,,2,"['021178', '040041']"
+500507,VB.*_CC.* NN.* DT.* FW FW,,2,"['011127', '047727']"
+500508,NN.* CC.* VB.* DT.* VB.*,,2,"['006408', '001366']"
+500509,CC.* VB.* DT.* VB.* CC.*,,3,"['006409', '016195', '001367']"
+500510,VB.* DT.* VB.* CC.* DT.*,,2,"['006410', '015015']"
+500511,PR.* DT.* NN.* CC.* NN.*,,4,"['033548', '043606', '002059', '047907']"
+500512,DT.* NN.* CC.* NN.* PM.*,,7,"['033549', '021085', '040309', '014409', '048626', '036444', '023227']"
+500513,NN.* CC.* NN.* PM.* JJ.*,,2,"['033550', '048627']"
+500514,NN.* CC.* VB.* CC.* CD.*,,3,"['033560', '039111', '048152']"
+500515,VB.* PM.* NN.* CC.* VB.*,,3,"['029239', '016139', '015231']"
+500516,PM.* NN.* CC.* VB.* DT.*,,4,"['029240', '032050', '016140', '036070']"
+500517,PM.* DT.* NN.* CC.* VB.*,,2,"['029250', '000192']"
+500518,CC.* NN.* PM.* RB.* VB.*,,3,"['021120', '042197', '041590']"
+500519,NN.* PM.* RB.* VB.* PR.*_CC.*,,2,"['021121', '042249']"
+500520,CC.* VB.* DT.* FW CC.*,,2,"['017207', '020854']"
+500521,DT.* PR.*_CC.* NN.* CC.* CC.*,,2,"['006339', '002037']"
+500522,DT.* JJ.*_JJ.*_CC.* NN.* CC.* RB.*,,2,"['045263', '039809']"
+500523,NN.* RB.* RB.* JJ.* PM.*,,3,"['045272', '025937', '048620']"
+500524,JJ.* FW CC.* NN.* PM.*,,2,"['042955', '037331']"
+500525,DT.* FW CC.* VB.* CC.*,,4,"['029158', '020856', '025669', '036236']"
+500526,FW CC.* VB.* CC.* NN.*,,5,"['029159', '020857', '041663', '025999', '036237']"
+500527,VB.*_CC.* NN.* CC.* FW PM.*,,2,"['020947', '037337']"
+500528,FW PM.* VB.* DT.* NN.*,,5,"['020950', '043940', '020186', '048806', '036064']"
+500529,CC.* PR.*_CC.* NN.* PM.* VB.*,,4,"['017158', '028190', '002543', '013075']"
+500530,PR.*_CC.* NN.* PM.* VB.* DT.*,,2,"['017159', '009700']"
+500531,NN.* PM.* VB.* DT.* NN.*,,3,"['017160', '021134', '032780']"
+500532,VB.* DT.* NN.* PM.* VB.*,,4,"['017161', '026085', '013559', '047227']"
+500533,DT.* NN.* PM.* VB.* PR.*,,4,"['017162', '026086', '013560', '047228']"
+500534,FW PM.* PM.* NN.* NN.*,,2,"['045083', '047277']"
+500535,JJ.*_CC.* NN.* DT.* NN.* PM.*,,3,"['042706', '009512', '037161']"
+500536,RB.* VB.* DT.* DT.* NN.*,,2,"['021123', '027358']"
+500537,CC.* CC.* NN.* PM.* RB.*,,2,"['021130', '041589']"
+500538,CC.* NN.* PM.* RB.* CC.*,,4,"['021131', '028591', '041680', '023711']"
+500539,NN.* CC.* RB.* VB.* CC.*,,4,"['006222', '027892', '010355', '003520']"
+500540,VB.* CC.* PR.*_CC.* NN.* DT.*,,2,"['006225', '011498']"
+500541,PM.* RB.* JJ.* CC.* DT.*,,2,"['044771', '038545']"
+500542,JJ.* CC.* DT.* NN.* CC.*,,3,"['044773', '004569', '042937']"
+500543,PR.* CC.* RB.*_CC.* NN.* CC.*,,2,"['044716', '002028']"
+500544,RB.*_CC.* NN.* CC.* NN.* PM.*,,2,"['044718', '003070']"
+500545,CC.* DT.* NN.* PR.* CC.*,,4,"['000050', '033012', '014215', '037583']"
+500546,CC.* DT.* NN.* CC.* VB.*,,12,"['033252', '043947', '019585', '001602', '001713', '002379', '037954', '003863', '037181', '004086', '047720', '047728']"
+500547,DT.* NN.* CC.* VB.* PR.*_CC.*,,2,"['033253', '019586']"
+500548,RB.*_CC.* VB.* CC.* NN.* DT.*,,2,"['021048', '022883']"
+500549,NN.* CC.* VB.* CC.* JJ.*_CC.*,,3,"['016965', '005713', '043579']"
+500550,CC.* VB.* CC.* JJ.*_CC.* NN.*_CC.*,,2,"['016966', '005714']"
+500551,CC.* CC.* DT.* DT.* NN.*,,2,"['010840', '008751']"
+500552,NN.* CC.* VB.* PR.* RB.*_CC.*,,2,"['044851', '023440']"
+500553,NN.* PR.* PM.* RB.* RB.*,,2,"['044856', '019347']"
+500554,PM.* RB.* RB.* PR.* VB.*,,2,"['044858', '005045']"
+500555,RB.* RB.* PR.* VB.* DT.*,,3,"['044859', '005382', '039454']"
+500556,VB.* DT.* PR.*_CC.* FW FW,,2,"['044862', '010515']"
+500557,CC.* PR.*_CC.* DT.* NN.*_CC.* VB.*,,2,"['033168', '038438']"
+500558,VB.* JJ.* DT.* NN.* CC.*,,3,"['033172', '004881', '043092']"
+500559,VB.* PR.* CC.* VB.* CC.*,,2,"['029018', '002547']"
+500560,PM.* FW DT.* NN.* CC.*,,5,"['020931', '032282', '019140', '039906', '039401']"
+500561,FW DT.* NN.* CC.* NN.*,,3,"['020932', '016932', '037581']"
+500562,NN.* CC.* VB.* RB.* DT.*,,6,"['011054', '009521', '008867', '015233', '001027', '013392']"
+500563,CC.* NN.* RB.* RB.* JJ.*,,2,"['006122', '025936']"
+500564,CC.* DT.* NN.*_CC.* VB.* LM,,2,"['006140', '038233']"
+500565,CC.* DT.* NN.* PM.* RB.*,,3,"['044680', '032053', '043094']"
+500566,NN.* PM.* RB.* VB.* DT.*,,4,"['044682', '016826', '042198', '048008']"
+500567,RB.* RB.* RB.* DT.* NN.*,,2,"['032978', '036116']"
+500568,RB.* DT.* NN.* DT.* NN.*,,2,"['032980', '016891']"
+500569,CC.* JJ.*_CC.* NN.* NN.* FW,,2,"['028810', '036206']"
+500570,JJ.*_CC.* NN.* NN.* FW CC.*,,2,"['028811', '036207']"
+500571,CC.* NN.* LM VB.* CC.*,,3,"['028818', '001295', '048330']"
+500572,LM VB.* CC.* NN.* PM.*,,2,"['028819', '002491']"
+500573,PR.*_CC.* NN.* CC.* VB.* CC.*,,2,"['020928', '027961']"
+500574,NN.* CC.* VB.* CC.* VB.*,,3,"['020929', '015782', '001510']"
+500575,DT.* NN.* PM.* CC.* PR.*_CC.*,,2,"['016925', '031731']"
+500576,PR.*_CC.* VB.* PM.* NN.* CC.*,,2,"['016929', '015230']"
+500577,CC.* NN.* CC.* DT.* VB.*,,2,"['010627', '001168']"
+500578,VB.* RB.* CC.* DT.* PR.*,,2,"['010633', '013896']"
+500579,NN.* RB.* RB.*_CC.* VB.* DT.*,,2,"['005975', '001727']"
+500580,DT.* CC.* PM.* NN.* CC.*,,2,"['005979', '009707']"
+500581,LM DT.* NN.*_CC.* VB.* CC.*,,2,"['005982', '004076']"
+500582,JJ.*_CC.* NN.* CC.* NN.* PM.*,,2,"['044557', '013954']"
+500583,NN.* PM.* CC.* VB.* RB.*,,3,"['044558', '043370', '038672']"
+500584,NN.*_CC.* VB.* CC.* VB.* CC.*,,2,"['032997', '003065']"
+500585,NN.* CC.* FW PM.* CC.*,,3,"['033002', '033030', '044327']"
+500586,CC.* JJ.* CC.* DT.* NN.*,,2,"['033010', '014876']"
+500587,JJ.* CC.* DT.* NN.* PR.*,,2,"['033011', '014510']"
+500588,PR.*_CC.* DT.* NN.* PM.* CC.*,,3,"['028777', '031730', '019812']"
+500589,NN.* PM.* CC.* CC.* RB.*,,2,"['028779', '039125']"
+500590,VB.* DT.* NN.* CC.* PR.*,,2,"['021136', '002990']"
+500591,CC.* PR.* RB.*_CC.* FW FW,,2,"['021139', '031040']"
+500592,PR.* RB.*_CC.* FW FW CC.*,,2,"['021140', '031041']"
+500593,VB.* RB.* DT.* NN.* DT.*,,2,"['016890', '023495']"
+500594,PR.* RB.* VB.* DT.* NN.*,,2,"['016895', '048004']"
+500595,CC.* NN.* RB.* CC.* DT.*,,2,"['016897', '028186']"
+500596,VB.* CC.* NN.* PM.* CC.*,,2,"['016900', '000206']"
+500597,CC.* NN.* PM.* CC.* VB.*,,6,"['016901', '043942', '015913', '043129', '035549', '003071']"
+500598,JJ.* VB.* DT.* NN.* CC.*,,2,"['009383', '004869']"
+500599,PM.* CC.* VB.* CC.* FW,,3,"['044377', '044171', '020274']"
+500600,VB.* PR.* CC.* NN.* PM.*,,2,"['044226', '040736']"
+500601,PR.* CC.* NN.* PM.* FW,,2,"['044227', '040737']"
+500602,FW PM.* VB.* PR.* CC.*,,4,"['042374', '041055', '019218', '025930']"
+500603,CC.* NN.* PM.* PR.* DT.*,,2,"['033121', '023229']"
+500604,PM.* CC.* VB.* CC.* NN.*,,3,"['033141', '037258', '023766']"
+500605,FW NN.* CC.* NN.* PM.*,,3,"['021091', '027790', '019971']"
+500606,RB.* DT.* JJ.*_CC.* NN.* NN.*,,2,"['016873', '015236']"
+500607,DT.* JJ.*_CC.* NN.* NN.* NN.*,,2,"['016874', '036242']"
+500608,VB.*_VB.*_CC.* NN.* DT.* NN.* CC.*,,2,"['016879', '037941']"
+500609,NN.* DT.* NN.* CC.* FW,,5,"['016880', '040237', '038013', '037942', '047224']"
+500610,CC.* CC.* PM.* NN.* CC.*,,4,"['005873', '044331', '043576', '031485']"
+500611,NN.* CC.* RB.* PR.* PR.*,,2,"['044310', '013534']"
+500612,VB.* DT.* NN.* CC.* FW,,3,"['028576', '027953', '031540']"
+500613,RB.* DT.* NN.* CD.* PM.*,,2,"['020861', '019091']"
+500614,PM.* RB.* VB.* DT.* NN.*,,5,"['016827', '028177', '041934', '032142', '031538']"
+500615,VB.* DT.* NN.* CC.* VB.*,,5,"['016829', '014171', '013390', '013380', '012595']"
+500616,NN.* CC.* NN.* RB.* RB.*,,3,"['010921', '015531', '025935']"
+500617,CC.* NN.* RB.* RB.* VB.*,,3,"['010922', '011168', '023731']"
+500618,RB.* RB.* VB.* DT.* PR.*_CC.*,,2,"['010924', '010513']"
+500619,VB.* DT.* PR.*_CC.* DT.* NN.*,,2,"['010926', '042245']"
+500620,DT.* PR.*_CC.* DT.* NN.* CC.*,,2,"['010927', '013531']"
+500621,PR.*_CC.* DT.* NN.* CC.* VB.*,,3,"['010928', '008861', '048853']"
+500622,CC.* PR.*_CC.* NN.* CC.* RB.*,,4,"['005797', '004671', '037462', '048295']"
+500623,CC.* RB.* RB.* VB.* CC.*,,2,"['005800', '025180']"
+500624,JJ.* DT.* NN.* CC.* RB.*_CC.*,,2,"['005805', '004882']"
+500625,DT.* NN.* CC.* RB.*_CC.* VB.*,,3,"['005806', '001032', '013569']"
+500626,NN.* CC.* RB.*_CC.* VB.* CC.*,,2,"['005807', '001033']"
+500627,CC.* RB.*_CC.* VB.* CC.* NN.*,,3,"['005808', '042192', '041080']"
+500628,CC.* PR.* DT.* NN.* CC.*,,2,"['044274', '005644']"
+500629,PR.*_CC.* NN.* PM.* RB.* RB.*,,2,"['044279', '043134']"
+500630,CC.* DT.* NN.* PM.* CC.*,,5,"['042531', '028412', '020280', '001884', '037930']"
+500631,CC.* PR.*_CC.* JJ.* CC.* NN.*,,2,"['033021', '003515']"
+500632,NN.* FW PM.* VB.* RB.*,,2,"['033025', '023492']"
+500633,VB.* PR.* CC.* PM.* FW,,2,"['033035', '036667']"
+500634,PM.* RB.* VB.* CC.* FW,,2,"['033049', '038914']"
+500635,PM.* CC.* VB.* CC.* DT.*,,2,"['028396', '043944']"
+500636,CC.* DT.* NN.* CC.* FW,,2,"['028399', '016169']"
+500637,RB.* CC.* FW DT.* NN.*,,2,"['020436', '041587']"
+500638,CC.* PM.* NN.* CC.* NN.*,,2,"['020438', '031486']"
+500639,PM.* NN.* CC.* NN.* CC.*,,2,"['020439', '026793']"
+500640,CC.* NN.* CC.* NN.* CC.*,,3,"['020440', '027751', '048327']"
+500641,NN.* CC.* NN.* CC.* DT.*,,4,"['020441', '027752', '039169', '038670']"
+500642,RB.* NN.* DT.* NN.* CC.*,,2,"['016778', '040307']"
+500643,DT.* NN.* CC.* DT.* NN.*,,3,"['016780', '032145', '027297']"
+500644,CC.* PR.*_CC.* VB.*_CC.* NN.* PM.*,,2,"['010715', '044258']"
+500645,RB.* CC.* NN.* CC.* VB.*,,2,"['005712', '026719']"
+500646,CC.* NN.* PM.* FW DT.*,,2,"['044254', '037332']"
+500647,PR.*_CC.* FW FW CC.* NN.*,,2,"['032614', '048810']"
+500648,FW CC.* NN.* PM.* VB.*,,4,"['032615', '040327', '040348', '025161']"
+500649,VB.* DT.* NN.* CC.* PM.*,,3,"['032618', '041053', '036198']"
+500650,PM.* RB.* CC.* VB.* DT.*,,2,"['032620', '023713']"
+500651,RB.* CC.* VB.* DT.* NN.*,,6,"['032621', '026607', '026760', '026083', '037457', '023714']"
+500652,DT.* NN.* PM.* FW CC.*,,2,"['020294', '025674']"
+500653,LM VB.*_VB.* CC.* NN.* CC.*,,2,"['003248', '005041']"
+500654,CC.* NN.* CC.* PR.* CC.*,,2,"['003250', '002993']"
+500655,NN.* CC.* PR.* CC.* RB.*,,3,"['003251', '015680', '002994']"
+500656,CC.* JJ.*_CC.* NN.* CC.* CC.*,,2,"['003257', '023429']"
+500657,DT.* NN.* PR.*_CC.* VB.* PM.*,,2,"['016663', '028180']"
+500658,NN.* PR.*_CC.* VB.* PM.* FW,,2,"['016664', '028181']"
+500659,PR.*_CC.* VB.* PM.* FW CC.*,,2,"['016665', '028182']"
+500660,NN.* PM.* VB.* RB.* CC.*,,4,"['011165', '020320', '048107', '012764']"
+500661,VB.* RB.* CC.* DT.* NN.*,,3,"['011167', '005629', '003861']"
+500662,RB.* RB.* DT.* NN.* PM.*,,4,"['005635', '027172', '026822', '036117']"
+500663,NN.* PM.* PR.* DT.* VB.*,,2,"['005637', '015909']"
+500664,DT.* VB.* CC.* JJ.* CC.*,,2,"['005640', '026685']"
+500665,NN.* PM.* CC.* NN.*_CC.* JJ.*,,2,"['005646', '036448']"
+500666,CC.* FW PM.* NN.* CC.*,,3,"['044326', '032048', '036068']"
+500667,NN.* CC.* NN.* PM.* VB.*,,5,"['032778', '010136', '019972', '014410', '013955']"
+500668,VB.* CC.* NN.* PM.* NN.*,,2,"['032792', '009540']"
+500669,RB.* VB.* PR.* DT.* FW,,2,"['032795', '009518']"
+500670,RB.* PM.* RB.* VB.* DT.*,,3,"['028176', '041933', '031537']"
+500671,CC.* DT.* NN.* CC.* PR.*_CC.*,,2,"['028187', '038365']"
+500672,PR.*_CC.* NN.* PM.* VB.* PR.*,,2,"['028191', '002544']"
+500673,NN.* PM.* VB.* PR.* CC.*,,4,"['028192', '002545', '023425', '047229']"
+500674,DT.* PR.* CC.* JJ.*_JJ.*_CC.* NN.*,,2,"['010651', '048732']"
+500675,PR.* CC.* JJ.*_JJ.*_CC.* NN.* CC.*,,2,"['010652', '048733']"
+500676,PR.*_CC.* NN.* DT.* VB.* CC.*,,2,"['010659', '020250']"
+500677,CC.* NN.* RB.* PR.* CC.*,,2,"['005522', '047351']"
+500678,CC.* NN.*_CC.* JJ.* PM.* CC.*,,2,"['044168', '036450']"
+500679,NN.* PM.* VB.* PM.* FW,,2,"['032279', '027175']"
+500680,VB.* PM.* FW DT.* NN.*,,4,"['032281', '039905', '039400', '036401']"
+500681,FW PM.* CC.* VB.* NN.*,,2,"['032289', '012760']"
+500682,CC.* VB.* NN.* CC.* PR.*_CC.*,,2,"['032291', '005365']"
+500683,VB.* NN.* CC.* PR.*_CC.* FW,,2,"['032292', '005366']"
+500684,RB.* PR.*_CC.* VB.* DT.* DT.*,,2,"['028159', '027729']"
+500685,PR.*_CC.* VB.* DT.* DT.* NN.*,,2,"['028160', '027730']"
+500686,VB.* CC.* PR.*_CC.* FW CC.*,,2,"['020305', '027278']"
+500687,PR.* DT.* DT.* NN.* PM.*,,2,"['005508', '020271']"
+500688,CC.* RB.* VB.* PM.* NN.*,,2,"['043932', '043122']"
+500689,NN.* PM.* LM VB.* CC.*,,2,"['043938', '004094']"
+500690,NN.* PM.* CC.* VB.* CC.*,,5,"['043943', '020273', '015914', '027275', '037257']"
+500691,NN.* PM.* DT.* JJ.*_CC.* NN.*_CC.*,,2,"['042279', '019735']"
+500692,DT.* JJ.*_CC.* NN.*_CC.* NN.* NN.*,,2,"['042281', '038541']"
+500693,NN.* DT.* VB.* CC.* VB.*,,2,"['042284', '024311']"
+500694,DT.* DT.* NN.* PM.* CC.*,,3,"['042290', '031756', '048932']"
+500695,VB.* RB.* DT.* PR.*_CC.* NN.*,,2,"['032234', '032043']"
+500696,RB.* DT.* PR.*_CC.* NN.* CC.*,,4,"['032235', '032044', '024468', '036947']"
+500697,CC.* JJ.*_CC.* FW CC.* NN.*,,2,"['032242', '009952']"
+500698,CC.* PR.* PR.*_CC.* NN.* CC.*,,2,"['027959', '010143']"
+500699,CC.* VB.* CC.* JJ.* PM.*,,2,"['027963', '003066']"
+500700,PR.* PM.* VB.* PM.* FW,,2,"['016415', '040344']"
+500701,PM.* VB.* PM.* FW CC.*,,2,"['016416', '040345']"
+500702,CC.* NN.* PR.* CC.* DT.*,,3,"['010973', '020277', '039855']"
+500703,NN.* PR.* CC.* DT.* NN.*,,4,"['010974', '020278', '039856', '037928']"
+500704,CC.* DT.* NN.* DT.* NN.*,,3,"['010976', '010019', '026828']"
+500705,CC.* VB.* PM.* VB.* CC.*,,3,"['005469', '015166', '038338']"
+500706,VB.* PM.* VB.* CC.* NN.*,,4,"['005470', '027883', '015167', '040331']"
+500707,PM.* VB.* CC.* NN.* CC.*,,6,"['005471', '027884', '015168', '040349', '014713', '014515']"
+500708,VB.* DT.* NN.* CC.* JJ.*_CC.*,,3,"['032353', '019284', '037245']"
+500709,DT.* NN.* CC.* JJ.*_CC.* NN.*,,2,"['032354', '009569']"
+500710,JJ.*_CC.* NN.* CC.* FW FW,,3,"['032357', '039239', '048201']"
+500711,VB.* DT.* FW CC.* NN.*,,4,"['020264', '032063', '039172', '048011']"
+500712,CC.* NN.* CC.* NN.* DT.*,,3,"['010562', '015605', '015614']"
+500713,VB.* CD.* NN.* RB.* PR.*,,2,"['043765', '024837']"
+500714,CC.* VB.*_CC.* NN.* CC.* NN.*,,4,"['042194', '015907', '040054', '038668']"
+500715,RB.* DT.* VB.* DT.* NN.*,,3,"['032317', '024899', '024351']"
+500716,PM.* VB.* PR.*_CC.* VB.* CC.*,,2,"['005375', '026075']"
+500717,VB.* PR.*_CC.* VB.* CC.* PR.*_CC.*,,2,"['005376', '040771']"
+500718,CC.* RB.* RB.* PR.* VB.*,,2,"['005381', '040275']"
+500719,RB.* PR.* VB.* DT.* NN.*,,2,"['005383', '013388']"
+500720,PR.* VB.* DT.* NN.* CC.*,,3,"['005384', '014213', '013389']"
+500721,VB.* CC.* NN.* CC.* PR.*,,2,"['027885', '004674']"
+500722,FW PM.* VB.* CC.* DT.*,,2,"['016166', '024783']"
+500723,PM.* VB.* CC.* DT.* NN.*,,5,"['016167', '041989', '001711', '024784', '037195']"
+500724,CC.* FW FW DT.* JJ.*_CC.*,,2,"['016170', '023639']"
+500725,FW FW DT.* JJ.*_CC.* NN.*,,2,"['016171', '023640']"
+500726,NN.* CC.* VB.* CC.* PR.*_CC.*,,3,"['011496', '040752', '000194']"
+500727,CC.* VB.* CC.* PR.*_CC.* NN.*,,3,"['011497', '000195', '036247']"
+500728,VB.* PR.* CC.* PR.*_CC.* NN.*_CC.*,,2,"['005244', '001279']"
+500729,VB.* DT.* NN.* CC.* RB.*,,3,"['041936', '015387', '019125']"
+500730,FW PM.* NN.* CC.* VB.*,,2,"['032049', '036069']"
+500731,DT.* NN.* DT.* NN.* PM.*,,2,"['027870', '041481']"
+500732,RB.* PM.* NN.* DT.* NN.*,,2,"['020069', '024898']"
+500733,RB.* VB.* CC.* NN.* CC.*,,2,"['010357', '004673']"
+500734,DT.* NN.* PR.* CC.* VB.*,,2,"['043506', '037584']"
+500735,RB.* PM.* NN.* CC.* PR.*_CC.*,,2,"['010448', '027804']"
+500736,VB.* CC.* NN.*_CC.* PR.* PM.*,,2,"['005187', '043541']"
+500737,CC.* PR.* CC.* PR.*_CC.* NN.*,,2,"['043550', '014648']"
+500738,NN.* CC.* NN.* PM.* CC.*,,4,"['027791', '009782', '040310', '024282']"
+500739,NN.* PM.* CC.* RB.* CC.*,,2,"['027793', '048141']"
+500740,PM.* CC.* RB.* CC.* NN.*,,2,"['027794', '048142']"
+500741,CC.* RB.* CC.* NN.* CC.*,,2,"['027795', '048143']"
+500742,DT.* NN.* CC.* NN.* FW,,4,"['027798', '015687', '026763', '023438']"
+500743,NN.* PR.* CC.* PR.*_CC.* NN.*,,3,"['010253', '014800', '048949']"
+500744,PR.* CC.* PR.*_CC.* NN.* CC.*,,3,"['010254', '014649', '002871']"
+500745,JJ.* RB.* DT.* NN.* CC.*,,2,"['010267', '023809']"
+500746,JJ.* JJ.* PR.* CC.* CC.*,,2,"['043533', '002051']"
+500747,CC.* NN.*_CC.* PR.* PM.* JJ.*,,2,"['043542', '031167']"
+500748,CC.* DT.* NN.* NN.* PM.*,,2,"['027753', '015018']"
+500749,NN.* LM VB.* CC.* VB.*,,2,"['015934', '001296']"
+500750,VB.*_VB.* CC.* NN.* CC.* NN.*,,2,"['005042', '003620']"
+500751,NN.* PM.* RB.* RB.* PR.*,,2,"['005044', '014452']"
+500752,RB.* RB.* PR.* VB.* PM.*,,2,"['005046', '040786']"
+500753,RB.* PR.* VB.* PM.* PR.*,,2,"['005047', '040787']"
+500754,CC.* NN.* PM.* JJ.* PM.*,,2,"['027724', '048628']"
+500755,CC.* CC.* NN.* CC.* NN.*,,3,"['016111', '010134', '015604']"
+500756,RB.* LM FW CC.* NN.*,,2,"['043368', '023637']"
+500757,VB.* CC.* FW CC.* NN.*,,2,"['043377', '025462']"
+500758,PR.*_CC.* VB.* DT.* NN.* NN.*,,2,"['031620', '024906']"
+500759,PM.* RB.* VB.* PM.* FW,,3,"['031625', '036399', '047219']"
+500760,PM.* FW CC.* DT.* NN.*,,2,"['019957', '024132']"
+500761,CC.* NN.* CC.* DT.* JJ.*_CC.*,,2,"['016217', '003133']"
+500762,NN.* CC.* DT.* JJ.*_CC.* NN.*,,3,"['016218', '039404', '003134']"
+500763,CC.* DT.* JJ.*_CC.* NN.* CC.*,,4,"['016219', '018902', '018769', '039405']"
+500764,CC.* NN.* CC.* VB.* PR.*,,2,"['016223', '025236']"
+500765,NN.* RB.* DT.* NN.* CC.*,,2,"['010132', '026095']"
+500766,NN.* CC.* NN.* CC.* PM.*,,2,"['010146', '036251']"
+500767,CC.* PM.* NN.* CC.* VB.*,,2,"['043577', '009772']"
+500768,VB.* CC.* JJ.*_CC.* NN.* CC.*,,2,"['043581', '013958']"
+500769,CC.* RB.* PR.* VB.* CC.*,,2,"['041604', '013962']"
+500770,RB.* PR.* VB.* CC.* NN.*,,2,"['041605', '026939']"
+500771,FW CC.* NN.* DT.* NN.*,,2,"['019877', '038012']"
+500772,RB.* DT.* NN.* PM.* VB.*,,3,"['010197', '027149', '027173']"
+500773,DT.* NN.* PM.* VB.* NN.*,,2,"['010198', '041228']"
+500774,PM.* CC.* NN.* CC.* NN.*,,2,"['010207', '047713']"
+500775,CC.* NN.* CC.* NN.* FW,,2,"['010208', '019577']"
+500776,CC.* NN.* CC.* JJ.*_CC.* PR.*,,2,"['004871', '001720']"
+500777,NN.* CC.* JJ.*_CC.* PR.* CC.*,,2,"['004872', '001721']"
+500778,NN.* PM.* VB.* PR.* PM.*,,2,"['031738', '026087']"
+500779,CC.* PM.* JJ.* CC.* NN.*,,2,"['004781', '035546']"
+500780,NN.* CC.* DT.* NN.* FW,,3,"['041596', '026425', '039240']"
+500781,VB.* NN.* CC.* NN.*_CC.* VB.*,,2,"['031578', '041676']"
+500782,CC.* RB.* CC.* PR.*_CC.* NN.*,,2,"['027638', '002761']"
+500783,RB.* DT.* FW CC.* NN.*,,3,"['019575', '025396', '025159']"
+500784,DT.* FW CC.* NN.* CC.*,,2,"['019576', '048012']"
+500785,PM.* CC.* DT.* DT.* NN.*,,2,"['015912', '031759']"
+500786,DT.* FW CC.* NN.* PM.*,,3,"['043127', '040326', '025160']"
+500787,PM.* RB.* RB.* VB.* DT.*,,2,"['043136', '024739']"
+500788,NN.* PM.* RB.* CC.* VB.*,,2,"['041672', '023712']"
+500789,PM.* RB.* CC.* NN.* CC.*,,2,"['041682', '040777']"
+500790,RB.* VB.* DT.* NN.* DT.*,,2,"['027503', '015684']"
+500791,NN.* LM VB.* RB.* VB.*,,2,"['015768', '013982']"
+500792,VB.*_VB.* CC.* DT.* NN.* CC.*,,2,"['027295', '004264']"
+500793,FW CC.* NN.* CC.* VB.*,,2,"['015780', '048625']"
+500794,CC.* VB.* CC.* VB.* DT.*,,2,"['015783', '001511']"
+500795,VB.* CC.* VB.* DT.* NN.*,,3,"['015784', '001512', '038228']"
+500796,NN.* DT.* DT.* NN.* CC.*,,3,"['009956', '019817', '023265']"
+500797,DT.* NN.* CC.* DT.* NN.*_CC.*,,2,"['004584', '019142']"
+500798,NN.* PM.* PR.* RB.* LM,,2,"['004590', '039022']"
+500799,NN.* DT.* NN.* PM.* VB.*,,2,"['041482', '024091']"
+500800,NN.* CC.* VB.* RB.* CC.*,,2,"['041487', '013894']"
+500801,RB.* PM.* VB.*_CC.* VB.* DT.*,,2,"['027247', '038360']"
+500802,PM.* VB.*_CC.* VB.* DT.* DT.*,,2,"['027248', '038361']"
+500803,VB.*_CC.* VB.* DT.* DT.* NN.*,,2,"['027249', '038362']"
+500804,NN.* CC.* JJ.* DT.* DT.*,,2,"['027253', '012897']"
+500805,DT.* NN.* PM.* CC.* PM.*,,2,"['019813', '048933']"
+500806,NN.* PM.* CC.* PM.* FW,,3,"['019814', '002661', '036211']"
+500807,CC.* PM.* FW DT.* NN.*,,2,"['019816', '037175']"
+500808,CC.* JJ.* CC.* NN.* CC.*,,5,"['004448', '019138', '026687', '003131', '023490']"
+500809,NN.* CC.* FW RB.* CC.*,,3,"['031542', '026080', '048736']"
+500810,CC.* VB.* CC.* PR.*_CC.* FW,,2,"['027277', '040753']"
+500811,CC.* PR.*_CC.* FW CC.* NN.*,,2,"['027279', '038573']"
+500812,DT.* VB.* CC.* NN.* CC.*,,3,"['015670', '001169', '003623']"
+500813,DT.* NN.* PM.* RB.* RB.*,,3,"['043095', '009514', '014451']"
+500814,DT.* NN.* CC.* PM.* FW,,2,"['041054', '023770']"
+500815,FW CC.* NN.* PR.* PM.*,,2,"['027145', '040341']"
+500816,RB.* CC.* NN.* CC.* NN.*,,2,"['015613', '048144']"
+500817,CC.* DT.* NN.* CC.* RB.*,,3,"['004321', '002874', '003518']"
+500818,RB.*_CC.* VB.* CC.* NN.* NN.*,,3,"['041081', '019334', '004093']"
+500819,CC.* PM.* NN.* RB.* RB.*,,2,"['027170', '048618']"
+500820,NN.* DT.* NN.* CC.* NN.*,,2,"['027183', '040308']"
+500821,DT.* VB.*_VB.* CC.* DT.* NN.*,,2,"['004263', '003627']"
+500822,FW PM.* PM.* VB.* RB.*,,2,"['009564', '026842']"
+500823,PM.* PM.* VB.* RB.* DT.*,,2,"['009565', '026843']"
+500824,RB.* RB.* VB.* CC.* DT.*,,2,"['009703', '025181']"
+500825,NN.* PM.* RB.* PR.* CC.*,,2,"['031344', '040923']"
+500826,FW CC.* CC.* DT.* NN.*,,2,"['019343', '019247']"
+500827,PM.* NN.* CC.* VB.* RB.*,,2,"['009773', '015232']"
+500828,CC.* NN.* PM.* CC.* FW,,2,"['009783', '025345']"
+500829,NN.* PM.* CC.* FW PM.*,,2,"['009784', '025346']"
+500830,PM.* RB.*_CC.* VB.* CC.* NN.*,,2,"['019333', '022882']"
+500831,DT.* NN.* CC.* JJ.* RB.*,,2,"['009466', '019239']"
+500832,CC.* NN.* CC.* VB.* RB.*,,5,"['009478', '009520', '001026', '001514', '013541']"
+500833,JJ.*_CC.* NN.* DT.* NN.* CC.*,,2,"['019237', '039362']"
+500834,NN.* PM.* DT.* FW CC.*,,2,"['019244', '036234']"
+500835,CC.* CC.* DT.* NN.* CC.*,,2,"['019248', '037953']"
+500836,DT.* NN.* CC.* DT.* PR.*_CC.*,,2,"['040887', '024778']"
+500837,NN.* CC.* DT.* PR.*_CC.* FW,,2,"['040888', '024779']"
+500838,CC.* DT.* PR.*_CC.* FW FW,,2,"['040889', '024780']"
+500839,DT.* NN.* PM.* CC.* FW,,2,"['019217', '025167']"
+500840,RB.* DT.* DT.* NN.* CC.*,,3,"['009535', '001030', '013934']"
+500841,NN.* CC.* PR.* PM.* FW,,2,"['019147', '048204']"
+500842,CC.* VB.* RB.* DT.* DT.*,,3,"['009522', '001028', '013393']"
+500843,NN.*_CC.* VB.* RB.*_CC.* VB.* CC.*,,2,"['031032', '039410']"
+500844,NN.* CC.* VB.* PR.*_CC.* VB.*,,2,"['040769', '002031']"
+500845,CC.* PR.*_CC.* NN.* PM.* DT.*,,2,"['040781', '001808']"
+500846,NN.* CC.* VB.* PR.*_CC.* FW,,2,"['026765', '037187']"
+500847,PM.* FW DT.* PR.*_CC.* NN.*,,2,"['019120', '037104']"
+500848,FW DT.* PR.*_CC.* NN.* NN.*,,2,"['019121', '037105']"
+500849,NN.* FW CC.* VB.* CC.*,,2,"['030930', '025998']"
+500850,RB.* DT.* VB.* NN.* CC.*,,2,"['040745', '001719']"
+500851,CC.* NN.* CC.* DT.* JJ.*,,2,"['040746', '040281']"
+500852,NN.* CC.* DT.* JJ.* PM.*,,3,"['040747', '040282', '038662']"
+500853,CC.* DT.* JJ.* PM.* NN.*,,2,"['040748', '038663']"
+500854,VB.* PR.* RB.* DT.* NN.*,,2,"['019089', '024231']"
+500855,CC.* VB.* PR.* CC.* VB.*,,2,"['030998', '025452']"
+500856,CC.* NN.* CC.* PM.* FW,,3,"['026688', '024181', '036252']"
+500857,PR.* CC.* DT.* JJ.*_CC.* NN.*,,2,"['018901', '018768']"
+500858,DT.* JJ.*_CC.* NN.* CC.* FW,,4,"['018903', '018770', '039238', '013163']"
+500859,CC.* DT.* JJ.* PM.* CC.*,,2,"['040271', '040283']"
+500860,RB.*_CC.* VB.* PR.* CC.* NN.*,,2,"['026834', '023079']"
+500861,PR.* CC.* NN.* CC.* PR.*_CC.*,,2,"['026836', '036669']"
+500862,CC.* NN.* PM.* VB.* PM.*,,2,"['026474', '040328']"
+500863,RB.* RB.*_CC.* VB.* DT.* NN.*,,2,"['040316', '001728']"
+500864,RB.*_CC.* VB.* DT.* NN.* CC.*,,3,"['040317', '040030', '001729']"
+500865,CC.* NN.* CC.* NN.*_CC.* JJ.*,,2,"['040321', '001605']"
+500866,CC.* NN.* PR.* PM.* VB.*,,2,"['040334', '040342']"
+500867,NN.* PR.* PM.* VB.* CC.*,,2,"['040335', '014513']"
+500868,PR.* PM.* VB.* CC.* DT.*,,2,"['040336', '001710']"
+500869,VB.* DT.* NN.* CC.* PR.*_CC.*,,3,"['040031', '037459', '036118']"
+500870,CC.* PR.*_CC.* NN.* PM.* CC.*,,3,"['040034', '048139', '022806']"
+500871,DT.* NN.*_CC.* NN.* PM.* RB.*,,2,"['039802', '002045']"
+500872,NN.* CC.* RB.* PR.* VB.*,,2,"['026001', '013961']"
+500873,JJ.* CC.* DT.* NN.* PM.*,,4,"['014877', '001883', '002999', '048251']"
+500874,JJ.* CC.* NN.* CC.* VB.*,,2,"['001025', '003181']"
+500875,RB.*_CC.* VB.* CC.* FW CC.*,,2,"['001500', '038003']"
+500876,NN.* CC.* VB.* RB.* PR.*,,2,"['001515', '013542']"
+500877,PR.* CC.* PR.*_CC.* NN.* RB.*,,2,"['014801', '048950']"
+500878,DT.* NN.* CC.* DT.* JJ.*_CC.*,,2,"['039403', '002864']"
+500879,VB.* RB.*_CC.* VB.* CC.* NN.*,,2,"['039411', '004092']"
+500880,RB.*_CC.* NN.* CC.* NN.* CC.*,,2,"['025865', '038354']"
+500881,CC.* NN.* PM.* JJ.* CC.*,,2,"['025866', '012461']"
+500882,NN.* PM.* JJ.* CC.* DT.*,,3,"['025867', '001881', '048249']"
+500883,PM.* JJ.* CC.* DT.* NN.*,,4,"['025868', '001882', '048250', '047708']"
+500884,VB.* PR.* CC.* DT.* NN.*,,2,"['000182', '048795']"
+500885,FW RB.* CC.* NN.* CC.*,,2,"['000184', '013100']"
+500886,NN.* CC.* NN.* PM.* FW,,2,"['039461', '036445']"
+500887,PM.* CC.* VB.* RB.* DT.*,,2,"['039463', '038673']"
+500888,RB.* DT.* CC.* PM.* FW,,2,"['039466', '037467']"
+500889,RB.* RB.* JJ.* PM.* FW,,2,"['025938', '048621']"
+500890,CC.* JJ.*_CC.* NN.* PM.* VB.*,,2,"['039215', '002987']"
+500891,JJ.*_CC.* NN.* PM.* VB.* DT.*,,2,"['039216', '002988']"
+500892,JJ.*_CC.* NN.* CC.* VB.* CC.*,,2,"['039110', '037250']"
+500893,DT.* DT.* NN.* PR.* LM,,2,"['003694', '004073']"
+500894,PR.* LM DT.* NN.* CC.*,,3,"['003695', '001804', '048938']"
+500895,NN.* CC.* NN.* PM.* PR.*,,2,"['039020', '023228']"
+500896,NN.* CC.* VB.*_VB.* CC.* VB.*,,2,"['001813', '012549']"
+500897,NN.* CC.* VB.* PR.* PM.*,,2,"['025237', '036458']"
+500898,PR.*_CC.* NN.* CC.* VB.* PR.*,,2,"['002764', '036457']"
+500899,DT.* NN.* PM.* CC.* JJ.*,,2,"['014393', '038217']"
+500900,PM.* FW CC.* NN.* NN.*,,2,"['023097', '024106']"
+500901,CC.* NN.* CC.* CC.* PM.*,,2,"['003184', '002387']"
+500902,PR.* DT.* FW CC.* PR.*_CC.*,,2,"['025519', '038133']"
+500903,NN.* NN.* CC.* VB.* RB.*,,2,"['025398', '038348']"
+500904,DT.* NN.* CC.* VB.* RB.*,,4,"['001714', '013936', '013893', '013391']"
+500905,JJ.* CC.* NN.* CC.* DT.*,,2,"['003132', '002378']"
+500906,PR.*_CC.* NN.*_CC.* VB.* CC.* VB.*,,2,"['003064', '038226']"
+500907,NN.* PM.* RB.* RB.* RB.*,,2,"['038576', '036114']"
+500908,NN.* PM.* VB.* CC.* FW,,3,"['025162', '048207', '036066']"
+500909,JJ.* CC.* PR.*_CC.* NN.* PM.*,,2,"['002063', '002542']"
+500910,PM.* CC.* PM.* FW CC.*,,2,"['002662', '036212']"
+500911,CC.* VB.* CC.* PM.* FW,,2,"['038214', '014005']"
+500912,DT.* NN.* RB.* NN.* CC.*,,2,"['024728', '037236']"
+500913,LM RB.* VB.* DT.* NN.*,,2,"['014169', '024361']"
+500914,RB.* RB.* DT.* VB.* CC.*,,2,"['024776', '013259']"
+500915,RB.* RB.* DT.* PR.*_CC.* NN.*,,2,"['024467', '036946']"
+500916,CC.* NN.* CC.* VB.* PR.*_CC.*,,2,"['048924', '037186']"
+500917,CC.* RB.* RB.* DT.* CC.*,,2,"['024519', '037465']"
+500918,RB.* RB.* DT.* CC.* PM.*,,2,"['024520', '037466']"
+500919,RB.* JJ.* CC.* NN.* CC.*,,4,"['002377', '002386', '048325', '047344']"
+500920,DT.* RB.* JJ.* CC.* NN.*,,2,"['002385', '048324']"
+500921,FW CC.* NN.* PM.* RB.*,,2,"['037338', '023710']"
+500922,RB.* CC.* RB.* PR.* VB.*,,2,"['037340', '013386']"
+500923,NN.* PM.* JJ.* CC.* NN.*,,2,"['048866', '012462']"
+500924,NN.* CC.* RB.* RB.* DT.*,,2,"['037464', '024348']"
+500925,CC.* FW RB.* CC.* NN.*,,2,"['037469', '048737']"
+500926,DT.* VB.* CC.* NN.* DT.*,,2,"['037948', '036443']"
+500927,PM.* PR.* DT.* NN.* CC.*,,2,"['048880', '023231']"
+500928,PR.* LM VB.*_VB.* CC.* DT.*,,2,"['003614', '003958']"
+500929,CC.* DT.* NN.*_CC.* VB.*_VB.* CC.*,,2,"['003617', '003869']"
+500930,DT.* NN.*_CC.* VB.*_VB.* CC.* NN.*,,2,"['003618', '003870']"
+500931,CC.* DT.* VB.* CC.* NN.*,,2,"['003622', '036442']"
+500932,DT.* DT.* NN.* RB.* CC.*,,2,"['024179', '046996']"
+500933,VB.* CC.* DT.* FW PM.*,,2,"['004079', '022754']"
+500934,LM VB.* CC.* JJ.*_CC.* NN.*,,2,"['004096', '048332']"
+500935,CC.* VB.*_VB.* CC.* DT.* FW,,2,"['003751', '047000']"
+500936,VB.*_VB.* CC.* DT.* FW FW,,2,"['003752', '047001']"
+500937,NN.* PM.* RB.* VB.* PM.*,,2,"['036398', '047218']"
+500938,RB.* CC.* NN.* PM.* CC.*,,2,"['013255', '047719']"
+500939,CC.* NN.* CC.* PR.* PM.*,,2,"['036436', '048203']"
+500940,,DTC NNC DTP NNP CCT,3,"['047071', '022532', '034599']"
+500941,,PMS NNC CCP RBF RBI,2,"['022717', '035432']"
+500942,,NNC CCP RBF RBI JJD,2,"['022718', '047342']"
+500943,,DTC CCR PMS JJD CCB,2,"['008697', '004713']"
+500944,,RBI PRO DTC NNC CCB,2,"['000654', '003516']"
+500945,,PRO DTC NNC CCB DTCP,3,"['000655', '002863', '003517']"
+500946,,CCB DTCP NNC CCT NNC_CCP,2,"['000656', '003379']"
+500947,,DTCP NNC CCT NNC_CCP JJD,2,"['000657', '003380']"
+500948,,NNC CCT NNC_CCP JJD CCA,2,"['000658', '006136']"
+500949,,VBTR DTC DTCP NNC CCB,3,"['008619', '021841', '040972']"
+500950,,DTC DTCP NNC_CCP VBTR CCB,2,"['004210', '007301']"
+500951,,NNC_CCP VBTR CCB DTCP NNC,2,"['004212', '027874']"
+500952,,CCB NNC CCT RBT_CCP NNC,2,"['000588', '008085']"
+500953,,PMS FW CCT PRSP CCP,2,"['035445', '023088']"
+500954,,FW CCT PRSP CCP DTP,2,"['035446', '023089']"
+500955,,CCT PRSP CCP DTP NNP,2,"['035447', '023090']"
+500956,,CCT NNC CCB PRI_CCP NNC,4,"['012274', '021159', '012557', '005795']"
+500957,,NNC CCB PRI_CCP NNC CCT,2,"['012275', '012558']"
+500958,,DTC JJD CCP NNC CCB,2,"['008524', '021116']"
+500959,,JJD_CCP FW FW DTP NNP,2,"['046726', '046628']"
+500960,,DTC DTCP NNC CCB FW,5,"['035457', '018145', '009957', '019818', '040973']"
+500961,,CCP VBOF DTC NNC CCB,2,"['000880', '001604']"
+500962,,CCT NNC DTP NNP DTC,2,"['022521', '016660']"
+500963,,CCA VBW DTC DTCP VBAF,2,"['018512', '016188']"
+500964,,VBW DTC DTCP VBAF PMC,2,"['018513', '016189']"
+500965,,DTC DTCP VBAF PMC VBTS,2,"['018514', '016190']"
+500966,,DTC NNC_CCP JJD CCT NNC,2,"['008479', '007506']"
+500967,,NNC_CCP JJD CCT NNC CCB,2,"['008480', '007507']"
+500968,,NNC CCP VBTS PMS FW,2,"['047304', '043949']"
+500969,,CCP VBTS PMS FW CCT,2,"['047305', '046624']"
+500970,,VBTS PMS FW CCT NNP,2,"['047306', '024105']"
+500971,,NNC DTP JJD_CCP NNP_CCP NNP,2,"['035358', '045188']"
+500972,,VBTS RBI DTP NNP CCP,2,"['022498', '016944']"
+500973,,FW DTP NNP PMS CCA,2,"['018605', '025166']"
+500974,,VBTR PRP DTC NNC CCB,2,"['022377', '006737']"
+500975,,PRP DTC NNC CCB DTCP,2,"['022378', '033130']"
+500976,,DTCP NNC JJC CCB NNP,2,"['022379', '021057']"
+500977,,NNP CCT NNC CCB FW,2,"['022382', '027261']"
+500978,,CCP DTC DTCP NNC CCB,2,"['008148', '008752']"
+500979,,PRO LM VBTF CCT NNC,2,"['002197', '003376']"
+500980,,LM VBTF CCT NNC CCB,2,"['002198', '003377']"
+500981,,NNC CCT DTCP NNC_CCP PRO,2,"['030189', '044247']"
+500982,,CCT DTCP NNC_CCP PRO PMC,2,"['030190', '044248']"
+500983,,RBI CCB NNC DTP NNP,3,"['018127', '039848', '039261']"
+500984,,PMS VBOF DTC NNC CCB,2,"['018140', '020951']"
+500985,,NNC CCB FW CCB JJD_CCP,2,"['018146', '017543']"
+500986,,PRSP_CCP NNC CCB NNC CCT,2,"['030413', '005380']"
+500987,,CCT CCR PMS VBTF DTP,2,"['022110', '024896']"
+500988,,CCR PMS VBTF DTP NNP,2,"['022111', '024897']"
+500989,,CCT JJD_CCP NNC CCB NNC,2,"['046147', '046201']"
+500990,,CCB NNC CCP DTP NNP,2,"['046148', '026935']"
+500991,,PMC VBTF RBI DTC NNC,2,"['012188', '014686']"
+500992,,PRI_CCP NNC CCA RBF RBI,2,"['007889', '048296']"
+500993,,RBF RBI VBTS DTC NNC,2,"['007892', '038680']"
+500994,,DTC CCR PMS FW CCB,2,"['046138', '037468']"
+500995,,VBTR CCT VBOF DTC FW,2,"['012146', '024312']"
+500996,,RBI PRL DTC NNC CCB,2,"['007767', '007186']"
+500997,,PRL DTC NNC CCB DTCP,2,"['007768', '007187']"
+500998,,CCB NNC PRS_CCP DTP NNP,2,"['046204', '019810']"
+500999,,NNC PRS_CCP DTP NNP NNP,3,"['046205', '020153', '039852']"
+501000,,DTC JJN_CCP NNC DTP NNP,2,"['045933', '039361']"
+501001,,VBTR_VBAF CCT NNC CCB DTCP,2,"['034593', '001167']"
+501002,,NNC CCB PRI_CCP NNC DTC,2,"['022015', '021160']"
+501003,,CCB PRI_CCP NNC DTC FW,2,"['022016', '021161']"
+501004,,RBI DTC JJD CCP NNC,2,"['007638', '021115']"
+501005,,NNC CCB PRI_CCP NNP NNP,2,"['007649', '026838']"
+501006,,NNP NNP CCT PRI_CCP FW,2,"['007650', '048808']"
+501007,,NNP CCT PRI_CCP FW FW,3,"['007651', '020156', '048809']"
+501008,,NNP NNP PMC JJD_CCP FW,2,"['034689', '019226']"
+501009,,DTC DTCP NNC CCB NNP,3,"['021842', '021783', '021125']"
+501010,,NNC CCB DTCP NNC_CCP VBTR,3,"['007513', '029160', '019143']"
+501011,,CCB DTCP NNC_CCP VBTR CCT,3,"['007514', '029161', '019144']"
+501012,,DTCP NNC_CCP VBTR CCT DTCP,3,"['007515', '007130', '019145']"
+501013,,JJD DTC NNC DTP NNP,2,"['034598', '013267']"
+501014,,NNC DTP NNP CCT DTCP,2,"['034600', '016779']"
+501015,,VBTR RBI CCB NNC PMS,2,"['034616', '012705']"
+501016,,VBTS PRO CCT NNC CCB,2,"['007381', '025932']"
+501017,,PRO CCT NNC CCB DTCP,3,"['007382', '016216', '001724']"
+501018,,DTC NNC CCB DTCP JJD,2,"['007285', '038661']"
+501019,,DTCP NNC_CCP VBTR CCB NNC,2,"['007302', '007134']"
+501020,,CCB NNPA CCT NNP PMC,2,"['034244', '041670']"
+501021,,NNPA CCT JJD DTP NNP,2,"['034255', '037194']"
+501022,,CCT NNC_CCP JJD CCB NNP,2,"['034261', '001607']"
+501023,,NNC_CCP JJD CCB NNP PMC,2,"['034262', '001608']"
+501024,,JJD CCB NNP PMC JJCC,2,"['034263', '001609']"
+501025,,NNC CCB PRI_CCP NNC PMC,2,"['029687', '048383']"
+501026,,DTP NNP DTC NNC CCB,2,"['017627', '015686']"
+501027,,CCT DTCP NNC_CCP VBTR CCT,2,"['007129', '015675']"
+501028,,NNC DTP JJD_CCP NNP NNP,2,"['017864', '037038']"
+501029,,RBI CCT DTCP NNC CCB,3,"['029507', '006341', '048870']"
+501030,,CCT DTCP NNC CCB NNPA,3,"['029508', '016782', '048871']"
+501031,,FW PMC NNC CCB JJD,2,"['021771', '044379']"
+501032,,RBD CCP VBTR CCT DTCP,2,"['006956', '002755']"
+501033,,CCP VBTF CCB DTCP NNC,2,"['021476', '004876']"
+501034,,NNC CCB NNP CCA VBTS,2,"['045398', '015020']"
+501035,,CCB NNP CCA VBTS CCT,2,"['045399', '015021']"
+501036,,DTCP JJD PMS NNP CCT,2,"['021149', '038664']"
+501037,,PRI_CCP NNC DTC FW FW,2,"['021162', '017436']"
+501038,,DTC PRI_CCP NNC CCT NNC,2,"['006476', '024469']"
+501039,,PMS NNP FW DTC NNC,2,"['045032', '021092']"
+501040,,RBK RBQ VBH NNC DTC,2,"['042877', '017382']"
+501041,,CCT PRSP_CCP DTCP NNC PMS,3,"['029303', '028776', '031729']"
+501042,,VBTR PRS DTC NNC CCT,2,"['033547', '033568']"
+501043,,DTC NNC CCT NNP PMS,3,"['033549', '021085', '036444']"
+501044,,JJD CCP NNC CCB NNP,2,"['021117', '048326']"
+501045,,CCR VBAF CCP DTC NNC,2,"['011459', '028397']"
+501046,,FW CCP VBTR CCB NNC,3,"['029159', '041663', '025999']"
+501047,,FW PMP PMS NNPA NNP,2,"['045083', '047277']"
+501048,,VBOF DTC DTCP NNC CCB,3,"['021124', '038363', '013171']"
+501049,,DTCP NNC CCB NNP CCP,2,"['021126', '048922']"
+501050,,VBTF DTC PRSP_CCP FW FW,2,"['044862', '010515']"
+501051,,NNC CCT NNC CCB PRI_CCP,2,"['012556', '005794']"
+501052,,CCB DTCP NNC PMC RBF,2,"['044680', '043094']"
+501053,,DTC CCR PMS NNC CCB,2,"['005979', '009707']"
+501054,,FW PMC CCA NNC CCB,2,"['044549', '039244']"
+501055,,VBW CCA VBAF CCT NNC,2,"['032998', '031035']"
+501056,,VBAF CCT NNC CCB FW,2,"['033000', '026941']"
+501057,,CCT NNC CCB FW PMS,2,"['033001', '043088']"
+501058,,PRSP_CCP DTCP NNC PMS CCA,2,"['028777', '031730']"
+501059,,CCT NNC PMS FW CCB,2,"['044228', '028413']"
+501060,,NNP FW DTC NNC CCB,2,"['021093', '024280']"
+501061,,RBI DTP JJD_CCP NNP NNP,2,"['016873', '015236']"
+501062,,CCT CCR PMS NNC CCB,2,"['005873', '031485']"
+501063,,DTC FW CCP VBTS CCB,2,"['020856', '036236']"
+501064,,RBW DTC NNP CDB PMC,2,"['020861', '019091']"
+501065,,CCP VBOF DTC NNC CCT,2,"['016832', '040050']"
+501066,,NNC CCB NNP RBK RBQ,2,"['010921', '025935']"
+501067,,DTC NNC CCB PRSP_CCP NNC,2,"['044276', '040032']"
+501068,,NNC CCP VBS CCB DTCP,2,"['028409', '004318']"
+501069,,CCP VBS CCB DTCP NNC,2,"['028410', '004319']"
+501070,,VBS CCB DTCP NNC CCA,2,"['028411', '031005']"
+501071,,NNP CCT DTCP NNC CCB,3,"['016781', '032146', '023436']"
+501072,,PRI_CCP FW FW CCT NNP,2,"['032614', '048810']"
+501073,,CCT NNC PMC VBTS RBI,2,"['011164', '048106']"
+501074,,NNC PMC VBTS RBI CCB,2,"['011165', '048107']"
+501075,,CCT PRI_CCP NNC CCT NNP,2,"['032774', '010255']"
+501076,,NNC CCT PRI_CCP NNC PMC,3,"['028189', '010450', '000198']"
+501077,,DTC PRI CCT JJCS_JJD_CCP NNC,2,"['010651', '048732']"
+501078,,PRI CCT JJCS_JJD_CCP NNC CCB,2,"['010652', '048733']"
+501079,,VBTS PMS FW DTP NNP,3,"['032281', '039905', '039400']"
+501080,,VBH NNC CCT PRI_CCP FW,2,"['032292', '005366']"
+501081,,RBF PRP_CCP VBOF DTC DTCP,2,"['028159', '027729']"
+501082,,PRP_CCP VBOF DTC DTCP NNC,2,"['028160', '027730']"
+501083,,FW PMC VBOF DTC NNC,2,"['043940', '036064']"
+501084,,CCB DTCP NNC CCP VBTS,2,"['043947', '002379']"
+501085,,DTP JJD_CCP NNC_CCP NNP NNP,2,"['042281', '038541']"
+501086,,PMS FW CCT NNC PMC,2,"['016418', '040347']"
+501087,,CCT DTCP NNC DTP NNP,2,"['010976', '010019']"
+501088,,NNC CCT NNP PMC RBF,3,"['042196', '010257', '026675']"
+501089,,NNP PMC PRO PMS FW,2,"['043844', '037164']"
+501090,,DTCP NNC_CCP VBTS CCT NNC,2,"['027891', '004393']"
+501091,,FW PMC VBTR CCP DTC,2,"['016166', '024783']"
+501092,,DTCP NNC CCP VBTR CCB,3,"['041992', '000193', '004087']"
+501093,,VBTS CCT NNC_CCP PRO PMC,2,"['005187', '043541']"
+501094,,PRI_CCP NNC CCT NNP PMC,2,"['010256', '039019']"
+501095,,CCT NNP PMC RBF PRP,2,"['010258', '026676']"
+501096,,PMC RBW VBTS PMS FW,2,"['031625', '047219']"
+501097,,CCT NNC CCB DTCP JJD_CCP,2,"['016217', '003133']"
+501098,,CCT NNC CCB NNP FW,2,"['010208', '019577']"
+501099,,DTCP NNC DTP NNP CCT,2,"['010020', '026829']"
+501100,,NNC CCT DTCP NNPA FW,2,"['041596', '026425']"
+501101,,DTP NNP CCT NNC CCB,4,"['041667', '009948', '027260', '040319']"
+501102,,DTC NNC CCB DTCP NNC_CCP,2,"['004584', '019142']"
+501103,,DTC DTCP NNC PMC CCA,2,"['031756', '048932']"
+501104,,NNC CCB FW RBL CCT,2,"['031542', '048736']"
+501105,,VBOF PRS CCT NNC CCB,2,"['019583', '026835']"
+501106,,DTC VBTR CCB NNC CCT,2,"['015670', '003623']"
+501107,,JJD DTC NNC CCB DTCP,2,"['043093', '038660']"
+501108,,CCA VBTS DTC NNC CCT,2,"['019283', '019124']"
+501109,,DTC NNC CCB NNP FW,2,"['015687', '026763']"
+501110,,CCT NNC CCB NNPA PMC,2,"['009781', '047714']"
+501111,,DTP NNP CCA DTC PRSP_CCP,2,"['040887', '024778']"
+501112,,NNP CCA DTC PRSP_CCP FW,2,"['040888', '024779']"
+501113,,CCA DTC PRSP_CCP FW FW,2,"['040889', '024780']"
+501114,,RBI DTC DTCP NNC CCP,2,"['009535', '001030']"
+501115,,CCT NNC CCB PRSP_CCP NNC,2,"['040779', '013073']"
+501116,,NNC CCB PRSP_CCP NNC PMC,3,"['040780', '040033', '013074']"
+501117,,PMS FW DTC PRI_CCP NNP,2,"['019120', '037104']"
+501118,,FW DTC PRI_CCP NNP NNP,2,"['019121', '037105']"
+501119,,NNC CCB DTCP JJD PMS,3,"['040747', '040282', '038662']"
+501120,,CCB DTCP JJD PMS NNP,2,"['040748', '038663']"
+501121,,PRP CCB DTCP JJD_CCP NNC,2,"['018901', '018768']"
+501122,,CCB DTCP JJD_CCP NNC CCT,3,"['018902', '018769', '039405']"
+501123,,DTCP JJD_CCP NNC CCT FW,2,"['018903', '018770']"
+501124,,CCB DTCP JJD PMS CCR,2,"['040271', '040283']"
+501125,,NNC DTC NNP CCT FW,2,"['040237', '047224']"
+501126,,CCB DTCP NNC CCP VBOF,2,"['001602', '001713']"
+501127,,CCP VBTR CCB NNC CCA,2,"['026000', '004088']"
+501128,,PMS FW DTP NNP CCB,2,"['039906', '039401']"
+501129,,CCB NNC CCR VBOF RBI,2,"['001514', '013541']"
+501130,,NNC CCT NNP PMS FW,2,"['039461', '036445']"
+501131,,DTC DTCP NNC PRO LM,2,"['003694', '004073']"
+501132,,NNC CCB NNP CCP DTP,2,"['039169', '038670']"
+501133,,PRO LM DTC NNC CCB,2,"['001804', '048938']"
+501134,,CCT PRSP_CCP NNC CCP VBTS,2,"['002763', '014179']"
+501135,,PMS FW CCT NNC CCB,2,"['024287', '048624']"
+501136,,CCT DTCP NNC CCB NNP,3,"['048921', '048797', '023437']"
+501137,,RBF JJD CCP NNC CCB,2,"['002377', '048325']"
+501138,,DTCP NNC CCP VBTS CCT,2,"['002380', '048854']"
+501139,,CCT NNC DTP NNP CCA,2,"['037950', '013567']"
+501140,,PRO LM VBTR_VBAF CCT DTCP,2,"['003614', '003958']"
+501141,,DTCP NNC_CCP VBTR_VBAF CCB NNC,2,"['003618', '003870']"
+501142,,FW FW CCT PRI_CCP NNC,2,"['048137', '048155']"
+501143,PR.* DT.* NN.* DT.* NN.*,PRP DTC NNC DTP NNP,3,"47070,27888,41480"
+501144,DT.* NN.* DT.* NN.* CC.*,DTC NNC DTP NNP CCT,11,"47071,35428,22532,34599,45636,17627,33258,32981,10020,15686,26829"
+501146,NN.* DT.* NN.* CC.* VB.*,NNC DTP NNP CCT VBTF,2,"47072,35429"
+501147,DT.* NN.* CC.* VB.* CC.*,DTP NNP CCT VBTF CCP,16,"47073,22727,35461,12118,41992,8754,4317,15345,9537,193,3697,1812,2380,48854,3864,4087"
+501150,NN.* CC.* VB.* CC.* NN.*,NNP CCA VBTR CCB NNC,11,"47074,22728,12007,11575,45400,9469,9538,14683,39174,36950,48193"
+501160,CC.* VB.* DT.* NN.* CC.*,CCP VBTF DTC NNC CCB,29,"35533,880,34994,21788,34044,29242,20957,21129,28784,28575,16832,32051,19283,9791,26761,19124,40317,40030,40038,40050,1604,1513,1729,37458,13379,37241,37244,23715,36197"
+501162,VB.* DT.* NN.* CC.* DT.*,VBTF DTC NNC CCB DTCP,10,"35534,881,7284,9384,16383,32052,32144,14214,24777,23566"
+501169,NN.* CC.* JJ.*_CC.* NN.* CC.*,NNC CCT JJD_CCP NNC CCB,3,"35541,32355,9570"
+501174,CC.* JJ.* DT.* NN.* CC.*,CCB JJD DTC NNC CCP,4,"707,45834,34256,5804"
+501183,NN.* PM.* CC.* VB.* DT.*,NNC PMS CCA VBOF DTC,6,"22708,18151,17662,40036,3072,37239"
+501188,RB.* RB.* JJ.* VB.* CC.*,RBF RBI JJD VBOF CCR,2,"22720,34235"
+501193,PR.* DT.* NN.* CC.* VB.*,PRS DTP NNP CCA VBTR,6,"22726,33452,10928,26789,8861,48853"
+501203,VB.* RB.* PR.* DT.* NN.*,VBTS RBI PRL DTC NNC,6,"653,7185,27180,26787,13986,48851"
+501209,PR.* DT.* NN.* CC.* DT.*,PRP DTC NNC CCB DTCP,8,"655,22378,7768,7187,33130,2863,3517,23232"
+501210,CC.* DT.* NN.* CC.* NN.*_CC.*,CCB DTCP NNC CCT NNC_CCP,3,"656,3379,4570"
+501211,CC.* DT.* NN.* CC.* NN.*_CC.*,CCA DTCP NNC CCB NNC_CCP,3,"656,3379,4570"
+501213,NN.* CC.* NN.*_CC.* JJ.* CC.*,NNC CCT NNC_CCP JJD CCA,4,"658,8525,6136,1606"
+501224,NN.* PM.* DT.* JJ.*_CC.* NN.*,NNC PMS DTP JJD_CCP NNP,6,"35532,47300,42279,19735,25528,13161"
+501225,VB.* RB.* CC.* NN.* DT.*,VBTS RBI CCB NNP DTC,7,"30885,18126,20322,15344,39847,25632,37571"
+501230,RB.* CC.* NN.* DT.* JJ.*,RBI CCB NNP DTC JJD,2,"30886,25633"
+501232,CC.* NN.* DT.* JJ.* CC.*,CCB NNP DTC JJD CCP,2,"30887,25634"
+501249,NN.* CC.* VB.* DT.* NN.*,NNC CCP VBW DTP NNP,9,"18531,373,2588,29241,20956,16831,9790,13378,37243"
+501253,DT.* NN.* NN.* CC.* PR.*_CC.*,DTP NNP NNP CCB PRI_CCP,3,"18537,4670,48807"
+501254,NN.* NN.* CC.* PR.*_CC.* FW,NNP NNP CCB PRI_CCP FW,3,"18538,7650,48808"
+501255,NN.* CC.* PR.*_CC.* FW FW,NNP CCB PRI_CCP FW FW,6,"18539,7651,32293,20156,48809,36671"
+501256,CC.* JJ.* PR.*_CC.* VB.* CC.*,CCP JJD PRP_CCP VBW CCA,2,"12365,6946"
+501259,CC.* VB.* CC.* NN.* CC.*,CCP VBTS CCB NNP CCT,18,"12368,586,8267,12008,7303,6941,45401,32999,33017,42193,11503,5107,26000,26077,3183,3619,4088,48194"
+501264,CC.* NN.* CC.* VB.* CC.*,CCB NNP CCA VBTS CCT,21,"8604,47201,2203,30148,11574,45399,33559,20928,28408,32295,27961,15781,15021,1509,14682,39110,3182,38212,37250,23149,12548"
+501267,NN.* CC.* VB.* CC.* FW,NNC CCR VBW CCT FW,3,"8605,43375,8755"
+501269,NN.* CC.* JJ.* JJ.* CC.*,NNC CCT JJCC JJD CCP,2,"8614,4774"
+501270,JJ.* CC.* VB.* DT.* DT.*,JJD CCP VBTR DTC DTCP,2,"8617,13169"
+501271,CC.* VB.* DT.* DT.* NN.*,CCP VBTR DTC DTCP NNC,10,"8618,35455,18143,28160,27730,4582,27249,40971,38362,13170"
+501273,VB.* DT.* DT.* NN.* CC.*,VBTF DTC DTCP NNC CCB,13,"8619,35456,18144,21841,21124,4583,27250,4387,40972,38363,48673,13171,36006"
+501274,DT.* DT.* NN.*_CC.* VB.* CC.*,DTC DTCP NNC_CCP VBTR CCB,3,"4210,8144,7301"
+501276,DT.* NN.*_CC.* VB.* CC.* DT.*,DTC NNC_CCP VBTS CCT DTCP,7,"4211,8145,7515,7130,5983,19145,4077"
+501277,NN.*_CC.* VB.* CC.* DT.* NN.*,NNC_CCP VBTR CCB DTCP NNC,5,"4212,7131,27874,41225,19146"
+501279,RB.* RB.*_CC.* VB.* CC.* NN.*,RBW RBD_CCP VBTR CCB NNP,2,"585,21047"
+501297,RB.* PR.*_CC.* VB.* DT.* NN.*,RBW PRP_CCP VBOB DTC NNC,2,"35425,28783"
+501298,VB.* DT.* NN.* DT.* NN.*,VBOB DTC NNC DTP NNPA,4,"35427,33257,27504,15685"
+501300,DT.* NN.* CC.* VB.* DT.*,DTP NNPA CCP VBOF DTC,7,"35430,16830,10929,1603,37955,13377,36008"
+501302,NN.* CC.* VB.* DT.* FW,NNPA CCP VBOF DTC FW,4,"35431,20853,10930,36009"
+501305,NN.* CC.* RB.* RB.* VB.*,NNC CCA RBM RBF VBW,5,"35433,7890,45459,5799,4593"
+501307,VB.* VB.* DT.* NN.* CC.*,VBS VBOF DTP NNP CCT,2,"35437,14362"
+501308,VB.* DT.* NN.* CC.* CC.*,VBOF DTP NNP CCT CCA,3,"35438,7894,32782"
+501310,DT.* NN.* CC.* CC.* RB.*,DTP NNP CCT CCA RBI,2,"35439,2373"
+501314,FW CC.* PR.* CC.* DT.*,FW CCT PRSP CCP DTP,2,"35446,23089"
+501336,VB.* PR.* DT.* NN.* CC.*,VBOF PRS DTP NNP CCT,9,"514,22377,6737,33451,33547,33568,17165,28799,2862"
+501339,PR.* DT.* NN.* CC.* PR.*_CC.*,PRQ DTC NNC CCB PRI_CCP,3,"515,33737,44275"
+501342,DT.* NN.* CC.* PR.*_CC.* NN.*,DTC NNC CCB PRI_CCP NNP,9,"516,33738,44276,28188,4389,40032,1419,1806,37460"
+501350,DT.* NN.* PM.* VB.* VB.*,DTC NNC PMS VBS VBW,2,"520,24092"
+501376,NN.* CC.* NN.*_CC.* NN.* CC.*,NNC CCB NNC_CCP NNP CCT,2,"383,2201"
+501377,CC.* DT.* NN.* LM VB.*,CCB DTCP NNC LM VBTS,3,"391,3387,17551"
+501386,JJ.*_CC.* FW FW DT.* NN.*,JJD_CCP FW FW DTP NNP,2,"46726,46628"
+501387,FW DT.* NN.* CC.* DT.*,FW DTP NNP CCT DTCP,3,"46727,19141,39402"
+501389,RB.* CC.* VB.* DT.* DT.*,RBI CCR VBTF DTC DTCP,3,"35454,21145,4581"
+501390,DT.* DT.* NN.* CC.* FW,DTC DTCP NNC CCB FW,6,"35457,18145,9957,19818,40973,48674"
+501392,DT.* NN.* CC.* FW CC.*,DTP NNP CCB FW CCP,2,"35458,39907"
+501393,RB.* DT.* NN.* CC.* VB.*,RBI DTP NNP CCT VBAF,8,"35460,12190,17204,16945,4316,40732,26096,13376"
+501395,CC.* RB.* RB.* PR.* RB.*,CCR RBM RBD PRP RBW,2,"872,24188"
+501398,DT.* NN.* CC.* DT.* VB.*,DTC NNC CCB DTCP VBW,3,"882,18753,16384"
+501399,NN.* CC.* DT.* VB.* CC.*,NNC CCB DTCP VBW CCA,3,"883,3621,13269"
+501404,CC.* VB.* CC.* NN.* DT.*,CCA VBW CCB NNP DTC,11,"887,7752,21048,20858,41664,14450,38642,37259,23767,23434,22883"
+501407,VB.* CC.* NN.* DT.* FW,VBOF CCB NNP DTC FW,4,"888,34880,21049,38357"
+501435,CC.* VB.* DT.* DT.* VB.*,CCA VBW DTC DTCP VBAF,2,"18512,16188"
+501438,DT.* NN.*_CC.* JJ.* CC.* NN.*,DTC NNC_CCP JJD CCT NNC,2,"8479,7506"
+501439,NN.*_CC.* JJ.* CC.* NN.* CC.*,NNC_CCP JJD CCT NNC CCB,2,"8480,7507"
+501440,PM.* DT.* VB.* CC.* FW,PMSC DTC VBTR CCP FW,2,"47291,14007"
+501462,FW CC.* NN.* PM.* CC.*,FW CCT NNP PMSC CCA,5,"47308,34601,21794,16419,43128"
+501471,NN.* DT.* NN.* CC.* PR.*,NNC DTP NNP CCP PRS,3,"35348,30062,32982"
+501474,CC.* JJ.*_JJ.*_CC.* NN.* CC.* NN.*,CCB JJCS_JJD_CCP NNC CCP NNC,2,"35355,10653"
+501476,NN.* DT.* JJ.*_CC.* NN.*_CC.* NN.*,NNC DTP JJD_CCP NNP_CCP NNP,2,"35358,45188"
+501477,VB.* RB.* DT.* NN.* CC.*,VBTS RBI DTP NNP CCP,12,"22498,12189,11156,17203,16944,10140,9665,9567,9464,14687,38675,13651"
+501480,RB.* DT.* NN.* CC.* NN.*,RBI DTP NNP CCT NNC,4,"22499,10268,14688,37844"
+501481,DT.* NN.* CC.* NN.* CC.*,DTP NNP CCP NNC CCB,13,"22500,34046,20953,21126,43607,43373,41667,9948,27260,40319,40040,48922,48872"
+501483,NN.* CC.* NN.* CC.* FW,NNP CCP NNC CCB FW,3,"22501,22382,27261"
+501497,VB.* RB.* PR.* CC.* VB.*,VBTS RBD PRS CCA VBTR,2,"8403,8264"
+501498,RB.* PR.* CC.* VB.* CC.*,RBD PRS CCA VBTR CCB,3,"8404,8265,27292"
+501499,CC.* VB.* CC.* PR.* CC.*,CCA VBTR CCB PRI CCP,3,"8406,7995,45345"
+501501,LM VB.* CC.* VB.* CC.*,LM VBTF CCB VBW CCA,3,"2261,1297,3749"
+501503,CC.* VB.* DT.* JJ.*_CC.* NN.*,CCA VBOF DTC JJD_CCP NNP,4,"2263,44554,13572,13654"
+501506,CC.* NN.* CC.* VB.* DT.*,CCB NNPA CCP VBAF DTC,13,"18530,372,2587,18760,6407,20955,21128,20852,9789,26720,40049,1365,13652"
+501512,NN.* PM.* FW CC.* NN.*,NNCA PMS FW CCB NNPA,3,"46760,20295,41705"
+501519,NN.* CC.* JJ.*_CC.* FW FW,NNC CCB JJD_CCP FW FW,2,"34997,11305"
+501520,CC.* JJ.*_CC.* FW FW CC.*,CCB JJD_CCP FW FW CCT,2,"34998,11306"
+501525,NN.* CC.* DT.* NN.* CC.*,NNC CCP DTP NNP CCA,7,"35002,16781,32146,38364,48920,2371,23436"
+501526,NN.* PM.* RB.* VB.* PR.*,NNP PMS RBW VBTR PRP,4,"22374,21121,42723,42249"
+501531,JJ.* CC.* NN.* CC.* NN.*,JJC CCB NNP CCT NNC,3,"22381,21117,48326"
+501541,JJ.* DT.* NN.* CC.* DT.*,JJD DTC NNP CCB DTCP,3,"12525,43093,38660"
+501558,RB.* DT.* VB.* CC.* NN.*,RBI DTC VBTS CCB NNP,4,"46610,45430,20013,37947"
+501572,DT.* NN.*_CC.* VB.* CC.* PR.*,DTC NNC_CCP VBTR CCT PRSP,3,"30275,21781,3964"
+501576,RB.* DT.* NN.* CC.* FW,RBI DTC NNC CCB FW,2,"18397,9666"
+501587,CD.* NN.* CC.* VB.* CC.*,CDB NNC CCP VBTS CCB,2,"12006,48151"
+501588,VB.* CC.* NN.* CC.* FW,VBTS CCB NNP CCT FW,9,"12009,45402,42947,33000,26941,15169,26078,14714,13157"
+501591,NN.* CC.* JJ.*_CC.* NN.* NN.*,NNPA CCT JJD_CCP NNC NNPA,2,"12019,28809"
+501592,VB.* RB.* DT.* DT.* NN.*_CC.*,VBTS RBI DTC DTCP NNC_CCP,2,"8142,31028"
+501594,RB.* DT.* DT.* NN.*_CC.* VB.*,RBI DTC DTCP NNC_CCP VBS,2,"8143,31029"
+501595,CC.* DT.* DT.* NN.* CC.*,CCP DTC DTCP NNC CCB,3,"8148,5386,8752"
+501598,LM VB.* CC.* NN.* CC.*,LM VBTS CCR NNC CCT,7,"2198,3377,17553,3248,44321,5041,4576"
+501599,NN.* CC.* NN.* CC.* NN.*_CC.*,NNC CCB NNP CCT NNC_CCP,2,"2199,40320"
+501600,CC.* JJ.* DT.* DT.* NN.*,CCB JJD DTC DTCP NNC,3,"2206,27254,12898"
+501602,RB.*_CC.* VB.* CC.* DT.* FW,RBD_CCP VBOF CCP DTCP FW,2,"46327,11217"
+501603,VB.* DT.* NN.* NN.* CC.*,VBOF DTP NNPA NNP CCT,4,"34869,21738,1159,24907"
+501606,NN.* CC.* FW CC.* PR.*,NNC CCT FW CCP PRP,3,"34872,45403,31037"
+501608,RB.* VB.* CC.* NN.* DT.*,RBI VBTR CCT NNPA DTC,5,"34879,30059,21048,38356,22883"
+501614,NN.* CC.* DT.* NN.*_CC.* PR.*,NNC CCT DTCP NNC_CCP PRO,3,"30189,45464,44247"
+501616,JJ.*_CC.* NN.* DT.* VB.* CC.*,JJD_CCP NNC DTC VBTR CCB,2,"30195,30169"
+501617,NN.* DT.* VB.* CC.* DT.*,NNC DTC VBTR CCB DTCP,3,"30196,30170,4262"
+501618,DT.* VB.* CC.* DT.* NN.*,DTC VBTR CCB DTCP NNC,7,"30197,10017,4263,31004,15016,3627,3961"
+501635,PR.* CC.* DT.* NN.*_CC.* JJ.*,PRI CCP DTC NNC_CCP JJD,2,"18135,7998"
+501638,VB.* DT.* NN.* CC.* NN.*,VBOF DTC NNC CCB NNP,11,"18141,21789,34045,33625,29243,20952,16833,10970,26762,40318,40039"
+501640,NN.* CC.* FW CC.* JJ.*_CC.*,NNC CCB FW CCB JJD_CCP,2,"18146,17543"
+501642,CC.* FW CC.* JJ.*_CC.* NN.*,CCB FW CCB JJD_CCP NNP,2,"18147,17544"
+501651,JJ.* CC.* VB.* DT.* NN.*,JJC CCP VBTS DTC NNC,3,"8091,7883,34043"
+501653,CC.* CC.* JJ.*_CC.* FW CC.*,CCA CCB JJD_CCP FW CCP,2,"35048,15720"
+501661,NN.* CC.* DT.* NN.*_CC.* VB.*,NNC CCT DTCP NNC_CCP VBTR,7,"30415,7513,29160,4585,15674,4391,19143"
+501672,DT.* PR.*_CC.* PM.* FW CC.*,DTC PRSP_CCP PMS FW CCB,2,"46154,19955"
+501673,NN.* CC.* NN.* CC.* PR.*_CC.*,NNC CCB NNC CCT PRI_CCP,4,"46156,12556,5794,13072"
+501674,NN.* CC.* PR.*_CC.* NN.* FW,NNC CCT PRI_CCP NNP FW,3,"46158,33739,32238"
+501676,CC.* PR.*_CC.* NN.* FW CC.*,CCP PRI_CCP NNP FW CCB,2,"46159,32239"
+501677,CC.* FW CC.* DT.* NN.*,CCP FW CCB DTCP NNP,5,"34555,34692,34323,21055,38005"
+501679,FW CC.* DT.* NN.* LM,FW CCB DTCP NNP LM,2,"34556,7386"
+501688,VB.* PR.* CC.* NN.* CC.*,VBOF PRS CCB NNPA CCR,9,"34577,7381,19583,41057,26835,25932,25340,3129,47231"
+501696,PR.* CC.* NN.*_CC.* NN.* CC.*,PRS CCT NNP_CCP NNP CCA,3,"18054,4446,2768"
+501710,NN.* CC.* VB.*_VB.* PR.* RB.*,NNC CCR VBTF_VBOF PRP RBK,2,"12192,13576"
+501724,RB.* RB.* VB.* DT.* NN.*,RBF RBI VBTS DTC NNC,9,"7892,27502,40316,14390,1728,38680,38303,24740,12906"
+501725,RB.* VB.* DT.* NN.* CC.*,RBI VBTS DTC NNC CCR,18,"34994,7893,29754,16896,16828,41935,32143,31539,40317,40030,1729,38681,24741,14170,13892,12907,48192,12594"
+501726,CC.* CC.* VB.* CC.* DT.*,CCR CCT VBAF CCP DTC,2,"7897,11458"
+501732,JJ.*_CC.* NN.* PR.* DT.* NN.*,JJD_CCP NNC PRL DTP NNP,2,"34434,24892"
+501737,VB.* CC.* NN.* DT.* NN.*,VBW CCB NNP DTC NNC,10,"30060,45787,20859,41665,40236,37949,13566,37260,23768,23435"
+501744,CC.* RB.* DT.* VB.* CC.*,CCP RBI DTC VBTR CCT,3,"12144,29280,37946"
+501747,CC.* RB.* VB.* DT.* NN.*,CCP RBF VBTS DTC NNC,4,"7760,34331,15683,26045"
+501755,DT.* NN.* CC.* DT.* FW,DTC NNC CCB DTCP FW,2,"7769,23567"
+501756,NN.* CC.* DT.* FW CC.*,NNC CCB DTCP FW CCT,2,"7770,7383"
+501757,NN.* CC.* NN.* PR.*_CC.* DT.*,NNC CCB NNC PRS_CCP DTP,2,"46203,20151"
+501760,NN.* PR.*_CC.* DT.* NN.* NN.*,NNC PRS_CCP DTP NNP NNP,3,"46205,20153,39852"
+501766,DT.* JJ.*_CC.* NN.* DT.* NN.*,DTC JJN_CCP NNC DTP NNP,2,"45933,39361"
+501767,NN.* RB.* RB.* VB.* PR.*,NNP RBK RBQ VBAF PRS,2,"45939,1286"
+501773,DT.* NN.* LM RB.* VB.*_VB.*,DTP NNP LM RBF VBTR_VBAF,2,"34589,7388"
+501776,NN.* CC.* VB.* CC.* DT.*,NNC CCP VBAF CCT DTCP,7,"30149,7304,42859,28409,41993,4318,2381"
+501777,CC.* VB.* CC.* DT.* NN.*,CCP VBAF CCT DTCP NNC,22,"4212,30150,7127,7131,21768,6957,21476,42860,11459,33250,28397,28410,43945,27874,4876,27294,4319,41225,19146,25671,38231,13260"
+501779,VB.* CC.* DT.* NN.* CC.*,VBAF CCT DTCP NNC CCP,18,"30151,6958,42861,33251,20930,28398,28411,43946,16168,27875,4877,27295,4320,4264,9477,31005,1416,1712"
+501782,CC.* DT.* NN.* CC.* PR.*,CCA DTC NNC CCB PRI,4,"30152,6612,28187,38365"
+501784,DT.* NN.* CC.* PR.* CC.*,DTC NNC CCB PRI CCA,4,"30898,30153,2991,14301"
+501796,NN.* CC.* PR.*_CC.* NN.* NN.*,NNC CCB PRI_CCP NNP NNP,3,"7649,26838,790"
+501798,DT.* JJ.*_CC.* NN.* NN.* FW,DTPP JJD_CCP NNP NNP FW,2,"34687,17865"
+501801,NN.* PM.* JJ.*_CC.* FW CC.*,NNP PMS JJD_CCP FW CCB,2,"34690,21088"
+501804,DT.* DT.* NN.* CC.* NN.*,DTC DTCP NNC CCB NNP,5,"21842,21783,21125,31760,23497"
+501807,PR.* DT.* DT.* NN.* CC.*,PRL DTC DTCP NNC CCA,2,"12116,21177"
+501808,DT.* DT.* NN.* CC.* VB.*,DTC DTCP NNC CCA VBN,7,"12117,41991,8753,9536,1811,13935,36007"
+501809,CC.* DT.* NN.*_CC.* VB.* CC.*,CCB DTCP NNC_CCP VBTR CCT,12,"7514,7524,7129,7133,29161,27890,15675,4392,19144,3617,3869,3963"
+501813,JJ.* DT.* NN.* DT.* NN.*,JJD DTC NNC DTP NNP,2,"34598,13267"
+501814,NN.* DT.* NN.* CC.* DT.*,NNC DTP NNP CCT DTCP,3,"34600,16779,41613"
+501818,NN.* PM.* CC.* RB.* VB.*,NNPA PMS CCP RBW VBTS,4,"34603,34329,43933,39853"
+501827,NN.* DT.* NN.* CC.* CC.*,NNC DTP NNP CCA CCB,2,"34619,37951"
+501828,DT.* NN.* CC.* CC.* FW,DTP NNP CCR CCT FW,2,"34620,33174"
+501843,CC.* VB.* PR.* CC.* FW,CCR VBS PRP CCP FW,2,"34320,24131"
+501862,JJ.*_CC.* NN.* CC.* NN.* CC.*,JJD_CCP NNC CCT NNPA CCP,4,"11572,42339,16221,39168"
+501864,NN.* CC.* NN.* CC.* VB.*,NNC CCT NNPA CCP VBW,13,"47200,11573,45398,21178,20954,21127,20851,43374,16222,40041,15020,48923,37937"
+501865,DT.* NN.* CC.* DT.* JJ.*,DTC NNC CCB DTCP JJD,5,"7285,33131,39403,2864,38661"
+501869,CC.* VB.* CC.* DT.* FW,CCP VBTR CCB DTCP FW,9,"46327,7305,33555,11217,41994,2756,4078,3751,47000"
+501871,VB.* CC.* DT.* FW CC.*,VBTF CCT DTCP FW CCA,3,"7306,40338,2757"
+501886,DT.* NN.* DT.* VB.* CC.*,DTP NNP DTC VBTR CCP,4,"34241,41011,15164,24310"
+501888,NN.* DT.* VB.* CC.* FW,NNP DTC VBTR CCP FW,2,"34242,10559"
+501901,NN.* PM.* RB.* JJ.* CC.*,NNC PMS RBF JJD CCT,3,"34247,32055,38544"
+501903,NN.* DT.* NN.* CC.* JJ.*,NNC DTC NNPA CCT JJD,2,"34253,19238"
+501904,DT.* NN.* CC.* JJ.* DT.*,DTC NNPA CCT JJD DTP,3,"34254,3384,27252"
+501906,NN.* CC.* JJ.* DT.* NN.*,NNPA CCT JJD DTP NNP,4,"34255,45454,3385,37194"
+501909,NN.* CC.* CC.* NN.*_CC.* JJ.*,NNC CCA CCR NNC_CCP JJCC,2,"34259,2039"
+501934,VB.* CC.* DT.* NN.*_CC.* VB.*,VBTS CCP DTC NNC_CCP VBTF,5,"7128,7132,38232,3616,3962"
+501935,NN.* DT.* JJ.*_CC.* NN.* CC.*,NNC DTC JJD_CCP NNC CCT,2,"7137,39237"
+501936,DT.* JJ.*_CC.* NN.* CC.* NN.*,DTC JJD_CCP NNC CCT NNC,5,"7138,44556,16220,39406,13953"
+501939,VB.* DT.* JJ.*_CC.* NN.* NN.*,VBOF DTP JJD_CCP NNP NNP,2,"45453,13066"
+501941,NN.* NN.* CC.* RB.* RB.*,NNC NNPA CCP RBT RBF,2,"45458,42851"
+501943,RB.* RB.* VB.* DT.* FW,RBK RBQ VBRF DTP FW,2,"45461,45483"
+501944,NN.* NN.* CC.* DT.* NN.*_CC.*,NNP NNP CCT DTCP NNC_CCP,2,"45463,15997"
+501946,DT.* NN.*_CC.* PR.*_CC.* NN.*_CC.* VB.*,DTC NNC_CCP PRQ_CCP NNC_CCP VBAF,2,"45466,38225"
+501948,CC.* VB.* RB.* VB.* DT.*,CCA VBS RBW VBOF DTC,3,"29752,42948,25400"
+501949,VB.* RB.* VB.* DT.* NN.*,VBS RBM VBTS DTC NNC,3,"29753,42949,15770"
+501955,NN.* NN.* DT.* JJ.*_CC.* NN.*,NNC NNC DTP JJD_CCP NNP,2,"17863,36240"
+501956,NN.* DT.* JJ.*_CC.* NN.* NN.*,NNC DTP JJD_CCP NNP NNP,5,"35358,17864,45188,37038,36241"
+501959,CC.* NN.*_CC.* VB.* CC.* NN.*,CCB NNC_CCP VBOF CCB NNPA,5,"30281,7051,5717,41677,23433"
+501966,NN.* CC.* NN.* CC.* JJ.*_CC.*,NNP CCT NNC CCP JJN_CCP,3,"34047,4870,9949"
+501967,RB.* CC.* DT.* NN.* CC.*,RBI CCT DTCP NNC CCB,7,"29507,6341,5630,37590,48870,3862,37180"
+501969,CC.* DT.* NN.* CC.* NN.*,CCB DTCP NNC CCT NNPA,13,"656,21789,29508,3379,16782,20256,27797,9947,4570,48921,48871,48797,23437"
+501970,RB.* CC.* VB.* CC.* DT.*,RBF CCP VBTF CCB DTC,6,"21767,6956,21475,33249,2755,46999"
+501973,FW RB.* CC.* DT.* NN.*,FW RBW CCP DTP NNP,3,"17985,38344,37589"
+501978,NN.* CC.* VB.* PR.* CC.*,NNC CCR VBTF PRP CCB,5,"17988,16224,19581,40734,2765"
+501987,NN.* RB.* RB.* VB.* DT.*,NNP RBK RBQ VBRF DTP,7,"45482,5975,10923,11169,10512,14804,1727"
+502003,NN.* CC.* VB.* CC.* JJ.*,NNC CCP VBOF CCB JJN,7,"29361,16965,5713,32296,27962,43579,14852"
+502004,VB.* CC.* DT.* NN.* DT.*,VBTF CCB DTCP NNC DTC,3,"21477,41990,10018"
+502006,PR.* CC.* DT.* NN.* CC.*,PRI CCR DTC NNC CCB,4,"3382,39857,183,48796"
+502013,LM VB.* RB.* CC.* DT.*,LM VBTR RBF CCA DTC,3,"29505,6826,10632"
+502015,NN.* CC.* NN.* CC.* NN.*,NNP CCT NNPA CCR NNC,6,"2199,45392,32776,41668,41669,40320"
+502017,PR.* DT.* VB.* CC.* NN.*,PRP DTC VBTR CCT NNP,2,"45397,37228"
+502033,FW CC.* VB.* CC.* DT.*,FW CCP VBOF CCB DTCP,2,"17625,25670"
+502035,PR.* DT.* NN.* CC.* PR.*,PRP DTC NNC CCB PRI,5,"515,33737,6738,44275,14300"
+502045,NN.* NN.* CC.* DT.* VB.*_CC.*,NNP NNP CCT DTCP VBTR_CCP,2,"45189,9708"
+502047,NN.* CC.* DT.* VB.*_CC.* NN.*,NNC CCB DTCP VBRF_CCP NNPA,4,"45190,21153,16385,9709"
+502048,DT.* VB.* DT.* NN.* CC.*,DTC VBOF DTP NNP CCT,2,"33624,23565"
+502053,NN.* CC.* RB.* DT.* VB.*,NNC CCP RBI DTC VBS,2,"29279,37945"
+502068,RB.* DT.* NN.* RB.* NN.*,RBR DTP NNP RBL NNPA,2,"17422,24727"
+502094,VB.* PR.* DT.* DT.* NN.*,VBTS PRS DTC DTCP NNC,3,"21176,5507,4667"
+502096,NN.* CC.* NN.* CC.* VB.*_CC.*,NNC CCB NNC CCT VBAF_CCP,3,"21178,40041,37937"
+502099,NN.* CC.* VB.* DT.* VB.*,NNC CCP VBOF DTC VBTS,2,"6408,1366"
+502100,CC.* VB.* DT.* VB.* CC.*,CCP VBOF DTC VBTS CCB,4,"6409,16195,26683,1367"
+502101,VB.* DT.* VB.* CC.* DT.*,VBOF DTC VBTS CCB DTCP,2,"6410,15015"
+502102,PR.* DT.* NN.* CC.* NN.*,PRS DTC NNC CCT NNP,5,"33548,20256,43606,2059,47907"
+502103,DT.* NN.* CC.* NN.* PM.*,DTC NNC CCT NNP PMS,7,"33549,21085,40309,14409,48626,36444,23227"
+502108,NN.* CC.* VB.* CC.* CD.*,NNC CCP VBTR CCT CDB,3,"33560,39111,48152"
+502120,CC.* VB.* DT.* FW CC.*,CCA VBTR DTC FW CCB,4,"17207,20854,32062,37989"
+502122,DT.* JJ.*_JJ.*_CC.* NN.* CC.* RB.*,DTC JJCS_JJD_CCP NNC CCP RBF,2,"45263,39809"
+502130,DT.* FW CC.* VB.* CC.*,DTC FW CCP VBTS CCB,4,"29158,20856,25669,36236"
+502133,FW CC.* VB.* CC.* NN.*,FW CCP VBTS CCB NNPA,6,"29159,20857,41663,40976,25999,36237"
+502154,RB.* VB.* DT.* DT.* NN.*,RBM VBOF DTC DTCP NNC,3,"21123,27358,40971"
+502161,NN.* CC.* RB.* VB.* CC.*,NNC CCP RBM VBOF CCB,6,"6222,5807,27892,10355,1033,3520"
+502165,JJ.* CC.* DT.* NN.* CC.*,JJC CCB DTCP NNC CCP,3,"44773,4569,42937"
+502173,CC.* DT.* NN.* CC.* VB.*,CCB DTCP NNC CCP VBTS,16,"33252,10928,43947,19585,42938,8861,1602,1713,2379,48853,37954,3863,37181,4086,47720,47728"
+502176,RB.*_CC.* VB.* CC.* NN.* DT.*,RBD_CCP VBTR CCB NNP DTC,2,"21048,22883"
+502178,NN.* CC.* VB.* CC.* JJ.*_CC.*,NNP CCT VBW CCT JJN_CCP,4,"16965,5713,32296,43579"
+502180,CC.* VB.* CC.* JJ.*_CC.* NN.*_CC.*,CCP VBTS CCT JJC_CCP NNC_CCP,2,"16966,5714"
+502181,CC.* CC.* DT.* DT.* NN.*,CCR CCT DTC DTCP NNC,2,"10840,8751"
+502189,RB.* RB.* PR.* VB.* DT.*,RBF RBI PRP VBTF DTC,3,"44859,5382,39454"
+502190,VB.* DT.* PR.*_CC.* FW FW,VBTF DTC PRSP_CCP FW FW,2,"44862,10515"
+502192,VB.* JJ.* DT.* NN.* CC.*,VBTS JJD DTC NNC CCR,3,"33172,4881,43092"
+502198,FW DT.* NN.* CC.* NN.*,FW DTP NNP CCT NNPA,3,"20932,16932,37581"
+502202,CC.* NN.* RB.* RB.* JJ.*,CCB NNP RBK RBQ JJD,2,"6122,25936"
+502203,CC.* DT.* NN.*_CC.* VB.* LM,CCA DTCP NNC_CCP VBS LM,2,"6140,38233"
+502207,RB.* RB.* RB.* DT.* NN.*,RBF RBI RBR DTP NNP,3,"35053,32978,36116"
+502208,RB.* DT.* NN.* DT.* NN.*,RBR DTP NNP DTC NNC,2,"32980,16891"
+502211,JJ.*_CC.* NN.* NN.* FW CC.*,JJD_CCP NNC NNPA FW CCP,2,"28811,36207"
+502217,NN.* CC.* VB.* CC.* VB.*,NNC CCA VBTS CCP VBOF,5,"20929,15782,1510,1813,12549"
+502225,VB.* RB.* CC.* DT.* PR.*,VBOF RBI CCB DTCP PRO,2,"10633,13896"
+502228,LM DT.* NN.*_CC.* VB.* CC.*,LM DTC NNC_CCP VBTS CCT,2,"5982,4076"
+502233,NN.*_CC.* VB.* CC.* VB.* CC.*,NNC_CCP VBW CCA VBAF CCT,2,"32997,3065"
+502239,JJ.* CC.* DT.* NN.* PR.*,JJN CCP DTC NNC PRS,2,"33011,14510"
+502242,NN.* PM.* CC.* CC.* RB.*,NNC PMS CCA CCR RBT,2,"28779,39125"
+502244,VB.* DT.* NN.* CC.* PR.*,VBTS DTC NNC CCT PRI,5,"21136,40031,2990,37459,36118"
+502247,CC.* PR.* RB.*_CC.* FW FW,CCA PRI RBI_CCP FW FW,2,"21139,31040"
+502248,PR.* RB.*_CC.* FW FW CC.*,PRI RBI_CCP FW FW CCB,2,"21140,31041"
+502250,VB.* RB.* DT.* NN.* DT.*,VBTF RBI DTC NNC DTP,2,"16890,23495"
+502251,PR.* RB.* VB.* DT.* NN.*,PRSP RBI VBTS DTP NNP,4,"16895,40029,26045,48004"
+502259,JJ.* VB.* DT.* NN.* CC.*,JJCC VBW DTC NNC CCB,2,"9383,4869"
+502261,PM.* CC.* VB.* CC.* FW,PMSC CCA VBW CCT FW,3,"44377,44171,20274"
+502278,RB.* DT.* JJ.*_CC.* NN.* NN.*,RBI DTP JJD_CCP NNP NNP,2,"16873,15236"
+502280,DT.* JJ.*_CC.* NN.* NN.* NN.*,DTP JJD_CCP NNC NNP NNP,4,"16874,42281,38541,36242"
+502283,NN.* DT.* NN.* CC.* FW,NNC DTP NNP CCB FW,5,"16880,40237,38013,37942,47224"
+502287,NN.* CC.* RB.* PR.* PR.*,NNC CCA RBF PRS PRQ,2,"44310,13534"
+502288,VB.* DT.* NN.* CC.* FW,VBTF DTC NNC CCT FW,3,"28576,27953,31540"
+502293,VB.* DT.* NN.* CC.* VB.*,VBTS DTP NNP CCP VBOF,6,"16829,14171,13390,13380,37242,12595"
+502295,NN.* CC.* NN.* RB.* RB.*,NNC CCB NNP RBK RBQ,3,"10921,15531,25935"
+502296,CC.* NN.* RB.* RB.* VB.*,CCB NNP RBK RBQ VBOL,6,"45481,5974,10922,11168,14803,23731"
+502298,RB.* RB.* VB.* DT.* PR.*_CC.*,RBK RBQ VBOL DTC PRSP_CCP,2,"10924,10513"
+502299,VB.* DT.* PR.*_CC.* DT.* NN.*,VBOL DTC PRSP_CCP DTCP NNC,3,"12014,10926,42245"
+502300,DT.* PR.*_CC.* DT.* NN.* CC.*,DTC PRSP_CCP DTCP NNC CCR,2,"10927,13531"
+502307,CC.* RB.* RB.* VB.* CC.*,CCA RBM RBF VBW CCB,2,"5800,25180"
+502310,JJ.* DT.* NN.* CC.* RB.*_CC.*,JJD DTC NNC CCT RBT_CCP,2,"5805,4882"
+502311,DT.* NN.* CC.* RB.*_CC.* VB.*,DTC NNC CCP RBD_CCP VBOF,3,"5806,1032,13569"
+502313,NN.* CC.* RB.*_CC.* VB.* CC.*,NNC CCP RBD_CCP VBOF CCB,2,"5807,1033"
+502315,CC.* RB.*_CC.* VB.* CC.* NN.*,CCR RBD_CCP VBAF CCT NNP,3,"5808,42192,41080"
+502332,CC.* DT.* NN.* CC.* FW,CCP DTC NNC CCA FW,2,"28399,16169"
+502334,RB.* CC.* FW DT.* NN.*,RBR CCT FW DTP NNP,2,"20436,41587"
+502340,NN.* CC.* NN.* CC.* DT.*,NNP CCA NNC CCB DTCP,4,"20441,27752,39169,38670"
+502342,RB.* NN.* DT.* NN.* CC.*,RBL NNPA DTC NNC CCT,2,"16778,40307"
+502343,DT.* NN.* CC.* DT.* NN.*,DTP NNP CCT DTCP NNC,5,"16780,32145,27297,4584,19142"
+502349,PR.*_CC.* FW FW CC.* NN.*,PRI_CCP FW FW CCT NNP,2,"32614,48810"
+502356,RB.* CC.* VB.* DT.* NN.*,RBF CCP VBTR DTC NNC,6,"32621,26607,26760,26083,37457,23714"
+502357,DT.* NN.* PM.* FW CC.*,DTC NNC PMS FW CCB,2,"20294,25674"
+502362,NN.* CC.* PR.* CC.* RB.*,NNC CCB PRI CCA RBF,3,"3251,15680,2994"
+502374,VB.* RB.* CC.* DT.* NN.*,VBTS RBI CCB DTCP NNC,4,"29506,11167,5629,3861"
+502381,DT.* VB.* CC.* JJ.* CC.*,DTC VBTR CCP JJD CCT,2,"5640,26685"
+502389,RB.* VB.* PR.* DT.* FW,RBW VBTS PRP DTC FW,2,"32795,9518"
+502394,CC.* DT.* NN.* CC.* PR.*_CC.*,CCB DTCP NNP CCT PRSP_CCP,2,"28187,38365"
+502416,RB.* PR.*_CC.* VB.* DT.* DT.*,RBF PRP_CCP VBOF DTC DTCP,2,"28159,27729"
+502417,PR.*_CC.* VB.* DT.* DT.* NN.*,PRP_CCP VBOF DTC DTCP NNC,2,"28160,27730"
+502424,NN.* PM.* LM VB.* CC.*,NNC PMS LM VBAF CCB,2,"43938,4094"
+502430,DT.* JJ.*_CC.* NN.*_CC.* NN.* NN.*,DTP JJD_CCP NNC_CCP NNP NNP,2,"42281,38541"
+502431,NN.* DT.* VB.* CC.* VB.*,NNP DTC VBTS CCP VBW,2,"42284,24311"
+502436,RB.* DT.* PR.*_CC.* NN.* CC.*,RBI DTC PRI_CCP NNP CCP,4,"32235,32044,24468,36947"
+502438,CC.* JJ.*_CC.* FW CC.* NN.*,CCB JJD_CCP FW CCB NNPA,2,"32242,9952"
+502450,NN.* PR.* CC.* DT.* NN.*,NNC PRS CCU DTP NNP,5,"18134,10974,20278,39856,37928"
+502453,CC.* DT.* NN.* DT.* NN.*,CCA DTCP NNC DTP NNP,3,"10976,10019,26828"
+502464,VB.* DT.* NN.* CC.* JJ.*_CC.*,VBAF DTP NNP CCB JJD_CCP,4,"34995,32353,19284,37245"
+502465,DT.* NN.* CC.* JJ.*_CC.* NN.*,DTP NNP CCB JJD_CCP NNC,2,"32354,9569"
+502466,JJ.*_CC.* NN.* CC.* FW FW,JJD_CCP NNC CCT FW FW,2,"32357,39239"
+502468,VB.* DT.* FW CC.* NN.*,VBOF DTC FW CCB NNP,5,"20264,32063,39172,37990,48011"
+502471,CC.* NN.* CC.* NN.* DT.*,CCB NNP CCA NNC DTP,4,"35356,10562,15605,15614"
+502478,RB.* DT.* VB.* DT.* NN.*,RBI DTC VBTS DTP NNP,3,"32317,24899,24351"
+502481,VB.* PR.*_CC.* VB.* CC.* PR.*_CC.*,VBS PRO_CCP VBW CCT PRSP_CCP,2,"5376,40771"
+502484,RB.* PR.* VB.* DT.* NN.*,RBQ PRS VBOF DTC NNC,4,"35425,28783,5383,13388"
+502485,PR.* VB.* DT.* NN.* CC.*,PRS VBOF DTC NNC CCB,6,"21788,28784,16382,5384,14213,13389"
+502491,CC.* FW FW DT.* JJ.*_CC.*,CCB FW FW DTP JJD_CCP,2,"16170,23639"
+502495,NN.* CC.* VB.* CC.* PR.*_CC.*,NNP CCR VBTF CCR PRQ_CCP,4,"47202,11496,40752,194"
+502499,VB.* DT.* NN.* CC.* RB.*,VBTS DTC NNC CCA RBR,3,"41936,15387,19125"
+502505,DT.* NN.* PR.* CC.* VB.*,DTC NNC PRP CCP VBOF,2,"43506,37584"
+502519,DT.* NN.* CC.* NN.* FW,DTC NNC CCB NNP FW,4,"27798,15687,26763,23438"
+502523,JJ.* RB.* DT.* NN.* CC.*,JJD RBI DTP NNP CCT,2,"10267,23809"
+502529,NN.* LM VB.* CC.* VB.*,NNP LM VBTF CCT VBW,2,"15934,1296"
+502541,RB.* LM FW CC.* NN.*,RBI LM FW CCB NNP,2,"43368,23637"
+502544,VB.* CC.* FW CC.* NN.*,VBTS CCP FW CCT NNPA,2,"43377,25462"
+502551,NN.* CC.* DT.* JJ.*_CC.* NN.*,NNC CCB DTCP JJD_CCP NNP,3,"16218,39404,3134"
+502552,CC.* DT.* JJ.*_CC.* NN.* CC.*,CCB DTCP JJD_CCP NNP CCT,4,"16219,18902,18769,39405"
+502554,NN.* RB.* DT.* NN.* CC.*,NNCA RBI DTCP NNC CCP,2,"10132,26095"
+502559,VB.* CC.* JJ.*_CC.* NN.* CC.*,VBTS CCB JJD_CCP NNP CCP,3,"3390,43581,13958"
+502561,CC.* RB.* PR.* VB.* CC.*,CCP RBF PRS VBW CCR,3,"28772,41604,13962"
+502565,FW CC.* NN.* DT.* NN.*,FW CCB NNP DTC NNC,3,"32351,19877,38012"
+502577,NN.* PM.* VB.* PR.* PM.*,NNC PMS VBW PRP PMQ,2,"31738,26087"
+502580,NN.* CC.* DT.* NN.* FW,NNC CCT DTCP NNPA FW,3,"41596,26425,39240"
+502586,RB.* DT.* FW CC.* NN.*,RBI DTC FW CCB NNP,3,"19575,25396,25159"
+502594,NN.* PM.* RB.* CC.* VB.*,NNC PMS RBW CCP VBW,2,"41672,23712"
+502597,RB.* VB.* DT.* NN.* DT.*,RBM VBTS DTC NNC DTP,2,"27503,15684"
+502598,NN.* LM VB.* RB.* VB.*,NNP LM VBTS RBW VBW,3,"15768,1497,13982"
+502599,VB.*_VB.* CC.* DT.* NN.* CC.*,VBTR_VBAF CCP DTC NNC CCB,2,"27295,4264"
+502602,CC.* VB.* CC.* VB.* DT.*,CCP VBTR CCB VBW DTC,4,"16194,15783,1511,38227"
+502604,VB.* CC.* VB.* DT.* NN.*,VBW CCA VBOF DTC NNC,4,"34238,15784,1512,38228"
+502605,NN.* DT.* DT.* NN.* CC.*,NNPA DTC DTCP NNC CCB,3,"9956,19817,23265"
+502606,DT.* NN.* CC.* DT.* NN.*_CC.*,DTC NNC CCB DTCP NNC_CCP,2,"4584,19142"
+502619,NN.* CC.* JJ.* DT.* DT.*,NNP CCA JJD DTC DTCP,2,"27253,12897"
+502629,CC.* VB.* CC.* PR.*_CC.* FW,CCA VBTS CCB PRI_CCP FW,3,"20304,27277,40753"
+502636,DT.* NN.* CC.* PM.* FW,DTC NNC CCT PMS FW,2,"41054,23770"
+502640,CC.* DT.* NN.* CC.* RB.*,CCB DTCP NNC CCT RBL,5,"4321,4265,2874,13532,3518"
+502646,NN.* DT.* NN.* CC.* NN.*,NNC DTP NNP CCA NNPA,2,"27183,40308"
+502647,DT.* VB.*_VB.* CC.* DT.* NN.*,DTC VBTR_VBAF CCT DTCP NNC,2,"4263,3627"
+502653,RB.* RB.* VB.* CC.* DT.*,RBK RBQ VBW CCP DTC,3,"46326,9703,25181"
+502656,NN.* PM.* RB.* PR.* CC.*,NNC PMS RBF PRS CCP,2,"31344,40923"
+502657,FW CC.* CC.* DT.* NN.*,FW CCT CCB DTCP NNP,2,"19343,19247"
+502671,CC.* CC.* DT.* NN.* CC.*,CCA CCB DTCP NNP CCP,2,"19248,37953"
+502672,DT.* NN.* CC.* DT.* PR.*_CC.*,DTP NNP CCA DTC PRSP_CCP,2,"40887,24778"
+502673,NN.* CC.* DT.* PR.*_CC.* FW,NNP CCA DTC PRSP_CCP FW,2,"40888,24779"
+502674,CC.* DT.* PR.*_CC.* FW FW,CCA DTC PRSP_CCP FW FW,2,"40889,24780"
+502677,RB.* DT.* DT.* NN.* CC.*,RBI DTC DTCP NNC CCP,3,"9535,1030,13934"
+502681,NN.*_CC.* VB.* RB.*_CC.* VB.* CC.*,NNC_CCP VBS RBI_CCP VBW CCA,2,"31032,39410"
+502690,NN.* FW CC.* VB.* CC.*,NNC FW CCP VBTR CCB,2,"30930,25998"
+502701,CC.* NN.* CC.* PM.* FW,CCB NNPA CCP PMS FW,4,"46758,26688,24181,36252"
+502704,DT.* JJ.*_CC.* NN.* CC.* FW,DTC JJD_CCP NNC CCB FW,4,"18903,18770,39238,13163"
+502714,RB.*_CC.* VB.* DT.* NN.* CC.*,RBT_CCP VBAF DTP NNP CCT,2,"40317,40030"
+502724,VB.* DT.* NN.* CC.* PR.*_CC.*,VBOF DTC NNC CCB PRSP_CCP,3,"40031,37459,36118"
+502729,DT.* NN.*_CC.* NN.* PM.* RB.*,DTP NNP_CCP NNP PMS RBF,2,"39802,2045"
+502731,NN.* CC.* RB.* PR.* VB.*,NNC CCB RBF PRS VBW,2,"26001,13961"
+502740,DT.* NN.* CC.* DT.* JJ.*_CC.*,DTP NNP CCB DTCP JJD_CCP,2,"39403,2864"
+502742,VB.* RB.*_CC.* VB.* CC.* NN.*,VBS RBI_CCP VBW CCT NNP,2,"39411,4092"
+502747,NN.* PM.* JJ.* CC.* DT.*,NNC PMS JJD CCP DTP,3,"25867,1881,48249"
+502763,JJ.*_CC.* NN.* CC.* VB.* CC.*,JJD_CCP NNC CCR VBTR CCT,2,"39110,37250"
+502769,NN.* CC.* VB.*_VB.* CC.* VB.*,NNC CCP VBTR_VBAF CCT VBTR,2,"1813,12549"
+502779,PR.* DT.* FW CC.* PR.*_CC.*,PRP DTC FW CCB PRI_CCP,2,"25519,38133"
+502780,NN.* NN.* CC.* VB.* RB.*,NNP NNPA CCA VBS RBW,3,"25398,38348,13382"
+502790,NN.* PM.* VB.* CC.* FW,NNC PMS VBAF CCT FW,3,"25162,48207,36066"
+502795,DT.* NN.* RB.* NN.* CC.*,DTC NNP RBW NNPA CCA,3,"24728,37236,23147"
+502798,LM RB.* VB.* DT.* NN.*,LM RBD VBOF DTC NNC,2,"14169,24361"
+502799,RB.* RB.* DT.* VB.* CC.*,RBD RBW DTC VBOF CCA,2,"24776,13259"
+502801,CC.* NN.* CC.* VB.* PR.*_CC.*,CCB NNP CCP VBTR PRP_CCP,2,"2030,48924"
+502812,RB.* CC.* RB.* PR.* VB.*,RBF CCP RBI PRS VBOF,2,"37340,13386"
+502824,CC.* DT.* NN.*_CC.* VB.*_VB.* CC.*,CCB DTCP NNC_CCP VBTR_VBAF CCB,2,"3617,3869"
+502828,DT.* DT.* NN.* RB.* CC.*,DTC DTCP NNC RBW CCT,2,"24179,46996"
+502830,LM VB.* CC.* JJ.*_CC.* NN.*,LM VBTF CCP JJC_CCP NNP,2,"4096,48332"
+502833,CC.* VB.*_VB.* CC.* DT.* FW,CCP VBTR_VBAF CCT DTCP FW,2,"3751,47000"
+502834,VB.*_VB.* CC.* DT.* FW FW,VBTR_VBAF CCB DTCP FW FW,2,"3752,47001"
