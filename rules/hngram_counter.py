@@ -203,9 +203,9 @@ def process_mixed_pos_patterns(generalized_patterns_df, clusters_df, ngrams_df):
 
 
 
-generalized_patterns_file = "rules/database/Generalized/POSTComparison/6grams.csv"
-clusters_file = "rules/database/POS/6grams.csv"
-ngrams_file = "rules/database/ngram.csv"
+generalized_patterns_file = "rules/database/Generalized/POSTComparison/4grams.csv"
+clusters_file = "rules/database/POS/4grams.csv"
+ngrams_file = "rules/database/hng_ngrams.csv"
 
 logging.info("Loading input files.")
 generalized_patterns_df = pd.read_csv(generalized_patterns_file)

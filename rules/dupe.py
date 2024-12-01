@@ -1,8 +1,8 @@
 import pandas as pd
 
 # File paths
-file_path = 'rules/database/Generalized/POSTComparison/6grams.csv'
-freq_file = 'rules/database/POS/6grams.csv'
+file_path = 'rules/database/Generalized/POSTComparison/4grams.csv'
+freq_file = 'rules/database/POS/4grams.csv'
 
 # Load the datasets
 df_patterns = pd.read_csv(file_path)

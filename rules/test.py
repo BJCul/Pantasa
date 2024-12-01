@@ -7,17 +7,17 @@ def get_latest_pattern_id(file_path):
             pattern_ids = [
                 int(row['Pattern_ID']) 
                 for row in reader 
-                if row['Pattern_ID'].isdigit() and len(row['Pattern_ID']) == 6 and row['Pattern_ID'].startswith('0')
+                if row['Pattern_ID'].isdigit() and len(row['Pattern_ID']) == 6 and row['Pattern_ID'].startswith('4')
             ]
-            return max(pattern_ids, default=600000)  # Starting from a default base for safety
+            return max(pattern_ids, default=400000)  # Starting from a default base for safety
     except FileNotFoundError:
-        return 600000  # Default starting point if file not found
+        return 400000  # Default starting point if file not found
     
 def generate_pattern_id(counter):
     return f"{counter:06d}"
 
-pattern_csv = 'rules/database/POS/6grams.csv'
-output_csv = 'rules/database/Generalized/POSTComparison/6grams.csv'
+pattern_csv = 'rules/database/POS/4grams.csv'
+output_csv = 'rules/database/Generalized/POSTComparison/4grams.csv'
 
 latest_pattern_id = get_latest_pattern_id(pattern_csv)
 print(f"Current latest pattern id: {latest_pattern_id}")
@@ -29,7 +29,7 @@ with open(output_csv, 'r', encoding='utf-8') as file:
     updated_rows = []
     
     for row in reader:
-        if not (row['Pattern_ID'].isdigit() and len(row['Pattern_ID']) == 6):
+        if (row['Pattern_ID'].isdigit() and not len(row['Pattern_ID']) == 6):
             row['Pattern_ID'] = generate_pattern_id(pattern_counter)
             pattern_counter += 1
         elif (row['Pattern_ID'].isdigit() and len(row['Pattern_ID']) == 6 and row['Pattern_ID'].startswith('0')):

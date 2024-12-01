@@ -1,4 +1,5 @@
 import csv
+csv.field_size_limit(10**7)  
 from transformers import AutoTokenizer, AutoModelForMaskedLM
 import torch
 from torch.nn.functional import cosine_similarity
@@ -339,8 +340,8 @@ def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_fi
 frequency_dict = load_frequency_dict('rules/database/word_frequency.csv')
 
 # Call the parallelized version
-for n in range(2, 5):
-    ngram_list_file = 'rules/database/tngram.csv'
+for n in range(2, 3):
+    ngram_list_file = 'rules/database/hng_ngrams.csv'
     pos_patterns_file = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
     id_array_file = f'rules/database/POS/{n}grams.csv'
     output_file = f'rules/database/Generalized/LexemeComparison/{n}grams.csv'
