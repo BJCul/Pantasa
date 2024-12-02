@@ -341,7 +341,7 @@ frequency_dict = load_frequency_dict('rules/database/word_frequency.csv')
 
 # Call the parallelized version
 for n in range(2, 3):
-    ngram_list_file = 'rules/database/hng_ngrams.csv'
+    ngram_list_file = 'rules/database/ngram.csv'
     pos_patterns_file = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
     id_array_file = f'rules/database/POS/{n}grams.csv'
     output_file = f'rules/database/Generalized/LexemeComparison/{n}grams.csv'

@@ -1,0 +1,32 @@
+CC.* DT.*::FOCAP at NUJP na araw-araw::203897
+DT.* NN.*::laban sa censorship at pambubusal::203899
+CC.* FW::ang puwersa::203900
+RB.* CC.*::ang puwersa ng katotohanan.::203901
+PM.* FW::pinakamalaking fishing fleet sa buong::203902
+FW PM.*::pamamahayag sa::203903
+JJ.*_CC.* NN.*::man kaming mga kabaro na napatahimik o::203904
+PM.* JJ.*::sino nga pala ang isa sa::203905
+RB.* DT.*::‘ yan ay ang::203906
+DTCP NNC::namin ang::203907
+RBR CCT::"man baliktarin ang kuwento,"::203908
+DTC NNC::at ‘ yan ay ang puwersa ng::203909
+PMS FW::pinakamalaking fishing fleet sa buong::203910
+CCT FW::ang puwersa::203911
+FW PMS::pamamahayag sa::203912
+CCP DTC::at 90::203913
+RBI DTP::"Tama na, Lord.”"::203914
+PMS JJD::inyo: iba ang::203915
+JJN_CCP NNP::at lumigaya sa labas ng gym —::203916
+CCT DT.*::FOCAP at NUJP na araw-araw::203917
+DTCP NN.*::laban sa censorship at pambubusal::203919
+CC.* NNC::inyong lalamunan habang dinedeliver namin ang::203920
+CCT NN.*::inyong lalamunan habang dinedeliver namin ang::203921
+JJD_CCP NN.*::man kaming mga kabaro na napatahimik o::203922
+JJN_CCP NN.*::man kaming mga kabaro na napatahimik o::203923
+JJC_CCP NN.*::man kaming mga kabaro na napatahimik o::203924
+JJCS_CCP NN.*::man kaming mga kabaro na napatahimik o::203925
+PMC JJ.*::sino nga pala ang isa sa::203926
+PMS JJ.*::sino nga pala ang isa sa::203927
+PMP JJ.*::sino nga pala ang isa sa::203928
+JJ.* NNC::man kaming mga kabaro na napatahimik o::203929
+JJ.* NNP::man kaming mga kabaro na napatahimik o::203930
