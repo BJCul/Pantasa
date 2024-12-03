@@ -35,10 +35,10 @@ import tempfile
 import subprocess
 import os
 import logging
-from app.utils import log_message
-from app.spell_checker import load_dictionary, spell_check_sentence
-from app.morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_multiple_words
-from app.predefined_rules.rule_main import  apply_predefined_rules, apply_predefined_rules_post, apply_predefined_rules_pre
+from .utils import log_message
+from .spell_checker import load_dictionary, spell_check_sentence
+from .morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_multiple_words
+from .predefined_rules.rule_main import  apply_predefined_rules, apply_predefined_rules_post, apply_predefined_rules_pre
 
 # Initialize the Morphinas Stemmer
 stemmer = initialize_stemmer()
