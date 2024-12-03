@@ -2,15 +2,39 @@ import pandas as pd
 
 from .pantasa_checker import pantasa_checker
 
+def transform_text_to_csv(input_txt_path, output_csv_path):
+    """
+    Reads sentences from a text file and writes them into a CSV file with a 'sentence' column.
+
+    Args:
+    - input_txt_path: Path to the input text file containing sentences.
+    - output_csv_path: Path where the output CSV file will be saved.
+    """
+    # Read the text file
+    with open(input_txt_path, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+    
+    # Remove any leading/trailing whitespace and empty lines
+    sentences = [line.strip() for line in lines if line.strip()]
+    
+    # Create a DataFrame
+    df = pd.DataFrame({'sentence': sentences})
+    
+    # Save to CSV
+    df.to_csv(output_csv_path, index=False)
+    
+    print(f"Successfully converted '{input_txt_path}' to '{output_csv_path}'")
+
+
 def test_pantasa(csv_path, jar_path, model_path, rule_path, directory_path, pos_path):
     """
     Reads sentences from a CSV file, processes each sentence using pantasa_checker,
     and collects the results.
-    
+
     Args:
     - csv_path: Path to the input CSV file containing sentences.
     - jar_path, model_path, rule_path, directory_path, pos_path: Paths required for pantasa_checker.
-    
+
     Returns:
     - results_df: A DataFrame containing original sentences, corrected sentences, and any other outputs.
     """
@@ -53,19 +77,28 @@ def test_pantasa(csv_path, jar_path, model_path, rule_path, directory_path, pos_
     
     return results_df
 
-# Example usage:
-csv_path = 'data/raw/dataset_test.csv'  # Replace with your CSV file path
-jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
-model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
-rule_path = 'data/processed/detailed_hngram.csv'
-directory_path = 'data/raw/dictionary.csv'
-pos_path = 'data/processed/pos_dic'
 
-# Run the test
-results_df = test_pantasa(csv_path, jar_path, model_path, rule_path, directory_path, pos_path)
+if __name__ == "__main__":
+    # Paths to your text file and output CSV
+    input_txt_path = 'data/raw/piptylines.txt'  # Replace with your actual text file path
+    output_csv_path = 'data/raw/dataset_test.csv'    # Desired output CSV file path
 
-# Optionally, save results to a new CSV file
-results_df.to_csv('data/processed/output_result.csv', index=False)
+    # First, transform your text file into CSV
+    transform_text_to_csv(input_txt_path, output_csv_path)
 
-# Display the results
-print(results_df)
+    # Now, run the test using the generated CSV file
+    csv_path = output_csv_path  # Use the CSV file just created
+    jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
+    model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
+    rule_path = 'data/processed/detailed_hngram.csv'
+    directory_path = 'data/raw/dictionary.csv'
+    pos_path = 'data/processed/pos_dic'
+    
+    # Run the test
+    results_df = test_pantasa(csv_path, jar_path, model_path, rule_path, directory_path, pos_path)
+    
+    # Optionally, save results to a new CSV file
+    results_df.to_csv('data/processed/output_result.csv', index=False)
+    
+    # Display the results
+    print(results_df)
