@@ -170,7 +170,7 @@ def rule_pattern_bank(rule_path):
     # Store the hybrid n-grams from the CSV file into the rule pattern bank
     for index, row in hybrid_ngrams_df.iterrows():
         hybrid_ngram = row['Hybrid_N-Gram']
-        pattern_frequency =row['Frequency']
+        pattern_frequency = row['Frequency']
         
         # Add the hybrid_ngram and its frequency to the dictionary
         if hybrid_ngram and pattern_frequency:
@@ -181,42 +181,93 @@ def rule_pattern_bank(rule_path):
 
     return rule_pattern_bank
 
-# Step 2: Define the weighted Levenshtein distance function
-def edit_weighted_levenshtein(input_ngram, pattern_ngram):
-    input_tokens = input_ngram.strip().split()
+def generalize_pos_tag(pos_tag):
+    """
+    Generalizes a POS tag by mapping it to its base form.
+    Handles composite POS tags by generalizing each component.
+
+    Args:
+    - pos_tag: The POS tag to generalize.
+
+    Returns:
+    - A set of generalized POS tags.
+    """
+    # Split composite POS tags
+    pos_tags = pos_tag.split('_')
+    generalized_tags = set()
+    for tag in pos_tags:
+        # Generalize each tag individually
+        if tag.startswith('NN'):
+            generalized_tags.add('NN.*')
+        elif tag.startswith('VB'):
+            generalized_tags.add('VB.*')
+        elif tag.startswith('CC'):
+            generalized_tags.add('CC.*')
+        elif tag.startswith('DT'):
+            generalized_tags.add('DT.*')
+        elif tag.startswith('PR'):
+            generalized_tags.add('PR.*')
+        elif tag.startswith('JJ'):
+            generalized_tags.add('JJ.*')
+        elif tag.startswith('RB'):
+            generalized_tags.add('RB.*')
+        elif tag == 'LM':
+            generalized_tags.add('LM')
+        elif tag == 'TS':
+            generalized_tags.add('TS')
+        elif tag.startswith('CD'):
+            generalized_tags.add('CD.*')
+        elif tag.startswith('PM'):
+            generalized_tags.add('PM.*')
+        else:
+            generalized_tags.add(tag)  # Return as is if no mapping is defined
+    return generalized_tags
+
+def edit_weighted_levenshtein(input_ngram_tokens, pattern_ngram):
     pattern_tokens = pattern_ngram.strip().split()
     
-    len_input = len(input_tokens)
+    len_input = len(input_ngram_tokens)
     len_pattern = len(pattern_tokens)
     
     # Create a matrix to store the edit distances
     distance_matrix = [[0] * (len_pattern + 1) for _ in range(len_input + 1)]
+
+    # Define weights for substitution, insertion, and deletion
+    substitution_weight = 10.0  # Increased to avoid overcorrection
+    insertion_weight = 8.0 
+    deletion_weight = 1.2
     
     # Initialize base case values (costs of insertions and deletions)
     for i in range(len_input + 1):
-        distance_matrix[i][0] = i
+        distance_matrix[i][0] = i * deletion_weight
     for j in range(len_pattern + 1):
-        distance_matrix[0][j] = j
-
-    # Define weights for substitution, insertion, and deletion
-    substitution_weight = 7.0
-    insertion_weight = 8.0 
-    deletion_weight = 1.2
-
+        distance_matrix[0][j] = j * insertion_weight
+    
     # Compute the distances
     for i in range(1, len_input + 1):
         for j in range(1, len_pattern + 1):
-            input_token = input_tokens[i - 1]
+            input_word, input_pos = input_ngram_tokens[i - 1]
             pattern_token = pattern_tokens[j - 1]
-            # Use regex to check if input_token matches pattern_token
-            try:
-                if re.match(pattern_token, input_token): 
+            
+            # Determine comparison basis
+            if pattern_token.islower() or pattern_token in ["ay", "ng", "na"]:
+                # Specific word matching
+                if input_word.lower() == pattern_token:
                     cost = 0
                 else:
-                    cost = substitution_weight  # Apply substitution weight if tokens differ
-            except re.error as e:
-                print(f"Regex error: {e} with pattern_token: '{pattern_token}' and input_token: '{input_token}'")
-
+                    cost = substitution_weight
+            else:
+                # POS tag matching with possible wildcards
+                generalized_input_pos_set = generalize_pos_tag(input_pos)
+                try:
+                    if any(re.fullmatch(pattern_token, gen_pos) for gen_pos in generalized_input_pos_set):
+                        cost = 0
+                    else:
+                        cost = substitution_weight
+                except re.error as e:
+                    print(f"Regex error: {e} with pattern_token: '{pattern_token}' and input_pos: '{generalized_input_pos_set}'")
+                    cost = substitution_weight
+    
             distance_matrix[i][j] = min(
                 distance_matrix[i - 1][j] + deletion_weight,    # Deletion
                 distance_matrix[i][j - 1] + insertion_weight,  # Insertion
@@ -225,80 +276,60 @@ def edit_weighted_levenshtein(input_ngram, pattern_ngram):
     
     return distance_matrix[len_input][len_pattern]
 
-"""
-Function Title: Generate Correction Token Tags
-Programmers:    Agas, Carlo
-                Alcantara, James Patrick
-                Figueroa, Jarlson
-                Tapia, Rachelle
-Where the function fits in the general system designs:
-    This function is a part of the Pantasa system program.
-    It identifies the necessary operations (keep, substitute, insert, or delete)
-    required to transform an input n-gram into a matching pattern n-gram.
-Date written and revised: October 10, 2024
-Purpose:
-    - To compare an input n-gram with a pattern n-gram and generate a sequence
-      of correction tags that detail the operations needed for transformation.
-    - The correction tags include:
-        1. `KEEP`: Indicates that the token is already correct.
-        2. `SUBSTITUTE`: Replaces an incorrect token with a correct one.
-        3. `INSERT`: Adds a missing token to the input.
-        4. `DELETE`: Removes an extra token from the input.
-Data Structures, Algorithms, and Control:
-    - **Data Structures**:
-        - List: Used to store and return the correction tags.
-    - **Algorithms**:
-        - Two-pointer technique to iterate through input and pattern tokens.
-        - Conditional logic to determine the type of operation (keep, substitute,
-          insert, or delete).
-    - **Control**:
-        - A `while` loop to process the tokens in both input and pattern n-grams.
-        - Additional `while` loops to handle leftover tokens (extra tokens in input
-          or pattern).
-"""
+def generate_correction_tags(input_ngram_tokens, pattern_ngram):
+    """
+    Generates correction tags that detail the operations needed to transform
+    an input n-gram into the matching pattern n-gram.
 
-# Step 3: Function to generate correction token tags based on the Levenshtein distance
-def generate_correction_tags(input_ngram, pattern_ngram):
-    input_tokens = input_ngram.split()
-    pattern_tokens = pattern_ngram.split()
+    Args:
+    - input_ngram_tokens: List of tuples (word, pos_tag) for the input n-gram.
+    - pattern_ngram: String representing the pattern n-gram.
+
+    Returns:
+    - tags: List of correction tags.
+    """
+    pattern_tokens = pattern_ngram.strip().split()
     
     tags = []
-    
     input_idx = 0
     pattern_idx = 0
     
-    while input_idx < len(input_tokens) and pattern_idx < len(pattern_tokens):
-        input_token = input_tokens[input_idx]
-        pattern_token = pattern_tokens[pattern_idx]
-        if input_token == pattern_token:
-            tags.append(f'KEEP_{input_token}_{pattern_token}')
+    while input_idx < len(input_ngram_tokens) and pattern_idx < len(pattern_tokens):
+        input_word, input_pos = input_ngram_tokens[input_idx]
+        pattern_token = pattern_tokens[pattern_idx].strip('_')  # Strip any underscores
+        
+        if pattern_token.islower() or pattern_token in ["ay", "ng", "na"]:
+            # Specific word matching
+            if input_word.lower() == pattern_token:
+                tags.append(f'KEEP_{input_word}_{input_pos}')
+            else:
+                tags.append(f'SUBSTITUTE_WORD_{input_word}_{pattern_token}')
             input_idx += 1
             pattern_idx += 1
         else:
-            # Check for insertion or deletion by looking ahead
-            if input_idx < len(input_tokens) - 1 and pattern_token == input_tokens[input_idx + 1]:
-                tags.append(f'DELETE_{input_token}')
-                input_idx += 1
-            elif pattern_idx < len(pattern_tokens) - 1 and input_token == pattern_tokens[pattern_idx + 1]:
-                tags.append(f'INSERT_{pattern_token}')
-                pattern_idx += 1
+            # POS tag matching with possible wildcards
+            generalized_input_pos_set = generalize_pos_tag(input_pos)
+            if any(re.fullmatch(pattern_token, gen_pos) for gen_pos in generalized_input_pos_set):
+                tags.append(f'KEEP_{input_word}_{input_pos}')
             else:
-                tags.append(f'SUBSTITUTE_{input_token}_{pattern_token}')
-                input_idx += 1
-                pattern_idx += 1
+                tags.append(f'SUBSTITUTE_POS_{input_pos}_{pattern_token}')
+            input_idx += 1
+            pattern_idx += 1
     
-    # Handle extra tokens in input or pattern (deletion or insertion)
-    while input_idx < len(input_tokens):
-        tags.append(f'DELETE_{input_tokens[input_idx]}')
+    # Handle extra tokens in input (deletion)
+    while input_idx < len(input_ngram_tokens):
+        input_word, input_pos = input_ngram_tokens[input_idx]
+        tags.append(f'DELETE_{input_word}')
         input_idx += 1
     
+    # Handle extra tokens in pattern (insertion)
     while pattern_idx < len(pattern_tokens):
-        tags.append(f'INSERT_{pattern_tokens[pattern_idx]}')
+        pattern_token = pattern_tokens[pattern_idx]
+        tags.append(f'INSERT_{pattern_token}')
         pattern_idx += 1
     
     return tags
 
-# Step 4: Function to generate n-grams of different lengths (from 3 to 7) from the input sentence
 def generate_ngrams(input_tokens):
     ngrams = []
     length = len(input_tokens)
@@ -314,116 +345,151 @@ def generate_ngrams(input_tokens):
         n_min = 6
     else:
         n_min = 5
-    
-    n_max = min(7, length)  # Set the maximum n-gram size but ensure it's capped by the input length
-    
+
+    n_max = min(7, length)
+
     # Generate n-grams within the dynamic range
     for n in range(n_min, n_max + 1):
         for i in range(len(input_tokens) - n + 1):
-            ngram = input_tokens[i:i+n]
-            ngrams.append((" ".join(ngram), i))  # Track the starting index
+            ngram_tokens = input_tokens[i:i+n]
+            ngrams.append((ngram_tokens, i))  # ngram_tokens is a list of (word, pos_tag) tuples
     return ngrams
 
-# Step 5: Suggestion phase - generate suggestions for corrections without applying them
 def generate_suggestions(pos_tags, rule_path):
+    """
+    Generates suggestions for corrections based on matching input POS-tagged tokens
+    with patterns from the rule pattern bank.
 
-    input_tokens = [pos_tag for word, pos_tag in pos_tags]
-    
-    # Generate token-level correction tracker
-    token_suggestions = [{"token": token, "suggestions": [], "distances": []} for token in input_tokens]
-    
-    # Track potential inserts (insertion suggestions for each index)
+    Args:
+    - pos_tags: List of tuples (word, pos_tag) representing the input tokens.
+    - rule_path: Path to the rule pattern bank CSV file.
+
+    Returns:
+    - token_suggestions: List of dictionaries with suggestions for each token.
+    """
+    # input_tokens is a list of (word, pos_tag) tuples
+    input_tokens = pos_tags
+
+    # Initialize token suggestions
+    token_suggestions = [{"token": token[0], "suggestions": [], "distances": []} for token in input_tokens]
+
+    # Initialize insert suggestions
     insert_suggestions = defaultdict(list)
-    
-    # Generate 3-gram to 7-gram sequences from the input sentence
+
+    # Generate n-grams from input tokens (as lists of (word, pos_tag) tuples)
     input_ngrams_with_index = generate_ngrams(input_tokens)
-    
-    # Iterate over each n-gram and compare it to the rule pattern bank
-    for input_ngram, start_idx in input_ngrams_with_index:
+
+    # Load the rule pattern bank
+    rule_bank = rule_pattern_bank(rule_path)
+
+    # Set a threshold for acceptable edit distances
+    threshold_distance = 5.0  # Adjust as needed
+
+    # Iterate over each input n-gram
+    for input_ngram_tokens, start_idx in input_ngrams_with_index:
         min_distance = float('inf')
-        rule_bank = rule_pattern_bank(rule_path)
         best_match = None
         highest_frequency = 0
 
+        # Iterate over each pattern in the rule bank
         for pattern_id, pattern_data in rule_bank.items():
-            # Compare input n-gram with each pattern n-gram from the rule pattern bank
             pattern_ngram = pattern_data.get('hybrid_ngram')
-            frequency = pattern_data.get('frequency')  # Correct key for frequency
+            frequency = pattern_data.get('frequency')
 
             if pattern_ngram:
-                distance = edit_weighted_levenshtein(input_ngram, pattern_ngram)
+                # Compute distance between input n-gram and pattern n-gram
+                distance = edit_weighted_levenshtein(input_ngram_tokens, pattern_ngram)
                 if distance < min_distance or (distance == min_distance and frequency > highest_frequency):
                     min_distance = distance
                     best_match = pattern_ngram
-                    highest_frequency = frequency  # Update to use the more frequent pattern
-            
-        if best_match:
-            correction_tags = generate_correction_tags(input_ngram, best_match)
-            print(f"CORRECTION TAGS {correction_tags}")
-            
-            # Populate the token-level correction tracker
-            input_ngram_tokens = input_ngram.split()
-            token_shift = 0
-            for i, tag in enumerate(correction_tags):
-                token_idx = start_idx + i + token_shift
+                    highest_frequency = frequency
 
+        if best_match and min_distance <= threshold_distance:
+            # Generate correction tags
+            correction_tags = generate_correction_tags(input_ngram_tokens, best_match)
+
+            # Process correction tags
+            input_idx = 0  # Index in input_ngram_tokens
+            token_idx = start_idx  # Index in token_suggestions
+
+            for tag in correction_tags:
                 if tag.startswith("INSERT"):
-                    # Track the insert suggestion
+                    # Handle insertion
                     inserted_token = tag.split("_")[1]
                     insert_suggestions[token_idx].append(inserted_token)
-                    token_shift = -1
-
-                else:
-                    # Ensure token_suggestions don't skip after insertion
+                    # Do not increment token_idx
+                elif tag.startswith("DELETE"):
+                    # Handle deletion
                     if token_idx < len(token_suggestions):
                         token_suggestions[token_idx]["suggestions"].append(tag)
                         token_suggestions[token_idx]["distances"].append(min_distance)
-    
-    # Step 6: Handle inserts based on the majority rule
-    for token_idx, inserts in insert_suggestions.items():
-        # Count occurrences of each insertion suggestion
-        insert_counter = Counter(inserts)
-        most_common_insert, insert_count = insert_counter.most_common(1)[0]
+                    # Move to next token
+                    token_idx += 1
+                    input_idx += 1
+                else:
+                    # Handle KEEP and SUBSTITUTE
+                    if token_idx < len(token_suggestions):
+                        token_suggestions[token_idx]["suggestions"].append(tag)
+                        token_suggestions[token_idx]["distances"].append(min_distance)
+                    # Move to next token
+                    token_idx += 1
+                    input_idx += 1
 
-        if len(inserts) > 1:
-            num_corrections = len(insert_counter)
-            threshold = num_corrections / 2
-            
-            # Only insert the token if the majority of patterns suggest it
-            if insert_count > threshold:
-                token_suggestions.insert(token_idx, {"token": most_common_insert, "suggestions": [f'INSERT_{most_common_insert}'], "distances": [0.8]})
-        else:
-            # Skip insertions if there's only one suggestion
-            continue
-        
+    # Handle insertions
+    # For each position where an insertion is suggested, decide whether to insert and what to insert
+    # Here, we will insert the most common suggestion at each position
+
+    # Collect all insertion positions and sort them
+    insertion_positions = sorted(insert_suggestions.keys())
+
+    # Initialize an offset to adjust indices after insertions
+    offset = 0
+
+    for pos in insertion_positions:
+        adjusted_pos = pos + offset
+        inserts = insert_suggestions[pos]
+        # Get the most common insertion suggestion
+        insert_counter = Counter(inserts)
+        most_common_insert, _ = insert_counter.most_common(1)[0]
+        # Insert into token_suggestions at adjusted_pos
+        token_suggestions.insert(adjusted_pos, {
+            "token": most_common_insert,
+            "suggestions": [f'INSERT_{most_common_insert}'],
+            "distances": [0]  # Distance can be set to 0 for insertions
+        })
+        # Update offset
+        offset += 1
+
     return token_suggestions
 
 def load_pos_tag_dictionary(pos_tag, pos_path):
     """
     Load the POS tag dictionary based on the specific or generalized POS tag.
-    
+
     Args:
     - pos_tag (str): The POS tag to search for.
     - pos_path (str): The base path where the CSV files are stored.
-    
+
     Returns:
     - words (list): List of words from the corresponding POS tag CSV files.
     """
-    
+    if not pos_tag:
+        raise ValueError("POS tag is empty. Cannot load POS tag dictionary.")
+
     # 1. If the tag is an exact match (e.g., VBAF), load the corresponding file
     csv_file_name = f"{pos_tag}_words.csv"
     exact_file_path = os.path.join(pos_path, csv_file_name)
-    
+
     if os.path.exists(exact_file_path):
         print(f"Loading file for exact POS tag: {pos_tag}")
         return load_csv_words(exact_file_path)
-    
+
     # 2. If the tag is generalized (e.g., VB.*), load all matching files
     if '.*' in pos_tag:
         generalized_tag_pattern = re.sub(r'(.*)\.\*', r'\1', pos_tag)
         matching_words = []
 
-        # List all files in the directory and find files starting with the generalized POS tag (e.g., vbaf_words.csv, vbof_words.csv, vbtr_words.csv)
+        # List all files in the directory and find files starting with the generalized POS tag
         for file_name in os.listdir(pos_path):
             if file_name.startswith(generalized_tag_pattern):
                 file_path = os.path.join(pos_path, file_name)
@@ -433,19 +499,19 @@ def load_pos_tag_dictionary(pos_tag, pos_path):
         # If no matching files were found, raise an error
         if not matching_words:
             raise FileNotFoundError(f"No files found for POS tag pattern: {pos_tag}")
-        
+
         return matching_words
-    
+
     # 3. If no generalized or exact match, raise an error
     raise FileNotFoundError(f"CSV file for POS tag '{pos_tag}' not found")
 
 def load_csv_words(file_path):
     """
     Load the words from a CSV file.
-    
+
     Args:
     - file_path (str): The file path to the CSV file.
-    
+
     Returns:
     - words (list): List of words from the CSV file.
     """
@@ -533,154 +599,149 @@ def get_closest_words_by_pos(input_word, words_list, num_suggestions=1):
 
     return suggestions
 
-"""
-Function Title: POS-Based Correction Phase
-Programmers:    Agas, Carlo
-                Alcantara, James Patrick
-                Figueroa, Jarlson
-                Tapia, Rachelle
-Where the function fits in the general system designs:
-    This function is part of the text correction module, focusing on applying token-level
-    corrections based on suggestions generated during the suggestion phase. It integrates
-    grammatical rules and POS dictionaries to correct the input sentence effectively.
-Date written and revised: October 10, 2024
-Purpose:
-    - To process and apply token-level suggestions for corrections, including:
-        1. Keeping the token unchanged (`KEEP`).
-        2. Substituting the token with a more appropriate one (`SUBSTITUTE`).
-        3. Deleting unnecessary tokens (`DELETE`).
-        4. Inserting missing tokens based on POS tag rules (`INSERT`).
-    - To utilize part-of-speech (POS) dictionaries for substitution and insertion operations.
-    - To construct a grammatically corrected output sentence.
-Data Structures, Algorithms, and Control:
-    - **Data Structures**:
-        - `final_sentence`: List to store the corrected sentence tokens.
-        - `word_suggestions`: Dictionary to track suggestions for each word.
-        - `pos_tag_dict`: Dictionary to cache loaded POS tag word lists.
-        - `inserted_tokens`: Set to track inserted tokens and prevent duplication.
-    - **Algorithms**:
-        - Iterative approach to process `token_suggestions` and apply corrections.
-        - Conditional logic for handling different suggestion types (`KEEP`, `SUBSTITUTE`,
-          `DELETE`, `INSERT`).
-        - Leverages external helper functions for POS-related operations:
-          - `load_pos_tag_dictionary`: Loads POS-tagged word lists from a file.
-          - `get_closest_words_by_pos`: Retrieves the closest matching words for a target POS.
-    - **Control**:
-        - Iterates over `token_suggestions` using a loop and updates indices as suggestions are applied.
-        - Uses counters (`idx`) to sync corrections with `pos_tags`.
-"""
-
-# Step 6: Correction phase - apply the suggestions to correct the input sentence
 def apply_pos_corrections(token_suggestions, pos_tags, pos_path):
+    """
+    Applies corrections to the input sentence based on the token suggestions.
+
+    Args:
+    - token_suggestions: List of dictionaries containing suggestions for each token.
+    - pos_tags: List of tuples (word, pos_tag) representing the original tokens.
+    - pos_path: Path to the directory containing POS tag dictionaries.
+
+    Returns:
+    - corrected_sentence: The corrected sentence as a string.
+    """
     final_sentence = []
     word_suggestions = {}  # To keep track of suggestions for each word
-    pos_tag_dict = {}      # Cache for loaded POS tag dictionaries
-    idx = 0                # Index for iterating through pos_tags and token_suggestions
-    inserted_tokens = set()
+    pos_tag_dict = {}      # Cache for loaded POS tag word lists
+    idx = 0                # Index for iterating through pos_tags
+    token_idx = 0          # Index for iterating through token_suggestions
 
-    # Iterate through the token_suggestions and apply the corrections
-    for token_info in token_suggestions:
+    while token_idx < len(token_suggestions):
+        token_info = token_suggestions[token_idx]
         suggestions = token_info["suggestions"]
         distances = token_info["distances"]
 
         if not suggestions:
             # No suggestions; keep the original word
-            word = pos_tags[idx][0]
-            final_sentence.append(word)
-            idx += 1
+            if idx < len(pos_tags):
+                word = pos_tags[idx][0]
+                final_sentence.append(word)
+                idx += 1
+            else:
+                # This might be an inserted token without suggestions
+                final_sentence.append(token_info["token"])
+            token_idx += 1
             continue
 
         # Count the frequency of each exact suggestion
         suggestion_count = Counter(suggestions)
-        print(f"COUNTER {suggestion_count}")
 
         if suggestion_count:
-            # Step 2: Find the most frequent exact suggestion(s)
-            most_frequent_suggestion = suggestion_count.most_common(1)[0][0]  # Get the most frequent exact suggestion
-
-            # Extract suggestion type, current POS, and target POS correctly
-            suggestion_parts = most_frequent_suggestion.split("_")
+            # Get the most frequent suggestion
+            most_frequent_suggestion = suggestion_count.most_common(1)[0][0]
+            suggestion_parts = most_frequent_suggestion.split("_", 2)  # Split only on the first two underscores
             suggestion_type = suggestion_parts[0]
-            current_pos = "_".join(suggestion_parts[1:-1])  # Join all parts except the last one as current POS
-            target_pos = suggestion_parts[-1]  # Last part is the target POS
-
-            print(f"SUGGESTION TYPE: {suggestion_type}, CURRENT POS: {current_pos}, TARGET POS: {target_pos}")
 
             if suggestion_type == "KEEP":
-                # Append the original word
-                word = pos_tags[idx][0]
-                final_sentence.append(word)
-                idx += 1  # Increment idx to move to the next word
+                if idx < len(pos_tags):
+                    word = pos_tags[idx][0]
+                    final_sentence.append(word)
+                    idx += 1
+                token_idx += 1
 
             elif suggestion_type == "SUBSTITUTE":
-                # Extract input word and target POS tag
-                input_word = pos_tags[idx][0]
+                substitution_kind = suggestion_parts[1]
+                remaining_parts = suggestion_parts[2]
 
-                # Load the dictionary for the target POS tag if not already loaded
-                if target_pos not in pos_tag_dict:
-                    word_list = load_pos_tag_dictionary(target_pos, pos_path)
-                    pos_tag_dict[target_pos] = word_list
+                if substitution_kind == "WORD":
+                    # Word substitution
+                    # remaining_parts: input_word_pattern_token
+                    input_word, pattern_token = remaining_parts.rsplit('_', 1)
+                    final_sentence.append(pattern_token)
+                    idx += 1
+                elif substitution_kind == "POS":
+                    # POS substitution
+                    # remaining_parts: input_pos_pattern_token
+                    input_pos, pattern_token = remaining_parts.rsplit('_', 1)
+                    input_word = pos_tags[idx][0]
+
+                    # Strip any trailing underscores from pattern_token
+                    pattern_token = pattern_token.strip('_')
+
+                    # Validate pattern_token
+                    if not pattern_token:
+                        print(f"Warning: Empty pattern_token in suggestion '{most_frequent_suggestion}'")
+                        token_idx += 1
+                        continue
+
+                    # Load or retrieve the POS tag dictionary
+                    if pattern_token not in pos_tag_dict:
+                        word_list = load_pos_tag_dictionary(pattern_token, pos_path)
+                        pos_tag_dict[pattern_token] = word_list
+                    else:
+                        word_list = pos_tag_dict[pattern_token]
+
+                    # Get closest words by POS
+                    suggestions_list = get_closest_words_by_pos(input_word, word_list, num_suggestions=1)
+
+                    if suggestions_list:
+                        replacement_word = suggestions_list[0][0]
+                        final_sentence.append(replacement_word)
+                        word_suggestions[input_word] = [word for word, dist in suggestions_list]
+                    else:
+                        # Prioritize 'KEEP' if no suitable substitution found
+                        final_sentence.append(input_word)
+                    idx += 1
                 else:
-                    word_list = pos_tag_dict[target_pos]
-
-                # Get closest words by POS
-                suggestions_list = get_closest_words_by_pos(input_word, word_list, num_suggestions=1)
-
-                if suggestions_list:
-                    # Pick the best suggestion (smallest distance)
-                    replacement_word = suggestions_list[0][0]
-                    final_sentence.append(replacement_word)
-                    print(f"Replaced '{input_word}' with '{replacement_word}' for target POS '{target_pos}'")
-
-                    # Store suggestions for the word
-                    word_suggestions[input_word] = [word for word, dist in suggestions_list]
-                else:
-                    # If no suggestions found, keep the original word
-                    final_sentence.append(input_word)
-
-                idx += 1  # Increment idx to move to the next word
+                    # Handle other substitution types if necessary
+                    if idx < len(pos_tags):
+                        word = pos_tags[idx][0]
+                        final_sentence.append(word)
+                        idx += 1
+                token_idx += 1
 
             elif suggestion_type == "DELETE":
-                # Skip the word (do not append it)
-                idx += 1  # Move to the next word
+                # Skip the word
+                idx += 1
+                token_idx += 1
 
             elif suggestion_type == "INSERT":
-                target_pos = target_pos  # The extracted target POS tag for insertion
+                pattern_token = suggestion_parts[1]
 
-                # Load the dictionary for the target POS tag if not already loaded
-                if target_pos not in pos_tag_dict:
-                    word_list = load_pos_tag_dictionary(target_pos, pos_path)
-                    pos_tag_dict[target_pos] = word_list
+                # Check if the pattern_token is a POS tag or a specific word
+                if pattern_token.islower() or pattern_token in ["ay", "ng", "na"]:
+                    # Insert the specific word
+                    final_sentence.append(pattern_token)
                 else:
-                    word_list = pos_tag_dict[target_pos]
-
-                # Choose the most frequent word from the POS tag dictionary for insertion
-                if word_list:
-                    inserted_token = word_list[0]  # Assuming the list is sorted by frequency
-                else:
-                    inserted_token = "[UNK]"  # Fallback if no words are found
-
-                # Only insert if not already inserted at this position
-                if inserted_token not in inserted_tokens:
+                    # It's a POS tag; load the corresponding dictionary
+                    target_pos = pattern_token
+                    if target_pos not in pos_tag_dict:
+                        word_list = load_pos_tag_dictionary(target_pos, pos_path)
+                        pos_tag_dict[target_pos] = word_list
+                    else:
+                        word_list = pos_tag_dict[target_pos]
+                    inserted_token = word_list[0] if word_list else "[UNK]"
                     final_sentence.append(inserted_token)
-                    inserted_tokens.add(inserted_token)  # Track the insertion to avoid duplication
-                else:
-                    continue  # Skip if already inserted
+                token_idx += 1
 
             else:
-                # Handle any other suggestion types (fallback)
+                # Fallback: Append the original word
+                if idx < len(pos_tags):
+                    word = pos_tags[idx][0]
+                    final_sentence.append(word)
+                    idx += 1
+                token_idx += 1
+        else:
+            # No valid suggestions; prioritize 'KEEP'
+            if idx < len(pos_tags):
                 word = pos_tags[idx][0]
                 final_sentence.append(word)
-                idx += 1  # Increment idx to move to the next word
-        else:
-            # Default case: Append the word if no valid suggestions
-            word = pos_tags[idx][0]
-            final_sentence.append(word)
-            idx += 1
+                idx += 1
+            token_idx += 1
 
     corrected_sentence = " ".join(final_sentence)
     return corrected_sentence
-
 
 def check_words_in_dictionary(words, directory_path):
     """
@@ -828,6 +889,34 @@ def pantasa_checker(input_sentence, jar_path, model_path, rule_path, directory_p
         # Return the corrected sentence and token suggestions
         return corrected_sentence, token_suggestions, []
 
+def test():
+    input_sentence = "ang bata ay kumakain"
+    jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
+    model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
+    rule_path = 'data/processed/hngrams_test.csv'
+    directory_path = 'data/raw/dictionary.csv'
+    pos_path = 'data/processed/pos_dic'
 
+    # Step 1: Tokenize the input sentence
+    tokens = tokenize_sentence(input_sentence)
+    print("Tokens:", tokens)
 
-    
+    # Step 2: POS tag the tokens
+    pos_tags = pos_tagging(tokens, jar_path=jar_path, model_path=model_path)
+    print("POS Tags:", pos_tags)
+
+    # Step 3: Load the rule pattern bank
+    rule_bank = rule_pattern_bank(rule_path)
+    print("Rule Pattern Bank Loaded.")
+
+    # Step 4: Generate suggestions using n-gram matching
+    token_suggestions = generate_suggestions(pos_tags, rule_path)
+    print("Token Suggestions:")
+    for idx, suggestion in enumerate(token_suggestions):
+        print(f"Token {idx}: {suggestion}")
+
+    # Step 5: Apply POS corrections
+    corrected_sentence = apply_pos_corrections(token_suggestions, pos_tags, pos_path)
+    print("Corrected Sentence:", corrected_sentence)
+
+test()

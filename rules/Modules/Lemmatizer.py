@@ -1,6 +1,9 @@
 import sys
 import os
 
+# Add the root directory (C:\Projects\Pantasa) to the PYTHONPATH
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
+
 from app.morphinas_project.lemmatizer_client import initialize_stemmer, lemmatize_multiple_words
 
 # Initialize the Morphinas lemmatizer once to reuse across function calls

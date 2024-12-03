@@ -1,3 +1,4 @@
+import re
 import os
 from Modules.Tokenizer import tokenize
 from Modules.POSDTagger import pos_tag as pos_dtag
@@ -5,12 +6,10 @@ from Modules.POSRTagger import pos_tag as pos_rtag
 from Modules.Lemmatizer import lemmatize_sentence 
 
 import sys
-import os
+from morphinas_project.lemmatizer_client import initialize_stemmer
 
 # Add the path to morphinas_project
 sys.path.append(r'C:\Projects\Pantasa\app')
-
-from morphinas_project.lemmatizer_client import initialize_stemmer
 
 # Initialize the Morphinas lemmatizer once to reuse across function calls
 gateway, lemmatizer = initialize_stemmer()
@@ -43,6 +42,23 @@ def load_tokenized_sentences(tokenized_file):
                 tokenized_sentences.add(line.strip())
     return tokenized_sentences
 
+def split_sentences(text):
+    """
+    Split a long text into smaller sentences based on punctuation and rules.
+    """
+    # Define a regex to split on sentence-ending punctuation followed by space or an uppercase letter
+    pattern = r'(?<=[.!?])\s+(?=[A-Z])'
+    sentences = re.split(pattern, text)
+    
+    # Clean and filter sentences
+    cleaned_sentences = []
+    for sentence in sentences:
+        sentence = sentence.strip()
+        # Ignore very short fragments or single-word "sentences"
+        if len(sentence.split()) > 2:  
+            cleaned_sentences.append(sentence)
+    return cleaned_sentences
+
 def preprocess_text(input_file, tokenized_file, output_file, target_lines, batch_size=700):
     dataset = load_dataset(input_file)
     tokenized_sentences = load_tokenized_sentences(tokenized_file)
@@ -55,12 +71,16 @@ def preprocess_text(input_file, tokenized_file, output_file, target_lines, batch
 
     with open(tokenized_file, 'a', encoding='utf-8') as token_file:
         for text in dataset:
-            sentences = tokenize(text)
-            for sentence in sentences:
-                if sentence not in tokenized_sentences:
-                    new_tokenized_sentences.append(sentence)
-                    tokenized_sentences.add(sentence)
-                    token_file.write(sentence + "\n")
+            # Split text into usable sentences
+            raw_sentences = tokenize(text)
+            for raw_sentence in raw_sentences:
+                # Further split raw sentences into smaller sentences
+                sentences = split_sentences(raw_sentence)
+                for sentence in sentences:
+                    if sentence not in tokenized_sentences:
+                        new_tokenized_sentences.append(sentence)
+                        tokenized_sentences.add(sentence)
+                        token_file.write(sentence + "\n")
         print(f"Sentences tokenized to {tokenized_file}")
     
     with open(output_file, 'a', encoding='utf-8') as output:
