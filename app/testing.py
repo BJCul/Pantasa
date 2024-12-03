@@ -79,25 +79,21 @@ def test_pantasa(csv_path, jar_path, model_path, rule_path, directory_path, pos_
 
 
 if __name__ == "__main__":
-    # Paths to your text file and output CSV
     input_txt_path = 'data/raw/piptylines.txt'  # Replace with your actual text file path
     output_csv_path = 'data/raw/dataset_tests.csv'    # Desired output CSV file path
 
     # First, transform your text file into CSV
     transform_text_to_csv(input_txt_path, output_csv_path)
 
-    # Now, run the test using the generated CSV file
-    csv_path = output_csv_path  # Use the CSV file just created
+    csv_path = output_csv_path  
     jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
     model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
     rule_path = 'data/processed/detailed_hngram.csv'
     directory_path = 'data/raw/dictionary.csv'
     pos_path = 'data/processed/pos_dic'
     
-    # Run the test
     results_df = test_pantasa(csv_path, jar_path, model_path, rule_path, directory_path, pos_path)
     
-    # Optionally, save results to a new CSV file
     results_df.to_csv('data/processed/output_result.csv', index=False)
     
     # Display the results
