@@ -30,3 +30,33 @@ PMS JJ.*::sino nga pala ang isa sa::203927
 PMP JJ.*::sino nga pala ang isa sa::203928
 JJ.* NNC::man kaming mga kabaro na napatahimik o::203929
 JJ.* NNP::man kaming mga kabaro na napatahimik o::203930
+PR.* LM PR.*_CC.* NN.*::Ito ay isang pananaw::433760
+CC.* NN.* CC.* DT.*::na nag-enable sa POGOs; at ang::433762
+NN.* CC.* PR.* RB.*::tunay na::433763
+CC.* FW PM.* PM.*::gumawa ng mga proyekto::433764
+RB.* CC.* NN.* CC.*::hindi sustainable na::433765
+PM.* PM.* PR.* LM::Ito ay nakabase sa::433766
+JJ.* CC.* DT.* NN.*::"mo man baliktarin ang kuwento,"::433767
+FW CC.* DT.* VB.*::supplier ng mga nagnenegosyo::433768
+PR.* LM VB.*_VB.* CC.*::Ito ay tumutukoy sa::433771
+CC.* CC.* DT.* VB.*_VB.*::para sa mga gumagawa::433772
+FW CC.* VB.* CC.*::funds na nauwi::433773
+VB.* CC.* DT.* NN.*_CC.*::bisyon upang tahakin ang::433774
+NN.* DT.* NN.* CC.*::Journalists of::433775
+DT.* FW CC.* CC.*::presidente Rodrigo Duterte.::433776
+RB.* CC.* PM.* FW::Party sa::433777
+NN.* NN.* PM.* VB.*::sa Paris —  siya ang unang::433778
+PM.* PR.* CC.* FW::panlalait sa social media::433779
+PR.* CC.* PR.*_CC.* DT.*::Kinakatawan niya ang resilience.::433780
+CC.* PR.*_CC.* DT.* NN.*_CC.*::na ang pulitikong makikinabang ay isang::433781
+PRO LM PRI_CCP NNC::Ito ay isang pananaw::433782
+CCT NNC CCB DTCP::ng binasang simpleng teksto ay::433784
+JJD CCP DTCP NNC::tungkol sa::433785
+PRO LM VBTR_VBAF CCT::Ito ay tumutukoy sa::433788
+CCT CCT DTCP VBTR_VBAF::para sa mga gumagawa::433789
+VBTR CCB DTCP NNC_CCP::nagbebenta ng mga produktong::433790
+NNC DTP NNP CCT::na sumasama sa mga resupply::433791
+DTCP FW CCR CCT::sa pagitan ng mga::433792
+RBR CCT NNC CCB::hindi sustainable na::433793
+PRO CCT PRSP_CCP DTCP::Kinakatawan niya ang resilience.::433794
+CCT PRSP_CCP DTCP NNP_CCP::na ang pulitikong makikinabang ay isang::433795
