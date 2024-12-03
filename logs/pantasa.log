@@ -1,0 +1,226 @@
+2024-12-03 13:14:54 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:14:54 - app.pantasa_checker - DEBUG - Tokens: ['Ang', 'aso', 'ay', 'tumatakbo', 'sa', 'park']
+2024-12-03 13:14:54 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:14:54 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-12-03 13:14:54 - app.utils - INFO - Applying post-defined rules (post)
+2024-12-03 13:14:55 - app.utils - INFO - Text after post-defined rules (post): Ang aso ay tumatakbo sa park
+2024-12-03 13:14:55 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-12-03 13:14:55 - app.pantasa_checker - DEBUG - Tokens: ['Ang', 'aso', 'ay', 'tumatakbo', 'sa', 'park']
+2024-12-03 13:14:55 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Ang', 'DTC'), ('aso', 'NNC'), ('ay', 'LM'), ('tumatakbo', 'VBTR_VBAF'), ('sa', 'CCT'), ('park', 'NNC')]
+2024-12-03 13:14:55 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-12-03 13:15:05 - app.utils - INFO - Token Suggestions: [{'token': 'DTC', 'suggestions': ['KEEP_DTC_DTC', 'KEEP_DTC_DTC'], 'distances': [0, 0]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC'], 'distances': [0, 0, 0]}, {'token': 'LM', 'suggestions': ['KEEP_LM_LM', 'KEEP_LM_LM', 'KEEP_LM_LM'], 'distances': [0, 0, 0]}, {'token': 'VBTR_VBAF', 'suggestions': ['SUBSTITUTE_VBTR_VBAF_VBTR', 'SUBSTITUTE_VBTR_VBAF_VBTR', 'SUBSTITUTE_VBTR_VBAF_VBTR'], 'distances': [0, 0, 0]}, {'token': 'CCT', 'suggestions': ['KEEP_CCT_CCT', 'KEEP_CCT_CCT', 'KEEP_CCT_CCT'], 'distances': [0, 0, 0]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC', 'KEEP_NNC_NNC'], 'distances': [0, 0]}]
+2024-12-03 13:15:05 - app.utils - INFO - Applying POS corrections
+2024-12-03 13:15:05 - app.utils - INFO - Final Corrected Sentence: Ang aso ay umaakma sa park
+2024-12-03 13:15:05 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:15:05 - app.pantasa_checker - DEBUG - Tokens: ['"', 'Si', 'Maria', 'ay', 'kumakain', 'mansanas', '"']
+2024-12-03 13:15:05 - app.pantasa_checker - DEBUG - Incorrect Words: ['"', 'Maria', '"']
+2024-12-03 13:15:05 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-12-03 13:15:06 - app.utils - INFO - Text after pre-defined rules (pre): "Si Maria ay kumakain mansanas"
+2024-12-03 13:15:06 - app.pantasa_checker - DEBUG - Incorrect Words: ['Maria']
+2024-12-03 13:15:06 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['Maria']
+2024-12-03 13:15:06 - app.utils - INFO - Spell checking remaining incorrect words
+2024-12-03 13:15:08 - app.utils - INFO - Suggestions for 'Maria': ['aria', 'mafia', 'maia', 'mara', 'mari']
+2024-12-03 13:15:08 - app.utils - INFO - Replaced 'Maria' with 'maia'
+2024-12-03 13:15:08 - app.utils - INFO - Text after spell checking: "Si maia ay kumakain mansanas"
+2024-12-03 13:15:08 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:15:08 - app.pantasa_checker - DEBUG - Tokens: ['"', 'Naglalaro', 'ang', 'bata', 'sa', 'labas', '"']
+2024-12-03 13:15:08 - app.pantasa_checker - DEBUG - Incorrect Words: ['"', '"']
+2024-12-03 13:15:08 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-12-03 13:15:09 - app.utils - INFO - Text after pre-defined rules (pre): "Naglalaro ang bata sa labas"
+2024-12-03 13:15:09 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:15:09 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-12-03 13:15:09 - app.utils - INFO - Pre-rules resolved all misspelled words
+2024-12-03 13:15:09 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:15:09 - app.pantasa_checker - DEBUG - Tokens: ['"', 'Magandang', 'umaga', 'po', 'sa', 'inyong', 'lahat', '"']
+2024-12-03 13:15:09 - app.pantasa_checker - DEBUG - Incorrect Words: ['"', '"']
+2024-12-03 13:15:09 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-12-03 13:15:10 - app.utils - INFO - Text after pre-defined rules (pre): "Magandang umaga po sa inyong lahat"
+2024-12-03 13:15:10 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:15:10 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-12-03 13:15:10 - app.utils - INFO - Pre-rules resolved all misspelled words
+2024-12-03 13:15:10 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:15:10 - app.pantasa_checker - DEBUG - Tokens: ['"', 'Siya', 'ay', 'nag', 'aaral', 'ng', 'mabuti', '"']
+2024-12-03 13:15:10 - app.pantasa_checker - DEBUG - Incorrect Words: ['"', '"']
+2024-12-03 13:15:10 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-12-03 13:15:11 - app.utils - INFO - Text after pre-defined rules (pre): "Siya ay nag aaral ng mabuti"
+2024-12-03 13:15:11 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:15:11 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-12-03 13:15:11 - app.utils - INFO - Pre-rules resolved all misspelled words
+2024-12-03 13:15:11 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:15:11 - app.pantasa_checker - DEBUG - Tokens: ['"', 'Mahal', 'kita', '"']
+2024-12-03 13:15:11 - app.pantasa_checker - DEBUG - Incorrect Words: ['"', '"']
+2024-12-03 13:15:11 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-12-03 13:15:12 - app.utils - INFO - Text after pre-defined rules (pre): "Mahal kita"
+2024-12-03 13:15:12 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:15:12 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-12-03 13:15:12 - app.utils - INFO - Pre-rules resolved all misspelled words
+2024-12-03 13:15:12 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:15:12 - app.pantasa_checker - DEBUG - Tokens: ['"', 'Uulan', 'ngayong', 'araw', '"']
+2024-12-03 13:15:12 - app.pantasa_checker - DEBUG - Incorrect Words: ['"', '"']
+2024-12-03 13:15:12 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-12-03 13:15:12 - app.utils - INFO - Text after pre-defined rules (pre): "Uulan ngayong araw"
+2024-12-03 13:15:12 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:15:12 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-12-03 13:15:12 - app.utils - INFO - Pre-rules resolved all misspelled words
+2024-12-03 13:15:12 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:15:12 - app.pantasa_checker - DEBUG - Tokens: ['"', 'May', 'malaking', 'bahay', 'sa', 'tabi', 'ng', 'dagat', '"']
+2024-12-03 13:15:13 - app.pantasa_checker - DEBUG - Incorrect Words: ['"', '"']
+2024-12-03 13:15:13 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-12-03 13:15:13 - app.utils - INFO - Text after pre-defined rules (pre): "May malaking bahay sa tabi ng dagat"
+2024-12-03 13:15:13 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:15:13 - app.utils - INFO - Incorrect words after pre-defined rules (pre): []
+2024-12-03 13:15:13 - app.utils - INFO - Pre-rules resolved all misspelled words
+2024-12-03 13:15:13 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:15:13 - app.pantasa_checker - DEBUG - Tokens: ['Huwag', 'kang', 'mag', 'alala']
+2024-12-03 13:15:13 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:15:13 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-12-03 13:15:13 - app.utils - INFO - Applying post-defined rules (post)
+2024-12-03 13:15:14 - app.utils - INFO - Text after post-defined rules (post): Huwag kang mag alala
+2024-12-03 13:15:14 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-12-03 13:15:14 - app.pantasa_checker - DEBUG - Tokens: ['Huwag', 'kang', 'mag', 'alala']
+2024-12-03 13:15:14 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Huwag', 'RBF'), ('kang', 'PRS_CCP'), ('mag', 'VBW'), ('alala', 'NNC')]
+2024-12-03 13:15:14 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-12-03 13:15:17 - app.utils - INFO - Token Suggestions: [{'token': 'RBF', 'suggestions': ['DELETE_RBF'], 'distances': [1]}, {'token': 'PRS_CCP', 'suggestions': ['KEEP_PRS_CCP_PRS_CCP'], 'distances': [1]}, {'token': 'VBW', 'suggestions': ['KEEP_VBW_VBW'], 'distances': [1]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC'], 'distances': [1]}]
+2024-12-03 13:15:17 - app.utils - INFO - Applying POS corrections
+2024-12-03 13:15:17 - app.utils - INFO - Final Corrected Sentence: kang mag alala
+2024-12-03 13:15:17 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:15:17 - app.pantasa_checker - DEBUG - Tokens: ['Masaya', 'ako', 'na', 'makita', 'ka']
+2024-12-03 13:15:17 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:15:17 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-12-03 13:15:17 - app.utils - INFO - Applying post-defined rules (post)
+2024-12-03 13:15:18 - app.utils - INFO - Text after post-defined rules (post): Masaya akong makita ka
+2024-12-03 13:15:18 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-12-03 13:15:18 - app.pantasa_checker - DEBUG - Tokens: ['Masaya', 'akong', 'makita', 'ka']
+2024-12-03 13:15:18 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Masaya', 'NNP'), ('akong', 'PRS_CCP'), ('makita', 'VBW'), ('ka', 'PRS')]
+2024-12-03 13:15:18 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-12-03 13:15:21 - app.utils - INFO - Token Suggestions: [{'token': 'NNP', 'suggestions': ['SUBSTITUTE_NNP_VBS'], 'distances': [3.4000000000000004]}, {'token': 'PRS_CCP', 'suggestions': ['KEEP_PRS_CCP_PRS_CCP'], 'distances': [3.4000000000000004]}, {'token': 'VBW', 'suggestions': ['KEEP_VBW_VBW'], 'distances': [3.4000000000000004]}, {'token': 'PRS', 'suggestions': ['DELETE_PRS'], 'distances': [3.4000000000000004]}]
+2024-12-03 13:15:21 - app.utils - INFO - Applying POS corrections
+2024-12-03 13:15:21 - app.utils - INFO - Final Corrected Sentence: akala akong makita
+2024-12-03 13:17:00 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:17:00 - app.pantasa_checker - DEBUG - Tokens: ['Ang', 'aso', 'ay', 'tumatakbo', 'sa', 'park']
+2024-12-03 13:17:00 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:17:00 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-12-03 13:17:00 - app.utils - INFO - Applying post-defined rules (post)
+2024-12-03 13:17:01 - app.utils - INFO - Text after post-defined rules (post): Ang aso ay tumatakbo sa park
+2024-12-03 13:17:01 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-12-03 13:17:01 - app.pantasa_checker - DEBUG - Tokens: ['Ang', 'aso', 'ay', 'tumatakbo', 'sa', 'park']
+2024-12-03 13:17:01 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Ang', 'DTC'), ('aso', 'NNC'), ('ay', 'LM'), ('tumatakbo', 'VBTR_VBAF'), ('sa', 'CCT'), ('park', 'NNC')]
+2024-12-03 13:17:01 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-12-03 13:17:11 - app.utils - INFO - Token Suggestions: [{'token': 'DTC', 'suggestions': ['KEEP_DTC_DTC', 'KEEP_DTC_DTC'], 'distances': [0, 0]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC'], 'distances': [0, 0, 0]}, {'token': 'LM', 'suggestions': ['KEEP_LM_LM', 'KEEP_LM_LM', 'KEEP_LM_LM'], 'distances': [0, 0, 0]}, {'token': 'VBTR_VBAF', 'suggestions': ['SUBSTITUTE_VBTR_VBAF_VBTR', 'SUBSTITUTE_VBTR_VBAF_VBTR', 'SUBSTITUTE_VBTR_VBAF_VBTR'], 'distances': [0, 0, 0]}, {'token': 'CCT', 'suggestions': ['KEEP_CCT_CCT', 'KEEP_CCT_CCT', 'KEEP_CCT_CCT'], 'distances': [0, 0, 0]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC', 'KEEP_NNC_NNC'], 'distances': [0, 0]}]
+2024-12-03 13:17:11 - app.utils - INFO - Applying POS corrections
+2024-12-03 13:17:11 - app.utils - INFO - Final Corrected Sentence: Ang aso ay umaakma sa park
+2024-12-03 13:17:11 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:17:11 - app.pantasa_checker - DEBUG - Tokens: ['Si', 'Maria', 'ay', 'kumakain', 'mansanas']
+2024-12-03 13:17:11 - app.pantasa_checker - DEBUG - Incorrect Words: ['Maria']
+2024-12-03 13:17:11 - app.utils - INFO - Applying pre-defined rules (pre) to resolve misspelled words
+2024-12-03 13:17:12 - app.utils - INFO - Text after pre-defined rules (pre): Si Maria ay kumakain mansanas
+2024-12-03 13:17:12 - app.pantasa_checker - DEBUG - Incorrect Words: ['Maria']
+2024-12-03 13:17:12 - app.utils - INFO - Incorrect words after pre-defined rules (pre): ['Maria']
+2024-12-03 13:17:12 - app.utils - INFO - Spell checking remaining incorrect words
+2024-12-03 13:17:15 - app.utils - INFO - Suggestions for 'Maria': ['aria', 'mafia', 'maia', 'mara', 'mari']
+2024-12-03 13:17:15 - app.utils - INFO - Replaced 'Maria' with 'maia'
+2024-12-03 13:17:15 - app.utils - INFO - Text after spell checking: Si maia ay kumakain mansanas
+2024-12-03 13:17:15 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:17:15 - app.pantasa_checker - DEBUG - Tokens: ['Naglalaro', 'ang', 'bata', 'sa', 'labas']
+2024-12-03 13:17:15 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:17:15 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-12-03 13:17:15 - app.utils - INFO - Applying post-defined rules (post)
+2024-12-03 13:17:16 - app.utils - INFO - Text after post-defined rules (post): Naglalaro ang bata sa labas
+2024-12-03 13:17:16 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-12-03 13:17:16 - app.pantasa_checker - DEBUG - Tokens: ['Naglalaro', 'ang', 'bata', 'sa', 'labas']
+2024-12-03 13:17:16 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Naglalaro', 'VBTR'), ('ang', 'DTC'), ('bata', 'NNC'), ('sa', 'CCT'), ('labas', 'NNC')]
+2024-12-03 13:17:16 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-12-03 13:17:19 - app.utils - INFO - Token Suggestions: [{'token': 'VBTR', 'suggestions': ['KEEP_VBTR_VBTR'], 'distances': [0]}, {'token': 'DTC', 'suggestions': ['KEEP_DTC_DTC'], 'distances': [0]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC'], 'distances': [0]}, {'token': 'CCT', 'suggestions': ['KEEP_CCT_CCT'], 'distances': [0]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC'], 'distances': [0]}]
+2024-12-03 13:17:19 - app.utils - INFO - Applying POS corrections
+2024-12-03 13:17:19 - app.utils - INFO - Final Corrected Sentence: Naglalaro ang bata sa labas
+2024-12-03 13:17:19 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:17:19 - app.pantasa_checker - DEBUG - Tokens: ['Magandang', 'umaga', 'po', 'sa', 'inyong', 'lahat']
+2024-12-03 13:17:19 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:17:19 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-12-03 13:17:19 - app.utils - INFO - Applying post-defined rules (post)
+2024-12-03 13:17:20 - app.utils - INFO - Text after post-defined rules (post): Magandang umaga po sa inyong lahat
+2024-12-03 13:17:20 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-12-03 13:17:20 - app.pantasa_checker - DEBUG - Tokens: ['Magandang', 'umaga', 'po', 'sa', 'inyong', 'lahat']
+2024-12-03 13:17:21 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Magandang', 'JJD_CCP'), ('umaga', 'RBW'), ('po', 'RBS'), ('sa', 'CCT'), ('inyong', 'PRSP_CCP'), ('lahat', 'PRI')]
+2024-12-03 13:17:21 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-12-03 13:17:30 - app.utils - INFO - Token Suggestions: [{'token': 'JJD_CCP', 'suggestions': ['DELETE_JJD_CCP', 'DELETE_JJD_CCP'], 'distances': [2.2, 3.4000000000000004]}, {'token': 'RBW', 'suggestions': ['KEEP_RBW_RBW', 'KEEP_RBW_RBW', 'KEEP_RBW_RBW'], 'distances': [2.2, 2.4, 3.4000000000000004]}, {'token': 'RBS', 'suggestions': ['DELETE_RBS', 'DELETE_RBS', 'DELETE_RBS'], 'distances': [2.2, 2.4, 3.4000000000000004]}, {'token': 'CCT', 'suggestions': ['KEEP_CCT_CCT', 'KEEP_CCT_CCT', 'KEEP_CCT_CCT'], 'distances': [2.2, 2.4, 3.4000000000000004]}, {'token': 'PRSP_CCP', 'suggestions': ['KEEP_PRSP_CCP_PRSP_CCP', 'KEEP_PRSP_CCP_PRSP_CCP', 'KEEP_PRSP_CCP_PRSP_CCP'], 'distances': [2.2, 2.4, 3.4000000000000004]}, {'token': 'PRI', 'suggestions': ['DELETE_PRI', 'DELETE_PRI'], 'distances': [2.4, 3.4000000000000004]}]
+2024-12-03 13:17:30 - app.utils - INFO - Applying POS corrections
+2024-12-03 13:17:30 - app.utils - INFO - Final Corrected Sentence: umaga sa inyong
+2024-12-03 13:17:30 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:17:30 - app.pantasa_checker - DEBUG - Tokens: ['Siya', 'ay', 'nag', 'aaral', 'ng', 'mabuti']
+2024-12-03 13:17:30 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:17:30 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-12-03 13:17:30 - app.utils - INFO - Applying post-defined rules (post)
+2024-12-03 13:17:31 - app.utils - INFO - Text after post-defined rules (post): Siya ay nag aaral ng mabuti
+2024-12-03 13:17:31 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-12-03 13:17:31 - app.pantasa_checker - DEBUG - Tokens: ['Siya', 'ay', 'nag', 'aaral', 'ng', 'mabuti']
+2024-12-03 13:17:32 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Siya', 'PRS'), ('ay', 'LM'), ('nag', 'VBTS'), ('aaral', 'FW'), ('ng', 'CCB'), ('mabuti', 'JJD')]
+2024-12-03 13:17:32 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-12-03 13:17:42 - app.utils - INFO - Token Suggestions: [{'token': 'PRS', 'suggestions': ['KEEP_PRS_PRS', 'DELETE_PRS'], 'distances': [1.2, 2.2]}, {'token': 'LM', 'suggestions': ['KEEP_LM_LM', 'KEEP_LM_LM', 'KEEP_LM_LM'], 'distances': [1.2, 1.2, 2.2]}, {'token': 'VBTS', 'suggestions': ['KEEP_VBTS_VBTS', 'KEEP_VBTS_VBTS', 'KEEP_VBTS_VBTS'], 'distances': [1.2, 1.2, 2.2]}, {'token': 'FW', 'suggestions': ['DELETE_FW', 'DELETE_FW', 'DELETE_FW'], 'distances': [1.2, 1.2, 2.2]}, {'token': 'CCB', 'suggestions': ['KEEP_CCB_CCB', 'KEEP_CCB_CCB', 'KEEP_CCB_CCB'], 'distances': [1.2, 1.2, 2.2]}, {'token': 'JJD', 'suggestions': ['KEEP_JJD_JJD', 'KEEP_JJD_JJD'], 'distances': [1.2, 2.2]}]
+2024-12-03 13:17:42 - app.utils - INFO - Applying POS corrections
+2024-12-03 13:17:42 - app.utils - INFO - Final Corrected Sentence: Siya ay nag ng mabuti
+2024-12-03 13:17:42 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:17:42 - app.pantasa_checker - DEBUG - Tokens: ['Mahal', 'kita']
+2024-12-03 13:17:42 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:17:42 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-12-03 13:17:42 - app.utils - INFO - Applying post-defined rules (post)
+2024-12-03 13:17:42 - app.utils - INFO - Text after post-defined rules (post): Mahal kita
+2024-12-03 13:17:42 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-12-03 13:17:42 - app.pantasa_checker - DEBUG - Tokens: ['Mahal', 'kita']
+2024-12-03 13:17:43 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Mahal', 'NNP'), ('kita', 'NNC')]
+2024-12-03 13:17:43 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-12-03 13:17:43 - app.utils - INFO - Token Suggestions: [{'token': 'NNP', 'suggestions': [], 'distances': []}, {'token': 'NNC', 'suggestions': [], 'distances': []}]
+2024-12-03 13:17:43 - app.utils - INFO - Applying POS corrections
+2024-12-03 13:17:43 - app.utils - INFO - Final Corrected Sentence: Mahal kita
+2024-12-03 13:17:43 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:17:43 - app.pantasa_checker - DEBUG - Tokens: ['Uulan', 'ngayong', 'araw']
+2024-12-03 13:17:43 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:17:43 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-12-03 13:17:43 - app.utils - INFO - Applying post-defined rules (post)
+2024-12-03 13:17:44 - app.utils - INFO - Text after post-defined rules (post): Uulan ngayong araw
+2024-12-03 13:17:44 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-12-03 13:17:44 - app.pantasa_checker - DEBUG - Tokens: ['Uulan', 'ngayong', 'araw']
+2024-12-03 13:17:44 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Uulan', 'VBTF'), ('ngayong', 'RBW_CCP'), ('araw', 'NNC')]
+2024-12-03 13:17:44 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-12-03 13:17:47 - app.utils - INFO - Token Suggestions: [{'token': 'VBTF', 'suggestions': ['KEEP_VBTF_VBTF'], 'distances': [0]}, {'token': 'RBW_CCP', 'suggestions': ['KEEP_RBW_CCP_RBW_CCP'], 'distances': [0]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC'], 'distances': [0]}]
+2024-12-03 13:17:47 - app.utils - INFO - Applying POS corrections
+2024-12-03 13:17:47 - app.utils - INFO - Final Corrected Sentence: Uulan ngayong araw
+2024-12-03 13:17:47 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:17:47 - app.pantasa_checker - DEBUG - Tokens: ['May', 'malaking', 'bahay', 'sa', 'tabi', 'ng', 'dagat']
+2024-12-03 13:17:47 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:17:47 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-12-03 13:17:47 - app.utils - INFO - Applying post-defined rules (post)
+2024-12-03 13:17:48 - app.utils - INFO - Text after post-defined rules (post): May malaking bahay sa tabi ng dagat
+2024-12-03 13:17:48 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-12-03 13:17:48 - app.pantasa_checker - DEBUG - Tokens: ['May', 'malaking', 'bahay', 'sa', 'tabi', 'ng', 'dagat']
+2024-12-03 13:17:48 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('May', 'VBH'), ('malaking', 'JJD_CCP'), ('bahay', 'NNC'), ('sa', 'CCT'), ('tabi', 'NNC'), ('ng', 'CCB'), ('dagat', 'NNC')]
+2024-12-03 13:17:48 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-12-03 13:18:08 - app.utils - INFO - Token Suggestions: [{'token': 'VBH', 'suggestions': ['KEEP_VBH_VBH', 'KEEP_VBH_VBH', 'DELETE_VBH'], 'distances': [0, 0, 1]}, {'token': 'JJD_CCP', 'suggestions': ['KEEP_JJD_CCP_JJD_CCP', 'KEEP_JJD_CCP_JJD_CCP', 'KEEP_JJD_CCP_JJD_CCP', 'KEEP_JJD_CCP_JJD_CCP', 'KEEP_JJD_CCP_JJD_CCP'], 'distances': [0, 0, 0, 0, 1]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC'], 'distances': [0, 0, 1, 0, 0, 1]}, {'token': 'CCT', 'suggestions': ['KEEP_CCT_CCT', 'KEEP_CCT_CCT', 'KEEP_CCT_CCT', 'KEEP_CCT_CCT', 'KEEP_CCT_CCT', 'KEEP_CCT_CCT'], 'distances': [0, 0, 1, 0, 0, 1]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC'], 'distances': [0, 0, 1, 0, 0, 1]}, {'token': 'CCB', 'suggestions': ['KEEP_CCB_CCB', 'KEEP_CCB_CCB', 'KEEP_CCB_CCB', 'KEEP_CCB_CCB', 'KEEP_CCB_CCB'], 'distances': [0, 1, 0, 0, 1]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC'], 'distances': [1, 0, 1]}]
+2024-12-03 13:18:08 - app.utils - INFO - Applying POS corrections
+2024-12-03 13:18:08 - app.utils - INFO - Final Corrected Sentence: May malaking bahay sa tabi ng dagat
+2024-12-03 13:18:08 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:18:08 - app.pantasa_checker - DEBUG - Tokens: ['Huwag', 'kang', 'mag', 'alala']
+2024-12-03 13:18:08 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:18:08 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-12-03 13:18:08 - app.utils - INFO - Applying post-defined rules (post)
+2024-12-03 13:18:09 - app.utils - INFO - Text after post-defined rules (post): Huwag kang mag alala
+2024-12-03 13:18:09 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-12-03 13:18:09 - app.pantasa_checker - DEBUG - Tokens: ['Huwag', 'kang', 'mag', 'alala']
+2024-12-03 13:18:10 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Huwag', 'RBF'), ('kang', 'PRS_CCP'), ('mag', 'VBW'), ('alala', 'NNC')]
+2024-12-03 13:18:10 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-12-03 13:18:13 - app.utils - INFO - Token Suggestions: [{'token': 'RBF', 'suggestions': ['DELETE_RBF'], 'distances': [1]}, {'token': 'PRS_CCP', 'suggestions': ['KEEP_PRS_CCP_PRS_CCP'], 'distances': [1]}, {'token': 'VBW', 'suggestions': ['KEEP_VBW_VBW'], 'distances': [1]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC'], 'distances': [1]}]
+2024-12-03 13:18:13 - app.utils - INFO - Applying POS corrections
+2024-12-03 13:18:13 - app.utils - INFO - Final Corrected Sentence: kang mag alala
+2024-12-03 13:18:13 - app.utils - INFO - Checking words against the dictionary
+2024-12-03 13:18:13 - app.pantasa_checker - DEBUG - Tokens: ['Masaya', 'ako', 'na', 'makita', 'ka']
+2024-12-03 13:18:13 - app.pantasa_checker - DEBUG - Incorrect Words: []
+2024-12-03 13:18:13 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-12-03 13:18:13 - app.utils - INFO - Applying post-defined rules (post)
+2024-12-03 13:18:14 - app.utils - INFO - Text after post-defined rules (post): Masaya akong makita ka
+2024-12-03 13:18:14 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-12-03 13:18:14 - app.pantasa_checker - DEBUG - Tokens: ['Masaya', 'akong', 'makita', 'ka']
+2024-12-03 13:18:14 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Masaya', 'NNP'), ('akong', 'PRS_CCP'), ('makita', 'VBW'), ('ka', 'PRS')]
+2024-12-03 13:18:14 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-12-03 13:18:17 - app.utils - INFO - Token Suggestions: [{'token': 'NNP', 'suggestions': ['SUBSTITUTE_NNP_VBS'], 'distances': [3.4000000000000004]}, {'token': 'PRS_CCP', 'suggestions': ['KEEP_PRS_CCP_PRS_CCP'], 'distances': [3.4000000000000004]}, {'token': 'VBW', 'suggestions': ['KEEP_VBW_VBW'], 'distances': [3.4000000000000004]}, {'token': 'PRS', 'suggestions': ['DELETE_PRS'], 'distances': [3.4000000000000004]}]
+2024-12-03 13:18:17 - app.utils - INFO - Applying POS corrections
+2024-12-03 13:18:17 - app.utils - INFO - Final Corrected Sentence: akala akong makita

@@ -79,7 +79,7 @@ def test_pantasa(csv_path, jar_path, model_path, rule_path, directory_path, pos_
 
 
 if __name__ == "__main__":
-    input_txt_path = 'data/raw/piptylines.txt'  # Replace with your actual text file path
+    input_txt_path = 'data/raw/test.txt'  # Replace with your actual text file path
     output_csv_path = 'data/raw/dataset_tests.csv'    # Desired output CSV file path
 
     # First, transform your text file into CSV
