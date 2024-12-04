@@ -1,9 +1,10 @@
 import csv
+csv.field_size_limit(10**7)  
 from transformers import AutoTokenizer, AutoModelForMaskedLM
 import torch
 from torch.nn.functional import cosine_similarity
 import os
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import as_completed, ThreadPoolExecutor
 from multiprocessing import cpu_count
 from tqdm import tqdm
 
@@ -66,6 +67,20 @@ def save_lexeme_comparison_dictionary(file_path, dictionary):
                 file.write(f"{rough_pos}::{lexeme_ngram}::{value}\n")
     except Exception as e:
         print(f"Error writing lexeme comparison dictionary: {e}")
+        
+def redo_escape_and_wrap(sentence):
+    """Escape double quotes for CSV compatibility and wrap with quotes if necessary."""
+    sentence = sentence.replace('"', '""')
+    if ',' in sentence or (sentence.startswith('""') and sentence.endswith('""')):
+        sentence = f'"{sentence}"'
+    return sentence
+
+def undo_escape_and_wrap(sentence):
+    """Revert double quotes and wrapping for processing."""
+    if sentence.startswith('"') and sentence.endswith('"'):
+        sentence = sentence[1:-1]
+    return sentence.replace('""', '"')
+
 
 def convert_id_array(id_array_str):
     if id_array_str is None:
@@ -80,7 +95,7 @@ def load_and_convert_csv(file_path):
     return data
 
 def get_subword_embeddings(word, model, tokenizer):
-    tokens = tokenizer(word, return_tensors="pt").to(device)  # Ensure tokens are on the correct device
+    tokens = tokenizer(word, return_tensors="pt").to(device)
     with torch.no_grad():
         outputs = model(**tokens, output_hidden_states=True)
     subword_embeddings = outputs.hidden_states[-1][0][1:-1]  # Ignore CLS and SEP tokens
@@ -88,7 +103,7 @@ def get_subword_embeddings(word, model, tokenizer):
 
 def compute_complexity_score(word, model, tokenizer, frequency_dict):
     # Get the whole word embedding
-    tokens = tokenizer(word, return_tensors="pt").to(device)  # Move tokens to device
+    tokens = tokenizer(word, return_tensors="pt").to(device)
     with torch.no_grad():
         outputs = model(**tokens, output_hidden_states=True)
     whole_word_embedding = torch.mean(outputs.hidden_states[-1][0][1:-1], dim=0)
@@ -105,9 +120,9 @@ def compute_complexity_score(word, model, tokenizer, frequency_dict):
     if word in frequency_dict:
         frequency = frequency_dict[word]
         if frequency > 50000:
+            frequency_boost = 2.0
+        elif frequency > 10000:
             frequency_boost = 1.5
-        elif frequency > 1000:
-            frequency_boost = 1.0
         else:
             frequency_boost = 0.8
 
@@ -115,8 +130,8 @@ def compute_complexity_score(word, model, tokenizer, frequency_dict):
     return complexity_score
 
 def compute_mlm_score(sentence, model, tokenizer, frequency_dict):
-    tokens = tokenizer(sentence, return_tensors="pt").to(device)  # Ensure tokens are on the correct device
-    input_ids = tokens["input_ids"][0]
+    tokens = tokenizer(sentence, return_tensors="pt").to(device)
+    input_ids = tokens['input_ids'][0]
     scores = []
 
     for i in range(1, input_ids.size(0) - 1):
@@ -124,7 +139,8 @@ def compute_mlm_score(sentence, model, tokenizer, frequency_dict):
         masked_input_ids[i] = tokenizer.mask_token_id
 
         with torch.no_grad():
-            outputs = model(masked_input_ids.unsqueeze(0).to(device))  # Ensure inputs are on the correct device
+            outputs = model(masked_input_ids.unsqueeze(0))
+
         logits = outputs.logits[0, i]
         probs = torch.softmax(logits, dim=-1)
 
@@ -146,30 +162,30 @@ def compute_word_score(word, sentence, model, tokenizer, frequency_dict):
         raise ValueError(f"The word '{word}' is not found in the sentence.")
 
     index = words.index(word)
-    sub_sentence = " ".join(words[:index + 1])
+    sub_sentence = ' '.join(words[:index + 1])
 
     # Tokenize and mask the word
-    tokens = tokenizer(sub_sentence, return_tensors="pt").to(device)  # Move tokens to device
-    masked_input_ids = tokens["input_ids"].clone()
-    word_token_index = tokens["input_ids"][0].size(0) - 2
+    tokens = tokenizer(sub_sentence, return_tensors="pt").to(device)
+    masked_input_ids = tokens['input_ids'].clone()
+    word_token_index = tokens['input_ids'][0].size(0) - 2
     masked_input_ids[0, word_token_index] = tokenizer.mask_token_id
 
     # Get MLM prediction probabilities
     with torch.no_grad():
         outputs = model(masked_input_ids)
     logits = outputs.logits
-    word_token_id = tokens["input_ids"][0, word_token_index]
+    word_token_id = tokens['input_ids'][0, word_token_index]
     probs = torch.softmax(logits[0, word_token_index], dim=-1)
     score = probs[word_token_id].item() * 100  # Convert to percentage
 
     # Adjust score based on frequency and thresholds
     frequency = frequency_dict.get(word, 0)
-    if frequency > 5000 and score < 50.0:
+    if frequency > 50000 and score < 50.0:
         score += 40.0
-    elif frequency > 1000 and score < 40.0:
+    elif frequency > 10000 and score < 40.0:
         score += 20.0
     elif score < 40.0:
-        score -= 10.0
+        score -= 30.0
 
     # Ensure score stays within bounds (0-100)
     score = max(0, min(score, 100))
@@ -208,6 +224,7 @@ def find_row_containing_string(data, column_name, search_string):
     return None  # Return None if no match is found
 
 def process_ngram_parallel(ngram_sentence, rough_pos, model, tokenizer, threshold, frequency_dict):
+    ngram_sentence = undo_escape_and_wrap(ngram_sentence)
     sequence_mlm_score, _ = compute_mlm_score(ngram_sentence, model, tokenizer, frequency_dict)
     sequence_mlm_score = float(sequence_mlm_score)
     
@@ -260,7 +277,6 @@ def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_fi
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
 
-        process_count = 0
         with ThreadPoolExecutor(max_workers=cpu_count()) as executor:
             for pos_pattern in tqdm(pos_patterns, desc="POS Patterns"):
                 pattern_id = pos_pattern['Pattern_ID']
@@ -285,8 +301,6 @@ def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_fi
                     continue
 
                 id_array_value = id_array_row.get("ID_Array")
-                id_array_total_comparison = len(id_array_value) * 2
-                id_array_tally_comparison = 0
 
                 futures = []
                 for instance_id in convert_id_array(id_array_value):
@@ -311,7 +325,7 @@ def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_fi
                             pos_comparison_results.append({
                                 'Pattern_ID': new_pattern_id,
                                 'POS_N-Gram': pattern,
-                                'Lexeme_N-Gram': ngram_sentence,
+                                'Lexeme_N-Gram': redo_escape_and_wrap(ngram_sentence),
                                 'MLM_Scores': sequence_mlm_score,
                                 'Comparison_Replacement_Matrix': comparison_matrix,
                                 'Final_Hybrid_N-Gram': hybrid_ngram
@@ -326,7 +340,7 @@ def generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_fi
 frequency_dict = load_frequency_dict('rules/database/word_frequency.csv')
 
 # Call the parallelized version
-for n in range(4, 5):
+for n in range(5, 6):
     ngram_list_file = 'rules/database/ngram.csv'
     pos_patterns_file = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
     id_array_file = f'rules/database/POS/{n}grams.csv'
@@ -334,7 +348,7 @@ for n in range(4, 5):
     comparison_dict_file = 'rules/database/LexComparisonDictionary.txt'
 
     # Specify the starting pattern ID if resuming from an interruption
-    start_pattern_id = "427070"  # Replace with the desired starting Pattern ID
+    start_pattern_id = "500000"  # Replace with the desired starting Pattern ID
 
     print(f"Starting generalization for {n}-grams...")
     generalize_patterns_parallel(ngram_list_file, pos_patterns_file, id_array_file, output_file, comparison_dict_file, roberta_model, roberta_tokenizer, frequency_dict, start_pattern_id=start_pattern_id)
