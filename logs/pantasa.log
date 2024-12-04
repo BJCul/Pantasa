@@ -1,0 +1,17 @@
+2024-12-05 03:11:27 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-12-05 03:11:27 - app.utils - INFO - Applying post-defined rules (post)
+2024-12-05 03:11:27 - app.utils - INFO - Text after post-defined rules (post): Sisimulan nila ang imbestigasyon sa insidente sa December 19
+2024-12-05 03:11:27 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-12-05 03:11:27 - app.pantasa_checker - DEBUG - Tokens: ['Sisimulan', 'nila', 'ang', 'imbestigasyon', 'sa', 'insidente', 'sa', 'December', '19']
+2024-12-05 03:11:28 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Sisimulan', 'VBTS'), ('nila', 'PRP'), ('ang', 'DTC'), ('imbestigasyon', 'NNC'), ('sa', 'CCT'), ('insidente', 'NNC'), ('sa', 'CCT'), ('December', 'NNP'), ('19', 'CDB')]
+2024-12-05 03:11:28 - app.utils - INFO - Generating suggestions using n-gram matching
+2024-12-05 03:11:52 - app.utils - INFO - Token Suggestions: [{'token': 'VBTS', 'suggestions': ['DELETE_VBTS', 'KEEP_VBTS_VBTS'], 'distances': [1, 1.2]}, {'token': 'PRP', 'suggestions': ['KEEP_PRP_PRP', 'KEEP_PRP_PRP', 'DELETE_PRP', 'DELETE_PRP'], 'distances': [1, 1.2, 1.2, 1]}, {'token': 'DTC', 'suggestions': ['KEEP_DTC_DTC', 'KEEP_DTC_DTC', 'KEEP_DTC_DTC', 'KEEP_DTC_DTC', 'KEEP_DTC_DTC', 'KEEP_DTC_DTC'], 'distances': [1, 1.2, 0, 1.2, 1, 1.2]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC'], 'distances': [1, 1.2, 0, 2, 1.2, 1, 1.2]}, {'token': 'CCT', 'suggestions': ['KEEP_CCT_CCT', 'KEEP_CCT_CCT', 'KEEP_CCT_CCT', 'KEEP_CCT_CCT', 'KEEP_CCT_CCT', 'KEEP_CCT_CCT', 'KEEP_CCT_CCT'], 'distances': [1, 1.2, 0, 2, 1.2, 1, 1.2]}, {'token': 'NNC', 'suggestions': ['KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'SUBSTITUTE_NNC_NNP', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC', 'KEEP_NNC_NNC'], 'distances': [1, 1.2, 0, 2, 1.2, 1, 1.2]}, {'token': 'CCT', 'suggestions': ['DELETE_CCT', 'KEEP_CCT_CCT', 'SUBSTITUTE_CCT_CDB', 'KEEP_CCT_CCT', 'KEEP_CCT_CCT', 'KEEP_CCT_CCT'], 'distances': [1.2, 0, 2, 1.2, 1, 1.2]}, {'token': 'NNP', 'suggestions': ['KEEP_NNP_NNP', 'DELETE_NNP', 'KEEP_NNP_NNP', 'KEEP_NNP_NNP'], 'distances': [0, 2, 1, 1.2]}, {'token': 'CDB', 'suggestions': ['DELETE_CDB', 'DELETE_CDB'], 'distances': [2, 1.2]}]
+2024-12-05 03:11:52 - app.utils - INFO - Applying POS corrections
+2024-12-05 03:11:53 - app.utils - INFO - Final Corrected Sentence: nila ang imbestigasyon sa insidente sa December
+2024-12-05 03:11:53 - app.utils - INFO - No misspelled words found, proceeding with grammar checking
+2024-12-05 03:11:53 - app.utils - INFO - Applying post-defined rules (post)
+2024-12-05 03:11:53 - app.utils - INFO - Text after post-defined rules (post): Nilinaw naman ni Honasang hindi isinama ng Senado sa inaprubahang P147 bilyong pondo.
+2024-12-05 03:11:53 - app.utils - INFO - Retokenizing and re-POS tagging after post modifications
+2024-12-05 03:11:53 - app.pantasa_checker - DEBUG - Tokens: ['Nilinaw', 'naman', 'ni', 'Honasang', 'hindi', 'isinama', 'ng', 'Senado', 'sa', 'inaprubahang', 'P147', 'bilyong', 'pondo', '.']
+2024-12-05 03:11:54 - app.pantasa_checker - DEBUG - POS Tagged Tokens: [('Nilinaw', 'VBTS'), ('naman', 'RBI'), ('ni', 'DTP'), ('Honasang', 'NNP'), ('hindi', 'RBF'), ('isinama', 'VBOF'), ('ng', 'CCB'), ('Senado', 'NNP'), ('sa', 'CCT'), ('inaprubahang', 'NNC_CCP'), ('P147', 'NNP'), ('bilyong', 'NNC_CCP'), ('pondo', 'NNC'), ('.', 'PMP')]
+2024-12-05 03:11:54 - app.utils - INFO - Generating suggestions using n-gram matching

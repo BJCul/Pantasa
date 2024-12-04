@@ -59,7 +59,7 @@ def test_pantasa(csv_path, jar_path, model_path, rule_path, directory_path, pos_
     else:
         # Initialize an empty DataFrame
         results_df = pd.DataFrame(columns=[
-            'Original Sentence', 'Corrected Sentence', 'Incorrect Words', 'Spell Suggestions'
+            'Original Sentence', 'Corrected Sentence', 'Incorrect Words', 'Suggestions'
         ])
         processed_indices = set()
 
