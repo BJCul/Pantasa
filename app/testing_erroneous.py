@@ -87,7 +87,7 @@ def test_pantasa(csv_path, jar_path, model_path, rule_path, directory_path, pos_
             'Original Sentence': sentence,
             'Corrected Sentence': corrected_sentence,
             'Incorrect Words': incorrect_words,
-            'Spell Suggestions': spell_suggestions
+            'Suggestions': spell_suggestions
         }])
 
         # Concatenate the new row with the results DataFrame
