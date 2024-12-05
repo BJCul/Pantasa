@@ -23,7 +23,7 @@ def compute_metrics(error_free_results_csv, erroneous_results_csv):
         original_sentence = row['Original Sentence']
         corrected_sentence = row['Corrected Sentence']
         incorrect_words = row['Incorrect Words']
-        spell_suggestions = row['Spell Suggestions']
+        spell_suggestions = row['Suggestions']
 
         # Determine if corrections were made
         corrections_made = (
@@ -44,7 +44,7 @@ def compute_metrics(error_free_results_csv, erroneous_results_csv):
         original_sentence = row['Original Sentence']
         corrected_sentence = row['Corrected Sentence']
         incorrect_words = row['Incorrect Words']
-        spell_suggestions = row['Spell Suggestions']
+        spell_suggestions = row['Suggestions']
 
         # Determine if corrections were made
         corrections_made = (
