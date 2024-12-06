@@ -77,8 +77,8 @@ def compute_metrics(error_free_results_csv, erroneous_results_csv):
 # Example usage:
 if __name__ == "__main__":
     # Paths to your results CSV files
-    error_free_results_csv = 'data/processed/error_free_output_result.csv'    # Replace with your actual path
-    erroneous_results_csv = 'data/processed/erroneous_output_result.csv'      # Replace with your actual path
+    error_free_results_csv = 'data/processed/error_free_output_result.csv'    
+    erroneous_results_csv = 'data/processed/erroneous_output_result.csv'      
 
     # Compute the metrics
     metrics = compute_metrics(error_free_results_csv, erroneous_results_csv)
