@@ -764,34 +764,69 @@ def pantasa_checker(input_sentence, jar_path, model_path, rule_path, directory_p
     Step 4: If still misspelled words, suggest spell corrections
     Step 5: Else, proceed with grammar checking
     """
-    # Proceed with grammar checking (no misspelled words found)
-    log_message("info", "No misspelled words found, proceeding with grammar checking")
+    
+    # Step 1: Check if words exist in the dictionary
+    log_message("info", "Checking words against the dictionary")
+    tokens = tokenize_sentence(input_sentence)
+    words = [word for word in tokens]
+    incorrect_words, has_incorrect_words  = check_words_in_dictionary(words, directory_path)
+    
+    if has_incorrect_words:
+        # There are misspelled words, proceed with spell checking pipeline
 
-    # Step 6: Apply post-defined rules after POS tagging
-    log_message("info", "Applying post-defined rules (post)")
-    post_rules_corrected_text = apply_predefined_rules_post(input_sentence)
-    log_message("info", f"Text after post-defined rules (post): {post_rules_corrected_text}")
+        # Step 2: Apply pre-defined rules before any modification
+        log_message("info", "Applying pre-defined rules (pre) to resolve misspelled words")
+        pre_rules_corrected_text = apply_predefined_rules_pre(input_sentence)
+        log_message("info", f"Text after pre-defined rules (pre): {pre_rules_corrected_text}")
 
-    # Step 7: Re-tokenize and re-POS tag after post rules
-    log_message("info", "Retokenizing and re-POS tagging after post modifications")
-    tokens = tokenize_sentence(post_rules_corrected_text)
-    pos_tags = pos_tagging(tokens, jar_path, model_path)
-    if not pos_tags:
-        log_message("error", "POS tagging failed after modifications")
-        return [], [], []
+        # Step 3: Re-check the dictionary after applying pre-rules
+        pre_words = re.findall(r'\w+', pre_rules_corrected_text)
+        incorrect_words_after_pre, has_incorrect_words = check_words_in_dictionary(pre_words, directory_path)
+        log_message("info", f"Incorrect words after pre-defined rules (pre): {incorrect_words_after_pre}")
+        
+        if has_incorrect_words:
+            # Step 4: Spell check the words tagged as incorrect
+            log_message("info", "Spell checking remaining incorrect words")
+            spell_checked_text, spell_suggestions, final_incorrect_words = spell_check_incorrect_words(
+                pre_rules_corrected_text, incorrect_words_after_pre, directory_path
+            )
+            log_message("info", f"Text after spell checking: {spell_checked_text}")
+            # Output misspelled words and suggestions
+            return spell_checked_text, spell_suggestions, final_incorrect_words
+        else:
+            # If pre-rules resolved all misspelled words, return with no further spell checking needed
+            log_message("info", "Pre-rules resolved all misspelled words")
+            return pre_rules_corrected_text, {}, []
 
-    # Step 8: Generate suggestions using n-gram matching
-    log_message("info", "Generating suggestions using n-gram matching")
-    token_suggestions = generate_suggestions(pos_tags, rule_path)
-    log_message("info", f"Token Suggestions: {token_suggestions}")
+    else:
+        # Proceed with grammar checking (no misspelled words found)
+        log_message("info", "No misspelled words found, proceeding with grammar checking")
 
-    # Step 9: Apply POS corrections
-    log_message("info", "Applying POS corrections")
-    corrected_sentence = apply_pos_corrections(token_suggestions, pos_tags, pos_path)
+        # Step 6: Apply post-defined rules after POS tagging
+        log_message("info", "Applying post-defined rules (post)")
+        post_rules_corrected_text = apply_predefined_rules_post(input_sentence)
+        log_message("info", f"Text after post-defined rules (post): {post_rules_corrected_text}")
 
-    log_message("info", f"Final Corrected Sentence: {corrected_sentence}")
-    # Return the corrected sentence and token suggestions
-    return corrected_sentence, token_suggestions, []
+        # Step 7: Re-tokenize and re-POS tag after post rules
+        log_message("info", "Retokenizing and re-POS tagging after post modifications")
+        tokens = tokenize_sentence(post_rules_corrected_text)
+        pos_tags = pos_tagging(tokens, jar_path, model_path)
+        if not pos_tags:
+            log_message("error", "POS tagging failed after modifications")
+            return [], [], []
+
+        # Step 8: Generate suggestions using n-gram matching
+        log_message("info", "Generating suggestions using n-gram matching")
+        token_suggestions = generate_suggestions(pos_tags, rule_path)
+        log_message("info", f"Token Suggestions: {token_suggestions}")
+
+        # Step 9: Apply POS corrections
+        log_message("info", "Applying POS corrections")
+        corrected_sentence = apply_pos_corrections(token_suggestions, pos_tags, pos_path)
+
+        log_message("info", f"Final Corrected Sentence: {corrected_sentence}")
+        # Return the corrected sentence and token suggestions
+        return corrected_sentence, token_suggestions, []
 
 
 
