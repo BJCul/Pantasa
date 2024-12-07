@@ -23,7 +23,7 @@ def evaluate_correction(erroneous_dataset_csv, erroneous_results_csv):
     TP = 0
 
     for idx in range(total_erroneous):
-        gold = df_erroneous.loc[idx, 'gold_sentence']
+        gold = df_erroneous.loc[idx, 'Gold Sentence']
         system_corrected = df_erroneous_result.loc[idx, 'Corrected Sentence']
 
         if pd.notna(system_corrected) and system_corrected == gold:

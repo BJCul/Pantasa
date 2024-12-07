@@ -4,7 +4,7 @@ def is_correction_made(row):
     original = row['Original Sentence']
     corrected = row['Corrected Sentence']
     incorrect_words = row['Incorrect Words']
-    spell_suggestions = row['Spell Suggestions']
+    spell_suggestions = row['Suggestions']
 
     diff_in_sentence = (pd.notna(corrected) and corrected != original)
     words_detected = pd.notna(incorrect_words) and incorrect_words not in [None, '', 'nan', '[]']
@@ -23,21 +23,22 @@ def evaluate_detection(error_free_results_csv, erroneous_results_csv):
     for _, row in df_error_free_result.iterrows():
         detected = is_correction_made(row)
         if detected:
-            # System claimed error where none exists
-            FP += 1
+            # False Negative - model detects grammar errors but there are no actual grammar error in the data
+            FN += 1
         else:
-            # System correctly saw no error
-            TN += 1
+            # True Positive - model detects no grammar errors and data has no actual grammar errors
+            TP += 1
 
     # Evaluate erroneous sentences (errors present)
     for _, row in df_erroneous_result.iterrows():
         detected = is_correction_made(row)
         if detected:
-            # System detected error correctly
-            TP += 1
+            # True Negative - model detects grammar errors and there are actual grammar error in the data
+
+            TN += 1
         else:
-            # System missed the error
-            FN += 1
+            # False Positive - model detects no grammar errors but the data actually has grammar errors
+            FP += 1
 
     return TP, FP, TN, FN
 
@@ -54,7 +55,7 @@ if __name__ == "__main__":
     # Calculate CoNLL-2014 style metrics: Precision, Recall, F1, and Accuracy
     precision = TP / (TP + FP) if (TP + FP) > 0 else 0
     recall = TP / (TP + FN) if (TP + FN) > 0 else 0
-    f1_score = (2 * precision * recall / (precision + recall)) if (precision + recall) > 0 else 0
+    f1_score = (1.25 * precision * recall) / (0.25 * precision + recall) if (precision + recall) > 0 else 0
     accuracy = (TP + TN) / (TP + TN + FP + FN) if (TP + TN + FP + FN) > 0 else 0
 
     print("\nCoNLL-Style Detection Metrics:")
