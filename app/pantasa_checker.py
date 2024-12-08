@@ -890,7 +890,7 @@ def pantasa_checker(input_sentence, jar_path, model_path, rule_path, directory_p
         return corrected_sentence, token_suggestions, []
 
 def test():
-    input_sentence = "kaya ng ng tao na"
+    input_sentence = "kaya ng tao na gumalaw"
     jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
     model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
     rule_path = 'data/processed/hngrams_test.csv'
