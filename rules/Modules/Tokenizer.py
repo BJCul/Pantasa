@@ -76,10 +76,4 @@ def split_sentences(text):
     
     return cleaned_sentences
 
-# Example usage
-text = """
-SNT.001\tDr. Santos is an expert in linguistics. He spoke at the conference yesterday. 
-SNT.002\tJust like France. Usually it goes on. Ms. Reyes, on the other hand, presented her research findings.
-"""
-usable_sentences = split_sentences(text)
-print(usable_sentences)
+

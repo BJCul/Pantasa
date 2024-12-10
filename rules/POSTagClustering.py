@@ -1,4 +1,5 @@
 import csv
+csv.field_size_limit(10**7) 
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from tqdm import tqdm

@@ -84,12 +84,16 @@ def process_sentence(sentence):
     lemmatized_sentence = lemmatize_sentence(sentence)
     return general_pos, detailed_pos, lemmatized_sentence
 
-def preprocess_text(input_file, tokenized_file, output_file):
+def preprocess_text(input_file, tokenized_file, output_file, max_lines=None):
     # Dynamically get the maximum number of CPU cores available
     max_workers = os.cpu_count()
     print(f"Number of cores being used: {max_workers}")
 
+    # Load the dataset with a limit on the number of lines
     dataset = load_dataset(input_file)
+    if max_lines:
+        dataset = dataset[:max_lines]
+
     tokenized_sentences = load_tokenized_sentences(tokenized_file)
     processed_sentences = load_processed_sentences(output_file)
 
@@ -122,15 +126,15 @@ def preprocess_text(input_file, tokenized_file, output_file):
 
     print(f"Preprocessed data saved to {output_file}")
 
-def run_preprocessing():
+def run_preprocessing(max_lines=None):
     # Define your file paths here
     input_txt = "data/raw/ALT-Parallel-Corpus-20191206/data_fil.txt"           # Input file (the .txt file)
     tokenized_txt = "rules/database/tokenized_sentences.txt"  # File to save tokenized sentences
     output_csv = "rules/database/preprocessed.csv"     # File to save the preprocessed output
 
     # Start the preprocessing
-    preprocess_text(input_txt, tokenized_txt, output_csv)
+    preprocess_text(input_txt, tokenized_txt, output_csv, max_lines=max_lines)
 
 # Automatically run when the script is executed
 if __name__ == "__main__":
-    run_preprocessing()
+    run_preprocessing(max_lines=None)

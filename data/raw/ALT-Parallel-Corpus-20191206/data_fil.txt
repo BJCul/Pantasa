@@ -17903,7 +17903,6 @@ SNT.82860.17811	"Upang tumugon sa teorya ng 'Roots & Shoots ni Dr. Jane Goodall,
 SNT.82860.17812	Ayon sa mga nag-organisa, ang paradang ito ay orihinal na itinatag sa mga pamayanan ng Xizhi, probinsya ng Taipei.
 SNT.82860.17813	Upang mapalawak ang global na pananaw sa paggalang sa kapaligiran, ang paradang ito ay nahirang sa Taipei City upang maipakita ang katatangian at pagkakaiba ng mga nilikha na dapat ay pinahahalagahan ng mga ordinaryong tao.
 SNT.52646.17814	Sa seremonya ng pangalawang kanonisasyon ng kanyang pagka-papa, pinangalanan ni Pope Benedict XVI ngayong araw ang apat na bagong santo.
-SNT.52646.17815	Ang mga bagong santo ay sina Rosa Venerini (1656-1728), Mother Theodore Guerin (1798-1856), Filippo Smaldone (1848-1923), at Bishop Rafael Guizar Valencia (1878-1938).
 SNT.52646.17816	Si Rosa Venerini ay tumulong sa pagtatatag ng kauna-unahang pampublikong paaralang pambabae sa Italy.
 SNT.52646.17817	Si Mother Theodore Guerin ang nanguna sa mga institusyong pampaaralan at pangrelihiyon sa Indiana matapos dumayo sa France noong 1840.
 SNT.52646.17818	Isa sa mga paaralang itinatag niya, isang akademya para sa mga kababaihan, ay nananatili pa rin ilang milya sa kanlurang bahagi ng Tere Haute.
@@ -17946,7 +17945,6 @@ SNT.57755.17854	Isang nakahahawang bakterya na kumakalat sa United States ay maa
 SNT.57755.17855-1	Ang bakterya ay iniulat na kumakalat sa mga day care center at sa mga locker room sa buong U.S.
 SNT.57755.17855-2	Kadalasan ay mga matatanda o kaya ay mga may grabeng sakit na nasa ospital ang nahahawa.
 SNT.57755.17856	Ayon sa tantiya ng Centers for Disease Control, mahigit 2 milyong katao sa U.S. ang naaapektuhan taun-taon.
-SNT.57755.17857	Isang artikulo sa Canadian Medical Association Journal (CMAJ) noong Martes ang nagsabi na ang Methicillin-resistant Staphylococcus aureus (MRSA) ay "kumakalat na may nakaka-alarmang bilis."
 SNT.57755.17858	Ang bakterya ay maaaring maging sanhi ng pigsa, tagihawat, o sa pinakamalubha, sakit na kumakain ng laman, at marami pang iba.
 SNT.57755.17859	"Ang may resistensyang bakterya ay dati nang kalaban na may bagong bangis: isang pathogen na may katangian ng virus, may taglay na resistensya at kakayahang kumalat nang matindi," isinulat ni Dr. John Conly, propesor sa medisina at isang espesyalista sa mga nakahahawang sakit sa Unibersidad ng Calgary.
 SNT.57755.17860	Nagkaroon na rin ng MRSA sa mga ospital ang mga probinsya ng British Columbia, Alberta, Saskatchewan, Manitoba, at Ontario.
@@ -18149,7 +18147,6 @@ SNT.46607.18056	"Nais kong simulan ngayon ang pakikipag-usap sa Development Fund
 SNT.46607.18057	"Para sa proyektong ganito kalaki, na magtatagal ng maraming taon, ang perang magagastos ay aabot sa 500 milyon hangang 600 milyon na dolyar o higit pa."
 SNT.46607.18058	"Kami ay kasalukuyang naghihintay sa resulta ng pananaliksik na ginawa ng isang kompaya sa India na binayaran ng Kuwait," dagdag pa ni Ramos Horta.
 SNT.46607.18059	Ang delegasyon ng East Timor ay kinabibilangan ng Ministro ng Pampublikong Gawa na si Odete Victor at ang Ministro ng Enerhiya at Pinagkukunang Yaman na si Jose Teixeira.
-SNT.46607.18060	Ang pagdalaw ay bahagi ng paanyaya ng Punong Ministro ng Kuwait na si Nasser Al-Mohammed Al-Ahmed Al-Sabah, kalakip ang pakikipagpulong sa Emir Sabah Al-Ahmad Al-Jaber Al-Sabah, prinsipe Nawaf Al-Ahmad Al-Jaber Al-Sabah, at Ministro ng Panlabas na si Mohammed Sabah Al salem Al Sabah at mga kinatawan ng Development Fund ng Kuwait.
 SNT.46607.18061	Ito ang pangalawang pagdalaw sa Kuwait ni Ramos Horta sa loob ng dalawang taon, isang bansa kung saan pinapanatili ng Punong Ministro ng East Timor ang magandang ugnayan sa maraming miyembro ng pamilyang maharlika at ng pamahalaan.
 SNT.21055.18062	Isang grupo na may 19 katao, kabilang ang mga lokal na Aborigine at mga kawani ng Roads and Traffic Authority (RTA), ay sinabuyan ng para sa pananim sa rural na lugar ng Australia ngayong araw.
 SNT.21055.18063	Sila ay naglalakad sa iminumungkahing daan ng isang malayang baypas habang naghahanap ng mga lugar na may halaga sa taong Aborigine.

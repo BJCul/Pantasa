@@ -23,4 +23,3 @@ logs/pantasa.log
 *.log
 /logs
 logs/pantasa.log
-sorted_deduplicated_7grams.csv

@@ -1,4 +1,5 @@
 import csv
+csv.field_size_limit(10**7) 
 import os
 from transformers import AutoTokenizer, AutoModelForMaskedLM
 import torch

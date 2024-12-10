@@ -5,9 +5,23 @@ import re
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from threading import Lock
+import logging
+
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("processing.log"),
+        logging.StreamHandler()
+    ]
+)
 
 # Define the regular expression for tokenizing word sequences including punctuation
-regex = r"[^.!?,;:—\s][^.!?,;:—]*[.!?,;:—]?['\"]?(?=\s|$)"
+TERMINATOR = set('.!?,;:')
+# Single dotted abbreviations (e.g., Mr., Dr., Mrs.)
+ABBREVIATION_REGEX= re.compile(r'\b(?:[A-Z][a-z]*\.|[A-Z]{2,}\.?|[A-Z]\.)(?=\s|\b)')
+
 
 # Global variables for unique ID and thread lock
 start_id = 0
@@ -22,7 +36,7 @@ def get_latest_id(output_file):
                 ids = [int(row['N-Gram_ID']) for row in reader if row['N-Gram_ID'].isdigit()]
             return max(ids, default=0) + 1 if ids else 0
         except Exception as e:
-            print(f"Error reading {output_file} for ID: {e}")
+            logging.error(f"Error reading {output_file} for ID: {e}")
     return 0
 
 def redo_escape_and_wrap(sentence):
@@ -39,17 +53,17 @@ def undo_escape_and_wrap(sentence):
     return sentence.replace('""', '"')
 
 def separate_punctuation(sequence):
-    """Separate punctuation attached at the beginning or end of words."""
+    """Separate terminator punctuation and standalone symbols as tokens, with exceptions for abbreviations."""
     tokens = []
-    for word in sequence.split():
-        if re.match(r'^[^\w\s]', word):  # Leading punctuation
-            tokens.append(word[0])
-            tokens.append(word[1:])
-        elif re.match(r'[^\w\s]$', word):  # Trailing punctuation
-            tokens.append(word[:-1])
-            tokens.append(word[-1])
-        else:
-            tokens.append(word)
+    token_pattern = re.compile(
+        r"\b(?:[A-Z]{1,3}\.|[A-Z][a-z]{0,3}\.)|[.!?,;:]|\b\w+(?:[-']\w+)*\b|[^\w\s]"
+    )
+    matches = token_pattern.findall(sequence)
+    
+    for word in matches:
+        tokens.append(word)
+    
+    #print(tokens)
     return tokens
 
 def custom_ngrams(sequence, n):
@@ -64,10 +78,15 @@ def generate_ngrams(word_sequence, rough_pos_sequence, detailed_pos_sequence, le
     detailed_pos_tags = detailed_pos_sequence.split()
     lemmas = separate_punctuation(lemma_sequence)
     
-    # Check length matching
+    print(f"Debug Lengths: Words={len(words)}, Lemmas={len(lemmas)}, Rough POS={len(rough_pos_tags)}, Detailed POS={len(detailed_pos_tags)}")
+
     if len(words) != len(lemmas):
+        print("Mismatch in words and lemmas:", words, lemmas)
+        logging.warning("Mismatch in words and lemmas: %s %s", words, lemmas)
         raise ValueError("Words and Lemmas sequence lengths do not match")
     if len(rough_pos_tags) != len(detailed_pos_tags):
+        print("Mismatch in rough and detailed POS tags:", rough_pos_tags, detailed_pos_tags)
+        logging.warning("Mismatch in rough and detailed POS tags: %s %s", rough_pos_tags, detailed_pos_tags)
         raise ValueError("Rough POS and Detailed POS sequence lengths do not match")
     
     for n in range(ngram_range[0], ngram_range[1] + 1):
@@ -80,9 +99,9 @@ def generate_ngrams(word_sequence, rough_pos_sequence, detailed_pos_sequence, le
             global start_id
             
             for word_gram, rough_pos_gram, detailed_pos_gram, lemma_gram in zip(word_n_grams, rough_pos_n_grams, detailed_pos_n_grams, lemma_n_grams):
-                unique_detailed_tags = set(tag for detailed_tag in detailed_pos_gram for tag in detailed_tag.split('_'))
                 
-                if len(unique_detailed_tags) >= n:
+                # Ensure n-gram is valid (contains terminator punctuation as standalone n-grams)
+                if all(token in TERMINATOR or token.isalnum() for token in word_gram):
                     ngram_str = ' '.join(word_gram)
                     lemma_str = ' '.join(lemma_gram)
                     rough_pos_str = ' '.join(rough_pos_gram)
@@ -150,7 +169,7 @@ def process_csv(input_file, output_file, start_row=0):
                         row_results = future.result()
                         results.extend(row_results)
                     except ValueError as e:
-                        print(f"Skipping row due to error: {e}")
+                        logging.warning(f"Skipping row due to error: {e}")
                     pbar.update(1)
 
     # Write results to output CSV
@@ -161,7 +180,8 @@ def process_csv(input_file, output_file, start_row=0):
             writer.writeheader()
         writer.writerows(results)
 
-    print(f"Processed data saved to {output_file}")
+    logging.info(f"Processed data saved to {output_file}")
+
 
 # Example usage
 input_csv = 'rules/database/preprocessed.csv'
