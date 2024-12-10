@@ -127,131 +127,135 @@ def get_latest_pattern_id(file_path):
         return 500000  # Default starting point if file not found
 
 def process_pos_patterns_chunk(pos_patterns_chunk, generated_ngrams_file, output_file, pattern_file, model, tokenizer, seen_comparisons, pattern_counter, threshold=0.50):
-    generated_ngrams = pd.read_csv(generated_ngrams_file)
-    existing_patterns_output = collect_existing_patterns(output_file)
-    
-    # Replace NaN values in the chunk with empty strings
-    pos_patterns_chunk = pos_patterns_chunk.fillna('')
+    try:
+        generated_ngrams = pd.read_csv(generated_ngrams_file)
+        existing_patterns_output = collect_existing_patterns(output_file)
+        
+        # Replace NaN values in the chunk with empty strings
+        pos_patterns_chunk = pos_patterns_chunk.fillna('')
 
-    pos_comparison_results = []
-    new_patterns = []
+        pos_comparison_results = []
+        new_patterns = []
 
-    for _, pattern in pos_patterns_chunk.iterrows():
-        pattern_id = pattern['Pattern_ID']
-        rough_pos = pattern['RoughPOS_N-Gram']
-        detailed_pos = pattern['DetailedPOS_N-Gram']
-        id_array_str = pattern['ID_Array']
+        for _, pattern in pos_patterns_chunk.iterrows():
+            pattern_id = pattern['Pattern_ID']
+            rough_pos = pattern['RoughPOS_N-Gram']
+            detailed_pos = pattern['DetailedPOS_N-Gram']
+            id_array_str = pattern['ID_Array']
 
-        # Safely parse the ID_Array string into a list using ast.literal_eval
-        if id_array_str:
-            try:
-                id_array = ast.literal_eval(id_array_str)
-                if not isinstance(id_array, list):
-                    id_array = []  # Ensure id_array is a list even if parsing goes wrong
-            except (ValueError, SyntaxError):
+            # Safely parse the ID_Array string into a list using ast.literal_eval
+            if id_array_str:
+                try:
+                    id_array = ast.literal_eval(id_array_str)
+                    if not isinstance(id_array, list):
+                        id_array = []  # Ensure id_array is a list even if parsing goes wrong
+                except (ValueError, SyntaxError):
+                    id_array = []
+            else:
                 id_array = []
-        else:
-            id_array = []
 
-        # Direct lookup using ID_Array for RoughPOS
-        if rough_pos and id_array:
-            rough_pattern_size = get_ngram_size_from_pattern_id(pattern_id)
-            # Convert id_array from string to integers if applicable
-            id_array = [int(id_.strip()) for id_ in id_array]
-            rough_pos_matches = generated_ngrams[generated_ngrams['N-Gram_ID'].isin(id_array)]
-            rough_pos_frequency = rough_pos_matches.shape[0]
-            print(f"Matches for RoughPOS: {rough_pos} -> {rough_pos_matches}")
-            pos_comparison_results.append({
-                'Pattern_ID': pattern_id,
-                'RoughPOS_N-Gram': rough_pos or None,
-                'RPOSN_Freq': rough_pos_frequency,
-                'DetailedPOS_N-Gram': None,
-                'DPOSN_Freq': None,
-                'Comparison_Replacement_Matrix': None,
-                'POS_N-Gram': rough_pos
-            })
+            # Direct lookup using ID_Array for RoughPOS
+            if rough_pos and id_array:
+                rough_pattern_size = get_ngram_size_from_pattern_id(pattern_id)
+                # Convert id_array from string to integers if applicable
+                id_array = [int(id_.strip()) for id_ in id_array]
+                rough_pos_matches = generated_ngrams[generated_ngrams['N-Gram_ID'].isin(id_array)]
+                rough_pos_frequency = rough_pos_matches.shape[0]
+                print(f"Matches for RoughPOS: {rough_pos} -> {rough_pos_matches}")
+                pos_comparison_results.append({
+                    'Pattern_ID': pattern_id,
+                    'RoughPOS_N-Gram': rough_pos or None,
+                    'RPOSN_Freq': rough_pos_frequency,
+                    'DetailedPOS_N-Gram': None,
+                    'DPOSN_Freq': None,
+                    'Comparison_Replacement_Matrix': None,
+                    'POS_N-Gram': rough_pos
+                })
 
-            for _, rough_pos_match in rough_pos_matches.iterrows():
-                match_pos =  rough_pos_match['DetailedPOS_N-Gram']               
-                comparison_key = f"{rough_pos}::{match_pos}"
-                print(f"RoughPOS: {rough_pos}, DetailedPOS: {match_pos}")
-                if comparison_key not in seen_comparisons:
-                    print(f"Processing new comparison: {comparison_key}")
-                    _, _, comparison_matrix, new_pattern = compare_pos_sequences(rough_pos, match_pos, model, tokenizer, threshold)
-                    if new_pattern not in existing_patterns_output:
-                        new_pattern_id = generate_pattern_id(pattern_counter)
-                        seen_comparisons[comparison_key] = new_pattern_id
-                        existing_patterns_output.add(new_pattern)
-                        pattern_counter += 1
+                for _, rough_pos_match in rough_pos_matches.iterrows():
+                    match_pos =  rough_pos_match['DetailedPOS_N-Gram']               
+                    comparison_key = f"{rough_pos}::{match_pos}"
+                    print(f"RoughPOS: {rough_pos}, DetailedPOS: {match_pos}")
+                    if comparison_key not in seen_comparisons:
+                        print(f"Processing new comparison: {comparison_key}")
+                        _, _, comparison_matrix, new_pattern = compare_pos_sequences(rough_pos, match_pos, model, tokenizer, threshold)
+                        if new_pattern not in existing_patterns_output:
+                            new_pattern_id = generate_pattern_id(pattern_counter)
+                            seen_comparisons[comparison_key] = new_pattern_id
+                            existing_patterns_output.add(new_pattern)
+                            pattern_counter += 1
 
-                        new_pattern_matches = instance_collector (new_pattern,  generated_ngrams, rough_pattern_size)
-                        ngram_id_list = new_pattern_matches['N-Gram_ID'].tolist()
+                            new_pattern_matches = instance_collector (new_pattern,  generated_ngrams, rough_pattern_size)
+                            ngram_id_list = new_pattern_matches['N-Gram_ID'].tolist()
 
 
-                        print(f"New pattern being added: {new_pattern}, ID: {new_pattern_id}")
-                        pos_comparison_results.append({
-                            'Pattern_ID': new_pattern_id,
-                            'RoughPOS_N-Gram': rough_pos,
-                            'RPOSN_Freq': rough_pos_frequency,
-                            'DetailedPOS_N-Gram': match_pos,
-                            'DPOSN_Freq': len(ngram_id_list),
-                            'Comparison_Replacement_Matrix': comparison_matrix,
-                            'POS_N-Gram': new_pattern
-                        })
+                            print(f"New pattern being added: {new_pattern}, ID: {new_pattern_id}")
+                            pos_comparison_results.append({
+                                'Pattern_ID': new_pattern_id,
+                                'RoughPOS_N-Gram': rough_pos,
+                                'RPOSN_Freq': rough_pos_frequency,
+                                'DetailedPOS_N-Gram': match_pos,
+                                'DPOSN_Freq': len(ngram_id_list),
+                                'Comparison_Replacement_Matrix': comparison_matrix,
+                                'POS_N-Gram': new_pattern
+                            })
 
-                        new_patterns.append({
-                            'Pattern_ID': new_pattern_id,
-                            'RoughPOS_N-Gram': rough_pos,
-                            'DetailedPOS_N-Gram': match_pos,
-                            'Frequency': len(ngram_id_list),
-                            'ID_Array': ','.join(map(str, ngram_id_list))
-                        })
-                        print(f"Comparison made: Rough POS - {rough_pos}, Detailed POS - {detailed_pos}")
-                else:
-                    print(f"Comparison already done for Rough POS - {rough_pos} and Detailed POS - {detailed_pos}")
+                            new_patterns.append({
+                                'Pattern_ID': new_pattern_id,
+                                'RoughPOS_N-Gram': rough_pos,
+                                'DetailedPOS_N-Gram': match_pos,
+                                'Frequency': len(ngram_id_list),
+                                'ID_Array': ','.join(map(str, ngram_id_list))
+                            })
+                            print(f"Comparison made: Rough POS - {rough_pos}, Detailed POS - {detailed_pos}")
+                    else:
+                        print(f"Comparison already done for Rough POS - {rough_pos} and Detailed POS - {detailed_pos}")
 
-        else:
-            # Convert id_array from string to integers if applicable
-            id_array = [int(id_.strip()) for id_ in id_array]
-            detailed_pos_matches = generated_ngrams[generated_ngrams['N-Gram_ID'].isin(id_array)]
-            detailed_pos_frequency = detailed_pos_matches.shape[0]
-            pos_comparison_results.append({
-                'Pattern_ID': pattern_id,
-                'RoughPOS_N-Gram': None,
-                'RPOSN_Freq': None,
-                'DetailedPOS_N-Gram': detailed_pos,
-                'DPOSN_Freq': detailed_pos_frequency,
-                'Comparison_Replacement_Matrix': None,
-                'POS_N-Gram': detailed_pos
-            })
+            else:
+                # Convert id_array from string to integers if applicable
+                id_array = [int(id_.strip()) for id_ in id_array]
+                detailed_pos_matches = generated_ngrams[generated_ngrams['N-Gram_ID'].isin(id_array)]
+                detailed_pos_frequency = detailed_pos_matches.shape[0]
+                pos_comparison_results.append({
+                    'Pattern_ID': pattern_id,
+                    'RoughPOS_N-Gram': None,
+                    'RPOSN_Freq': None,
+                    'DetailedPOS_N-Gram': detailed_pos,
+                    'DPOSN_Freq': detailed_pos_frequency,
+                    'Comparison_Replacement_Matrix': None,
+                    'POS_N-Gram': detailed_pos
+                })
 
-    # Write comparison results to output file
-    if pos_comparison_results:
-        with open(output_file, 'a', newline='', encoding='utf-8') as file:
-            fieldnames = ['Pattern_ID', 'RoughPOS_N-Gram', 'RPOSN_Freq', 'DetailedPOS_N-Gram', 'DPOSN_Freq', 'Comparison_Replacement_Matrix', 'POS_N-Gram']
-            writer = csv.DictWriter(file, fieldnames=fieldnames)
-            if os.stat(output_file).st_size == 0:
-                writer.writeheader()  # Write header if the file is empty
-            writer.writerows(pos_comparison_results)
+        # Write comparison results to output file
+        if pos_comparison_results:
+            with open(output_file, 'a', newline='', encoding='utf-8') as file:
+                fieldnames = ['Pattern_ID', 'RoughPOS_N-Gram', 'RPOSN_Freq', 'DetailedPOS_N-Gram', 'DPOSN_Freq', 'Comparison_Replacement_Matrix', 'POS_N-Gram']
+                writer = csv.DictWriter(file, fieldnames=fieldnames)
+                if os.stat(output_file).st_size == 0:
+                    writer.writeheader()  # Write header if the file is empty
+                writer.writerows(pos_comparison_results)
 
-    # Write new patterns to pattern file
-    if new_patterns:
-        with open(pattern_file, 'a', newline='', encoding='utf-8') as file:
-            fieldnames = ['Pattern_ID', 'RoughPOS_N-Gram', 'DetailedPOS_N-Gram', 'Frequency', 'ID_Array']
-            writer = csv.DictWriter(file, fieldnames=fieldnames)
-            if os.stat(pattern_file).st_size == 0:
-                writer.writeheader()  # Write header if the file is empty
-            writer.writerows(new_patterns)
+        # Write new patterns to pattern file
+        if new_patterns:
+            with open(pattern_file, 'a', newline='', encoding='utf-8') as file:
+                fieldnames = ['Pattern_ID', 'RoughPOS_N-Gram', 'DetailedPOS_N-Gram', 'Frequency', 'ID_Array']
+                writer = csv.DictWriter(file, fieldnames=fieldnames)
+                if os.stat(pattern_file).st_size == 0:
+                    writer.writeheader()  # Write header if the file is empty
+                writer.writerows(new_patterns)
+    except Exception as e:
+        print(f"Error in worker process: {e}")
+        raise
 
     return pattern_counter
 
 
 if __name__ == "__main__":
     ngram_csv = 'rules/database/ngram.csv'
-    for n in range(5, 6):
+    for n in range(2, 3):
         pattern_csv = f'rules/database/POS/{n}grams.csv'
         output_csv = f'rules/database/Generalized/POSTComparison/{n}grams.csv'
-        chunk_size = 5000
+        chunk_size = 500
 
         # Prepare the output files with headers if they are empty
         if not os.path.exists(output_csv):

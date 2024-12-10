@@ -1,43 +1,16 @@
 import csv
 import os
 from collections import defaultdict
-import re
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from threading import Lock
-import logging
 
-# Set up logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("processing.log"),
-        logging.StreamHandler()
-    ]
-)
+# Set of punctuation marks that can act as sentence terminators
+TERMINATOR = set('.!?,')
 
-# Define the regular expression for tokenizing word sequences including punctuation
-TERMINATOR = set('.!?,;:')
-# Single dotted abbreviations (e.g., Mr., Dr., Mrs.)
-ABBREVIATION_REGEX= re.compile(r'\b(?:[A-Z][a-z]*\.|[A-Z]{2,}\.?|[A-Z]\.)(?=\s|\b)')
-
-
-# Global variables for unique ID and thread lock
-start_id = 0
+# Thread lock for safe ID updates
 id_lock = Lock()
-
-def get_latest_id(output_file):
-    """Retrieve the latest N-Gram_ID from the output file if it exists, to continue ID generation."""
-    if os.path.exists(output_file):
-        try:
-            with open(output_file, 'r', encoding='utf-8') as csv_file:
-                reader = csv.DictReader(csv_file)
-                ids = [int(row['N-Gram_ID']) for row in reader if row['N-Gram_ID'].isdigit()]
-            return max(ids, default=0) + 1 if ids else 0
-        except Exception as e:
-            logging.error(f"Error reading {output_file} for ID: {e}")
-    return 0
+start_id = 0
 
 def redo_escape_and_wrap(sentence):
     """Escape double quotes for CSV compatibility and wrap with quotes if necessary."""
@@ -52,132 +25,150 @@ def undo_escape_and_wrap(sentence):
         sentence = sentence[1:-1]
     return sentence.replace('""', '"')
 
-def separate_punctuation(sequence):
-    """Separate terminator punctuation and standalone symbols as tokens, with exceptions for abbreviations."""
+def get_latest_id(output_file):
+    if os.path.exists(output_file):
+        try:
+            with open(output_file, 'r', encoding='utf-8') as csv_file:
+                reader = csv.DictReader(csv_file)
+                ids = [int(row['N-Gram_ID']) for row in reader if row['N-Gram_ID'].isdigit()]
+            return max(ids, default=0) + 1 if ids else 0
+        except Exception as e:
+            print(f"Error reading {output_file} for ID: {e}")
+    return 0
+
+
+def split_sentence_preserving_abbreviations(sentence):
+    """
+    Split a sentence into tokens while preserving abbreviations, hyphenated words,
+    and treating punctuation separately.
+    """
     tokens = []
-    token_pattern = re.compile(
-        r"\b(?:[A-Z]{1,3}\.|[A-Z][a-z]{0,3}\.)|[.!?,;:]|\b\w+(?:[-']\w+)*\b|[^\w\s]"
-    )
-    matches = token_pattern.findall(sequence)
-    
-    for word in matches:
-        tokens.append(word)
-    
-    #print(tokens)
+    buffer = ""
+    for char in sentence:
+        if char.isalnum() or (char == '-' and buffer and buffer[-1].isalnum()):
+            # Accumulate alphanumeric characters and hyphens as part of a word
+            buffer += char
+        elif char == '.':
+            # Check if it might be part of an abbreviation
+            if buffer and buffer[0].isupper() and len(buffer) <= 3:  # Likely an abbreviation
+                buffer += char
+            else:
+                if buffer:
+                    tokens.append(buffer)
+                    buffer = ""
+                tokens.append(char)  # Add period as a separate token
+        elif char in TERMINATOR or char in {'"', "'", ':', ';'}:
+            # Handle sentence terminators or other punctuation
+            if buffer:
+                tokens.append(buffer)
+                buffer = ""
+            tokens.append(char)  # Add punctuation as a separate token
+        elif char.isspace():
+            if buffer:
+                tokens.append(buffer)
+                buffer = ""
+        else:
+            # Handle unexpected or special characters
+            if buffer:
+                tokens.append(buffer)
+                buffer = ""
+            tokens.append(char)  # Add special characters as separate tokens
+
+    # Add any remaining buffer as the last token
+    if buffer:
+        tokens.append(buffer)
+
     return tokens
 
-def custom_ngrams(sequence, n):
-    """Generate n-grams from a sequence."""
-    return [tuple(sequence[i:i + n]) for i in range(len(sequence) - n + 1)]
 
-def generate_ngrams(word_sequence, rough_pos_sequence, detailed_pos_sequence, lemma_sequence, ngram_range=(2, 7), add_newline=False):
-    ngram_sequences = defaultdict(list)
-    
-    words = separate_punctuation(word_sequence)
+def generate_ngrams(sequence, rough_pos_sequence, detailed_pos_sequence, lemma_sequence, ngram_range=(2, 7)):
+    """
+    Generate n-grams from the processed token sequences.
+    """
+    tokens = split_sentence_preserving_abbreviations(sequence)
     rough_pos_tags = rough_pos_sequence.split()
     detailed_pos_tags = detailed_pos_sequence.split()
-    lemmas = separate_punctuation(lemma_sequence)
-    
-    print(f"Debug Lengths: Words={len(words)}, Lemmas={len(lemmas)}, Rough POS={len(rough_pos_tags)}, Detailed POS={len(detailed_pos_tags)}")
+    lemmas = split_sentence_preserving_abbreviations(lemma_sequence)
 
-    if len(words) != len(lemmas):
-        print("Mismatch in words and lemmas:", words, lemmas)
-        logging.warning("Mismatch in words and lemmas: %s %s", words, lemmas)
-        raise ValueError("Words and Lemmas sequence lengths do not match")
+    # Check for length mismatches
+    if len(tokens) != len(lemmas):
+        raise ValueError("Token and Lemma sequences must have the same length.")
     if len(rough_pos_tags) != len(detailed_pos_tags):
-        print("Mismatch in rough and detailed POS tags:", rough_pos_tags, detailed_pos_tags)
-        logging.warning("Mismatch in rough and detailed POS tags: %s %s", rough_pos_tags, detailed_pos_tags)
-        raise ValueError("Rough POS and Detailed POS sequence lengths do not match")
-    
+        raise ValueError("Rough POS and Detailed POS sequences must have the same length.")
+
+    ngram_sequences = defaultdict(list)
     for n in range(ngram_range[0], ngram_range[1] + 1):
-        word_n_grams = custom_ngrams(words, n)
-        rough_pos_n_grams = custom_ngrams(rough_pos_tags, n)
-        detailed_pos_n_grams = custom_ngrams(detailed_pos_tags, n)
-        lemma_n_grams = custom_ngrams(lemmas, n)
-        
-        with id_lock:  # Ensure thread-safe access to the shared ID counter
+        token_ngrams = [tuple(tokens[i:i + n]) for i in range(len(tokens) - n + 1)]
+        lemma_ngrams = [tuple(lemmas[i:i + n]) for i in range(len(lemmas) - n + 1)]
+        rough_pos_ngrams = [tuple(rough_pos_tags[i:i + n]) for i in range(len(rough_pos_tags) - n + 1)]
+        detailed_pos_ngrams = [tuple(detailed_pos_tags[i:i + n]) for i in range(len(detailed_pos_tags) - n + 1)]
+
+        with id_lock:
             global start_id
-            
-            for word_gram, rough_pos_gram, detailed_pos_gram, lemma_gram in zip(word_n_grams, rough_pos_n_grams, detailed_pos_n_grams, lemma_n_grams):
-                
-                # Ensure n-gram is valid (contains terminator punctuation as standalone n-grams)
-                if all(token in TERMINATOR or token.isalnum() for token in word_gram):
-                    ngram_str = ' '.join(word_gram)
-                    lemma_str = ' '.join(lemma_gram)
-                    rough_pos_str = ' '.join(rough_pos_gram)
-                    detailed_pos_str = ' '.join(detailed_pos_gram)
-                    
-                    if add_newline:
-                        ngram_str += '\n'
-                        lemma_str += '\n'
-                        rough_pos_str += '\n'
-                        detailed_pos_str += '\n'
-                    
-                    ngram_id = f"{start_id:06d}"
-                    ngram_sequences[n].append((ngram_id, n, rough_pos_str, detailed_pos_str, ngram_str, lemma_str))
-                    start_id += 1  # Increment the global ID
-    
+            for t_ngram, l_ngram, rp_ngram, dp_ngram in zip(token_ngrams, lemma_ngrams, rough_pos_ngrams, detailed_pos_ngrams):
+                ngram_sequences[n].append((f"{start_id:06d}", n, ' '.join(rp_ngram), ' '.join(dp_ngram), ' '.join(t_ngram), ' '.join(l_ngram)))
+                start_id += 1
+
     return ngram_sequences
 
+
 def process_row(row):
-    """Process a single row and generate n-grams from it."""
-    sentence = undo_escape_and_wrap(row['Sentence'])
-    rough_pos = row['Rough_POS']
-    detailed_pos = row['Detailed_POS']
-    lemmatized = undo_escape_and_wrap(row['Lemmatized_Sentence'])
-    
-    ngram_data = generate_ngrams(sentence, rough_pos, detailed_pos, lemmatized)
-    
-    results = []
-    for ngram_size, ngrams_list in ngram_data.items():
-        for ngram_tuple in ngrams_list:
-            ngram_id, ngram_size, rough_pos_str, detailed_pos_str, ngram_str, lemma_str = ngram_tuple
-            
-            # Reapply escape and wrap before saving
-            ngram_str = redo_escape_and_wrap(ngram_str)
-            lemma_str = redo_escape_and_wrap(lemma_str)
-            
-            results.append({
-                'N-Gram_ID': ngram_id,
-                'N-Gram_Size': ngram_size,
-                'RoughPOS_N-Gram': rough_pos_str,
-                'DetailedPOS_N-Gram': detailed_pos_str,
-                'N-Gram': ngram_str,
-                'Lemma_N-Gram': lemma_str
-            })
-    return results
+    """
+    Process a single row and generate n-grams from it.
+    """
+    try:
+        sentence = undo_escape_and_wrap(row['Sentence'])
+        rough_pos = row['Rough_POS']
+        detailed_pos = row['Detailed_POS']
+        lemmatized = undo_escape_and_wrap(row['Lemmatized_Sentence'])
+
+        ngram_data = generate_ngrams(sentence, rough_pos, detailed_pos, lemmatized)
+
+        results = []
+        for ngram_size, ngrams_list in ngram_data.items():
+            for ngram_tuple in ngrams_list:
+                ngram_id, ngram_size, rough_pos_str, detailed_pos_str, ngram_str, lemma_str = ngram_tuple
+                ngram_str = redo_escape_and_wrap(ngram_str)
+                lemma_str = redo_escape_and_wrap(lemma_str)
+                
+                results.append({
+                    'N-Gram_ID': ngram_id,
+                    'N-Gram_Size': ngram_size,
+                    'RoughPOS_N-Gram': rough_pos_str,
+                    'DetailedPOS_N-Gram': detailed_pos_str,
+                    'N-Gram': ngram_str,
+                    'Lemma_N-Gram': lemma_str
+                })
+        return results
+    except ValueError as e:
+        # Log the error and skip the problematic row
+        print(f"Skipping row due to error: {e}")
+        return []
 
 def process_csv(input_file, output_file, start_row=0):
+    """
+    Process the input CSV file row by row, generate n-grams, and write to output.
+    """
     global start_id
-    start_id = get_latest_id(output_file)  # Initialize with the last ID in output
+    start_id = get_latest_id(output_file)
 
     results = []
     max_workers = os.cpu_count()
-
     with open(input_file, 'r', encoding='utf-8') as csv_file:
         reader = list(csv.DictReader(csv_file))
-
-        # Skip to the specified start_row
         rows_to_process = reader[start_row:]
-        
-        # Progress bar for processing rows with parallel execution
+
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             futures = {executor.submit(process_row, row): row for row in rows_to_process}
             with tqdm(total=len(futures), desc="Processing Rows") as pbar:
                 for future in as_completed(futures):
-                    try:
-                        row_results = future.result()
-                        results.extend(row_results)
-                    except ValueError as e:
-                        logging.warning(f"Skipping row due to error: {e}")
+                    results.extend(future.result())
                     pbar.update(1)
 
-    # Write results to output CSV
-    with open(output_file, 'a', newline='', encoding='utf-8') as out_file:
+    with open(output_file, 'w', newline='', encoding='utf-8') as out_file:
         fieldnames = ['N-Gram_ID', 'N-Gram_Size', 'RoughPOS_N-Gram', 'DetailedPOS_N-Gram', 'N-Gram', 'Lemma_N-Gram']
         writer = csv.DictWriter(out_file, fieldnames=fieldnames)
-        if os.stat(output_file).st_size == 0:
-            writer.writeheader()
+        writer.writeheader()
         writer.writerows(results)
 
     logging.info(f"Processed data saved to {output_file}")
