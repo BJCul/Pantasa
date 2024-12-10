@@ -12,12 +12,22 @@ TERMINATOR = set('.!?,')
 id_lock = Lock()
 start_id = 0
 
-def redo_escape_and_wrap(sentence):
-    """Escape double quotes for CSV compatibility and wrap with quotes if necessary."""
-    sentence = sentence.replace('"', '""')
-    if ',' in sentence or (sentence.startswith('""') and sentence.endswith('""')):
+def escape_unwrapped_quotes(sentence):
+    """Escape double quotes if they are not at the start and end of the sentence."""
+    if '"' in sentence and not (sentence.startswith('"') and sentence.endswith('"')):
+        sentence = sentence.replace('"', '""')
+    return sentence
+
+def wrap_sentence_with_commas(sentence):
+    """Wrap sentence with double quotes if it contains a comma and isn't already wrapped."""
+    if ',' in sentence and not (sentence.startswith('"') and sentence.endswith('"')):
         sentence = f'"{sentence}"'
     return sentence
+
+def redo_escape_and_wrap(sentence):
+    """Reapply double quotes and wrapping rules if conditions are met, avoiding redundant escapes."""
+    sentence = escape_unwrapped_quotes(sentence)
+    return wrap_sentence_with_commas(sentence)
 
 def undo_escape_and_wrap(sentence):
     """Revert double quotes and wrapping for processing."""
