@@ -78,7 +78,7 @@ if __name__ == "__main__":
     # Paths required for pantasa_checker
     jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
     model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
-    rule_path = 'data/processed/detailed_only.csv'
+    rule_path = 'data/processed/detailed_updated.csv'
     directory_path = 'data/raw/dictionary.csv'
     pos_path = 'data/processed/pos_dic'
 
