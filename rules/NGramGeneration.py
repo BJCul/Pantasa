@@ -4,6 +4,7 @@ from collections import defaultdict
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from threading import Lock
+import logging
 
 # Set of punctuation marks that can act as sentence terminators
 TERMINATOR = set('.!?,')
