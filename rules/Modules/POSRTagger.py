@@ -320,10 +320,10 @@ def pos_tag(sentence):
     return detailed_pos, general_pos
 
 # Test the function
-text = "Kumusta ka, Juan? 'di ba't sinabi mo'y ika-8 'yon: 'aalis ako nang maaga—mga alas-siyete ng umaga, siguro...' Pero, bakit nandito ka pa rin?!"
-pos, rpos = pos_tag(text)
-print(pos)
-print(rpos)
+# text = "Kumusta ka, Juan? 'di ba't sinabi mo'y ika-8 'yon: 'aalis ako nang maaga—mga alas-siyete ng umaga, siguro...' Pero, bakit nandito ka pa rin?!"
+# pos, rpos = pos_tag(text)
+# print(pos)
+# print(rpos)
 
 
     #####pag nag  invalid value error, mag aadd ng 1 sa isang bagong variable, para sa next makiktia na iba pagkukuhanan ng prev word, tapos ii-state dun sa bawat continue/break states yung magiging value nia 

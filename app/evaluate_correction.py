@@ -71,8 +71,8 @@ def generate_erroneous_output_result(
 
 if __name__ == "__main__":
     # Update these paths as needed
-    input_csv = 'data/processed/erroneous_gold.csv'  # The CSV you provided
-    output_csv = 'data/processed/correction_erroneous_output_result.csv'
+    input_csv = 'data/processed/incorrect_balarila.csv'  # The CSV you provided
+    output_csv = 'data/processed/incorrect_output_result.csv'
 
     # Paths required for pantasa_checker
     jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'

@@ -34,7 +34,7 @@ def lemmatize_sentence(sentence):
         print(f"Exception occurred during lemmatization: {e}")
         return sentence
     
-print(lemmatize_sentence("Pagmamataas ang magiging dahilan ng iyong pagbagsak"))
+# print(lemmatize_sentence("Pagmamataas ang magiging dahilan ng iyong pagbagsak"))
 
 
 

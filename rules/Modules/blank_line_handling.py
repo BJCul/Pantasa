@@ -19,7 +19,7 @@ def remove_repeating_lines(file_path):
                 seen_lines.add(line)
 
 # Example usage
-input_file = 'database/tokenized.txt'
+# input_file = 'database/tokenized.txt'
 
-remove_blank_lines(input_file)
-remove_repeating_lines(input_file)
+# remove_blank_lines(input_file)
+# remove_repeating_lines(input_file)

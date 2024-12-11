@@ -48,6 +48,8 @@ logger = logging.getLogger(__name__)
 jar = 'rules/Libraries/FSPOST/stanford-postagger.jar'
 model = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
 
+MAX_LEVENSHTEIN_DISTANCE = 2
+
 def tokenize_sentence(sentence):
     """
     Tokenizes an input sentence into words and punctuation using regex.
@@ -162,14 +164,14 @@ def preprocess_text(text_input, jar_path, model_path):
 
 # Load and create the rule pattern bank
 def rule_pattern_bank(rule_path):
-    hybrid_ngrams_df = pd.read_csv(rule_path)
+    hybrid_ngrams_df = pd.read_csv(rule_path, low_memory=False)
 
     # Create a dictionary to store the Rule Pattern Bank (Hybrid N-Grams + Predefined Rules)
     rule_pattern_bank = {}
 
     # Store the hybrid n-grams from the CSV file into the rule pattern bank
     for index, row in hybrid_ngrams_df.iterrows():
-        hybrid_ngram = row['Hybrid_N-Gram']
+        hybrid_ngram = row['DetailedPOS_N-Gram']
         pattern_frequency =row['Frequency']
         
         # Add the hybrid_ngram and its frequency to the dictionary
@@ -199,8 +201,8 @@ def edit_weighted_levenshtein(input_ngram, pattern_ngram):
         distance_matrix[0][j] = j
 
     # Define weights for substitution, insertion, and deletion
-    substitution_weight = 7.0
-    insertion_weight = 8.0 
+    substitution_weight = 0.7
+    insertion_weight = 0.8 
     deletion_weight = 1.2
 
     # Compute the distances
@@ -324,9 +326,20 @@ def generate_ngrams(input_tokens):
             ngrams.append((" ".join(ngram), i))  # Track the starting index
     return ngrams
 
+def get_max_distance(n):
+    """
+    Returns the maximum allowable Levenshtein distance based on n-gram length.
+    Adjust these values as needed based on empirical testing.
+    """
+    if n <= 3:
+        return 1
+    elif n <= 5:
+        return 2
+    else:
+        return 3
+
 # Step 5: Suggestion phase - generate suggestions for corrections without applying them
 def generate_suggestions(pos_tags, rule_path):
-
     input_tokens = [pos_tag for word, pos_tag in pos_tags]
     
     # Generate token-level correction tracker
@@ -338,28 +351,34 @@ def generate_suggestions(pos_tags, rule_path):
     # Generate 3-gram to 7-gram sequences from the input sentence
     input_ngrams_with_index = generate_ngrams(input_tokens)
     
-    # Iterate over each n-gram and compare it to the rule pattern bank
+    rule_bank = rule_pattern_bank(rule_path)  # Load once outside the loop for efficiency
+    
     for input_ngram, start_idx in input_ngrams_with_index:
         min_distance = float('inf')
-        rule_bank = rule_pattern_bank(rule_path)
         best_match = None
         highest_frequency = 0
-
+        ngram_length = len(input_ngram.split())
+        
+        # Determine the maximum allowable distance based on n-gram length
+        max_distance = get_max_distance(ngram_length)  # Use dynamic thresholding
+        
         for pattern_id, pattern_data in rule_bank.items():
-            # Compare input n-gram with each pattern n-gram from the rule pattern bank
             pattern_ngram = pattern_data.get('hybrid_ngram')
-            frequency = pattern_data.get('frequency')  # Correct key for frequency
-
+            frequency = pattern_data.get('frequency')
+    
             if pattern_ngram:
                 distance = edit_weighted_levenshtein(input_ngram, pattern_ngram)
-                if distance < min_distance or (distance == min_distance and frequency > highest_frequency):
-                    min_distance = distance
-                    best_match = pattern_ngram
-                    highest_frequency = frequency  # Update to use the more frequent pattern
-            
+                
+                # Apply the threshold
+                if distance <= max_distance:
+                    if distance < min_distance or (distance == min_distance and frequency > highest_frequency):
+                        min_distance = distance
+                        best_match = pattern_ngram
+                        highest_frequency = frequency
+        
         if best_match:
             correction_tags = generate_correction_tags(input_ngram, best_match)
-            print(f"CORRECTION TAGS {correction_tags}")
+            logger.debug(f"CORRECTION TAGS {correction_tags}")
             
             # Populate the token-level correction tracker
             input_ngram_tokens = input_ngram.split()
@@ -368,35 +387,31 @@ def generate_suggestions(pos_tags, rule_path):
                 token_idx = start_idx + i + token_shift
 
                 if tag.startswith("INSERT"):
-                    # Track the insert suggestion
                     inserted_token = tag.split("_")[1]
                     insert_suggestions[token_idx].append(inserted_token)
                     token_shift = -1
 
                 else:
-                    # Ensure token_suggestions don't skip after insertion
                     if token_idx < len(token_suggestions):
                         token_suggestions[token_idx]["suggestions"].append(tag)
                         token_suggestions[token_idx]["distances"].append(min_distance)
     
-    # Step 6: Handle inserts based on the majority rule
+    # Handle inserts based on the majority rule (no changes needed here)
     for token_idx, inserts in insert_suggestions.items():
-        # Count occurrences of each insertion suggestion
         insert_counter = Counter(inserts)
         most_common_insert, insert_count = insert_counter.most_common(1)[0]
-
+    
         if len(inserts) > 1:
             num_corrections = len(insert_counter)
             threshold = num_corrections / 2
             
-            # Only insert the token if the majority of patterns suggest it
             if insert_count > threshold:
                 token_suggestions.insert(token_idx, {"token": most_common_insert, "suggestions": [f'INSERT_{most_common_insert}'], "distances": [0.8]})
         else:
-            # Skip insertions if there's only one suggestion
             continue
-        
+    
     return token_suggestions
+
 
 def load_pos_tag_dictionary(pos_tag, pos_path):
     """
@@ -799,7 +814,7 @@ def pantasa_checker(input_sentence, jar_path, model_path, rule_path, directory_p
     #         return pre_rules_corrected_text, {}, []
 
     # else:
-        # Proceed with grammar checking (no misspelled words found)
+    # Proceed with grammar checking (no misspelled words found)
     log_message("info", "No misspelled words found, proceeding with grammar checking")
 
     # Step 6: Apply post-defined rules after POS tagging
@@ -828,6 +843,36 @@ def pantasa_checker(input_sentence, jar_path, model_path, rule_path, directory_p
     # Return the corrected sentence and token suggestions
     return corrected_sentence, token_suggestions, []
 
+# def test():
+#     input_sentence = 'Iyon ang madalas na nakakalimutan ng mga artista'
+#     jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
+#     model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
+#     rule_path = 'data/processed/detailed_hngram.csv'
+#     directory_path = 'data/raw/dictionary.csv'
+#     pos_path = 'data/processed/pos_dic'
 
+#     # Step 1: Tokenize the input sentence
+#     tokens = tokenize_sentence(input_sentence)
+#     print("Tokens:", tokens)
+
+#     # Step 2: POS tag the tokens
+#     pos_tags = pos_tagging(tokens, jar_path=jar_path, model_path=model_path)
+#     print("POS Tags:", pos_tags)
+
+#     # Step 3: Load the rule pattern bank
+#     rule_bank = rule_pattern_bank(rule_path)
+#     print("Rule Pattern Bank Loaded.")
+
+#     # Step 4: Generate suggestions using n-gram matching
+#     token_suggestions = generate_suggestions(pos_tags, rule_path)
+#     print("Token Suggestions:")
+#     for idx, suggestion in enumerate(token_suggestions):
+#         print(f"Token {idx}: {suggestion}")
+
+#     # Step 5: Apply POS corrections
+#     corrected_sentence = apply_pos_corrections(token_suggestions, pos_tags, pos_path)
+#     print("Corrected Sentence:", corrected_sentence)
+
+# test()
 
     

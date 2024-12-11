@@ -41,40 +41,53 @@ def handle_nang_ng(text, pos_tags):
     words = text.split()
     corrected_words = []
     
+    # pos_tags is expected to be a list of tuples: [(word, pos), (word, pos), ...]
+    # We'll extract the POS for each token using pos_tags[i][1].
+    
     for i, word in enumerate(words):
+        # Safely get previous and next indices
+        prev_i = i - 1
+        next_i = i + 1
+        
+        # Extract current pos if available
+        current_pos = pos_tags[i][1] if i < len(pos_tags) else ''
+        
+        # Extract previous and next pos if they exist
+        prev_pos = pos_tags[prev_i][1] if prev_i >= 0 and prev_i < len(pos_tags) else ''
+        next_pos = pos_tags[next_i][1] if next_i < len(pos_tags) else ''
+        
         if word == "ng":
             # Handle "ng" as a ligature connecting verbs to adverbs
-            if i > 0 and pos_tags[i - 1].startswith('VB') and pos_tags[i + 1].startswith('RB'):
+            if prev_i >= 0 and next_i < len(pos_tags) and prev_pos.startswith('VB') and next_pos.startswith('RB'):
                 corrected_words.append("ng")
                 print("'ng' kept as ligature (connecting verb and adverb)")
             
             # Handle "ng" as other use cases, such as between nouns and adjectives
-            elif i > 0 and pos_tags[i + 1].startswith('JJ'):
+            elif next_i < len(pos_tags) and next_pos.startswith('JJ'):
                 corrected_words.append("ng")
                 print("'ng' kept as ligature (connecting noun and adjective)")
             
-            # Other cases where "ng" can be corrected to "nang" based on POS
             else:
                 corrected_words.append(word)
 
         elif word == "nang":
             # Case 1: "nang" as a coordinating conjunction
-            if pos_tags[i] == 'CCB' and i > 0:
+            if current_pos == 'CCB' and prev_i >= 0:
                 corrected_words.append("ng")
                 print("'nang' corrected to 'ng' (coordinating conjunction CCB)")
             
             # Case 2: Ligature use (connecting an adjective or a verb to a noun/adjective/adverb)
-            elif i > 0 and pos_tags[i - 1] in ['JJ', 'VB']:  # Check if the previous word is an adjective (JJ) or a verb (VB)
+            elif prev_i >= 0 and prev_pos in ['JJ', 'VB']:
                 corrected_words.append("ng")
                 print("'nang' corrected to 'ng' (ligature for adjective/verb)")
             
             # Case 3: Check if "nang" is followed by an adjective (often requires ligature)
-            elif i < len(pos_tags) - 1 and pos_tags[i + 1].startswith('JJ'):
+            elif next_i < len(pos_tags) and next_pos.startswith('JJ'):
                 corrected_words.append("ng")
                 print("'nang' corrected to 'ng' (followed by adjective JJ)")
             
             # Case 4: Check if "nang" is tagged as adverb (RBW) but acts as a ligature
-            elif pos_tags[i] == 'RBW' and i > 0 and pos_tags[i - 1] in ['NNC', 'NNP']:
+            elif current_pos == 'RBW' and prev_i >= 0 and prev_pos in ['NNC', 'NNP']:
                 corrected_words.append("ng")
                 print("'nang' corrected to 'ng' (acting as ligature with noun)")
             
@@ -82,25 +95,6 @@ def handle_nang_ng(text, pos_tags):
             else:
                 corrected_words.append(word)
                 print("'nang' kept unchanged (other use cases)")
-        
-        elif word == "na" and i > 0:  # If the current word is "na" and it's not the first word
-            prev_word = words[i - 1]
-            print(f"Checking if 'na' should be merged with the previous word: {prev_word}")
-
-            if prev_word[-1].lower() in vowels:  # Check if the previous word ends with a vowel
-                corrected_word = prev_word + "ng"
-                corrected_words[-1] = corrected_word  # Update the last word in corrected_words
-                print(f"Word ending with vowel: Merged 'na' to form '{corrected_word}'")
-
-            elif prev_word[-1].lower() == 'n':  # Check if the previous word ends with 'n'
-                corrected_word = prev_word + "g"
-                corrected_words[-1] = corrected_word  # Update the last word in corrected_words
-                print(f"Word ending with 'n': Merged 'na' to form '{corrected_word}'")
-
-            else:
-                corrected_words.append("na")  # Keep 'na' as it is
-                print("'na' kept as is, no merging.")
-
             
         else:
             corrected_words.append(word)  # Append the word if no correction is made
@@ -170,7 +164,7 @@ def merge_affixes(text, pos_tags, dictionary=dictionary_file):
     return ' '.join(corrected_words)
 
 def apply_predefined_rules_pre(text):
-    pos = pos_tag(text)
+    pos = pos_tagging(text)
     rd_correction = rd_interchange(text)
     mas_correction = separate_mas(rd_correction)
     rule_corrected = handle_nang_ng(mas_correction,pos)
@@ -178,7 +172,7 @@ def apply_predefined_rules_pre(text):
     return rule_corrected
 
 def apply_predefined_rules_post(text):
-    pos = pos_tag(text)
+    pos = pos_tagging(text)
 
     rd_correction = rd_interchange(text)
     prefix_merged = merge_affixes(rd_correction, pos)
@@ -188,7 +182,7 @@ def apply_predefined_rules_post(text):
     return rule_corrected
 
 def apply_predefined_rules(text):
-    pos = pos_tag(text)
+    pos = pos_tagging(text)
 
     mas_correction = separate_mas(text, pos)
     prefix_merged = merge_affixes(mas_correction, pos)
@@ -208,7 +202,7 @@ if __name__ == "__main__":
 
     # Test case
     test = "tumakbo ng mabilis"
-    pos = pos_tag(test).split()  # Split the string into a list
+    pos = pos_tagging(test).split()  # Split the string into a list
     print(test)
     print(pos)
     print(handle_nang_ng(test, pos))
