@@ -128,7 +128,7 @@ def preprocess_text(input_file, tokenized_file, output_file, max_lines=None):
 
 def run_preprocessing(max_lines=None):
     # Define your file paths here
-    input_txt = "data/raw/casual_tagalog/bd.txt"           # Input file (the .txt file)
+    input_txt = "data/raw/casual_tagalog/editorials/editorial_links.txt"           # Input file (the .txt file)
     tokenized_txt = "rules/database/tokenized_sentences.txt"  # File to save tokenized sentences
     output_csv = "rules/database/preprocessed.csv"     # File to save the preprocessed output
 
@@ -137,4 +137,4 @@ def run_preprocessing(max_lines=None):
 
 # Automatically run when the script is executed
 if __name__ == "__main__":
-    run_preprocessing(max_lines=3643)
+    run_preprocessing(max_lines=20000)
