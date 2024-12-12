@@ -74,7 +74,7 @@ def lemmatize_sentence(sentence):
     except Exception as e:
         print(f"Exception occurred during lemmatization: {e}")
         return sentence
-
+"""
 test_sentences = [
     "Kapag walang bulakbol cops na sa Metro, magdadalawang-isip din ang mga kriminal na tumira dahil t’yak sa kulungan ang bagsak nila.",
     "Makikita na ang politikal na aktibidad patungkol sa press con na ito ang nabalitang kasong hit-and-run ng isang Jose Antonio Sanvicente sa isang security",
@@ -84,3 +84,5 @@ test_sentences = [
 for test_sentence in test_sentences:
     lemma = lemmatize_sentence(test_sentence)
     print(lemma)
+
+"""

@@ -137,4 +137,4 @@ def run_preprocessing(max_lines=None):
 
 # Automatically run when the script is executed
 if __name__ == "__main__":
-    run_preprocessing(max_lines=None)
+    run_preprocessing(max_lines=3643)
