@@ -23,3 +23,4 @@ logs/pantasa.log
 *.log
 /logs
 logs/pantasa.log
+rules/database/ngram.csv
