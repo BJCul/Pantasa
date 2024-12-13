@@ -7,10 +7,8 @@ def is_correction_made(row):
     spell_suggestions = row['Suggestions']
 
     diff_in_sentence = (pd.notna(corrected) and corrected != original)
-    words_detected = pd.notna(incorrect_words) and incorrect_words not in [None, '', 'nan', '[]']
-    suggestions_detected = pd.notna(spell_suggestions) and spell_suggestions not in [None, '', 'nan', '{}']
 
-    return diff_in_sentence or words_detected or suggestions_detected
+    return diff_in_sentence
 
 def evaluate_detection(error_free_results_csv, erroneous_results_csv):
     # Load the results

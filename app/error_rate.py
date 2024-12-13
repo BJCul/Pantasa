@@ -27,9 +27,7 @@ def compute_error_rate_accuracy(csv_path):
         # Define detected_error based on system output
         # Detected error if system changed something or indicated corrections/suggestions
         detected_error = (
-            (corrected != original) or
-            (incorrect_words.strip() not in ["[]", ""]) or
-            (suggestions.strip() not in ["", "[]", '""'])
+            (corrected != original)
         )
 
         # Compute FP (False Positive for Detection)
@@ -68,7 +66,5 @@ def compute_error_rate_accuracy(csv_path):
     }
 
 if __name__ == "__main__":
-    # Example usage:
-    # Replace 'pantasa_results.csv' with your actual CSV file path
-    csv_path = 'pantasa_results.csv'
+    csv_path = 'data/processed/mixed.csv'
     compute_error_rate_accuracy(csv_path)
