@@ -1,7 +1,7 @@
 import subprocess
 import re
 
-punctuation = '.!?,;:—"\'()\[\]{}'
+punctuation = '.!?,;:—"\'()[]{}'
 brackets = {
     "-LRB-":"(", "-RRB-":")",
     "-LSB-":"[","-RSB-":"]",

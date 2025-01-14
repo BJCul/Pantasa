@@ -4,7 +4,7 @@ def is_correction_made(row):
     original = row['Original Sentence']
     corrected = row['Corrected Sentence']
     incorrect_words = row['Incorrect Words']
-    spell_suggestions = row['Suggestions']
+    spell_suggestions = row['Spell Suggestions']
 
     diff_in_sentence = (pd.notna(corrected) and corrected != original)
 
@@ -22,10 +22,10 @@ def evaluate_detection(error_free_results_csv, erroneous_results_csv):
         detected = is_correction_made(row)
         if detected:
             # False Negative - model detects grammar errors but there are no actual grammar error in the data
-            FN += 1
+            FP += 1 
         else:
             # True Positive - model detects no grammar errors and data has no actual grammar errors
-            TP += 1
+            TN += 1
 
     # Evaluate erroneous sentences (errors present)
     for _, row in df_erroneous_result.iterrows():
@@ -33,17 +33,17 @@ def evaluate_detection(error_free_results_csv, erroneous_results_csv):
         if detected:
             # True Negative - model detects grammar errors and there are actual grammar error in the data
 
-            TN += 1
+            TP += 1
         else:
             # False Positive - model detects no grammar errors but the data actually has grammar errors
-            FP += 1
+            FN += 1
 
     return TP, FP, TN, FN
 
 if __name__ == "__main__":
     # Replace with your actual file paths
-    error_free_results_csv = 'data/processed/error_free_output_result.csv'
-    erroneous_results_csv = 'data/processed/erroneous_output_result.csv'
+    error_free_results_csv = 'data/processed/exp_test_v1_2.csv'
+    erroneous_results_csv = 'data/processed/exp_test_v2_2.csv'
 
     TP, FP, TN, FN = evaluate_detection(error_free_results_csv, erroneous_results_csv)
 

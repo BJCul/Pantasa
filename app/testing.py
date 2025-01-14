@@ -13,7 +13,7 @@ def generate_erroneous_output_result(
     save_interval=1
 ):
     # Read the input CSV containing original and gold sentences
-    df = pd.read_csv(input_csv)
+    df = pd.read_csv(input_csv, encoding='unicode_escape')
 
     # Ensure the required columns exist
     if 'Original Sentence' not in df.columns or 'Gold Sentence' not in df.columns:
@@ -72,13 +72,13 @@ def generate_erroneous_output_result(
 
 if __name__ == "__main__":
     # Update these paths as needed
-    input_csv = 'data/processed/correct_balarila_t1.csv' 
-    output_csv = 'data/processed/correct_output_t1.csv'
+    input_csv = 'data/processed/exp_test_source.csv'
+    output_csv = 'data/processed/exp_text_v1_2.csv'
 
     # Paths required for pantasa_checker
     jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
     model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
-    rule_path = 'data/processed/detailed_1.csv'
+    rule_path = 'data/processed/detailed_2.csv'
     directory_path = 'data/raw/dictionary.csv'
     pos_path = 'data/processed/pos_dic'
 
