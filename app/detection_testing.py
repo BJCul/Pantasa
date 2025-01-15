@@ -42,8 +42,8 @@ def evaluate_detection(error_free_results_csv, erroneous_results_csv):
 
 if __name__ == "__main__":
     # Replace with your actual file paths
-    error_free_results_csv = 'data/processed/exp_test_v1_2.csv'
-    erroneous_results_csv = 'data/processed/exp_test_v2_2.csv'
+    error_free_results_csv = 'data/processed/exp_text_v2_3_1.csv'
+    erroneous_results_csv = 'data/processed/exp_text_v2_3_2.csv'
 
     TP, FP, TN, FN = evaluate_detection(error_free_results_csv, erroneous_results_csv)
 

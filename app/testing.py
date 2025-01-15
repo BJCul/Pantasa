@@ -73,12 +73,12 @@ def generate_erroneous_output_result(
 if __name__ == "__main__":
     # Update these paths as needed
     input_csv = 'data/processed/exp_test_source.csv'
-    output_csv = 'data/processed/exp_text_v1_2.csv'
+    output_csv = 'data/processed/exp_text_v3_3.csv'
 
     # Paths required for pantasa_checker
     jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
     model_path = 'rules/Libraries/FSPOST/filipino-left5words-owlqn2-distsim-pref6-inf2.tagger'
-    rule_path = 'data/processed/detailed_2.csv'
+    rule_path = 'data/processed/detailed_3.csv'
     directory_path = 'data/raw/dictionary.csv'
     pos_path = 'data/processed/pos_dic'
 
