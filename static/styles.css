@@ -24,6 +24,8 @@ html {
 #charCount {
     color: #7c7573;
     transition: color 0.3s; /* Smooth transition between colors */
+    font-size: 24px;
+    float: right;
 }
 
 
@@ -60,6 +62,7 @@ body {
     justify-content: space-between;
     padding: 0 20px;
     transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for color change */
+    background-color: #E5E0DF;
 }
 
 /* Horizontal Line Below Navigation */
@@ -78,6 +81,7 @@ body {
 /* White text for the homepage */
 .nav.white {
     color: var(--pwhite);  /* White text on home page */
+    background-color: transparent; 
 }
 
 /* Black text for other pages */
@@ -552,7 +556,7 @@ a:label.logo {
     text-align: center;
     margin-top: 15px;
     border-radius: 25px;
-    font-size: 15px;
+    font-size: 19px;
     border: none;
     outline: none;
     color: var(--pwhite);
@@ -561,13 +565,19 @@ a:label.logo {
     overflow: hidden;
     cursor: pointer;
     justify-content: end;
+    font-family: inherit; /* Matches the font family */
 }
 
 .loading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    position: absolute;  /* Position the container absolutely within its parent */
+    top: 200%;  /* Center vertically in parent */
+    left: 50%;  /* Center horizontally in parent */
+    transform: translate(-50%, -50%);  /* Adjust for centering */
+    display: flex;  /* Use flexbox to stack elements */
+    flex-direction: column;  /* Stack vertically (spinner above text) */
+    justify-content: center;  /* Center elements vertically */
+    align-items: center;  /* Center elements horizontally */
+    text-align: center;  /* Center the text */
 }
 
 .loading p {
@@ -582,6 +592,7 @@ a:label.logo {
     height: 60px;
     animation: spin 1s linear infinite;
 }
+
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
@@ -609,17 +620,12 @@ a:label.logo {
 }
 
 
-#result {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-}
 
 #result p {
     text-align: center;
     margin-top: 10px;
-    font-size: 18px;
-    color: #555;
+    font-size: 28px;
+    color: #5B2B12;
 }
 
 #highlightedText {
@@ -660,7 +666,7 @@ a:label.logo {
     flex: 1;
     padding-left: 20px;
     font-style: italic;
-    color: var(--pgray);
+    color: #5B2B12;
     font-family: 'Sorts Mill Goudy';
 }
 
@@ -949,7 +955,7 @@ a:label.logo {
 #suggestionsContent {
     flex-grow: 0; /* Suggestions should not grow, but maintain space */
     flex-shrink: 0;
-    padding-top: 10px;
+    padding-top: 35px;
     padding-bottom: 10px;
     box-sizing: border-box;
     height: auto;
@@ -965,5 +971,3 @@ a:label.logo {
     pointer-events: none;
     display: block;
 }
-
-

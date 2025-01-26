@@ -7,7 +7,7 @@ gateway = JavaGateway(gateway_parameters=GatewayParameters(port=25334))
 grammar_checker = gateway.entry_point
 
 # Call the getGrammarSuggestions method
-sentence = "kumain ang kumain ng bata ng mansana"
+sentence = "at kung tama ang hinala ng ginang nasaan kaya ang tunay niyang anak"
 suggestions = grammar_checker.getGrammarSuggestions(sentence)
 
 # Print the suggestions
