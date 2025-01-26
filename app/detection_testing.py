@@ -3,14 +3,12 @@ import pandas as pd
 def is_correction_made(row):
     original = row['Original Sentence']
     corrected = row['Corrected Sentence']
-    incorrect_words = row['Incorrect Words']
-    spell_suggestions = row['Suggestions']
 
     diff_in_sentence = (pd.notna(corrected) and corrected != original)
 
     return diff_in_sentence
 
-def evaluate_detection(error_free_results_csv, erroneous_results_csv):
+def evaluate_detection(error_free_results_csv, erroneous_results_csv, output_error_free_csv, output_erroneous_csv):
     # Load the results
     df_error_free_result = pd.read_csv(error_free_results_csv)
     df_erroneous_result = pd.read_csv(erroneous_results_csv)
@@ -18,34 +16,48 @@ def evaluate_detection(error_free_results_csv, erroneous_results_csv):
     TP = FP = TN = FN = 0
 
     # Evaluate error-free sentences (no errors)
+    results = []
     for _, row in df_error_free_result.iterrows():
         detected = is_correction_made(row)
         if detected:
-            # False Negative - model detects grammar errors but there are no actual grammar error in the data
+            # False Negative - model detects grammar errors but there are no actual grammar errors in the data
             FN += 1
+            results.append("FN")
         else:
             # True Positive - model detects no grammar errors and data has no actual grammar errors
             TP += 1
+            results.append("TP")
+    df_error_free_result.insert(0, "Detection Result", results)
 
     # Evaluate erroneous sentences (errors present)
+    results = []
     for _, row in df_erroneous_result.iterrows():
         detected = is_correction_made(row)
         if detected:
-            # True Negative - model detects grammar errors and there are actual grammar error in the data
-
+            # True Negative - model detects grammar errors and there are actual grammar errors in the data
             TN += 1
+            results.append("TN")
         else:
             # False Positive - model detects no grammar errors but the data actually has grammar errors
             FP += 1
+            results.append("FP")
+    df_erroneous_result.insert(0, "Detection Result", results)
+
+    # Save updated CSVs with the new column
+    df_error_free_result.to_csv(output_error_free_csv, index=False)
+    df_erroneous_result.to_csv(output_erroneous_csv, index=False)
 
     return TP, FP, TN, FN
 
 if __name__ == "__main__":
     # Replace with your actual file paths
-    error_free_results_csv = 'data/processed/error_free_output_result.csv'
-    erroneous_results_csv = 'data/processed/erroneous_output_result.csv'
+    error_free_results_csv = 'data/processed/correct_output_result_d4_2.csv'
+    erroneous_results_csv = 'data/processed/incorrect_output_result_t4_2.csv'
 
-    TP, FP, TN, FN = evaluate_detection(error_free_results_csv, erroneous_results_csv)
+    output_error_free_csv = 'data/processed/correct_output_result_d4_2_with_labels.csv'
+    output_erroneous_csv = 'data/processed/incorrect_output_result_t4_2_with_labels.csv'
+
+    TP, FP, TN, FN = evaluate_detection(error_free_results_csv, erroneous_results_csv, output_error_free_csv, output_erroneous_csv)
 
     print("Detection Results:")
     print(f"TP: {TP}, FP: {FP}, TN: {TN}, FN: {FN}")

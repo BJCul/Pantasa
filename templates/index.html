@@ -49,9 +49,9 @@
         <div class = "about-content">
             <div class = "about-text">
                 <h1> About PANTASA </h1>
-                <p> Pantasa is a Tagalog grammar correction system that combines rule-based error detection using hybrid n-grams with a deep learning-based iterative error correction approach. The system identifies grammar mistakes in Tagalog sentences by comparing them against predefined grammar rules and then applies corrections using a fine-tuned deep learning model. Pantasa is designed to handle common grammar errors in Tagalog and iteratively refine sentences until they are grammatically correct.
+                <p style="font-size: 20px;"> Pantasa is a Tagalog grammar correction system that combines rule-based error detection using hybrid n-grams with a deep learning-based iterative error correction approach. The system identifies grammar mistakes in Tagalog sentences by comparing them against predefined grammar rules and then applies corrections using a fine-tuned deep learning model. Pantasa is designed to handle common grammar errors in Tagalog and iteratively refine sentences until they are grammatically correct.
                 </p>
-                <p> This grammar checker web application was created by a group of BS Computer Science students from Polytechnic University of the Philippines as part 
+                <p style="font-size: 20px;"> This grammar checker web application was created by a group of BS Computer Science students from Polytechnic University of the Philippines as part 
                     of fulfillment of their requirements for the program.
                 </p>
             </div>
@@ -72,8 +72,8 @@
                                 <button type="button" class="button-submit" onclick="triggerGrammarCheck()">Itasa</button>
                             </form>
                         </div>
-                        <div id="suggestionsContent">
-                            <h3>Suggestions:</h3>
+                        <div id="suggestionsContent" style="background-color: #f9f9f9; padding: 20px; margin-top: 20px; border: 1px solid #ddd; border-radius: 5px;">
+                            <h3>Spelling Suggestions:</h3>
                             <ul id="suggestionsList"></ul>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                             <p id="correctedText" class="correctedText" style="display:block;"></p>
                             <div id="loading" class="loading" style="display:none;">
                                 <div class="spinner"></div>
-                                <p>Loading...</p>
+                                <p style="font-size: 18px;">Loading...</p>
                             </div>
                         </div>
                     </div>

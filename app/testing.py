@@ -48,8 +48,9 @@ def generate_erroneous_output_result(
         # Run the pantasa_checker on the original sentence
         corrected_sentence, spell_suggestions, incorrect_words = pantasa_checker(
             original_sentence, jar_path, model_path, rule_path, directory_path, pos_path
-        )
+        )       
 
+        print("ssss")
         # Append the result as a new row
         new_row = pd.DataFrame([{
             'Original Sentence': original_sentence,
@@ -72,8 +73,8 @@ def generate_erroneous_output_result(
 
 if __name__ == "__main__":
     # Update these paths as needed
-    input_csv = 'data/processed/correct_balarila_t1.csv' 
-    output_csv = 'data/processed/correct_output_t1.csv'
+    input_csv = 'data/processed/incorrect_balarila_t3.csv' 
+    output_csv = 'data/processed/incorrect_balarila_t3_detailed1.csv'
 
     # Paths required for pantasa_checker
     jar_path = 'rules/Libraries/FSPOST/stanford-postagger.jar'
@@ -82,6 +83,7 @@ if __name__ == "__main__":
     directory_path = 'data/raw/dictionary.csv'
     pos_path = 'data/processed/pos_dic'
 
+    print("SSSSS")
     # Generate the erroneous_output_result.csv
     # Set save_interval to 1 to save after every sentence
     generate_erroneous_output_result(
