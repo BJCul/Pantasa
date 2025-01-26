@@ -64,7 +64,7 @@ def evaluate_correction(results_csv):
 
 if __name__ == "__main__":
     # Replace this with the actual path to your results CSV file
-    results_csv = 'data/processed/incorrect_output_result_t5_1.csv'
+    results_csv = 'data/processed/incorrect_output_result_t4.csv'
 
     TP, FP, TN, FN, precision, recall, f1_score, accuracy = evaluate_correction(results_csv)
 
