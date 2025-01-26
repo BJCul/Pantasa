@@ -474,7 +474,7 @@ a:label.logo {
     height: auto;
     margin: auto;
     position: relative;
-    top: 25vh;
+    top: 15vh;
     left: 0%;
     padding-top: 20px;
     background-color: var(--pwhite); 
@@ -491,13 +491,30 @@ a:label.logo {
 .about-text p {
     text-align: justify;
     justify-content: center;
-    padding: 20px 20px;
+    padding: 10px 20px;
 }
+
+.about-text ol {
+    text-align: justify;
+    justify-content: center;
+    padding: 14px 20px;
+}
+.about-text ol li{
+    padding-left: 15px;
+    text-indent: -19px;
+    text-align: justify;
+    justify-content: center;
+    list-style-type: decimal;
+    display: list-item;
+    list-style-position: inside;
+}
+
+
 
 
 /*-----Grammar Checker-----*/
 #GrammarChecker {
-    height: 100vh;
+    height: 105vh;
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -677,7 +694,7 @@ a:label.logo {
         width: 1200px;
     }
     .about-content {
-        padding-bottom: 60px;
+        padding-bottom: 20px;
     }
 }
 
