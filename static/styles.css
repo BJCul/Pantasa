@@ -484,8 +484,15 @@ a:label.logo {
 
 .about-text h1{
     text-align: center;
+    text-decoration:inherit;
     text-transform: uppercase;
     padding-top: 10px;
+    color: var(--pmaroon);
+}
+
+.about-text h1 a{
+    text-decoration: none;
+    color: var(--pmaroon);
 }
 
 .about-text p {
@@ -508,6 +515,7 @@ a:label.logo {
     display: list-item;
     list-style-position: inside;
 }
+
 
 
 
@@ -987,4 +995,21 @@ a:label.logo {
     color: var(--pgray);
     pointer-events: none;
     display: block;
+}
+
+.float{
+    position:fixed;
+    width:60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: var(--pmaroon);
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999:
+}
+
+.my-float{
+    margin-top:22px;
+    color: var(--pwhite);
 }
