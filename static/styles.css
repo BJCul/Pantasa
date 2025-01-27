@@ -47,7 +47,7 @@ body {
     background-size: cover;
     background-position: center;
     background-image: url('assets/bg.png'); 
-    background-size: cover; 
+    background-size: cover/; 
     background-repeat: no-repeat; 
 }
 
@@ -103,7 +103,7 @@ body {
 
 /*Section Style*/
 section .home-content{
-    padding-top: 30vh;
+    padding-top: 25vh;
 }
 
 .active-section {
@@ -130,7 +130,7 @@ section .home-content{
 
 .logo {
     position: absolute;
-    left: 30px;
+    left: 40px;
     width: 300px;
     font-size: x-large;
 }
@@ -326,12 +326,16 @@ a:label.logo {
     position: relative;
     top: -5%;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 10px;
+}
+
+.home-content img{
+    height:250px;
 }
 
 .home-content h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 75px;
+    font-size: 50px;
     margin-bottom: 10px;
     font-weight: 700px;
     color: var(--pwhite);
@@ -341,8 +345,8 @@ a:label.logo {
 .home-content p {
     font-family: 'Montserrat';
     font-size: 27px;
-    margin-top: 85px;
-    margin-bottom: 20px;
+    margin-top: 50px;
+    margin-bottom: 15px;
     font-style: italic;
     font-weight: lighter;
     color: var(--pwhite);
@@ -377,7 +381,7 @@ a:label.logo {
     padding: 27px 0px;
     text-align: center;
     margin: 20px 20px;
-    margin-top: 45px;
+    margin-top: 20px;
     border-radius: 10px;
     font-weight: bold;
     font-size: 30px;
@@ -412,13 +416,22 @@ a:label.logo {
     background: var(--pmaroon);
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1200px) {
+    .home-content img{
+        height:200px;
+    }
+}
+@media (max-width: 800px) {
     .home-content h1{
         font-size: 45px;
     }
 
     .home-content p {
         font-size: 17px;
+    }
+
+    .home-content img{
+        height:150px;
     }
 
     #Home .button {
@@ -492,7 +505,26 @@ a:label.logo {
 
 .about-text h1 a{
     text-decoration: none;
-    color: var(--pmaroon);
+    color: var(--pwhite);
+    text-transform: uppercase;
+}
+
+.about-text .button{
+    width: 150px;
+    padding: 10px 0px;
+    text-align: center;
+    margin: -20px -20px;
+    background-color: var(--pmaroon);
+    color: var(--pwhite);
+    margin-top: -45px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.about-text .button:hover{
+    background-color: var(--pyellow);
 }
 
 .about-text p {
@@ -591,6 +623,10 @@ a:label.logo {
     cursor: pointer;
     justify-content: end;
     font-family: inherit; /* Matches the font family */
+}
+
+.button-submit:hover{
+    background: var(--pyellow);
 }
 
 .loading {
@@ -1006,7 +1042,11 @@ a:label.logo {
     background-color: var(--pmaroon);
     border-radius: 50px;
     text-align: center;
-    box-shadow: 2px 2px 3px #999:
+    box-shadow: 2px 2px 3px #999;
+}
+
+.float:hover{
+    background-color: var(--pyellow);
 }
 
 .my-float{
