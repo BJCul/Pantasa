@@ -17,9 +17,12 @@ The primary objective of Pantasa is to enhance the quality of written Tagalog by
 - **Evaluation Metrics**: Performance is assessed using precision, recall, F1-score, and accuracy against a test dataset.
 
 ## **4. Authors and Contributors**
-**Lead Developer:** James [Your Last Name]  
+**Developers:** Carlo Agas,
+                James Alcantara, 
+                Rachell Ann Tapia, 
+                Jarlson Figueroa
 **Project Advisors:** [Advisor Names]  
-**Affiliation:** [Your University or Institution]  
+**Affiliation:** Polytechnic University of the Philippines
 **Year:** 2025  
 
 ## **5. System Requirements**
@@ -50,9 +53,7 @@ Pantasa is evaluated based on standard NLP performance metrics:
 - Integration with educational tools for automated feedback.
 - Deployment as a browser extension or mobile application.
 
-## **9. License and Citation**
-This project is open-source under the [MIT License]. If you use Pantasa in academic research, please cite the project accordingly.
-
+## **9. Citation**
 For inquiries or collaborations, contact jamesalcantara185@gmail.com, rachellann344@gmail.com, jarlson.figueroa16@gmail.com, carlo.agas341@gmail.com.
 
 
